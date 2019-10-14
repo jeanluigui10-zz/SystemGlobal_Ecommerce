@@ -1185,7 +1185,7 @@
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Home\Index.aspx" />
+    <Content Include="Layout\Index.aspx" />
     <Content Include="plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
     <Content Include="plugins\bootstrap-multiselect\bootstrap-multiselect.js" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
@@ -2050,11 +2050,11 @@
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Home\Index.aspx.cs">
+    <Compile Include="Layout\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home\Index.aspx.designer.cs">
+    <Compile Include="Layout\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

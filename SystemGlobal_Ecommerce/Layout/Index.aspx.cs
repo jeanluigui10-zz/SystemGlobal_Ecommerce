@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SystemGlobal_Ecommerce.Home
+namespace SystemGlobal_Ecommerce.Layout
 {
     public partial class Index : System.Web.UI.Page
     {
