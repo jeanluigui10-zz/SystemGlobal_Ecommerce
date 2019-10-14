@@ -1,5 +1,34 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+
+         $(function () {
+             fn_init();
+         });
+
+         function fn_init() {
+             fn_content();
+         }
+         function fn_content() {
+             Fn_ListProducts($("#<%=hfData.ClientID%>").val());
+         }
+
+         function Fn_ListProducts(data) {
+             var glancedata = data;
+             try {
+                 obj = $.parseJSON(glancedata);
+                 var object = {};
+                 object.request = obj;
+                 var item = fn_LoadTemplates("datatable-resources", object);
+                 $("#ListProductHome").html(item);
+             }
+             catch (e) {
+                 fn_message('e', 'An error occurred while loading data...');
+             }
+         }
+
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="tt-pageContent">
@@ -109,48 +138,8 @@
 				<h2 class="tt-title">BEST SELLER</h2>
 				<div class="tt-description">TOP SALE IN THIS WEEK</div>
 			</div>
-			<div class="row tt-layout-product-item">
-				<div class="col-6 col-md-4 col-lg-3">
-					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
-							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
-							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
-							<a href="product.html">
-								<span class="tt-img"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19-02.jpg" alt=""></span>
-							</a>
-						</div>
-						<div class="tt-description">
-							<div class="tt-row">
-								<ul class="tt-add-info">
-									<li><a href="#">T-SHIRTS</a></li>
-								</ul>
-								<div class="tt-rating">
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-									<i class="icon-star"></i>
-								</div>
-							</div>
-							<h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
-							<div class="tt-price">
-								$35
-							</div>
-							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
-								</div>
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
-									<a href="#" class="tt-btn-wishlist"></a>
-									<a href="#" class="tt-btn-compare"></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="row tt-layout-product-item" id="ListProductHome">
+				
 			</div>
 		</div>
 	</div>
@@ -211,4 +200,51 @@
 		</div>
 	</div>
 </div>
+    
+ <asp:HiddenField runat="server" ID="hfData" />
+    <script type="text/x-handlebars-template" id="datatable-resources">
+        {{# each request}}
+            <div class="col-6 col-md-4 col-lg-3">
+					<div class="tt-product thumbprod-center">
+						<div class="tt-image-box">
+							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
+							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
+							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+							<a href="product.html">
+								<span class="tt-img"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19-02.jpg" alt=""></span>
+							</a>
+						</div>
+						<div class="tt-description">
+							<div class="tt-row">
+								<ul class="tt-add-info">
+									<li><a href="#">{{Category}}</a></li>
+								</ul>
+								<div class="tt-rating">
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+								</div>
+							</div>
+							<h2 class="tt-title"><a href="product.html">{{FileDescription}}</a></h2>
+							<div class="tt-price">
+								$35
+							</div>
+							<div class="tt-product-inside-hover">
+								<div class="tt-row-btn">
+									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+								</div>
+								<div class="tt-row-btn">
+									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
+									<a href="#" class="tt-btn-wishlist"></a>
+									<a href="#" class="tt-btn-compare"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+        {{/each}}
+    </script>
 </asp:Content>
