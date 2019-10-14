@@ -65,17 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category\CategoriaBL.cs" />
-    <Compile Include="Environment\AmbienteBL.cs" />
-    <Compile Include="Environment\Detalle_AmbienteUsuarioBL.cs" />
-    <Compile Include="Floor\PisoBL.cs" />
-    <Compile Include="Incidence\IncidenciaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\ReporteBL.cs" />
     <Compile Include="Resource\ResourceBL.cs" />
     <Compile Include="Security\TipoUsuarioBL.cs" />
     <Compile Include="Security\UsuarioBL.cs" />
-    <Compile Include="Status\StatusBL.cs" />
-    <Compile Include="Tool\EquipoBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xAPI.Dao\xAPI.Dao.csproj">

@@ -20,6 +20,7 @@ namespace xAPI.Entity
         public Int16? isUpload { get; set; }
         public Int32? CategotyId { get; set; }
         public Int32? SystemContactId { get; set; }
+        public Decimal UnitPrice { get; set; }
         //public List<clsLanguage> ListLanguage { get; set; } comente
 
     }
