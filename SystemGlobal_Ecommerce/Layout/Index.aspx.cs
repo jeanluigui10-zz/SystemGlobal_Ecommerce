@@ -27,30 +27,26 @@ namespace SystemGlobal_Ecommerce.Layout
         private void LoadData(Boolean ShowMessage = false)
         {
             BaseEntity entity = new BaseEntity();
-            List<srAppResource> lst = new List<srAppResource>();
+            List<AppResource> lst = new List<AppResource>();
 
             DataTable dt = ResourceBL.Instance.AppResource_GetByAplicationID(ref entity);
             if (entity.Errors.Count == 0)
             {
                 if (dt != null)
                 {
-                    Int32 count = 0;
                     foreach (DataRow item in dt.Rows)
                     {
-                        count++;
-                        String sId = Server.UrlEncode(Encryption.Encrypt(item["ID"].ToString()));
-                        lst.Add(new srAppResource()
+                        lst.Add(new AppResource()
                         {
-                            isCheckbox = "1",
-                            Id = sId,
+                            Id = Convert.ToInt32(item["ID"]),
                             FileName = item["FILENAME"].ToString(),
-                            DocType = item["DOCTYPE"].ToString(),
+                            Name = item["NAME"].ToString(),
+                            UnitPrice = Convert.ToDecimal(item["UnitPrice"]),
+                            DOCTYPE = item["DOCTYPE"].ToString(),
                             Category = item["RESOURCE_CATEGORY_NAME"].ToString(),
                             FileDescription = item["DESCRIPTION"].ToString(),
-                            NameResource = item["NAMERESOURCE"].ToString(),
-                            CreatedDate = Convert.ToDateTime(item["CREATEDDATE"]).ToString("MM/dd/yyyy"),
-                            Status = Convert.ToInt16(item["STATUS"]) == (short)EnumStatus.Enabled ? "Enabled" : "Disabled",
-                            Index = item["ID"].ToString()
+                            NameResource = Config.Impremtawendomain + item["NAMERESOURCE"].ToString(),
+                            Status = Convert.ToInt32(item["STATUS"])
                         });
                     }
                 }

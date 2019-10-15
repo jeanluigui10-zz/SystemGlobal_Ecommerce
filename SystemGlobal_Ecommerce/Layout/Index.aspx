@@ -211,8 +211,8 @@
 							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="product.html">
-								<span class="tt-img"><img src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" data-src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" data-src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" alt=""></span>
+								<span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
+								<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">
@@ -228,9 +228,9 @@
 									<i class="icon-star"></i>
 								</div>
 							</div>
-							<h2 class="tt-title"><a href="product.html">{{FileDescription}}</a></h2>
+							<h2 class="tt-title"><a href="product.html">{{Name}}</a></h2>
 							<div class="tt-price">
-								$35
+								{{UnitPrice}}
 							</div>
 							<div class="tt-product-inside-hover">
 								<div class="tt-row-btn">

@@ -7,6 +7,8 @@ namespace xAPI.Entity
     [Serializable]
     public class AppResource : BaseEntity
     {
+        
+        public Int32 Id { get; set; }
         public String FileName { get; set; }
         public String FileDescription  { get; set; }
         public String FileExtension { get; set; }
@@ -21,6 +23,7 @@ namespace xAPI.Entity
         public Int32? CategotyId { get; set; }
         public Int32? SystemContactId { get; set; }
         public Decimal UnitPrice { get; set; }
+        public String Category { get; set; }
         //public List<clsLanguage> ListLanguage { get; set; } comente
 
     }

@@ -15,6 +15,7 @@ namespace xSystem_Maintenance.src.app_code
         public static string EnterprisePhysicalPath { get { return WebConfigurationManager.AppSettings["epPath"]; } }
         public static string DistributorVirtualPath { get { return WebConfigurationManager.AppSettings["dvPath"]; } }
         public static string EnterpriseVirtualPath { get { return WebConfigurationManager.AppSettings["evPath"]; } }
-
+        public static string Impremtawendomain { get { return WebConfigurationManager.AppSettings["impremtawendomain"]; } }
+        
     }
 }

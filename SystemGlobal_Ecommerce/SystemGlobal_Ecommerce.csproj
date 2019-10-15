@@ -1184,6 +1184,7 @@
     <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
+    <None Include="Properties\PublishProfiles\PublishShop.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Layout\Index.aspx" />
     <Content Include="plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
