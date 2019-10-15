@@ -73,9 +73,8 @@
 										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" data-text="SHOP NOW!">SHOP NOW!</a></div>
 									</div>
 								</li>
-								<%--<li data-thumb="video/video_img.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="video/blank.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
-									<!-- LAYER NR. 1 -->--%>
+								<li data-thumb="" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+																		
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
 										data-y="0"
@@ -90,10 +89,7 @@
 										data-forceCover="1"
 										data-dottedoverlay="twoxtwo"
 										data-aspectratio="16:9">
-										<%--<video class="video-js vjs-default-skin" preload="none"
-											poster='video/video_img.jpg' data-setup="{}">
-											<source src='video/video.mp4' type='video/mp4'>
-										</video>--%>
+						
 									</div>
 									<div class="tp-caption  tp-fade"
 										data-x="right"
@@ -139,7 +135,11 @@
 				<div class="tt-description">TOP SALE IN THIS WEEK</div>
 			</div>
 			<div class="row tt-layout-product-item" id="ListProductHome">
-				
+				   <div class="col-6 col-md-4 col-lg-3">
+					<div class="tt-product thumbprod-center">
+			
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -211,8 +211,8 @@
 							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
 							<a href="product.html">
-								<span class="tt-img"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19.jpg" alt=""></span>
-								<span class="tt-img-roll-over"><img src="/Files/images/loader.svg" data-src="/Files/images/product/product-19-02.jpg" alt=""></span>
+								<span class="tt-img"><img src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" data-src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" alt=""></span>
+								<span class="tt-img-roll-over"><img src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" data-src="http://imprentaweb.tk/Files/enterprise/images/1XECOEBXWDIADKLVDFNAVDXUCGFKADRMUHFPIRTLWTGNKVCGINE1.jpg" alt=""></span>
 							</a>
 						</div>
 						<div class="tt-description">

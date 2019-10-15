@@ -113,12 +113,10 @@
 
     </script>
 
-      <link rel="stylesheet" href="/Files/css/theme.css">
-      <script src="/Files/external/jquery/jquery.min.js"></script>
-    <script src="/Files/external/bootstrap/js/bootstrap.min.js"></script>
-
-
-     <script src="/Files/external/slick/slick.min.js"></script>
+         <link rel="stylesheet" href="/Files/css/theme.css">
+        <script src="/Files/external/jquery/jquery.min.js"></script>
+        <script src="/Files/external/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/Files/external/slick/slick.min.js"></script>
         <script src="/Files/external/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="/Files/external/panelmenu/panelmenu.js"></script>
         <script src="/Files/external/instafeed/instafeed.min.js"></script>
@@ -152,7 +150,7 @@
         <%--<script src="/bootstrap/js/bootstrap.min.js"></script>--%>
         <!-- DataTables -->
         <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-        <%--<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>--%>
+        <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
         <script src="/plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- iCheck -->
