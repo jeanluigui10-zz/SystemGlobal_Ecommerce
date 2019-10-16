@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using xAPI.Entity.Customers;
 
 namespace xAPI.Entity.Order
 {
@@ -18,7 +19,21 @@ namespace xAPI.Entity.Order
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
 
-       List<OrderDetail> objListOrderDetail;
+        Customer objCustomer;
+        public Customer Customer
+        {
+            get
+            {
+                objCustomer = objCustomer ?? new Customer();
+                return objCustomer;
+            }
+            set
+            {
+                objCustomer = value;
+            }
+        }
+
+        List<OrderDetail> objListOrderDetail;
         public List<OrderDetail> ListOrderDetail
         {
             get

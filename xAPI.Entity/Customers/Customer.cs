@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xAPI.Entity.Customer
+namespace xAPI.Entity.Customers
 {
     public class Customer
     {
@@ -21,6 +21,15 @@ namespace xAPI.Entity.Customer
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }        
+        public int UpdatedBy { get; set; }
+        private String _estadodesc;
+        public String EstadoDes
+        {
+            get
+            {
+                if (Status == 1) _estadodesc = "Activo"; else _estadodesc = "Inactivo";
+                return _estadodesc;
+            }
+        }
     }
 }

@@ -1157,6 +1157,7 @@
     <Content Include="Files\font\wokiee\fonts\wokiee.woff" />
     <Content Include="Files\font\wokiee\selection.json" />
     <Content Include="HomePage.Master" />
+    <Content Include="Layout\Login.aspx" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
     <Content Include="plugins\ckeditor\LICENSE.md" />
     <Content Include="plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
@@ -2057,6 +2058,13 @@
     </Compile>
     <Compile Include="Layout\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\app_code\BasePageModule.cs">
