@@ -2060,12 +2060,15 @@
     </Compile>
     <Compile Include="Layout\Information.aspx.cs">
       <DependentUpon>Information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Layout\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Layout\Information.aspx.designer.cs">
       <DependentUpon>Information.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>

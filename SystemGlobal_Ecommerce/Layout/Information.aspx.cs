@@ -4,7 +4,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using xAPI.BL.Customers;
-using xAPI.Entity.Customer;
+using xAPI.Entity.Customers;
 using xAPI.Library.Base;
 using xSystem_Maintenance.src.app_code;
 

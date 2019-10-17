@@ -5,9 +5,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using xAPI.Entity.Customer;
+using xAPI.Entity.Customers;
 using xAPI.Library.Base;
 using xAPI.Library.Connection;
+using xAPI.Library.General;
 
 namespace xAPI.Dao.Customers
 {
@@ -107,7 +108,7 @@ namespace xAPI.Dao.Customers
                     objCustomer.FirstName = dr.GetColumnValue<String>("FirstName");
                     objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNameMaternal");
                     objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNamePaternal");
-                    objCustomer.DocumentType = dr.GetColumnValue<String>("DocumentType");
+                    objCustomer.DocumentType = dr.GetColumnValue<Int32>("DocumentType");
                     objCustomer.NumberDocument = dr.GetColumnValue<String>("NumberDocument");
                     objCustomer.Email = dr.GetColumnValue<String>("Email");
                     objCustomer.Password = dr.GetColumnValue<String>("Password");

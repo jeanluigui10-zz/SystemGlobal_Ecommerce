@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,8 +46,7 @@ namespace xAPI.BL.Customers
         }
 
         #endregion
-    }
-    public Customer ValidateLogin_Customer(ref BaseEntity objBase, Customer obj)
+        public Customer ValidateLogin_Customer(ref BaseEntity objBase, Customer obj)
         {
             objBase = new BaseEntity();
             Customer objCustomer = null;
@@ -64,6 +64,8 @@ namespace xAPI.BL.Customers
             }
 
             return objCustomer;
-           }
         }
-}
+    }
+  }
+    
+
