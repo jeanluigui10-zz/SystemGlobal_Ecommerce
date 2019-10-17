@@ -113,7 +113,8 @@
 
     </script>
 
-         <link rel="stylesheet" href="/Files/css/theme.css">
+        <link rel="stylesheet" href="/Files/css/theme.css">
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
         <script src="/Files/external/jquery/jquery.min.js"></script>
         <script src="/Files/external/bootstrap/js/bootstrap.min.js"></script>
         <script src="/Files/external/slick/slick.min.js"></script>
@@ -156,7 +157,7 @@
         <!-- iCheck -->
         <script src="/plugins/iCheck/icheck.min.js"></script>
 
-        <script src="/src/js/Base.js"></script>
+        
 
         <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
@@ -170,6 +171,7 @@
         <script src="/plugins/ValidationEngine/jquery.validationEngine.js"></script>
         <script src="/plugins/ValidationEngine/languages/jquery.validationEngine-en.js"></script>
         <link href="/src/css/validationEngine.jquery.css" rel="stylesheet" />
+    <script src="/src/js/Base.js"></script>
      <script type="text/javascript">
 
         function updateDataTableSelectAllCtrl(table) {
@@ -1307,18 +1309,18 @@
                             <!-- tt-search -->
                             <div class="tt-desctop-parent-search tt-parent-box">
                                 <div class="tt-search tt-dropdown-obj">
-                                    <button class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom">
+                                    <button type="button" class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom">
                                         <i class="icon-f-85"></i>
                                     </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="container">
-                                            <form>
+                                           
                                                 <div class="tt-col">
                                                     <input type="text" class="tt-search-input" placeholder="Search Products...">
-                                                    <button class="tt-btn-search" type="submit"></button>
+                                                    <button class="tt-btn-search" type="button"></button>
                                                 </div>
                                                 <div class="tt-col">
-                                                    <button class="tt-btn-close icon-g-80"></button>
+                                                    <button type="button" class="tt-btn-close icon-g-80"></button>
                                                 </div>
                                                 <div class="tt-info-text">
                                                     What are you Looking for?
@@ -1401,7 +1403,7 @@
                                                     </ul>
                                                     <button type="button" class="tt-view-all">View all products</button>
                                                 </div>
-                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1410,14 +1412,14 @@
                             <!-- tt-cart -->
                             <div class="tt-desctop-parent-cart tt-parent-box">
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="Cart" data-tposition="bottom">
-                                    <button class="tt-dropdown-toggle">
+                                    <button class="tt-dropdown-toggle" type="button">
                                         <i class="icon-f-39"></i>
                                         <span class="tt-badge-cart">3</span>
                                     </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
                                             <h6 class="tt-title">SHOPPING CART</h6>
-                                            <button class="tt-close">Close</button>
+                                            <button class="tt-close" type="button">Close</button>
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <div class="tt-cart-layout">
@@ -1490,10 +1492,10 @@
                             <!-- tt-account -->
                             <div class="tt-desctop-parent-account tt-parent-box">
                                 <div class="tt-account tt-dropdown-obj">
-                                    <button class="tt-dropdown-toggle" data-tooltip="My Account" data-tposition="bottom"><i class="icon-f-94"></i></button>
+                                    <button class="tt-dropdown-toggle" data-tooltip="My Account" type="button" data-tposition="bottom"><i class="icon-f-94"></i></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
-                                            <button class="tt-close">Close</button>
+                                            <button class="tt-close" type="button">Close</button>
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
@@ -1501,7 +1503,7 @@
                                                 <li><a href="wishlist.html"><i class="icon-n-072"></i>Wishlist</a></li>
                                                 <li><a href="compare.html"><i class="icon-n-08"></i>Compare</a></li>
                                                 <li><a href="page404.html"><i class="icon-f-68"></i>Check Out</a></li>
-                                                <li><a href="login.html"><i class="icon-f-76"></i>Sign In</a></li>
+                                                <li><a href="Login.aspx"><i class="icon-f-76"></i>Sign In</a></li>
                                                 <li><a href="page404.html"><i class="icon-f-77"></i>Sign Out</a></li>
                                                 <li><a href="create-account.html"><i class="icon-f-94"></i>Register</a></li>
                                             </ul>
@@ -1513,10 +1515,10 @@
                             <!-- tt-langue and tt-currency -->
                             <div class="tt-desctop-parent-multi tt-parent-box">
                                 <div class="tt-multi-obj tt-dropdown-obj">
-                                    <button class="tt-dropdown-toggle" data-tooltip="Settings" data-tposition="bottom"><i class="icon-f-79"></i></button>
+                                    <button class="tt-dropdown-toggle" data-tooltip="Settings" data-tposition="bottom" type="button"><i class="icon-f-79"></i></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
-                                            <button class="tt-close">Close</button>
+                                            <button class="tt-close" type="button">Close</button>
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
@@ -1568,12 +1570,12 @@
                                         <h4 class="tt-collapse-title">BE IN TOUCH WITH US:
                                         </h4>
                                         <div class="tt-collapse-content">
-                                            <form id="newsletterform" class="form-inline form-default" method="post" novalidate="novalidate" action="#">
+                                        
                                                 <div class="form-group">
                                                     <input type="text" name="email" class="form-control" placeholder="Enter your e-mail">
-                                                    <button type="submit" class="btn">JOIN US</button>
+                                                    <button type="button" class="btn">JOIN US</button>
                                                 </div>
-                                            </form>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -1814,7 +1816,7 @@
                                         <div class="tt-swatches-container">
                                             <div class="tt-wrapper">
                                                 <div class="tt-title-options">SIZE</div>
-                                                <form class="form-default">
+                                              
                                                     <div class="form-group">
                                                         <select class="form-control">
                                                             <option>21</option>
@@ -1822,11 +1824,11 @@
                                                             <option>36</option>
                                                         </select>
                                                     </div>
-                                                </form>
+                                             
                                             </div>
                                             <div class="tt-wrapper">
                                                 <div class="tt-title-options">COLOR</div>
-                                                <form class="form-default">
+                                               
                                                     <div class="form-group">
                                                         <select class="form-control">
                                                             <option>Red</option>
@@ -1834,7 +1836,7 @@
                                                             <option>Brown</option>
                                                         </select>
                                                     </div>
-                                                </form>
+                                                
                                             </div>
                                             <div class="tt-wrapper">
                                                 <div class="tt-title-options">TEXTURE:</div>

@@ -6,7 +6,6 @@ using xAPI.Entity.Security;
 using xAPI.Library.Base;
 using xAPI.Library.Connection;
 using xAPI.Library.General;
-
 namespace xAPI.Dao.Security
 {
     public class UsuarioDAO
@@ -31,16 +30,15 @@ namespace xAPI.Dao.Security
             SqlDataReader dr = null;
             try
             {
-                ObjCmd = new SqlCommand("ValidateLogin_Sp", clsConnection.GetConnection());
+                ObjCmd = new SqlCommand("[Customer_ValidateLogin_Sp]", clsConnection.GetConnection());
                 ObjCmd.CommandType = CommandType.StoredProcedure;
-                ObjCmd.Parameters.AddWithValue("@Dni", obj.Dni_Usuario);
+                ObjCmd.Parameters.AddWithValue("@Email", obj.Dni_Usuario);
                 ObjCmd.Parameters.AddWithValue("@Password", obj.Contrasena);
-                ObjCmd.Parameters.AddWithValue("@Id_TipoUsuario", obj.Id_TipoUsuario);
                 dr = ObjCmd.ExecuteReader();
                 if (dr.Read())
                 {
                     objUsers = new Usuarios();
-                    objUsers.Id_Usuario = dr.GetColumnValue<Int32>("UserId");
+                    objUsers.Id_Usuario = dr.GetColumnValue<Int32>("[CustomerId]");
                     objUsers.AMaterno_Usuario = dr.GetColumnValue<String>("LastNameMaternal");
                     objUsers.APaterno_Usuario = dr.GetColumnValue<String>("LastNamePaternal");
                     objUsers.Nombre_Usuario = dr.GetColumnValue<String>("FirstName");

@@ -8,6 +8,7 @@ using System.Web;
 using xAPI.Entity;
 using xAPI.Library.General;
 using xAPI.Entity.Security;
+using xAPI.Entity.Order;
 
 namespace xSystem_Maintenance.src.app_code
 {
@@ -44,13 +45,18 @@ namespace xSystem_Maintenance.src.app_code
             get { return clsExtension.GetSession<String>("CaptchaImageText_xCorporate"); }
             set { HttpContext.Current.Session["CaptchaImageText_xCorporate"] = value; }
         }
+        public static OrderHeader SsOrderxCore
+        {
+            get { return clsExtension.GetSession<OrderHeader>("Order") ?? new OrderHeader(); }
+            set { HttpContext.Current.Session["Order"] = value; }
+        }
         private static T RedirectUser<T>()
         {
             Logout();
             HttpContext.Current.Response.Redirect(Config.LogoutRedirect + "?back_url=" + HttpContext.Current.Server.UrlEncode(HttpContext.Current.Request.Url.AbsoluteUri));
             return default(T);
         }
-
+      
         //public static clsOrdersHeader SsOrderPlacexCorporate
         //{
         //    get { return clsExtension.GetSession<clsOrdersHeader>("Order_xCorporate") ?? RedirectOrderPlace<clsOrdersHeader>(); }
@@ -97,8 +103,9 @@ namespace xSystem_Maintenance.src.app_code
         //}
         public static void Logout()
         {
-            HttpContext.Current.Session.Abandon();
             HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session.RemoveAll();
+            HttpContext.Current.Session.Abandon();
         }
         public static String SsCulture
         {

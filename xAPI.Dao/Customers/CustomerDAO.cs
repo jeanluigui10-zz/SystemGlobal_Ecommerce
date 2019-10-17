@@ -88,5 +88,42 @@ namespace xAPI.Dao.Customers
         }
 
         #endregion
+                public Customer Customer_ValidatebyUsernameAndPassword(ref BaseEntity objBase, Customer obj)
+        {
+            SqlCommand ObjCmd = null;
+            Customer objCustomer = null;
+            SqlDataReader dr = null;
+            try
+            {
+                ObjCmd = new SqlCommand("Customer_ValidateLogin_Sp", clsConnection.GetConnection());
+                ObjCmd.CommandType = CommandType.StoredProcedure;
+                ObjCmd.Parameters.AddWithValue("@Email", obj.Email);
+                ObjCmd.Parameters.AddWithValue("@Password", obj.Password);
+                dr = ObjCmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    objCustomer = new Customer();
+                    objCustomer.CustomerId = dr.GetColumnValue<Int32>("CustomerId");
+                    objCustomer.FirstName = dr.GetColumnValue<String>("FirstName");
+                    objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNameMaternal");
+                    objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNamePaternal");
+                    objCustomer.DocumentType = dr.GetColumnValue<String>("DocumentType");
+                    objCustomer.NumberDocument = dr.GetColumnValue<String>("NumberDocument");
+                    objCustomer.Email = dr.GetColumnValue<String>("Email");
+                    objCustomer.Password = dr.GetColumnValue<String>("Password");
+                    objCustomer.Status = dr.GetColumnValue<Byte>("Status");
+                }
+            }
+            catch (Exception ex)
+            {
+                objCustomer = null;
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "User not found."));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(ObjCmd);
+            }
+            return objCustomer;
+        }
     }
 }
