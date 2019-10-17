@@ -9,20 +9,48 @@ jQuery(function($) {
                 required: true,
                 email: true
             },
+            apellidoPaterno: {
+                required: true,
+                apellidoPaterno: true
+            },
+            apellidoMaterno: {
+                required: true,
+                apellidoMaterno: true
+            },
+            tipodocumento: {
+                required: true,
+                tipodocumento: true
+            },
+            password: {
+                required: true,
+                password: true
+            },
             message: {
                 required: true,
             }
         },
         messages: {
             name: {
-                required: "Please enter your name",
-                minlength: "Your name must consist of at least 2 characters"
+                required: "Por favor ingrese su nombre",
+                minlength: "Su nombre debe constar de al menos 2 caracteres"
             },
             email: {
-                required: "Please enter your email"
+                required: "Por favor ingrese su correo"
+            },
+            apellidoPaterno: {
+                required: "Por favor ingrese su Apellido Paterno"
+            },
+            apellidoMaterno: {
+                required: "Por favor ingrese su Apellido Materno"
+            },
+            tipodocumento: {
+                required: "Por favor ingrese su documento"
+            },
+            password: {
+                required: "Por favor ingrese su Contraseña"
             },
             message: {
-                required: "Please enter your message"
+                required: "Por favor ingrese su mensaje"
             }
         },
         submitHandler: function(form) {

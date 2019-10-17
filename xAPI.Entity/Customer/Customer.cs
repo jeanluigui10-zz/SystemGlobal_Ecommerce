@@ -12,7 +12,7 @@ namespace xAPI.Entity.Customer
         public String FirstName { get; set; }
         public String LastNamePaternal { get; set; }
         public String LastNameMaternal { get; set; }
-        public String DocumentType { get; set; }
+        public Int32 DocumentType { get; set; }
         public String NumberDocument { get; set; }
         public String CellPhone { get; set; }
         public String Email { get; set; }
