@@ -6,6 +6,7 @@ using System_Maintenance.src.app_code;
 using xAPI.BL.Customers;
 using xAPI.BL.Security;
 using xAPI.Entity.Customers;
+using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 using xSystem_Maintenance.src.app_code;
@@ -49,7 +50,9 @@ namespace SystemGlobal_Ecommerce.Layout
                         {
                             if (objCustomer.Status == (Int32)EnumEsatado.Activo)
                             {
-                                BaseSession.SsOrderxCore.Customer = objCustomer;
+                                OrderHeader objOrder = BaseSession.SsOrderxCore;
+                                objOrder.Customer = objCustomer;
+                                BaseSession.SsOrderxCore = objOrder;
                                 objReturn = new
                                 {
                                     Result = "Ok",

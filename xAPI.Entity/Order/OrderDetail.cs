@@ -11,7 +11,7 @@ namespace xAPI.Entity.Order
         public int OrderDetailId { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
-        public Resource Product { get; set; }
+        public AppResource Product { get; set; }
         public int Quantity { get; set; }
         public int Status { get; set; }
         public DateTime CreatedDate { get; set; }

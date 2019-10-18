@@ -19,19 +19,19 @@ namespace xAPI.Entity.Order
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
 
-        Customer objCustomer;
-        public Customer Customer
-        {
-            get
-            {
-                objCustomer = objCustomer ?? new Customer();
-                return objCustomer;
-            }
-            set
-            {
-                objCustomer = value;
-            }
-        }
+        public Customer Customer { get; set; }
+        //public Customer Customer
+        //{
+        //    get
+        //    {
+        //        objCustomer = objCustomer ?? new Customer();
+        //        return objCustomer;
+        //    }
+        //    set
+        //    {
+        //        objCustomer = value;
+        //    }
+        //}
 
         List<OrderDetail> objListOrderDetail;
         public List<OrderDetail> ListOrderDetail

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Index" %>
+<%@ Import Namespace="xSystem_Maintenance.src.app_code" %>  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <script type="text/javascript">
 
@@ -27,6 +28,41 @@
              }
          }
 
+         function Fn_AddProduct(productId) {
+             try {
+                 //var senddata = '{user:"' + $("input[id$=txtdni]").val() + '",password:"' + $("input[id$=txtpassword]").val() + '}';
+                 var objProduct = {
+                     ProductId: productId
+                 };
+                 var success = function (asw) {
+
+                     if (asw.d != null) {
+                         if (asw.d.Result == "Ok")
+                         {
+                             $("#ModalProductId" + productId).attr("data-toggle", "modal");
+                         }
+                         else {
+                             if (asw.d.Result == "NoOk") {
+                                 fn_message('i', asw.d.Msg);
+                             }
+                         }
+                     }
+                     else {
+                         fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                     }
+                 }
+                 var error = function (xhr, ajaxOptions, thrownError) {
+                     fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                 }
+                 var complete = function () {
+                     $('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
+                 }
+                 fn_callmethod("Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error);
+
+             } catch (e) {
+                 fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+             }
+         }
 
     </script>
 </asp:Content>
@@ -231,17 +267,25 @@
 							<h2 class="tt-title"><a href="product.html">{{Name}}</a></h2>
 							<div class="tt-price">
 								{{UnitPrice}}
-							</div>
+							</div>  
+                           <%-- <% if (BaseSession.SsOrderxCore.Customer != null)
+                                  {
+                            %>--%>
 							<div class="tt-product-inside-hover">
-								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</a>
+                               
+								<div class="tt-row-btn">                           
+									<a id="ModalProductId{{ProductId}}" href="#" class="tt-btn-addtocart thumbprod-button-bg" <%--data-toggle="modal"--%> data-target="#modalAddToCartProduct" onclick="Fn_AddProduct({{ProductId}})">ADD TO CART</a>
 								</div>
+                              
 								<div class="tt-row-btn">
 									<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
 									<a href="#" class="tt-btn-wishlist"></a>
 									<a href="#" class="tt-btn-compare"></a>
 								</div>
 							</div>
+                            <%--  <% 
+                                }
+                              %>--%>
 						</div>
 					</div>
 				</div>

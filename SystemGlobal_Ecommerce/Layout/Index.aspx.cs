@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using xAPI.BL.Resource;
 using xAPI.Entity;
+using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 using xSystem_Maintenance.src.app_code;
@@ -24,6 +25,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 LoadData();               
             }
         }
+
         private void LoadData(Boolean ShowMessage = false)
         {
             BaseEntity entity = new BaseEntity();
@@ -70,10 +72,64 @@ namespace SystemGlobal_Ecommerce.Layout
                 }
             }
         }
+
         public void Message(EnumAlertType type, string message)
         {
             String script = @"<script type='text/javascript'>fn_message('" + type.GetStringValue() + "', '" + message + "');</script>";
             Page.ClientScript.RegisterStartupScript(typeof(Page), "message", script);
+        }
+
+        [WebMethod]
+        public static Object AddProduct(dynamic objProd)
+        {
+            Object objReturn = new { Result = "NoOk" };
+            BaseEntity objBase = new BaseEntity();
+            try
+            {
+                AppResource obj = null;
+                BaseEntity entity = new BaseEntity();
+                Int32 ProductId = objProd["ProductId"];
+                obj = ResourceBL.Instance.AppResource_GetByID(ref entity, ProductId);
+
+                if (entity.Errors.Count == 0)
+                {
+                    if(obj != null)
+                    {
+                        List<OrderDetail> Detail = new List<OrderDetail>()
+                        {
+                            new OrderDetail() { Product = obj }
+                        };
+                        OrderHeader orderHeader = BaseSession.SsOrderxCore;
+                        orderHeader.ListOrderDetail = Detail;
+                        BaseSession.SsOrderxCore = orderHeader;
+                    }
+                    else
+                    {
+                        objReturn = new
+                        {
+                            Result = "NoOk",
+                            Msg = "No se pudo agregar el producto."
+                        };
+                    }
+                }
+                else
+                {
+                    objReturn = new
+                    {
+                        Result = "NoOk",
+                        Msg = "Ocurrio un problema agregando el producto."
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturn = new
+                {
+                    Result = "NoOk",
+                    Msg = "Ocurrio un problema agregando el producto."
+                };
+            }
+            return objReturn;
         }
     }
 }
