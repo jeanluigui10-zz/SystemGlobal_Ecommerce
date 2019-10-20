@@ -274,7 +274,7 @@
 							<div class="tt-product-inside-hover">
                                
 								<div class="tt-row-btn">                           
-									<a id="ModalProductId{{ProductId}}" href="#" class="tt-btn-addtocart thumbprod-button-bg" <%--data-toggle="modal"--%> data-target="#modalAddToCartProduct" onclick="Fn_AddProduct({{ProductId}})">ADD TO CART</a>
+									<a id="ModalProductId{{Id}}" href="#" class="tt-btn-addtocart thumbprod-button-bg" <%--data-toggle="modal"--%> data-target="#modalAddToCartProduct" onclick="Fn_AddProduct({{Id}})">ADD TO CART</a>
 								</div>
                               
 								<div class="tt-row-btn">

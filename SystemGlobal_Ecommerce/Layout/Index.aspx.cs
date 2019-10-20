@@ -102,6 +102,12 @@ namespace SystemGlobal_Ecommerce.Layout
                         OrderHeader orderHeader = BaseSession.SsOrderxCore;
                         orderHeader.ListOrderDetail = Detail;
                         BaseSession.SsOrderxCore = orderHeader;
+
+                        objReturn = new
+                        {
+                            Result = "Ok",
+                            Msg = ""
+                        };
                     }
                     else
                     {

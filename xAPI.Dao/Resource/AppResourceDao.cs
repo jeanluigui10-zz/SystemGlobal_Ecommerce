@@ -60,7 +60,7 @@ namespace xAPI.Dao
             SqlCommand cmd = null;
             try
             {
-                cmd = new SqlCommand("SP_APPRESOURCES_GETBYID_LANGUAGEIDS", clsConnection.GetConnection())
+                cmd = new SqlCommand("AppResource_GetById_Sp", clsConnection.GetConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
