@@ -30,7 +30,7 @@ namespace xAPI.Dao
         {
             AppResource obj = new AppResource
             {
-                ID = ObjDr.GetColumnValue<Int32>("ID"),
+                Id = ObjDr.GetColumnValue<Int32>("ID"),
                 FileName = ObjDr.GetColumnValue<String>("FileName"),
                 FileDescription = ObjDr.GetColumnValue<String>("DESCRIPTION"),
                 FileExtension = ObjDr.GetColumnValue<String>("FileExtension"),
@@ -60,7 +60,7 @@ namespace xAPI.Dao
             SqlCommand cmd = null;
             try
             {
-                cmd = new SqlCommand("SP_APPRESOURCES_GETBYID_LANGUAGEIDS", clsConnection.GetConnection())
+                cmd = new SqlCommand("AppResource_GetById_Sp", clsConnection.GetConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };

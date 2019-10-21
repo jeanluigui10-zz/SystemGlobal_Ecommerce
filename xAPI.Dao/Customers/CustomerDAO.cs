@@ -112,7 +112,7 @@ namespace xAPI.Dao.Customers
                     objCustomer.NumberDocument = dr.GetColumnValue<String>("NumberDocument");
                     objCustomer.Email = dr.GetColumnValue<String>("Email");
                     objCustomer.Password = dr.GetColumnValue<String>("Password");
-                    objCustomer.Status = dr.GetColumnValue<Byte>("Status");
+                    objCustomer.Status = dr.GetColumnValue<Int32>("Status");
                 }
             }
             catch (Exception ex)

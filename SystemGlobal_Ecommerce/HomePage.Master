@@ -174,6 +174,67 @@
     <script src="/src/js/Base.js"></script>
      <script type="text/javascript">
 
+         $(function () {
+      
+             $(".modal").on("click", ".btn-close", function () {
+                 $(this).closest('.modal-content').find('.modal-header .close').trigger('click');
+                 return false;
+             });
+             $("#modalAddToCartProduct").click(function () {
+                 $("#modalAddToCartProduct").modal('show');
+             })
+             //$(".btnProcedCheckout-xss").click(function () {
+             //    if (shopperSession != '0') {
+             //        window.location = '/Home/CompletePurchase'
+             //    } else {
+             //        indicateBuyShop = 1;
+             //        window.location = '/Auth/Login?q=1'
+             //    }
+             //});
+
+             $("body").on("click", ".add-to-cart-mp", function (e) {
+                 try
+                 {
+                     var productId = $(this)[0].dataset["productid"];
+                     var productname = $(this)[0].dataset["productname"];
+                     var objProduct = {
+                         ProductId: productId
+                     };
+                     var success = function (asw) {
+
+                         if (asw.d != null) {
+                             if (asw.d.Result == "Ok") {
+                                 //$("#idImgProduct").attr('src', pathImages + idImgProduct);                                
+                                 //$("#idPriceProduct").text(idNameProdut);                             
+                                 //$("#idColorProduct").text(idNameColor);
+                                 $("#idNameProdut").text(productname);
+                                 $("#modalAddToCartProduct").click();
+                             }
+                             else {
+                                 if (asw.d.Result == "NoOk") {
+                                     fn_message('i', asw.d.Msg);
+                                 }
+                             }
+                         }
+                         else {
+                             fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                         }
+                     }
+                     var error = function (xhr, ajaxOptions, thrownError) {
+                         fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                     }
+                     var complete = function () {
+                         $('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
+                     }
+                     fn_callmethod("Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error);
+
+                 } catch (e) {
+                     fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                 }
+             });
+
+         });
+
         function updateDataTableSelectAllCtrl(table) {
             var $table = table.table().node();
             var $chkbox_all = $('tbody input[type="checkbox"]', $table);
@@ -209,7 +270,7 @@
             }
             return false;
         }
-
+        
 
     </script>
 
@@ -1084,7 +1145,7 @@
                                                                                     <span class="old-price">$24</span>
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1106,7 +1167,7 @@
                                                                                     $17
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1128,7 +1189,7 @@
                                                                                     $14
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1151,7 +1212,7 @@
                                                                                     <span class="old-price">$24</span>
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1730,20 +1791,20 @@
                                     </div>
                                     <div class="tt-modal-product">
                                         <div class="tt-img">
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt="">
+                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt="" id="idImgProduct">
                                         </div>
-                                        <h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
+                                        <h2 class="tt-title"><a href="product.html" id="idNameProdut">Flared Shift Dress</a></h2>
                                         <div class="tt-qty">
                                             QTY: <span>1</span>
                                         </div>
                                     </div>
                                     <div class="tt-product-total">
                                         <div class="tt-total">
-                                            TOTAL: <span class="tt-price">$324</span>
+                                            TOTAL: <span class="tt-price" id="idPriceProduct">$324</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-6">
+                                <div class="col-12 col-lg-6" id="divButtons">
                                     <a href="#" class="tt-cart-total">There are 1 items in your cart
 								<div class="tt-total">
                                             TOTAL: <span class="tt-price">$324</span>
