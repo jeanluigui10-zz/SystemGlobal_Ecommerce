@@ -88,26 +88,44 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 AppResource obj = null;
                 BaseEntity entity = new BaseEntity();
-                Int32 ProductId = objProd["ProductId"];
+                Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
                 obj = ResourceBL.Instance.AppResource_GetByID(ref entity, ProductId);
 
                 if (entity.Errors.Count == 0)
                 {
                     if(obj != null)
                     {
-                        List<OrderDetail> Detail = new List<OrderDetail>()
-                        {
-                            new OrderDetail() { Product = obj }
-                        };
+                                              
                         OrderHeader orderHeader = BaseSession.SsOrderxCore;
-                        orderHeader.ListOrderDetail = Detail;
-                        BaseSession.SsOrderxCore = orderHeader;
+                       
+                        var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.Id == obj.Id);
+                        if (ProductExist) {
+                            objReturn = new
+                            {
+                                Result = "NoOk",
+                                Msg = "El producto ya se encuentra agregado."
+                            };
+
+                        }
+                        else
+                        {
+                            OrderDetail Detalle = new OrderDetail() {
+                                Product = obj,
+                            };
+                            orderHeader.ListOrderDetail.Add(Detalle);
+                            BaseSession.SsOrderxCore = orderHeader;
 
                         objReturn = new
                         {
                             Result = "Ok",
                             Msg = ""
                         };
+                                 objReturn = new
+                                 {
+                                     Result = "Ok",
+                                     Msg = "Agregado correctamente."
+                                 };
+                             }                       
                     }
                     else
                     {

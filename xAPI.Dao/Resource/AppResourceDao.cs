@@ -30,7 +30,7 @@ namespace xAPI.Dao
         {
             AppResource obj = new AppResource
             {
-                ID = ObjDr.GetColumnValue<Int32>("ID"),
+                Id = ObjDr.GetColumnValue<Int32>("ID"),
                 FileName = ObjDr.GetColumnValue<String>("FileName"),
                 FileDescription = ObjDr.GetColumnValue<String>("DESCRIPTION"),
                 FileExtension = ObjDr.GetColumnValue<String>("FileExtension"),
