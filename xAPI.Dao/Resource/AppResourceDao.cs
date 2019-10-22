@@ -43,11 +43,12 @@ namespace xAPI.Dao
                 Status = ObjDr.GetColumnValue<Int16>("STATUS"),
                 isUpload = ObjDr.GetColumnValue<Int16>("ISUPLOAD"),
                 Url = ObjDr.GetColumnValue<String>("URL"),
-
+                UnitPrice = ObjDr.GetColumnValue<Decimal>("UnitPrice"),
                 CategotyId = ObjDr.GetColumnValue<Int32>("RESOURCECATEGORYID"),
                 SystemContactId = ObjDr.GetColumnValue<Int32>("SYSTEMCONTACID"),
                 Name = ObjDr.GetColumnValue<String>("NAME"),
-                TranslationKey = ObjDr.GetColumnValue<String>("KeyName") ?? String.Empty
+                TranslationKey = ObjDr.GetColumnValue<String>("KeyName") ?? String.Empty,
+                 Category = ObjDr.GetColumnValue<String>("Category").ToString()
             };
             return obj;
         }

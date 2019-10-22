@@ -66,5 +66,12 @@ namespace xAPI.Entity.Order
 
             this.Ordertotal = TotalOrder;
         }
+        public decimal CalculateTotalPricexProduct(OrderDetail OrderDetail)
+        {
+            Decimal TotalPrice = 0;
+            TotalPrice += OrderDetail.Quantity * OrderDetail.Product.UnitPrice;
+            //Totalprice = TotalPrice;
+            return TotalPrice;
+        }
     }
 }

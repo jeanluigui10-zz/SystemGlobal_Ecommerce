@@ -28,10 +28,6 @@
              }
          }
 
-         //function Fn_AddProduct(productId) {
-         
-         //}
-
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -232,9 +228,9 @@
 									<i class="icon-star"></i>
 								</div>
 							</div>
-							<h2 class="tt-title"><a href="product.html">{{Name}}</a></h2>
+							<h2 class="tt-title"><a href="#">{{Name}}</a></h2>
 							<div class="tt-price">
-								{{UnitPrice}}
+								S/.{{UnitPrice}}
 							</div>  
                            <%-- <% if (BaseSession.SsOrderxCore.Customer != null)
                                   {
@@ -242,7 +238,7 @@
 							<div class="tt-product-inside-hover">
                                
 								<div class="tt-row-btn">                           
-									<a id="ModalProductId{{Id}}" href="#" class="tt-btn-addtocart thumbprod-button-bg" <%--data-toggle="modal"--%> data-target="#modalAddToCartProduct" onclick="Fn_AddProduct({{Id}})">ADD TO CART</a>
+									<a class="tt-btn-addtocart thumbprod-button-bg add-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" style="cursor:pointer">Agregar producto</a>
 								</div>
                               
 								<div class="tt-row-btn">

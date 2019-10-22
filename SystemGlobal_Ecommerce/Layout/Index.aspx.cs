@@ -95,37 +95,36 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     if(obj != null)
                     {
-                                              
-                        OrderHeader orderHeader = BaseSession.SsOrderxCore;
-                       
+                        obj.NameResource = Config.Impremtawendomain + obj.NameResource;
+                        OrderHeader orderHeader = BaseSession.SsOrderxCore;                       
                         var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.Id == obj.Id);
                         if (ProductExist) {
                             objReturn = new
                             {
-                                Result = "NoOk",
-                                Msg = "El producto ya se encuentra agregado."
+                                Result = "NoOk",                            
+                                Msg = "El producto ya se encuentra agregado.",
+                                Value = -1
                             };
 
                         }
                         else
                         {
                             OrderDetail Detalle = new OrderDetail() {
-                                Product = obj,
+                                Product = obj,   
+                                Quantity = 1,
                             };
+
                             orderHeader.ListOrderDetail.Add(Detalle);
+                            Detalle.CalculateTotalPricexProduct();
+                            orderHeader.CalculateTotals();
                             BaseSession.SsOrderxCore = orderHeader;
 
-                        objReturn = new
-                        {
-                            Result = "Ok",
-                            Msg = ""
-                        };
                                  objReturn = new
                                  {
                                      Result = "Ok",
                                      Msg = "Agregado correctamente."
                                  };
-                             }                       
+                         }                       
                     }
                     else
                     {
