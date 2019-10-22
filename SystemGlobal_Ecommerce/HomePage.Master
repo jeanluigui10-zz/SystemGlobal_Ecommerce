@@ -250,6 +250,43 @@
                  }
              });
 
+             $("body").on("click", '.minus-btn, .plus-btn', function (e) {
+                 var $input = $(this).parent().find('input');
+                 var count = parseInt($input.val(), 10) + parseInt(e.currentTarget.className === 'plus-btn' ? 1 : -1, 10);
+                 $input.val(count).change();
+                
+                 //var productId = $input.data("productid");
+                 //var quantity = $input.val();
+
+                 //if (productDetailsId > 0) {
+                 //    $("#tt-pageContent").append("<div class='loader_page'></div>");
+                 //    var objData = JSON.stringify(
+                 //        {
+                 //            ProductQuantity: quantity,
+                 //            ProductId: productId,
+                             
+                 //        });
+                 //    var success = function (response) {
+                 //        try {
+                 //            if (response.objOrder.codResult === 0) {
+                 //                $(".tt-cart-total-price").text(currencySymbol + response.objOrder.orderSubTotal.toFixed(2));
+                 //                $('#unitPriceProduct_' + productDetailsId).text(currencySymbol + response.objOrder.orderDetails.product.productPrice.toFixed(2));
+                       
+                 //            }
+                 //        } catch (e) {
+                          
+                 //        }
+                 //    };
+                 //    var error = function (jqXHR, textStatus, errorThrown) {
+                 //        Fn_Loading_Hide('div-add-product-info');
+                 //    };
+                 //    var complete = function () {
+                 //        $("#tt-pageContent").find(".loader_page").remove();
+                 //    };
+                 //    fn_callmethodComplete("CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
+                 //}
+             });
+
          });
 
         function updateDataTableSelectAllCtrl(table) {
