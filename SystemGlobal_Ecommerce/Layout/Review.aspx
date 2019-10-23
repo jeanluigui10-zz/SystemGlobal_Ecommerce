@@ -205,7 +205,7 @@
 										<div class="detach-quantity-desctope">
 											<div class="tt-input-counter style-01">
 												<span class="minus-btn"></span>
-												<input type="text" value="{{Quantity}}" size="100">
+												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}">
 												<span class="plus-btn"></span>
 											</div>
 										</div>

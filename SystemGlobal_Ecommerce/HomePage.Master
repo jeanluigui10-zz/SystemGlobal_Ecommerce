@@ -255,11 +255,11 @@
                  var count = parseInt($input.val(), 10) + parseInt(e.currentTarget.className === 'plus-btn' ? 1 : -1, 10);
                  $input.val(count).change();
                 
-                 //var productId = $input.data("productid");
-                 //var quantity = $input.val();
+                 var productId = $input[0].dataset["productid"];
+                 var quantity = $input.val();
 
-                 //if (productDetailsId > 0) {
-                 //    $("#tt-pageContent").append("<div class='loader_page'></div>");
+                 if (productId > 0) {
+                    $("#tt-pageContent").append("<div class='loader_page'></div>");
                  //    var objData = JSON.stringify(
                  //        {
                  //            ProductQuantity: quantity,
@@ -278,13 +278,13 @@
                  //        }
                  //    };
                  //    var error = function (jqXHR, textStatus, errorThrown) {
-                 //        Fn_Loading_Hide('div-add-product-info');
+                 //        Fn_Loading_Hide('div-add-product-info'); 
                  //    };
                  //    var complete = function () {
                  //        $("#tt-pageContent").find(".loader_page").remove();
                  //    };
                  //    fn_callmethodComplete("CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
-                 //}
+                }
              });
 
          });
