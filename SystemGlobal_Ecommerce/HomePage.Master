@@ -740,6 +740,7 @@
                     </li>
                     <li><a href="index-rtl.html">SERVICIOS</a></li>
                     <li><a href="index-rtl.html">CONTACTANOS</a></li>
+                    <li><a href="index-rtl.html">SOLICITAR COTIZACIÓN</a></li>
 
                 </ul>
                 <div class="mm-navbtn-names">
@@ -1404,7 +1405,7 @@
                                                                             <div class="tt-title-small tt-white-color">SALE</div>
                                                                             <div class="tt-title-xlarge tt-white-color">70% OFF</div>
                                                                             <p class="tt-white-color">Free shipping on all US order or order above $99</p>
-                                                                            <span class="btn-underline tt-obj-bottom tt-white-color">SHOP NOW!</span>
+                                                                            <span class="btn-underline tt-obj-bottom tt-white-color" style="background-color:orange!important" href="#">SOLICITAR COTIZACIÓN!</span>
                                                                         </div>
                                                                     </div>
                                                                 </a>
@@ -1418,6 +1419,9 @@
                                             </li>
                                             <li class="dropdown">
                                                 <a href="index-rtl.html">CONTACTANOS</a>
+                                            </li>
+                                             <li class="dropdown">
+                                                <a href="index-rtl.html">SOLICITAR COTIZACIÓN</a>
                                             </li>
                                         </ul>
                                     </nav>
