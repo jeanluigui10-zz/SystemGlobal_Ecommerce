@@ -17,7 +17,6 @@ namespace SystemGlobal_Ecommerce.Layout
             if (!Page.IsPostBack)
             {
                 LoadDocument();
-
             }
         }
 
@@ -46,29 +45,16 @@ namespace SystemGlobal_Ecommerce.Layout
         }
 
         [WebMethod]
-        public static Object Cliente_Registro(Customer obj)
+        public static Object Customer_Save(Customer obj)
         {
             Boolean success;
             String msg = String.Empty;
             String msgError = String.Empty;
             try
             {
-
                 BaseEntity objEntity = new BaseEntity();
-                obj.FirstName = obj.FirstName;
-                obj.LastNamePaternal = obj.LastNamePaternal;
-                obj.LastNameMaternal = obj.LastNameMaternal;
-                obj.DocumentType = obj.DocumentType;
-                obj.NumberDocument = obj.NumberDocument;
-                obj.CellPhone = obj.CellPhone;
-                obj.Email = obj.Email;
-                obj.Password = obj.Password;
-
                 obj.CreatedDate = DateTime.Now;
-                obj.CreatedBy = BaseSession.SsUser.Id_Usuario;
-                
-                success = CustomerBL.Instance.Customer_Save(ref objEntity, obj);
-                 
+                success = CustomerBL.Instance.Customer_Save(ref objEntity, obj);                 
 
                 if (objEntity.Errors.Count == 0)
                 {

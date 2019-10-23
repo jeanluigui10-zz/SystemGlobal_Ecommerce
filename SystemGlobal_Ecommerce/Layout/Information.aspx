@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Information.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Information" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <script type="text/javascript">
-      
+
+    <script type="text/javascript">
+       
         $(function () {
            // fn_init();
         });
@@ -14,19 +15,47 @@
         }
           
         function Fn_Registro() {
-          
+                     
+            if ($("input[id$=txtNombre]").val() == ""){
+                fn_message('i', 'Ingrese su Nombre.', 'message_row');
+                return;
+            }
+            if ($("input[id$=txtApellidoPaterno]").val() == ""){
+                fn_message('i', 'Ingrese su Apellido Paterno.', 'message_row');
+                return;
+            }
+            if ($("input[id$=txtApellidoMaterno]").val() == ""){
+                fn_message('i', 'Ingrese su Apellido Materno.', 'message_row');
+                return;
+            }
             if ($("select[id$=ddlTipoDocumento] option:selected").val() == undefined || $("select[id$=ddlTipoDocumento] option:selected").val() == -1) {
-                    fn_message('i', 'Seleccione Tipo de Documento', 'message_row');
-                    return;
-                }
+                fn_message('i', 'Seleccione Tipo de Documento', 'message_row');
+                return;
+            }
+            if ($("input[id$=txtNumberoDocumento]").val() == ""){
+                fn_message('i', 'Ingrese Numero de documento', 'message_row');
+                return;
+            }
+
+            if ($("input[id$=txtCorreo]").val() == "") {
+                fn_message('i', 'Ingrese Correo Electronico/Nombre de Usuario', 'message_row');
+                return;
+            }
+
+            if ($("input[id$=txtPassword]").val() == ""){
+                fn_message('i', 'Ingrese su Contraseña', 'message_row');
+                return;
+            }
            
+         
+
                 obj = {
                     FirstName: $("input[id$=txtNombre]").val().trim(),
                     LastNamePaternal: $("input[id$=txtApellidoPaterno]").val().trim(),
                     LastNameMaternal: $("input[id$=txtApellidoMaterno]").val().trim(),
                     NumberDocument: $("input[id$=txtNumberoDocumento]").val().trim(),
                     CellPhone: $("input[id$=txtCelular]").val().trim(),
-                    Password: $("input[id$=txtContraseña]").val().trim(),
+                    Password: $("input[id$=txtPassword]").val().trim(),
                     Email: $("input[id$=txtCorreo]").val().trim(),
                     DocumentType: $("select[id$=ddlTipoDocumento] option:selected").val()
                 }
@@ -48,11 +77,9 @@
             };
             
             var data = { obj: obj };
-            fn_callmethod("Information.aspx/Cliente_Registro", JSON.stringify(data), success, error);
+            fn_callmethod("Information.aspx/Customer_Save", JSON.stringify(data), success, error);
         }
-
-        
-
+          
         function Fn_Limpiar() {
             $("input[id$=txtNombre]").val("");
             $("input[id$=txtApellidoPaterno]").val("");
@@ -87,6 +114,7 @@
 						<div class="tt-item">
 							<h2 class="tt-title">INFORMACIÓN PERSONAL</h2>
 							<div class="form-default">
+                                <div id="message_row"></div>
 								<form id="contactform" method="post" novalidate="novalidate">
 									<div class="form-group">
 										<label for="loginInputName">Nombre *</label>
@@ -110,17 +138,17 @@
 										<input type="text" name="celular" class="form-control" id="txtCelular" placeholder="Ingrese su Celular">
 									</div>
 									<div class="form-group">
-										<label for="loginInputEmail">Correo *</label>
-										<input type="text" name="email" class="form-control" id="txtCorreo" placeholder="Ingrese su Correo">
+										<label for="loginInputEmail">Correo/Nombre de Usuario *</label>
+										<input type="text" name="email" class="form-control" id="txtCorreo" placeholder="Ingrese su Correo/Nombre un usuario">
 									</div>
 									<div class="form-group">
 										<label for="loginInputPassword">Contraseña *</label>
-										<input type="text" name="passowrd" class="form-control" id="txtContraseña" placeholder="Ingrese su Contraseña">
+										<input type="password" name="passowrd" class="form-control"id="txtPassword" placeholder="Ingrese su Contraseña">
 									</div>
 									<div class="row">
 										<div class="col-auto">
 											<div class="form-group">
-												<button class="btn btn-border" type="submit" onclick="Fn_Registro()">Registrarse</button>
+												<button class="btn btn-border" type="button" onclick="Fn_Registro()">Registrarse</button>
 											</div>
 										</div>
 										<div class="col-auto align-self-center">
@@ -131,7 +159,6 @@
 											</div>
 										</div>
 									</div>
-
 								</form>
 							</div>
 						</div>

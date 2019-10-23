@@ -8,7 +8,7 @@ namespace xAPI.Entity.Customers
 {
     public class Customer
     {
-        public int CustomerId { get; set; }
+        public Int32 CustomerId { get; set; }
         public String FirstName { get; set; }
         public String LastNamePaternal { get; set; }
         public String LastNameMaternal { get; set; }
@@ -17,11 +17,11 @@ namespace xAPI.Entity.Customers
         public String CellPhone { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
-        public int Status { get; set; }
+        public Int32 Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public int CreatedBy { get; set; }
-        public int UpdatedBy { get; set; }
+        public Int32 CreatedBy { get; set; }
+        public Int32 UpdatedBy { get; set; }
         private String _estadodesc;
         public String EstadoDes
         {
