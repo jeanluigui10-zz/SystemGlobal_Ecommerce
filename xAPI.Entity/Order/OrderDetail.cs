@@ -19,5 +19,12 @@ namespace xAPI.Entity.Order
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
         public Decimal Totalprice { get; set; }
+        public void CalculateTotalPricexProduct()
+        {
+            Decimal TotalPrice = 0;
+            TotalPrice += this.Quantity * this.Product.UnitPrice;
+            Totalprice = TotalPrice;
+            //return TotalPrice;
+        }
     }
 }

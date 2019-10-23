@@ -174,6 +174,121 @@
     <script src="/src/js/Base.js"></script>
      <script type="text/javascript">
 
+         $(function () {
+      
+             $(".modal").on("click", ".btn-close", function () {
+                 $(this).closest('.modal-content').find('.modal-header .close').trigger('click');
+                 return false;
+             });
+             $("#modalAddToCartProduct").click(function () {
+                 $("#modalAddToCartProduct").modal('show');
+             })
+             $("#modalProductExist").click(function () {
+                 $("#modalProductExist").modal('show');
+             })
+             $("#modalProductErrorAdd").click(function () {
+                 $("#modalProductErrorAdd").modal('show');
+             })
+             //$(".btnProcedCheckout-xss").click(function () {
+             //    if (shopperSession != '0') {
+             //        window.location = '/Home/CompletePurchase'
+             //    } else {
+             //        indicateBuyShop = 1;
+             //        window.location = '/Auth/Login?q=1'
+             //    }
+             //});
+
+             $("body").on("click", ".add-to-cart-mp", function (e) {
+                 try
+                 {
+                     var productId = $(this)[0].dataset["productid"];
+                     var productname = $(this)[0].dataset["productname"];
+                     var productimg = $(this)[0].dataset["srcimg"];
+                     var productunitprice = $(this)[0].dataset["unitprice"];
+                     var objProduct = {
+                         ProductId: productId
+                     };
+                     var success = function (asw) {
+
+                         if (asw.d != null) {
+                             if (asw.d.Result == "Ok") {
+                                                              
+                                 //$("#idPriceProduct").text(idNameProdut);                             
+                                 //$("#idColorProduct").text(idNameColor);
+                                 $("#idImgProduct").attr('src', productimg);  
+                                 $("#idNameProdut").text(productname);
+                                 $("#idPriceProduct").text("S/." + productunitprice);
+                                 $("#idTotalPrice").text("S/." + productunitprice);
+                                 
+                                 $("#modalAddToCartProduct").click();
+                             }
+                             else {
+                                 if (asw.d.Result == "NoOk") {
+                                     if (asw.d.Value == -1) {
+                                         $("#modalProductExist").click();
+                                     } else {                                         
+                                         $("#modalProductErrorAdd").click();
+                                     }
+                                     
+                                 }
+                             }
+                         }
+                         else {
+                             fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                         }
+                     }
+                     var error = function (xhr, ajaxOptions, thrownError) {
+                         fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                     }
+                     var complete = function () {
+                         $('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
+                     }
+                     fn_callmethod("Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error);
+
+                 } catch (e) {
+                     fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                 }
+             });
+
+             $("body").on("click", '.minus-btn, .plus-btn', function (e) {
+                 var $input = $(this).parent().find('input');
+                 var count = parseInt($input.val(), 10) + parseInt(e.currentTarget.className === 'plus-btn' ? 1 : -1, 10);
+                 $input.val(count).change();
+                
+                 //var productId = $input.data("productid");
+                 //var quantity = $input.val();
+
+                 //if (productDetailsId > 0) {
+                 //    $("#tt-pageContent").append("<div class='loader_page'></div>");
+                 //    var objData = JSON.stringify(
+                 //        {
+                 //            ProductQuantity: quantity,
+                 //            ProductId: productId,
+                             
+                 //        });
+                 //    var success = function (response) {
+                 //        try {
+                 //            if (response.objOrder.codResult === 0) {
+                 //                $(".tt-cart-total-price").text(currencySymbol + response.objOrder.orderSubTotal.toFixed(2));
+                 //                $('#unitPriceProduct_' + productDetailsId).text(currencySymbol + response.objOrder.orderDetails.product.productPrice.toFixed(2));
+                       
+                 //            }
+                 //        } catch (e) {
+                          
+                 //        }
+                 //    };
+                 //    var error = function (jqXHR, textStatus, errorThrown) {
+                 //        Fn_Loading_Hide('div-add-product-info');
+                 //    };
+                 //    var complete = function () {
+                 //        $("#tt-pageContent").find(".loader_page").remove();
+                 //    };
+                 //    fn_callmethodComplete("CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
+                 //}
+             });
+
+         });
+
         function updateDataTableSelectAllCtrl(table) {
             var $table = table.table().node();
             var $chkbox_all = $('tbody input[type="checkbox"]', $table);
@@ -209,7 +324,7 @@
             }
             return false;
         }
-
+        
 
     </script>
 
@@ -1084,7 +1199,7 @@
                                                                                     <span class="old-price">$24</span>
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1106,7 +1221,7 @@
                                                                                     $17
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1128,7 +1243,7 @@
                                                                                     $14
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1151,7 +1266,7 @@
                                                                                     <span class="old-price">$24</span>
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
-                                                                                    <div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>
+                                                                                    <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
                                                                                     <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
                                                                                 </div>
                                                                             </div>
@@ -1414,11 +1529,11 @@
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="Cart" data-tposition="bottom">
                                     <button class="tt-dropdown-toggle" type="button">
                                         <i class="icon-f-39"></i>
-                                        <span class="tt-badge-cart">3</span>
+                                        <span class="tt-badge-cart">0</span>
                                     </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
-                                            <h6 class="tt-title">SHOPPING CART</h6>
+                                            <h6 class="tt-title">CARRITO DE COMPRAS</h6>
                                             <button class="tt-close" type="button">Close</button>
                                         </div>
                                         <div class="tt-dropdown-inner">
@@ -1429,57 +1544,21 @@
 											<p>No Products in the Cart</p>
 										</a> -->
                                                 <div class="tt-cart-content">
-                                                    <div class="tt-cart-list">
-                                                        <div class="tt-item">
-                                                            <a href="product.html">
-                                                                <div class="tt-item-img">
-                                                                    <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt="">
-                                                                </div>
-                                                                <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">Flared Shift Dress</h2>
-                                                                    <ul class="tt-add-info">
-                                                                        <li>Yellow, Material 2, Size 58,</li>
-                                                                        <li>Vendor: Addidas</li>
-                                                                    </ul>
-                                                                    <div class="tt-quantity">1 X</div>
-                                                                    <div class="tt-price">$12</div>
-                                                                </div>
-                                                            </a>
-                                                            <div class="tt-item-close">
-                                                                <a href="#" class="tt-btn-close"></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tt-item">
-                                                            <a href="product.html">
-                                                                <div class="tt-item-img">
-                                                                    <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-02.jpg" alt="">
-                                                                </div>
-                                                                <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">Flared Shift Dress</h2>
-                                                                    <ul class="tt-add-info">
-                                                                        <li>Yellow, Material 2, Size 58,</li>
-                                                                        <li>Vendor: Addidas</li>
-                                                                    </ul>
-                                                                    <div class="tt-quantity">1 X</div>
-                                                                    <div class="tt-price">$18</div>
-                                                                </div>
-                                                            </a>
-                                                            <div class="tt-item-close">
-                                                                <a href="#" class="tt-btn-close"></a>
-                                                            </div>
-                                                        </div>
+                                                    <div class="tt-cart-list" id="lstCartView">
+                                          
+                                                       
                                                     </div>
                                                     <div class="tt-cart-total-row">
                                                         <div class="tt-cart-total-title">SUBTOTAL:</div>
-                                                        <div class="tt-cart-total-price">$324</div>
+                                                        <div class="tt-cart-total-price">S/.0.00</div>
                                                     </div>
                                                     <div class="tt-cart-btn">
                                                         <div class="tt-item">
-                                                            <a href="#" class="btn">PROCEED TO CHECKOUT</a>
+                                                            <a href="#" class="btn">PROCEDER A PAGAR</a>
                                                         </div>
                                                         <div class="tt-item">
-                                                            <a href="shopping_cart_02.html" class="btn-link-02 tt-hidden-mobile">View Cart</a>
-                                                            <a href="shopping_cart_02.html" class="btn btn-border tt-hidden-desctope">VIEW CART</a>
+                                                            <a href="shopping_cart_02.html" class="btn-link-02 tt-hidden-mobile">Ver carrito</a>
+                                                            <a href="shopping_cart_02.html" class="btn btn-border tt-hidden-desctope">VER CARRITO</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1716,42 +1795,42 @@
                     <div class="modal-body">
                         <div class="tt-modal-addtocart mobile">
                             <div class="tt-modal-messages">
-                                <i class="icon-f-68"></i>Added to cart successfully!
+                                <i class="icon-f-68"></i>Producto agregado correctamente!
                             </div>
-                            <a href="#" class="btn-link btn-close-popup">CONTINUE SHOPPING</a>
-                            <a href="shopping_cart_02.html" class="btn-link">VIEW CART</a>
-                            <a href="page404.html" class="btn-link">PROCEED TO CHECKOUT</a>
+                            <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
+                            <a href="Review.aspx" class="btn-link">VER CARRITO</a>
+                            <a href="page404.html" class="btn-link">PROCEDER A PAGAR</a>
                         </div>
                         <div class="tt-modal-addtocart desctope">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
                                     <div class="tt-modal-messages">
-                                        <i class="icon-f-68"></i>Added to cart successfully!
+                                        <i class="icon-f-68"></i>Producto agregado correctamente!
                                     </div>
                                     <div class="tt-modal-product">
                                         <div class="tt-img">
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt="">
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProduct">
                                         </div>
-                                        <h2 class="tt-title"><a href="product.html">Flared Shift Dress</a></h2>
+                                        <h2 class="tt-title"><a href="#" id="idNameProdut">-</a></h2>
                                         <div class="tt-qty">
                                             QTY: <span>1</span>
                                         </div>
                                     </div>
                                     <div class="tt-product-total">
                                         <div class="tt-total">
-                                            TOTAL: <span class="tt-price">$324</span>
+                                            TOTAL: <span class="tt-price" id="idPriceProduct">0.00</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <a href="#" class="tt-cart-total">There are 1 items in your cart
+                                <div class="col-12 col-lg-6" id="divButtons">
+                                    <a href="#" class="tt-cart-total">
 								<div class="tt-total">
-                                            TOTAL: <span class="tt-price">$324</span>
+                                            TOTAL: <span class="tt-price" id="idTotalPrice">0.00</span>
                                         </div>
                                     </a>
-                                    <a href="#" class="btn btn-border btn-close-popup">CONTINUE SHOPPING</a>
-                                    <a href="shopping_cart_02.html" class="btn btn-border">VIEW CART</a>
-                                    <a href="#" class="btn">PROCEED TO CHECKOUT</a>
+                                    <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
+                                    <a href="Review.aspx" class="btn btn-border">VER CARRITO</a>
+                                    <a href="#" class="btn">PROCEDER A PAGAR</a>
                                 </div>
                             </div>
                         </div>
@@ -1927,15 +2006,106 @@
         </div>
         
 
-      
-     
+      <%--Producto ya existe--%>
+      <div class="modal  fade" id="modalProductExist" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tt-modal-addtocart mobile">
+                            <div class="tt-modal-messages">
+                                <i class="icon-f-68"></i>El producto ya se encuentra en el carrito.
+                            </div>
+                            <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
+                            <a href="Review.aspx" class="btn-link">VER CARRITO</a>
+                            <a href="#" class="btn-link">PRCEDER A PAGAR</a>
+                        </div>
+                        <div class="tt-modal-addtocart desctope">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="tt-modal-messages">
+                                        <i class="icon-f-68"></i>El producto ya se encuentra en el carrito.
+                                    </div>                               
+                                </div>
+                                <div class="col-12 col-lg-6" id="divButtonsExistProduct">                                
+                                    <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
+                                    <a href="Review.aspx" class="btn btn-border">VER CARRITO</a>
+                                    <a href="#" class="btn">PRCEDER A PAGAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
        
+        <%--Error al agregar producto--%>
+      <div class="modal  fade" id="modalProductErrorAdd" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tt-modal-addtocart mobile">
+                            <div class="tt-modal-messages">
+                                <i class="icon-f-68"></i>Ocurrio un error al agregar producto.
+                            </div>
+                            <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
+                            <a href="Review.aspx" class="btn-link">VER CARRITO</a>
+                            <a href="#" class="btn-link">PRCEDER A PAGAR</a>
+                        </div>
+                        <div class="tt-modal-addtocart desctope">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="tt-modal-messages">
+                                        <i class="icon-f-68"></i>Ocurrio un error al agregar producto..
+                                    </div>                               
+                                </div>
+                                <div class="col-12 col-lg-6">                                
+                                    <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
+                                    <a href="Review.aspx" class="btn btn-border">VER CARRITO</a>
+                                    <a href="#" class="btn">PRCEDER A PAGAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+      
+
         <script src="/Files/js/main.js"></script>
        
 
 
         
     </form>
-    
+      <script type="text/x-handlebars-template" id="datatable-shopcartHeader">
+        {{# each request}}
+                       <div class="tt-item">
+                                                            <a href="#">
+                                                                <div class="tt-item-img">
+                                                                    <img src="{{Product.NameResource}}" data-src="{{Product.NameResource}}" alt="">
+                                                                </div>
+                                                                <div class="tt-item-descriptions">
+                                                                    <h2 class="tt-title">{{Product.ProductName}}</h2>
+                                                                    <ul class="tt-add-info">
+                                                                        <li>{{Product.Category}}</li>
+                                                                        <%--<li>Vendor: Addidas</li>--%>
+                                                                    </ul>
+                                                                    <div class="tt-quantity">{{Quantity}}</div>x
+                                                                    <div class="tt-price">S/.{{Product.UnitPrice}}</div>
+                                                                </div>
+                                                            </a>
+                                                            <div class="tt-item-close">
+                                                                <a href="#" class="tt-btn-close"></a>
+                                                            </div>
+                                                        </div>
+        {{/each}}
+    </script>
 </body>
 </html>

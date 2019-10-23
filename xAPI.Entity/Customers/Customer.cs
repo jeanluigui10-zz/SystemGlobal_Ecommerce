@@ -31,5 +31,14 @@ namespace xAPI.Entity.Customers
                 return _estadodesc;
             }
         }
+        private String fullName;
+        public String FullName
+        {
+            get
+            {
+                fullName = FirstName + " " + LastNamePaternal + " " + LastNameMaternal;
+                return fullName;
+            }
+        }
     }
 }

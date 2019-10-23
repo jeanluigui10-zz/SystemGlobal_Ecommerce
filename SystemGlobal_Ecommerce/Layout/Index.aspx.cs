@@ -88,20 +88,43 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 AppResource obj = null;
                 BaseEntity entity = new BaseEntity();
-                Int32 ProductId = objProd["ProductId"];
+                Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
                 obj = ResourceBL.Instance.AppResource_GetByID(ref entity, ProductId);
 
                 if (entity.Errors.Count == 0)
                 {
                     if(obj != null)
                     {
-                        List<OrderDetail> Detail = new List<OrderDetail>()
+                        obj.NameResource = Config.Impremtawendomain + obj.NameResource;
+                        OrderHeader orderHeader = BaseSession.SsOrderxCore;                       
+                        var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.Id == obj.Id);
+                        if (ProductExist) {
+                            objReturn = new
+                            {
+                                Result = "NoOk",                            
+                                Msg = "El producto ya se encuentra agregado.",
+                                Value = -1
+                            };
+
+                        }
+                        else
                         {
-                            new OrderDetail() { Product = obj }
-                        };
-                        OrderHeader orderHeader = BaseSession.SsOrderxCore;
-                        orderHeader.ListOrderDetail = Detail;
-                        BaseSession.SsOrderxCore = orderHeader;
+                            OrderDetail Detalle = new OrderDetail() {
+                                Product = obj,   
+                                Quantity = 1,
+                            };
+
+                            orderHeader.ListOrderDetail.Add(Detalle);
+                            Detalle.CalculateTotalPricexProduct();
+                            orderHeader.CalculateTotals();
+                            BaseSession.SsOrderxCore = orderHeader;
+
+                                 objReturn = new
+                                 {
+                                     Result = "Ok",
+                                     Msg = "Agregado correctamente."
+                                 };
+                         }                       
                     }
                     else
                     {

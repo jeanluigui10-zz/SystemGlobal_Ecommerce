@@ -93,7 +93,11 @@ function fn_queuemessage() {
         setTimeout(fn_queuemessage, 6000);
     }
 }
+function Fn_Loading_Hide(id) {
+    $("#" + id).children().removeClass('hidden');
+    $('#' + id + ' .wstock-loader-section ').hide();
 
+}
 function fn_QueryString(name) {
     return unescape((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]);
 }
