@@ -53,24 +53,24 @@ namespace xAPI.Dao.Customers
             return dt;
         }
 
-        public Boolean Customer_Save(ref BaseEntity objBase, Customer obj)
+        public Boolean Customer_Save(ref BaseEntity objEntity, Customer obj)
         {
             SqlCommand cmd = null;
             Boolean success = false;
             try
             {
-                cmd = new SqlCommand("", clsConnection.GetConnection());
+                cmd = new SqlCommand("Customer_Save_Sp", clsConnection.GetConnection());
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Nombre_Usuario", obj.FirstName);
-                cmd.Parameters.AddWithValue("@APaterno_Usuario", obj.LastNamePaternal);
-                cmd.Parameters.AddWithValue("@AMaterno_Usuario", obj.LastNameMaternal);
-                cmd.Parameters.AddWithValue("@Dni_Usuario", obj.DocumentType);
-                cmd.Parameters.AddWithValue("@Contrasena", obj.NumberDocument);
-                cmd.Parameters.AddWithValue("@Estado", obj.CellPhone);
-                cmd.Parameters.AddWithValue("@Id_TipoUsuario", obj.Email);
-                cmd.Parameters.AddWithValue("@FechaCreacion", obj.Password);
-                cmd.Parameters.AddWithValue("@CreadoPor", obj.CreatedDate);
-                cmd.Parameters.AddWithValue("@CreadoPor", obj.CreatedBy);
+                cmd.Parameters.AddWithValue("@Name", obj.FirstName);
+                cmd.Parameters.AddWithValue("@LastNamePaternal", obj.LastNamePaternal);
+                cmd.Parameters.AddWithValue("@LastNameMaternal", obj.LastNameMaternal);
+                cmd.Parameters.AddWithValue("@DocumentType", obj.DocumentType);
+                cmd.Parameters.AddWithValue("@NumberDocument", obj.NumberDocument);
+                cmd.Parameters.AddWithValue("@CellPhone", obj.CellPhone);
+                cmd.Parameters.AddWithValue("@Email", obj.Email);
+                cmd.Parameters.AddWithValue("@Password", obj.Password);
+                cmd.Parameters.AddWithValue("@CreatedDate", obj.CreatedDate);
+                cmd.Parameters.AddWithValue("@UpdatedDate", obj.CreatedDate);
 
                 cmd.ExecuteNonQuery();
                 success = true;
@@ -79,7 +79,7 @@ namespace xAPI.Dao.Customers
             catch (Exception ex)
             {
                 success = false;
-                objBase.Errors.Add(new BaseEntity.ListError(ex, "Ocurrio un error al registrar Usuario not found."));
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "Ocurrio un error al registrar Usuario not found."));
             }
             finally
             {

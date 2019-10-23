@@ -32,8 +32,8 @@ function fn_message(type, message, typeOrder) {
     //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
     $('div[id$=message_row]').empty().fadeIn().append(result);
     $('div[id$=message_row]').delay("10000").fadeOut();
-    $('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
-    //$('html, body').animate({ scrollTop: 1 }, 'slow');
+    //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'slow');
+    $('html, body').animate({ scrollTop: 1 }, 'slow');
     //$('div[id$=message_row]').delay("6000").fadeOut();
     //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
         //alert($('div[id$=message_row]').length);

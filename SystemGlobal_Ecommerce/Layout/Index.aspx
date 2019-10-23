@@ -39,8 +39,8 @@
 					<div class="tp-banner-container">
 						<div class="tp-banner revolution">
 							<ul>
-								<li data-thumb="/Files/images/slides/01/imprenta1.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/imprenta1.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
+								<li data-thumb="/Files/images/slides/01/imprenta7.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/imprenta7.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
 									<div class="tp-caption tp-caption1 lft stb"
 										data-x="center"
 										data-y="center"
@@ -53,11 +53,11 @@
 										<div class="tp-caption1-wd-1 tt-base-color">Multipurpose</div>
 										<div class="tp-caption1-wd-2">Premium<br>Html Template</div>
 										<div class="tp-caption1-wd-3">30 skins, powerful features, great support, exclusive offer</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" data-text="SHOP NOW!">SHOP NOW!</a></div>
+										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
-								<li data-thumb="/Files/images/slides/01/imprenta2.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/imprenta2.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
+								<li data-thumb="/Files/images/slides/01/imprenta6.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/imprenta6.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
 									<div class="tp-caption tp-caption1 lft stb"
 										data-x="center"
 										data-y="center"
@@ -70,11 +70,11 @@
 										<div class="tp-caption1-wd-1 tt-white-color">Ready To</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Use Unique<br>Demos</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Optimized for speed, website that sells</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" data-text="SHOP NOW!">SHOP NOW!</a></div>
+										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
-								<li data-thumb="" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-																		
+								<li data-thumb="/Files/images/slides/01/imprenta3.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/imprenta3.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >									
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
 										data-y="0"
@@ -115,10 +115,10 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
+										<div class="tp-caption1-wd-1 tt-base-color">Bienvenido</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" data-text="SHOP NOW!">SHOP NOW!</a></div>
+										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
 							</ul>

@@ -47,7 +47,7 @@ jQuery(function($) {
                 required: "Por favor ingrese su documento"
             },
             password: {
-                required: "Por favor ingrese su Contraseña"
+                required: "Por favor ingrese su password"
             },
             message: {
                 required: "Por favor ingrese su mensaje"
