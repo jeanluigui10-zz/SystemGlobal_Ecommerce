@@ -26,10 +26,8 @@ namespace SystemGlobal_Ecommerce.Layout
                 LoadData();
             }
         }
-        private void LoadData(Boolean ShowMessage = false)
+        private void LoadData()
         {
-            BaseEntity entity = new BaseEntity();
-
             if (BaseSession.SsOrderxCore != null && BaseSession.SsOrderxCore.ListOrderDetail != null && BaseSession.SsOrderxCore.ListOrderDetail.Count > 0) 
             {
                 OrderHeader objOrder = BaseSession.SsOrderxCore;
@@ -64,11 +62,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     String sJSON = serializer.Serialize(OrderHeader);
-                    hfData.Value = sJSON.ToString();
+                  hfData.Value = sJSON.ToString();
 
             }
-
-            
         }
         public void Message(EnumAlertType type, string message)
         {

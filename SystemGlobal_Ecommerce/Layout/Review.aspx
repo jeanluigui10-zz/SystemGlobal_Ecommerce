@@ -10,8 +10,7 @@
              fn_content();
          }
          function fn_content() {
-             Fn_ListProductsShopCart($("#<%=hfData.ClientID%>").val());
-             Fn_ListProductsShopCartHeader($("#<%=hfData.ClientID%>").val());
+             Fn_ListProductsShopCart($("#<%=hfData.ClientID%>").val());           
          }
 
          function Fn_ListProductsShopCart(data) {
@@ -27,19 +26,7 @@
                  fn_message('e', 'An error occurred while loading data...');
              }
          }
-         function Fn_ListProductsShopCartHeader(data) {
-             var glancedata = data;
-             try {
-                 obj = $.parseJSON(glancedata);
-                 var object = {};
-                 object.request = obj.Detail;
-                 var item = fn_LoadTemplates("datatable-shopcartHeader", object);
-                 $("#lstCartView").html(item);
-             }
-             catch (e) {
-                 fn_message('e', 'An error occurred while loading data...');
-             }
-         }
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

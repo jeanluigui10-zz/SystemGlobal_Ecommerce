@@ -12,6 +12,7 @@
          }
          function fn_content() {
              Fn_ListProducts($("#<%=hfData.ClientID%>").val());
+            
          }
 
          function Fn_ListProducts(data) {
@@ -206,11 +207,11 @@
         {{# each request}}
             <div class="col-6 col-md-4 col-lg-3">
 					<div class="tt-product thumbprod-center">
-						<div class="tt-image-box">
+						<div class="tt-image-box aline">
 							<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"	data-tooltip="Quick View" data-tposition="left"></a>
 							<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
 							<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
-							<a href="product.html">
+							<a href="#" style="display:flex;align-items:center;position:relative">
 								<span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 								<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 							</a>

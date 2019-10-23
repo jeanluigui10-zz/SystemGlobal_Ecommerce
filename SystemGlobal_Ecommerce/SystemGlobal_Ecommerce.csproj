@@ -2033,6 +2033,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="src\css\loader.css" />
     <Content Include="src\css\loader_datatable.css" />
     <Content Include="src\css\validationEngine.jquery.css" />
     <Content Include="src\handlebars\handlebars-v2.0.0.min.js" />

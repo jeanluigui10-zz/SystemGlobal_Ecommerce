@@ -87,21 +87,21 @@ namespace SystemGlobal_Ecommerce.Layout
             try
             {
                 AppResource obj = null;
-                BaseEntity entity = new BaseEntity();
                 Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
-                obj = ResourceBL.Instance.AppResource_GetByID(ref entity, ProductId);
+                obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, ProductId);
 
-                if (entity.Errors.Count == 0)
+                if (objBase.Errors.Count == 0)
                 {
-                    if(obj != null)
+                    if (obj != null)
                     {
                         obj.NameResource = Config.Impremtawendomain + obj.NameResource;
-                        OrderHeader orderHeader = BaseSession.SsOrderxCore;                       
+                        OrderHeader orderHeader = BaseSession.SsOrderxCore;
                         var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.Id == obj.Id);
-                        if (ProductExist) {
+                        if (ProductExist)
+                        {
                             objReturn = new
                             {
-                                Result = "NoOk",                            
+                                Result = "NoOk",
                                 Msg = "El producto ya se encuentra agregado.",
                                 Value = -1
                             };
@@ -109,22 +109,60 @@ namespace SystemGlobal_Ecommerce.Layout
                         }
                         else
                         {
-                            OrderDetail Detalle = new OrderDetail() {
-                                Product = obj,   
+                            OrderDetail Detalle = new OrderDetail()
+                            {
+                                Product = obj,
                                 Quantity = 1,
                             };
 
                             orderHeader.ListOrderDetail.Add(Detalle);
                             Detalle.CalculateTotalPricexProduct();
                             orderHeader.CalculateTotals();
-                            BaseSession.SsOrderxCore = orderHeader;
 
-                                 objReturn = new
-                                 {
-                                     Result = "Ok",
-                                     Msg = "Agregado correctamente."
-                                 };
-                         }                       
+                            if (orderHeader != null && orderHeader.ListOrderDetail != null && orderHeader.ListOrderDetail.Count > 0)
+                            {
+                                List<Object> lstDetail = new List<Object>();
+                                for (int i = 0; i < orderHeader.ListOrderDetail.Count; i++)
+                                {
+                                    Object objProduct = new
+                                    {
+                                        ProductId = orderHeader.ListOrderDetail[i].Product.Id,
+                                        ProductName = orderHeader.ListOrderDetail[i].Product.Name,
+                                        Category = orderHeader.ListOrderDetail[i].Product.Category,
+                                        UnitPrice = orderHeader.ListOrderDetail[i].Product.UnitPrice,
+                                        NameResource = orderHeader.ListOrderDetail[i].Product.NameResource
+                                    };
+                                    Object Detail = new
+                                    {
+                                        Product = objProduct,
+                                        Quantity = orderHeader.ListOrderDetail[i].Quantity,
+                                        TotalPrice = orderHeader.ListOrderDetail[i].Totalprice,
+                                    };
+
+                                    lstDetail.Add(Detail);
+                                }
+
+                                Object OrderHeader = new
+                                {
+                                    Ordertotal = orderHeader.Ordertotal,
+                                    CustomerId = orderHeader.Customer.CustomerId,
+                                    CustomerName = orderHeader.Customer.FullName,
+                                    Detail = lstDetail
+                                };
+
+                                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                                String sJSON = serializer.Serialize(OrderHeader);
+
+                                BaseSession.SsOrderxCore = orderHeader;
+
+                                objReturn = new
+                                {
+                                    Result = "Ok",
+                                    Msg = "Agregado correctamente.",
+                                    ListProductToCartHeader = sJSON.ToString()
+                                };
+                            }
+                        }
                     }
                     else
                     {

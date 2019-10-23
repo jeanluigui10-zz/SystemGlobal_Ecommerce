@@ -12,6 +12,14 @@
     <meta name="author" content="wokiee">
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+          .aline {
+            height: 270px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+    </style>
          <script type="text/javascript">
              var translateWidget = "Select a Language to Search";
 
@@ -145,6 +153,7 @@
         <link href="/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
 
         <link href="/src/css/loader_datatable.css" rel="stylesheet" />
+        <link href="/src/css/loader.css" rel="stylesheet" />
         <!-- jQuery 2.2.3 -->
         <%--<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>--%>
         <!-- Bootstrap 3.3.6 -->
@@ -174,8 +183,9 @@
     <script src="/src/js/Base.js"></script>
      <script type="text/javascript">
 
-         $(function () {
-      
+         $(function ()
+         {
+           
              $(".modal").on("click", ".btn-close", function () {
                  $(this).closest('.modal-content').find('.modal-header .close').trigger('click');
                  return false;
@@ -201,6 +211,14 @@
              $("body").on("click", ".add-to-cart-mp", function (e) {
                  try
                  {
+                     e.preventDefault();
+
+                     /*Loader Image*/
+                     var divData = $(this);
+                     $(this).parent().parent().parent().parent().addClass('hide');
+                     $(this).parent().parent().parent().parent().parent().append("<div class='cls-load-add-cart loader_page_add_cart'></div>");
+                    /*End Loader Image*/
+
                      var productId = $(this)[0].dataset["productid"];
                      var productname = $(this)[0].dataset["productname"];
                      var productimg = $(this)[0].dataset["srcimg"];
@@ -211,15 +229,13 @@
                      var success = function (asw) {
 
                          if (asw.d != null) {
-                             if (asw.d.Result == "Ok") {
-                                                              
-                                 //$("#idPriceProduct").text(idNameProdut);                             
-                                 //$("#idColorProduct").text(idNameColor);
+                             if (asw.d.Result == "Ok")
+                             {
                                  $("#idImgProduct").attr('src', productimg);  
                                  $("#idNameProdut").text(productname);
                                  $("#idPriceProduct").text("S/." + productunitprice);
                                  $("#idTotalPrice").text("S/." + productunitprice);
-                                 
+                                 Fn_ListProductsShopCartHeader(asw.d.ListProductToCartHeader);
                                  $("#modalAddToCartProduct").click();
                              }
                              else {
@@ -232,19 +248,24 @@
                                      
                                  }
                              }
+                           
                          }
                          else {
-                             fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                             $("#modalProductErrorAdd").click();
                          }
                      }
                      var error = function (xhr, ajaxOptions, thrownError) {
-                         fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                         divData.parent().parent().parent().parent().removeClass('hide');
+                         $('.cls-load-add-cart').remove();
+                         $("#modalProductErrorAdd").click();
                      }
                      var complete = function () {
-                         $('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
+                         /*End Loader Iamge*/
+                         divData.parent().parent().parent().parent().removeClass('hide');
+                         $('.cls-load-add-cart').remove();
                      }
-                     fn_callmethod("Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error);
-
+                     fn_callmethodComplete("Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error, complete);
+                     
                  } catch (e) {
                      fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
                  }
@@ -260,34 +281,54 @@
 
                  if (productId > 0) {
                     $("#tt-pageContent").append("<div class='loader_page'></div>");
-                 //    var objData = JSON.stringify(
-                 //        {
-                 //            ProductQuantity: quantity,
-                 //            ProductId: productId,
+                     var objData = JSON.stringify(
+                         {
+                             ProductQuantity: quantity,
+                             ProductId: productId,
                              
-                 //        });
-                 //    var success = function (response) {
-                 //        try {
-                 //            if (response.objOrder.codResult === 0) {
-                 //                $(".tt-cart-total-price").text(currencySymbol + response.objOrder.orderSubTotal.toFixed(2));
-                 //                $('#unitPriceProduct_' + productDetailsId).text(currencySymbol + response.objOrder.orderDetails.product.productPrice.toFixed(2));
+                         });
+                     var success = function (response) {
+                         try {
+                             if (response.objOrder.codResult === 0) {
+                                 $(".tt-cart-total-price").text(currencySymbol + response.objOrder.orderSubTotal.toFixed(2));
+                                 $('#unitPriceProduct_' + productDetailsId).text(currencySymbol + response.objOrder.orderDetails.product.productPrice.toFixed(2));
                        
-                 //            }
-                 //        } catch (e) {
-                          
-                 //        }
-                 //    };
-                 //    var error = function (jqXHR, textStatus, errorThrown) {
-                 //        Fn_Loading_Hide('div-add-product-info'); 
-                 //    };
-                 //    var complete = function () {
-                 //        $("#tt-pageContent").find(".loader_page").remove();
-                 //    };
-                 //    fn_callmethodComplete("CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
+                             }
+                         } catch (e) {
+                             $("#tt-pageContent").find(".loader_page").remove();
+                         }
+                     };
+                     var error = function (jqXHR, textStatus, errorThrown) {
+                         $("#tt-pageContent").find(".loader_page").remove();
+                     };
+                     var complete = function () {
+                        $("#tt-pageContent").find(".loader_page").remove();
+                     };
+                     //fn_callmethodComplete("CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
                 }
              });
 
+             if ($("#<%=hfDataListProduct.ClientID%>").val() != "") {
+                 Fn_ListProductsShopCartHeader($("#<%=hfDataListProduct.ClientID%>").val());
+             }
+
+             
          });
+
+         function Fn_ListProductsShopCartHeader(data) {
+             var glancedata = data;
+             try {
+                 obj = $.parseJSON(glancedata);
+                 var object = {};
+                 object.request = obj.Detail;
+                 var item = fn_LoadTemplates("datatable-shopcartHeader", object);
+                 $("#lstCartView").html(item);
+             }
+             catch (e) {
+                 fn_message('e', 'An error occurred while loading data...');
+             }
+         }
+
 
         function updateDataTableSelectAllCtrl(table) {
             var $table = table.table().node();
@@ -1566,8 +1607,8 @@
                                                             <a href="#" class="btn">PROCEDER A PAGAR</a>
                                                         </div>
                                                         <div class="tt-item">
-                                                            <a href="shopping_cart_02.html" class="btn-link-02 tt-hidden-mobile">Ver carrito</a>
-                                                            <a href="shopping_cart_02.html" class="btn btn-border tt-hidden-desctope">VER CARRITO</a>
+                                                            <a href="Review.aspx" style="cursor:pointer" class="btn-link-02 tt-hidden-mobile">Ver carrito</a>
+                                                            <a href="Review.aspx" style="cursor:pointer" class="btn btn-border tt-hidden-desctope">VER CARRITO</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2089,10 +2130,9 @@
 
         <script src="/Files/js/main.js"></script>
        
-
-
-        
+         <asp:HiddenField runat="server" ID="hfDataListProduct" />
     </form>
+        
       <script type="text/x-handlebars-template" id="datatable-shopcartHeader">
         {{# each request}}
                        <div class="tt-item">

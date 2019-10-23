@@ -38,9 +38,9 @@
                     fn_message('e', 'Ocurrio un error al enviar la data.', 'message_row');
                 }
                 var complete = function () {
-                    $('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
+                    //$('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
                 }
-                fn_callmethod("Login.aspx/LoginSecurity", JSON.stringify({ objCust: objCustomer }), success, error);
+                fn_callmethodComplete("Login.aspx/LoginSecurity", JSON.stringify({ objCust: objCustomer }), success, error, complete);
 
             } catch (e)
             {
