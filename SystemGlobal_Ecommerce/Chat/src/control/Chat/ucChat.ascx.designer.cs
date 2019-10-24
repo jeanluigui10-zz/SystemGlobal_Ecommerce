@@ -7,54 +7,63 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SystemGlobal_Ecommerce {
+namespace SystemGlobal_Ecommerce.Chat.src.control.Chat {
     
     
-    public partial class HomePage {
+    public partial class ucChat {
         
         /// <summary>
-        /// Control head.
+        /// Control ddlLanguage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLanguage;
         
         /// <summary>
-        /// Control frmHmeMaster.
+        /// Control ddlModule.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmHmeMaster;
+        protected global::System.Web.UI.WebControls.DropDownList ddlModule;
         
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control hfUserId.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hfUserId;
         
         /// <summary>
-        /// Control hfDataListProduct.
+        /// Control hfFullName.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfDataListProduct;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hfFullName;
         
         /// <summary>
-        /// Control ucChat.
+        /// Control hfHtmlTemplate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::SystemGlobal_Ecommerce.Chat.src.control.Chat.ucChat ucChat;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hfHtmlTemplate;
+        
+        /// <summary>
+        /// Control hfEmailTo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hfEmailTo;
     }
 }

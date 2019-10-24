@@ -48,11 +48,30 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -106,6 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Chat\src\control\Chat\ucChat.ascx" />
+    <Content Include="Chat\src\control\Chat\ucRedirectChatModule.ascx" />
+    <Content Include="Chat\src\control\Chat\ucWebMethodChat.aspx" />
+    <Content Include="Chat\src\css\chatStyle.css" />
+    <Content Include="Chat\src\css\loader_datatable.css" />
+    <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2011,6 +2036,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -2040,6 +2067,7 @@
     <Content Include="src\handlebars\handlebars-v4.1.2.js" />
     <Content Include="src\images\image_not_found.jpg" />
     <Content Include="src\images\image_not_found_res.jpg" />
+    <Content Include="src\images\support-icon.png" />
     <Content Include="src\js\Base.js" />
     <Content Include="src\js\bootbox.js" />
     <Content Include="src\js\jquery.MultiFile.js" />
@@ -2050,6 +2078,28 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Chat\src\app_code\xConfig.cs" />
+    <Compile Include="Chat\src\control\Chat\ucChat.ascx.cs">
+      <DependentUpon>ucChat.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\src\control\Chat\ucChat.ascx.designer.cs">
+      <DependentUpon>ucChat.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\src\control\Chat\ucRedirectChatModule.ascx.cs">
+      <DependentUpon>ucRedirectChatModule.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\src\control\Chat\ucRedirectChatModule.ascx.designer.cs">
+      <DependentUpon>ucRedirectChatModule.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.cs">
+      <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.designer.cs">
+      <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2103,6 +2153,7 @@
     <Compile Include="src\app_code\Config.cs" />
     <Compile Include="src\app_code\HtmlSanitizer.cs" />
     <Compile Include="src\app_code\SerializableClass.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
