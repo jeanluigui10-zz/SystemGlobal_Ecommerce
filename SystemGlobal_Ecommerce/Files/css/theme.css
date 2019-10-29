@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Hind:300,400,500,600");
 /* font */
 /* font icon*/
@@ -1003,7 +1003,9 @@ template {
     opacity: 1; }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 2px); }
+  /*height: calc(2.25rem + 2px);*/ 
+
+}
 
 select.form-control:focus::-ms-value {
   color: #495057;

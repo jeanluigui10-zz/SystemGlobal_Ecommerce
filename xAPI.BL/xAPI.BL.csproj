@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Addresses\AddressesBL.cs" />
     <Compile Include="Category\CategoriaBL.cs" />
+    <Compile Include="Cotizations\CotizationBl.cs" />
     <Compile Include="Customers\CustomerBL.cs" />
     <Compile Include="Order\OrderBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

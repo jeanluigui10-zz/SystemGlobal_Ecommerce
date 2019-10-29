@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses\AddressesDAO.cs" />
+    <Compile Include="Cotizations\CotizationDAO.cs" />
     <Compile Include="Customers\CustomerDAO.cs" />
     <Compile Include="Order\OrderDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
