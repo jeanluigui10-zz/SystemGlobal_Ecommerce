@@ -171,7 +171,7 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!string.IsNullOrEmpty(Request.QueryString["q"]))
             {
-                this.ltTitle.Text = "Editar cotizacion";
+                this.ltTitle.Text = "Editar cotización";
                 string id = Encryption.Decrypt(Request.QueryString["q"]);
                 if (!string.IsNullOrEmpty(id))
                     vsId = Convert.ToInt32(id);
@@ -180,7 +180,7 @@ namespace SystemGlobal_Ecommerce.Layout
             }
             else
             {
-                this.ltTitle.Text = "Registrar cotizacion";
+                this.ltTitle.Text = "Registrar cotización";
             }
 
         }

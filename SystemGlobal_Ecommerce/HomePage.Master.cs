@@ -40,6 +40,8 @@ namespace SystemGlobal_Ecommerce
                 Object OrderHeader = new
                 {
                     Ordertotal = orderHeader.Ordertotal,
+                    SubTotal = orderHeader.SubTotal,
+                    IGV = orderHeader.IGV,
                     CustomerId = orderHeader.Customer.CustomerId,
                     CustomerName = orderHeader.Customer.FullName,
                     Detail = lstDetail
@@ -49,7 +51,8 @@ namespace SystemGlobal_Ecommerce
                 String sJSON = serializer.Serialize(OrderHeader);
 
                 hfDataListProduct.Value = sJSON.ToString();
-               
+
+
             }
         }
 

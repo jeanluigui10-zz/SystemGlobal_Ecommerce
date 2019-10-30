@@ -290,20 +290,27 @@
                  var quantity = $input.val();
 
                  if (productId > 0) {
-                    $("#tt-pageContent").append("<div class='loader_page'></div>");
-                     var objData = JSON.stringify(
-                         {
-                             ProductQuantity: quantity,
-                             ProductId: productId,
-                             
-                         });
-                     var success = function (response) {
+                     $("#tt-pageContent").append("<div class='loader_page'></div>");
+                     var objData = {
+                         ProductQuantity: quantity, ProductId: productId
+                     };
+                     var success = function (asw) {
                          try {
-                             if (response.objOrder.codResult === 0) {
-                                 $(".tt-cart-total-price").text(currencySymbol + response.objOrder.orderSubTotal.toFixed(2));
-                                 $('#unitPriceProduct_' + productDetailsId).text(currencySymbol + response.objOrder.orderDetails.product.productPrice.toFixed(2));
-                       
+                             
+                             if (asw.d != null)
+                             {
+                                 if (asw.d.Result == "Ok")
+                                 {
+                                     var ObjOrderHeader = JSON.parse(asw.d.OrderHeader);   
+                                     Calculate(ObjOrderHeader);    
+                                 }
+                                 else {
+                                     if (asw.d.Result == "NoOk") {
+                                         
+                                     }
+                                 }
                              }
+                            
                          } catch (e) {
                              $("#tt-pageContent").find(".loader_page").remove();
                          }
@@ -314,9 +321,19 @@
                      var complete = function () {
                         $("#tt-pageContent").find(".loader_page").remove();
                      };
-                     fn_callmethodComplete("Review.aspx/CartProduct_UpdateQuantity", { data: objData }, success, error, complete);
+                     fn_callmethodComplete("Review.aspx/CartProduct_UpdateQuantity", JSON.stringify({ data: objData }), success, error, complete);
                 }
              });
+
+             function Calculate(ObjOrderHeader) {
+                 $('#unitPriceProduct_' + ObjOrderHeader.Detail.Product.Id).text("S/." + ObjOrderHeader.Detail.Product.UnitPrice.toFixed(2));
+                 $('.tt-quantity_' + ObjOrderHeader.Detail.Product.Id).text("x" + ObjOrderHeader.Detail.Quantity);
+                 $(".tt-cart-total-price").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                 $("#idSubTotalRight").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                 $("#idIGVRight").text("S/." + ObjOrderHeader.IGV.toFixed(2));
+                 $('#idSubTotalProduct_' + ObjOrderHeader.Detail.Product.Id).text("S/." + ObjOrderHeader.Detail.Totalprice.toFixed(2));
+                 $("#idTotalRigth").text("S/." + ObjOrderHeader.Ordertotal.toFixed(2));          
+             }
 
              if ($("#<%=hfDataListProduct.ClientID%>").val() != "") {
                  Fn_ListProductsShopCartHeader($("#<%=hfDataListProduct.ClientID%>").val());
@@ -329,10 +346,13 @@
              var glancedata = data;
              try {
                  obj = $.parseJSON(glancedata);
+                 $("#idCantidadProductos").text(obj.Detail.length);
+                 $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
                  var object = {};
                  object.request = obj.Detail;
                  var item = fn_LoadTemplates("datatable-shopcartHeader", object);
                  $("#lstCartView").html(item);
+                 
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
@@ -827,7 +847,7 @@
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
                             <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                <img src="/Files/images/custom/logoargos.png" alt=""></a>
+                                <img src="/Files/images/custom/logoargos.png" alt="" style="width: 108px;height: 41px;"></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
@@ -840,7 +860,7 @@
                         <div class="tt-col-obj tt-obj-logo">
                             <!-- logo -->
                             <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                <img src="/Files/images/custom/logoargos.png" alt=""></a>
+                                <img src="/Files/images/custom/logoargos.png" alt="" style="width: 108px;height: 41px;"></a>
                             <!-- /logo -->
                         </div>
                         <div class="tt-col-obj tt-obj-menu">
@@ -1589,7 +1609,7 @@
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
                                     <button class="tt-dropdown-toggle" type="button">
                                         <i class="icon-f-39"></i>
-                                        <span class="tt-badge-cart">0</span>
+                                        <span class="tt-badge-cart" id="idCantidadProductos">0</span>
                                     </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
@@ -1741,12 +1761,12 @@
                                 </h4>
                                 <div class="tt-collapse-content">
                                     <ul class="tt-list">
-                                        <li><a href="listing-collection.html">Women</a></li>
-                                        <li><a href="listing-collection.html">Men</a></li>
-                                        <li><a href="listing-collection.html">Accessories</a></li>
-                                        <li><a href="listing-collection.html">Shoes</a></li>
-                                        <li><a href="listing-collection.html">New Arrivals</a></li>
-                                        <li><a href="listing-collection.html">Clearence</a></li>
+                                        <li><a href="listing-collection.html">Tarjetas</a></li>
+                                        <li><a href="listing-collection.html">Stickers</a></li>
+                                        <li><a href="listing-collection.html">Folletos</a></li>
+                                        <li><a href="listing-collection.html">Volantes</a></li>
+                                        <li><a href="listing-collection.html">Varios </a></li>
+                                        <li><a href="listing-collection.html">Otros</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -2156,7 +2176,7 @@
                                                                         <li>{{Product.Category}}</li>
                                                                         <%--<li>Vendor: Addidas</li>--%>
                                                                     </ul>
-                                                                    <div class="tt-quantity">{{Quantity}}</div>x
+                                                                    <div class="tt-quantity_{{Product.ProductId}}">x{{Quantity}}</div>
                                                                     <div class="tt-price">S/.{{Product.UnitPrice}}</div>
                                                                 </div>
                                                             </a>

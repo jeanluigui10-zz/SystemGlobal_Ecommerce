@@ -364,7 +364,14 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+      <div class="tt-breadcrumb">
+	<div class="container">
+		<ul>
+			<li><a href="index.html">Incio</a></li>
+			<li>Cotizacón</li>
+		</ul>
+	</div>
+</div>
     
     <div class="row">
         <div class="col-lg-12">
@@ -389,8 +396,8 @@
                     </div>
                 </header>
 
-                <div class="row justify-content-center">
-                    <div id="editBasic" class="form-horizontal form-bordered">
+                <div class="row justify-content-center form-default">
+                    <div id="editBasic" class="form-horizontal form-bordered" style="border: 1px solid #e9e7e7;padding: 32px 39px 20px;">
                         <div class="form-group">
                             <div class="col-sm-6 col-md-4 col-lg-4 cnt-text-label text-custom">
                                 <asp:Label ID="lblRequiredFields" runat="server" Text=""></asp:Label>
@@ -408,7 +415,7 @@
                         </div>--%>
 
                         <div class="form-group" style="display:none">
-                            <asp:Label ID="lblResourceCategory" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblResourceCategory" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <%-- FALTA IMPLEMENTAR EL METEDO PARA TRAER DESDE LA BD--%>
                                 <asp:DropDownList runat="server" ID="ddlResourceCategory" CssClass="form-control mb-md">
@@ -420,7 +427,7 @@
                         </div>
 
                         <div class="form-group">
-                            <asp:Label ID="lblResourceType" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblResourceType" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:DropDownList runat="server" ID="ddlResourceType" CssClass="form-control mb-md">
                                 </asp:DropDownList>
@@ -431,7 +438,7 @@
                         </div>
 
                         <div class="form-group" style="display: none;">
-                            <asp:Label ID="lblSystemContact" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblSystemContact" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <%-- FALTA IMPLEMENTAR EL METEDO PARA TRAER DESDE LA BD--%>
                                 <asp:DropDownList runat="server" ID="ddlSystemContact" CssClass="">
@@ -442,40 +449,40 @@
                         </div>
 
                         <div class="form-group">
-                            <asp:Label ID="lblName" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblName" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control  validate[required,maxSize[50]]" MaxLength="50"></asp:TextBox>
                             </div>
                         </div>
                           <div class="form-group">
-                            <asp:Label ID="lblEmpresa" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblEmpresa" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtEmpresa" runat="server" CssClass="form-control  validate[required,maxSize[50]]" MaxLength="50"></asp:TextBox>
                             </div>
                         </div>
 
                        <div class="form-group">
-                            <asp:Label ID="lblEmail" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblEmail" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control  validate[required,maxSize[50]]" MaxLength="50"></asp:TextBox>
                             </div>
                         </div>
                          <div class="form-group">
-                            <asp:Label ID="lblTelefono" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblTelefono" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control  validate[required,maxSize[50]]" MaxLength="50"></asp:TextBox>
                             </div>
                         </div>
 
                          <div class="form-group">
-                            <asp:Label ID="lblCotizacion" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label">Precio Unitario</asp:Label>
+                            <asp:Label ID="lblCotizacion" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;">Precio Unitario</asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtUnitPrice" runat="server" CssClass="form-control  validate[required]"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <asp:Label ID="lblDescription" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblDescription" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-xs-12 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control  validate[required,maxSize[50]]" TextMode="MultiLine" MaxLength="50"></asp:TextBox>
                             </div>
@@ -483,7 +490,7 @@
                                                
 
                         <div class="form-group" id="dvUrl" style="display: none">
-                            <asp:Label ID="lblUrl" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblUrl" runat="server" Text="" CssClass="col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <%--<div class="col-md-4">
 								    user.&nbsp;<asp:TextBox runat="server" ID="txtUrl" CssClass="form-control"></asp:TextBox>                                    
                                     <div class="col-md-4">
@@ -492,7 +499,7 @@
 							    </div>--%>
                             <div class=" col-xs-11 col-sm-7 col-md-6 col-lg-7 cnt-controles">
                                 <div class="input-group">
-                                    <asp:Label runat="server" CssClass="input-group-addon"> user.&nbsp;</asp:Label>
+                                    <asp:Label runat="server" CssClass="input-group-addon" style="font-weight: 700;"> user.&nbsp;</asp:Label>
                                     <asp:TextBox runat="server" ID="txtUrl" class="form-control"></asp:TextBox>
                                 </div>
                                 <div>
@@ -502,7 +509,7 @@
                         </div>
 
                         <div class="form-group">
-                            <asp:Label ID="lblUploadFile" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblUploadFile" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label" style="font-weight: 700;"></asp:Label>
                             <div class="col-md-6">
                                 <asp:RadioButton ID="rbFile" Text="" GroupName="Location" runat="server" Checked="true" />
                                 <asp:RadioButton ID="rbLink" Text="" GroupName="Location" class="col-md-offset-1" runat="server" Checked="false" />
@@ -510,14 +517,14 @@
                             </div>
                         </div>
                         <div class="form-group" id="DivLink" style="display: none">
-                            <asp:Label ID="Label22" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label" data-trigger="hover" data-placement="top" data-content="&nbsp;" data-original-title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">"Link"<i class="icon-question-sign"></i></asp:Label>
+                            <asp:Label ID="Label22" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label" data-trigger="hover" data-placement="top" data-content="&nbsp;" data-original-title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="font-weight: 700;">"Link"<i class="icon-question-sign" ></i></asp:Label>
                             <div class="col-md-6">
                                 <asp:TextBox ID="txtLink" placeholder="ex. http://www.youtube.com/embed/w8IfaW-38yE" runat="server" CssClass="form-control"></asp:TextBox>
                                 <input type="button" value="Preview" onclick="preview('link')" class="btn btn-default" style="margin-top: 5px;" />
                             </div>
                         </div>
                         <div class="form-group" id="DivFile">
-                            <asp:Label ID="lblFileNameL" runat="server" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label" Text=""></asp:Label>
+                            <asp:Label ID="lblFileNameL" runat="server" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3 cnt-text-label" Text="" style="font-weight: 700;"></asp:Label>
                             <div class="col-md-6">
                                 <%-- AKLC_#[4914]_[lpacheco]_BEGIN --%>
                                 <asp:FileUpload ID="fuResource" runat="server" CssClass="Width_2_file fuResource" />
@@ -530,7 +537,7 @@
 
 
                         <div class="form-group">
-                            <asp:Label ID="lblEnabled" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3  cnt-text-label"></asp:Label>
+                            <asp:Label ID="lblEnabled" runat="server" Text="" CssClass="col-xs-5 col-sm-4 col-md-3 col-lg-3  cnt-text-label" style="font-weight: 700;"></asp:Label>
 
                             <div class="col-xs-2 col-sm-7 col-md-6 col-lg-7 cnt-text">
                                 <asp:CheckBox runat="server" Checked="true" ID="chkEnable" />

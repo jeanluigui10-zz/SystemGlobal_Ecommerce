@@ -21,10 +21,19 @@
                  object.request = obj.Detail;
                  var item = fn_LoadTemplates("datatable-shopcart", object);
                  $("#tblBodyTable").html(item);
+                 Calculate(obj);
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
              }
+         }
+         function Calculate(obj) {
+             //$('#unitPriceProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].Product.UnitPrice.toFixed(2));
+             $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
+             $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
+             $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
+             //$('#idSubTotalProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].TotalPrice.toFixed(2));
+             $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
          }
         
     </script>
@@ -62,18 +71,18 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-xl-4">
-					<div class="tt-shopcart-wrapper">
+					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
 							<h4 class="tt-title">
-								ESTIMATE SHIPPING AND TAX
+								UBICACION DE RECOJO DE PEDIDO
 							</h4>
-							<p>Enter your destination to get a shipping estimate.</p>
+							<p> Av. España Nº 1344 - Trujillo</p>
 							
 								<div class="form-group">
-									<label for="address_country">COUNTRY <sup>*</sup></label>
-									<select id="address_country" class="form-control">
-										<option>Austria</option>
-										<option>Belgium</option>
+									<label for="address_country">DEPARTAMENTO <sup>*</sup></label>
+									<select id="address_country" class="form-control" disabled>
+										<option>Peru</option>
+										<%--<option>Belgium</option>
 										<option>Cyprus</option>
 										<option>Croatia</option>
 										<option>Czech Republic</option>
@@ -93,29 +102,32 @@
 										<option>Slovakia</option>
 										<option>Slovenia</option>
 										<option>Spain</option>
-										<option>United Kingdom</option>
+										<option>United Kingdom</option>--%>
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="address_province">STATE/PROVINCE <sup>*</sup></label>
+									<label for="address_province">PROVINCIA <sup>*</sup></label>
 									<select id="address_province" class="form-control">
-										<option>State/Province</option>
+										<option>Trujillo</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="address_zip">ZIP/POSTAL CODE <sup>*</sup></label>
-									<input type="text" name="name" class="form-control" id="address_zip" placeholder="Zip/Postal Code">
+									<label for="address_zip">DISTRITO <sup>*</sup></label>
+                                            <select id="address_zip" class="form-control" disabled>
+										<option>Trujillo</option>
+									</select>
+									<%--<input type="text" name="name" class="form-control" id="address_zip" placeholder="Zip/Postal Code">--%>
 								</div>
-								<a href="#" class="btn btn-border">CALCULATE SHIPPING</a>
+								<%--<a href="#" class="btn btn-border">CALCULATE SHIPPING</a>
 								<p>
 									There is one shipping rate available for Alabama, Tanzania, United Republic Of.
 								</p>
 								<ul class="tt-list-dot list-dot-large">
 									<li><a href="#">International Shipping at $20.00</a></li>
-								</ul>
+								</ul>--%>
 							
 						</div>
-						<div class="tt-shopcart-box">
+						<%--<div class="tt-shopcart-box">
 							<h4 class="tt-title">
 								NOTE
 							</h4>
@@ -123,23 +135,27 @@
 							
 								<textarea class="form-control" rows="7"></textarea>
 						
-						</div>
+						</div>--%>
 						<div class="tt-shopcart-box tt-boredr-large">
 							<table class="tt-shopcart-table01">
 								<tbody>
 									<tr>
-										<th>SUBTOTAL</th>
-										<td>$324</td>
+										<th>SubTotal</th>
+										<td id="idSubTotalRight">S/. 0.00</td>
+									</tr>
+                                            <tr>
+										<th>Igv</th>
+										<td id="idIGVRight">S/. 0.00</td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
-										<th>GRAND TOTAL</th>
-										<td>$324</td>
+										<th>Total</th>
+										<td id="idTotalRigth">S/. 0.00</td>
 									</tr>
 								</tfoot>
 							</table>
-							<a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>PROCEED TO CHECKOUT</a>
+							<a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>PROCEDER A PAGAR</a>
 						</div>
 					</div>
 				</div>
@@ -169,7 +185,7 @@
                                                  
 										<ul class="tt-list-parameters">
 											<li>
-												<div class="tt-price">
+												<div class="tt-price" id="unitPriceProduct_{{Product.ProductId}}">
 													S/.{{Product.UnitPrice}}
 												</div>
 											</li>
@@ -198,7 +214,7 @@
 										</div>
 									</td>
 									<td>
-										<div class="tt-price subtotal">
+										<div class="tt-price subtotal" id="idSubTotalProduct_{{Product.ProductId}}">
 											S/.{{TotalPrice}}
 										</div>
 									</td>

@@ -51,9 +51,9 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">Multipurpose</div>
-										<div class="tp-caption1-wd-2">Premium<br>Html Template</div>
-										<div class="tp-caption1-wd-3">30 skins, powerful features, great support, exclusive offer</div>
+										<div class="tp-caption1-wd-1 tt-base-color">De multiples diseños</div>
+										<div class="tp-caption1-wd-2">Exclusivos<br></div>
+										<div class="tp-caption1-wd-3">Los mejores Diseños</div>
 										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
@@ -68,9 +68,9 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-white-color">Ready To</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Use Unique<br>Demos</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Optimized for speed, website that sells</div>
+										<div class="tp-caption1-wd-1 tt-white-color">Todo listo</div>
+										<div class="tp-caption1-wd-2 tt-white-color">Usa nuestra<br>Tienda</div>
+										<div class="tp-caption1-wd-3 tt-white-color">Compras faciles y rapidas</div>
 										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
@@ -117,8 +117,8 @@
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
 										<div class="tp-caption1-wd-1 tt-base-color">Bienvenido</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>
+										<div class="tp-caption1-wd-2 tt-white-color">Busca tus Diseños<br>Tienda</div>
+										<div class="tp-caption1-wd-3 tt-white-color">Para el mejor comercio electronico</div>
 										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
@@ -148,17 +148,17 @@
 	<div class="container-indent">
 		<div class="container-fluid">
 			<div class="tt-block-title">
-				<h2 class="tt-title"><a target="_blank" href="https://www.instagram.com/wokieeshop/">@ FOLLOW</a> US ON</h2>
+				<h2 class="tt-title"><a target="_blank" href="https://www.instagram.com/wokieeshop/">@ Argos</a> Diseño</h2>
 				<div class="tt-description">INSTAGRAM</div>
 			</div>
-			<div class="row">
+			<%--<div class="row">
 				<div id="instafeed" class="instafeed-fluid"
 					data-accessToken="8626857013.dd09515.0fcd8351c65140d48f5a340693af1c3f"
 					data-clientId="dd095157744c4bd0a67181fc4906e5b6"
 					data-userId="8626857013"
 					data-limitImg="6">
 				</div>
-			</div>
+			</div>--%>
 		</div>
 	</div>
 	<div class="container-indent">
@@ -170,8 +170,8 @@
 							<i class="icon-f-48"></i>
 						</div>
 						<div class="tt-col-description">
-							<h4 class="tt-title">FREE SHIPPING</h4>
-							<p>Free shipping on all US order or order above $99</p>
+							<h4 class="tt-title">ENVIO</h4>
+							<p>Envío gratis en todos los pedidos</p>
 						</div>
 					</a>
 				</div>
@@ -181,8 +181,8 @@
 							<i class="icon-f-35"></i>
 						</div>
 						<div class="tt-col-description">
-							<h4 class="tt-title">SUPPORT 24/7</h4>
-							<p>Contact us 24 hours a day, 7 days a week</p>
+							<h4 class="tt-title">SOPORTE</h4>
+							<p>Contáctenos las 24 horas del día, los 7 días de la semana.</p>
 						</div>
 					</a>
 				</div>
@@ -192,8 +192,8 @@
 							<i class="icon-e-09"></i>
 						</div>
 						<div class="tt-col-description">
-							<h4 class="tt-title">30 DAYS RETURN</h4>
-							<p>Simply return it within 24 days for an exchange.</p>
+							<h4 class="tt-title">PROMOCIONES</h4>
+							<p>Las mejores ofertas.</p>
 						</div>
 					</a>
 				</div>

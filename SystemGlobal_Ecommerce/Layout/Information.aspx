@@ -154,7 +154,7 @@
 										<div class="col-auto align-self-center">
 											<div class="form-group">
 												<ul class="additional-links">
-													<li>ó <a href="#">Volver a la Tienda</a></li>
+													<li>ó <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Volver a la Tienda</a></li>
 												</ul>
 											</div>
 										</div>

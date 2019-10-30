@@ -13,6 +13,7 @@ namespace xAPI.Entity.Order
         public DateTime OrderDate { get; set; }
         public int Status { get; set; }
         public Decimal Ordertotal { get; set; }
+        public Decimal SubTotal { get; set; }
         public int CustomerId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
@@ -20,18 +21,8 @@ namespace xAPI.Entity.Order
         public int UpdatedBy { get; set; }
 
         public Customer Customer { get; set; }
-        //public Customer Customer
-        //{
-        //    get
-        //    {
-        //        objCustomer = objCustomer ?? new Customer();
-        //        return objCustomer;
-        //    }
-        //    set
-        //    {
-        //        objCustomer = value;
-        //    }
-        //}
+
+        public Decimal IGV { get; set; }
 
         List<OrderDetail> objListOrderDetail;
         public List<OrderDetail> ListOrderDetail
@@ -57,21 +48,28 @@ namespace xAPI.Entity.Order
         }
         public void CalculateTotals()
         {
-            Decimal TotalOrder = 0;
-
+            Decimal TotalOrder = 0.00M;
+            Decimal Subtotal = 0.00M;
+            Decimal TotalIgv = 0.00M;
             foreach (OrderDetail item in this.ListOrderDetail)
             {
-                TotalOrder += item.Totalprice;              
+                Subtotal += item.Totalprice;               
             }
 
+            TotalIgv = Subtotal * 0.18M;
+            TotalOrder = Subtotal + TotalIgv;
+
+            this.SubTotal = Subtotal;
             this.Ordertotal = TotalOrder;
+            this.IGV = TotalIgv;
+
         }
-        public decimal CalculateTotalPricexProduct(OrderDetail OrderDetail)
+        public void CalculateTotalPricexProduct(OrderDetail OrderDetail)
         {
-            Decimal TotalPrice = 0;
-            TotalPrice += OrderDetail.Quantity * OrderDetail.Product.UnitPrice;
-            //Totalprice = TotalPrice;
-            return TotalPrice;
+            Decimal totalPrice = 0;
+            totalPrice += OrderDetail.Quantity * OrderDetail.Product.UnitPrice;
+            OrderDetail.Totalprice = totalPrice;
+            //return TotalPrice;
         }
     }
 }

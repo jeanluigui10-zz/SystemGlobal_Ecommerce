@@ -26067,7 +26067,9 @@ input::-ms-clear {
   display: inline-block; }
   .tt-logo img {
     height: auto;
-    max-height: 20px; }
+    /*max-height: 20px;*/
+
+  }
 
 /* tt-box-info */
 .tt-box-info {
