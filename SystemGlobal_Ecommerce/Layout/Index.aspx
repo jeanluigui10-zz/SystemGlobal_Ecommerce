@@ -132,8 +132,8 @@
 	<div class="container-indent">
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
-				<h2 class="tt-title">BEST SELLER</h2>
-				<div class="tt-description">TOP SALE IN THIS WEEK</div>
+				<h2 class="tt-title">LOS MEJORES DISEÑOS</h2>
+				<div class="tt-description">VENTA SUPERIOR EN ESTA SEMANA</div>
 			</div>
 			<div class="row tt-layout-product-item" id="ListProductHome">
 				   <div class="col-6 col-md-4 col-lg-3">
