@@ -51,10 +51,10 @@ namespace SystemGlobal_Ecommerce.Layout
 
         private void LoadFieldTranslations()
         {
-            lblRequiredFields.Text = "(*)Required fields.";
+            lblRequiredFields.Text = "(*)Campos requeridos.";
 
             lblResourceCategory.Text = "Resource Category:";
-            lblResourceType.Text = "Resource Type:";
+            lblResourceType.Text = "Tipo de archivo:";
 
             lblSystemContact.Text = "System Contact:";
 
@@ -171,7 +171,7 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!string.IsNullOrEmpty(Request.QueryString["q"]))
             {
-                this.ltTitle.Text = "Edit a Resource";
+                this.ltTitle.Text = "Editar cotizacion";
                 string id = Encryption.Decrypt(Request.QueryString["q"]);
                 if (!string.IsNullOrEmpty(id))
                     vsId = Convert.ToInt32(id);
@@ -180,7 +180,7 @@ namespace SystemGlobal_Ecommerce.Layout
             }
             else
             {
-                this.ltTitle.Text = "Add a Resource";
+                this.ltTitle.Text = "Registrar cotizacion";
             }
 
         }

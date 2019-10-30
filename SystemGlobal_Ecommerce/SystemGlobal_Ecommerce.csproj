@@ -377,6 +377,7 @@
     <Content Include="Files\images\custom\listing_promo_img_07.jpg" />
     <Content Include="Files\images\custom\logo-white.png" />
     <Content Include="Files\images\custom\logo.png" />
+    <Content Include="Files\images\custom\logoargos.png" />
     <Content Include="Files\images\custom\services-img-01.jpg" />
     <Content Include="Files\images\custom\services-img-02.jpg" />
     <Content Include="Files\images\custom\services-img-03.jpg" />

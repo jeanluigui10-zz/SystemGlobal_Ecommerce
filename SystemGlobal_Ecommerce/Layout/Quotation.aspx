@@ -376,7 +376,7 @@
             <%--<asp:HiddenField ID="hfListLanguage" runat="server" />--%>
 
 
-            <section class="panel" style="text-align:centercenter">
+            <section class="panel" style="text-align:center">
                 <div id="message_row">
                 </div>
                 <header class="panel-heading">
@@ -389,7 +389,7 @@
                     </div>
                 </header>
 
-                <div class="panel-body form-default">
+                <div class="row justify-content-center">
                     <div id="editBasic" class="form-horizontal form-bordered">
                         <div class="form-group">
                             <div class="col-sm-6 col-md-4 col-lg-4 cnt-text-label text-custom">
