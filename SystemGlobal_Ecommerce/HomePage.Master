@@ -403,12 +403,12 @@
             <nav class="panel-menu mobile-main-menu">
                 <ul>
                     <li>
-                        <a href="index.html">INICIO</a>
+                        <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">INICIO</a>
                         <ul>
                             <li>
-                                <a href="index.html">HOME STYLES</a>
+                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME STYLES</a>
                                 <ul>
-                                    <li><a href="index.html">Home — Example 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
+                                    <li><a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Home — Example 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
                                     <li><a href="index-02.html">Home — Example 2</a></li>
                                     <li><a href="index-03.html">Home — Example 3</a></li>
                                     <li><a href="index-04.html">Home — Example 4 <span class="tt-badge tt-fatured">Popular</span></a></li>
@@ -420,7 +420,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="index.html">HOME STYLES</a>
+                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME STYLES</a>
                                 <ul>
                                     <li><a href="index-10.html">Home — Example 10</a></li>
                                     <li><a href="index-11.html">Home — Example 11</a></li>
@@ -434,7 +434,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="index.html">HOME SKINS <span class="tt-badge tt-sale">HOT</span></a>
+                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME SKINS <span class="tt-badge tt-sale">HOT</span></a>
                                 <ul>
                                     <li><a href="index-skin-snowboards.html">Snowboards Shop <span class="tt-badge tt-fatured">Popular</span></a></li>
                                     <li><a href="index-skin-phones.html">Phones Shop <span class="tt-badge tt-fatured">Popular</span></a></li>
@@ -826,8 +826,8 @@
                     <div class="row">
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
-                            <a class="tt-logo tt-logo-alignment" href="index.html">
-                                <img src="/Files/images/custom/logo.png" alt=""></a>
+                            <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
+                                <img src="/Files/images/custom/logoargos.png" alt=""></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
@@ -839,8 +839,8 @@
                     <div class="tt-header-holder">
                         <div class="tt-col-obj tt-obj-logo">
                             <!-- logo -->
-                            <a class="tt-logo tt-logo-alignment" href="index.html">
-                                <img src="/Files/images/custom/logo.png" alt=""></a>
+                            <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
+                                <img src="/Files/images/custom/logoargos.png" alt=""></a>
                             <!-- /logo -->
                         </div>
                         <div class="tt-col-obj tt-obj-menu">
@@ -850,13 +850,13 @@
                                     <nav>
                                         <ul>
                                             <li class="dropdown tt-megamenu-col-02 selected">
-                                                <a href="index.html">INICIO</a>
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">INICIO</a>
                                                 <div class="dropdown-menu">
                                                     <div class="row tt-col-list">
                                                         <div class="col">
-                                                            <h6 class="tt-title-submenu"><a href="index.html">HOME STYLES</a></h6>
+                                                            <h6 class="tt-title-submenu"><a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME STYLES</a></h6>
                                                             <ul class="tt-megamenu-submenu">
-                                                                <li><a href="index.html">Home — Example 1
+                                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Home — Example 1
 															<img src="/Files/images/loader.svg" data-src="/Files/images/custom/tt-layout-img-01.png" alt="Example 1">
                                                                     <span class="tt-badge tt-fatured">Popular</span>
                                                                 </a></li>
@@ -881,7 +881,7 @@
                                                             </ul>
                                                         </div>
                                                         <div class="col">
-                                                            <h6 class="tt-title-submenu"><a href="index.html">HOME STYLES</a></h6>
+                                                            <h6 class="tt-title-submenu"><a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME STYLES</a></h6>
                                                             <ul class="tt-megamenu-submenu">
                                                                 <li><a href="index-10.html">Home — Example 10
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/custom/tt-layout-img-10.png" alt="Example 10"></a></li>
@@ -1800,15 +1800,15 @@
                         <div class="tt-col-left">
                             <div class="tt-col-item tt-logo-col">
                                 <!-- logo -->
-                                <a class="tt-logo tt-logo-alignment" href="index.html">
-                                    <img src="/Files/images/custom/logo.png" alt="">
+                                <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
+                                    <img src="/Files/images/custom/logoargos.png" alt="">
                                 </a>
                                 <!-- /logo -->
                             </div>
                             <div class="tt-col-item">
                                 <!-- copyright -->
                                 <div class="tt-box-copyright">
-                                    &copy; Wokiee 2018. All Rights Reserved
+                                    &copy; Argos 2019. Todos los derechos reservados
                                 </div>
                                 <!-- /copyright -->
                             </div>

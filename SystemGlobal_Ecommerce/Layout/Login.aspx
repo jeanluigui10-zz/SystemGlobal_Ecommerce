@@ -72,7 +72,7 @@
 								Al crear una cuenta, podra pasar a visualizar nuestros diseños.
 							</p>
 							<div class="form-group">
-								<a href="#" class="btn btn-top btn-border">CREAR UNA CUENTA</a>
+								<a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-top btn-border">CREAR UNA CUENTA</a>
 							</div>
 						</div>
 					</div>
