@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System_Maintenance.src.app_code;
@@ -17,8 +18,9 @@ namespace SystemGlobal_Ecommerce.Layout
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          
         }
+               
         [WebMethod]
         public static Object LoginSecurity(dynamic objCust)
         {

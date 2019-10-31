@@ -181,5 +181,6 @@ namespace xSystem_Maintenance.src.app_code
             get { return clsExtension.GetSession<String>("CultureId"); }
             set { HttpContext.Current.Session["CultureId"] = value; }
         }
+      
     }
 }

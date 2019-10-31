@@ -22,10 +22,11 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {                
-                LoadData();               
+                LoadData();
+             
             }
         }
-
+      
         private void LoadData(Boolean ShowMessage = false)
         {
             BaseEntity entity = new BaseEntity();

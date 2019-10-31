@@ -61,5 +61,8 @@ namespace SystemGlobal_Ecommerce
             BaseSession.Logout();
             Response.Redirect("Index.aspx");
         }
+
+       
+
     }
 }
