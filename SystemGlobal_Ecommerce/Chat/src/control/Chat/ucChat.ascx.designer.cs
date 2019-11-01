@@ -13,24 +13,6 @@ namespace SystemGlobal_Ecommerce.Chat.src.control.Chat {
     public partial class ucChat {
         
         /// <summary>
-        /// Control ddlLanguage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLanguage;
-        
-        /// <summary>
-        /// Control ddlModule.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlModule;
-        
-        /// <summary>
         /// Control hfUserId.
         /// </summary>
         /// <remarks>

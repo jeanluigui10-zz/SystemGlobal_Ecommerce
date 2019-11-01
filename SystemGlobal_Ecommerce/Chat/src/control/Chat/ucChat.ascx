@@ -254,16 +254,16 @@
         $("#message").val("").focus();
     }
 
-    function Fn_InitChat() {
+    //function Fn_InitChat() {
 
-        $("#loader").css('display', 'block');
-        setTimeout(function () { $("#loader").fadeOut(1500); }, 1500);
-        setTimeout(function () { $("#divInitChat").fadeOut(1500); }, 1500);
-        setTimeout(function () { $("#username").fadeIn(1500); }, 1500);
-        setTimeout(function () { $("#divFooterChat").fadeIn(1500); }, 1500);
-        $("#message").prop('disabled', false);
-        $("#message").val("").focus();
-    }
+    //    $("#loader").css('display', 'block');
+    //    setTimeout(function () { $("#loader").fadeOut(1500); }, 1500);
+    //    setTimeout(function () { $("#divInitChat").fadeOut(1500); }, 1500);
+    //    setTimeout(function () { $("#username").fadeIn(1500); }, 1500);
+    //    setTimeout(function () { $("#divFooterChat").fadeIn(1500); }, 1500);
+    //    $("#message").prop('disabled', false);
+    //    $("#message").val("").focus();
+    //}
     function Fn_InitChatFilter() {
         setTimeout(function () { $("#divInitChat").fadeIn(1500); }, 1500);
         setTimeout(function () { $("#username").fadeOut(1500); }, 1500);
@@ -288,13 +288,13 @@
         <div class="box box-primary direct-chat direct-chat-primary" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)">
             <div class="box-header with-border">
                 <h3 class="box-title">Chat</h3>
-                <input style="display: none" type="text" id="username" disabled="true" name="message" autocomplete="off" value="<%=this.hfFullName.Value%>" placeholder="Escriba su nombre ..." class="form-control" />
+                <input type="text" id="username" name="message" autocomplete="off" value="<%=this.hfFullName.Value%>" placeholder="Escriba su nombre ..." class="form-control" />
                 <div class="box-tools pull-right">
                     <i class="fa fa-times" type="button" onclick="Fn_CloseModal();" data-widget="remove" style="cursor: pointer;"></i>
                 </div>
             </div>
             <div class="box-body">
-                <div style="text-align: center" id="divInitChat">
+       <%--         <div style="text-align: center" id="divInitChat">
                     <h3 class="box-title" style="font-size: 20px;">Select Language and Module</h3>
                     <div class="cotainer">
                         <div class="row justify-content-center">
@@ -320,13 +320,13 @@
                         </div>
                     </div>
                     <button id="btnInit" type="button" onclick="Fn_InitChat();" class="btn btn-primary btn-flat" style="margin-top: 10px;">Start</button>
-                </div>
+                </div>--%>
 
                 <div id="loader" style="display: none"></div>
                 <div class="direct-chat-messages" id="divConversation">
                 </div>
             </div>
-            <div class="box-footer" style="display: none" id="divFooterChat">
+            <div class="box-footer"  id="divFooterChat">
                 <div class="input-group">
                     <input type="text" id="message" name="message" placeholder="Write your message..." class="form-control" />
                     <span class="input-group-btn">
