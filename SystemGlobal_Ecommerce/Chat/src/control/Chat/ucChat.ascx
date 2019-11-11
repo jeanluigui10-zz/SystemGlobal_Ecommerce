@@ -373,7 +373,7 @@
                 <span class="direct-chat-name pull-right">{{username}}</span>
                 <span class="direct-chat-timestamp pull-left"><%: DateTime.Now.ToString("HH:mm") %></span>
             </div>
-            <img class="direct-chat-img" src="../../../../src/images/user2.jpg" alt="Message User Image">
+            <img class="direct-chat-img" src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="Message User Image">
             <div class="direct-chat-text" style="word-wrap: break-word">
                 {{message}}
             </div>

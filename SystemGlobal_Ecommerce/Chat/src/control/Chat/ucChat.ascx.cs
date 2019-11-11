@@ -47,10 +47,10 @@ namespace SystemGlobal_Ecommerce.Chat.src.control.Chat
             this.hfFullName.Value = fullName.ToString();
         }
 
-        public void SetLanguageDefault(String languageId)
-        {
-                ddlLanguage.SelectedValue = languageId;            
-        }
+        //public void SetLanguageDefault(String languageId)
+        //{
+        //        ddlLanguage.SelectedValue = languageId;            
+        //}
 
         //private void LoadDropDownLists()
         //{
