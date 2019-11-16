@@ -1469,14 +1469,14 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="tt-offset-7">
-                                                                <a href="listing-left-column.html" class="tt-promo-02">
+                                                                <a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" class="tt-promo-02">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/custom/header-promo-03.jpg" alt="">
                                                                     <div class="tt-description tt-point-h-l tt-point-v-t">
                                                                         <div class="tt-description-wrapper">
                                                                             <div class="tt-title-small tt-white-color">SALE</div>
                                                                             <div class="tt-title-xlarge tt-white-color">70% OFF</div>
                                                                             <p class="tt-white-color">Free shipping on all US order or order above $99</p>
-                                                                            <span class="btn-underline tt-obj-bottom tt-white-color" style="background-color:orange!important" href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>">SOLICITAR COTIZACIÓN!</span>
+                                                                            <span class="btn-underline tt-obj-bottom tt-white-color" style="background-color:orange!important">SOLICITAR COTIZACIÓN!</span>
                                                                         </div>
                                                                     </div>
                                                                 </a>
@@ -1742,7 +1742,7 @@
                         </div>
                         <div class="col-md-auto">
                             <ul class="tt-social-icon">
-                                <li><a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a></li>
+                                <li><a class="icon-g-64" target="_blank" href="https://m.facebook.com/172200092874513"></a></li>
                                 <li><a class="icon-h-58" target="_blank" href="http://www.facebook.com/"></a></li>
                                 <li><a class="icon-g-66" target="_blank" href="http://www.twitter.com/"></a></li>
                                 <li><a class="icon-g-67" target="_blank" href="http://www.google.com/"></a></li>

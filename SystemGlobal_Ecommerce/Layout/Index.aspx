@@ -54,7 +54,7 @@
 										<div class="tp-caption1-wd-1 tt-base-color">De multiples diseños</div>
 										<div class="tp-caption1-wd-2">Exclusivos<br></div>
 										<div class="tp-caption1-wd-3">Los mejores Diseños</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
 								<li data-thumb="/Files/images/slides/01/imprenta6.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
@@ -71,7 +71,7 @@
 										<div class="tp-caption1-wd-1 tt-white-color">Todo listo</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Usa nuestra<br>Tienda</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Compras faciles y rapidas</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
 								<li data-thumb="/Files/images/slides/01/imprenta3.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
@@ -119,7 +119,7 @@
 										<div class="tp-caption1-wd-1 tt-base-color">Bienvenido</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Busca tus Diseños<br>Tienda</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Para el mejor comercio electronico</div>
-										<div class="tp-caption1-wd-4"><a href="listing-left-column.html" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
 									</div>
 								</li>
 							</ul>
