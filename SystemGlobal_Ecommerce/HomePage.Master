@@ -250,9 +250,14 @@
                              }
                              else {
                                  if (asw.d.Result == "NoOk") {
-                                     if (asw.d.Value == -1) {
+                                     if (asw.d.Value == 0) {
+                                         window.location.href = asw.d.Msg;
+                                     }  
+                                     else if (asw.d.Value == -1)
+                                     {
                                          $("#modalProductExist").click();
-                                     } else {                                         
+                                     }
+                                     else {                                         
                                          $("#modalProductErrorAdd").click();
                                      }
                                      
