@@ -58,12 +58,12 @@
                 var html = '';
                 html += ' <div class="direct-chat-msg right">                                                                                ';
                 html += '   <div class="direct-chat-info clearfix">                                                                          ';
-                html += '     <span class="direct-chat-name pull-right">' + 'Disconnected' + '</span>                                                      ';
+                html += '     <span class="direct-chat-name pull-right">' + 'Desconectado' + '</span>                                                      ';
                     html += '     <span class="direct-chat-timestamp pull-left"><%: DateTime.Now.ToString("HH:mm") %></span>                                       ';
                     html += '   </div>                                                                                                           ';
                     html += '  <div class="" style="background: red;text-align: center;">                                                                                    ';
-                    html += '   <span style=" color: white;"> ' + 'Sorry, there are no agents available. Soon we will contact you.' + '</span>                                                                                  ';
-                    html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
+                    html += '   <span style=" color: white;"> ' + 'En estos momentos no hay un agente disponible.' + '</span>                                                                                  ';
+                    //html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
                 html += '   </div>                                                                                                           ';
                 html += ' </div>                                                                                                             ';
 
@@ -72,7 +72,7 @@
                 $("input[id$=ManagerToken]").val("");
                 $("#divConversation").append(html);
                 $("#divConversation").scrollTop($("#divConversation")[0].scrollHeight);
-                $("#message").prop('disabled', true);
+                //$("#message").prop('disabled', true);
                 $("#loader").css('display', 'none');
             } catch (e) {
                 $("#loader").css('display', 'none');
@@ -90,7 +90,7 @@
                     html += '   </div>                                                                                                           ';
                     html += '  <div class="" style="background: red;text-align: center;">                                                                                    ';
                     html += '   <span style=" color: white;"> ' + 'At this time our agents are not available, you may be interested in looking for agents in another language.' + '</span>   ';
-                    html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
+                    //html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
                 html += '   </div>                                                                                                           ';
                 html += ' </div>                                                                                                             ';
 
@@ -112,12 +112,12 @@
                 var html = '';
                 html += ' <div class="direct-chat-msg right">                                                                                ';
                 html += '   <div class="direct-chat-info clearfix">                                                                          ';
-                html += '     <span class="direct-chat-name pull-right">' + 'Disconnected' + '</span>                                                      ';
+                html += '     <span class="direct-chat-name pull-right">' + 'Desconectado' + '</span>                                                      ';
                     html += '     <span class="direct-chat-timestamp pull-left"><%: DateTime.Now.ToString("HH:mm") %></span>                                       ';
                     html += '   </div>                                                                                                           ';
                     html += '  <div class="" style="background: gray;text-align: center;">                                                                                    ';
                     html += '   <span style=" color: white;"> ' + 'Thanks bye.' + '</span>   ';
-                    html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
+                    //html += '   <a style="color: white;cursor:pointer;" onclick="Fn_InitChatFilter();"> ' + 'Click here.' + '</a>  ';
                 html += '   </div>                                                                                                           ';
                 html += ' </div>                                                                                                             ';
 
@@ -357,7 +357,7 @@
                 <span class="direct-chat-name pull-left">{{accountAgentName}}</span>
                 <span class="direct-chat-timestamp pull-right"><%: DateTime.Now.ToString("HH:mm") %></span>
             </div>
-            <img class="direct-chat-img" src="../../../../src/images/user.png" alt="Message User Image">
+            <img class="direct-chat-img" src="https://www.whittierfirstday.org/wp-content/uploads/default-user-image-e1501670968910.png" alt="Message User Image">
             <div class="direct-chat-text" style="word-wrap: break-word">
                 {{message}}
             </div>
