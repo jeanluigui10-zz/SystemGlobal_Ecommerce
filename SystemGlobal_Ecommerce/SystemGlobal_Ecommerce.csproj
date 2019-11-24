@@ -1190,9 +1190,9 @@
     <Content Include="Files\font\wokiee\fonts\wokiee.woff" />
     <Content Include="Files\font\wokiee\selection.json" />
     <Content Include="HomePage.Master" />
+    <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\Login.aspx" />
-    <Content Include="Layout\PaymentWithPayPal.aspx" />
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
@@ -2116,6 +2116,13 @@
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Layout\Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2136,13 +2143,6 @@
     </Compile>
     <Compile Include="Layout\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\PaymentWithPayPal.aspx.cs">
-      <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\PaymentWithPayPal.aspx.designer.cs">
-      <DependentUpon>PaymentWithPayPal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\Quotation.aspx.cs">
       <DependentUpon>Quotation.aspx</DependentUpon>

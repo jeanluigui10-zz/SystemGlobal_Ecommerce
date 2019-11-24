@@ -19,6 +19,10 @@
              var glancedata = data;
              try {
                  obj = $.parseJSON(glancedata);
+                 for (var i = 0; i < obj.length; i++) {
+                     var uniteprice = obj[i].UnitPrice;
+                     obj[i].UnitPrice = uniteprice.toFixed(2);
+                 }
                  var object = {};
                  object.request = obj;
                  var item = fn_LoadTemplates("datatable-resources", object);

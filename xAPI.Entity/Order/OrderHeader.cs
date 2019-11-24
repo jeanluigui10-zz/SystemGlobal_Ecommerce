@@ -57,11 +57,11 @@ namespace xAPI.Entity.Order
             }
 
             TotalIgv = Subtotal * 0.18M;
-            TotalOrder = Subtotal + TotalIgv;
+            TotalOrder = Subtotal + Convert.ToDecimal(TotalIgv.ToString("N2"));
 
             this.SubTotal = Subtotal;
             this.Ordertotal = TotalOrder;
-            this.IGV = TotalIgv;
+            this.IGV = Convert.ToDecimal(TotalIgv.ToString("N2"));
 
         }
         public void CalculateTotalPricexProduct(OrderDetail OrderDetail)

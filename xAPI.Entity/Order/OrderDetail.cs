@@ -22,7 +22,7 @@ namespace xAPI.Entity.Order
         public void CalculateTotalPricexProduct()
         {
             Decimal TotalPrice = 0;
-            TotalPrice += this.Quantity * this.Product.UnitPrice;
+            TotalPrice += this.Quantity * Product.UnitPrice;
             Totalprice = TotalPrice;
             //return TotalPrice;
         }

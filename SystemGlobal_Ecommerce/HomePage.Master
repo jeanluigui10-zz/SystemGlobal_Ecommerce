@@ -859,7 +859,7 @@
                 </div>
             </div>
             <!-- tt-desktop-header -->
-            <div class="tt-desktop-header">
+            <div class="tt-desktop-header" id="divheader">
                 <div class="container">
                     <div class="tt-header-holder">
                         <div class="tt-col-obj tt-obj-logo">
@@ -1724,7 +1724,7 @@
         </asp:ContentPlaceHolder>
 
         <footer>
-            <div class="tt-footer-default tt-color-scheme-02">
+            <div class="tt-footer-default tt-color-scheme-02" id="divFooter">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-9">
@@ -1757,7 +1757,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tt-footer-col tt-color-scheme-01">
+            <div class="tt-footer-col tt-color-scheme-01" id="divFooter2">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-lg-2 col-xl-3">

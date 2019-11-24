@@ -1,8 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Review.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Review" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Confirmation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <script type="text/javascript">
-
+         window.onload = function () {
+             document.getElementById("divheader").style.display = "none";
+             document.getElementById("btnLateral").style.display = "none";
+             document.getElementById("converse-chat").style.display = "none";
+             document.getElementById("divFooter").style.display = "none";
+             document.getElementById("divFooter2").style.display = "none";
+             
+         }
          $(function () {
+             
              fn_init();
          });
 
@@ -28,29 +36,20 @@
              }
          }
          function Calculate(obj) {
-             //$('#unitPriceProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].Product.UnitPrice.toFixed(2));
              $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
              $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
              $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
-             //$('#idSubTotalProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].TotalPrice.toFixed(2));
              $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
          }
         
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="tt-breadcrumb">
-	<div class="container">
-		<ul>
-			<li><a href="index.html">Incio</a></li>
-			<li>Carrito de compas</li>
-		</ul>
-	</div>
-</div>
+
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder">CARRITO DE COMPRAS</h1>
+			<h1 class="tt-title-subpages noborder">COMPRA REALIZADADA SATIFACTORIAMENTE!!!</h1>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
@@ -59,7 +58,7 @@
 								
 							</tbody>
 						</table>
-						<div class="tt-shopcart-btn">
+						<%--<div class="tt-shopcart-btn">
 							<div class="col-left">
 								<a class="btn-link" href="Index.aspx"><i class="icon-e-19"></i>CONTINUAR COMPRANDO</a>
 							</div>
@@ -67,7 +66,7 @@
 								<a class="btn-link" href="#"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
 								<a class="btn-link" href="#"><i class="icon-h-48"></i>ACTUALIZAR CARRITO</a>
 							</div>
-						</div>
+						</div>--%>
 					</div>
 				</div>
 				<div class="col-sm-12 col-xl-4">
@@ -155,17 +154,7 @@
 									</tr>
 								</tfoot>
 							</table>
-                                  <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" style="width: 100%"></a></td></tr></table><!-- PayPal Logo -->
-                                  <asp:Button 
-                                        ID="btnPayment" 
-                                        runat="server" 
-                                        Text="Pagar" 
-                                        OnClick="btnPayment_Click"
-                                        Font-Bold="true"
-                                        Height="45"
-                                        Width="100%"
-                                        style="background: #2879fe; color:white"
-                                        />
+                                 
 						</div>
 					</div>
 				</div>

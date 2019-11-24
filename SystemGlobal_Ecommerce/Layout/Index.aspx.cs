@@ -157,8 +157,8 @@ namespace SystemGlobal_Ecommerce.Layout
                                     Object OrderHeader = new
                                     {
                                         Ordertotal = orderHeader.Ordertotal,
-                                    SubTotal = orderHeader.SubTotal,
-                                    IGV = orderHeader.IGV,
+                                        SubTotal = orderHeader.SubTotal,
+                                        IGV = orderHeader.IGV,
                                         CustomerId = orderHeader.Customer.CustomerId,
                                         CustomerName = orderHeader.Customer.FullName,
                                         Detail = lstDetail
