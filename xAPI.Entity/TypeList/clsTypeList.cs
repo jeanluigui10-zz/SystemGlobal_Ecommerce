@@ -4385,7 +4385,42 @@ namespace xAPI.Entity
         }
     }
 
+    [Serializable]
+    public class tBaseDetailOrder
+    {
+        public Int32 ID { get; set; }
+        public string NAME { get; set; }
+        public string ABBNAME { get; set; }
+        public Int32 MARKETID { get; set; }
+        public Int16 STATUS { get; set; }
+        public Int16 ACTION { get; set; }
+    }
 
+    [Serializable]
+    public class tBaseDetailOrderList : List<tBaseDetailOrder>, IEnumerable<SqlDataRecord>
+    {
+        IEnumerator<SqlDataRecord> IEnumerable<SqlDataRecord>.GetEnumerator()
+        {
+            SqlDataRecord ret = new SqlDataRecord(
+                new SqlMetaData("ID", SqlDbType.Int),
+                new SqlMetaData("NAME", SqlDbType.NVarChar, 4000),
+                new SqlMetaData("ABBNAME", SqlDbType.NVarChar, 4000),
+                new SqlMetaData("MARKETID", SqlDbType.Int),
+                new SqlMetaData("STATUS", SqlDbType.SmallInt),
+                new SqlMetaData("ACTION", SqlDbType.SmallInt)
+                );
+            foreach (tBaseDetailOrder data in this)
+            {
+                ret.SetInt32(0, data.ID);
+                ret.SetString(1, data.NAME);
+                ret.SetString(2, data.ABBNAME);
+                ret.SetInt32(3, data.MARKETID);
+                ret.SetInt16(4, data.STATUS);
+                ret.SetInt16(5, data.ACTION);
+                yield return ret;
+            }
+        }
+    }
 
 
 
