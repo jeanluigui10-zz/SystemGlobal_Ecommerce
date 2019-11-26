@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using xAPI.Dao.Order;
+using xAPI.Entity;
+using xAPI.Entity.Order;
+using xAPI.Library.Base;
 
 namespace xAPI.BL.Order
 {
@@ -20,5 +24,21 @@ namespace xAPI.BL.Order
             }
         }
         #endregion
+
+        public Boolean Insertar_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder, tBaseDetailOrderList objDetail) 
+        {
+            Boolean success;
+            try
+            {
+                objBase = new BaseEntity();
+                success = OrderDAO.Instance.Insertar_Pedido(ref objBase, ref objOrder, objDetail);
+            }
+            catch (Exception ex)
+            {
+                success = false;
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
     }
 }

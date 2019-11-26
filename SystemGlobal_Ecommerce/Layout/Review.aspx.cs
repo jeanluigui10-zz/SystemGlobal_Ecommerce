@@ -13,6 +13,9 @@ using PayPal.Api;
 using PayPal.Sample.Utilities;
 using PayPal.Sample;
 using System.Globalization;
+using xAPI.BL.Order;
+using xAPI.Entity;
+using xAPI.Library.Base;
 
 namespace SystemGlobal_Ecommerce.Layout
 {
@@ -44,10 +47,50 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 if (Convert.ToString(response.state) == "approved")
                 {
+                    OrderHeader objOrder = BaseSession.SsOrderxCore;
+                    objOrder.Status = (Int32)EnumStatus.Enabled;
+                    SaveOrder(objOrder);
+
                     String Auth = PaymentId;
                     String TransactionId = Convert.ToString(response.transactions[0].related_resources[0].sale.id);
                     String Message = response.state;
                 }
+            }
+        }
+
+        private void SaveOrder(OrderHeader objOrder)
+        {
+            try
+            {
+                BaseEntity objBase = new BaseEntity();
+                tBaseDetailOrderList objListDetail = new tBaseDetailOrderList();
+
+                for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+                {
+                    objListDetail.Add(new tBaseDetailOrder()
+                    {
+                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        Price = objOrder.ListOrderDetail[i].Product.UnitPrice,
+                        Quantity = objOrder.ListOrderDetail[i].Quantity,
+                        CreatedBy = objOrder.Customer.CustomerId,
+                        UpdatedBy = objOrder.Customer.CustomerId,
+                        Status = Convert.ToByte(EnumStatus.Enabled)
+                    });
+                }
+                Boolean success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
+                if (success) 
+                {
+                    //Ok
+                    Response.Redirect("~/Layout/Confirmation.aspx", true);
+                }
+                else
+                {
+                    this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Message(EnumAlertType.Error, "Ocurrio un error al guardar la Orden");
             }
         }
 
@@ -195,95 +238,121 @@ namespace SystemGlobal_Ecommerce.Layout
 
         private void GoBack()
         {
-            Response.Redirect("Index.aspx");
+            Response.Redirect("~/Layout/Index.aspx");
         }
 
         private void PayPal_SendOrder(OrderHeader objOrder)
-        {
-                //Pase un objeto `APIContext` para autenticar, la llamada y para enviar una identificación de solicitud única           
+        {         
                 var apiContext = Configuration.GetAPIContext();
 
-                // Un recurso que representa a un pagador que financia un pago, metodo de pago es paypal
                 var payer = new Payer() { payment_method = "paypal" };
-
-                // Estas URL determinarán cómo se redirige al usuario desde PayPal una vez que han aprobado o cancelado el pago.
-                var baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Layout/Confirmation.aspx?";
-                var guid = Convert.ToString((new Random()).Next(100000));
-                var redirectUrl = baseURI + "guid=" + guid;
-                var redirUrls = new RedirectUrls()
-                {
-                    cancel_url = redirectUrl + "&cancel=true",
-                    return_url = redirectUrl
-                };
                 
-                    var itemList = new ItemList();
-                    var items = new List<Item>();
-                    for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+                RedirectUrls responseUrls = Get_UrlRedirect();
+                ItemList responseItems = Get_Items(objOrder);
+                Details responseDetail = Get_DetailsPay(objOrder);
+                Amount resposeAmount = Get_AmountTotals(objOrder, responseDetail);
+                List<Transaction> responseTransaction = Get_Transaction(resposeAmount, responseItems);
+                Payment responsePayment = Get_PaymentOrder(apiContext, responseTransaction, responseUrls, payer);
+
+            if (responsePayment != null) 
+            {
+                var links = responsePayment.links.GetEnumerator();
+                while (links.MoveNext())
+                {
+                    var link = links.Current;
+                    if (link.rel.ToLower().Trim().Equals("approval_url"))
                     {
-                        var item = new Item()
-                        {
-                            name = objOrder.ListOrderDetail[i].Product.Name,
-                            currency = "USD",
-                            price = Convert.ToString(objOrder.ListOrderDetail[i].Product.UnitPrice, CultureInfo.InvariantCulture),
-                            quantity = Convert.ToString(objOrder.ListOrderDetail[i].Quantity),
-                            sku = Convert.ToString(objOrder.ListOrderDetail[i].Product.Id)
-                        };
-                        items.Add(item);
+                        Response.Redirect(link.href, true);
                     }
-                    itemList.items = items;
+                }
+            }
+                   
+         }
 
+        private Payment Get_PaymentOrder(APIContext apiContext,List<Transaction> responseTransaction, RedirectUrls responseUrls, Payer payer)
+        {
+            var payment = new Payment()
+            {
+                intent = "sale",
+                payer = payer,
+                transactions = responseTransaction,
+                redirect_urls = responseUrls
+            };
 
-                    // Vamos a especificar detalles de un monto de pago.
-                    var details = new Details()
-                    {
-                        tax = Convert.ToString(objOrder.IGV, CultureInfo.InvariantCulture),
-                        shipping = "0",
-                        subtotal = Convert.ToString(objOrder.SubTotal, CultureInfo.InvariantCulture)
-                    };
+            Payment objPayment = payment.Create(apiContext);
+            return objPayment;
+        }
 
-                    // Especificar un monto de pago
-                    var amount = new Amount()
-                    {
-                        currency = "USD",
-                        total = Convert.ToString(objOrder.Ordertotal, CultureInfo.InvariantCulture), //El total debe ser igual a la suma de envío, impuestos y subtotal.
-                        details = details
-                    };
+        private List<Transaction> Get_Transaction(Amount resposeAmount, ItemList responseItems)
+        {
+            var transactionList = new List<Transaction>();
 
-                    //Transaction 
-                    var transactionList = new List<Transaction>();
+            transactionList.Add(new Transaction()
+            {
+                description = "Transaccion de la orden de compra.",
+                invoice_number = Common.GetRandomInvoiceNumber(),
+                amount = resposeAmount,
+                item_list = responseItems
+            });
+            return transactionList;
+        }
 
-                    //Lista de transaccion
-                    transactionList.Add(new Transaction()
-                    {
-                        description = "Transaccion de la orden de compra.",
-                        invoice_number = Common.GetRandomInvoiceNumber(),
-                        amount = amount,
-                        item_list = itemList
-                    });
+        private Amount Get_AmountTotals(OrderHeader objOrder, Details detailTotal)
+        {
+            var amount = new Amount()
+            {
+                currency = "USD",
+                total = Convert.ToString(objOrder.Ordertotal, CultureInfo.InvariantCulture),
+                details = detailTotal
+            };
+            return amount;
+        }
 
-                    //Tipos e intenciones anteriores como `venta` o` autorizar`
-                    var payment = new Payment()
-                    {
-                        intent = "sale",
-                        payer = payer,
-                        transactions = transactionList,
-                        redirect_urls = redirUrls
-                    };
+        private Details Get_DetailsPay(OrderHeader objOrder)
+        {
+            var details = new Details()
+            {
+                tax = Convert.ToString(objOrder.IGV, CultureInfo.InvariantCulture),
+                shipping = "0",
+                subtotal = Convert.ToString(objOrder.SubTotal, CultureInfo.InvariantCulture)
+            };
+            return details;
+        }
 
-                    // Crea un pago usando valid APIContext
-                    var responsePayment = payment.Create(apiContext);
+        private ItemList Get_Items(OrderHeader objOrder)
+        {
+            var itemList = new ItemList();
+            var items = new List<Item>();
+            for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+            {
+                var item = new Item()
+                {
+                    name = objOrder.ListOrderDetail[i].Product.Name,
+                    currency = "USD",
+                    price = Convert.ToString(objOrder.ListOrderDetail[i].Product.UnitPrice, CultureInfo.InvariantCulture),
+                    quantity = Convert.ToString(objOrder.ListOrderDetail[i].Quantity),
+                    sku = Convert.ToString(objOrder.ListOrderDetail[i].Product.Id)
+                };
+                items.Add(item);
+            }
+            itemList.items = items;
+            return itemList;
+        }
 
-                    // Redirigir a paypal para aprobar pago.
-                    var links = responsePayment.links.GetEnumerator();
-                    while (links.MoveNext())
-                    {
-                        var link = links.Current;
-                        if (link.rel.ToLower().Trim().Equals("approval_url"))
-                        {
-                            Response.Redirect(link.href, true);
-                        }
-                    }
-                }      
+        private RedirectUrls Get_UrlRedirect()
+        {
+           
+            // Estas URL determinarán cómo se redirige al usuario desde PayPal una vez que han aprobado o cancelado el pago.
+            var baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Layout/Review.aspx?";
+            var guid = Convert.ToString((new Random()).Next(100000));
+            var redirectUrl = baseURI + "guid=" + guid;
+            var redirUrls = new RedirectUrls()
+            {
+                cancel_url = redirectUrl + "&cancel=true",
+                return_url = redirectUrl
+            };
+            return redirUrls;
+        }
     }
 }
     

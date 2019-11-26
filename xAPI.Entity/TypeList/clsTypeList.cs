@@ -4388,12 +4388,12 @@ namespace xAPI.Entity
     [Serializable]
     public class tBaseDetailOrder
     {
-        public Int32 ID { get; set; }
-        public string NAME { get; set; }
-        public string ABBNAME { get; set; }
-        public Int32 MARKETID { get; set; }
-        public Int16 STATUS { get; set; }
-        public Int16 ACTION { get; set; }
+        public Int32 ProductId { get; set; }
+        public Decimal Price { get; set; }
+        public Int32 Quantity { get; set; }
+        public Int32 CreatedBy { get; set; }
+        public Int32 UpdatedBy { get; set; }
+        public Byte Status  { get; set; }
     }
 
     [Serializable]
@@ -4402,21 +4402,21 @@ namespace xAPI.Entity
         IEnumerator<SqlDataRecord> IEnumerable<SqlDataRecord>.GetEnumerator()
         {
             SqlDataRecord ret = new SqlDataRecord(
-                new SqlMetaData("ID", SqlDbType.Int),
-                new SqlMetaData("NAME", SqlDbType.NVarChar, 4000),
-                new SqlMetaData("ABBNAME", SqlDbType.NVarChar, 4000),
-                new SqlMetaData("MARKETID", SqlDbType.Int),
-                new SqlMetaData("STATUS", SqlDbType.SmallInt),
-                new SqlMetaData("ACTION", SqlDbType.SmallInt)
+                new SqlMetaData("ProductId", SqlDbType.Int),
+                new SqlMetaData("Price", SqlDbType.Decimal),
+                new SqlMetaData("Quantity", SqlDbType.Int),
+                new SqlMetaData("CreatedBy", SqlDbType.Int),
+                new SqlMetaData("UpdatedBy", SqlDbType.Int),
+                new SqlMetaData("Status", SqlDbType.TinyInt)
                 );
             foreach (tBaseDetailOrder data in this)
             {
-                ret.SetInt32(0, data.ID);
-                ret.SetString(1, data.NAME);
-                ret.SetString(2, data.ABBNAME);
-                ret.SetInt32(3, data.MARKETID);
-                ret.SetInt16(4, data.STATUS);
-                ret.SetInt16(5, data.ACTION);
+                ret.SetInt32(0, data.ProductId);
+                ret.SetDecimal(1, data.Price);
+                ret.SetInt32(2, data.Quantity);
+                ret.SetInt32(3, data.CreatedBy);
+                ret.SetInt32(4, data.UpdatedBy);
+                ret.SetByte(5, data.Status);
                 yield return ret;
             }
         }
