@@ -209,6 +209,10 @@
              $("#modalProductErrorAdd").click(function () {
                  $("#modalProductErrorAdd").modal('show');
              })
+             $("#modalProductErrorView").click(function () {
+                 $("#modalProductErrorView").modal('show');
+             })
+             
              //$(".btnProcedCheckout-xss").click(function () {
              //    if (shopperSession != '0') {
              //        window.location = '/Home/CompletePurchase'
@@ -329,6 +333,60 @@
                      fn_callmethodComplete("Review.aspx/CartProduct_UpdateQuantity", JSON.stringify({ data: objData }), success, error, complete);
                 }
              });
+
+             $("body").on("click", ".view-to-cart-mp", function (e) {
+                 try {
+                     e.preventDefault();
+
+                     var productId = $(this)[0].dataset["productid"];
+                     var productname = $(this)[0].dataset["productname"];
+                     var productimg = $(this)[0].dataset["srcimg"];
+                     var productunitprice = $(this)[0].dataset["unitprice"];
+                     var fileDescription = $(this)[0].dataset["filedescription"];
+                     
+                     var objProduct = {
+                         ProductId: productId
+                     };
+                     var success = function (asw) {
+
+                         if (asw.d != null)
+                         {
+                             if (asw.d.Result == "Ok") {
+                                 $("#idImgProductView").attr('src', productimg);
+                                 $("#idImgProductView2").attr('src', productimg);
+                                 $("#idImgProductView3").attr('src', productimg);
+                                 $("#idImgProductView4").attr('src', productimg);
+                                 $("#idNameProdutView").text(productname);
+                                 $("#idPriceProductView").text("S/." + productunitprice);
+                                 $("#idDescripcionView").text(fileDescription);
+                                
+                                 $("#ModalquickView").click();
+                             }
+                             else
+                             {
+                                 if (asw.d.Result == "NoOk")
+                                 {
+                                     $("#modalProductErrorView").click();
+                                 }
+                             }
+                         }
+                         else {
+                             $("#modalProductErrorView").click();
+                         }
+                     }
+                     var error = function (xhr, ajaxOptions, thrownError) {
+                         $("#modalProductErrorView").click();
+                     }
+                     var complete = function () {
+                     }
+                     fn_callmethodComplete("Index.aspx/ViewProduct", JSON.stringify({ objProd: objProduct }), success, error, complete);
+
+                 } catch (e) {
+                     $("#modalProductErrorView").click();
+                     //fn_message('e', 'Ocurrio un error visualizar producto.', 'message_row');
+                 }
+             });
+
 
              function Calculate(ObjOrderHeader) {
                  $('#unitPriceProduct_' + ObjOrderHeader.Detail.Product.Id).text("S/." + ObjOrderHeader.Detail.Product.UnitPrice.toFixed(2));
@@ -1934,32 +1992,27 @@
                                 <div class="col-12 col-md-5 col-lg-6">
                                     <div class="tt-mobile-product-slider arrow-location-center">
                                         <div>
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt=""></div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView"></div>
                                         <div>
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01-02.jpg" alt=""></div>
-                                        <div>
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01-03.jpg" alt=""></div>
-                                        <div>
-                                            <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01-04.jpg" alt=""></div>
-                                        <div>
-                                            <%--<div class="tt-video-block">
-										<a href="#" class="link-video"></a>
-										<video class="movie" src="video/video.mp4" poster="video/video_img.jpg"></video>
-									</div>--%>
-                                        </div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView2"></div>
+                                        <div>                                   
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView3"></div>
+                                        <div>                                   
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView4"></div>
+                                     
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-7 col-lg-6">
                                     <div class="tt-product-single-info">
                                         <div class="tt-add-info">
                                             <ul>
-                                                <li><span>SKU:</span> 001</li>
+                                                <li><span>SKU:</span> 0000</li>
                                                 <li><span>Availability:</span> 40 in Stock</li>
                                             </ul>
                                         </div>
-                                        <h2 class="tt-title">Cotton Blend Fleece Hoodie</h2>
+                                        <h2 class="tt-title" id="idNameProdutView"></h2>
                                         <div class="tt-price">
-                                            <span class="new-price">$29</span>
+                                            <span class="new-price" id="idPriceProductView">0.00</span>
                                             <span class="old-price"></span>
                                         </div>
                                         <div class="tt-review">
@@ -1972,10 +2025,10 @@
                                             </div>
                                             <a href="#">(1 Customer Review)</a>
                                         </div>
-                                        <div class="tt-wrapper">
-                                            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                        <div class="tt-wrapper" id="idDescripcionView">
+                                           
                                         </div>
-                                        <div class="tt-swatches-container">
+                                        <%--<div class="tt-swatches-container">
                                             <div class="tt-wrapper">
                                                 <div class="tt-title-options">SIZE</div>
                                               
@@ -2035,7 +2088,7 @@
                                                     </a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="tt-wrapper">
                                             <div class="tt-row-custom-01">
                                                 <div class="col-item">
@@ -2046,7 +2099,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-item">
-                                                    <a href="#" class="btn btn-lg"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
+                                                    <a class="btn btn-lg add-to-cart-mp"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -2134,11 +2187,10 @@
                     <div class="modal-body">
                         <div class="tt-modal-addtocart mobile">
                             <div class="tt-modal-messages">
-                                <i class="icon-f-68"></i>Ocurrio un error al agregar producto.
+                                <i class="icon-f-68"></i>Ocurrio un error al agregar Producto.
                             </div>
                             <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
                             <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">VER CARRITO</a>
-                            <a href="#" class="btn-link">PRCEDER A PAGAR</a>
                         </div>
                         <div class="tt-modal-addtocart desctope">
                             <div class="row">
@@ -2151,6 +2203,38 @@
                                     <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
                                     <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
                                     <a href="#" class="btn">PRCEDER A PAGAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <%--Error al visualizar producto--%>
+      <div class="modal  fade" id="modalProductErrorView" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tt-modal-addtocart mobile">
+                            <div class="tt-modal-messages">
+                                <i class="icon-f-68"></i>Ocurrio un error al visualizar producto.
+                            </div>
+                            <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
+                            <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">VER CARRITO</a>
+                        </div>
+                        <div class="tt-modal-addtocart desctope">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="tt-modal-messages">
+                                        <i class="icon-f-68"></i>Ocurrio un error al visualizar producto..
+                                    </div>                               
+                                </div>
+                                <div class="col-12 col-lg-6">                                
+                                    <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
+                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
                                 </div>
                             </div>
                         </div>

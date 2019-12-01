@@ -81,7 +81,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 if (success) 
                 {
                     //Ok
-                    Response.Redirect("~/Layout/Confirmation.aspx", true);
+                    Response.Redirect("~/Layout/Confirmation.aspx", false);
                 }
                 else
                 {
