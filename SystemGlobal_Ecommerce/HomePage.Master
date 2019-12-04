@@ -212,6 +212,9 @@
              $("#modalProductErrorView").click(function () {
                  $("#modalProductErrorView").modal('show');
              })
+             $("#ModalquickView").click(function () {
+                 $("#ModalquickView").modal('show');
+             })
              
              //$(".btnProcedCheckout-xss").click(function () {
              //    if (shopperSession != '0') {
@@ -352,14 +355,16 @@
                          if (asw.d != null)
                          {
                              if (asw.d.Result == "Ok") {
-                                 $("#idImgProductView").attr('src', productimg);
-                                 $("#idImgProductView2").attr('src', productimg);
-                                 $("#idImgProductView3").attr('src', productimg);
-                                 $("#idImgProductView4").attr('src', productimg);
-                                 $("#idNameProdutView").text(productname);
-                                 $("#idPriceProductView").text("S/." + productunitprice);
-                                 $("#idDescripcionView").text(fileDescription);
-                                
+                                 var product = JSON.parse(asw.d.Product);
+                                 $("#idImgProductView").attr('src', product.NameResource);
+                                 $("#idImgProductView2").attr('src', product.NameResource);
+                                 $("#idImgProductView3").attr('src', product.NameResource);
+                                 $("#idImgProductView4").attr('src', product.NameResource);
+                                 $("#idNameProdutView").text(product.ProductName);
+                                 $("#idPriceProductView").text("S/." + product.UnitPrice);
+                                 $("#idDescripcionView").text("Descripcion:" + product.FileDescription);
+                                 $("#viewSkuId").text("SKU:" + product.ProductId);
+                                 
                                  $("#ModalquickView").click();
                              }
                              else
@@ -1337,7 +1342,7 @@
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
                                                                                     <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
-                                                                                    <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
+                                                                                    <%--<div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>--%>
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1359,7 +1364,7 @@
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
                                                                                     <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
-                                                                                    <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
+                                                                                    <%--<div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>--%>
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1381,7 +1386,7 @@
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
                                                                                     <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
-                                                                                    <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
+                                                                                    <%--<div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>--%>
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1404,7 +1409,7 @@
                                                                                 </div>
                                                                                 <div class="tt-product-inside-hover">
                                                                                     <%--<div class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct">ADD TO CART</div>--%>
-                                                                                    <div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>
+                                                                                    <%--<div class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></div>--%>
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1984,7 +1989,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#2879FE"><span class="icon icon-clear"></span></button>
                     </div>
                     <div class="modal-body">
                         <div class="tt-modal-quickview desctope">
@@ -1992,13 +1997,13 @@
                                 <div class="col-12 col-md-5 col-lg-6">
                                     <div class="tt-mobile-product-slider arrow-location-center">
                                         <div>
-                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView"></div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView" style="width=270px; height=270px" ></div>
                                         <div>
-                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView2"></div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView2" style="width=270px; height=270px"></div>
                                         <div>                                   
-                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView3"></div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView3" style="width=270px; height=270px"></div>
                                         <div>                                   
-                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView4"></div>
+                                            <img src="/Files/images/loader.svg" alt="" id="idImgProductView4" style="width=270px; height=270px"></div>
                                      
                                     </div>
                                 </div>
@@ -2006,7 +2011,7 @@
                                     <div class="tt-product-single-info">
                                         <div class="tt-add-info">
                                             <ul>
-                                                <li><span>SKU:</span> 0000</li>
+                                                <li><span id="viewSkuId"></span>0</li>
                                                 <li><span>Availability:</span> 40 in Stock</li>
                                             </ul>
                                         </div>
@@ -2023,83 +2028,21 @@
                                                 <i class="icon-star-half"></i>
                                                 <i class="icon-star-empty"></i>
                                             </div>
-                                            <a href="#">(1 Customer Review)</a>
                                         </div>
                                         <div class="tt-wrapper" id="idDescripcionView">
                                            
                                         </div>
-                                        <%--<div class="tt-swatches-container">
-                                            <div class="tt-wrapper">
-                                                <div class="tt-title-options">SIZE</div>
-                                              
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>21</option>
-                                                            <option>25</option>
-                                                            <option>36</option>
-                                                        </select>
-                                                    </div>
-                                             
-                                            </div>
-                                            <div class="tt-wrapper">
-                                                <div class="tt-title-options">COLOR</div>
-                                               
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>Red</option>
-                                                            <option>Green</option>
-                                                            <option>Brown</option>
-                                                        </select>
-                                                    </div>
-                                                
-                                            </div>
-                                            <div class="tt-wrapper">
-                                                <div class="tt-title-options">TEXTURE:</div>
-                                                <ul class="tt-options-swatch options-large">
-                                                    <li><a class="options-color" href="#">
-                                                        <span class="swatch-img">
-                                                            <img src="/Files/images/loader.svg" data-src="/Files/images/custom/texture-img-01.jpg" alt="">
-                                                        </span>
-                                                        <span class="swatch-label color-black"></span>
-                                                    </a></li>
-                                                    <li class="active"><a class="options-color" href="#">
-                                                        <span class="swatch-img">
-                                                            <img src="/Files/images/loader.svg" data-src="/Files/images/custom/texture-img-02.jpg" alt="">
-                                                        </span>
-                                                        <span class="swatch-label color-black"></span>
-                                                    </a></li>
-                                                    <li><a class="options-color" href="#">
-                                                        <span class="swatch-img">
-                                                            <img src="/Files/images/loader.svg" data-src="/Files/images/custom/texture-img-03.jpg" alt="">
-                                                        </span>
-                                                        <span class="swatch-label color-black"></span>
-                                                    </a></li>
-                                                    <li><a class="options-color" href="#">
-                                                        <span class="swatch-img">
-                                                            <img src="/Files/images/loader.svg" data-src="/Files/images/custom/texture-img-04.jpg" alt="">
-                                                        </span>
-                                                        <span class="swatch-label color-black"></span>
-                                                    </a></li>
-                                                    <li><a class="options-color" href="#">
-                                                        <span class="swatch-img">
-                                                            <img src="/Files/images/loader.svg" data-src="/Files/images/custom/texture-img-05.jpg" alt="">
-                                                        </span>
-                                                        <span class="swatch-label color-black"></span>
-                                                    </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>--%>
                                         <div class="tt-wrapper">
                                             <div class="tt-row-custom-01">
-                                                <div class="col-item">
+                                         <%--       <div class="col-item">
                                                     <div class="tt-input-counter style-01">
                                                         <span class="minus-btn"></span>
                                                         <input type="text" value="1" size="5">
                                                         <span class="plus-btn"></span>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                                 <div class="col-item">
-                                                    <a class="btn btn-lg add-to-cart-mp"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
+                                                    <a class="btn btn-lg add-to-cart-mp" style="color:white"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
                                                 </div>
                                             </div>
                                         </div>

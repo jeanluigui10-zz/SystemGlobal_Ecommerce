@@ -247,7 +247,7 @@
 								</div>
                               
 								<div class="tt-row-btn">
-									<a href="#" class="tt-btn-quickview" data-productid="{{Id}}" data-toggle="modal" data-target="#ModalquickView"></a>
+									<a href="#" class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-toggle="modal" data-target="#ModalquickView"></a>
 									<a href="#" class="tt-btn-wishlist"></a>
 									<a href="#" class="tt-btn-compare"></a>
 								</div>
