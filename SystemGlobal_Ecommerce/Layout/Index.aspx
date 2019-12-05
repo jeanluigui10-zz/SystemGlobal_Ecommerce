@@ -5,6 +5,7 @@
 
          $(function () {
              fn_init();
+
          });
 
          function fn_init() {

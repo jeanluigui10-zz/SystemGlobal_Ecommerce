@@ -1195,6 +1195,7 @@
     <Content Include="Layout\Login.aspx" />
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
+    <Content Include="Layout\ucCallWebMethod.aspx" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
     <Content Include="plugins\ckeditor\LICENSE.md" />
     <Content Include="plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
@@ -2157,6 +2158,13 @@
     </Compile>
     <Compile Include="Layout\Review.aspx.designer.cs">
       <DependentUpon>Review.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ucCallWebMethod.aspx.cs">
+      <DependentUpon>ucCallWebMethod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\ucCallWebMethod.aspx.designer.cs">
+      <DependentUpon>ucCallWebMethod.aspx</DependentUpon>
     </Compile>
     <Compile Include="Payment\PayPal\Utilities\BaseSamplePage.cs">
       <SubType>ASPXCodeBehind</SubType>

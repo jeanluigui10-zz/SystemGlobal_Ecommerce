@@ -197,7 +197,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     }
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -217,52 +217,52 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseEntity objBase = new BaseEntity();
             try
             {
-                    AppResource obj = null;
-                    Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
-                    obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, ProductId);
+                AppResource obj = null;
+                Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
+                obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, ProductId);
 
-                    if (objBase.Errors.Count == 0)
+                if (objBase.Errors.Count == 0)
+                {
+                    if (obj != null)
                     {
-                        if (obj != null)
+                        obj.NameResource = Config.Impremtawendomain + obj.NameResource;
+                        Object objProduct = new
                         {
-                            obj.NameResource = Config.Impremtawendomain + obj.NameResource;                           
-                            Object objProduct = new
-                            {
-                                ProductId = obj.Id,
-                                ProductName = obj.Name,
-                                Category = obj.Category,
-                                UnitPrice = obj.UnitPrice,
-                                NameResource = obj.NameResource,
-                                FileDescription = obj.FileDescription
-                            };
+                            ProductId = obj.Id,
+                            ProductName = obj.Name,
+                            Category = obj.Category,
+                            UnitPrice = obj.UnitPrice,
+                            NameResource = obj.NameResource,
+                            FileDescription = obj.FileDescription
+                        };
 
-                           JavaScriptSerializer serializer = new JavaScriptSerializer();
-                           String sJSON = serializer.Serialize(objProduct);
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+                        String sJSON = serializer.Serialize(objProduct);
 
-                           objReturn = new
-                           {
-                               Result = "Ok",
-                               Msg = "La informacion del producto se obtuvo correctamente.",
-                               Product = sJSON.ToString()
-                           };    
-                        }
-                        else
+                        objReturn = new
                         {
-                            objReturn = new
-                            {
-                                Result = "NoOk",
-                                Msg = "No se puede ver detalle de producto."
-                            };
-                        }
+                            Result = "Ok",
+                            Msg = "La informacion del producto se obtuvo correctamente.",
+                            Product = sJSON.ToString()
+                        };
                     }
                     else
                     {
                         objReturn = new
                         {
                             Result = "NoOk",
-                            Msg = "Ocurrio un problema obteniendo informacion del producto."
+                            Msg = "No se puede ver detalle de producto."
                         };
                     }
+                }
+                else
+                {
+                    objReturn = new
+                    {
+                        Result = "NoOk",
+                        Msg = "Ocurrio un problema obteniendo informacion del producto."
+                    };
+                }
             }
             catch (Exception ex)
             {

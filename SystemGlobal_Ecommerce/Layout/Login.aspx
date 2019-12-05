@@ -4,6 +4,7 @@
 
         $(function () {
             //fn_init();
+
         });
 
         function Fn_LoginCustomer()
