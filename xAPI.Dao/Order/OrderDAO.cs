@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xAPI.Entity;
+using xAPI.Entity.Customers;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.Connection;
@@ -46,7 +47,7 @@ namespace xAPI.Dao.Order
                 cmd.Parameters.AddWithValue("@Description", objOrder.Description);
                 cmd.Parameters.AddWithValue("@Status", objOrder.Status);
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@TY_OrderDetail", Value = objDetail, SqlDbType = SqlDbType.Structured, TypeName = "TY_OrdersDetail" });
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteReader();
                 success = true;
                 if (!cmd.Parameters["@OrderId"].Value.ToString().Equals(string.Empty))
                     objOrder.OrderId = Convert.ToInt32(cmd.Parameters["@OrderId"].Value);
@@ -62,6 +63,79 @@ namespace xAPI.Dao.Order
                 clsConnection.DisposeCommand(cmd);
             }
             return success;
+        }
+        public OrderHeader Order_GetBy_OrderId(ref BaseEntity objBase, Int32 orderId)
+        {
+            OrderHeader obj = new OrderHeader();
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            try
+            {
+                cmd = new SqlCommand("Order_GetAll_ByOrderId", clsConnection.GetConnection());
+                cmd.Parameters.AddWithValue("@orderId", orderId);
+                cmd.CommandType = CommandType.StoredProcedure;
+                dr = cmd.ExecuteReader();
+                obj.Customer = new Customer();
+                obj.ListOrderDetail = new List<OrderDetail>();
+                AppResource product = new AppResource();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        obj.Customer = new Customer()
+                        {
+                            CustomerId = dr.GetColumnValue<Int32>("CustomerId"),
+                            FirstName = dr.GetColumnValue<String>("FirstName"),
+                            LastNamePaternal = dr.GetColumnValue<String>("LastNamePaternal"),
+                            LastNameMaternal = dr.GetColumnValue<String>("LastNameMaternal"),
+
+                        };
+                    }
+                    while (dr.Read())
+                    {
+                        product = new AppResource()
+                        {
+                            Id = dr.GetColumnValue<Int32>("CustomerId"),
+                            Name = dr.GetColumnValue<String>("Name"),
+                            Category = dr.GetColumnValue<String>("Category"),
+                            UnitPrice = dr.GetColumnValue<Decimal>("UnitPrice"),
+                            NameResource = dr.GetColumnValue<String>("NameResource")
+                        };
+                    }
+                    if (dr.NextResult())
+                    {
+                        while (dr.Read())
+                        {
+                            obj.ListOrderDetail.Add(new OrderDetail
+                            {
+                                ProductId = dr.GetColumnValue<Int32>("ProductId"),
+                                Quantity = dr.GetColumnValue<Int32>("Quantity"),
+                                Totalprice = dr.GetColumnValue<Int32>("Quantity") * dr.GetColumnValue<Decimal>("Price"),
+                                Product = product
+                            });
+                        }
+                    }
+                    if (dr.NextResult())
+                    {
+                        while (dr.Read())
+                        {
+                            obj.Ordertotal = dr.GetColumnValue<Decimal>("Total");
+                            obj.SubTotal = dr.GetColumnValue<Decimal>("SubTotal");
+                            obj.IGV = dr.GetColumnValue<Decimal>("IgvTotal");
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                obj = null;
+                objBase.Errors.Add(new BaseEntity.ListError(exception, "No se encontro orden."));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return obj;
         }
     }
 }

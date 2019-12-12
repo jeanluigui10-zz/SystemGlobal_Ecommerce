@@ -29,7 +29,16 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Paypal_Async_Transaction(Request.Params["paymentId"].ToString(), Request.Params["PayerID"].ToString());
                 }
-                LoadData();
+
+                if (!String.IsNullOrEmpty(Request.Params["ordid"]))
+                {
+                    String idOrder = Request.Params["ordid"].ToString();
+                    Cotization_ByOrderId(idOrder);
+                }
+                else
+                {
+                    LoadData();
+                }
             }
         }
 
@@ -110,7 +119,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
                         Category = objOrder.ListOrderDetail[i].Product.Category,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
+                        NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
                     };
                     Object Detail = new
                     {
@@ -355,6 +364,51 @@ namespace SystemGlobal_Ecommerce.Layout
             };
             return redirUrls;
         }
+
+        private void Cotization_ByOrderId(String OrderId)
+        {
+            BaseEntity objBase = new BaseEntity();
+            OrderHeader objOrder = OrderBL.Instance.Order_GetBy_OrderId(ref objBase, Convert.ToInt32(OrderId));
+            if (objOrder != null && objOrder.ListOrderDetail != null && objOrder.ListOrderDetail.Count > 0)
+            {
+                List<Object> lstDetail = new List<Object>();
+                for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+                {
+                    Object objProduct = new
+                    {
+                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        ProductName = objOrder.ListOrderDetail[i].Product.Name,
+                        Category = objOrder.ListOrderDetail[i].Product.Category,
+                        UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
+                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
+                    };
+                    Object Detail = new
+                    {
+                        Product = objProduct,
+                        Quantity = objOrder.ListOrderDetail[i].Quantity,
+                        TotalPrice = objOrder.ListOrderDetail[i].Totalprice,
+                    };
+
+                    lstDetail.Add(Detail);
+                }
+
+                Object OrderHeader = new
+                {
+                    Ordertotal = objOrder.Ordertotal,
+                    SubTotal = objOrder.SubTotal,
+                    IGV = objOrder.IGV,
+                    CustomerId = objOrder.Customer.CustomerId,
+                    CustomerName = objOrder.Customer.FullName,
+                    Detail = lstDetail
+                };
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                String sJSON = serializer.Serialize(OrderHeader);
+                hfData.Value = sJSON.ToString();
+
+            }
+        }
+
     }
 }
     
