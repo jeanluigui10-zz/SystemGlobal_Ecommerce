@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using xAPI.Entity.Customers;
 
 namespace xAPI.Entity.Order
@@ -21,7 +18,8 @@ namespace xAPI.Entity.Order
         public int UpdatedBy { get; set; }
 
         public Customer Customer { get; set; }
-
+        public int IsCotization { get; set; }
+        public String Description { get; set; }
         public Decimal IGV { get; set; }
 
         List<OrderDetail> objListOrderDetail;

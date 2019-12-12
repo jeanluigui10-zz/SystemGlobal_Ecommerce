@@ -77,6 +77,8 @@ namespace SystemGlobal_Ecommerce.Layout
                         Status = Convert.ToByte(EnumStatus.Enabled)
                     });
                 }
+                objOrder.IsCotization = 0;
+                objOrder.Description = String.Empty;
                 Boolean success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
                 if (success) 
                 {
