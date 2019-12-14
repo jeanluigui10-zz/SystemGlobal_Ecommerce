@@ -53,6 +53,7 @@
                     FirstName: $("input[id$=txtNombre]").val().trim(),
                     LastNamePaternal: $("input[id$=txtApellidoPaterno]").val().trim(),
                     LastNameMaternal: $("input[id$=txtApellidoMaterno]").val().trim(),
+                    Description: $("input[id$=txtDescription]").val().trim(),
                     NumberDocument: $("input[id$=txtNumberoDocumento]").val().trim(),
                     CellPhone: $("input[id$=txtCelular]").val().trim(),
                     Password: $("input[id$=txtPassword]").val().trim(),
@@ -88,7 +89,8 @@
             $("input[id$=txtContraseña]").val("");
             $("input[id$=txtCelular]").val("");
             $("input[id$=txtCorreo]").val("");
-
+            $("input[id$=txtDescription]").val("");
+            
           }
 
     </script>
@@ -133,6 +135,11 @@
 										<asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control"></asp:DropDownList>
 										<input type="text" name="tipodocumento" class="form-control" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
 									</div>
+                                             <div class="form-group">
+										<label for="loginDescription">Direccion </label>
+										<input type="text" name="Description" class="form-control" id="txtDescription" placeholder="Ingrese su Direccion...">
+									</div>
+                                            
                                     <div class="form-group">
 										<label for="loginCelular">Celular</label>
 										<input type="text" name="celular" class="form-control" id="txtCelular" placeholder="Ingrese su Celular">

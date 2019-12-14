@@ -7,11 +7,21 @@ using System.Web.UI.WebControls;
 using xAPI.Entity.Order;
 using xSystem_Maintenance.src.app_code;
 using System.Web.Script.Serialization;
+using xAPI.Library.Base;
+using System.Data;
+using xAPI.BL.Resource;
+
 namespace SystemGlobal_Ecommerce
 {
     public partial class HomePage : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+            Load_Settings();
+            Load_Products();           
+        }
+
+        private void Load_Products()
         {
             OrderHeader orderHeader = BaseSession.SsOrderxCore;
             if (orderHeader != null && orderHeader.ListOrderDetail != null && orderHeader.ListOrderDetail.Count > 0)
@@ -51,11 +61,25 @@ namespace SystemGlobal_Ecommerce
                 String sJSON = serializer.Serialize(OrderHeader);
 
                 hfDataListProduct.Value = sJSON.ToString();
-
-
             }
         }
 
+        private void Load_Settings()
+        {
+            BaseEntity objBase = new BaseEntity();
+            DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
+            if (objBase.Errors.Count == 0)
+            {
+                if (dt != null)
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        hfIsVisiableChat.Value = item["ChatOnlineActive"].ToString();
+                    }
+                }
+            }
+
+        }
         protected void btnCloseSession_ServerClick(object sender, EventArgs e)
         {
             BaseSession.Logout();

@@ -64,6 +64,7 @@ namespace xAPI.Dao.Customers
                 cmd.Parameters.AddWithValue("@Name", obj.FirstName);
                 cmd.Parameters.AddWithValue("@LastNamePaternal", obj.LastNamePaternal);
                 cmd.Parameters.AddWithValue("@LastNameMaternal", obj.LastNameMaternal);
+                cmd.Parameters.AddWithValue("@Description", obj.Description);
                 cmd.Parameters.AddWithValue("@DocumentType", obj.DocumentType);
                 cmd.Parameters.AddWithValue("@NumberDocument", obj.NumberDocument);
                 cmd.Parameters.AddWithValue("@CellPhone", obj.CellPhone);

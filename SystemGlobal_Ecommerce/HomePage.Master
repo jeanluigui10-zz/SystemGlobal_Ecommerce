@@ -193,8 +193,15 @@
     <link href="<%=ResolveUrl("~/Chat/src/css/chatStyle.css") %>" type="text/css" rel="stylesheet" />
      <script type="text/javascript">
 
+    
+
          $(function ()
          {
+             //CHATBOT
+             var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true;
+             ldk.src = 'https://s.cliengo.com/weboptimizer/5db1b1bae4b06482ce1297e8/5db1b1bbe4b06482ce1297eb.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s);
+             //END CHATBOT
            
              $(".modal").on("click", ".btn-close", function () {
                  $(this).closest('.modal-content').find('.modal-header .close').trigger('click');
@@ -342,6 +349,7 @@
                      //fn_message('e', 'Ocurrio un error visualizar producto.', 'message_row');
                  }
              });
+
              $("body").on("click", '.minus-btn, .plus-btn', function (e) {
                  var $input = $(this).parent().find('input');
                  var count = parseInt($input.val(), 10) + parseInt(e.currentTarget.className === 'plus-btn' ? 1 : -1, 10);
@@ -456,9 +464,25 @@
                 return true;
             }
             return false;
-        }
-        
+         }
 
+     
+         function Fn_VisibleChat() {
+             if ($("#<%=hfIsVisiableChat.ClientID%>").val() != "") {
+                 if ($("#<%=hfIsVisiableChat.ClientID%>").val() == "1") {                                              //Chat en linea
+
+                     $("#bodyIframe").css("display", "none");
+                       $("#btnLateral").css("display", "block");
+                   } else {                                           //chat bot
+
+                     $("#bodyIframe").css("display", "block");
+                       $("#btnLateral").css("display", "none");
+                   }
+               }
+         }
+
+           
+         window.onload = Fn_VisibleChat;
     </script>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -529,8 +553,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="listing-left-column.html">PRODUCTOS</a>
-                        <ul>
+                        <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">PRODUCTOS</a>
+                  <%--      <ul>
                             <li>
                                 <a href="listing-left-column.html">LISTING STYLES</a>
                                 <ul>
@@ -576,7 +600,7 @@
                                     <li><a href="account_address_fields.html">Account Address Fields</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul>--%>
                     </li>
                     <li style="display:none">
                         <a href="blog-listing-without-col.html">BLOG</a>
@@ -1019,8 +1043,8 @@
                                                 </div>
                                             </li>
                                             <li class="dropdown megamenu">
-                                                <a href="listing-collection.html">PRODUCTOS</a>
-                                                <div class="dropdown-menu">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">PRODUCTOS</a>
+                                             <%--   <div class="dropdown-menu">
                                                     <div class="row tt-col-list">
                                                         <div class="col">
                                                             <h6 class="tt-title-submenu"><a href="listing-left-column.html">LISTING STYLES</a></h6>
@@ -1068,7 +1092,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </li>
                                             <li class="dropdown tt-megamenu-col-01" style="display:none">
                                                 <a href="blog-listing-without-col.html">BLOG</a>
@@ -1548,10 +1572,10 @@
                                                 </div>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="index-rtl.html">SERVICIOS</a>
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">SERVICIOS</a>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="index-rtl.html">CONTACTANOS</a>
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>">CONTACTANOS</a>
                                             </li>
                                              <li class="dropdown">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>">SOLICITAR COTIZACIÓN</a>
@@ -1580,7 +1604,7 @@
                                                     <button type="button" class="tt-btn-close icon-g-80"></button>
                                                 </div>
                                                 <div class="tt-info-text">
-                                                    What are you Looking for?
+                                                    Estas buscando algun producto?
                                                 </div>
                                                 <div class="search-results">
                                                     <ul>
@@ -1720,7 +1744,7 @@
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
-                                                <li><a href="login.html"><i class="icon-f-94"></i>Cuenta</a></li>
+                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-94"></i>Cuenta</a></li>
                                                 <li style="display:none"><a href="wishlist.html"><i class="icon-n-072"></i>Wishlist</a></li>
                                                 <li style="display:none"><a href="compare.html"><i class="icon-n-08"></i>Compare</a></li>
                                                 <li style="display:none"><a href="page404.html"><i class="icon-f-68"></i>Check Out</a></li>
@@ -1823,12 +1847,12 @@
                                 </h4>
                                 <div class="tt-collapse-content">
                                     <ul class="tt-list">
-                                        <li><a href="listing-collection.html">Tarjetas</a></li>
-                                        <li><a href="listing-collection.html">Stickers</a></li>
-                                        <li><a href="listing-collection.html">Folletos</a></li>
-                                        <li><a href="listing-collection.html">Volantes</a></li>
-                                        <li><a href="listing-collection.html">Varios </a></li>
-                                        <li><a href="listing-collection.html">Otros</a></li>
+                                        <li><a href="#">Tarjetas</a></li>
+                                        <li><a href="#">Stickers</a></li>
+                                        <li><a href="#">Folletos</a></li>
+                                        <li><a href="#">Volantes</a></li>
+                                        <li><a href="#">Varios </a></li>
+                                        <li><a href="#">Otros</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1899,21 +1923,21 @@
                             <div class="tt-col-item">
                                 <!-- payment-list -->
                                 <ul class="tt-payment-list">
-                                    <li><a href="page404.html"><span class="icon-Stripe"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
+                                    <li><a href="#"><span class="icon-Stripe"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
                                     </span></a></li>
-                                    <li><a href="page404.html"><span class="icon-paypal-2">
+                                    <li><a href="#"><span class="icon-paypal-2">
                                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
                                     </span></a></li>
-                                    <li><a href="page404.html"><span class="icon-visa">
+                                    <li><a href="#"><span class="icon-visa">
                                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
                                     </span></a></li>
-                                    <li><a href="page404.html"><span class="icon-mastercard">
+                                    <li><a href="#"><span class="icon-mastercard">
                                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span>
                                     </span></a></li>
-                                    <li><a href="page404.html"><span class="icon-discover">
+                                    <li><a href="#"><span class="icon-discover">
                                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span>
                                     </span></a></li>
-                                    <li><a href="page404.html"><span class="icon-american-express">
+                                    <li><a href="#"><span class="icon-american-express">
                                         <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
                                     </span></a></li>
                                 </ul>
@@ -2185,7 +2209,7 @@
         <script src="/Files/js/main.js"></script>
        
         <asp:HiddenField runat="server" ID="hfDataListProduct" />
-        
+        <asp:HiddenField runat="server" ID="hfIsVisiableChat" />
         <uc1:ucChat runat="server" ID="ucChat" />
     </form>
         
@@ -2213,7 +2237,18 @@
         {{/each}}
     </script>
 
-    <!-- Código de instalación Cliengo para http://imprentaweb.tk --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/5db1b1bae4b06482ce1297e8/5db1b1bbe4b06482ce1297eb.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
+    <!-- Código de instalación Cliengo para http://imprentaweb.tk --> 
+ <%--   <script type="text/javascript">
+        (
+            function ()
+            {
+                var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true;
+                ldk.src = 'https://s.cliengo.com/weboptimizer/5db1b1bae4b06482ce1297e8/5db1b1bbe4b06482ce1297eb.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s);
+
+       })();
+    
+    </script>--%>
 
 </body>
 </html>

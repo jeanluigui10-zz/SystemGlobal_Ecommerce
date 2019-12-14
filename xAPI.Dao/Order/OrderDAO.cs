@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using xAPI.Entity;
 using xAPI.Entity.Customers;
 using xAPI.Entity.Order;
@@ -28,7 +25,7 @@ namespace xAPI.Dao.Order
             }
         }
         #endregion
-
+        private static String domainUrl = "http://imprentaweb.tk";
         public Boolean Insertar_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder, tBaseDetailOrderList objDetail)
         {
             SqlCommand cmd = null;
@@ -64,6 +61,30 @@ namespace xAPI.Dao.Order
             }
             return success;
         }
+        public Boolean Update_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder)
+        {
+            SqlCommand cmd = null;
+            Boolean success;
+            try
+            {
+                cmd = new SqlCommand("Update_Save_Sp", clsConnection.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@OrderId", objOrder.OrderId);
+                cmd.ExecuteReader();
+                success = true;
+
+            }
+            catch (Exception ex)
+            {
+                success = false;
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "A ocurrido un error al Actualizar la Orden."));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return success;
+        }
         public OrderHeader Order_GetBy_OrderId(ref BaseEntity objBase, Int32 orderId)
         {
             OrderHeader obj = new OrderHeader();
@@ -91,21 +112,26 @@ namespace xAPI.Dao.Order
 
                         };
                     }
-                    while (dr.Read())
-                    {
-                        product = new AppResource()
-                        {
-                            Id = dr.GetColumnValue<Int32>("CustomerId"),
-                            Name = dr.GetColumnValue<String>("Name"),
-                            Category = dr.GetColumnValue<String>("Category"),
-                            UnitPrice = dr.GetColumnValue<Decimal>("UnitPrice"),
-                            NameResource = dr.GetColumnValue<String>("NameResource")
-                        };
-                    }
                     if (dr.NextResult())
                     {
                         while (dr.Read())
                         {
+                            product = new AppResource()
+                            {
+                                Id = dr.GetColumnValue<Int32>("ID"),
+                                Name = dr.GetColumnValue<String>("Name"),
+                                Category = dr.GetColumnValue<String>("Category"),
+                                UnitPrice = dr.GetColumnValue<Decimal>("UnitPrice"),
+                                NameResource = dr.GetColumnValue<String>("NameResource")
+                            };
+                        }
+                    }
+                   
+                    if (dr.NextResult())
+                    {
+                        while (dr.Read())
+                        {
+                            product.UnitPrice = dr.GetColumnValue<Decimal>("Price");
                             obj.ListOrderDetail.Add(new OrderDetail
                             {
                                 ProductId = dr.GetColumnValue<Int32>("ProductId"),

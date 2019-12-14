@@ -196,7 +196,7 @@
         {{# each request}}
             <tr>
 									<td>
-										<a href="#" class="tt-btn-close"></a>
+										<%--<a href="#" class="tt-btn-close"></a>--%>
 									</td>
 									<td>
 										<div class="tt-product-img">

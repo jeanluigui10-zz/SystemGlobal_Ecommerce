@@ -40,6 +40,22 @@ namespace xAPI.BL.Order
             }
             return success;
         }
+        public Boolean Update_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder)
+        {
+            Boolean success;
+            try
+            {
+                objBase = new BaseEntity();
+                success = OrderDAO.Instance.Update_Pedido(ref objBase, ref objOrder);
+            }
+            catch (Exception ex)
+            {
+                success = false;
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
+        
         public OrderHeader Order_GetBy_OrderId(ref BaseEntity objBase, Int32 orderId)
         {
             OrderHeader objOrder = null;

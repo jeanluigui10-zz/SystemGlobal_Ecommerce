@@ -207,6 +207,7 @@
 	</div>
 </div>
     
+ 
  <asp:HiddenField runat="server" ID="hfData" />
     <script type="text/x-handlebars-template" id="datatable-resources">
         {{# each request}}

@@ -65,6 +65,10 @@ namespace SystemGlobal_Ecommerce.Layout
                 LimpiarSession();
                 this.Message(EnumAlertType.Success, "La orden se registro Correctamente!");
             }
+            else
+            {
+                Response.Redirect("Index.aspx");
+            }
         }
 
         private void LimpiarSession()

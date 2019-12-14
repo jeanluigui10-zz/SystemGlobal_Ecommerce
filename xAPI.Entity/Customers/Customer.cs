@@ -11,6 +11,8 @@ namespace xAPI.Entity.Customers
         public Int32 CustomerId { get; set; }
         public String FirstName { get; set; }
         public String LastNamePaternal { get; set; }
+        public String Description { get; set; }
+        
         public String LastNameMaternal { get; set; }
         public Int32 DocumentType { get; set; }
         public String NumberDocument { get; set; }

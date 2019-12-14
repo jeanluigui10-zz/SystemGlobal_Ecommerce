@@ -33,7 +33,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 if (!String.IsNullOrEmpty(Request.Params["ordid"]))
                 {
                     String idOrder = Request.Params["ordid"].ToString();
-                    Cotization_ByOrderId(idOrder);
+                    Cotization_ByOrderId(Encryption.Decrypt(idOrder));
                 }
                 else
                 {
@@ -88,7 +88,16 @@ namespace SystemGlobal_Ecommerce.Layout
                 }
                 objOrder.IsCotization = 0;
                 objOrder.Description = String.Empty;
-                Boolean success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
+                Boolean success;
+                if (objOrder.OrderId > 0)
+                {
+                     success = OrderBL.Instance.Update_Pedido(ref objBase, ref objOrder);
+
+                }
+                else
+                {
+                    success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
+                }
                 if (success) 
                 {
                     //Ok
@@ -119,7 +128,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
                         Category = objOrder.ListOrderDetail[i].Product.Category,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
+                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
                     };
                     Object Detail = new
                     {
@@ -380,7 +389,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
                         Category = objOrder.ListOrderDetail[i].Product.Category,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
+                        NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
                     };
                     Object Detail = new
                     {
@@ -401,8 +410,9 @@ namespace SystemGlobal_Ecommerce.Layout
                     CustomerName = objOrder.Customer.FullName,
                     Detail = lstDetail
                 };
-
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                objOrder.OrderId = Convert.ToInt32(OrderId);
+                BaseSession.SsOrderxCore = objOrder;
+               JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String sJSON = serializer.Serialize(OrderHeader);
                 hfData.Value = sJSON.ToString();
 
