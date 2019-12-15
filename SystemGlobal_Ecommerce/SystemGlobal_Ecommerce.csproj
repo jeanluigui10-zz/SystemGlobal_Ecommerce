@@ -348,6 +348,7 @@
     <Content Include="Files\images\custom\about2-img-01.jpg" />
     <Content Include="Files\images\custom\about2-img-02.jpg" />
     <Content Include="Files\images\custom\about2-img-03.jpg" />
+    <Content Include="Files\images\custom\argoslogo.jpg" />
     <Content Include="Files\images\custom\beachflag.png" />
     <Content Include="Files\images\custom\bg-discount.png" />
     <Content Include="Files\images\custom\brand-img-01.png" />
@@ -358,6 +359,7 @@
     <Content Include="Files\images\custom\brand-img-06.png" />
     <Content Include="Files\images\custom\brand-img-07.png" />
     <Content Include="Files\images\custom\brand-img-08.png" />
+    <Content Include="Files\images\custom\clienteImg.png" />
     <Content Include="Files\images\custom\comingsoon-img-01.jpg" />
     <Content Include="Files\images\custom\contact-img-01.jpg" />
     <Content Include="Files\images\custom\gift-img-01.png" />

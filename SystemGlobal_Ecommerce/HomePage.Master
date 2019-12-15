@@ -470,12 +470,11 @@
          function Fn_VisibleChat() {
              if ($("#<%=hfIsVisiableChat.ClientID%>").val() != "") {
                  if ($("#<%=hfIsVisiableChat.ClientID%>").val() == "1") {                                              //Chat en linea
-
-                     $("#bodyIframe").css("display", "none");
+                     $("#clgo").css("display", "none");
                        $("#btnLateral").css("display", "block");
                    } else {                                           //chat bot
 
-                     $("#bodyIframe").css("display", "block");
+                     $("#clgo").css("display", "block");
                        $("#btnLateral").css("display", "none");
                    }
                }
@@ -933,7 +932,7 @@
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
                             <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                <img src="/Files/images/custom/logoargos.png" alt="" style="width: 108px;height: 41px;"></a>
+                                <img src="/Files/images/custom/argoslogo.jpg" alt="" style="width: 108px;height: 41px;"></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
@@ -946,7 +945,7 @@
                         <div class="tt-col-obj tt-obj-logo">
                             <!-- logo -->
                             <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                <img src="/Files/images/custom/logoargos.png" alt="" style="width: 108px;height: 41px;"></a>
+                                <img src="/Files/images/custom/argoslogo.jpg" alt="" style="width: 108px;height: 41px;"></a>
                             <!-- /logo -->
                         </div>
                         <div class="tt-col-obj tt-obj-menu">
@@ -1907,7 +1906,7 @@
                             <div class="tt-col-item tt-logo-col">
                                 <!-- logo -->
                                 <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                    <img src="/Files/images/custom/logoargos.png" alt="">
+                                    <img src="/Files/images/custom/argoslogo.jpg" alt="">
                                 </a>
                                 <!-- /logo -->
                             </div>

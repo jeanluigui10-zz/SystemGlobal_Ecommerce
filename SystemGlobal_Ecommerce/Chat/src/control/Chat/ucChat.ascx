@@ -221,6 +221,7 @@
     /*Chat*/
     function Fn_SendMessage() {
         if ($("#message").val().trim() == "" || $("#username").val().trim() == "") {
+            fn_message('i', 'Debe ingresar un nombde de Usuario', 'message_row');
             return false;
         }
         if ($("#username").val().trim() == "") {
@@ -288,6 +289,7 @@
         <div class="box box-primary direct-chat direct-chat-primary" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)">
             <div class="box-header with-border">
                 <h3 class="box-title">Chat</h3>
+                <div id="message_row"></div>
                 <input type="text" id="username" name="message" autocomplete="off" value="<%=this.hfFullName.Value%>" placeholder="Escriba su nombre ..." class="form-control" />
                 <div class="box-tools pull-right">
                     <i class="fa fa-times" type="button" onclick="Fn_CloseModal();" data-widget="remove" style="cursor: pointer;"></i>
@@ -357,7 +359,7 @@
                 <span class="direct-chat-name pull-left">{{accountAgentName}}</span>
                 <span class="direct-chat-timestamp pull-right"><%: DateTime.Now.ToString("HH:mm") %></span>
             </div>
-            <img class="direct-chat-img" src="https://www.whittierfirstday.org/wp-content/uploads/default-user-image-e1501670968910.png" alt="Message User Image">
+            <img class="direct-chat-img" src="/Files/images/custom/argoslogo.jpg" alt="Message User Image">
             <div class="direct-chat-text" style="word-wrap: break-word">
                 {{message}}
             </div>
@@ -373,7 +375,7 @@
                 <span class="direct-chat-name pull-right">{{username}}</span>
                 <span class="direct-chat-timestamp pull-left"><%: DateTime.Now.ToString("HH:mm") %></span>
             </div>
-            <img class="direct-chat-img" src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="Message User Image">
+            <img class="direct-chat-img" src="/Files/images/custom/clienteImg.png" alt="Message User Image">
             <div class="direct-chat-text" style="word-wrap: break-word">
                 {{message}}
             </div>
