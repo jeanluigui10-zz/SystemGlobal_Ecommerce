@@ -272,7 +272,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 
                 RedirectUrls responseUrls = Get_UrlRedirect();
                 ItemList responseItems = Get_Items(objOrder);
-                Details responseDetail = Get_DetailsPay(objOrder, responseItems.items[0]);
+                Details responseDetail = Get_DetailsPay(objOrder, responseItems.items);
                 Amount resposeAmount = Get_AmountTotals(objOrder, responseDetail);
                 List<Transaction> responseTransaction = Get_Transaction(resposeAmount, responseItems);
                 Payment responsePayment = Get_PaymentOrder(apiContext, responseTransaction, responseUrls, payer);
@@ -341,10 +341,15 @@ namespace SystemGlobal_Ecommerce.Layout
             return amount;
         }
 
-        private Details Get_DetailsPay(OrderHeader objOrder, Item item)
+        private Details Get_DetailsPay(OrderHeader objOrder, List<Item> items)
         {
-            Decimal subtotalItem = (Convert.ToDecimal(item.price, CultureInfo.InvariantCulture) * Convert.ToInt32(item.quantity));
-            Decimal totaltax = Decimal.Round((subtotalItem * 0.18M), 2);
+            Decimal subtotalItem = 0;
+            Decimal totaltax = 0;
+            for (Int32 i = 0; i < items.Count; i++)
+            {
+                subtotalItem += (Convert.ToDecimal(items[i].price, CultureInfo.InvariantCulture) * Convert.ToInt32(items[i].quantity));                
+            }
+            totaltax = Decimal.Round((subtotalItem * 0.18M), 2);
             var details = new Details()
             {
                 tax = Convert.ToString(totaltax, CultureInfo.InvariantCulture),

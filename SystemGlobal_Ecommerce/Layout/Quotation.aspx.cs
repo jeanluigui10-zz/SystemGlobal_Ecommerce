@@ -523,7 +523,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     if (vsId == 0)
                         SetControls();
 
-                    Message(EnumAlertType.Success, "Saved successfully");
+                    Message(EnumAlertType.Success, "Se guardo correctamente...");
                 }
                 else
                 {

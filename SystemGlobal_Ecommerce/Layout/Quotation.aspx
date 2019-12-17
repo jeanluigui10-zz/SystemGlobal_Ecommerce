@@ -136,7 +136,7 @@
             })();
 
             if (sizeImage > 10485760) {
-                fn_message('i', "The image upload is too big");
+                fn_message('i', "La imagen a subir es muy grande");
                 return false;
             }
             //if (listLanguages.length === 0) {
