@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using xAPI.Entity.Order;
-using xSystem_Maintenance.src.app_code;
-using System.Web.Script.Serialization;
-using xAPI.Library.Base;
 using System.Data;
+using System.Web.Script.Serialization;
+using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Resource;
+using xAPI.Entity.Order;
+using xAPI.Library.Base;
 
 namespace SystemGlobal_Ecommerce
 {
@@ -86,7 +82,10 @@ namespace SystemGlobal_Ecommerce
             Response.Redirect("Index.aspx");
         }
 
-       
-
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            BaseSession.Logout();
+            Response.Redirect("~/Layout/Index.aspx", false);
+        }
     }
 }

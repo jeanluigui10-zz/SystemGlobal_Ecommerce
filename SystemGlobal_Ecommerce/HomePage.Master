@@ -191,6 +191,7 @@
         <link href="/src/css/validationEngine.jquery.css" rel="stylesheet" />
     <script src="/src/js/Base.js"></script>
     <link href="<%=ResolveUrl("~/Chat/src/css/chatStyle.css") %>" type="text/css" rel="stylesheet" />
+     <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>
      <script type="text/javascript">
 
     
@@ -298,6 +299,65 @@
                  }
              });
 
+             $("body").on("click", ".add-to-cart-mp-View", function (e) {
+                 try {
+                     e.preventDefault();
+
+                     /*Loader Image*/
+                     var divData = $(this);
+                     $(this).parent().parent().parent().parent().addClass('hide');
+                     $(this).parent().parent().parent().parent().parent().append("<div class='cls-load-add-cart loader_page_add_cart'></div>");
+                     /*End Loader Image*/
+
+                     var productId = $("#prodId").val();
+                     var objProduct = {
+                         ProductId: productId
+                     };
+                     var success = function (asw) {
+
+                         if (asw.d != null) {
+                             if (asw.d.Result == "Ok") {
+                                 Fn_ListProductsShopCartHeader(asw.d.ListProductToCartHeader);
+                                 $("#ModalquickView").click();
+                             }
+                             else {
+                                 if (asw.d.Result == "NoOk") {
+                                     if (asw.d.Value == 0) {
+                                         window.location.href = asw.d.Msg;
+                                     }
+                                     else if (asw.d.Value == -1) {
+                                         $("#modalProductExist").click();
+                                     }
+                                     else {
+                                         $("#modalProductErrorAdd").click();
+                                     }
+
+                                 }
+                             }
+
+                         }
+                         else {
+                             $("#modalProductErrorAdd").click();
+                         }
+                     }
+                     var error = function (xhr, ajaxOptions, thrownError) {
+                         divData.parent().parent().parent().parent().removeClass('hide');
+                         $('.cls-load-add-cart').remove();
+                         $("#modalProductErrorAdd").click();
+                     }
+                     var complete = function () {
+                         /*End Loader Iamge*/
+                         divData.parent().parent().parent().parent().removeClass('hide');
+                         $('.cls-load-add-cart').remove();
+                     }
+                     fn_callmethodComplete("../Layout/Index.aspx/AddProduct", JSON.stringify({ objProd: objProduct }), success, error, complete);
+
+                 } catch (e) {
+                     fn_message('e', 'Ocurrio un error Agregar producto.', 'message_row');
+                 }
+             });
+
+
              $("body").on("click", ".view-to-cart-mp", function (e) {
                  try {
                      e.preventDefault();
@@ -324,7 +384,7 @@
                                  $("#idPriceProductView").text("S/." + product.UnitPrice);
                                  $("#idDescripcionView").text("Descripcion:" + product.FileDescription);
                                  $("#viewSkuId").text("SKU:" + product.ProductId);
-
+                                 $("#prodId").val(product.ProductId);
                                  $("#ModalquickView").click();
                              }
                              else {
@@ -956,7 +1016,7 @@
                                         <ul>
                                             <li class="dropdown tt-megamenu-col-02 selected">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">INICIO</a>
-                                                <div class="dropdown-menu">
+                                              <%--  <div class="dropdown-menu">
                                                     <div class="row tt-col-list">
                                                         <div class="col">
                                                             <h6 class="tt-title-submenu"><a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">HOME STYLES</a></h6>
@@ -1039,7 +1099,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </li>
                                             <li class="dropdown megamenu">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">PRODUCTOS</a>
@@ -1719,7 +1779,7 @@
                                                     </div>
                                                     <div class="tt-cart-btn">
                                                         <div class="tt-item">
-                                                            <a href="#" class="btn">PROCEDER A PAGAR</a>
+                                                            <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn">PROCEDER A PAGAR</a>
                                                         </div>
                                                         <div class="tt-item">
                                                             <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" style="cursor:pointer" class="btn-link-02 tt-hidden-mobile">Ver carrito</a>
@@ -1743,13 +1803,28 @@
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
-                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-94"></i>Cuenta</a></li>
+                                                 <%
+                                                 if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
+                                                 {
+                                                    %>
+                                                      <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-94"></i><%=BaseSession.SsOrderxCore.Customer.FullName%></a></li>
+                                                    <%
+                                                 }
+                                                %>
+                                                <%
+                                                else
+                                                {
+                                                %>
+                                                 <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-94"></i>Cuenta</a></li>
+                                                <%
+                                                 }
+                                                %>
                                                 <li style="display:none"><a href="wishlist.html"><i class="icon-n-072"></i>Wishlist</a></li>
                                                 <li style="display:none"><a href="compare.html"><i class="icon-n-08"></i>Compare</a></li>
                                                 <li style="display:none"><a href="page404.html"><i class="icon-f-68"></i>Check Out</a></li>
-                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-76"></i>Ingresar</a></li>
-                                                <li><a href="#"><i class="icon-f-77"></i>Salir</a></li>
-                                                <li><a href="create-account.html"><i class="icon-f-94"></i>Registrar</a></li>
+                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>"><i class="icon-f-76"></i>Ingresar</a></li>                                              
+                                                <li><a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>"><i class="icon-f-94"></i>Registrar</a></li>
+                                                <li><asp:LinkButton runat="server" ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click"><i class="icon-f-77"></i>Cerrar Sesion</asp:LinkButton></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1962,7 +2037,7 @@
                             </div>
                             <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
                             <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">VER CARRITO</a>
-                            <a href="page404.html" class="btn-link">PROCEDER A PAGAR</a>
+                            <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">PROCEDER A PAGAR</a>
                         </div>
                         <div class="tt-modal-addtocart desctope">
                             <div class="row">
@@ -1993,7 +2068,7 @@
                                     </a>
                                     <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
                                     <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
-                                    <a href="#" class="btn">PROCEDER A PAGAR</a>
+                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn">PROCEDER A PAGAR</a>
                                 </div>
                             </div>
                         </div>
@@ -2029,7 +2104,8 @@
                                         <div class="tt-add-info">
                                             <ul>
                                                 <li><span id="viewSkuId"></span>0</li>
-                                                <li><span>Availability:</span> 40 in Stock</li>
+                                                <li><span id="prodId"></span></li>
+                                                <%--<li><span>Availability:</span> 40 in Stock</li>--%>
                                             </ul>
                                         </div>
                                         <h2 class="tt-title" id="idNameProdutView"></h2>
@@ -2059,7 +2135,7 @@
                                                     </div>
                                                 </div>--%>
                                                 <div class="col-item">
-                                                    <a class="btn btn-lg add-to-cart-mp" style="color:white"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
+                                                    <a id="addProductView" class="btn btn-lg add-to-cart-mp-View" style="color:white"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
                                                 </div>
                                             </div>
                                         </div>

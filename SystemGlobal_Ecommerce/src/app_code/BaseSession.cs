@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
 using System.Data;
 using System.Globalization;
-using System.Linq;
 using System.Web;
-using xAPI.Entity;
-using xAPI.Library.General;
-using xAPI.Entity.Security;
 using xAPI.Entity.Order;
+using xAPI.Entity.Security;
+using xAPI.Library.General;
 
-namespace xSystem_Maintenance.src.app_code
+namespace SystemGlobal_Ecommerce.src.app_code
 {
     public class BaseSession
     {

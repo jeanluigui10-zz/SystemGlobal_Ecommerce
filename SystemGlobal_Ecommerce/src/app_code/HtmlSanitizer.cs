@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using HtmlAgilityPack;
 
-namespace xSystem_Maintenance.src.app_code
+namespace SystemGlobal_Ecommerce.src.app_code
 {
     public class HtmlSanitizer
     {

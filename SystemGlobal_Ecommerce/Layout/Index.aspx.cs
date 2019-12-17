@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
+using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Resource;
 using xAPI.Entity;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
-using xSystem_Maintenance.src.app_code;
 namespace SystemGlobal_Ecommerce.Layout
 {
     public partial class Index : System.Web.UI.Page

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using xAPI.Library.General;
-namespace xSystem_Maintenance.src.app_code
+namespace SystemGlobal_Ecommerce.src.app_code
 {
     [Serializable]
     public class srParties

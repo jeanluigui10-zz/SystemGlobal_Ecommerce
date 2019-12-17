@@ -292,7 +292,7 @@
                 <div id="message_row"></div>
                 <input type="text" id="username" name="message" autocomplete="off" value="<%=this.hfFullName.Value%>" placeholder="Escriba su nombre ..." class="form-control" />
                 <div class="box-tools pull-right">
-                    <i class="fa fa-times" type="button" onclick="Fn_CloseModal();" data-widget="remove" style="cursor: pointer;"></i>
+                    <i class="icon-f-84" style="cursor: pointer;-webkit-appearance: none" type="button" onclick="Fn_CloseModal();" data-widget="remove"></i>
                 </div>
             </div>
             <div class="box-body">
@@ -330,9 +330,9 @@
             </div>
             <div class="box-footer"  id="divFooterChat">
                 <div class="input-group">
-                    <input type="text" id="message" name="message" placeholder="Write your message..." class="form-control" />
+                    <input type="text" id="message" name="message" placeholder="Escribe aqui tu mensaje..." class="form-control" />
                     <span class="input-group-btn">
-                        <button id="sendmessage" disabled type="button" onclick="Fn_SendMessage();" class="btn btn-primary btn-flat">Send</button>
+                        <button id="sendmessage" type="button" onclick="Fn_SendMessage();" class="btn btn-primary btn-flat" style="height: auto">Enviar</button>
                     </span>
                 </div>
             </div>

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System_Maintenance.src.app_code;
+using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Customers;
-using xAPI.BL.Security;
 using xAPI.Entity.Customers;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
-using xSystem_Maintenance.src.app_code;
 
 namespace SystemGlobal_Ecommerce.Layout
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 
-namespace xSystem_Maintenance.src.app_code
+namespace SystemGlobal_Ecommerce.src.app_code
 {
     public class Config
     {

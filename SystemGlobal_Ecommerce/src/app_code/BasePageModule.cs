@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using xAPI.Library.General;
 
-namespace System_Maintenance.src.app_code
+namespace SystemGlobal_Ecommerce.src.app_code
 {
     public class BasePageModule : Page
     {

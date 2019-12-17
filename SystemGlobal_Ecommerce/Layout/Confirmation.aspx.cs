@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Script.Serialization;
-using System.Web.Services;
 using System.Web.UI;
+using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.Entity.Order;
 using xAPI.Library.General;
-using xSystem_Maintenance.src.app_code;
-
-using System.Globalization;
 
 namespace SystemGlobal_Ecommerce.Layout
 {

@@ -1,21 +1,19 @@
-﻿using System;
+﻿//Paypal
+using PayPal.Api;
+using PayPal.Sample;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
-using xAPI.Entity.Order;
-using xAPI.Library.General;
-using xSystem_Maintenance.src.app_code;
-
-//Paypal
-using PayPal.Api;
-using PayPal.Sample.Utilities;
-using PayPal.Sample;
-using System.Globalization;
+using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Order;
 using xAPI.Entity;
+using xAPI.Entity.Order;
 using xAPI.Library.Base;
+using xAPI.Library.General;
 
 namespace SystemGlobal_Ecommerce.Layout
 {
