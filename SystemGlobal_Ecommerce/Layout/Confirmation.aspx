@@ -7,6 +7,17 @@
              document.getElementById("converse-chat").style.display = "none";
              document.getElementById("divFooter").style.display = "none";
              document.getElementById("divFooter2").style.display = "none";
+                          
+                 if ($("#<%=hfIsVisiableChatConfir.ClientID%>").val() != "") {
+                      if ($("#<%=hfIsVisiableChatConfir.ClientID%>").val() == "1") {                                              //Chat en linea
+                         $("#clgo").css("display", "none");
+                         $("#btnLateral").css("display", "block");
+                     } else {                                           //chat bot
+
+                         $("#clgo").css("display", "block");
+                         $("#btnLateral").css("display", "none");
+                     }
+                 }
              
          }
          $(function () {
@@ -191,6 +202,7 @@
 		</div>
 	</div>
 </div>
+     <asp:HiddenField runat="server" ID="hfIsVisiableChatConfir" />
      <asp:HiddenField runat="server" ID="hfData" />
     <script type="text/x-handlebars-template" id="datatable-shopcart">
         {{# each request}}

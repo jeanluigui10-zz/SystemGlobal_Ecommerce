@@ -7,13 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SystemGlobal_Ecommerce.Layout
-{
-
-
-    public partial class Confirmation
-    {
-
+namespace SystemGlobal_Ecommerce.Layout {
+    
+    
+    public partial class Confirmation {
+        
+        /// <summary>
+        /// Control hfIsVisiableChatConfir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIsVisiableChatConfir;
+        
         /// <summary>
         /// Control hfData.
         /// </summary>

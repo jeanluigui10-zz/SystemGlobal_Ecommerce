@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using SystemGlobal_Ecommerce.src.app_code;
+using xAPI.BL.Resource;
 using xAPI.Entity.Order;
+using xAPI.Library.Base;
 using xAPI.Library.General;
 
 namespace SystemGlobal_Ecommerce.Layout
@@ -13,11 +16,27 @@ namespace SystemGlobal_Ecommerce.Layout
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {               
+            {
+                Load_Settings();
                 LoadData();
             }
         }
+        private void Load_Settings()
+        {
+            BaseEntity objBase = new BaseEntity();
+            DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
+            if (objBase.Errors.Count == 0)
+            {
+                if (dt != null)
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        hfIsVisiableChatConfir.Value = item["ChatOnlineActive"].ToString();
+                    }
+                }
+            }
 
+        }
         private void LoadData()
         {
             if (BaseSession.SsOrderxCore != null && BaseSession.SsOrderxCore.ListOrderDetail != null && BaseSession.SsOrderxCore.ListOrderDetail.Count > 0)

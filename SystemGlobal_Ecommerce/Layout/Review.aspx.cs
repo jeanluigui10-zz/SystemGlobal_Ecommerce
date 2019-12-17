@@ -19,6 +19,7 @@ namespace SystemGlobal_Ecommerce.Layout
 {
     public partial class Review : System.Web.UI.Page
     {
+        private static Decimal ValorDolar = 3.35M;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -153,6 +154,10 @@ namespace SystemGlobal_Ecommerce.Layout
                   hfData.Value = sJSON.ToString();
 
             }
+            else
+            {
+                GoBack();
+            }
         }
 
         [WebMethod]
@@ -267,7 +272,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 
                 RedirectUrls responseUrls = Get_UrlRedirect();
                 ItemList responseItems = Get_Items(objOrder);
-                Details responseDetail = Get_DetailsPay(objOrder);
+                Details responseDetail = Get_DetailsPay(objOrder, responseItems.items[0]);
                 Amount resposeAmount = Get_AmountTotals(objOrder, responseDetail);
                 List<Transaction> responseTransaction = Get_Transaction(resposeAmount, responseItems);
                 Payment responsePayment = Get_PaymentOrder(apiContext, responseTransaction, responseUrls, payer);
@@ -289,15 +294,24 @@ namespace SystemGlobal_Ecommerce.Layout
 
         private Payment Get_PaymentOrder(APIContext apiContext,List<Transaction> responseTransaction, RedirectUrls responseUrls, Payer payer)
         {
-            var payment = new Payment()
+            Payment objPayment = null;
+            try
             {
-                intent = "sale",
-                payer = payer,
-                transactions = responseTransaction,
-                redirect_urls = responseUrls
-            };
+                var payment = new Payment()
+                {
+                    intent = "sale",
+                    payer = payer,
+                    transactions = responseTransaction,
+                    redirect_urls = responseUrls
+                };
 
-            Payment objPayment = payment.Create(apiContext);
+               objPayment  = payment.Create(apiContext);
+               
+            }
+            catch (Exception ex)
+            {
+                GoBack();
+            }
             return objPayment;
         }
 
@@ -317,22 +331,25 @@ namespace SystemGlobal_Ecommerce.Layout
 
         private Amount Get_AmountTotals(OrderHeader objOrder, Details detailTotal)
         {
+            Decimal ordertotalitem = Convert.ToDecimal(detailTotal.subtotal, CultureInfo.InvariantCulture) + Convert.ToDecimal(detailTotal.tax, CultureInfo.InvariantCulture) + Convert.ToDecimal(detailTotal.shipping, CultureInfo.InvariantCulture);
             var amount = new Amount()
             {
                 currency = "USD",
-                total = Convert.ToString(objOrder.Ordertotal, CultureInfo.InvariantCulture),
+                total = Convert.ToString(ordertotalitem, CultureInfo.InvariantCulture),
                 details = detailTotal
             };
             return amount;
         }
 
-        private Details Get_DetailsPay(OrderHeader objOrder)
+        private Details Get_DetailsPay(OrderHeader objOrder, Item item)
         {
+            Decimal subtotalItem = (Convert.ToDecimal(item.price, CultureInfo.InvariantCulture) * Convert.ToInt32(item.quantity));
+            Decimal totaltax = Decimal.Round((subtotalItem * 0.18M), 2);
             var details = new Details()
             {
-                tax = Convert.ToString(objOrder.IGV, CultureInfo.InvariantCulture),
+                tax = Convert.ToString(totaltax, CultureInfo.InvariantCulture),
                 shipping = "0",
-                subtotal = Convert.ToString(objOrder.SubTotal, CultureInfo.InvariantCulture)
+                subtotal = Convert.ToString(subtotalItem, CultureInfo.InvariantCulture)
             };
             return details;
         }
@@ -343,11 +360,12 @@ namespace SystemGlobal_Ecommerce.Layout
             var items = new List<Item>();
             for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
             {
+                Decimal priceItem = objOrder.ListOrderDetail[i].Product.UnitPrice / ValorDolar;
                 var item = new Item()
                 {
                     name = objOrder.ListOrderDetail[i].Product.Name,
                     currency = "USD",
-                    price = Convert.ToString(objOrder.ListOrderDetail[i].Product.UnitPrice, CultureInfo.InvariantCulture),
+                    price = Convert.ToString(Decimal.Round(priceItem, 2), CultureInfo.InvariantCulture),
                     quantity = Convert.ToString(objOrder.ListOrderDetail[i].Quantity),
                     sku = Convert.ToString(objOrder.ListOrderDetail[i].Product.Id)
                 };
