@@ -14,7 +14,20 @@ namespace SystemGlobal_Ecommerce
         protected void Page_Load(object sender, EventArgs e)
         {
             Load_Settings();
-            Load_Products();           
+            Load_Products();
+
+            if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
+            {
+                ucChat.SetUserId(BaseSession.SsOrderxCore.Customer.CustomerId);
+                ucChat.SetUserFullName(BaseSession.SsOrderxCore.Customer.FirstName);
+            }
+            else
+            {
+                Int32 codigoAleatorio = new Random().Next(1000, 2000);
+                ucChat.SetUserId(codigoAleatorio);
+                ucChat.SetUserFullName("");
+            }
+                   
         }
 
         private void Load_Products()
