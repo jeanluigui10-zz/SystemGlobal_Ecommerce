@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SystemGlobal_Ecommerce {
-    
-    
-    public partial class HomePage {
-        
+namespace SystemGlobal_Ecommerce
+{
+
+
+    public partial class HomePage
+    {
+
         /// <summary>
         /// Control head.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
+
         /// <summary>
         /// Control frmHmeMaster.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm frmHmeMaster;
-        
+
         /// <summary>
         /// Control btnCerrarSesion.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCerrarSesion;
-        
+
         /// <summary>
         /// Control ContentPlaceHolder1.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-        
+
         /// <summary>
         /// Control hfDataListProduct.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfDataListProduct;
-        
+
         /// <summary>
         /// Control hfIsVisiableChat.
         /// </summary>
@@ -65,14 +67,5 @@ namespace SystemGlobal_Ecommerce {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfIsVisiableChat;
-        
-        /// <summary>
-        /// Control ucChat.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::SystemGlobal_Ecommerce.Chat.src.control.Chat.ucChat ucChat;
     }
 }

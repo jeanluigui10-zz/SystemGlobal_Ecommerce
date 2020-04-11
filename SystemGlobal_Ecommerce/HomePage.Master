@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomePage.master.cs" Inherits="SystemGlobal_Ecommerce.HomePage" %>
 
-<%@ Register Src="~/Chat/src/control/Chat/ucChat.ascx" TagPrefix="uc1" TagName="ucChat" %>
+<%--<%@ Register Src="~/Chat/src/control/Chat/ucChat.ascx" TagPrefix="uc1" TagName="ucChat" %>--%>
 
 <!DOCTYPE html>
 
@@ -120,7 +120,6 @@
 
              var veOR = "Or";
 
-
     </script>
 
         <link rel="stylesheet" href="/Files/css/theme.css">
@@ -136,6 +135,8 @@
         <script src="/Files/external/countdown/jquery.plugin.min.js"></script>
         <script src="/Files/external/countdown/jquery.countdown.min.js"></script>
         <script src="/Files/external/lazyLoad/lazyload.min.js"></script>
+
+        
 
      <!-- form validation and sending to mail -->
         <script src="/Files/external/form/jquery.form.js"></script>
@@ -189,8 +190,12 @@
         <script src="/plugins/ValidationEngine/jquery.validationEngine.js"></script>
         <script src="/plugins/ValidationEngine/languages/jquery.validationEngine-en.js"></script>
         <link href="/src/css/validationEngine.jquery.css" rel="stylesheet" />
-    <script src="/src/js/Base.js"></script>
-    <link href="<%=ResolveUrl("~/Chat/src/css/chatStyle.css") %>" type="text/css" rel="stylesheet" />
+        <script src="/src/js/Base.js"></script>
+        <link href="<%=ResolveUrl("~/Chat/src/css/chatStyle.css") %>" type="text/css" rel="stylesheet" />
+
+        <script src="/Files/external/elevatezoom/jquery.elevatezoom.js"></script>
+        <script src="/Files/external/magnific-popup/jquery.magnific-popup.min.js"></script>
+
      <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>
      <script type="text/javascript">
 
@@ -223,7 +228,7 @@
              $("#ModalquickView").click(function () {
                  $("#ModalquickView").modal('show');
              })
-             
+
              //$(".btnProcedCheckout-xss").click(function () {
              //    if (shopperSession != '0') {
              //        window.location = '/Home/CompletePurchase'
@@ -540,7 +545,6 @@
                }
          }
 
-           
          window.onload = Fn_VisibleChat;
     </script>
 
@@ -612,7 +616,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">PRODUCTOS</a>
+                        <a href="<%=Page.ResolveUrl("~/Layout/Products.aspx") %>">PRODUCTOS</a>
                   <%--      <ul>
                             <li>
                                 <a href="listing-left-column.html">LISTING STYLES</a>
@@ -628,9 +632,9 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="product.html">PRODUCT PAGE STYLES</a>
+                                <a href="ProductSelected.aspx">PRODUCT PAGE STYLES</a>
                                 <ul>
-                                    <li><a href="product.html">Product Example 1</a></li>
+                                    <li><a href="ProductSelected.aspx">Product Example 1</a></li>
                                     <li><a href="product-02.html">Product Example 2</a></li>
                                     <li><a href="product-03.html">Product Example 3</a></li>
                                     <li><a href="product-04.html">Product Example 4</a></li>
@@ -641,7 +645,7 @@
                             <li>
                                 <a href="product-variable.html">PRODUCT PAGE TYPES</a>
                                 <ul>
-                                    <li><a href="product.html">Standard Product</a></li>
+                                    <li><a href="ProductSelected.aspx">Standard Product</a></li>
                                     <li><a href="product-variable.html">Variable Product</a></li>
                                     <li><a href="product-04.html">Grouped Product</a></li>
                                     <li><a href="product-label-new.html">New Product</a></li>
@@ -1102,7 +1106,7 @@
                                                 </div>--%>
                                             </li>
                                             <li class="dropdown megamenu">
-                                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">PRODUCTOS</a>
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Products.aspx") %>">PRODUCTOS</a>
                                              <%--   <div class="dropdown-menu">
                                                     <div class="row tt-col-list">
                                                         <div class="col">
@@ -1119,9 +1123,9 @@
                                                             </ul>
                                                         </div>
                                                         <div class="col">
-                                                            <h6 class="tt-title-submenu"><a href="product.html">PRODUCT PAGE STYLES</a></h6>
+                                                            <h6 class="tt-title-submenu"><a href="ProductSelected.aspx">PRODUCT PAGE STYLES</a></h6>
                                                             <ul class="tt-megamenu-submenu">
-                                                                <li><a href="product.html">Product Example 1</a></li>
+                                                                <li><a href="ProductSelected.aspx">Product Example 1</a></li>
                                                                 <li><a href="product-02.html">Product Example 2</a></li>
                                                                 <li><a href="product-03.html">Product Example 3</a></li>
                                                                 <li><a href="product-04.html">Product Example 4</a></li>
@@ -1132,7 +1136,7 @@
                                                         <div class="col">
                                                             <h6 class="tt-title-submenu"><a href="product-variable.html">PRODUCT PAGE TYPES</a></h6>
                                                             <ul class="tt-megamenu-submenu">
-                                                                <li><a href="product.html">Standard Product</a></li>
+                                                                <li><a href="ProductSelected.aspx">Standard Product</a></li>
                                                                 <li><a href="product-variable.html">Variable Product</a></li>
                                                                 <li><a href="product-04.html">Grouped Product</a></li>
                                                                 <li><a href="product-label-new.html">New Product</a></li>
@@ -1404,7 +1408,7 @@
                                                             <div class="tt-menu-slider header-menu-product arrow-location-03 row">
                                                                 <div class="col-2">
                                                                     <div class="tt-product thumbprod-center">
-                                                                        <a href="product.html">
+                                                                        <a href="ProductSelected.aspx">
                                                                             <div class="tt-image-box">
                                                                                 <span class="tt-img">
                                                                                     <img src="/Files/images/product/product-01.jpg" alt=""></span>
@@ -1427,7 +1431,7 @@
                                                                 </div>
                                                                 <div class="col-2">
                                                                     <div class="tt-product thumbprod-center">
-                                                                        <a href="product.html">
+                                                                        <a href="ProductSelected.aspx">
                                                                             <div class="tt-image-box">
                                                                                 <span class="tt-img">
                                                                                     <img src="/Files/images/product/product-02.jpg" alt=""></span>
@@ -1449,7 +1453,7 @@
                                                                 </div>
                                                                 <div class="col-2">
                                                                     <div class="tt-product thumbprod-center">
-                                                                        <a href="product.html">
+                                                                        <a href="ProductSelected.aspx">
                                                                             <div class="tt-image-box">
                                                                                 <span class="tt-img">
                                                                                     <img src="/Files/images/product/product-04.jpg" alt=""></span>
@@ -1471,7 +1475,7 @@
                                                                 </div>
                                                                 <div class="col-2">
                                                                     <div class="tt-product thumbprod-center">
-                                                                        <a href="product.html">
+                                                                        <a href="ProductSelected.aspx">
                                                                             <div class="tt-image-box">
                                                                                 <span class="tt-img">
                                                                                     <img src="/Files/images/product/product-05.jpg" alt=""></span>
@@ -1668,7 +1672,7 @@
                                                 <div class="search-results">
                                                     <ul>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-03.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -1681,7 +1685,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-02.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -1693,7 +1697,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -1705,7 +1709,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-04.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -1717,7 +1721,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-05.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -1729,7 +1733,7 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="product.html">
+                                                            <a href="ProductSelected.aspx">
                                                                 <div class="thumbnail">
                                                                     <img src="/Files/images/loader.svg" data-src="/Files/images/product/product-06.jpg" alt=""></div>
                                                                 <div class="tt-description">
@@ -2285,7 +2289,8 @@
        
         <asp:HiddenField runat="server" ID="hfDataListProduct" />
         <asp:HiddenField runat="server" ID="hfIsVisiableChat" />
-        <uc1:ucChat runat="server" ID="ucChat" />
+
+<%--        <uc1:ucChat runat="server" ID="ucChat" />--%>
     </form>
         
       <script type="text/x-handlebars-template" id="datatable-shopcartHeader">

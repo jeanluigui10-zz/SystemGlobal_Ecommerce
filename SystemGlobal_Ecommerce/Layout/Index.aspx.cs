@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
@@ -27,7 +28,7 @@ namespace SystemGlobal_Ecommerce.Layout
         private void LoadData(Boolean ShowMessage = false)
         {
             BaseEntity entity = new BaseEntity();
-            List<AppResource> lst = new List<AppResource>();
+            List<srProducts> lst = new List<srProducts>();
 
             DataTable dt = ResourceBL.Instance.AppResource_GetByAplicationID(ref entity);
             if (entity.Errors.Count == 0)
@@ -36,17 +37,18 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     foreach (DataRow item in dt.Rows)
                     {
-                        lst.Add(new AppResource()
+                        String idProduct = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())); 
+                        lst.Add(new srProducts()
                         {
-                            Id = Convert.ToInt32(item["ID"]),
+                            Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
                             FileName = item["FILENAME"].ToString(),
                             Name = item["NAME"].ToString(),
-                            UnitPrice = Convert.ToDecimal(item["UnitPrice"]),
+                            UnitPrice = item["UnitPrice"].ToString(),
                             DOCTYPE = item["DOCTYPE"].ToString(),
                             Category = item["RESOURCE_CATEGORY_NAME"].ToString(),
                             FileDescription = item["DESCRIPTION"].ToString(),
                             NameResource = Config.Impremtawendomain + item["NAMERESOURCE"].ToString(),
-                            Status = Convert.ToInt32(item["STATUS"])
+                            Status = item["STATUS"].ToString()
                         });
                     }
                 }

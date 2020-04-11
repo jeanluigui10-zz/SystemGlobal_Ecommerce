@@ -1195,6 +1195,9 @@
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\Login.aspx" />
+    <Content Include="Layout\Products.aspx" />
+    <Content Include="Layout\ProductSelected.aspx" />
+    <Content Include="Layout\ProductsSelected.aspx" />
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
@@ -2145,6 +2148,24 @@
     </Compile>
     <Compile Include="Layout\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ProductSelected.aspx.cs">
+      <DependentUpon>ProductSelected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\ProductSelected.aspx.designer.cs">
+      <DependentUpon>ProductSelected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ProductsSelected.aspx.cs">
+      <DependentUpon>ProductsSelected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Layout\Quotation.aspx.cs">
       <DependentUpon>Quotation.aspx</DependentUpon>

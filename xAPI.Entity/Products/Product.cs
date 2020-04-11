@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using xAPI.Library.Base;
 
-namespace xAPI.Entity
+namespace xAPI.Entity.Products
 {
     [Serializable]
-    public class AppResource : BaseEntity
+    public class Product : BaseEntity
     {
-        
         public Int32 Id { get; set; }
         public String FileName { get; set; }
-        public String FileDescription  { get; set; }
+        public String FileDescription { get; set; }
         public String FileExtension { get; set; }
         public String FilePublicName { get; set; }
         public String DOCTYPE { get; set; }
@@ -26,5 +24,5 @@ namespace xAPI.Entity
         public String Category { get; set; }
 
     }
-    
+
 }

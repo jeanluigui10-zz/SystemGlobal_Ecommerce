@@ -16,17 +16,17 @@ namespace SystemGlobal_Ecommerce
             Load_Settings();
             Load_Products();
 
-            if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
-            {
-                ucChat.SetUserId(BaseSession.SsOrderxCore.Customer.CustomerId);
-                ucChat.SetUserFullName(BaseSession.SsOrderxCore.Customer.FirstName);
-            }
-            else
-            {
-                Int32 codigoAleatorio = new Random().Next(1000, 2000);
-                ucChat.SetUserId(codigoAleatorio);
-                ucChat.SetUserFullName("");
-            }
+            //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
+            //{
+            //    ucChat.SetUserId(BaseSession.SsOrderxCore.Customer.CustomerId);
+            //    ucChat.SetUserFullName(BaseSession.SsOrderxCore.Customer.FirstName);
+            //}
+            //else
+            //{
+            //    Int32 codigoAleatorio = new Random().Next(1000, 2000);
+            //    ucChat.SetUserId(codigoAleatorio);
+            //    ucChat.SetUserFullName("");
+            //}
                    
         }
 

@@ -20,7 +20,6 @@
         });
         var PreviewOriginal = "";
         var Edit = 0;
-        //var listLanguages = [];
         var image;
         var sizeImage = "";
         jQuery.fn.preventDoubleSubmission = function () {

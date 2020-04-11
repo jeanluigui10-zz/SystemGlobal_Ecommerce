@@ -167,7 +167,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string SenderName { get; set; }
         public string Text { get; set; }
         public string Subject { get; set; }
-        public string TimeAgo { get; set; } 
+        public string TimeAgo { get; set; }
     }
 
     [Serializable]
@@ -185,7 +185,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string CategoryName { get; set; }
     }
     [Serializable]
-    public class srCatalogs 
+    public class srCatalogs
     {
         public string Id { get; set; }
         public string CatName { get; set; }
@@ -212,7 +212,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
     }
 
     [Serializable]
-    public class srTips 
+    public class srTips
     {
         public string Id { get; set; }
         public string Title { get; set; }
@@ -283,7 +283,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string isCheckbox { get; set; }
         public string Index { get; set; }
     }
-        
+
     [Serializable]
     public class srHelp
     {
@@ -305,9 +305,9 @@ namespace SystemGlobal_Ecommerce.src.app_code
     //    public String Note { get; set; }
     //    public String CreatedDate { get; set; }
     //    public String Createdby { get; set; }
-        
+
     //}
-    
+
 
     [Serializable]
     public class srBlacklist
@@ -345,17 +345,17 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string desc { get; set; }
         public string Status { get; set; }
     }
-     [Serializable]
+    [Serializable]
     public class srRespLogin
     {
-         public string SESSION { get; set; }
+        public string SESSION { get; set; }
         //public String Name { get; set; }
         //public String text { get; set; }
         //public String value { get; set; }
         //public String desc { get; set; }
         //public String Status { get; set; }
     }
-    
+
     [Serializable]
     public class srMarkets
     {
@@ -369,7 +369,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string isCheckbox { get; set; }
         public string Index { get; set; }
     }
-    
+
     [Serializable]
     public class srMarketStates
     {
@@ -404,7 +404,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
 
 
     [Serializable]
-    public class srMarketsMerchant 
+    public class srMarketsMerchant
     {
         public string Id { get; set; }
         public string LanguageId { get; set; }
@@ -468,80 +468,29 @@ namespace SystemGlobal_Ecommerce.src.app_code
     }
 
 
-    //[Serializable]
-    //public class srProducts
-    //{
-    //    public String Id { get; set; }
-    //    public String Name { get; set; }
+    [Serializable]
+    public class srProducts
+    {
+        public String Id { get; set; }
+        public String Name { get; set; }
+        public String FileName { get; set; }
+        public String FileDescription { get; set; }
+        public String FileExtension { get; set; }
+        public String FilePublicName { get; set; }
+        public String DOCTYPE { get; set; }
+        public String NameResource { get; set; }
+        public String AplicationId { get; set; }
+        public String UserId { get; set; }
+        public String Photoid { get; set; }
+        public String Url { get; set; }
+        public String isUpload { get; set; }
+        public String CategotyId { get; set; }
+        public String SystemContactId { get; set; }
+        public String UnitPrice { get; set; }
+        public String Category { get; set; }
+        public String Status { get; set; }
 
-    //    public String MarketId { get; set; }
-    //    public String MarketName { get; set; }
-
-    //    public String ExchangeRate { get; set; }
-
-    //    public String VendorId { get; set; }
-    //    public String VendorName { get; set; }
-
-    //    public String CategoryId { get; set; }
-    //    public String CategoryName { get; set; }
-
-    //    public String ProductSubType { get; set; }
-    //    public String ProductUnit { get; set; }
-    //    public String ShortDescription { get; set; }
-    //    public String FullDescription { get; set; }
-    //    public String SkuId { get; set; }
-    //    public String SkuName { get; set; }
-    //    public String AddDate { get; set; }
-    //    public Decimal SalesTax { get; set; }
-    //    public Decimal RetailPrice { get; set; }
-    //    public Decimal WholeSalePrice { get; set; }
-    //    public Decimal ShippingAndHandlingPrice { get; set; }
-    //    public Decimal CommissionValue { get; set; }
-    //    public Decimal QualifyingVolume { get; set; }
-    //    public Decimal MinOrderQty { get; set; }
-    //    public Int32 QuantityOnHand { get; set; }
-    //    public Int32 WarehouseId { get; set; }
-    //    public Int32 OutOfStockAction { get; set; }
-    //    public Boolean NotifyWhenMinimum { get; set; }
-    //    public String Package { get; set; }
-    //    public String Width { get; set; }
-    //    public String Depth { get; set; }
-    //    public String Weight_Lbs { get; set; }
-    //    public String Dimensions { get; set; }
-    //    public Boolean ShowType { get; set; }
-    //    public Boolean DisplayInShoppingCart { get; set; }
-    //    public Boolean MultiPackage { get; set; }
-    //    public Boolean ChargeShipping { get; set; }
-    //    public Boolean ChargeTax { get; set; }
-    //    public Boolean ChargeTaxOnShipping { get; set; }
-    //    public Boolean AutoShip { get; set; }
-    //    public String ImageLocation { get; set; }
-    //    public String ImageForDistributor { get; set; }
-    //    public Decimal SalesPrice { get; set; }
-    //    public Boolean IsBussinessPack { get; set; }
-    //    public String ShowInQuickAdd { get; set; }
-    //    public String Status { get; set; }
-    //}
-
-    //[Serializable]
-    //public class srBase
-    //{
-    //    public String Id { get; set; }
-    //    public String Name { get; set; }
-    //    public String Description { get; set; }
-    //    public String CreatedDate { get; set; }
-    //    public String Disabled { get; set; }
-    //    public String Status { get; set; }
-    //    public String Createdby { get; set; }
-    //    public String Query { get; set; }
-    //    public String isCheckbox { get; set; }
-    //    public String UpdatedDate { get; set; }
-    //    public String UpdatedBy { get; set; }
-    //    public String Index { get; set; }
-    //    public String Index2 { get; set; }
-    //    public String Default { get; set; }
-    //}
-
+    }
     [Serializable]
     public class srReportCategory
     {
