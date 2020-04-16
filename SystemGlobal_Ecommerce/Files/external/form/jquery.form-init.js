@@ -9,54 +9,26 @@ jQuery(function($) {
                 required: true,
                 email: true
             },
-            apellidoPaterno: {
-                required: true,
-                apellidoPaterno: true
-            },
-            apellidoMaterno: {
-                required: true,
-                apellidoMaterno: true
-            },
-            tipodocumento: {
-                required: true,
-                tipodocumento: true
-            },
-            password: {
-                required: true,
-                password: true
-            },
             message: {
                 required: true,
             }
         },
         messages: {
             name: {
-                required: "Por favor ingrese su nombre",
-                minlength: "Su nombre debe constar de al menos 2 caracteres"
+                required: "Please enter your name",
+                minlength: "Your name must consist of at least 2 characters"
             },
             email: {
-                required: "Por favor ingrese su correo"
-            },
-            apellidoPaterno: {
-                required: "Por favor ingrese su Apellido Paterno"
-            },
-            apellidoMaterno: {
-                required: "Por favor ingrese su Apellido Materno"
-            },
-            tipodocumento: {
-                required: "Por favor ingrese su documento"
-            },
-            password: {
-                required: "Por favor ingrese su password"
+                required: "Please enter your email"
             },
             message: {
-                required: "Por favor ingrese su mensaje"
+                required: "Please enter your message"
             }
         },
         submitHandler: function(form) {
             $(form).ajaxSubmit({
                 type:"POST",
-                data: $(form).serialize(),
+                data: $(form).serialize(), 
                 url:"external/form/contact-form.php",
                 success: function() {
                       $('#success').fadeIn();

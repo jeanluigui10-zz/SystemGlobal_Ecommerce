@@ -500,6 +500,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string Status { get; set; }
     }
 
+
     [Serializable]
     public class srReport
     {
@@ -2312,10 +2313,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Status { get; set; }
-        public string CreatedDate { get; set; }
-        public string IsCheckbox { get; set; }
-        public string Index { get; set; }
+ 
     }
 
     #region shippingcosts

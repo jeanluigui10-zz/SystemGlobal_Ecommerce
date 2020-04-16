@@ -115,7 +115,6 @@ namespace xAPI.Dao
             {
                 dt = null;
                 Base.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  while loading data"));
-
             }
             finally
             {

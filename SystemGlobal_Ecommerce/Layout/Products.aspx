@@ -12,27 +12,65 @@
      }
      function fn_content() {
          Fn_ListProducts($("#<%=hfProducts.ClientID%>").val());
+         Fn_ListCategory($("#<%=hfCategory.ClientID%>").val());
+         
      }
 
+     function Fn_ListCategory(dataCategory) {
+         var glancedata = dataCategory;
+         try {
+             var objCategory = $.parseJSON(glancedata);
+             var object = {};
+             object.request = objCategory;
+             var item = fn_LoadTemplates("datatable-Category", object);
+             $("#DivListCategory").html(item);
+         }
+         catch (e) {
+             fn_message('e', 'An error occurred while loading data...');
+         }
+
+     }
      function Fn_ListProducts(data) {
          var glancedata = data;
          try {
              obj = $.parseJSON(glancedata);
              for (var i = 0; i < obj.length; i++) {
-                 var uniteprice = obj[i].UnitPrice;
+                 var uniteprice = parseFloat(obj[i].UnitPrice);
                  obj[i].UnitPrice = uniteprice.toFixed(2);
              }
              var object = {};
              object.request = obj;
              var item = fn_LoadTemplates("datatable-Products", object);
-             $("#ProductDiv").html(item);
+             $("#DivProduct").html(item);
          }
          catch (e) {
              fn_message('e', 'An error occurred while loading data...');
          }
      }
 
-    </script>
+     function Fn_LoadProduct_ByCategory(CategoryId) {
+         success = function (response) {
+             var lstProducts = response.d;
+             try {
+                 if (lstProducts != null) {
+                     $("#DivProduct").empty();
+                     Fn_ListProducts(lstProducts)
+                     } else {
+                         fn_message('e', 'An error occurred while loading data...');
+                     }
+             } catch (e) {
+                 fn_message('e', 'An error occurred while loading data...');
+             }
+             $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
+         };
+
+         error = function (xhr, ajaxOptions, thrownError) {
+             $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
+         };
+         fn_callmethod("Products.aspx/Products_ByCategory", '{CategoryId: "' + CategoryId + '"}', success, error);
+     }
+
+ </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -75,7 +113,7 @@
 						</div>
 					</div>
 					<div class="tt-collapse open ">
-						<h3 class="tt-collapse-title">SORT BY</h3>
+						<h3 class="tt-collapse-title">ORDERNAR POR</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-filter-list">
 								<li class="active">
@@ -92,26 +130,14 @@
 						</div>
 					</div>
 					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">PRODUCT CATEGORIES</h3>
+						<h3 class="tt-collapse-title">Categorías de Productos</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li class="active"><a href="#">Dresses</a></li>
-								<li><a href="#">Shirts &amp; Tops</a></li>
-								<li><a href="#">Polo Shirts</a></li>
-								<li><a href="#">Sweaters</a></li>
-								<li><a href="#">Blazers &amp; Vests</a></li>
-								<li><a href="#">Jackets &amp; Outerwear</a></li>
-								<li><a href="#">Activewear</a></li>
-								<li><a href="#">Pants</a></li>
-								<li><a href="#">Jumpsuits &amp; Shorts</a></li>
-								<li><a href="#">Jeans</a></li>
-								<li><a href="#">Skirts</a></li>
-								<li><a href="#">Swimwear</a></li>
+							<ul class="tt-list-row" id="DivListCategory">
 							</ul>
 						</div>
 					</div>
 					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">FILTER BY PRICE</h3>
+						<h3 class="tt-collapse-title">FILTRO POR PRECIO</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
 								<li class="active"><a href="#">$0 — $50</a></li>
@@ -121,129 +147,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">FILTER BY SIZE</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-options-swatch options-middle">
-								<li><a href="#">4</a></li>
-								<li class="active"><a href="#">6</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">10</a></li>
-								<li><a href="#">12</a></li>
-								<li><a href="#">14</a></li>
-								<li><a href="#">16</a></li>
-								<li><a href="#">18</a></li>
-								<li><a href="#">20</a></li>
-								<li><a href="#">22</a></li>
-								<li><a href="#">24</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">FILTER BY COLOR</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-options-swatch options-middle">
-								<li><a class="options-color tt-border tt-color-bg-08" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-09" href="#"></a></li>
-								<li class="active"><a class="options-color tt-color-bg-10" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-11" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-12" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-13" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-14" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-15" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-16" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-17" href="#"></a></li>
-								<li><a class="options-color tt-color-bg-18" href="#"></a></li>
-								<li><a class="options-color" href="#">
-									<span class="swatch-img">
-										<img src="" alt="">
-									</span>
-									<span class="swatch-label color-black"></span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">VENDOR</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li><a href="#">Levi's</a></li>
-								<li><a href="#">Gap</a></li>
-								<li><a href="#">Polo</a></li>
-								<li><a href="#">Lacoste</a></li>
-								<li><a href="#">Guess</a></li>
-							</ul>
-							<a href="#" class="btn-link-02">+ More</a>
-						</div>
-					</div>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">SALE PRODUCTS</h3>
-						<div class="tt-collapse-content">
-							<div class="tt-aside">
-								<a class="tt-item" href="ProductSelected.aspx">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="" data-src="../Files/images/product/product-01.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="" data-src="../Files/images/product/product-01.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-								<a class="tt-item" href="ProductSelected.aspx">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="" data-src="../Files/images/product/product-02.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="" data-src="../Files/images/product/product-02-02.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-								<a class="tt-item" href="ProductSelected.aspx">
-									<div class="tt-img">
-										<span class="tt-img-default"><img src="" data-src="../Files/images/product/product-03.jpg" alt=""></span>
-										<span class="tt-img-roll-over"><img src="" data-src="../Files/images/product/product-03-02.jpg" alt=""></span>
-									</div>
-									<div class="tt-content">
-										<h6 class="tt-title">Flared Shift Dress</h6>
-										<div class="tt-price">
-											<span class="sale-price">$14</span>
-											<span class="old-price">$24</span>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">TAGS</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-list-inline">
-								<li><a href="#">Dresses</a></li>
-								<li><a href="#">Shirts &amp; Tops</a></li>
-								<li><a href="#">Polo Shirts</a></li>
-								<li><a href="#">Sweaters</a></li>
-								<li><a href="#">Blazers</a></li>
-								<li><a href="#">Vests</a></li>
-								<li><a href="#">Jackets</a></li>
-								<li><a href="#">Outerwear</a></li>
-								<li><a href="#">Activewear</a></li>
-								<li><a href="#">Pants</a></li>
-								<li><a href="#">Jumpsuits</a></li>
-								<li><a href="#">Shorts</a></li>
-								<li><a href="#">Jeans</a></li>
-								<li><a href="#">Skirts</a></li>
-								<li><a href="#">Swimwear</a></li>
-							</ul>
-						</div>
-					</div>
+				
 					<div class="tt-content-aside">
 						<a href="listing-left-column.html" class="tt-promo-03">
 							<img src="images/custom/listing_promo_img_07.jpg" alt="">
@@ -253,8 +157,8 @@
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options">
-							<h1 class="tt-title">
-								WOMEN <span class="tt-title-total">(69)</span>
+							<h1 class="tt-title" style="display:none">
+								MUJER <span class="tt-title-total">(69)</span>
 							</h1>
 							<div class="tt-btn-toggle">
 								<a href="#">FILTER</a>
@@ -282,15 +186,15 @@
 							<a href="#" class="tt-grid-switch icon-h-43"></a>
 						</div>
 
-						<div class="tt-product-listing row" id="ProductDiv">
+						<div class="tt-product-listing row" id="DivProduct">
                                   <div class="tt-product thumbprod-center">
                                   </div>
 						</div>
 
 						<div class="text-center tt_product_showmore">
-							<a href="#" class="btn btn-border">LOAD MORE</a>
+							<a href="#" class="btn btn-border">VER MÁS</a>
 							<div class="tt_item_all_js">
-								<a href="#" class="btn btn-border01">NO MORE ITEM TO SHOW</a>
+								<a href="#" class="btn btn-border01">NO HAY MÁS ARTÍCULOS PARA MOSTRAR</a>
 							</div>
 						</div>
 					</div>
@@ -299,7 +203,7 @@
 		</div>
 	</div>
 </div>
-<a href="#" class="tt-back-to-top">BACK TO TOP</a>
+<a href="#" class="tt-back-to-top">VOLVER ARRIBA</a>
 
 <!-- modal (quickViewModal) -->
 <div class="modal  fade"  id="ModalquickView" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
@@ -354,7 +258,7 @@
 								<div class="tt-swatches-container">
 									<div class="tt-wrapper">
 										<div class="tt-title-options">SIZE</div>
-										<form class="form-default">
+										<div class="form-default">
 											<div class="form-group">
 												<select class="form-control">
 													<option>21</option>
@@ -362,11 +266,11 @@
 													<option>36</option>
 												</select>
 											</div>
-										</form>
+										</div>
 									</div>
 									<div class="tt-wrapper">
 										<div class="tt-title-options">COLOR</div>
-										<form class="form-default">
+										<div class="form-default">
 											<div class="form-group">
 												<select class="form-control">
 													<option>Red</option>
@@ -374,7 +278,7 @@
 													<option>Brown</option>
 												</select>
 											</div>
-										</form>
+										</div>
 									</div>
 									<div class="tt-wrapper">
 										<div class="tt-title-options">TEXTURE:</div>
@@ -466,6 +370,8 @@
 </div>
     
 <asp:HiddenField runat="server" ID="hfProducts" />
+<asp:HiddenField runat="server" ID="hfCategory" />
+
 <script type="text/x-handlebars-template" id="datatable-Products">
     {{# each request}}
     <div class="col-6 col-md-4 tt-col-item">
@@ -474,7 +380,7 @@
                 <a href="#" class="tt-btn-quickview" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{FileDescription}}"  data-tooltip="Quick View" data-tposition="left"></a>
                 <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
                 <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
-                <a href="ProductSelected.aspx">
+                <a href="#"<%--href="ProductSelected.aspx?p={{Id}}"--%>>
                     <span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 				<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
                 </a>
@@ -512,4 +418,11 @@
     </div>
     {{/each}}
 </script>
+
+    <script type="text/x-handlebars-template" id="datatable-Category">
+	       {{# each request}}
+            <li style="cursor:pointer"><a onclick="Fn_LoadProduct_ByCategory('{{Id}}')">{{Name}}</a></li>
+	       {{/each}}
+</script>
+
 </asp:Content>

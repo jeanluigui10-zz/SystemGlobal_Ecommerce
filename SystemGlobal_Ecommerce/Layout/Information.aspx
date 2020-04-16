@@ -117,7 +117,7 @@
 							<h2 class="tt-title">INFORMACIÓN PERSONAL</h2>
 							<div class="form-default">
                                 <div id="message_row"></div>
-								<form id="contactform" method="post" novalidate="novalidate">
+								<div id="contactform" method="post" novalidate="novalidate">
 									<div class="form-group">
 										<label for="loginInputName">Nombre *</label>
 										<div class="tt-required">* Campos Requeridos</div>
@@ -166,7 +166,7 @@
 											</div>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>

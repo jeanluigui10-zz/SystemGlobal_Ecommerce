@@ -68,7 +68,6 @@ namespace SystemGlobal_Ecommerce.Layout
                         {
                             foreach (DataRow item in dt.Rows)
                             {
-                                String idProduct = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString()));
                                 lst.Add(new srProducts()
                                 {
                                     Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
@@ -104,10 +103,6 @@ namespace SystemGlobal_Ecommerce.Layout
 
                         }
                     }
-                }
-                else
-                {
-                    //SetControl();
                 }
             }
 

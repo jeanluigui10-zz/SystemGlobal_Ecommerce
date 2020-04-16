@@ -134,11 +134,6 @@
     <Content Include="Chat\src\css\chatStyle.css" />
     <Content Include="Chat\src\css\loader_datatable.css" />
     <Content Include="Chat\src\js\treeTableJS.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\css\anotherfont-books.css" />
     <Content Include="Files\css\module_instagram_shop.css" />
@@ -913,6 +908,10 @@
     <Content Include="Files\images\skin-snowboards\slides\slide-02.jpg" />
     <Content Include="Files\images\skin-snowboards\video\video.mp4" />
     <Content Include="Files\images\skin-snowboards\video\video_img.jpg" />
+    <Content Include="Files\images\slides\01\abarrote3.png" />
+    <Content Include="Files\images\slides\01\abarrote4.jpg" />
+    <Content Include="Files\images\slides\01\abarrote5.png" />
+    <Content Include="Files\images\slides\01\abarrotes2.jpg" />
     <Content Include="Files\images\slides\01\argos.png" />
     <Content Include="Files\images\slides\01\imprenta1.jpg" />
     <Content Include="Files\images\slides\01\imprenta2.jpg" />
@@ -947,16 +946,55 @@
     <Content Include="Files\images\slides\slick-slider\slide-03.jpg" />
     <Content Include="Files\js\main.js" />
     <Content Include="Files\js\map-init.js" />
+    <Content Include="Files\sound\sound.mp3" />
+    <Content Include="Files\video\blank.png" />
+    <Content Include="Files\video\video.mp4" />
+    <Content Include="Files\video\video_img.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="HomePage.Master" />
+    <Content Include="Layout\About\Services.aspx" />
+    <Content Include="Layout\Confirmation.aspx" />
+    <Content Include="Layout\Information.aspx" />
+    <Content Include="Layout\Login.aspx" />
+    <Content Include="Layout\Products.aspx" />
+    <Content Include="Layout\ProductSelected.aspx" />
+    <Content Include="Layout\Quotation.aspx" />
+    <Content Include="Layout\Review.aspx" />
+    <Content Include="Layout\Support\Contact.aspx" />
+    <Content Include="plugins\ckeditor\CHANGES.md" />
+    <Content Include="plugins\ckeditor\LICENSE.md" />
+    <Content Include="plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="plugins\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="plugins\ckeditor\plugins\scayt\README.md" />
+    <Content Include="plugins\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="plugins\ckeditor\plugins\wsc\README.md" />
+    <Content Include="plugins\ckeditor\README.md" />
+    <Content Include="plugins\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="plugins\ckeditor\skins\moono\readme.md" />
+    <Content Include="plugins\datatables\extensions\ColReorder\Readme.md" />
+    <Content Include="plugins\datatables\extensions\ColVis\Readme.md" />
+    <Content Include="plugins\datatables\extensions\FixedColumns\Readme.md" />
+    <Content Include="plugins\datatables\extensions\Responsive\css\dataTables.responsive.scss" />
+    <Content Include="plugins\datatables\extensions\Responsive\Readme.md" />
+    <Content Include="plugins\datatables\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="plugins\datatables\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
+    <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
+    <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="libman.json" />
+    <Content Include="Files\.htaccess" />
     <Content Include="Files\css\module_blog.scss" />
     <Content Include="Files\css\module_boxed.scss" />
     <Content Include="Files\css\module_compare.scss" />
@@ -1191,43 +1229,6 @@
     <Content Include="Files\font\wokiee\fonts\wokiee.ttf" />
     <Content Include="Files\font\wokiee\fonts\wokiee.woff" />
     <Content Include="Files\font\wokiee\selection.json" />
-    <Content Include="HomePage.Master" />
-    <Content Include="Layout\Confirmation.aspx" />
-    <Content Include="Layout\Information.aspx" />
-    <Content Include="Layout\Login.aspx" />
-    <Content Include="Layout\Products.aspx" />
-    <Content Include="Layout\ProductSelected.aspx" />
-    <Content Include="Layout\ProductsSelected.aspx" />
-    <Content Include="Layout\Quotation.aspx" />
-    <Content Include="Layout\Review.aspx" />
-    <Content Include="plugins\ckeditor\CHANGES.md" />
-    <Content Include="plugins\ckeditor\LICENSE.md" />
-    <Content Include="plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
-    <Content Include="plugins\ckeditor\plugins\scayt\LICENSE.md" />
-    <Content Include="plugins\ckeditor\plugins\scayt\README.md" />
-    <Content Include="plugins\ckeditor\plugins\wsc\LICENSE.md" />
-    <Content Include="plugins\ckeditor\plugins\wsc\README.md" />
-    <Content Include="plugins\ckeditor\README.md" />
-    <Content Include="plugins\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
-    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\config.json" />
-    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
-    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
-    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
-    <Content Include="plugins\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
-    <Content Include="plugins\ckeditor\skins\moono\readme.md" />
-    <Content Include="plugins\datatables\extensions\ColReorder\Readme.md" />
-    <Content Include="plugins\datatables\extensions\ColVis\Readme.md" />
-    <Content Include="plugins\datatables\extensions\FixedColumns\Readme.md" />
-    <Content Include="plugins\datatables\extensions\Responsive\css\dataTables.responsive.scss" />
-    <Content Include="plugins\datatables\extensions\Responsive\Readme.md" />
-    <Content Include="plugins\datatables\extensions\TableTools\images\psd\collection.psd" />
-    <Content Include="plugins\datatables\extensions\TableTools\images\psd\copy document.psd" />
-    <Content Include="plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
-    <Content Include="plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
-    <Content Include="plugins\datatables\extensions\TableTools\Readme.md" />
-    <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
-    <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
-    <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\PublishShop.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Layout\Index.aspx" />
@@ -2121,6 +2122,13 @@
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Layout\About\Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\About\Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Confirmation.aspx.cs">
       <DependentUpon>Confirmation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2163,10 +2171,6 @@
     <Compile Include="Layout\ProductSelected.aspx.designer.cs">
       <DependentUpon>ProductSelected.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Layout\ProductsSelected.aspx.cs">
-      <DependentUpon>ProductsSelected.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Layout\Quotation.aspx.cs">
       <DependentUpon>Quotation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2180,6 +2184,13 @@
     </Compile>
     <Compile Include="Layout\Review.aspx.designer.cs">
       <DependentUpon>Review.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Support\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Support\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Payment\PayPal\Utilities\BaseSamplePage.cs">
       <SubType>ASPXCodeBehind</SubType>

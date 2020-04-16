@@ -32,5 +32,21 @@ namespace xAPI.BL.Products
 
             return dt;
         }
+        public DataTable Products_GetList(ref BaseEntity entity)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = ProductDao.Instance.Products_GetList(ref entity);
+
+            return dt;
+        }
+        public DataTable Products_ByCategory(ref BaseEntity entity, Int32 CategoryId)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = ProductDao.Instance.Products_ByCategory(ref entity, CategoryId);
+
+            return dt;
+        }
     }
 }

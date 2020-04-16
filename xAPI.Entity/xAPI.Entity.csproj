@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Addresses\Addresses.cs" />
     <Compile Include="Category\Categoria.cs" />
+    <Compile Include="Category\Categorys.cs" />
     <Compile Include="Cotizations\Cotization.cs" />
     <Compile Include="Customers\Customer.cs" />
     <Compile Include="Order\OrderDetail.cs" />

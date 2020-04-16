@@ -37,7 +37,6 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     foreach (DataRow item in dt.Rows)
                     {
-                        String idProduct = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())); 
                         lst.Add(new srProducts()
                         {
                             Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
@@ -98,8 +97,8 @@ namespace SystemGlobal_Ecommerce.Layout
                 else
                 {
                     AppResource obj = null;
-                    Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
-                    obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, ProductId);
+                    String ProductId = Encryption.Decrypt(HttpUtility.UrlDecode(objProd["ProductId"]));
+                    obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, Convert.ToInt32(ProductId));
 
                     if (objBase.Errors.Count == 0)
                     {

@@ -45,8 +45,8 @@
 					<div class="tp-banner-container">
 						<div class="tp-banner revolution">
 							<ul>
-								<li data-thumb="/Files/images/slides/01/imprenta7.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/imprenta7.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
+								<li data-thumb="/Files/images/slides/01/abarrote3.png" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/abarrote3.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
 									<div class="tp-caption tp-caption1 lft stb"
 										data-x="center"
 										data-y="center"
@@ -56,14 +56,14 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">De multiples diseños</div>
+										<%--<div class="tp-caption1-wd-1 tt-base-color">De multiples diseños</div>
 										<div class="tp-caption1-wd-2">Exclusivos<br></div>
 										<div class="tp-caption1-wd-3">Los mejores Diseños</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>--%>
 									</div>
 								</li>
-								<li data-thumb="/Files/images/slides/01/imprenta6.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/imprenta6.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
+								<li data-thumb="/Files/images/slides/01/abarrote4.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/abarrote4.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
 									<div class="tp-caption tp-caption1 lft stb"
 										data-x="center"
 										data-y="center"
@@ -73,14 +73,14 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-white-color">Todo listo</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Usa nuestra<br>Tienda</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Compras faciles y rapidas</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<%--<div class="tp-caption1-wd-1 tt-white-color" style="color:black">Todo listo</div>
+										<div class="tp-caption1-wd-2 tt-white-color" style="color:black">Usa nuestra<br>Tienda</div>
+										<div class="tp-caption1-wd-3 tt-white-color" style="color:black">Compras faciles y rapidas</div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>--%>
 									</div>
 								</li>
-								<li data-thumb="/Files/images/slides/01/imprenta3.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/imprenta3.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >									
+								<li data-thumb="/Files/images/slides/01/abarrote5.png" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/images/slides/01/abarrote5.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >									
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
 										data-y="0"
@@ -121,10 +121,10 @@
 										data-start="900"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">Bienvenido</div>
+										<%--<div class="tp-caption1-wd-1 tt-base-color">Bienvenido</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Busca tus Diseños<br>Tienda</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Para el mejor comercio electronico</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÓN!">SOLICITAR COTIZACIÓN!</a></div>--%>
 									</div>
 								</li>
 							</ul>
