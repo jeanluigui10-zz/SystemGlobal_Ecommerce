@@ -69,7 +69,7 @@
     <Compile Include="Cotizations\CotizationDAO.cs" />
     <Compile Include="Customers\CustomerDAO.cs" />
     <Compile Include="Order\OrderDAO.cs" />
-    <Compile Include="Products\ProductDao.cs" />
+    <Compile Include="Product\ProductDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\AppResourceDao.cs" />
     <Compile Include="Resource\ResourcesDAO.cs" />

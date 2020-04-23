@@ -21,8 +21,8 @@
             try {
                 var objContent = $.parseJSON(glancedata);
                 for (var i = 0; i < objContent.length; i++) {
-                    var uniteprice = parseFloat(objContent[i].UnitPrice);
-                    objContent[i].UnitPrice = uniteprice.toFixed(2);
+                    var uniteprice = objContent[i].UnitPrice;
+                    objContent[i].UnitPrice = uniteprice;
                 }
                 var objectContent = {};
                 objectContent.request = objContent;
@@ -39,8 +39,8 @@
             try {
                 var obj = $.parseJSON(glancedata);
                 for (var i = 0; i < obj.length; i++) {
-                    var uniteprice = parseFloat(obj[i].UnitPrice);
-                    obj[i].UnitPrice = uniteprice.toFixed(2);
+                    var uniteprice = obj[i].UnitPrice;
+                    obj[i].UnitPrice = uniteprice;
                 }
                 var object = {};
                 object.request = obj;
@@ -72,9 +72,9 @@
 <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="listing-left-column.html">Shop</a></li>
-			<li>T-Shirt</li>
+			<li><a href="/Index.aspx">Canastón</a></li>
+			<li><a href="listing-left-column.html">Productos</a></li>
+			<li>Producto</li>
 		</ul>
 	</div>
 </div>
@@ -173,8 +173,8 @@
 										<i class="icon-star"></i>
 										<i class="icon-star"></i>
 										<i class="icon-star"></i>
-										<i class="icon-star-half"></i>
-										<i class="icon-star-empty"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
 									</div>
 									<a href="#">(1 Customer Review)</a>
 								</div>
@@ -350,14 +350,15 @@
                          <h1 class="tt-title">{{Name}}</h1>
                          <div class="tt-price">
                              <span class="new-price">S/.{{UnitPrice}}</span>
+                             <span class="old-price">S/.{{UnitPrice}}</span>
                          </div>
                          <div class="tt-review">
                              <div class="tt-rating">
                                  <i class="icon-star"></i>
                                  <i class="icon-star"></i>
                                  <i class="icon-star"></i>
-                                 <i class="icon-star-half"></i>
-                                 <i class="icon-star-empty"></i>
+                                 <i class="icon-star"></i>
+                                 <i class="icon-star"></i>
                              </div>
                              <a class="product-page-gotocomments-js" href="#">(1 Customer Review)</a>
                          </div>
@@ -462,8 +463,8 @@
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
-                                                         <i class="icon-star-half"></i>
-                                                         <i class="icon-star-empty"></i>
+                                                         <i class="icon-star"></i>
+                                                         <i class="icon-star"></i>
                                                      </div>
                                                      <div class="tt-comments-info">
                                                          <span class="username">by <span>ADRIAN</span></span>
@@ -485,8 +486,8 @@
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
-                                                         <i class="icon-star-half"></i>
-                                                         <i class="icon-star-empty"></i>
+                                                         <i class="icon-star"></i>
+                                                         <i class="icon-star"></i>
                                                      </div>
                                                      <div class="tt-comments-info">
                                                          <span class="username">by <span>JESICA</span></span>
@@ -507,8 +508,8 @@
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
                                                          <i class="icon-star"></i>
-                                                         <i class="icon-star-half"></i>
-                                                         <i class="icon-star-empty"></i>
+                                                         <i class="icon-star"></i>
+                                                         <i class="icon-star"></i>
                                                      </div>
                                                      <div class="tt-comments-info">
                                                          <span class="username">by <span>ADAM</span></span>
@@ -534,8 +535,8 @@
                                                      <i class="icon-star"></i>
                                                      <i class="icon-star"></i>
                                                      <i class="icon-star"></i>
-                                                     <i class="icon-star-half"></i>
-                                                     <i class="icon-star-empty"></i>
+                                                     <i class="icon-star"></i>
+                                                     <i class="icon-star"></i>
                                                  </div>
                                              </div>
                                              <div class="form-default">
@@ -572,9 +573,9 @@
   <div class="col-2 col-md-4 col-lg-3">
         <div class="tt-product thumbprod-center">
             <div class="tt-image-box">
-                <a href="#" class="tt-btn-quickview" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{FileDescription}}"  data-tooltip="Quick View" data-tposition="left"></a>
-                <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>
-                <a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>
+                <a href="#" class="tt-btn-quickview" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Quick View" data-tposition="left"></a>
+               <%-- <a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>--%>
+                <%--<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>--%>
                 <a href="ProductSelected.aspx">
                     <span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 				<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
@@ -589,15 +590,18 @@
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>
-                        <i class="icon-star-half"></i>
-                        <i class="icon-star-empty"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
                     </div>
                 </div>
                 <h2 class="tt-title"><a href="ProductSelected.aspx">{{Name}}</a></h2>
                 <div class="tt-text-info">
                     Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                 </div>
-                <div class="tt-price">S/.{{UnitPrice}}</div>
+                <div class="tt-price">
+                    <span class="new-price">S/.{{UnitPrice}}</span>
+                    <span class="old-price">S/.{{UnitPrice}}</span>
+                </div>
                 <div class="tt-product-inside-hover">
                     <div class="tt-row-btn">
                         <a class="tt-btn-addtocart thumbprod-button-bg add-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" style="cursor:pointer">Agregar producto</a>

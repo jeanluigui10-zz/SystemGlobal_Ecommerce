@@ -66,7 +66,7 @@ namespace xAPI.Entity.Order
         {
             Decimal totalPrice = 0;
             totalPrice += OrderDetail.Quantity * OrderDetail.Product.UnitPrice;
-            OrderDetail.Totalprice = totalPrice;
+            OrderDetail.Totalprice = Convert.ToDecimal(totalPrice.ToString("N2"));
             //return TotalPrice;
         }
     }

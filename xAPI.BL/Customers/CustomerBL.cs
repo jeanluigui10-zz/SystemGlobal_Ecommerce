@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using xAPI.Dao.Customers;
 using xAPI.Entity.Customers;
 using xAPI.Library.Base;
@@ -46,6 +42,20 @@ namespace xAPI.BL.Customers
         }
 
         #endregion
+        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email) 
+        {
+            Boolean success = false;
+            try
+            {
+                success = CustomerDAO.Instance.Customer_Validate_ExistEmail(ref objEntity, email);
+            }
+            catch (Exception ex)
+            {
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
+
         public Customer ValidateLogin_Customer(ref BaseEntity objBase, Customer obj)
         {
             objBase = new BaseEntity();
@@ -66,6 +76,7 @@ namespace xAPI.BL.Customers
             return objCustomer;
         }
     }
-  }
-    
+}
+
+
 

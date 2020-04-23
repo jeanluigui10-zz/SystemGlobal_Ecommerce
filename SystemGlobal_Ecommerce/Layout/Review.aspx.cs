@@ -77,7 +77,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     objListDetail.Add(new tBaseDetailOrder()
                     {
-                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
                         Price = objOrder.ListOrderDetail[i].Product.UnitPrice,
                         Quantity = objOrder.ListOrderDetail[i].Quantity,
                         CreatedBy = objOrder.Customer.CustomerId,
@@ -123,9 +123,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Object objProduct = new
                     {
-                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
-                        Category = objOrder.ListOrderDetail[i].Product.Category,
+                        Category = objOrder.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
                         NameResource = objOrder.ListOrderDetail[i].Product.NameResource
                     };
@@ -180,7 +180,7 @@ namespace SystemGlobal_Ecommerce.Layout
 
                 OrderHeader ObjOrderHeader = BaseSession.SsOrderxCore;
                
-                var ProductExist = ObjOrderHeader.ListOrderDetail.Any(p => p.Product.Id == productid);
+                var ProductExist = ObjOrderHeader.ListOrderDetail.Any(p => p.Product.ID == productid);
                 if (!ProductExist)
                 {
                     objReturn = new
@@ -196,7 +196,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     OrderDetail DetailSelect = new OrderDetail();
                     for (int i = 0; i < ObjOrderHeader.ListOrderDetail.Count; i++)
                     {
-                        if (ObjOrderHeader.ListOrderDetail[i].Product.Id == productid)
+                        if (ObjOrderHeader.ListOrderDetail[i].Product.ID == productid)
                         {
                             ObjOrderHeader.ListOrderDetail[i].Quantity = quantity;
                             ObjOrderHeader.CalculateTotalPricexProduct(ObjOrderHeader.ListOrderDetail[i]);
@@ -207,7 +207,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     ObjOrderHeader.CalculateTotals();
 
                     BaseSession.SsOrderxCore = ObjOrderHeader;
-
+                    DetailSelect.ProductId = Convert.ToInt32(ProductId);
                     Object OrderHeader = new
                     {
                         Ordertotal = ObjOrderHeader.Ordertotal,
@@ -372,7 +372,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     currency = "USD",
                     price = Convert.ToString(Decimal.Round(priceItem, 2), CultureInfo.InvariantCulture),
                     quantity = Convert.ToString(objOrder.ListOrderDetail[i].Quantity),
-                    sku = Convert.ToString(objOrder.ListOrderDetail[i].Product.Id)
+                    sku = Convert.ToString(objOrder.ListOrderDetail[i].Product.ID)
                 };
                 items.Add(item);
             }
@@ -406,9 +406,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Object objProduct = new
                     {
-                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
-                        Category = objOrder.ListOrderDetail[i].Product.Category,
+                        Category = objOrder.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
                         NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
                     };

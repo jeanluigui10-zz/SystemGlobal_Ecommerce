@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Web;
 using System.Web.Script.Serialization;
 using SystemGlobal_Ecommerce.src.app_code;
+using xAPI.BL.Category;
 using xAPI.BL.Resource;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
+using xAPI.Library.General;
 
 namespace SystemGlobal_Ecommerce
 {
@@ -15,7 +18,7 @@ namespace SystemGlobal_Ecommerce
         {
             Load_Settings();
             Load_Products();
-
+            Load_Category();
             //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
             //{
             //    ucChat.SetUserId(BaseSession.SsOrderxCore.Customer.CustomerId);
@@ -27,7 +30,38 @@ namespace SystemGlobal_Ecommerce
             //    ucChat.SetUserId(codigoAleatorio);
             //    ucChat.SetUserFullName("");
             //}
-                   
+
+        }
+        private void Load_Category()
+        {
+            BaseEntity entity = new BaseEntity();
+            List<srCategory> lst = new List<srCategory>();
+
+            DataTable dt = CategoryBL.Instance.CategoryProduct_GetList(ref entity);
+            if (entity.Errors.Count == 0)
+            {
+                if (dt != null)
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        lst.Add(new srCategory()
+                        {
+                            Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                            Name = item["Name"].ToString(),
+                        });
+                    }
+                }
+               
+            }
+            if (entity.Errors.Count <= 0)
+            {
+                if (lst != null)
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    String sJSON = serializer.Serialize(lst);
+                    hfDataListCategory.Value = sJSON.ToString();
+                }
+            }
         }
 
         private void Load_Products()
@@ -40,9 +74,9 @@ namespace SystemGlobal_Ecommerce
                 {
                     Object objProduct = new
                     {
-                        ProductId = orderHeader.ListOrderDetail[i].Product.Id,
+                        ProductId = orderHeader.ListOrderDetail[i].Product.ID,
                         ProductName = orderHeader.ListOrderDetail[i].Product.Name,
-                        Category = orderHeader.ListOrderDetail[i].Product.Category,
+                        Category = orderHeader.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = orderHeader.ListOrderDetail[i].Product.UnitPrice,
                         NameResource = orderHeader.ListOrderDetail[i].Product.NameResource
                     };
@@ -58,8 +92,8 @@ namespace SystemGlobal_Ecommerce
 
                 Object OrderHeader = new
                 {
-                    Ordertotal = orderHeader.Ordertotal,
-                    SubTotal = orderHeader.SubTotal,
+                    Ordertotal = orderHeader.Ordertotal.ToString("N2"),
+                    SubTotal = orderHeader.SubTotal.ToString("N2"),
                     IGV = orderHeader.IGV,
                     CustomerId = orderHeader.Customer.CustomerId,
                     CustomerName = orderHeader.Customer.FullName,
@@ -72,7 +106,6 @@ namespace SystemGlobal_Ecommerce
                 hfDataListProduct.Value = sJSON.ToString();
             }
         }
-
         private void Load_Settings()
         {
             BaseEntity objBase = new BaseEntity();
@@ -87,7 +120,6 @@ namespace SystemGlobal_Ecommerce
                     }
                 }
             }
-
         }
         protected void btnCloseSession_ServerClick(object sender, EventArgs e)
         {

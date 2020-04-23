@@ -38,8 +38,8 @@
 <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li>Contact</li>
+			<li><a href="/Index.aspx">Canastón</a></li>
+			<li>Contactanos</li>
 		</ul>
 	</div>
 </div>
@@ -58,7 +58,7 @@
 					<div class="col-sm-12 col-md-4 ml-sm-auto mr-sm-auto">
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-93"></i>
-							<h6 class="tt-title">LET’S HAVE A CHAT!</h6>
+							<h6 class="tt-title">TENEMOS UN CHAT!</h6>
 							<address>
 								+777 2345 7885:<br>
 								+777 2345 7886
@@ -68,18 +68,18 @@
 					<div class="col-sm-6 col-md-4">
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-24"></i>
-							<h6 class="tt-title">VISIT OUR LOCATION</h6>
+							<h6 class="tt-title">VISITA NUESTRA UBICACIÓN</h6>
 							<address>
-								2548 Broaddus Maple Court Avenue,<br>
-								Madisonville KY 4783,<br>
-								United States of America
+								Actualmente no esta disponible por el covid-19<br>
+							<%--	Madisonville KY 4783,<br>
+								United States of America--%>
 							</address>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-4">
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-92"></i>
-							<h6 class="tt-title">WORK TIME</h6>
+							<h6 class="tt-title">HORARIO DE ATENCIÓN</h6>
 							<address>
 								7 Days a week<br>
 								from 10 AM to 6 PM

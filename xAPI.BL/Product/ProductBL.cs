@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using xAPI.Dao.Products;
+using xAPI.Dao.Product;
+using xAPI.Entity.Product;
 using xAPI.Library.Base;
 
-namespace xAPI.BL.Products
+namespace xAPI.BL.Product
 {
     public class ProductBL
     {
@@ -47,6 +44,28 @@ namespace xAPI.BL.Products
             dt = ProductDao.Instance.Products_ByCategory(ref entity, CategoryId);
 
             return dt;
+        }
+        public DataTable Product_GetList(ref BaseEntity entity)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = ProductDao.Instance.Product_GetList(ref entity);
+
+            return dt;
+        }
+
+        public Products Products_GetList_ById_Ecommerce(ref BaseEntity entity, Int32 Id)
+        {
+            entity = new BaseEntity();
+            Products obj = null;
+            if (Id > 0)
+            {
+                obj = ProductDao.Instance.Products_GetList_ById_Ecommerce(ref entity, Id);
+            }
+            else
+                entity.Errors.Add(new BaseEntity.ListError(new Exception { }, "An error occurred sending data"));
+            return obj;
+
         }
     }
 }

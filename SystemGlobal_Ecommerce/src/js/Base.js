@@ -26,35 +26,35 @@ function fn_message(type, message, typeOrder) {
             break;
     }
 
-    
+
     //alert($('div[id$=message_row]').length);
     //if ($('div[id$=message_row]').length <= 0) {
     //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
     $('div[id$=message_row]').empty().fadeIn().append(result);
     $('div[id$=message_row]').delay("10000").fadeOut();
-    //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'slow');
-    $('html, body').animate({ scrollTop: 1 }, 'slow');
+    $('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
+    //$('html, body').animate({ scrollTop: 1 }, 'slow');
     //$('div[id$=message_row]').delay("6000").fadeOut();
     //$('html, body').animate({ scrollTop: $('div[id$=message_row]').offset().top }, 'fast');
-        //alert($('div[id$=message_row]').length);
+    //alert($('div[id$=message_row]').length);
     //}
     //else {
-        //arry.push(result);
-        //setTimeout(fn_queuemessage, 6000);
+    //arry.push(result);
+    //setTimeout(fn_queuemessage, 6000);
     //}
 
     //$('div[id$=message_row]').empty().fadeIn().append(result);
     //setTimeout(function () { $('div[id$=message_row]').fadeOut(); }, 6000)
 }
 function fn_resend(val) {
-    
+
     success = function (response) {
         if (response != null || response.d != "F") {
             window.location.href('Complete' + val + '.aspx');
         } else { fn_message('c', 'Error while sending email.', val); }
     }
     error = function (xhr, ajaxOptions, thrownError) {
-        fn_message('c', 'Error while sending email.',val);
+        fn_message('c', 'Error while sending email.', val);
     }
     fn_callmethod("ReviewSubmit" + val + ".aspx/SendEmail", "{val:" + val + "}", success, error);
 }
@@ -75,7 +75,7 @@ function fn_custommessage(type, message, place) {
             break;
     }
 
-    $('div[id$='+place+']').empty().fadeIn().append(result);
+    $('div[id$=' + place + ']').empty().fadeIn().append(result);
     //$('html, body').animate({ scrollTop: $('div[id$=' + place + ']').offset().top }, 'fast');
     $('div[id$=' + place + ']').delay("6000").fadeOut();
 }
@@ -84,7 +84,7 @@ function fn_message_hide() {
     $('div[id$=message_row]').empty();
 }
 function fn_message_hide_customize(id) {
-    $('div[id$='+id+']').empty();
+    $('div[id$=' + id + ']').empty();
 }
 
 function fn_queuemessage() {
@@ -93,11 +93,7 @@ function fn_queuemessage() {
         setTimeout(fn_queuemessage, 6000);
     }
 }
-function Fn_Loading_Hide(id) {
-    $("#" + id).children().removeClass('hidden');
-    $('#' + id + ' .wstock-loader-section ').hide();
 
-}
 function fn_QueryString(name) {
     return unescape((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1]);
 }
@@ -202,7 +198,7 @@ function BuildColModelArray(obj) {
             array[i] = { name: 'hiddeid', index: 'hiddeid', width: 10, align: 'center', hidden: true };
         }
         else if (property == "LegacyNumber") {
-            array[i] = { name: property, index: property, width: 40, align: 'center'};
+            array[i] = { name: property, index: property, width: 40, align: 'center' };
         }
         else
             array[i] = { name: property, index: property, width: 100, align: 'center' };
@@ -354,7 +350,7 @@ function CallSearch(webmethod, txtid, txtname, txtvalue, txtlegacy) {
         });
     };
     error = function (xhr, ajaxOptions, thrownError) {
-        
+
         fn_message("i", "Error Search.");
     };
     var grid = $("#tbGrid");
@@ -509,46 +505,46 @@ var xCoreBaseUtilitiesJS = {
         switch (messageType) {
             case "s":
                 html = '<div class="myForm1_alert">' +
-                            '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
-                            '<p class="alert alert-success">' +
-                                message +
-                            '</p>' +
-                        '</div>';
+                    '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
+                    '<p class="alert alert-success">' +
+                    message +
+                    '</p>' +
+                    '</div>';
                 break;
             case "e":
                 html = '<div class="myForm1_alert">' +
-                            '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
-                            '<p class="alert alert-er">' +
-                                message +
-                            '</p>' +
-                        '</div>';
+                    '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
+                    '<p class="alert alert-er">' +
+                    message +
+                    '</p>' +
+                    '</div>';
 
                 break;
             case "w":
                 html = '<div class="myForm1_alert">' +
-                            '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
-                            '<p class="alert alert-warning">' +
-                                message +
-                            '</p>' +
-                        '</div>';
+                    '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
+                    '<p class="alert alert-warning">' +
+                    message +
+                    '</p>' +
+                    '</div>';
 
                 break;
             case "i":
                 html = '<div class="myForm1_alert">' +
-                            '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
-                            '<p class="alert alert-info">' +
-                                message +
-                            '</p>' +
-                        '</div>';
+                    '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
+                    '<p class="alert alert-info">' +
+                    message +
+                    '</p>' +
+                    '</div>';
 
                 break;
             default:
                 html = '<div class="myForm1_alert">' +
-                            '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
-                            '<p class="alert alert-info">' +
-                                message +
-                            '</p>' +
-                        '</div>';
+                    '<span class="icon_acceptcheckconfirmedgogreenokpositiveyes"></span>' +
+                    '<p class="alert alert-info">' +
+                    message +
+                    '</p>' +
+                    '</div>';
                 break;
         };
 
@@ -588,10 +584,10 @@ var xCoreBaseUtilitiesJS = {
         },*/
         iOS: function () {
             return (
-                        (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
-                        (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
-                        (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
-                    );
+                (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
+                (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
+                (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
+            );
         },
         /*Opera: function() {
             return navigator.userAgent.match(/Opera Mini/i);

@@ -134,6 +134,11 @@
     <Content Include="Chat\src\css\chatStyle.css" />
     <Content Include="Chat\src\css\loader_datatable.css" />
     <Content Include="Chat\src\js\treeTableJS.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\css\anotherfont-books.css" />
     <Content Include="Files\css\module_instagram_shop.css" />
@@ -908,20 +913,12 @@
     <Content Include="Files\images\skin-snowboards\slides\slide-02.jpg" />
     <Content Include="Files\images\skin-snowboards\video\video.mp4" />
     <Content Include="Files\images\skin-snowboards\video\video_img.jpg" />
-    <Content Include="Files\images\slides\01\abarrote3.png" />
-    <Content Include="Files\images\slides\01\abarrote4.jpg" />
-    <Content Include="Files\images\slides\01\abarrote5.png" />
-    <Content Include="Files\images\slides\01\abarrotes2.jpg" />
-    <Content Include="Files\images\slides\01\argos.png" />
-    <Content Include="Files\images\slides\01\imprenta1.jpg" />
-    <Content Include="Files\images\slides\01\imprenta2.jpg" />
-    <Content Include="Files\images\slides\01\imprenta3.jpg" />
-    <Content Include="Files\images\slides\01\imprenta4.jpg" />
-    <Content Include="Files\images\slides\01\imprenta5.jpg" />
-    <Content Include="Files\images\slides\01\imprenta6.jpg" />
-    <Content Include="Files\images\slides\01\imprenta7.jpg" />
+    <Content Include="Files\images\slides\01\abarrote1.jpg" />
+    <Content Include="Files\images\slides\01\abarrote2.jpg" />
+    <Content Include="Files\images\slides\01\abarrotes1.jpg" />
     <Content Include="Files\images\slides\01\slide-01.jpg" />
     <Content Include="Files\images\slides\01\slide-02.jpg" />
+    <Content Include="Files\images\slides\01\VideoTienda.mp4" />
     <Content Include="Files\images\slides\06\slide-01.jpg" />
     <Content Include="Files\images\slides\06\slide-02.jpg" />
     <Content Include="Files\images\slides\07\slide-01.jpg" />
@@ -961,8 +958,8 @@
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\Login.aspx" />
-    <Content Include="Layout\Products.aspx" />
     <Content Include="Layout\ProductSelected.aspx" />
+    <Content Include="Layout\ProductsList.aspx" />
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="Layout\Support\Contact.aspx" />
@@ -1229,6 +1226,11 @@
     <Content Include="Files\font\wokiee\fonts\wokiee.ttf" />
     <Content Include="Files\font\wokiee\fonts\wokiee.woff" />
     <Content Include="Files\font\wokiee\selection.json" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\PublishShop.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Layout\Index.aspx" />
@@ -2157,19 +2159,19 @@
     <Compile Include="Layout\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Layout\Products.aspx.cs">
-      <DependentUpon>Products.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\Products.aspx.designer.cs">
-      <DependentUpon>Products.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Layout\ProductSelected.aspx.cs">
       <DependentUpon>ProductSelected.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Layout\ProductSelected.aspx.designer.cs">
       <DependentUpon>ProductSelected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ProductsList.aspx.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\ProductsList.aspx.designer.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\Quotation.aspx.cs">
       <DependentUpon>Quotation.aspx</DependentUpon>

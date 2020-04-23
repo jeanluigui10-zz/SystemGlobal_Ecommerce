@@ -47,10 +47,10 @@
              }
          }
          function Calculate(obj) {
-             $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
-             $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
-             $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
-             $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
+             $(".tt-cart-total-price").text("S/." + obj.SubTotal);
+             $("#idSubTotalRight").text("S/." + obj.SubTotal);
+             $("#idIGVRight").text("S/." + obj.IGV);
+             $("#idTotalRigth").text("S/." + obj.Ordertotal);
          }
         
     </script>
@@ -240,9 +240,10 @@
 										</ul>
 									</td>
 									<td>
-										<div class="tt-price">
-											S/.{{Product.UnitPrice}}
-										</div>
+                                                 <div class="tt-price">
+                                                     <span class="new-price">S/.{{Product.UnitPrice}}</span>
+                                                     <span class="old-price">S/.{{Product.UnitPrice}}</span>
+                                                 </div>
 									</td>
 									<td>
 										<div class="detach-quantity-desctope">

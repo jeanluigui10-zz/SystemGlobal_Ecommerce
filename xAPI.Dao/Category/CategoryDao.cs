@@ -27,7 +27,7 @@ namespace xAPI.Dao.Category
             SqlCommand cmd = null;
             try
             {
-                cmd = new SqlCommand("CategoryProduct_GetList_Sp", clsConnection.GetConnection())
+                cmd = new SqlCommand("Product_Category_GetList_Sp", clsConnection.GetConnection())
                 {
                     CommandType = CommandType.StoredProcedure
                 };

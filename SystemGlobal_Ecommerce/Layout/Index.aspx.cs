@@ -7,9 +7,9 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using SystemGlobal_Ecommerce.src.app_code;
-using xAPI.BL.Resource;
-using xAPI.Entity;
+using xAPI.BL.Product;
 using xAPI.Entity.Order;
+using xAPI.Entity.Product;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 namespace SystemGlobal_Ecommerce.Layout
@@ -30,24 +30,31 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseEntity entity = new BaseEntity();
             List<srProducts> lst = new List<srProducts>();
 
-            DataTable dt = ResourceBL.Instance.AppResource_GetByAplicationID(ref entity);
+            DataTable dt = ProductBL.Instance.Product_GetList(ref entity);
             if (entity.Errors.Count == 0)
             {
                 if (dt != null)
                 {
+                    Int32 count = 0;
                     foreach (DataRow item in dt.Rows)
                     {
+                        count++;
                         lst.Add(new srProducts()
                         {
+                            isCheckbox = "1",
                             Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
-                            FileName = item["FILENAME"].ToString(),
-                            Name = item["NAME"].ToString(),
-                            UnitPrice = item["UnitPrice"].ToString(),
-                            DOCTYPE = item["DOCTYPE"].ToString(),
-                            Category = item["RESOURCE_CATEGORY_NAME"].ToString(),
-                            FileDescription = item["DESCRIPTION"].ToString(),
-                            NameResource = Config.Impremtawendomain + item["NAMERESOURCE"].ToString(),
-                            Status = item["STATUS"].ToString()
+                            Name = item["Name"].ToString(),
+                            Description = item["Description"].ToString(),
+                            DocType = item["DocType"].ToString(),
+                            Brand = item["BrandName"].ToString(),
+                            Category = item["Resource_Category_Name"].ToString(),
+                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                            UnitPrice = Convert.ToDecimal(item["UnitPrice"]).ToString(),
+                            Stock = Convert.ToInt32(item["Stock"]).ToString(),
+                            PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
+                            UniMed = item["UniMed"].ToString(),
+                            Status = Convert.ToInt16(item["Status"]) == (short)EnumStatus.Enabled ? "Activo" : "Inactivo",
+                            Index = count.ToString()
                         });
                     }
                 }
@@ -96,9 +103,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 }
                 else
                 {
-                    AppResource obj = null;
+                    Products obj = null;
                     String ProductId = Encryption.Decrypt(HttpUtility.UrlDecode(objProd["ProductId"]));
-                    obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, Convert.ToInt32(ProductId));
+                    obj = ProductBL.Instance.Products_GetList_ById_Ecommerce(ref objBase, Convert.ToInt32(ProductId));
 
                     if (objBase.Errors.Count == 0)
                     {
@@ -106,7 +113,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         {
                             obj.NameResource = Config.Impremtawendomain + obj.NameResource;
                             OrderHeader orderHeader = BaseSession.SsOrderxCore;
-                            var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.Id == obj.Id);
+                            var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.ID == obj.ID);
                             if (ProductExist)
                             {
                                 objReturn = new
@@ -136,12 +143,14 @@ namespace SystemGlobal_Ecommerce.Layout
                                     {
                                         Object objProduct = new
                                         {
-                                            ProductId = orderHeader.ListOrderDetail[i].Product.Id,
+                                            ProductId = orderHeader.ListOrderDetail[i].Product.ID,
                                             ProductName = orderHeader.ListOrderDetail[i].Product.Name,
-                                            Category = orderHeader.ListOrderDetail[i].Product.Category,
+                                            Category = orderHeader.ListOrderDetail[i].Product.category.Name,
                                             UnitPrice = orderHeader.ListOrderDetail[i].Product.UnitPrice,
                                             NameResource = orderHeader.ListOrderDetail[i].Product.NameResource
+
                                         };
+                                       
                                         Object Detail = new
                                         {
                                             Product = objProduct,
@@ -215,9 +224,9 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseEntity objBase = new BaseEntity();
             try
             {
-                AppResource obj = null;
-                Int32 ProductId = Convert.ToInt32(objProd["ProductId"]);
-                obj = ResourceBL.Instance.AppResource_GetByID(ref objBase, ProductId);
+                Products obj = null;
+                String ProductId = Encryption.Decrypt(HttpUtility.UrlDecode(objProd["ProductId"]));
+                obj = ProductBL.Instance.Products_GetList_ById_Ecommerce(ref objBase, Convert.ToInt32(ProductId));
 
                 if (objBase.Errors.Count == 0)
                 {
@@ -226,12 +235,12 @@ namespace SystemGlobal_Ecommerce.Layout
                         obj.NameResource = Config.Impremtawendomain + obj.NameResource;
                         Object objProduct = new
                         {
-                            ProductId = obj.Id,
+                            ProductId = HttpUtility.UrlEncode(Encryption.Encrypt(obj.ID.ToString())),
                             ProductName = obj.Name,
-                            Category = obj.Category,
+                            Category = obj.category.Name,
                             UnitPrice = obj.UnitPrice,
                             NameResource = obj.NameResource,
-                            FileDescription = obj.FileDescription
+                            FileDescription = obj.Description
                         };
 
                         JavaScriptSerializer serializer = new JavaScriptSerializer();

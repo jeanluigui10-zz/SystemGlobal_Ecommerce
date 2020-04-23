@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using xAPI.Entity;
 using xAPI.Entity.Customers;
 using xAPI.Entity.Order;
+using xAPI.Entity.Product;
 using xAPI.Library.Base;
 using xAPI.Library.Connection;
 using xAPI.Library.General;
@@ -25,7 +26,7 @@ namespace xAPI.Dao.Order
             }
         }
         #endregion
-        private static String domainUrl = "http://imprentaweb.tk";
+        private static String domainUrl = "http://canastonxcorporate.tk";
         public Boolean Insertar_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder, tBaseDetailOrderList objDetail)
         {
             SqlCommand cmd = null;
@@ -98,7 +99,7 @@ namespace xAPI.Dao.Order
                 dr = cmd.ExecuteReader();
                 obj.Customer = new Customer();
                 obj.ListOrderDetail = new List<OrderDetail>();
-                AppResource product = new AppResource();
+                Products product = new Products();
                 if (dr.HasRows)
                 {
                     while (dr.Read())
@@ -116,14 +117,14 @@ namespace xAPI.Dao.Order
                     {
                         while (dr.Read())
                         {
-                            product = new AppResource()
+                            product = new Products()
                             {
-                                Id = dr.GetColumnValue<Int32>("ID"),
+                                ID = dr.GetColumnValue<Int32>("ID"),
                                 Name = dr.GetColumnValue<String>("Name"),
-                                Category = dr.GetColumnValue<String>("Category"),
                                 UnitPrice = dr.GetColumnValue<Decimal>("UnitPrice"),
                                 NameResource = dr.GetColumnValue<String>("NameResource")
                             };
+                            product.category.Name = dr.GetColumnValue<String>("Category");
                         }
                     }
                    

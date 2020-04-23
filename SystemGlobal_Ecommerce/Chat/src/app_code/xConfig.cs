@@ -6,7 +6,7 @@ namespace SystemGlobal_Ecommerce.Chat.src.app_code
 {
     public class xConfig
     {
-        public static String Signalrhubs { get; set; } = "signalr/hubs";
+        //public static String Signalrhubs { get; set; } = "signalr/hubs";
         public static String url_apichat { get { return WebConfigurationManager.AppSettings["url_apichat"]; } }
 
         public static String RedirectChatModule { get { return HttpUtility.UrlDecode(WebConfigurationManager.AppSettings["Domain_ChatModule"]); } }

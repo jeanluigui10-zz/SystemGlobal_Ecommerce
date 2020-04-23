@@ -88,9 +88,32 @@ namespace xAPI.Dao.Customers
             }
             return success;
         }
+        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email)
+        {
+            SqlCommand cmd = null;
+            Boolean success = false;
+            try
+            {
+                cmd = new SqlCommand("Customer_Validate_ExistEmail_Sp", clsConnection.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.ExecuteNonQuery();
+                success = cmd.ExecuteNonQuery() > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                success = false;
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "Ocurrio un error al registrar Usuario not found."));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return success;
+        }
 
         #endregion
-                public Customer Customer_ValidatebyUsernameAndPassword(ref BaseEntity objBase, Customer obj)
+        public Customer Customer_ValidatebyUsernameAndPassword(ref BaseEntity objBase, Customer obj)
         {
             SqlCommand ObjCmd = null;
             Customer objCustomer = null;

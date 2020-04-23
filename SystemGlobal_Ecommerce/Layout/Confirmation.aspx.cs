@@ -47,9 +47,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Object objProduct = new
                     {
-                        ProductId = objOrder.ListOrderDetail[i].Product.Id,
+                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
-                        Category = objOrder.ListOrderDetail[i].Product.Category,
+                        Category = objOrder.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
                         NameResource = objOrder.ListOrderDetail[i].Product.NameResource
                     };

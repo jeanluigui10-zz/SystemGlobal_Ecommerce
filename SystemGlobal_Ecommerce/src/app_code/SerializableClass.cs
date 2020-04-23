@@ -472,25 +472,27 @@ namespace SystemGlobal_Ecommerce.src.app_code
     public class srProducts
     {
         public String Id { get; set; }
+        public String SKU { get; set; }
         public String Name { get; set; }
+        public String Category { get; set; }
+        public String Brand { get; set; }
         public String FileName { get; set; }
-        public String FileDescription { get; set; }
+        public String Description { get; set; }
+        public String CategoryId { get; set; }
         public String FileExtension { get; set; }
         public String FilePublicName { get; set; }
-        public String DOCTYPE { get; set; }
-        public String NameResource { get; set; }
-        public String AplicationId { get; set; }
-        public String UserId { get; set; }
-        public String Photoid { get; set; }
-        public String Url { get; set; }
-        public String isUpload { get; set; }
-        public String CategotyId { get; set; }
-        public String SystemContactId { get; set; }
         public String UnitPrice { get; set; }
-        public String Category { get; set; }
+        public String Stock { get; set; }
+        public String PriceOffer { get; set; }
+        public String UniMed { get; set; }
+        public String NameResource { get; set; }
         public String Status { get; set; }
-
+        public String DocType { get; set; }
+        public String IsUpload { get; set; }
+        public String isCheckbox { get; set; }
+        public String Index { get; set; }
     }
+
     [Serializable]
     public class srReportCategory
     {

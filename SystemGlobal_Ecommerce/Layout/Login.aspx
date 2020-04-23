@@ -1,16 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
        <script type="text/javascript">
-
         $(function () {
-            //fn_init();
-
         });
 
         function Fn_LoginCustomer()
         {
             try {
-                //var senddata = '{user:"' + $("input[id$=txtdni]").val() + '",password:"' + $("input[id$=txtpassword]").val() + '}';
                 var objCustomer = {
                     Email: $("input[id$=txtUsername]").val(),
                     Password: $("input[id$=txtPassowrd]").val()
@@ -39,7 +36,6 @@
                     fn_message('e', 'Ocurrio un error al enviar la data.', 'message_row');
                 }
                 var complete = function () {
-                    //$('html, body').animate({ scrollTop: $('div[id$=divMessageTop]').offset().top }, 'fast');
                 }
                 fn_callmethodComplete("Login.aspx/LoginSecurity", JSON.stringify({ objCust: objCustomer }), success, error, complete);
 
@@ -55,7 +51,7 @@
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Inico</a></li>
+			<li><a href="/Index.aspx">Login</a></li>
 			<li>Registro</li>
 		</ul>
 	</div>
@@ -63,33 +59,32 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder" id="divMessageTop">YA REGISTRADO?</h1>
+			<h1 class="tt-title-subpages noborder" id="divMessageTop">Bienvenido a "EL CANASTÓN"</h1>
 			<div class="tt-login-form">
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
 						<div class="tt-item">
-							<h2 class="tt-title">NUEVO CLIENTE</h2>
-							<p>
-								Al crear una cuenta, podra pasar a visualizar nuestros diseños.
-							</p>
+							<h2 class="tt-title">ERES NUEVO?</h2>
+							<label class="tt-title">Registrandote podras crear tu lista y hacer tu pedido.</label>
+						  
 							<div class="form-group">
-								<a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-top btn-border">CREAR UNA CUENTA</a>
+								<a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-top btn-border">Registrate Aquí</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-6">
 						<div class="tt-item">
 							<h2 class="tt-title">LOGIN</h2>                                  
-							Si tiene una cuenta con nosotros, inicie sesión.
+							Si tiene una cuenta con nosotros, Inicie sesión.
 							<div class="form-default form-top">
                                        <div id="message_row"></div>
 									<div class="form-group">
-										<label for="loginInputName">USUARIO *</label>
+										<label for="loginInputName">Usuario *</label>
 										<div class="tt-required">* Campos requeridos</div>
 										<input type="text" runat="server" name="name" class="form-control" id="txtUsername" placeholder="Ingrese su Usuario">
 									</div>
 									<div class="form-group">
-										<label for="loginInputEmail">PASSWORD *</label>
+										<label for="loginInputEmail">Contraseña *</label>
 										<input runat="server" type="password" name="passowrd" class="form-control" id="txtPassowrd" placeholder="Ingrese su Password">
 									</div>
 									<div class="row">
@@ -98,10 +93,10 @@
 												<button class="btn btn-border" type="button" runat="server"  onclick="Fn_LoginCustomer()">Ingresar</button>
 											</div>
 										</div>
-										<div class="col-auto align-self-end">
+										<div class="col-auto align-self-end" style="display:none">
 											<div class="form-group">
 												<ul class="additional-links">
-													<li><a href="#">Perdiste tu Password?</a></li>
+													<li><a href="#">Perdiste tu Contraseña?</a></li>
 												</ul>
 											</div>
 										</div>

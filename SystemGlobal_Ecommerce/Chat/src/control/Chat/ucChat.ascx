@@ -7,7 +7,7 @@
         //--js Chat---//
         $.support.cors = true;
 
-        $.connection.hub.url = "<%=SystemGlobal_Ecommerce.Chat.src.app_code.xConfig.url_apichat + "signalr/"%>";
+<%--        $.connection.hub.url = "<%=SystemGlobal_Ecommerce.Chat.src.app_code.xConfig.url_apichat + "signalr/"%>";--%>
 
         Counter = $.connection.counterHub;
 

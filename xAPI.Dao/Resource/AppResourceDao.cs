@@ -56,7 +56,6 @@ namespace xAPI.Dao
         public AppResource GetAllByID(ref BaseEntity Base, Int32 ID)
         {
             AppResource objAppResource = new AppResource();
-            //List<clsLanguage> lstLanguages = new List<clsLanguage>(); comente
             SqlDataReader dr = null;
             SqlCommand cmd = null;
             try

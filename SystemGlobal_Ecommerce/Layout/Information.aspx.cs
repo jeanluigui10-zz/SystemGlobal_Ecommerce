@@ -54,23 +54,32 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 BaseEntity objEntity = new BaseEntity();
                 obj.CreatedDate = DateTime.Now;
-                success = CustomerBL.Instance.Customer_Save(ref objEntity, obj);                 
 
-                if (objEntity.Errors.Count == 0)
+                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email);
+
+                if (!ExistEmail)
                 {
-                    if (success)
+                    success = CustomerBL.Instance.Customer_Save(ref objEntity, obj);
+
+                    if (objEntity.Errors.Count == 0)
                     {
-                        return new { Result = "Ok", Msg = "Registro Correcto!" };
+                        if (success)
+                        {
+                            return new { Result = "Ok", Msg = "Se registró correctamente!" };
+                        }
+                        else
+                        {
+                            return new { Result = "NoOk", Msg = "Hubo Un error al registrar." };
+                        }
                     }
                     else
                     {
-                        return new { Result = "NoOk", Msg = "Hubo Un error al registrar." };
+                        return new { Result = "NoOk", Msg = "A ocurrido un error realizando transaccion" };
                     }
                 }
-                else
-                {
-                    return new { Result = "NoOk", Msg = "A ocurrido un error realizando transaccion" };
-                }
+                else {
+                    return new { Result = "NoOkEmail", Msg = "Ya exíste Correo o Usuario ingresado" };
+                }                
             }
             catch (Exception ex)
             {

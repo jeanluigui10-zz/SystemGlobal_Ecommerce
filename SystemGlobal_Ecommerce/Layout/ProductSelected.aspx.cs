@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using SystemGlobal_Ecommerce.src.app_code;
-using xAPI.BL.Products;
+using xAPI.BL.Product;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 
@@ -61,24 +59,30 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 if (VsId > 0)
                 {
-                    DataTable dt = ProductBL.Instance.Products_GetList_ById(ref objEntity, VsId);
+                    DataTable dt = ProductBL.Instance.Product_GetList(ref objEntity);
                     if (objEntity.Errors.Count == 0)
                     {
                         if (dt != null)
                         {
+                            Int32 count = 0;
                             foreach (DataRow item in dt.Rows)
                             {
+                                count++;
                                 lst.Add(new srProducts()
                                 {
+                                    isCheckbox = "1",
                                     Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
-                                    FileName = item["FILENAME"].ToString(),
-                                    Name = item["NAME"].ToString(),
-                                    UnitPrice = item["UnitPrice"].ToString(),
-                                    DOCTYPE = item["DOCTYPE"].ToString(),
-                                    Category = item["RESOURCE_CATEGORY_NAME"].ToString(),
-                                    FileDescription = item["DESCRIPTION"].ToString(),
-                                    NameResource = Config.Impremtawendomain + item["NAMERESOURCE"].ToString(),
-                                    Status = item["STATUS"].ToString()
+                                    Name = item["Name"].ToString(),
+                                    Description = item["Description"].ToString(),
+                                    DocType = item["DocType"].ToString(),
+                                    Category = item["Resource_Category_Name"].ToString(),
+                                    NameResource = item["NameResource"].ToString(),
+                                    UnitPrice = Convert.ToDecimal(item["UnitPrice"]).ToString(),
+                                    Stock = Convert.ToInt32(item["Stock"]).ToString(),
+                                    PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
+                                    UniMed = item["UniMed"].ToString(),
+                                    Status = Convert.ToInt16(item["Status"]) == (short)EnumStatus.Enabled ? "Activo" : "Inactivo",
+                                    Index = count.ToString()
                                 });
                             }
                         }
@@ -99,8 +103,6 @@ namespace SystemGlobal_Ecommerce.Layout
                             JavaScriptSerializer serializer = new JavaScriptSerializer();
                             String sJSON = serializer.Serialize(lst);
                             hfProduct.Value = sJSON.ToString();
-
-
                         }
                     }
                 }

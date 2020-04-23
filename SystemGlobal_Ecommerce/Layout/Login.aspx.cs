@@ -30,7 +30,8 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Email = email,
                     Password = password
-                };
+                }; 
+
                 Customer objCustomer = CustomerBL.Instance.ValidateLogin_Customer(ref objBase, obj);
                 if (objBase.Errors.Count == 0)
                 {

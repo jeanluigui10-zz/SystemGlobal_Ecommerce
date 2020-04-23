@@ -21,19 +21,25 @@
                  object.request = obj.Detail;
                  var item = fn_LoadTemplates("datatable-shopcart", object);
                  $("#tblBodyTable").html(item);
-                 Calculate(obj);
+                 CalculateReview(obj);
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
              }
          }
-         function Calculate(obj) {
-             //$('#unitPriceProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].Product.UnitPrice.toFixed(2));
-             $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
-             $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
-             $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
-             //$('#idSubTotalProduct_' + obj.Detail[0].Product.ProductId).text("S/." + obj.Detail[0].TotalPrice.toFixed(2));
-             $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
+
+         function CalculateReview(obj) {
+             if (obj.Detail != null) { 
+                 for (var i = 0; i < obj.Detail.length; i++) {
+                 $('#unitPriceProduct_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].Product.UnitPrice.toFixed(2));
+                 $('#uniPriceProd_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].Product.UnitPrice.toFixed(2));
+                 $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
+                 $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
+                 $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
+                 $('#idSubTotalProduct_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].TotalPrice.toFixed(2));
+                 $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
+                 }
+             }
          }
         
     </script>
@@ -42,15 +48,15 @@
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="index.html">Incio</a></li>
-			<li>Carrito de compas</li>
+			<li><a href="/Index.aspx">Canastón</a></li>
+			<li>Productos Seleccionados</li>
 		</ul>
 	</div>
 </div>
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder">CARRITO DE COMPRAS</h1>
+			<h1 class="tt-title-subpages noborder">Tu lista de productos</h1>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
@@ -61,7 +67,7 @@
 						</table>
 						<div class="tt-shopcart-btn">
 							<div class="col-left">
-								<a class="btn-link" href="Index.aspx"><i class="icon-e-19"></i>CONTINUAR COMPRANDO</a>
+								<a class="btn-link" href="ProductsList.aspx"><i class="icon-e-19"></i>CONTINUAR COMPRANDO</a>
 							</div>
 							<div class="col-right">
 								<a class="btn-link" href="#"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
@@ -74,7 +80,7 @@
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
 							<h4 class="tt-title">
-								UBICACION DE RECOJO DE PEDIDO
+								DIRECCIÓN DE ENTREGA
 							</h4>
 							<p> Av. España Nº 1344 - Trujillo</p>
 							
@@ -210,7 +216,7 @@
 										</ul>
 									</td>
 									<td>
-										<div class="tt-price">
+										<div class="tt-price" id="uniPriceProd_{{Product.ProductId}}">
 											S/.{{Product.UnitPrice}}
 										</div>
 									</td>
