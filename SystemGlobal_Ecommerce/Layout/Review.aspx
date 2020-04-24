@@ -61,6 +61,17 @@
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
 						<table id="tblCarrito">
+						     <thead>
+                                <tr>
+                                    <th style="text-align:right"></th>
+                                    <th style="text-align:right">Producto</th>
+                                    <th style="text-align:right"></th>
+                                    <th style="text-align: left !important;">Precio</th>
+                                    <th style="text-align:right">Cantidad</th>
+                                    <th style="text-align: right !important;">Subtotal</th>
+							 <th style="text-align:right"></th>
+                                </tr>
+                            </thead>
 							<tbody id="tblBodyTable">
 								
 							</tbody>
@@ -69,9 +80,9 @@
 							<div class="col-left">
 								<a class="btn-link" href="ProductsList.aspx"><i class="icon-e-19"></i>CONTINUAR COMPRANDO</a>
 							</div>
+
 							<div class="col-right">
 								<a class="btn-link" href="#"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
-								<a class="btn-link" href="#"><i class="icon-h-48"></i>ACTUALIZAR CARRITO</a>
 							</div>
 						</div>
 					</div>
@@ -162,7 +173,7 @@
 								</tfoot>
 							</table>
                                   <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" style="width: 100%"></a></td></tr></table><!-- PayPal Logo -->
-                                  <asp:Button 
+                                  <%--<asp:Button 
                                         ID="btnPayment" 
                                         runat="server" 
                                         Text="Pagar" 
@@ -171,7 +182,8 @@
                                         Height="45"
                                         Width="100%"
                                         style="background: #2879fe; color:white"
-                                        />
+                                        />--%>
+						    <a class="btn btn-primary"  href="https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda ''El Canastón'' acabo de hacer mi pedido!" id="order-now" target="_blank" style="background:green">Ordenar Pedido</a>
 						</div>
 					</div>
 				</div>

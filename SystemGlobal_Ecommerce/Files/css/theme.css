@@ -21196,7 +21196,7 @@ html.edge .tt-portfolio-content figure:hover figcaption {
         line-height: 40px;
         font-family: "Hind", sans-serif;
         font-weight: 500;
-        color: #2879fe;
+        color: red;
     }
 
         .tt-product-single-info .tt-price span {
@@ -23044,7 +23044,7 @@ html.ie.gecko body.modal-open {
         }
 
             .tt-modal-addtocart.desctope .tt-cart-total .tt-total .tt-price {
-                color: #2879fe;
+                color: red;
                 font-size: 24px;
             }
 
@@ -30486,12 +30486,12 @@ body:not(.touch-device) .tt-hotspot .tt-btn:hover:after {
 
 .slider-revolution [class^="btn"] {
     position: inherit;
-    background-color: #2879fe;
+    background-color: #e6c400;
     color: #ffffff;
 }
 
     .slider-revolution [class^="btn"]:hover {
-        background-color: #2267d8;
+        background-color: #e6c400;
         color: #ffffff;
     }
 
@@ -34672,7 +34672,7 @@ a {
     }
 
 .btn {
-    background: #2879fe;
+    background: #ffda00;
     font-family: "Hind", sans-serif;
     border: none;
     color: #ffffff;
@@ -34744,7 +34744,7 @@ button:focus {
 }
 
 .btn:hover {
-    background: #2267d8;
+    background: #e6c400;
     color: #ffffff;
     outline: none;
 }

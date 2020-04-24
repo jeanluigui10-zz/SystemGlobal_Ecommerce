@@ -240,7 +240,8 @@ namespace SystemGlobal_Ecommerce.Layout
                             Category = obj.category.Name,
                             UnitPrice = obj.UnitPrice,
                             NameResource = obj.NameResource,
-                            FileDescription = obj.Description
+                            FileDescription = obj.Description, 
+                            UniMed = obj.UniMed
                         };
 
                         JavaScriptSerializer serializer = new JavaScriptSerializer();
