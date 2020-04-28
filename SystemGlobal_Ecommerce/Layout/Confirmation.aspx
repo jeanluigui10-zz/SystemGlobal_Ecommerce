@@ -8,7 +8,7 @@
              document.getElementById("divFooter").style.display = "none";
              document.getElementById("divFooter2").style.display = "none";
                           
-                 if ($("#<%=hfIsVisiableChatConfir.ClientID%>").val() != "") {
+                 <%--if ($("#<%=hfIsVisiableChatConfir.ClientID%>").val() != "") {
                       if ($("#<%=hfIsVisiableChatConfir.ClientID%>").val() == "1") {                                              //Chat en linea
                          $("#clgo").css("display", "none");
                          $("#btnLateral").css("display", "block");
@@ -17,7 +17,7 @@
                          $("#clgo").css("display", "block");
                          $("#btnLateral").css("display", "none");
                      }
-                 }
+                 }--%>
              
          }
          $(function () {
@@ -38,18 +38,18 @@
                  obj = $.parseJSON(glancedata);
                  var object = {};
                  object.request = obj.Detail;
-                 var item = fn_LoadTemplates("datatable-shopcart", object);
-                 $("#tblBodyTable").html(item);
-                 Calculate(obj);
+                 var item = fn_LoadTemplates("datatable-shopcartConfirm", object);
+                 $("#tblBodyTableConfirm").html(item);
+                 CalculateConfirm(obj);
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
              }
          }
-         function Calculate(obj) {
+         function CalculateConfirm(obj) {
              $(".tt-cart-total-price").text("S/." + obj.SubTotal);
              $("#idSubTotalRight").text("S/." + obj.SubTotal);
-             $("#idIGVRight").text("S/." + obj.IGV);
+             $("#idDeliveryTotalRight").text("S/." + obj.DeliveryTotal);
              $("#idTotalRigth").text("S/." + obj.Ordertotal);
          }
         
@@ -89,12 +89,12 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder">COMPRA REALIZADADA SATIFACTORIAMENTE!!!</h1>
+			<h1 class="tt-title-subpages noborder" id="lblMessageConfirm" runat="server" style="font-size: x-large;"></h1>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
 						<table id="tblCarrito">
-							<tbody id="tblBodyTable">
+							<tbody id="tblBodyTableConfirm">
 								
 							</tbody>
 						</table>
@@ -113,9 +113,9 @@
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
 							<h4 class="tt-title">
-								UBICACION DE RECOJO DE PEDIDO
+								Dirección de entrega
 							</h4>
-							<p> Av. España Nº 1344 - Trujillo</p>
+							<p id="lblAddressConfirm" runat="server" style="font-size: large;"></p>
 							
 								<div class="form-group">
 									<label for="address_country">DEPARTAMENTO <sup>*</sup></label>
@@ -146,7 +146,7 @@
 								</div>
 								<div class="form-group">
 									<label for="address_province">PROVINCIA <sup>*</sup></label>
-									<select id="address_province" class="form-control">
+									<select id="address_province" class="form-control" disabled>
 										<option>Trujillo</option>
 									</select>
 								</div>
@@ -183,8 +183,8 @@
 										<td id="idSubTotalRight">S/. 0.00</td>
 									</tr>
                                             <tr>
-										<th>Igv</th>
-										<td id="idIGVRight">S/. 0.00</td>
+										<th>Delivery</th>
+										<td id="idDeliveryTotalRight">S/. 0.00</td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -202,9 +202,9 @@
 		</div>
 	</div>
 </div>
-     <asp:HiddenField runat="server" ID="hfIsVisiableChatConfir" />
+<%--     <asp:HiddenField runat="server" ID="hfIsVisiableChatConfir" />--%>
      <asp:HiddenField runat="server" ID="hfData" />
-    <script type="text/x-handlebars-template" id="datatable-shopcart">
+    <script type="text/x-handlebars-template" id="datatable-shopcartConfirm">
         {{# each request}}
             <tr>
 									<td>
@@ -242,15 +242,15 @@
 									<td>
                                                  <div class="tt-price">
                                                      <span class="new-price">S/.{{Product.UnitPrice}}</span>
-                                                     <span class="old-price">S/.{{Product.UnitPrice}}</span>
+                                                    <%-- <span class="old-price">S/.{{Product.UnitPrice}}</span>--%>
                                                  </div>
 									</td>
 									<td>
 										<div class="detach-quantity-desctope">
 											<div class="tt-input-counter style-01">
-												<span class="minus-btn"></span>
-												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}">
-												<span class="plus-btn"></span>
+												<%--<span class="minus-btn"></span>--%>
+												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}" readonly="readonly">
+												<%--<span class="plus-btn"></span>--%>
 											</div>
 										</div>
 									</td>

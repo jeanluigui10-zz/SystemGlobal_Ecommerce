@@ -92,17 +92,17 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseEntity objBase = new BaseEntity();
             try
             {
-                if (BaseSession.SsOrderxCore.Customer == null || BaseSession.SsOrderxCore.Customer.CustomerId == 0)
-                {
-                    objReturn = new
-                    {
-                        Result = "NoOk",
-                        Msg = "/Layout/Login.aspx",
-                        Value = 0
-                    };
-                }
-                else
-                {
+                //if (BaseSession.SsOrderxCore.Customer == null || BaseSession.SsOrderxCore.Customer.CustomerId == 0)
+                //{
+                //    objReturn = new
+                //    {
+                //        Result = "NoOk",
+                //        Msg = "/Layout/Login.aspx",
+                //        Value = 0
+                //    };
+                //}
+                //else
+                //{
                     Products obj = null;
                     String ProductId = Encryption.Decrypt(HttpUtility.UrlDecode(objProd["ProductId"]));
                     obj = ProductBL.Instance.Products_GetList_ById_Ecommerce(ref objBase, Convert.ToInt32(ProductId));
@@ -165,9 +165,9 @@ namespace SystemGlobal_Ecommerce.Layout
                                     {
                                         Ordertotal = orderHeader.Ordertotal,
                                         SubTotal = orderHeader.SubTotal,
-                                        IGV = orderHeader.IGV,
-                                        CustomerId = orderHeader.Customer.CustomerId,
-                                        CustomerName = orderHeader.Customer.FullName,
+                                        DeliveryTotal = orderHeader.DeliveryTotal,
+                                        CustomerId = orderHeader.Customer == null ? 0 : orderHeader.Customer.ID,
+                                        CustomerName = orderHeader.Customer == null ? "" : orderHeader.Customer.FullName,
                                         Detail = lstDetail
                                     };
 
@@ -202,7 +202,7 @@ namespace SystemGlobal_Ecommerce.Layout
                             Msg = "Ocurrio un problema agregando el producto."
                         };
                     }
-                }
+              //  }
 
 
             }

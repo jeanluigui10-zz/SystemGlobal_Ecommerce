@@ -6,6 +6,13 @@
 
 <html>
 <head runat="server">
+    <meta charset="utf-8">
+	<title>El Canastón</title>
+	<meta name="keywords" content="HTML5 Template">
+	<meta name="description" content="El Canastón">
+	<meta name="author" content="wokiee">
+	<link rel="shortcut icon" href="favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <style>
           .aline {
@@ -112,7 +119,9 @@
              var veExpectedFormat = "Expected Format";
 
              var veOR = "Or";
-             var NotProductCart = "<div><a href ='/Layout/ProductsList.aspx' class='tt-cart-empty'><i class='icon-f-39'></i><p>No hay productos en el carrito</p></a ></div>"
+             var NotProductCart = "<div><a href ='/Layout/ProductsList.aspx' class='tt-cart-empty'><i class='icon-g-48'></i><p>No hay productos en el carrito</p></a ></div>"
+             var CleanHtmlTableReview = "<tr><td style='text-align: center;cursor:pointer;'><a href='/Layout/ProductsList.aspx'>Seleccionar productos</a></td></tr>"
+             var CleanHtmlTableReviewAll = "<tbody id='tblBodyTable'><tr><td style='text-align: center;cursor:pointer;'><a href='/Layout/ProductsList.aspx'>Seleccionar productos</a></td></tr></tbody>"
     </script>
 
         <link href="Files/css/theme.css" rel="stylesheet" />
@@ -395,36 +404,69 @@
                  }
              });
 
-             $("body").on("click", '.minus-btn, .plus-btn', function (e) {
+             $("body").on("click", '.minus-btn, .plus-btn, .tt-btn-close, .tt-btn-delete-all', function (e) {
                  var $input = $(this).parent().find('input');
                  var count = parseInt($input.val(), 10) + parseInt(e.currentTarget.className === 'plus-btn' ? 1 : -1, 10);
+                 var ProductRowId = $input[0].dataset["productid"];
+                 var page = $input[0].dataset["page"];
+                 if (count == -1 || isNaN(count))
+                 {
+                     Fn_AddProductAndRemove($input, 0);
+                     $(this).closest('.tt-item-product-delete-' + ProductRowId).remove();
+                     if (page == "master") {
+                         $("#item-reviewProduct-" + ProductRowId).closest('.tt-item-product-delete-' + ProductRowId).remove();
+                     }
+                     if (page == "review") {
+                         $("#item-masterProduct-" + ProductRowId).closest('.tt-item-product-delete-' + ProductRowId).remove();
+                     }
+                     if (page == "review-delete-all") {
+                         $("#tblBodyTable").remove();
+                         $("#tblBodyTable").append(CleanHtmlTableReviewAll);
+                     }
+                 } else {
+                     if (count >= 1)
+                     {
+                         Fn_AddProductAndRemove($input, count);
+                     }
+                     else {
+                         return;
+                     }
+                 }         
+             });
+
+             function Fn_AddProductAndRemove($input, count, page) {
+                 //00 eliminar todo 
                  $input.val(count).change();
-                
                  var productId = $input[0].dataset["productid"];
                  var quantity = $input.val();
-
-                 if (productId > 0) {
+                 if (productId > 0 || productId == 00) {
                      $("#tt-pageContent").append("<div class='loader_page'></div>");
                      var objData = {
                          ProductQuantity: quantity, ProductId: productId
                      };
                      var success = function (asw) {
                          try {
-                             
-                             if (asw.d != null)
-                             {
-                                 if (asw.d.Result == "Ok")
-                                 {
-                                     var ObjOrderHeader = JSON.parse(asw.d.OrderHeader);   
-                                     CalculateMaster(ObjOrderHeader);    
-                                 }
-                                 else {
-                                     if (asw.d.Result == "NoOk") {
-                                         
+                             if (asw.d != null) {
+                                 if (asw.d.Result == "Ok") {
+                                     obj = $.parseJSON(asw.d.OrderHeader); 
+                                     CalculateMaster(obj);
+                                     if (obj.lstItemsCount[0].length == 0) {
+                                         $("#lstCartView").append(NotProductCart);
+                                         $("#idCantidadProductos").text(obj.lstItemsCount[0].length);
+                                         $("#btnMasterGoPay").attr("hidden", true);
+                                         $("#ContentPlaceHolder1_btnGeneratePedido").attr("hidden", true);
+                                         $("#tblCarrito").append(CleanHtmlTableReview)
+
+                                     } else {
+                                         $("#idCantidadProductos").text(obj.lstItemsCount[0].length);
+                                         $("#btnMasterGoPay").removeAttr('hidden')
+                                         $("#ContentPlaceHolder1_btnGeneratePedido").removeAttr("hidden");
                                      }
                                  }
+                                 else {
+                                     if (asw.d.Result == "NoOk") { }
+                                 }
                              }
-                            
                          } catch (e) {
                              $("#tt-pageContent").find(".loader_page").remove();
                          }
@@ -433,23 +475,30 @@
                          $("#tt-pageContent").find(".loader_page").remove();
                      };
                      var complete = function () {
-                        $("#tt-pageContent").find(".loader_page").remove();
+                         $("#tt-pageContent").find(".loader_page").remove();
                      };
                      fn_callmethodComplete("Review.aspx/CartProduct_UpdateQuantity", JSON.stringify({ data: objData }), success, error, complete);
-                }
-             });
-
+                 }
+		   }
              
              function CalculateMaster(ObjOrderHeader) {
-                 $('#unitPriceProduct_' + ObjOrderHeader.Detail.ProductId).text("S/." + ObjOrderHeader.Detail.Product.UnitPrice.toFixed(2));
-                 $('.tt-quantity_' + ObjOrderHeader.Detail.ProductId).text("x" + ObjOrderHeader.Detail.Quantity);
-                 $(".tt-cart-total-price").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
-                 $("#idSubTotalRight").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
-                 $("#idIGVRight").text("S/." + ObjOrderHeader.IGV.toFixed(2));
-                 $('#idSubTotalProduct_' + ObjOrderHeader.Detail.ProductId).text("S/." + ObjOrderHeader.Detail.Totalprice.toFixed(2));
-                 $("#idTotalRigth").text("S/." + ObjOrderHeader.Ordertotal.toFixed(2));          
+                 if (ObjOrderHeader.Detail.ProductId == 0) {
+                     $("#lstCartView").html("");
+                     $("#idSubTotalRight").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                     $("#idDeliveryTotalRight").text("S/." + ObjOrderHeader.DeliveryTotal.toFixed(2));
+                     //$('#idSubTotalProduct_' + ObjOrderHeader.Detail.ProductId).text("S/." + ObjOrderHeader.Detail.Totalprice.toFixed(2));
+                     $(".tt-cart-total-price").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                     $("#idTotalRigth").text("S/." + ObjOrderHeader.Ordertotal.toFixed(2));  
+                 } else {
+                     $('#unitPriceProduct_' + ObjOrderHeader.Detail.ProductId).text("S/." + ObjOrderHeader.Detail.Product.UnitPrice.toFixed(2));
+                     $('.tt-quantity_' + ObjOrderHeader.Detail.ProductId).text(ObjOrderHeader.Detail.Quantity + " X " + ObjOrderHeader.Detail.Product.UnitPrice);
+                     $(".tt-cart-total-price").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                     $("#idSubTotalRight").text("S/." + ObjOrderHeader.SubTotal.toFixed(2));
+                     $("#idDeliveryTotalRight").text("S/." + ObjOrderHeader.DeliveryTotal.toFixed(2));
+                     $('#idSubTotalProduct_' + ObjOrderHeader.Detail.ProductId).text("S/." + ObjOrderHeader.Detail.Totalprice.toFixed(2));
+                     $("#idTotalRigth").text("S/." + ObjOrderHeader.Ordertotal.toFixed(2));  
+                 }       
              }
-
 
              if ($("#<%=hfDataListProduct.ClientID%>").val() != "") {
                  Fn_ListProductsShopCartHeader($("#<%=hfDataListProduct.ClientID%>").val());
@@ -473,6 +522,7 @@
                      object.request = obj.Detail;
                      var item = fn_LoadTemplates("datatable-shopcartHeader", object);
                      $("#lstCartView").html(item);
+                     $("#btnMasterGoPay").removeAttr('hidden');
                  } else {
                      $("#lstCartView").html(NotProductCart);
                  }
@@ -746,9 +796,9 @@
 					<div class="tt-desctop-parent-search tt-parent-box">
 						<div class="tt-search tt-dropdown-obj">
 							<button class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
-								<i class="icon-f-85"></i>
+								<i class="icon-h-04"></i>
 							</button>
-							<div class="tt-dropdown-menu">
+							<div class="tt-dropdown-menu" style="margin-top:inherit">
 								<div class="container">
 									<form>
 										<div class="tt-col">
@@ -788,10 +838,10 @@
 					<div class="tt-desctop-parent-cart tt-parent-box">
 						<div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
 							<button class="tt-dropdown-toggle" type="button">
-								<i class="icon-f-39"></i>
+								<i class="icon-g-48"></i>
 								<span class="tt-badge-cart" id="idCantidadProductos">0</span>
 							</button>
-							<div class="tt-dropdown-menu">
+							<div class="tt-dropdown-menu" style="margin-top:inherit">
 								<div class="tt-mobile-add">
 									<h6 class="tt-title">CARRITO DE COMPRAS</h6>
 									<button class="tt-close" type="button">Cerrar</button>
@@ -802,7 +852,7 @@
 										<div class="tt-cart-content">
 										<%--  <div id="lstNotProducts">
 										   <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" class="tt-cart-empty">
-											<i class="icon-f-39"></i>
+											<i class="icon-g-48"></i>
 											<p>No hay productos en el carrito</p>
 										   </a> 
 										  </div>--%>
@@ -826,16 +876,16 @@
 													</div>
 												</div>--%>
 											</div>
-											<div class="tt-cart-total-row">
+											<div class="tt-cart-total-row" id="lblMasterSubtotal" runat="server">
 												<div class="tt-cart-total-title">SUBTOTAL:</div>
 												<div class="tt-cart-total-price">S/.0.00</div>
 											</div>
-											<div class="tt-cart-btn">
+											<div class="tt-cart-btn" id="btnMasterGoPay" runat="server" hidden>
 												<div class="tt-item">
-													<a href="/Layout/Review.aspx" class="btn" style="background:green !important">PROCEDER A PAGAR</a>
+													<a href="/Layout/Review.aspx" class="btn" style="color:black !important">Ir a Carrito</a>
 												</div>
 												<div class="tt-item">
-													<a href="/Layout/Review.aspx" class="btn-link-02 tt-hidden-mobile">Ver Carrito</a>
+													<%--<a href="/Layout/Review.aspx" class="btn-link-02 tt-hidden-mobile">Ver Carrito</a>--%>
 													<a href="/Layout/Review.aspx" class="btn btn-border tt-hidden-desctope">VER CARRITO</a>
 												</div>
 											</div>
@@ -849,17 +899,17 @@
 					<!-- tt-account -->
 					<div class="tt-desctop-parent-account tt-parent-box">
 						<div class="tt-account tt-dropdown-obj">
-							<button class="tt-dropdown-toggle"  data-tooltip="Mi Cuenta" data-tposition="bottom" type="button"><i class="icon-f-94"></i></button>
-							<div class="tt-dropdown-menu">
+							<button class="tt-dropdown-toggle"  data-tooltip="Mi Cuenta" data-tposition="bottom" type="button"><i class="icon-g-25"></i></button>
+							<div class="tt-dropdown-menu" style="margin-top:inherit">
 								<div class="tt-mobile-add">
 									<button class="tt-close">Cerrar</button>
 								</div>
 								<div class="tt-dropdown-inner">
 									<ul>
-									    <li><a href="login.html"><i class="icon-f-94"></i>Cuenta</a></li>
-									    <li><a href="/Layout/Login.aspx"><i class="icon-f-76"></i>Ingresar</a></li>
-									    <li><a href="/Layout/Information.aspx"><i class="icon-f-94"></i>Registrarse</a></li>
-									    <li><asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click"><i class="icon-g-17"></i><span class="logout">Cerrar Sesión</span></asp:LinkButton></li>
+									    <li id="lblCuenta" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-25"></i>Mi Cuenta</a></li>
+									    <li id="lblInicioSession" runat="server"><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Iniciar Sesión</a></li>
+									    <li id="lblRegistrar" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-23"></i>Registrarse</a></li>
+									    <li id="lblCerrarSession" runat="server"><asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click"><i class="icon-g-93"></i><span class="logout">Cerrar Sesión</span></asp:LinkButton></li>
 									</ul>
 								</div>
 							</div>
@@ -1511,7 +1561,7 @@
 						
 					<div class="tt-search tt-dropdown-obj">
 							<button class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
-								<i class="icon-f-85"></i>
+								<i class="icon-h-04"></i>
 							</button>
 							<div class="tt-dropdown-menu">
 								<div class="container">
@@ -1608,7 +1658,7 @@
                                 
                             <div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
                                     <button class="tt-dropdown-toggle" type="button">
-                                        <i class="icon-f-39"></i>
+                                        <i class="icon-g-48"></i>
                                         <span class="tt-badge-cart" id="idCantidadProductos">0</span>
                                     </button>
                                     <div class="tt-dropdown-menu">
@@ -1620,7 +1670,7 @@
                                             <div class="tt-cart-layout">
                                                 <!-- layout emty cart -->
                                                 <!-- <a href="empty-cart.html" class="tt-cart-empty">
-											<i class="icon-f-39"></i>
+											<i class="icon-g-48"></i>
 											<p>No Products in the Cart</p>
 										</a> -->
                                                 <div class="tt-cart-content">
@@ -1650,7 +1700,7 @@
 		<div class="tt-desctop-parent-account tt-parent-box">
 						
 					<div class="tt-account tt-dropdown-obj">
-                                    <button class="tt-dropdown-toggle" data-tooltip="Mi Cuenta" type="button" data-tposition="bottom"><i class="icon-f-94"></i></button>
+                                    <button class="tt-dropdown-toggle" data-tooltip="Mi Cuenta" type="button" data-tposition="bottom"><i class="icon-g-25"></i></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
                                             <button class="tt-close" type="button">Cerrar</button>
@@ -1658,13 +1708,13 @@
                                         <div class="tt-dropdown-inner">
                                             <ul>
                                                  
-                                                 <li><a href="/Layout/Login.aspx" style="display:none"><i class="icon-f-94"></i>Cuenta</a></li>
+                                                 <li><a href="/Layout/Login.aspx" style="display:none"><i class="icon-g-25"></i>Cuenta</a></li>
                                                 
                                                 <li style="display:none"><a href="wishlist.html"><i class="icon-n-072"></i>Wishlist</a></li>
                                                 <li style="display:none"><a href="compare.html"><i class="icon-n-08"></i>Compare</a></li>
                                                 <li style="display:none"><a href="page404.html"><i class="icon-f-68"></i>Check Out</a></li>
-                                                <li><a href="/Layout/Login.aspx"><i class="icon-f-76"></i>Ingresar</a></li>                                              
-                                                <li><a href="/Layout/Information.aspx"><i class="icon-f-94"></i>Registrar</a></li>
+                                                <li><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Ingresar</a></li>                                              
+                                                <li><a href="/Layout/Information.aspx"><i class="icon-g-25"></i>Registrar</a></li>
                                                 <li><a id="btnCerrarSesion" href="javascript:__doPostBack('ctl00$btnCerrarSesion','')"><i class="icon-f-77"></i>Cerrar Sesión</a></li>
                                             </ul>
                                         </div>
@@ -1877,7 +1927,7 @@
                             </div>
                             <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
                             <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">VER CARRITO</a>
-                            <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">PROCEDER A PAGAR</a>
+                            <%--<a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">PROCEDER A PAGAR</a>--%>
                         </div>
                         <div class="tt-modal-addtocart desctope">
                             <div class="row">
@@ -1908,7 +1958,7 @@
                                     </a>
                                     <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
                                     <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
-                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn">PROCEDER A PAGAR</a>
+                                    <%--<a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn">PROCEDER A PAGAR</a>--%>
                                 </div>
                             </div>
                         </div>
@@ -1967,7 +2017,7 @@
                                         <div class="tt-wrapper">
                                             <div class="tt-row-custom-01">
                                                 <div class="col-item">
-                                                    <a id="addProductView" class="btn btn-lg add-to-cart-mp-View" style="color:white"><i class="icon-f-39"></i>AGREGAR A CARRITO</a>
+                                                    <a id="addProductView" class="btn btn-lg add-to-cart-mp-View" style="color: black; font-weight: bold;"><i class="icon-g-48"></i>AGREGAR A CARRITO</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -2024,7 +2074,7 @@
                             </div>
                             <a href="#" class="btn-link btn-close-popup">CONTINUAR COMPRANDO</a>
                             <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn-link">VER CARRITO</a>
-                            <a href="#" class="btn-link">PRCEDER A PAGAR</a>
+                            <%--<a href="#" class="btn-link">PRCEDER A PAGAR</a>--%>
                         </div>
                         <div class="tt-modal-addtocart desctope">
                             <div class="row">
@@ -2036,7 +2086,7 @@
                                 <div class="col-12 col-lg-6" id="divButtonsExistProduct">                                
                                     <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
                                     <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
-                                    <a href="#" class="btn">PRCEDER A PAGAR</a>
+                                    <%--<a href="#" class="btn">PRCEDER A PAGAR</a>--%>
                                 </div>
                             </div>
                         </div>
@@ -2070,7 +2120,7 @@
                                 <div class="col-12 col-lg-6">                                
                                     <a href="#" class="btn btn-border btn-close-popup">CONTINUAR COMPRANDO</a>
                                     <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border">VER CARRITO</a>
-                                    <a href="#" class="btn">PRCEDER A PAGAR</a>
+                                   <%-- <a href="#" class="btn">PRCEDER A PAGAR</a>--%>
                                 </div>
                             </div>
                         </div>
@@ -2123,23 +2173,25 @@
         
       <script type="text/x-handlebars-template" id="datatable-shopcartHeader">
         {{# each request}}
-					              <div class="tt-item">
-                                                            <a href="#">
-                                                                <div class="tt-item-img">
-                                                                    <img src="{{Product.NameResource}}" data-src="{{Product.NameResource}}" alt="">
-                                                                </div>
-                                                                <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">{{Product.ProductName}}</h2>
-                                                                    <ul class="tt-add-info">
-                                                                        <li>{{Product.Category}}</li>
-                                                                    </ul>
-													   <div class="tt-quantity_{{Product.ProductId}}">  {{Quantity}} X  S/.{{Product.UnitPrice}}</div>
-                                                                </div>
-                                                            </a>
-                                                            <div class="tt-item-close">
-                                                                <a href="#" class="tt-btn-close"></a>
-                                                            </div>
-                                                        </div>
+
+          <div id="item-masterProduct-{{Product.ProductId}}" class="tt-item tt-item-product-delete-{{Product.ProductId}}">
+              <a>
+                  <div class="tt-item-img">
+                      <img src="{{Product.NameResource}}" data-src="{{Product.NameResource}}" alt="">
+                  </div>
+                  <div class="tt-item-descriptions">
+                      <h2 class="tt-title">{{Product.ProductName}}</h2>
+                      <ul class="tt-add-info">
+                          <li>{{Product.Category}}</li>
+                      </ul>
+                      <div class="tt-quantity_{{Product.ProductId}}">{{Quantity}} X  S/.{{Product.UnitPrice}}</div>
+                  </div>
+              </a>
+              <div class="tt-item-close">
+                  <span class="tt-btn-close" style="cursor: pointer"><input style="display: none" data-page="master" data-productid="{{Product.ProductId}}"></span>
+                  <%--<a href="#" class="tt-btn-close"></a>--%>
+              </div>
+          </div>
 		  
         {{/each}}
     </script>

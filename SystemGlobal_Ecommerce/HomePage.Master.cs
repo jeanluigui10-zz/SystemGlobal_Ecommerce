@@ -16,6 +16,21 @@ namespace SystemGlobal_Ecommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.ID > 0)
+            {
+                lblCuenta.Visible = true;
+                lblCerrarSession.Visible = true;
+                lblInicioSession.Visible = false;
+                lblRegistrar.Visible = false;
+
+            }
+            else
+            {
+                lblInicioSession.Visible = true;
+                lblRegistrar.Visible = true;
+                lblCuenta.Visible = false;
+                lblCerrarSession.Visible = false;
+            }
             Load_Settings();
             Load_Products();
             Load_Category();
@@ -94,9 +109,9 @@ namespace SystemGlobal_Ecommerce
                 {
                     Ordertotal = orderHeader.Ordertotal.ToString("N2"),
                     SubTotal = orderHeader.SubTotal.ToString("N2"),
-                    IGV = orderHeader.IGV,
-                    CustomerId = orderHeader.Customer.CustomerId,
-                    CustomerName = orderHeader.Customer.FullName,
+                    DeliveryTotal = orderHeader.DeliveryTotal,
+                    CustomerId = orderHeader.Customer == null ? 0 : orderHeader.Customer.ID,
+                    CustomerName = orderHeader.Customer == null ? "" : orderHeader.Customer.FullName,
                     Detail = lstDetail
                 };
 
@@ -130,7 +145,7 @@ namespace SystemGlobal_Ecommerce
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             BaseSession.Logout();
-            Response.Redirect("~/Layout/Index.aspx", false);
+            Response.Redirect("~/Layout/Login.aspx", false);
         }
     }
 }

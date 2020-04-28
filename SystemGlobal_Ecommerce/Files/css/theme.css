@@ -11970,7 +11970,7 @@ img.tp-slider-alternative-image {
     content: "\e985";
 }
 
-.icon-f-39:before {
+.icon-g-48:before {
     content: "\e986";
 }
 
@@ -12118,7 +12118,7 @@ img.tp-slider-alternative-image {
     content: "\e9aa";
 }
 
-.icon-f-76:before {
+.icon-g-92:before {
     content: "\e9ab";
 }
 
@@ -12154,7 +12154,7 @@ img.tp-slider-alternative-image {
     content: "\e9b3";
 }
 
-.icon-f-85:before {
+.icon-h-04:before {
     content: "\e9b4";
 }
 
@@ -12190,7 +12190,7 @@ img.tp-slider-alternative-image {
     content: "\e9bc";
 }
 
-.icon-f-94:before {
+.icon-g-25:before {
     content: "\e9bd";
 }
 
@@ -12266,7 +12266,7 @@ img.tp-slider-alternative-image {
     content: "\e9cf";
 }
 
-.icon-g-17:before {
+.icon-g-93:before {
     content: "\e9d0";
 }
 
@@ -12726,7 +12726,7 @@ img.tp-slider-alternative-image {
     content: "\ea42";
 }
 
-.icon-h-36:before {
+.icon-g-25:before {
     content: "\ea43";
 }
 
@@ -25568,7 +25568,7 @@ html.ie .tt-btn-col-close {
                 }
 
             .tt-product:not(.tt-view) .tt-image-box .tt-btn-quickview:hover {
-                background: #ffda00;
+                background: #f73838;
                 color: #ffffff;
             }
 
@@ -25887,7 +25887,7 @@ html.ie .tt-btn-col-close {
             }
 
             .tt-product:not(.tt-view) .tt-description .tt-price .new-price {
-                color: #f8353e;
+                color: #fd0101;
                 margin-right: 7px;
                 font-weight: 700;
                 font-size: 22px;
@@ -25971,7 +25971,7 @@ html.ie .tt-btn-col-close {
     }
 
     .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart.thumbprod-button-bg {
-        background-color: #ffda00;
+        background-color: #fd2020;
         color: #ffffff;
         padding: 3px 16px 9px;
         -webkit-border-radius: 6px;
@@ -25988,7 +25988,7 @@ html.ie .tt-btn-col-close {
             }
 
     .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart.thumbprod-button-bg:hover {
-        background-color: #e6c400;
+        background-color: #dc2c2c;
         color: #ffffff;
     }
 
@@ -27123,7 +27123,7 @@ html.ie .tt-btn-col-close {
         color: #ffffff;
         font-size: 12px;
         padding: 2px 16px 11px;
-        background: #2879fe;
+        background: #fd0101;
         border-radius: 5px;
         -moz-transition: background 0.2s linear;
         -o-transition: background 0.2s linear;
@@ -27143,11 +27143,11 @@ html.ie .tt-btn-col-close {
             color: #ffffff;
         }
 
-        .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart:hover,
-        .tt-product-design02:not(.tt-view) .tt-description .tt-btn-addtocart:hover {
-            color: #ffffff;
-            background: #2267d8;
-        }
+    .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart:hover,
+    .tt-product-design02:not(.tt-view) .tt-description .tt-btn-addtocart:hover {
+        color: #ffffff;
+        background: #dc2c2c;
+    }
 
             .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart:hover:before,
             .tt-product-design02:not(.tt-view) .tt-description .tt-btn-addtocart:hover:before {
@@ -30395,7 +30395,7 @@ body:not(.touch-device) .tt-hotspot .tt-btn:hover:after {
         }
 
     .slider-revolution .tp-bullets {
-        bottom: 7% !important;
+        /*bottom: 15% !important;*/
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -30486,7 +30486,7 @@ body:not(.touch-device) .tt-hotspot .tt-btn:hover:after {
 
 .slider-revolution [class^="btn"] {
     position: inherit;
-    background-color: #e6c400;
+    /*background-color: #d7be2e;*/
     color: #ffffff;
 }
 
@@ -34744,7 +34744,7 @@ button:focus {
 }
 
 .btn:hover {
-    background: #e6c400;
+    background: #f9dd3b;
     color: #ffffff;
     outline: none;
 }

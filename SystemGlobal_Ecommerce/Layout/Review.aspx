@@ -22,6 +22,11 @@
                  var item = fn_LoadTemplates("datatable-shopcart", object);
                  $("#tblBodyTable").html(item);
                  CalculateReview(obj);
+                 if (obj.Detail.length) {
+                     $("#ContentPlaceHolder1_btnGeneratePedido").removeAttr("hidden");
+                 } else {
+                     $("#ContentPlaceHolder1_btnGeneratePedido").attr("hidden", true);
+                 }
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
@@ -35,7 +40,7 @@
                  $('#uniPriceProd_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].Product.UnitPrice.toFixed(2));
                  $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
                  $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
-                 $("#idIGVRight").text("S/." + obj.IGV.toFixed(2));
+                 $("#idDeliveryTotalRight").text("S/." + obj.DeliveryTotal.toFixed(2));
                  $('#idSubTotalProduct_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].TotalPrice.toFixed(2));
                  $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
                  }
@@ -61,7 +66,7 @@
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
 						<table id="tblCarrito">
-						     <thead>
+						 <%--    <thead>
                                 <tr>
                                     <th style="text-align:right"></th>
                                     <th style="text-align:right">Producto</th>
@@ -71,7 +76,7 @@
                                     <th style="text-align: right !important;">Subtotal</th>
 							 <th style="text-align:right"></th>
                                 </tr>
-                            </thead>
+                            </thead>--%>
 							<tbody id="tblBodyTable">
 								
 							</tbody>
@@ -82,7 +87,7 @@
 							</div>
 
 							<div class="col-right">
-								<a class="btn-link" href="#"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
+								<a class="btn-link tt-btn-delete-all" href="#"><input style="display: none" data-page="review-delete-all" data-productid="00"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
 							</div>
 						</div>
 					</div>
@@ -161,8 +166,8 @@
 										<td id="idSubTotalRight">S/. 0.00</td>
 									</tr>
                                             <tr>
-										<th>Igv</th>
-										<td id="idIGVRight">S/. 0.00</td>
+										<th>Delivery</th>
+										<td id="idDeliveryTotalRight">S/. 0.00</td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -172,18 +177,11 @@
 									</tr>
 								</tfoot>
 							</table>
-                                  <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" style="width: 100%"></a></td></tr></table><!-- PayPal Logo -->
-                                  <%--<asp:Button 
-                                        ID="btnPayment" 
-                                        runat="server" 
-                                        Text="Pagar" 
-                                        OnClick="btnPayment_Click"
-                                        Font-Bold="true"
-                                        Height="45"
-                                        Width="100%"
-                                        style="background: #2879fe; color:white"
-                                        />--%>
-						    <a class="btn btn-primary"  href="https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda ''El Canastón'' acabo de hacer mi pedido!" id="order-now" target="_blank" style="background:green">Ordenar Pedido</a>
+                                  <!-- PayPal Logo -->
+						    <table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" style="width: 100%"></a></td></tr></table><!-- PayPal Logo -->
+<%--                                  <asp:Button ID="btnPayment" runat="server" Text="Pagar" OnClick="btnPayment_Click" Font-Bold="true" Height="45" Width="100%" style="background: #2879fe; color:white" />--%>
+						   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
+<%--						    <a class="btn btn-primary"  href="https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda ''El Canastón'' acabo de hacer mi pedido!" id="order-now" target="_blank" style="background:green">Ordenar Pedido</a>--%>
 						</div>
 					</div>
 				</div>
@@ -194,9 +192,11 @@
      <asp:HiddenField runat="server" ID="hfData" />
     <script type="text/x-handlebars-template" id="datatable-shopcart">
         {{# each request}}
-            <tr>
+            <tr id="item-reviewProduct-{{Product.ProductId}}" class="tt-item tt-item-product-delete-{{Product.ProductId}}">
 									<td>
-										<a href="#" class="tt-btn-close"></a>
+										<%--<a href="#" class="tt-btn-close add-to-cart-mp"></a>--%>
+									    <span class="tt-btn-close" style="cursor:pointer"><input style="display:none" data-page="review" data-productid="{{Product.ProductId}}"></span>
+									    <%--<a href="#" class="tt-btn-close delete-btn"><input type="button" style="display:none" value="0" class="tt-btn-close delete-btn" data-productid="{{Product.ProductId}}"></a>--%>
 									</td>
 									<td>
 										<div class="tt-product-img">
@@ -236,7 +236,7 @@
 										<div class="detach-quantity-desctope">
 											<div class="tt-input-counter style-01">
 												<span class="minus-btn"></span>
-												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}">
+												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}" readonly="readonly">
 												<span class="plus-btn"></span>
 											</div>
 										</div>
@@ -246,7 +246,7 @@
 											S/.{{TotalPrice}}
 										</div>
 									</td>
-								</tr>
+		</tr>
         {{/each}}
     </script>
 

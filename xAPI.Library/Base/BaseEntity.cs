@@ -16,6 +16,8 @@ namespace xAPI.Library.Base
         #region "Atributos"
         public Int32 ID { get; set; }
         public Int64 LegacyId { get; set; }
+        public Int64 LegacyNumber { get; set; }
+
         String name;
         public Int16 AllowSxm { get; set; }
         public String Name

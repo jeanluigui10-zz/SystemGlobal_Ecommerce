@@ -24,20 +24,32 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {
-                if (!String.IsNullOrEmpty(Request.Params["paymentId"]) && !String.IsNullOrEmpty(Request.Params["PayerID"])) 
-                {
-                    Paypal_Async_Transaction(Request.Params["paymentId"].ToString(), Request.Params["PayerID"].ToString());
-                }
+                //if (!String.IsNullOrEmpty(Request.Params["paymentId"]) && !String.IsNullOrEmpty(Request.Params["PayerID"])) 
+                //{
+                //    Paypal_Async_Transaction(Request.Params["paymentId"].ToString(), Request.Params["PayerID"].ToString());
+                //}
 
-                if (!String.IsNullOrEmpty(Request.Params["ordid"]))
+                //if (!String.IsNullOrEmpty(Request.Params["ordid"]))
+                //{
+                //    String idOrder = Request.Params["ordid"].ToString();
+                //    Cotization_ByOrderId(Encryption.Decrypt(idOrder));
+                //}
+                //else
+                //{
+                //    LoadData();
+                //}
+
+                if (BaseSession.SsOrderxCore.Customer == null || BaseSession.SsOrderxCore.Customer.ID == 0 && BaseSession.SsOrderxCore.ListOrderDetail != null)
                 {
-                    String idOrder = Request.Params["ordid"].ToString();
-                    Cotization_ByOrderId(Encryption.Decrypt(idOrder));
+                    //BaseSession.Logout();
+                    Response.Redirect("~/Layout/Information.aspx");
+                    //Response.Redirect("~/Layout/Login.aspx");
                 }
                 else
                 {
                     LoadData();
                 }
+               
             }
         }
 
@@ -63,53 +75,6 @@ namespace SystemGlobal_Ecommerce.Layout
                     String TransactionId = Convert.ToString(response.transactions[0].related_resources[0].sale.id);
                     String Message = response.state;
                 }
-            }
-        }
-
-        private void SaveOrder(OrderHeader objOrder)
-        {
-            try
-            {
-                BaseEntity objBase = new BaseEntity();
-                tBaseDetailOrderList objListDetail = new tBaseDetailOrderList();
-
-                for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
-                {
-                    objListDetail.Add(new tBaseDetailOrder()
-                    {
-                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
-                        Price = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        Quantity = objOrder.ListOrderDetail[i].Quantity,
-                        CreatedBy = objOrder.Customer.CustomerId,
-                        UpdatedBy = objOrder.Customer.CustomerId,
-                        Status = Convert.ToByte(EnumStatus.Enabled)
-                    });
-                }
-                objOrder.IsCotization = 0;
-                objOrder.Description = String.Empty;
-                Boolean success;
-                if (objOrder.OrderId > 0)
-                {
-                     success = OrderBL.Instance.Update_Pedido(ref objBase, ref objOrder);
-
-                }
-                else
-                {
-                    success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
-                }
-                if (success) 
-                {
-                    //Ok
-                    Response.Redirect("Confirmation.aspx", true);
-                }
-                else
-                {
-                    this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
-                }
-            }
-            catch (Exception ex)
-            {
-                this.Message(EnumAlertType.Error, "Ocurrio un error al guardar la Orden");
             }
         }
 
@@ -143,8 +108,8 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Ordertotal = objOrder.Ordertotal,
                     SubTotal = objOrder.SubTotal,
-                    IGV = objOrder.IGV,
-                    CustomerId = objOrder.Customer.CustomerId,
+                    DeliveryTotal = objOrder.DeliveryTotal,
+                    CustomerId = objOrder.Customer.ID,
                     CustomerName = objOrder.Customer.FullName,
                     Detail = lstDetail
                 };
@@ -163,29 +128,31 @@ namespace SystemGlobal_Ecommerce.Layout
         [WebMethod]
         public static Object CartProduct_UpdateQuantity(dynamic data)
         {
-            Object objReturn = new { Result = "NoOk" };
+            String Ok = "Ok";
+            String NoOk = "NoOk";
+            Object objReturn = new { Result = NoOk };
             try
             {
                 String ProductId = data["ProductId"];
                 String Quantity = data["ProductQuantity"];
+                List<Object> lstItemsCount = new List<Object>();
 
                 if (!Int32.TryParse(ProductId, out int productid) || productid < 0)
                 {
-                    return objReturn = new { Result = "NoOk", Message = "Producto Incorrecto." };
+                    return objReturn = new { Result = NoOk, Message = "Producto Incorrecto." };
                 }
                 if (!Int32.TryParse(Quantity, out int quantity) || quantity < 0)
                 {
-                    return objReturn = new { Result = "NoOk", Message ="Cantidad Incorrecta." };
+                    return objReturn = new { Result = NoOk, Message ="Cantidad Incorrecta." };
                 }
 
                 OrderHeader ObjOrderHeader = BaseSession.SsOrderxCore;
-               
                 var ProductExist = ObjOrderHeader.ListOrderDetail.Any(p => p.Product.ID == productid);
-                if (!ProductExist)
+                if (!ProductExist && ProductId != "00")
                 {
                     objReturn = new
                     {
-                        Result = "NoOk",
+                        Result = NoOk,
                         Msg = "El producto no se encuentra agregado.",
                         OrderHeader = ""
                     };
@@ -194,36 +161,48 @@ namespace SystemGlobal_Ecommerce.Layout
                 else
                 {
                     OrderDetail DetailSelect = new OrderDetail();
-                    for (int i = 0; i < ObjOrderHeader.ListOrderDetail.Count; i++)
-                    {
-                        if (ObjOrderHeader.ListOrderDetail[i].Product.ID == productid)
+                        for (int i = 0; i < ObjOrderHeader.ListOrderDetail.Count; i++)
                         {
-                            ObjOrderHeader.ListOrderDetail[i].Quantity = quantity;
-                            ObjOrderHeader.CalculateTotalPricexProduct(ObjOrderHeader.ListOrderDetail[i]);
-                            DetailSelect = ObjOrderHeader.ListOrderDetail[i];
-                        }
+                            if (ObjOrderHeader.ListOrderDetail[i].Product.ID == productid)
+                            {
+                                ObjOrderHeader.ListOrderDetail[i].Quantity = quantity;
+                                ObjOrderHeader.CalculateTotalPricexProduct(ObjOrderHeader.ListOrderDetail[i]);
+                                DetailSelect = ObjOrderHeader.ListOrderDetail[i];
+                            }
+                    }
+
+                    //Remover toda la tabla
+                    if (quantity == 0 && ProductId == "00")
+                    {
+                        ObjOrderHeader.ListOrderDetail = null;
+                    }
+                    //Remove producto seleccionado
+                    if (quantity == 0 && ProductId != "00")
+                    {
+                        ObjOrderHeader.ListOrderDetail.Remove(ObjOrderHeader.ListOrderDetail.Single(p => p.Product.ID == productid));
                     }
 
                     ObjOrderHeader.CalculateTotals();
-
+                    lstItemsCount.Add(ObjOrderHeader.ListOrderDetail);
                     BaseSession.SsOrderxCore = ObjOrderHeader;
                     DetailSelect.ProductId = Convert.ToInt32(ProductId);
+
                     Object OrderHeader = new
                     {
                         Ordertotal = ObjOrderHeader.Ordertotal,
                         SubTotal = ObjOrderHeader.SubTotal,
-                        IGV = ObjOrderHeader.IGV,
-                        CustomerId = ObjOrderHeader.Customer.CustomerId,
-                        CustomerName = ObjOrderHeader.Customer.FullName,
-                        Detail = DetailSelect
+                        DeliveryTotal = ObjOrderHeader.DeliveryTotal,
+                        CustomerId = ObjOrderHeader.Customer == null ? 0 : ObjOrderHeader.Customer.ID,
+                        CustomerName = ObjOrderHeader.Customer == null ? "" : ObjOrderHeader.Customer.FullName,
+                        Detail = DetailSelect,
+                        lstItemsCount = lstItemsCount
                     };
-
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     String sJSON = serializer.Serialize(OrderHeader);
 
                     objReturn = new
                     {
-                        Result = "Ok",
+                        Result = Ok,
                         Msg = "Cantidad actualizada correctamente.",
                         OrderHeader = sJSON.ToString()
                     };
@@ -233,7 +212,7 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 objReturn = new
                 {
-                    Result = "NoOk",
+                    Result = NoOk,
                     Msg = "Ocurrio un problema actualizando la cantidad."
                 };
             }
@@ -246,18 +225,18 @@ namespace SystemGlobal_Ecommerce.Layout
             Page.ClientScript.RegisterStartupScript(typeof(Page), "message", script);
         }
 
-        protected void btnPayment_Click(object sender, EventArgs e)
-        {
-            OrderHeader objOrder = BaseSession.SsOrderxCore;
-            if (objOrder != null && objOrder.ListOrderDetail != null && objOrder.ListOrderDetail.Count > 0)
-            {
-                PayPal_SendOrder(objOrder);
-            }
-            else
-            {
-                GoBack();
-            }
-        }
+        //protected void btnPayment_Click(object sender, EventArgs e)
+        //{
+        //    OrderHeader objOrder = BaseSession.SsOrderxCore;
+        //    if (objOrder != null && objOrder.ListOrderDetail != null && objOrder.ListOrderDetail.Count > 0)
+        //    {
+        //        PayPal_SendOrder(objOrder);
+        //    }
+        //    else
+        //    {
+        //        GoBack();
+        //    }
+        //}
 
         private void GoBack()
         {
@@ -426,12 +405,12 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Ordertotal = objOrder.Ordertotal,
                     SubTotal = objOrder.SubTotal,
-                    IGV = objOrder.IGV,
-                    CustomerId = objOrder.Customer.CustomerId,
+                    DeliveryTotal = objOrder.DeliveryTotal,
+                    CustomerId = objOrder.Customer.ID,
                     CustomerName = objOrder.Customer.FullName,
                     Detail = lstDetail
                 };
-                objOrder.OrderId = Convert.ToInt32(OrderId);
+                objOrder.ID = Convert.ToInt32(OrderId);
                 BaseSession.SsOrderxCore = objOrder;
                JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String sJSON = serializer.Serialize(OrderHeader);
@@ -440,6 +419,60 @@ namespace SystemGlobal_Ecommerce.Layout
             }
         }
 
+        protected void btnPayment_Click(object sender, EventArgs e)
+        {
+            OrderHeader objOrder = BaseSession.SsOrderxCore;
+            if (objOrder != null && objOrder.ListOrderDetail != null && objOrder.ListOrderDetail.Count > 0)
+            {
+                SaveOrder(objOrder);
+            }
+            else
+            {
+                GoBack();
+            }
+        }
+        private void SaveOrder(OrderHeader objOrder)
+        {
+            try
+            {
+                BaseEntity objBase = new BaseEntity();
+                tBaseDetailOrderList objListDetail = new tBaseDetailOrderList();
+
+                for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+                {
+                    objListDetail.Add(new tBaseDetailOrder()
+                    {
+                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
+                        Price = objOrder.ListOrderDetail[i].Product.UnitPrice,
+                        Quantity = objOrder.ListOrderDetail[i].Quantity,
+                        PriceOffer = objOrder.ListOrderDetail[i].Product.PriceOffer,
+                        Status = Convert.ToByte(EnumStatus.Enabled)
+                    });
+                }
+
+                Boolean success;
+                if (objOrder.ID == 0)
+                {
+                    success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
+                    if (success && objBase.Errors.Count == 0)
+                    {
+                        Response.Redirect("Confirmation.aspx", false);
+                    }
+                    else
+                    {
+                        this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                    }
+                }
+                else
+                {
+                    this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Message(EnumAlertType.Error, "Ocurrio un error al guardar la Orden");
+            }
+        }
     }
 }
     

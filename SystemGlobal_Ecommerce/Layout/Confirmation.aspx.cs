@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using SystemGlobal_Ecommerce.src.app_code;
-using xAPI.BL.Resource;
 using xAPI.Entity.Order;
-using xAPI.Library.Base;
 using xAPI.Library.General;
 
 namespace SystemGlobal_Ecommerce.Layout
@@ -17,32 +14,33 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {
-                Load_Settings();
+                //Load_Settings();
                 LoadData();
             }
         }
-        private void Load_Settings()
-        {
-            BaseEntity objBase = new BaseEntity();
-            DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
-            if (objBase.Errors.Count == 0)
-            {
-                if (dt != null)
-                {
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        hfIsVisiableChatConfir.Value = item["ChatOnlineActive"].ToString();
-                    }
-                }
-            }
-
-        }
+        //private void Load_Settings()
+        //{
+        //    BaseEntity objBase = new BaseEntity();
+        //    DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
+        //    if (objBase.Errors.Count == 0)
+        //    {
+        //        if (dt != null)
+        //        {
+        //            foreach (DataRow item in dt.Rows)
+        //            {
+        //                hfIsVisiableChatConfir.Value = item["ChatOnlineActive"].ToString();
+        //            }
+        //        }
+        //    }
+        //}
         private void LoadData()
         {
             if (BaseSession.SsOrderxCore != null && BaseSession.SsOrderxCore.ListOrderDetail != null && BaseSession.SsOrderxCore.ListOrderDetail.Count > 0)
             {
                 OrderHeader objOrder = BaseSession.SsOrderxCore;
-                List<Object> lstDetail = new List<Object>();
+                lblAddressConfirm.InnerText = objOrder.Address.Address1.ToString();
+                lblMessageConfirm.InnerText = objOrder.Customer.FirstName.ToString() +" "+ objOrder.Customer.LastNamePaternal.ToString() + " "+ objOrder.Customer.LastNameMaternal.ToString() + ", TU PEDIDO SE GENERO SATISFACTORIAMENTE!";
+                List <Object> lstDetail = new List<Object>();
                 for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
                 {
                     Object objProduct = new
@@ -51,7 +49,9 @@ namespace SystemGlobal_Ecommerce.Layout
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
                         Category = objOrder.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
+                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource,
+                        PriceOffer = objOrder.ListOrderDetail[i].Product.PriceOffer
+
                     };
                     Object Detail = new
                     {
@@ -67,8 +67,8 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     Ordertotal = objOrder.Ordertotal,
                     SubTotal = objOrder.SubTotal,
-                    IGV = objOrder.IGV,
-                    CustomerId = objOrder.Customer.CustomerId,
+                    DeliveryTotal = objOrder.DeliveryTotal,
+                    CustomerId = objOrder.Customer.ID,
                     CustomerName = objOrder.Customer.FullName,
                     Detail = lstDetail
                 };

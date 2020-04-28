@@ -2318,6 +2318,23 @@ namespace SystemGlobal_Ecommerce.src.app_code
  
     }
 
+    [Serializable]
+    public class srCustomer
+    {
+        public String Id { get; set; }
+        public String FirstName { get; set; }
+        public String LastNamePaternal { get; set; }
+        public String LastNameMaternal { get; set; }
+        public String DocumentType { get; set; }
+        public String NumberDocument { get; set; }
+        public String CellPhone { get; set; }
+        public String Email { get; set; }
+        public String Password { get; set; }
+        public String CreatedDate { get; set; }
+        public String Address1 { get; set; }
+
+    }
+
     #region shippingcosts
     [Serializable]
     public class srShippingRates

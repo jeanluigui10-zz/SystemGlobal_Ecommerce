@@ -291,9 +291,9 @@ namespace SystemGlobal_Ecommerce.Layout
                 objAppResource.CategotyId = Convert.ToInt32(ddlResourceCategory.SelectedValue);
                 objAppResource.Name = HtmlSanitizer.SanitizeHtml(txtName.Text.Trim());
                 objAppResource.FileDescription = HtmlSanitizer.SanitizeHtml(txtDescription.Text);
-                objAppResource.Createdby = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.CustomerId : 0;
-                objAppResource.Updatedby = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.CustomerId : 0;
-                objAppResource.UserId = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.CustomerId : 0;
+                objAppResource.Createdby = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.ID : 0;
+                objAppResource.Updatedby = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.ID : 0;
+                objAppResource.UserId = BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.ID : 0;
                 objAppResource.Status = chkEnable.Checked ? (short)EnumStatus.Enabled : (short)EnumStatus.Disabled;
                 objAppResource.Url = txtUrl.Text;
                 objAppResource.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
@@ -436,7 +436,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         Random r = new Random(DateTime.Now.Millisecond);
                         FileName = r.Next(1000, 9999) + "_" + Regex.Replace(FileName, @"[^0-9a-zA-Z\._]", string.Empty);
                         objAppResource.FileName = FileName;
-                        objAppResource.FilePublicName = clsUtilities.GeneratePublicName(BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.CustomerId : 0);
+                        objAppResource.FilePublicName = clsUtilities.GeneratePublicName(BaseSession.SsOrderxCore.Customer != null ? BaseSession.SsOrderxCore.Customer.ID : 0);
                         objAppResource.FileExtension = Path.GetExtension(FileName).ToLower();
 
                         if (objAppResource.FileExtension.ToLower() == ".bmp" || objAppResource.FileExtension.ToLower() == ".jpeg" || objAppResource.FileExtension.ToLower() == ".jpg" || objAppResource.FileExtension.ToLower() == ".png" || objAppResource.FileExtension.ToLower() == ".gif")

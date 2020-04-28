@@ -37,19 +37,22 @@ namespace xAPI.Dao.Order
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlParameter parmIdPedidoOut = cmd.Parameters.Add("@OrderId", SqlDbType.Int);
                 parmIdPedidoOut.Direction = ParameterDirection.Output;
-                cmd.Parameters.AddWithValue("@CustomerId", objOrder.Customer.CustomerId);
+                SqlParameter parmLegacyNumberOut = cmd.Parameters.Add("@orderLegacyNumber", SqlDbType.Int);
+                parmLegacyNumberOut.Direction = ParameterDirection.Output;
+                cmd.Parameters.AddWithValue("@CustomerId", objOrder.Customer.ID);
+                cmd.Parameters.AddWithValue("@AddressId", objOrder.Address.ID);
                 cmd.Parameters.AddWithValue("@Total", objOrder.Ordertotal);
-                cmd.Parameters.AddWithValue("@IgvTotal", objOrder.IGV);
+                cmd.Parameters.AddWithValue("@DeliveryTotal", objOrder.DeliveryTotal);
                 cmd.Parameters.AddWithValue("@SubTotal", objOrder.SubTotal);
                 cmd.Parameters.AddWithValue("@IsCotization", objOrder.IsCotization);
-                cmd.Parameters.AddWithValue("@Description", objOrder.Description);
                 cmd.Parameters.AddWithValue("@Status", objOrder.Status);
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@TY_OrderDetail", Value = objDetail, SqlDbType = SqlDbType.Structured, TypeName = "TY_OrdersDetail" });
                 cmd.ExecuteReader();
                 success = true;
-                if (!cmd.Parameters["@OrderId"].Value.ToString().Equals(string.Empty))
-                    objOrder.OrderId = Convert.ToInt32(cmd.Parameters["@OrderId"].Value);
-
+                if (!cmd.Parameters["@OrderId"].Value.ToString().Equals(String.Empty))
+                    objOrder.ID = Convert.ToInt32(cmd.Parameters["@OrderId"].Value);
+                if (!cmd.Parameters["@orderLegacyNumber"].Value.ToString().Equals(String.Empty))
+                    objOrder.LegacyNumber = Convert.ToInt32(cmd.Parameters["@orderLegacyNumber"].Value);
             }
             catch (Exception ex)
             {
@@ -70,7 +73,7 @@ namespace xAPI.Dao.Order
             {
                 cmd = new SqlCommand("Update_Save_Sp", clsConnection.GetConnection());
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@OrderId", objOrder.OrderId);
+                cmd.Parameters.AddWithValue("@OrderId", objOrder.ID);
                 cmd.ExecuteReader();
                 success = true;
 
@@ -106,7 +109,7 @@ namespace xAPI.Dao.Order
                     {
                         obj.Customer = new Customer()
                         {
-                            CustomerId = dr.GetColumnValue<Int32>("CustomerId"),
+                            ID = dr.GetColumnValue<Int32>("CustomerId"),
                             FirstName = dr.GetColumnValue<String>("FirstName"),
                             LastNamePaternal = dr.GetColumnValue<String>("LastNamePaternal"),
                             LastNameMaternal = dr.GetColumnValue<String>("LastNameMaternal"),
@@ -148,7 +151,7 @@ namespace xAPI.Dao.Order
                         {
                             obj.Ordertotal = dr.GetColumnValue<Decimal>("Total");
                             obj.SubTotal = dr.GetColumnValue<Decimal>("SubTotal");
-                            obj.IGV = dr.GetColumnValue<Decimal>("IgvTotal");
+                            obj.DeliveryTotal = dr.GetColumnValue<Decimal>("DeliveryTotal");
                         }
                     }
                 }

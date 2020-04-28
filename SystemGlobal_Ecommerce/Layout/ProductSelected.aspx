@@ -252,7 +252,7 @@
 											</div>
 										</div>
 										<div class="col-item">
-											<a class="btn btn-lg"><i class="icon-f-39"></i>Agregar Producto</a>
+											<a class="btn btn-lg"><i class="icon-g-48"></i>Agregar Producto</a>
 										</div>
 									</div>
 								</div>
@@ -391,7 +391,7 @@
                                      </div>
                                  </div>
                                  <div class="col-item">
-                                     <a class="btn btn-lg add-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" style="cursor: pointer; color: white"><i class="icon-f-39" style="top: 3px; color: white"></i>Agregar Producto</a>
+                                     <a class="btn btn-lg add-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" style="cursor: pointer; color: white"><i class="icon-g-48" style="top: 3px; color: white"></i>Agregar Producto</a>
                                  </div>
                              </div>
                          </div>

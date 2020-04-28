@@ -41,7 +41,7 @@
 	   <div class="container-indent nomargin">
 	<div class="container-indent nomargin">
 		<div class="container-fluid">
-			<div class="row" style="margin-top: -4%;margin-left: -3px !important;margin-right: -3px !important;">
+			<div class="row" style="margin-top: -8%;margin-left: -3px !important;margin-right: -3px !important;">
 				<div class="slider-revolution revolution-default">
 					<div class="tp-banner-container">
 						<div class="tp-banner revolution">
@@ -86,10 +86,10 @@
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
 										data-y="0"
-										data-speed="1000"
-										data-start="0"
+										data-speed="750"
+										data-start="100"
 										data-easing="Power4.easeOut"
-										data-endspeed="500"
+										data-endspeed="2000"
 										data-endeasing="Power4.easeIn"
 										data-autoplay="true"
 										data-autoplayonlyfirsttime="true"
@@ -98,8 +98,8 @@
 										data-dottedoverlay="twoxtwo"
 										data-aspectratio="16:9">
 										<video class="video-js vjs-default-skin" preload="none"
-											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" autoplay loop style="background: border-box !important;"> 
-											<source src='../Files/images/slides/01/VideoTienda.mp4' type='video/mp4'>
+											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" <%--autoplay loop--%> style="background: border-box !important;"> 
+											<source src='../Files/images/slides/01/Axelvideo.mp4' type='video/mp4'>
 										</video>
 									</div>
 									<%--<div class="tp-caption  tp-fade"
@@ -120,16 +120,68 @@
 									<div class="tp-caption lfb lft text-center"
 										data-x="center"
 										data-y="center"
-										data-voffset="-20"
 										data-hoffset="0"
-										data-speed="600"
-										data-start="900"
+										data-voffset="0"
+										data-speed="1400"
+										data-start="100"
 										data-easing="Power4.easeOut"
 										data-endeasing="Power4.easeIn">
 										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMAR TU PEDIDO!">ARMAR TU PEDIDO!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
+									</div>
+								</li>
+							    <li data-thumb="video/video_img.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+									<img src="/Files/video/blank.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption tp-fade fadeout fullscreenvideo"
+										data-x="0"
+										data-y="0"
+										data-speed="1000"
+										data-start="0"
+										data-easing="Power4.easeOut"
+										data-endspeed="500"
+										data-endeasing="Power4.easeIn"
+										data-autoplay="true"
+										data-autoplayonlyfirsttime="true"
+										data-nextslideatend="true"
+										data-forceCover="1"
+										data-dottedoverlay="twoxtwo"
+										data-aspectratio="16:9">
+										<video class="video-js vjs-default-skin" preload="none"
+											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" <%--autoplay loop --%>style="background: border-box !important;"> 
+											<source src='../Files/images/slides/01/video_Qw52dwUM_IF95.mp4' type='video/mp4'>
+										</video>
+									</div>
+									<%--<div class="tp-caption  tp-fade"
+										data-x="right"
+										data-y="bottom"
+										data-voffset="-60"
+										data-hoffset="-90"
+										data-speed="600"
+										data-start="900"
+										data-easing="Power4.easeOut"
+										data-endeasing="Power4.easeIn">
+										<div class="video-play">
+											<a class="icon-f-29 btn-play" href="#"></a>
+											<a class="icon-f-28 btn-pause" href="#"></a>
+										</div>
+									</div>--%>
+									<!-- TEXT -->
+									<div class="tp-caption lfb lft text-center"
+										data-x="center"
+										data-y="center"
+										data-hoffset="0"
+										data-voffset="0"
+										data-speed="1400"
+										data-start="200"
+										data-easing="Power4.easeOut"
+										data-endeasing="Power4.easeIn">
+										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
+										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
+										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"  style="font-weight:bold !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 									</div>
 								</li>
 							</ul>
@@ -235,7 +287,7 @@
 			</div>
 		</div>
 	</div>--%>
-	<div class="container-indent" style="margin-top:-34px">
+	<div class="container-indent" style="margin-top:-4% !important">
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
 				<h2 class="tt-title">PRODUCTOS DE PRIMERA NECESIDAD</h2>

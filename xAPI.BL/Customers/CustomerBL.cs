@@ -75,6 +75,26 @@ namespace xAPI.BL.Customers
 
             return objCustomer;
         }
+
+        public Customer Customer_GetInformation_ById(ref BaseEntity objBase, Int32 CustomerId)
+        {
+            objBase = new BaseEntity();
+            Customer objCustomer = null;
+            try
+            {
+                if (objCustomer != null)
+                {
+                    objCustomer = CustomerDAO.Instance.Customer_GetInformation_ById(ref objBase, CustomerId);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+
+            return objCustomer;
+        }
     }
 }
 

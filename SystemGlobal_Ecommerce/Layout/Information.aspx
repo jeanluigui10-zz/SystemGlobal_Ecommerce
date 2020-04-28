@@ -26,11 +26,12 @@
                 return;
             }
           
-                obj = {
+            obj = {
+                    Id: $("#<%=hfCustomerId.ClientID%>").val(),
                     FirstName: $("input[id$=txtNombre]").val().trim(),
                     LastNamePaternal: $("input[id$=txtApellidoPaterno]").val().trim(),
                     LastNameMaternal: $("input[id$=txtApellidoMaterno]").val().trim(),
-                    Description: $("input[id$=txtDescription]").val().trim(),
+                    Address1: $("input[id$=txtAddress1]").val().trim(),
                     NumberDocument: $("input[id$=txtNumberoDocumento]").val().trim(),
                     CellPhone: $("input[id$=txtCelular]").val().trim(),
                     Password: $("input[id$=txtPassword]").val().trim(),
@@ -67,10 +68,9 @@
             $("input[id$=txtApellidoPaterno]").val("");
             $("input[id$=txtApellidoMaterno]").val("");
             $("input[id$=txtNumberoDocumento]").val("");
-            $("input[id$=txtContraseña]").val("");
             $("input[id$=txtCelular]").val("");
             $("input[id$=txtCorreo]").val("");
-            $("input[id$=txtDescription]").val("");
+            $("input[id$=txtAddress1]").val("");
             $("input[id$=txtPassword]").val("");
           }
 
@@ -78,6 +78,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField ID="hfCustomerId" runat="server" />
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
@@ -90,7 +91,7 @@
     <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder">Registrarme</h1>
+			<h1 id="ltTitle" runat="server" class="tt-title-subpages noborder">Registrarme</h1>
         
 			<div class="tt-login-form">
 				<div class="row justify-content-center">
@@ -105,36 +106,36 @@
 									<div class="form-group">
 										<label for="loginInputName">Nombre *</label>
 										<div class="tt-required">* Campos Requeridos</div>
-										<input type="text" name="name"   class="form-control validate[required]" id="txtNombre" placeholder="Ingrese su Nombre">
+										<input type="text" name="name"   class="form-control validate[required]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
 									</div>
 									<div class="form-group">
 										<label for="loginAPaterno">Apellido Paterno *</label>
-										<input type="text" name="apellidoPaterno"   class="form-control validate[required]" id="txtApellidoPaterno" placeholder="Ingrese su Apellido Paterno">
+										<input type="text" name="apellidoPaterno"   class="form-control validate[required]" runat="server" id="txtApellidoPaterno" placeholder="Ingrese su Apellido Paterno">
 									</div>
                                             <div class="form-group">
 										        <label for="loginAMaterno">Apellido Materno *</label>
-										        <input type="text" name="apellidoMaterno"   class="form-control validate[required]" id="txtApellidoMaterno" placeholder="Ingrese su Apellido Materno">
+										        <input type="text" name="apellidoMaterno"   class="form-control validate[required]" runat="server" id="txtApellidoMaterno" placeholder="Ingrese su Apellido Materno">
 									        </div>
                                             <div class="form-group">
 										<asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control"></asp:DropDownList>
-										<input type="text" name="tipodocumento"  class="form-control validate[required]" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
+										<input type="text" name="tipodocumento"  class="form-control validate[required]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
 									</div>
                                              <div class="form-group">
 										<label for="loginDescription">Dirección de entrega *</label>
-										<input type="text" name="Description"  class="form-control validate[required]" id="txtDescription" placeholder="Ingrese su Dirección...">
+										<input type="text" name="Address1"  class="form-control validate[required]" runat="server" id="txtAddress1" placeholder="Ingrese su Dirección...">
 									</div>
                                             
                                     <div class="form-group">
 										<label for="loginCelular">Celular/Whatsapp *</label>
-										<input type="text" name="celular"  class="form-control validate[required]" id="txtCelular" placeholder="Ingrese su Celular">
+										<input type="text" name="celular"  class="form-control validate[required]" runat="server" id="txtCelular" placeholder="Ingrese su Celular / Whatssap">
 									</div>
 									<div class="form-group">
 										<label for="loginInputEmail">Correo/Nombre de Usuario *</label>
-										<input type="text" name="email"  class="form-control validate[required]" id="txtCorreo" placeholder="Ingrese su Correo/Nombre un usuario">
+										<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo / Nombre un usuario">
 									</div>
 									<div class="form-group">
 										<label for="loginInputPassword">Contraseña *</label>
-										<input type="password" name="passowrd"  class="form-control validate[required]"id="txtPassword" placeholder="Ingrese su Contraseña">
+										<input type="password" name="passowrd"  class="form-control validate[required]" runat="server" id="txtPassword" placeholder="Ingrese su Contraseña">
 									</div>
 									<div class="row">
 										<div class="col-auto">

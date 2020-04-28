@@ -4391,6 +4391,7 @@ namespace xAPI.Entity
         public Int32 ProductId { get; set; }
         public Decimal Price { get; set; }
         public Int32 Quantity { get; set; }
+        public Decimal PriceOffer { get; set; }
         public Int32 CreatedBy { get; set; }
         public Int32 UpdatedBy { get; set; }
         public Byte Status  { get; set; }
@@ -4405,6 +4406,7 @@ namespace xAPI.Entity
                 new SqlMetaData("ProductId", SqlDbType.Int),
                 new SqlMetaData("Price", SqlDbType.Decimal),
                 new SqlMetaData("Quantity", SqlDbType.Int),
+                new SqlMetaData("PriceOffer", SqlDbType.Decimal),
                 new SqlMetaData("CreatedBy", SqlDbType.Int),
                 new SqlMetaData("UpdatedBy", SqlDbType.Int),
                 new SqlMetaData("Status", SqlDbType.TinyInt)
@@ -4414,9 +4416,10 @@ namespace xAPI.Entity
                 ret.SetInt32(0, data.ProductId);
                 ret.SetDecimal(1, data.Price);
                 ret.SetInt32(2, data.Quantity);
-                ret.SetInt32(3, data.CreatedBy);
-                ret.SetInt32(4, data.UpdatedBy);
-                ret.SetByte(5, data.Status);
+                ret.SetDecimal(3, data.PriceOffer);
+                ret.SetInt32(4, data.CreatedBy);
+                ret.SetInt32(5, data.UpdatedBy);
+                ret.SetByte(6, data.Status);
                 yield return ret;
             }
         }

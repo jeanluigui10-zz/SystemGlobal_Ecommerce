@@ -63,6 +63,7 @@
 			<div class="tt-login-form">
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
+					    <img src="http://elcanastonxcorporate.tk/Files/enterprise/images\1SKCORBCOVIWNFBYLMJUSVFFCJLYUPQNXSTOTAYCJVVLCDUHXPT8.jpg" data-src="http://elcanastonxcorporate.tk/Files/enterprise/images\1SKCORBCOVIWNFBYLMJUSVFFCJLYUPQNXSTOTAYCJVVLCDUHXPT8.jpg" alt="" class="col-xs-12 col-md-6">
 						<div class="tt-item">
 							<h2 class="tt-title">ERES NUEVO?</h2>
 							<label class="tt-title">Registrandote podras crear tu lista y hacer tu pedido.</label>

@@ -33,6 +33,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 }; 
 
                 Customer objCustomer = CustomerBL.Instance.ValidateLogin_Customer(ref objBase, obj);
+                
                 if (objBase.Errors.Count == 0)
                 {
                     if (objCustomer != null)
@@ -51,6 +52,7 @@ namespace SystemGlobal_Ecommerce.Layout
                             {
                                 OrderHeader objOrder = BaseSession.SsOrderxCore;
                                 objOrder.Customer = objCustomer;
+                                objOrder.Address = objCustomer.address;
                                 BaseSession.SsOrderxCore = objOrder;
                                 objReturn = new
                                 {

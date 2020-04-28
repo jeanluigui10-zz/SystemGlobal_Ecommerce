@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using xAPI.Entity.Addresses;
 using xAPI.Entity.Customers;
+using xAPI.Library.Base;
 
 namespace xAPI.Entity.Order
 {
-    public class OrderHeader
+    public class OrderHeader : BaseEntity
     {
-        public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
-        public int Status { get; set; }
         public Decimal Ordertotal { get; set; }
         public Decimal SubTotal { get; set; }
         public int CustomerId { get; set; }
@@ -18,9 +18,9 @@ namespace xAPI.Entity.Order
         public int UpdatedBy { get; set; }
 
         public Customer Customer { get; set; }
+        public Address Address { get; set; }
         public int IsCotization { get; set; }
-        public String Description { get; set; }
-        public Decimal IGV { get; set; }
+        public Decimal DeliveryTotal { get; set; }
 
         List<OrderDetail> objListOrderDetail;
         public List<OrderDetail> ListOrderDetail
@@ -48,18 +48,18 @@ namespace xAPI.Entity.Order
         {
             Decimal TotalOrder = 0.00M;
             Decimal Subtotal = 0.00M;
-            Decimal TotalIgv = 0.00M;
+            Decimal DeliveryTotal = 0.00M;
             foreach (OrderDetail item in this.ListOrderDetail)
             {
                 Subtotal += item.Totalprice;               
             }
 
-            TotalIgv = Subtotal * 0.18M;
-            TotalOrder = Subtotal + Convert.ToDecimal(TotalIgv.ToString("N2"));
+            DeliveryTotal = Subtotal * 0.18M;
+            TotalOrder = Subtotal + Convert.ToDecimal(DeliveryTotal.ToString("N2"));
 
             this.SubTotal = Subtotal;
             this.Ordertotal = TotalOrder;
-            this.IGV = Convert.ToDecimal(TotalIgv.ToString("N2"));
+            this.DeliveryTotal = Convert.ToDecimal(DeliveryTotal.ToString("N2"));
 
         }
         public void CalculateTotalPricexProduct(OrderDetail OrderDetail)
