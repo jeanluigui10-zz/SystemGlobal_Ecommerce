@@ -16,25 +16,25 @@ namespace SystemGlobal_Ecommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.ID > 0)
-            {
-                lblCuenta.Visible = true;
-                lblCerrarSession.Visible = true;
-                lblInicioSession.Visible = false;
-                lblRegistrar.Visible = false;
-                hfCustomerId.Value = HttpUtility.UrlEncode(Encryption.Encrypt(BaseSession.SsOrderxCore.Customer.ID.ToString()));
-            }
-            else
-            {
-                lblInicioSession.Visible = true;
-                lblRegistrar.Visible = true;
-                lblCuenta.Visible = false;
-                lblCerrarSession.Visible = false;
-                hfCustomerId.Value = "";
-            }
+            //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.ID > 0)
+            //{
+            //    lblCuenta.Visible = true;
+            //    lblCerrarSession.Visible = true;
+            //    lblInicioSession.Visible = false;
+            //    lblRegistrar.Visible = false;
+            //    hfCustomerId.Value = HttpUtility.UrlEncode(Encryption.Encrypt(BaseSession.SsOrderxCore.Customer.ID.ToString()));
+            //}
+            //else
+            //{
+            //    lblInicioSession.Visible = true;
+            //    lblRegistrar.Visible = true;
+            //    lblCuenta.Visible = false;
+            //    lblCerrarSession.Visible = false;
+            //    hfCustomerId.Value = "";
+            //}
             //Load_Settings();
-            Load_Products();
-            Load_Category();
+            //Load_Products();
+            //Load_Category();
             //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
             //{
             //    ucChat.SetUserId(BaseSession.SsOrderxCore.Customer.CustomerId);
@@ -75,7 +75,7 @@ namespace SystemGlobal_Ecommerce
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     String sJSON = serializer.Serialize(lst);
-                    hfDataListCategory.Value = sJSON.ToString();
+                    //hfDataListCategory.Value = sJSON.ToString();
                 }
             }
         }
@@ -119,7 +119,7 @@ namespace SystemGlobal_Ecommerce
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 String sJSON = serializer.Serialize(OrderHeader);
 
-                hfDataListProduct.Value = sJSON.ToString();
+                //hfDataListProduct.Value = sJSON.ToString();
             }
         }
         //private void Load_Settings()
