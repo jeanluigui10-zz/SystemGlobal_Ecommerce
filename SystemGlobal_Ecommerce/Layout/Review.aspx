@@ -1,56 +1,120 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Review.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Review" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <!-- Incluyendo .js de Culqi JS -->
+    <script src="https://checkout.culqi.com/v2"></script>
+
+    <style type="text/css">
+        #divPayment .rdbPayment label, #divPayment .chkPayment label, .TypeCC label {
+            display: inline-block;
+            margin-left: 7px;
+            vertical-align: middle;
+		  font-size: 16px;
+        }
+    </style>
+   
      <script type="text/javascript">
-
+         var $this = this;
          $(function () {
-             fn_init();
+
+             Culqi.publicKey = 'pk_test_e10ed06809bfa78c';
+             Culqi.init();
+
+             //fn_init();
+
+             //PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
+
+             //$(".rdbPayment input[type=radio][name$=Payment]").change(function () {
+             //    PaymentOptions_Select($(this));
+             //});
+             
+             //$('#btn_pagar').on('click', function (e) {
+             //    // Crea el objeto Token con Culqi JS
+             //    Culqi.createToken();
+             //    e.preventDefault();
+             //});
          });
+         function Fn_ValidateCard(e) {
 
-         function fn_init() {
-             fn_content();
-         }
-         function fn_content() {
-             Fn_ListProductsShopCart($("#<%=hfData.ClientID%>").val());           
+             if (!fn_validateform('divPay')) {
+                 e.preventDefault();
+                 return false;
+             }
+             Culqi.createToken();
+             e.preventDefault();
          }
 
-         function Fn_ListProductsShopCart(data) {
-             var glancedata = data;
+         //function fn_init() {
+         //    fn_content();
+         //}
+       <%--  function fn_content() {
+           //  PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
+        if ($("#<%=hfDataMethodPayment.ClientID%>").val() != "") {
+                 Fn_ListMethodPayment($("#<%=hfDataMethodPayment.ClientID%>").val());
+             }
+             Fn_ListProductsShopCartHeader($("#<%=hfData.ClientID%>").val());       
+         }--%>
+         function PaymentOptions_Select($this) {
+             //var deviceDataId = OpenPay.deviceData.setup($("form").attr("id"));
+             PaymentId = $this[0].id;
+             var paymenttype = PaymentId.replace("rdb", "");
+             $("input[type=hidden][id$=hfPaymentType]").val(paymenttype);
+         }
+        
+         function Fn_ListMethodPayment(dataPayment) {
+             var glancedata = dataPayment;
              try {
-                 obj = $.parseJSON(glancedata);
+                 var objCategory = $.parseJSON(glancedata);
                  var object = {};
-                 object.request = obj.Detail;
-                 var item = fn_LoadTemplates("datatable-shopcart", object);
-                 $("#tblBodyTable").html(item);
-                 CalculateReview(obj);
-                 if (obj.Detail.length) {
-                     $("#ContentPlaceHolder1_btnGeneratePedido").removeAttr("hidden");
-                 } else {
-                     $("#ContentPlaceHolder1_btnGeneratePedido").attr("hidden", true);
-                 }
+                 object.request = objCategory;
+                 var item = fn_LoadTemplates("datatable-MethodPayment", object);
+                 $("#DivMethodPayment").html(item);
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
              }
          }
 
-         function CalculateReview(obj) {
-             if (obj.Detail != null) { 
-                 for (var i = 0; i < obj.Detail.length; i++) {
-                 $('#unitPriceProduct_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].Product.UnitPrice.toFixed(2));
-                 $('#uniPriceProd_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].Product.UnitPrice.toFixed(2));
-                 $(".tt-cart-total-price").text("S/." + obj.SubTotal.toFixed(2));
-                 $("#idSubTotalRight").text("S/." + obj.SubTotal.toFixed(2));
-                 $("#idDeliveryTotalRight").text("S/." + obj.DeliveryTotal.toFixed(2));
-                 $('#idSubTotalProduct_' + obj.Detail[i].Product.ProductId).text("S/." + obj.Detail[i].TotalPrice.toFixed(2));
-                 $("#idTotalRigth").text("S/." + obj.Ordertotal.toFixed(2));
-                 }
+         function culqi() {
+             if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+                 var token = Culqi.token.id;
+                 objpay = {
+                     token_created: token,
+                     email: $("input[name=email]").val(),
+
+                  }
+                 var success = function (asw) {
+                     if (asw != null) {
+                         if (asw.d.Result == "Ok") {
+                             fn_message("s", asw.d.Msg);
+                         } else {
+                             fn_message('i', 'Ocurrio un error al guardar');
+                         }
+                     }
+                 };
+                 var error = function (xhr, ajaxOptions, thrownError) {
+                     fn_message('e', 'Ocurrio un error al guardar');
+                 };
+
+                 var senddata = { q: objpay };
+
+                 fn_callmethod("Review.aspx/Culqui_CreateCharge", JSON.stringify(senddata), success, error);
+                 
+                 //alert('Se ha creado un token:' + token);
+                 //En esta linea de codigo debemos enviar el "Culqi.token.id"
+                 //hacia tu servidor con Ajax
+             } else { // ¡Hubo algún problema!
+                 // Mostramos JSON de objeto error en consola
+                 console.log(Culqi.error);
+                 alert(Culqi.error.user_message);
              }
-         }
-        
+         };
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="tt-breadcrumb">
+     <asp:HiddenField runat="server" ID="hfDataMethodPayment" />
+    <div class="tt-breadcrumb" style="margin-top:0.5%">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Canastón</a></li>
@@ -61,22 +125,22 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder">Tu lista de productos</h1>
+			<h1 class="tt-title-subpages noborder">Mis Productos</h1>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
 						<table id="tblCarrito">
-						 <%--    <thead>
+						     <thead class="col-sm-12 col-xl-8">
                                 <tr>
                                     <th style="text-align:right"></th>
-                                    <th style="text-align:right">Producto</th>
+                                    <th style="text-align: right">Producto</th>
                                     <th style="text-align:right"></th>
                                     <th style="text-align: left !important;">Precio</th>
                                     <th style="text-align:right">Cantidad</th>
                                     <th style="text-align: right !important;">Subtotal</th>
 							 <th style="text-align:right"></th>
                                 </tr>
-                            </thead>--%>
+                            </thead>
 							<tbody id="tblBodyTable">
 								
 							</tbody>
@@ -91,40 +155,100 @@
 							</div>
 						</div>
 					</div>
+				    <br><br>
+				    <%--MethodPayment--%>
+				    <div class="tt-shopcart-table">
+								    <img id="paymentimage" src="http://elcanastonxcorporate.tk/Files/enterprise/methodPay/metodosDePago.jpeg" style="width:25%">
+								<br>
+								<br>
+								    <label for="s_username" style=" font-family: Hind, sans-serif; font-size: 24px; font-weight: bold;" class="col-md-12 font-lato-h4">Seleccione método de pago *</label>
+								    <div class="col-md-12">
+									   <div id="divCardOptions">
+										  <div id="divPayment" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-lato-h4" runat="server" clientidmode="static">
+										 <%-- <div style="padding: 10px 0;" id="DivMethodPayment">
+											 <div style="display: inline-block">
+                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Contra Entrega" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value="" checked="checked"><label for="">Contra Entrega</label></span>
+                                                        </div>
+											 <div style="display: inline-block">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Plin" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Plin</label></span>
+                                                        </div>
+                                                        <div style="display: inline-block">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Yape" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Yape</label></span>
+                                                        </div>
+                                                        <div style="display: inline-block">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="BBVA" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">BBVA</label></span>
+                                                        </div>
+                                                        <div style="display: inline-block">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="BCP" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">BCP</label></span>
+                                                        </div>
+                                                        <div style="display: inline-block">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Scotiabank" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Scotiabank</label></span>
+                                                        </div>
+										  </div>--%>
+										  </div>
+										  <br />
+										   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
+									   </div>
+								    </div>
+					</div>
+				    <%--MethodPayment--%>
+
+				      <%--Culqi--%>
+                        <div id="divPay" class="tt-shopcart-table">
+                             <div id="message_row"></div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="loginInputName">Correo Electrónico *</label>
+                                    <input class="form-control" type="text" size="50" name="email" data-culqi="card[email]" id="card[email]">
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginAPaterno">Número de tarjeta *</label>
+                                    <input class="form-control" type="text" size="20" data-culqi="card[number]" id="card[number]">
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginAMaterno">CVV *</label>
+                                    <input class="form-control" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label>Fecha expiración (MM/YYYY) </label>
+                                    <div class="col-md-2" style="display: inline-flex;">
+                                        <input class="form-control" size="2" data-culqi="card[exp_month]" id="card[exp_month]">
+                                    </div>
+                                    <span>/</span>
+                                    <div class="col-md-2" style="display: inline-flex;">
+                                        <input class="form-control" size="4" data-culqi="card[exp_year]" id="card[exp_year]">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <button type="submit" id="btn_pagar"  onclick="Fn_ValidateCard(event);"class="btn" style="font-weight: bold; color:black">Pagar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                 <%--culqi--%>
+
+
 				</div>
 				<div class="col-sm-12 col-xl-4">
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
-							<h4 class="tt-title">
-								DIRECCIÓN DE ENTREGA
-							</h4>
-							<p> Av. España Nº 1344 - Trujillo</p>
-							
+                                  <a class="icon-f-74" style="font-size: xx-large;">
+							   <span  runat="server" style="font-family: Hind, sans-serif; font-size: 24px;">DIRECCIÓN DE ENTREGA</span>
+							   <span id="lblAddress1" runat="server" style="font-family: Hind, sans-serif; font-size: 24px; color:#2879fe"></span>
+                                  </a>
+							<br/>
+						    <br/>
 								<div class="form-group">
 									<label for="address_country">DEPARTAMENTO <sup>*</sup></label>
 									<select id="address_country" class="form-control" disabled>
-										<option>Peru</option>
-										<%--<option>Belgium</option>
-										<option>Cyprus</option>
-										<option>Croatia</option>
-										<option>Czech Republic</option>
-										<option>Denmark</option>
-										<option>Finland</option>
-										<option>France</option>
-										<option>Germany</option>
-										<option>Greece</option>
-										<option>Hungary</option>
-										<option>Ireland</option>
-										<option>France</option>
-										<option>Italy</option>
-										<option>Luxembourg</option>
-										<option>Netherlands</option>
-										<option>Poland</option>
-										<option>Portugal</option>
-										<option>Slovakia</option>
-										<option>Slovenia</option>
-										<option>Spain</option>
-										<option>United Kingdom</option>--%>
+										<option>La Libertad</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -177,11 +301,7 @@
 									</tr>
 								</tfoot>
 							</table>
-                                  <!-- PayPal Logo -->
-						    <table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" style="width: 100%"></a></td></tr></table><!-- PayPal Logo -->
-<%--                                  <asp:Button ID="btnPayment" runat="server" Text="Pagar" OnClick="btnPayment_Click" Font-Bold="true" Height="45" Width="100%" style="background: #2879fe; color:white" />--%>
-						   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
-<%--						    <a class="btn btn-primary"  href="https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda ''El Canastón'' acabo de hacer mi pedido!" id="order-now" target="_blank" style="background:green">Ordenar Pedido</a>--%>
+						  
 						</div>
 					</div>
 				</div>
@@ -190,13 +310,13 @@
 	</div>
 </div>
      <asp:HiddenField runat="server" ID="hfData" />
-    <script type="text/x-handlebars-template" id="datatable-shopcart">
+     <asp:HiddenField runat="server" ID="hfPaymentType" />
+    
+  <%--  <script type="text/x-handlebars-template" id="datatable-shopcart">
         {{# each request}}
             <tr id="item-reviewProduct-{{Product.ProductId}}" class="tt-item tt-item-product-delete-{{Product.ProductId}}">
 									<td>
-										<%--<a href="#" class="tt-btn-close add-to-cart-mp"></a>--%>
 									    <span class="tt-btn-close" style="cursor:pointer"><input style="display:none" data-page="review" data-productid="{{Product.ProductId}}"></span>
-									    <%--<a href="#" class="tt-btn-close delete-btn"><input type="button" style="display:none" value="0" class="tt-btn-close delete-btn" data-productid="{{Product.ProductId}}"></a>--%>
 									</td>
 									<td>
 										<div class="tt-product-img">
@@ -249,6 +369,15 @@
 		</tr>
         {{/each}}
     </script>
-
-
+--%>
+    <%-- <script type="text/x-handlebars-template" id="datatable-MethodPayment">
+	       {{# each request}}
+	    <div style="display: inline-block">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="{{MerchantName}}" style="vertical-align: sub"><input id="{{MerchantId}}" type="radio" name="Payment" data-id="{{MerchantId}}" value=""><label for="">Plin</label></span>
+         </div>
+        <%-- <div style="display: inline-block">
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="{{MerchantName}}" style="vertical-align: sub"><input id="{{MerchantId}}" type="radio" name="Payment" data-id="{{MerchantId}}" checked="checked"><label for="">{{MerchantName}}</label></span>
+         </div>
+	       {{/each}}
+    </script>--%>
 </asp:Content>

@@ -1,29 +1,57 @@
 ﻿//Paypal
+
+//using culqi.net;
+using culqi.net;
+using Newtonsoft.Json.Linq;
 using PayPal.Api;
 using PayPal.Sample;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using SystemGlobal_Ecommerce.src.app_code;
+using xAPI.BL.Merchant;
 using xAPI.BL.Order;
 using xAPI.Entity;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
+using xOrders.src.app_code;
 
 namespace SystemGlobal_Ecommerce.Layout
 {
     public partial class Review : System.Web.UI.Page
     {
+       
         private static Decimal ValorDolar = 3.35M;
+
+        private ViewMaker ViewMaker = null;
+        public virtual void DynamicControls()
+        {
+            //this.ViewMaker = new ViewMaker(@Page, Page.Master,
+            //      new List<string> { "ContentPlaceHolder1", "ContentPlaceHolder1", "divPayment" });
+
+            this.ViewMaker = new ViewMaker(@Page, Page.Master,
+                new List<string> { "ContentPlaceHolder1", "divPayment" });
+            //ViewMaker.BuildPaymentOptions();
+            ViewMaker.BuildMultiplePaymentOptions();
+
+        }
+
+        //public virtual void DynamicControls()
+        //{
+        //    this.ViewMaker = new ViewMaker(@Page, Page.Master,
+        //       new List<String> { "ContentPlaceHolder1", "divPayment" });
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                DynamicControls();
                 //if (!String.IsNullOrEmpty(Request.Params["paymentId"]) && !String.IsNullOrEmpty(Request.Params["PayerID"])) 
                 //{
                 //    Paypal_Async_Transaction(Request.Params["paymentId"].ToString(), Request.Params["PayerID"].ToString());
@@ -83,45 +111,82 @@ namespace SystemGlobal_Ecommerce.Layout
             if (BaseSession.SsOrderxCore != null && BaseSession.SsOrderxCore.ListOrderDetail != null && BaseSession.SsOrderxCore.ListOrderDetail.Count > 0) 
             {
                 OrderHeader objOrder = BaseSession.SsOrderxCore;
-                List<Object> lstDetail = new List<Object>();
-                for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
-                {
-                    Object objProduct = new
-                    {
-                        ProductId = objOrder.ListOrderDetail[i].Product.ID,
-                        ProductName = objOrder.ListOrderDetail[i].Product.Name,
-                        Category = objOrder.ListOrderDetail[i].Product.category.Name,
-                        UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
-                    };
-                    Object Detail = new
-                    {
-                        Product = objProduct,
-                        Quantity = objOrder.ListOrderDetail[i].Quantity,
-                        TotalPrice = objOrder.ListOrderDetail[i].Totalprice,
-                    };
+                lblAddress1.InnerText = objOrder.Address.Address1.ToString();
 
-                    lstDetail.Add(Detail);
-                }
+                //Load_MethodPayment();
 
-                Object OrderHeader = new
-                {
-                    Ordertotal = objOrder.Ordertotal,
-                    SubTotal = objOrder.SubTotal,
-                    DeliveryTotal = objOrder.DeliveryTotal,
-                    CustomerId = objOrder.Customer.ID,
-                    CustomerName = objOrder.Customer.FullName,
-                    Detail = lstDetail
-                };
-                
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    String sJSON = serializer.Serialize(OrderHeader);
-                  hfData.Value = sJSON.ToString();
+                //List<Object> lstDetail = new List<Object>();
+                //for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
+                //{
+                //    Object objProduct = new
+                //    {
+                //        ProductId = objOrder.ListOrderDetail[i].Product.ID,
+                //        ProductName = objOrder.ListOrderDetail[i].Product.Name,
+                //        Category = objOrder.ListOrderDetail[i].Product.category.Name,
+                //        UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
+                //        NameResource = objOrder.ListOrderDetail[i].Product.NameResource
+                //    };
+                //    Object Detail = new
+                //    {
+                //        Product = objProduct,
+                //        Quantity = objOrder.ListOrderDetail[i].Quantity,
+                //        TotalPrice = objOrder.ListOrderDetail[i].Totalprice,
+                //    };
+
+                //    lstDetail.Add(Detail);
+                //}
+
+                //Object OrderHeader = new
+                //{
+                //    Ordertotal = objOrder.Ordertotal,
+                //    SubTotal = objOrder.SubTotal,
+                //    DeliveryTotal = objOrder.DeliveryTotal,
+                //    CustomerId = objOrder.Customer.ID,
+                //    CustomerName = objOrder.Customer.FullName,
+                //    Detail = lstDetail
+                //};
+
+                //    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                //    String sJSON = serializer.Serialize(OrderHeader);
+                //  hfData.Value = sJSON.ToString();
 
             }
             else
             {
                 GoBack();
+            }
+        }
+
+        private void Load_MethodPayment()
+        {
+            BaseEntity entity = new BaseEntity();
+            List<srMerchant> lst = new List<srMerchant>();
+
+            DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
+            if (entity.Errors.Count == 0)
+            {
+                if (dt != null)
+                {
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        lst.Add(new srMerchant()
+                        {
+                            MerchantId = item["MerchantId"].ToString(),
+                            MerchantName = item["MerchantName"].ToString(),
+                            isChecked = item["isChecked"].ToString(),
+                        });
+                    }
+                }
+
+            }
+            if (entity.Errors.Count <= 0)
+            {
+                if (lst != null)
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    String sJSON = serializer.Serialize(lst);
+                    hfDataMethodPayment.Value = sJSON.ToString();
+                }
             }
         }
 
@@ -389,7 +454,7 @@ namespace SystemGlobal_Ecommerce.Layout
                         ProductName = objOrder.ListOrderDetail[i].Product.Name,
                         Category = objOrder.ListOrderDetail[i].Product.category.Name,
                         UnitPrice = objOrder.ListOrderDetail[i].Product.UnitPrice,
-                        NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
+                        //NameResource = Config.Impremtawendomain + objOrder.ListOrderDetail[i].Product.NameResource
                     };
                     Object Detail = new
                     {
@@ -422,6 +487,7 @@ namespace SystemGlobal_Ecommerce.Layout
         protected void btnPayment_Click(object sender, EventArgs e)
         {
             OrderHeader objOrder = BaseSession.SsOrderxCore;
+            //List<Merchants> lstPaymentMerchant = ViewMaker.GetMultipleMerchantSelected().lstPaymentMerchant;
             if (objOrder != null && objOrder.ListOrderDetail != null && objOrder.ListOrderDetail.Count > 0)
             {
                 SaveOrder(objOrder);
@@ -435,8 +501,20 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             try
             {
+                //DynamicControls();
                 BaseEntity objBase = new BaseEntity();
                 tBaseDetailOrderList objListDetail = new tBaseDetailOrderList();
+                String PaymentTypeId = hfPaymentType.Value;
+                //List<Merchants> lstPaymentMerchant = ViewMaker.GetMultipleMerchantSelected().lstPaymentMerchant;
+                //List<Merchants> lstPaymentMerchant = new List<Merchants>();
+
+                //lstPaymentMerchant.Add(new Merchants
+                //{
+
+                //    MerchantId = Convert.ToInt32(PaymentMethodOption.Attributes["data-id"], CultureInfo.InvariantCulture),
+                //    MerchantName = Convert.ToString(PaymentMethodOption.Attributes["data-type"]),
+                //    MerchantStatus = Convert.ToInt32(PaymentMethodOption.Attributes["data-status"], CultureInfo.InvariantCulture)
+                //});
 
                 for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
                 {
@@ -453,14 +531,55 @@ namespace SystemGlobal_Ecommerce.Layout
                 Boolean success;
                 if (objOrder.ID == 0)
                 {
-                    success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
-                    if (success && objBase.Errors.Count == 0)
+                    if (PaymentTypeId != "")
                     {
-                        Response.Redirect("Confirmation.aspx", false);
+                        //foreach (var item in lstPaymentMerchant) {
+                        //    objOrder.PaymentType = item.MerchantId;
+                        //    objOrder.PaymentTypeName = item.MerchantName;
+                        //}
+
+    
+                        objOrder.PaymentType = Convert.ToInt32(PaymentTypeId);
+                        if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.ContraEntrega))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.ContraEntrega.GetStringValue();
+                        }
+                        else if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.Plin))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.Plin.GetStringValue();
+                        }
+                        else if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.Yape))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.Yape.GetStringValue();
+                        }
+                        else if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.BBVA))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.BBVA.GetStringValue();
+                        }
+                        else if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.BCP))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.BCP.GetStringValue();
+                        }
+                        else if (objOrder.PaymentType == Convert.ToInt32(EnumPaymentType.Scotiabank))
+                        {
+                            objOrder.PaymentTypeName = EnumPaymentType.Scotiabank.GetStringValue();
+                        }
+
+                        objOrder.Status = Convert.ToByte(EnumOrderStatus.Submit);
+                        success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
+                        if (success && objBase.Errors.Count == 0)
+                        {
+                            Response.Redirect("Confirmation.aspx", false);
+                        }
+                        else
+                        {
+                            this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                            return;
+                        }
                     }
-                    else
-                    {
-                        this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                    else {
+                        this.Message(EnumAlertType.Error, "Select a payment option");
+                        return;
                     }
                 }
                 else
@@ -471,6 +590,74 @@ namespace SystemGlobal_Ecommerce.Layout
             catch (Exception ex)
             {
                 this.Message(EnumAlertType.Error, "Ocurrio un error al guardar la Orden");
+            }
+        }
+
+        [WebMethod]
+        public static Object Culqui_CreateCharge(srPayCulqi q)
+        {
+            //BaseEntity entity = new BaseEntity();
+            //Boolean success = false;
+            //try
+            //{
+            //    Brands objBrand = new Brands
+            //    {
+            //        ID = String.IsNullOrEmpty(u.Id) ? 0 : Convert.ToInt32(u.Id),
+            //        Name = u.Name.ToString(),
+            //        Status = Convert.ToInt32(u.Status)
+            //    };
+
+            //    success = BrandBL.Instance.Brand_Save(ref entity, objBrand);
+            //    if (entity.Errors.Count <= 0 && success)
+            //    {
+            //        return new { Msg = "Se guardo correctamente!", Result = "Ok" };
+
+            //    }
+            //    else
+            //    {
+            //        return new { Msg = "No se pudo guardar", Result = "NoOK" };
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return new { Msg = "No se pudo guardar", Result = "NoOK" };
+            //}
+            Security security = null;
+            security = new Security();
+            //security.public_key = "pk_test_vzmuthoueomlgupj";
+            security.secret_key = "sk_test_IVKPrHmdnGqKCcDs";
+            OrderHeader objOrder = BaseSession.SsOrderxCore;
+
+            try
+            {
+                //var json_token = JObject.Parse(q.token_created);
+                String json_token = q.token_created;
+
+
+                Dictionary<string, object> metadata = new Dictionary<string, object>
+                {
+                {"order_id", "777"}
+                };
+                
+                Dictionary<string, object> charge = new Dictionary<string, object>
+                {
+                {"amount", Convert.ToInt32(objOrder.Ordertotal) *100},
+                {"capture", true},
+                {"currency_code", "PEN"},
+                {"description", "Venta de prueba"},
+                {"email", q.email},
+                {"installments", 0},
+                {"metadata", metadata},
+                {"source_id", json_token}                
+                };
+
+                string charge_created = new Charge(security).Create(charge);
+                return charge_created;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

@@ -19,7 +19,9 @@ namespace xAPI.Entity.Order
 
         public Customer Customer { get; set; }
         public Address Address { get; set; }
-        public int IsCotization { get; set; }
+        public Int32 PaymentType { get; set; }
+        public String PaymentTypeName { get; set; }
+
         public Decimal DeliveryTotal { get; set; }
 
         List<OrderDetail> objListOrderDetail;

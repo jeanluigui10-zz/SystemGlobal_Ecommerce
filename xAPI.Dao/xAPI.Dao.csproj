@@ -68,6 +68,7 @@
     <Compile Include="Category\CategoryDao.cs" />
     <Compile Include="Cotizations\CotizationDAO.cs" />
     <Compile Include="Customers\CustomerDAO.cs" />
+    <Compile Include="Merchant\MerchantDao.cs" />
     <Compile Include="Order\OrderDAO.cs" />
     <Compile Include="Product\ProductDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

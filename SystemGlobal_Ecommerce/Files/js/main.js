@@ -491,16 +491,16 @@
     });
 
     // header, search, at focus input - result of search
-    if ($ttSearchObjPopupInput.length && $ttSearchObjPopupResults.length) {
-         $ttSearchObj.on("input",function(ev){
-            if($(ev.target).val()){
-                $ttSearchObjPopupResults.fadeIn("200");
-            };
-        });
-        $ttSearchObjPopupInput.blur(function(){
-          $ttSearchObjPopupResults.fadeOut("200");
-        });
-    };
+    //if ($ttSearchObjPopupInput.length && $ttSearchObjPopupResults.length) {
+    //     $ttSearchObj.on("input",function(ev){
+    //        if($(ev.target).val()){
+    //            $ttSearchObjPopupResults.fadeIn("200");
+    //        };
+    //    });
+    //    $ttSearchObjPopupInput.blur(function(){
+    //      $ttSearchObjPopupResults.fadeOut("200");
+    //    });
+    //};
 
     if (blocks.ttPromoFixed.length) {
         setTimeout(function(){

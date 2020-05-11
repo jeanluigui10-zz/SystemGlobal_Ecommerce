@@ -78,6 +78,7 @@
     <Compile Include="Category\Categorys.cs" />
     <Compile Include="Cotizations\Cotization.cs" />
     <Compile Include="Customers\Customer.cs" />
+    <Compile Include="Merchant\Merchants.cs" />
     <Compile Include="Order\OrderDetail.cs" />
     <Compile Include="Order\OrderHeader.cs" />
     <Compile Include="Product\Brand.cs" />

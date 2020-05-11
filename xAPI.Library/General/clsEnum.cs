@@ -351,4 +351,36 @@ namespace xAPI.Library.General
         [StringValue("p")]
         purged = 6
     }
+    public enum EnumOrderStatus
+    {
+        [StringValue("n")]
+        Disabled = 0,//Inactive
+        [StringValue("y")]
+        Submit = 1,//Enviado
+        Deleted = 2,
+        ShowAll = 3,
+        [StringValue("s")]
+        Suspended = 4,//Suspended
+        [StringValue("u")]
+        notSuspended = 5,
+        [StringValue("p")]
+        purged = 6
+    }
+
+    public enum EnumPaymentType
+    {
+        [StringValue("Contra Entrega")]
+        ContraEntrega = 1,
+        [StringValue("Plin")]
+        Plin = 2,
+        [StringValue("Yape")]
+        Yape = 3,
+        [StringValue("BBVA")]
+        BBVA = 4,
+        [StringValue("BCP")]
+        BCP = 5,
+        [StringValue("Scotiabank")]
+        Scotiabank = 6
+    }
+
 }

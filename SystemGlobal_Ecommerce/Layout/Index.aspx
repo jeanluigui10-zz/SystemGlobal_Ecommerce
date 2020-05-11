@@ -13,7 +13,6 @@
          }
          function fn_content() {
              Fn_ListProducts($("#<%=hfData.ClientID%>").val());
-            
          }
 
          function Fn_ListProducts(data) {
@@ -99,7 +98,7 @@
 										data-aspectratio="16:9">
 										<video class="video-js vjs-default-skin" preload="none"
 											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" <%--autoplay loop--%> style="background: border-box !important;"> 
-											<source src='../Files/images/slides/01/Axelvideo.mp4' type='video/mp4'>
+											<source src='../Files/images/slides/01/CanastonVideo.mp4' type='video/mp4'>
 										</video>
 									</div>
 									<%--<div class="tp-caption  tp-fade"
@@ -129,7 +128,7 @@
 										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 									</div>
 								</li>
 							    <li data-thumb="video/video_img.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
@@ -181,7 +180,7 @@
 										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
 										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
 										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"  style="font-weight:bold !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
+										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"  style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 									</div>
 								</li>
 							</ul>
@@ -306,7 +305,7 @@
 	<div class="container-indent">
 		<div class="container-fluid" style="margin-top: 5%;">
 			<div class="tt-block-title">
-				<h2 class="tt-title"><a target="_blank" href="https://www.instagram.com/wokieeshop/">@ Canastón</a> Market</h2>
+				<h2 class="tt-title"><a target="_blank" href="#">@ Canastón</a> Delivery</h2>
 				<div class="tt-description">INSTAGRAM</div>
 			</div>
 			
@@ -363,7 +362,7 @@
 							<a class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Vista rápida" data-tposition="left"></a>
 							<%--<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>--%>
 							<%--<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>--%>
-							<a href="ProductSelected.aspx?p={{Id}}" style="display:flex;align-items:center;position:relative">
+							<a style="display:flex;align-items:center;position:relative">
 								<span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 								<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 							</a>

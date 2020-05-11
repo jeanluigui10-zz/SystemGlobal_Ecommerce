@@ -87,11 +87,11 @@
 	</div>
 </div>
 
-<div class="tt-breadcrumb">
+<div class="tt-breadcrumb" style="margin-top:0.5%">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Canastón</a></li>
-			<li>Products</li>
+			<li>Productos</li>
 		</ul>
 	</div>
 </div>
@@ -169,7 +169,7 @@
 							<a href="#" class="tt-grid-switch icon-h-43"></a>
 						</div>
 
-						<div class="tt-product-listing row" id="DivProduct">
+						<div class="tt-product-listing row tt-col-four" id="DivProduct">
                                   <div class="tt-product thumbprod-center">
                                   </div>
 						</div>
@@ -197,7 +197,7 @@
     <div class="col-6 col-md-4 tt-col-item">
         <div class="tt-product thumbprod-center">
             <div class="tt-image-box">
-                <a href="#" class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Vista rápida" data-tposition="left"></a>
+                <a class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Vista rápida" data-tposition="left"></a>
                 <%--<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>--%>
                 <%--<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>--%>
                 <a href="#"<%--href="ProductSelected.aspx?p={{Id}}"--%>>

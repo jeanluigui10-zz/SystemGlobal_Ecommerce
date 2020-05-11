@@ -69,6 +69,7 @@
     <Compile Include="Category\CategoryBL.cs" />
     <Compile Include="Cotizations\CotizationBl.cs" />
     <Compile Include="Customers\CustomerBL.cs" />
+    <Compile Include="Merchant\MerchantBL.cs" />
     <Compile Include="Order\OrderBL.cs" />
     <Compile Include="Product\ProductBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -102,6 +102,33 @@ namespace xAPI.Dao.Product
             }
             return dt;
         }
+
+        public DataTable Products_Search_ByName(ref BaseEntity objEntity, String name)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = null;
+            try
+            {
+                cmd = new SqlCommand("Products_Search_ByName_Sp", clsConnection.GetConnection())
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.CommandTimeout = 0;
+                dt.Load(cmd.ExecuteReader());
+            }
+            catch (Exception ex)
+            {
+                dt = null;
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  while loading data"));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return dt;
+        }
+        
         public DataTable Product_GetList(ref BaseEntity Base)
         {
             DataTable dt = new DataTable();

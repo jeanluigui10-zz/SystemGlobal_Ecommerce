@@ -27,7 +27,7 @@
             }
           
             obj = {
-                    Id: $("#<%=hfCustomerId.ClientID%>").val(),
+                    Id: $("#hfCustomerId").val(),
                     FirstName: $("input[id$=txtNombre]").val().trim(),
                     LastNamePaternal: $("input[id$=txtApellidoPaterno]").val().trim(),
                     LastNameMaternal: $("input[id$=txtApellidoMaterno]").val().trim(),
@@ -46,7 +46,10 @@
                         if (asw.d.Result == "Ok") {
                             fn_message("s", asw.d.Msg);
                             Fn_Limpiar();
-                        } else {
+                        } else if (asw.d.Result == "OkUpdate") {
+                            fn_message("s", asw.d.Msg);
+                        }
+                        else {
                             fn_message("e", asw.d.Msg);
                         }
                     } else {
@@ -79,7 +82,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="hfCustomerId" runat="server" />
-    <div class="tt-breadcrumb">
+    <div class="tt-breadcrumb" style="margin-top:0.5%">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Inicio</a></li>
@@ -118,7 +121,8 @@
 									        </div>
                                             <div class="form-group">
 										<asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control"></asp:DropDownList>
-										<input type="text" name="tipodocumento"  class="form-control validate[required]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
+										<p></p>
+                                                <input type="text" name="tipodocumento"  class="form-control validate[required]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
 									</div>
                                              <div class="form-group">
 										<label for="loginDescription">Dirección de entrega *</label>

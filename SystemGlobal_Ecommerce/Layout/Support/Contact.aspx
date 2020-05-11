@@ -35,11 +35,11 @@
 		</div>
 	</div>
 
-<div class="tt-breadcrumb">
+<div class="tt-breadcrumb" style="margin-top:0.5%">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Canastón</a></li>
-			<li>Contactanos</li>
+			<li>Contáctanos</li>
 		</ul>
 	</div>
 </div>

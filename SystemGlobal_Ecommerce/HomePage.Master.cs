@@ -22,7 +22,7 @@ namespace SystemGlobal_Ecommerce
                 lblCerrarSession.Visible = true;
                 lblInicioSession.Visible = false;
                 lblRegistrar.Visible = false;
-
+                hfCustomerId.Value = HttpUtility.UrlEncode(Encryption.Encrypt(BaseSession.SsOrderxCore.Customer.ID.ToString()));
             }
             else
             {
@@ -30,8 +30,9 @@ namespace SystemGlobal_Ecommerce
                 lblRegistrar.Visible = true;
                 lblCuenta.Visible = false;
                 lblCerrarSession.Visible = false;
+                hfCustomerId.Value = "";
             }
-            Load_Settings();
+            //Load_Settings();
             Load_Products();
             Load_Category();
             //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
@@ -107,8 +108,8 @@ namespace SystemGlobal_Ecommerce
 
                 Object OrderHeader = new
                 {
-                    Ordertotal = orderHeader.Ordertotal.ToString("N2"),
-                    SubTotal = orderHeader.SubTotal.ToString("N2"),
+                    Ordertotal = orderHeader.Ordertotal,
+                    SubTotal = orderHeader.SubTotal,
                     DeliveryTotal = orderHeader.DeliveryTotal,
                     CustomerId = orderHeader.Customer == null ? 0 : orderHeader.Customer.ID,
                     CustomerName = orderHeader.Customer == null ? "" : orderHeader.Customer.FullName,
@@ -121,21 +122,21 @@ namespace SystemGlobal_Ecommerce
                 hfDataListProduct.Value = sJSON.ToString();
             }
         }
-        private void Load_Settings()
-        {
-            BaseEntity objBase = new BaseEntity();
-            DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
-            if (objBase.Errors.Count == 0)
-            {
-                if (dt != null)
-                {
-                    foreach (DataRow item in dt.Rows)
-                    {
-                        hfIsVisiableChat.Value = item["ChatOnlineActive"].ToString();
-                    }
-                }
-            }
-        }
+        //private void Load_Settings()
+        //{
+        //    BaseEntity objBase = new BaseEntity();
+        //    DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
+        //    if (objBase.Errors.Count == 0)
+        //    {
+        //        if (dt != null)
+        //        {
+        //            foreach (DataRow item in dt.Rows)
+        //            {
+        //                hfIsVisiableChat.Value = item["ChatOnlineActive"].ToString();
+        //            }
+        //        }
+        //    }
+        //}
         protected void btnCloseSession_ServerClick(object sender, EventArgs e)
         {
             BaseSession.Logout();

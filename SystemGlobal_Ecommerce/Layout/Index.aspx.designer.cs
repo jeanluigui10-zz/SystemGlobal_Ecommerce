@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SystemGlobal_Ecommerce.Layout {
-    
-    
-    public partial class Index {
-        
+namespace SystemGlobal_Ecommerce.Layout
+{
+
+
+    public partial class Index
+    {
+
         /// <summary>
         /// Control hfData.
         /// </summary>

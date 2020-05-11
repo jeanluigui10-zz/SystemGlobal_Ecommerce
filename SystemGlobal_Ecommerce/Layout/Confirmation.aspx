@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Confirmation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+ <style type="text/css">
+	    .font-lato-h4 {
+    color: #7e7e7e !important;
+    font-size: 18px;
+    font-weight: bold !important;
+ }
+
+    </style>
      <script type="text/javascript">
          window.onload = function () {
              document.getElementById("divheader").style.display = "none";
@@ -29,7 +38,38 @@
              fn_content();
          }
          function fn_content() {
-             Fn_ListProductsShopCart($("#<%=hfData.ClientID%>").val());           
+             $("#SearchIdMaster").attr("hidden", true);
+             Fn_ListProductsShopCart($("#<%=hfData.ClientID%>").val());    
+             Fn_Get_MessageWhatsapp($("#<%=hfData.ClientID%>").val());
+         }
+
+         function Fn_Get_MessageWhatsapp(data) {
+             var glancedata = data;
+             try {
+                 obj = $.parseJSON(glancedata);
+                 
+                 if (obj != "" || obj != undefined) {
+                     var messagewsp = "https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda 'El Canastón' 🏪 acabo de hacer mi pedido! Mi nombre es " + obj.CustomerName.toString() + " 👦 👩 y Mi Orden es N° " + obj.LegacyNumber.toString() +". Mis productos son ";
+                    
+                     var messagewsp2 = "";
+                     var count = 0;
+                     if (obj.Detail != null) {
+                         for (var i = 0; i < obj.Detail.length; i++) {
+                             count++
+                             //messagewsp2 += ' PRODUCTO '+ count +': (' + obj.Detail[i].Product.ProductName + "," + obj.Detail[i].Quantity + "," + "S/." + obj.Detail[i].TotalPrice.toFixed(2) + ') || ';   
+                             messagewsp2 += '🍗PRODUCTO '+ count +': (' + " Nombre: "+ obj.Detail[i].Product.ProductName + "," + " Cantidad: " + obj.Detail[i].Quantity +') || ';   
+                         }
+                         var AddressCustomer = " 💒 Mi dirección es " + obj.AddressCustomer;
+                         var PaymentTypeName = " 💰 y pagaré mediante " + obj.PaymentTypeName;
+                         var thanks = " ...Gracias! "
+                     }
+                     var wspMessageGlobal = messagewsp + messagewsp2 + AddressCustomer + PaymentTypeName + thanks;
+                     $("#WhatsappTextId").attr("href", wspMessageGlobal);
+                 } 
+             }
+             catch (e) {
+                 fn_message('e', 'An error occurred while loading data...');
+             }
          }
 
          function Fn_ListProductsShopCart(data) {
@@ -47,10 +87,11 @@
              }
          }
          function CalculateConfirm(obj) {
-             $(".tt-cart-total-price").text("S/." + obj.SubTotal);
+             //$(".tt-cart-total-price").text("S/." + obj.SubTotal);
              $("#idSubTotalRight").text("S/." + obj.SubTotal);
              $("#idDeliveryTotalRight").text("S/." + obj.DeliveryTotal);
              $("#idTotalRigth").text("S/." + obj.Ordertotal);
+             $("#idPaymentTypeName").text(obj.PaymentTypeName);
          }
         
     </script>
@@ -89,114 +130,94 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder" id="lblMessageConfirm" runat="server" style="font-size: x-large;"></h1>
-			<div class="row">
+			<h1 class="tt-title-subpages noborder" id="lblMessageConfirm" runat="server" style="font-size: x-large;font-weight: bold;color: green; text-transform: uppercase;"></h1>
+		     <div id="" class="font-lato-h4">
+                                 <p>
+                                     Se ha creado una orden para
+                                     <span id="lblFullName" runat="server" style="text-transform: uppercase"></span>
+                                 </p>
+                                 <p style="margin:8px 0 0 0px">
+                                     <span>Tu orden se ha completado.</span>
+                                 </p>
+                                 <p style="margin: 8px 0 0 0px">
+                                     Si deseas también envianos un Whatssap de tu pedido:
+                                      <img border="0" alt="whatsapp" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" width="80" height="80" style="border-radius:50%">
+                                     <a id="WhatsappTextId" class="btn btn-primary" target="_blank" style="background: #01e675; font-weight: bold; margin-left:1%">Enviar Whatsapp!</a>
+                                     
+                                 </p>
+                                 <p style="margin:8px 0 0 0px">
+                                     <h3 style="font-weight: 400;" class="heading" id="lblLegacyNumber" runat="server"></h3>
+                                 </p>
+                               
+                             </div>
+              <div class="row">
 				<div class="col-sm-12 col-xl-8">
 					<div class="tt-shopcart-table">
+                            
 						<table id="tblCarrito">
-							<tbody id="tblBodyTableConfirm">
+                                   <thead class="col-sm-12 col-xl-8">
+                                <tr>
+                                    <th style="text-align:right"></th>
+                                    <th style="text-align:right">Producto</th>
+                                    <th style="text-align:right"></th>
+                                    <th style="text-align: left !important;">Precio</th>
+                                    <th style="text-align:right">Cantidad</th>
+                                    <th style="text-align: center !important;">Subtotal</th>
+							 <th style="text-align:center"></th>
+                                </tr>
+                            </thead>
+							<tbody id="tblBodyTableConfirm" style="background: whitesmoke;">
 								
 							</tbody>
 						</table>
-						<%--<div class="tt-shopcart-btn">
-							<div class="col-left">
-								<a class="btn-link" href="Index.aspx"><i class="icon-e-19"></i>CONTINUAR COMPRANDO</a>
-							</div>
-							<div class="col-right">
-								<a class="btn-link" href="#"><i class="icon-h-02"></i>LIMPIAR CARRITO DE COMPRAS</a>
-								<a class="btn-link" href="#"><i class="icon-h-48"></i>ACTUALIZAR CARRITO</a>
-							</div>
-						</div>--%>
+						
 					</div>
 				</div>
 				<div class="col-sm-12 col-xl-4">
-					<div class="tt-shopcart-wrapper form-default">
-						<div class="tt-shopcart-box">
-							<h4 class="tt-title">
-								Dirección de entrega
-							</h4>
-							<p id="lblAddressConfirm" runat="server" style="font-size: large;"></p>
-							
-								<div class="form-group">
-									<label for="address_country">DEPARTAMENTO <sup>*</sup></label>
-									<select id="address_country" class="form-control" disabled>
-										<option>Peru</option>
-										<%--<option>Belgium</option>
-										<option>Cyprus</option>
-										<option>Croatia</option>
-										<option>Czech Republic</option>
-										<option>Denmark</option>
-										<option>Finland</option>
-										<option>France</option>
-										<option>Germany</option>
-										<option>Greece</option>
-										<option>Hungary</option>
-										<option>Ireland</option>
-										<option>France</option>
-										<option>Italy</option>
-										<option>Luxembourg</option>
-										<option>Netherlands</option>
-										<option>Poland</option>
-										<option>Portugal</option>
-										<option>Slovakia</option>
-										<option>Slovenia</option>
-										<option>Spain</option>
-										<option>United Kingdom</option>--%>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="address_province">PROVINCIA <sup>*</sup></label>
-									<select id="address_province" class="form-control" disabled>
-										<option>Trujillo</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="address_zip">DISTRITO <sup>*</sup></label>
-                                            <select id="address_zip" class="form-control" disabled>
-										<option>Trujillo</option>
-									</select>
-									<%--<input type="text" name="name" class="form-control" id="address_zip" placeholder="Zip/Postal Code">--%>
-								</div>
-								<%--<a href="#" class="btn btn-border">CALCULATE SHIPPING</a>
-								<p>
-									There is one shipping rate available for Alabama, Tanzania, United Republic Of.
-								</p>
-								<ul class="tt-list-dot list-dot-large">
-									<li><a href="#">International Shipping at $20.00</a></li>
-								</ul>--%>
-							
-						</div>
-						<%--<div class="tt-shopcart-box">
-							<h4 class="tt-title">
-								NOTE
-							</h4>
-							<p>Add special instructions for your order...</p>
-							
-								<textarea class="form-control" rows="7"></textarea>
-						
-						</div>--%>
-						<div class="tt-shopcart-box tt-boredr-large">
-							<table class="tt-shopcart-table01">
-								<tbody>
-									<tr>
-										<th>SubTotal</th>
-										<td id="idSubTotalRight">S/. 0.00</td>
-									</tr>
-                                            <tr>
-										<th>Delivery</th>
-										<td id="idDeliveryTotalRight">S/. 0.00</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<th>Total</th>
-										<td id="idTotalRigth">S/. 0.00</td>
-									</tr>
-								</tfoot>
-							</table>
-                                 
-						</div>
-					</div>
+				    <div class="tt-shopcart-wrapper form-default" style="border: 10px solid rgb(220, 220, 220);">
+                        <h2 style="padding: 0% 0;font-size: 24px;line-height: 0px;font-weight: bold;font-family: sans-serif;">Orden Recibida</h2>
+                        <div class="tt-shopcart-box tt-boredr-large">
+                            <div id="ContentPlaceHolder1_ContentPlaceHolder3_div_payment_card" class="span4">
+                                <p>
+                                    <strong class="muted" style="font-weight: bold;">Detalle de la orden </strong>
+                                    <br>
+                                </p>
+						  <div style="margin: 0;color: #727478;font-size: 13px;padding-left: 10px;">SubTotal: 
+							 <span id="idSubTotalRight" style="float: right;"></span>
+						  </div>
+						  <div style="margin: 0;color: #727478;font-size: 13px;padding-left: 10px;">Delivery : 
+							 <span id="idDeliveryTotalRight" style="float: right;"></span>
+						  </div>
+						  <div style="margin: 0;color: #727478;font-size: 13px;padding-left: 10px;">Monto Total : 
+							 <span id="idTotalRigth" style="float: right;"></span>
+						  </div>
+                                <div style="margin: 0;color: #727478;font-size: 13px;padding-left: 10px;">Método de Pago seleccionado : 
+							 <span id="idPaymentTypeName" style="float: right;"></span>
+						  </div>
+                                 <div style="margin: 0;color: #727478;font-size: 13px;padding-left: 10px;">Método de Envío : 
+							 <span style="float: right;">Estándar</span>
+						  </div>
+                            </div>
+					   
+                            <div class="span4">
+                                <p><strong class="muted" style="font-weight: bold;" >Dirección de Entrega</strong></p>
+                                <address  id="lblAddressConfirm" runat="server"></address>
+                            </div>
+                            <div class="span4">
+                                <p><strong class="muted" style="font-weight: bold;">Cliente</strong></p>
+                                <address id="lblFullNameCustomer" runat="server"></address>
+                            </div>
+                             <div class="span4">
+                                <p><strong class="muted" style="font-weight: bold;">DNI</strong></p>
+                                <address id="lblDNI" runat="server"></address>
+                            </div>
+                             <div class="span4">
+                                <p><strong class="muted" style="font-weight: bold;">Teléfono</strong></p>
+                                <address id="lblPhoneNumber" runat="server"></address>
+                            </div>
+                        </div>
+				  </div>
+
 				</div>
 			</div>
 		</div>
@@ -217,9 +238,9 @@
 									</td>
 									<td>
 										<h2 class="tt-title">
-											<a href="#" style="color: #007bff;">{{Product.ProductName}}</a>											
+											<a href="#">{{Product.ProductName}}</a>											
 										</h2>
-                                                 <h2 class="tt-title" style="color: #777777;font-size: 14px;">
+                                                 <h2 class="tt-title" style="color: #617aa4;font-size: 14px;">
 											{{Product.Category}}										
 										</h2>
                                                  
@@ -254,7 +275,7 @@
 											</div>
 										</div>
 									</td>
-									<td>
+									<td style="text-align:center !important">
 										<div class="tt-price subtotal" id="idSubTotalProduct_{{Product.ProductId}}">
 											S/.{{TotalPrice}}
 										</div>

@@ -20,6 +20,8 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {
+              
+                
                 LoadData();
              
             }
@@ -281,6 +283,80 @@ namespace SystemGlobal_Ecommerce.Layout
                 };
             }
             return objReturn;
+        }
+
+        [WebMethod]
+        public static String Products_Search_ByName(String name)
+        {
+            BaseEntity entity = new BaseEntity();
+            List<srProducts> lst = new List<srProducts>();
+            String productList = String.Empty;
+            Object objReturn = new Object();
+
+            try
+            {
+                
+                DataTable dt = ProductBL.Instance.Products_Search_ByName(ref entity, name);
+                if (entity.Errors.Count == 0)
+                {
+                    if (dt != null)
+                    {
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            lst.Add(new srProducts()
+                            {
+                                Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                                FileName = item["FileName"].ToString(),
+                                Name = item["Name"].ToString(),
+                                UnitPrice = item["UnitPrice"].ToString(),
+                                DocType = item["DocType"].ToString(),
+                                Brand = item["BrandName"].ToString(),
+                                Category = item["Resource_Category_Name"].ToString(),
+                                Description = item["Description"].ToString(),
+                                Stock = Convert.ToInt32(item["Stock"]).ToString(),
+                                PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
+                                UniMed = item["UniMed"].ToString(),
+                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                Status = item["Status"].ToString()
+                            });
+                        }
+                    }
+                    else
+                    {
+                        objReturn = new
+                        {
+                            Result = "NoOk",
+                            Msg = "OcurriÃ³ un problema al cargar los productos."
+                        };
+                    }
+                }
+                else
+                {
+                    objReturn = new
+                    {
+                        Result = "NoOk",
+                        Msg = "OcurriÃ³ un problema al cargar los productos."
+                    };
+                }
+
+                if (entity.Errors.Count <= 0)
+                {
+                    if (lst != null)
+                    {
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+                        productList = serializer.Serialize(lst);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objReturn = new
+                {
+                    Result = "NoOk",
+                    Msg = "OcurriÃ³ un problema al cargar los productos."
+                };
+            }
+            return productList;
         }
 
     }

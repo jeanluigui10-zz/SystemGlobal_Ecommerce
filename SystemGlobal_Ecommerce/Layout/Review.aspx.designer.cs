@@ -15,6 +15,24 @@ namespace SystemGlobal_Ecommerce.Layout
     {
 
         /// <summary>
+        /// Control hfDataMethodPayment.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDataMethodPayment;
+
+        /// <summary>
+        /// Control divPayment.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPayment;
+
+        /// <summary>
         /// Control btnGeneratePedido.
         /// </summary>
         /// <remarks>
@@ -24,6 +42,15 @@ namespace SystemGlobal_Ecommerce.Layout
         protected global::System.Web.UI.WebControls.LinkButton btnGeneratePedido;
 
         /// <summary>
+        /// Control lblAddress1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAddress1;
+
+        /// <summary>
         /// Control hfData.
         /// </summary>
         /// <remarks>
@@ -31,5 +58,14 @@ namespace SystemGlobal_Ecommerce.Layout
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfData;
+
+        /// <summary>
+        /// Control hfPaymentType.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfPaymentType;
     }
 }

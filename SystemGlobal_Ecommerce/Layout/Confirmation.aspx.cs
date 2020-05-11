@@ -39,7 +39,13 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 OrderHeader objOrder = BaseSession.SsOrderxCore;
                 lblAddressConfirm.InnerText = objOrder.Address.Address1.ToString();
-                lblMessageConfirm.InnerText = objOrder.Customer.FirstName.ToString() +" "+ objOrder.Customer.LastNamePaternal.ToString() + " "+ objOrder.Customer.LastNameMaternal.ToString() + ", TU PEDIDO SE GENERO SATISFACTORIAMENTE!";
+                lblLegacyNumber.InnerText = "Número de Orden #" + objOrder.LegacyNumber.ToString();
+                lblDNI.InnerText = objOrder.Customer.NumberDocument.ToString();
+                lblFullName.InnerText = objOrder.Customer.FirstName.ToString() + " " + objOrder.Customer.LastNamePaternal.ToString() + " " + objOrder.Customer.LastNameMaternal.ToString();
+                lblFullNameCustomer.InnerText = objOrder.Customer.FirstName.ToString() + " " + objOrder.Customer.LastNamePaternal.ToString() + " " + objOrder.Customer.LastNameMaternal.ToString();
+                lblPhoneNumber.InnerText = objOrder.Customer.CellPhone.ToString();
+                lblFullNameCustomer.InnerText = objOrder.Customer.FirstName.ToString() + " " + objOrder.Customer.LastNamePaternal.ToString() + " " + objOrder.Customer.LastNameMaternal.ToString();
+                lblMessageConfirm.InnerText = "!" + objOrder.Customer.FirstName.ToString() +" "+ objOrder.Customer.LastNamePaternal.ToString() + " "+ objOrder.Customer.LastNameMaternal.ToString() + ", TU ORDEN FUE CONFIRMADA!";
                 List <Object> lstDetail = new List<Object>();
                 for (int i = 0; i < objOrder.ListOrderDetail.Count; i++)
                 {
@@ -57,7 +63,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     {
                         Product = objProduct,
                         Quantity = objOrder.ListOrderDetail[i].Quantity,
-                        TotalPrice = objOrder.ListOrderDetail[i].Totalprice,
+                        TotalPrice = objOrder.ListOrderDetail[i].Totalprice
                     };
 
                     lstDetail.Add(Detail);
@@ -68,8 +74,11 @@ namespace SystemGlobal_Ecommerce.Layout
                     Ordertotal = objOrder.Ordertotal,
                     SubTotal = objOrder.SubTotal,
                     DeliveryTotal = objOrder.DeliveryTotal,
+                    PaymentTypeName = objOrder.PaymentTypeName,
+                    LegacyNumber = objOrder.LegacyNumber,
                     CustomerId = objOrder.Customer.ID,
                     CustomerName = objOrder.Customer.FullName,
+                    AddressCustomer = objOrder.Customer.address.Address1,
                     Detail = lstDetail
                 };
 

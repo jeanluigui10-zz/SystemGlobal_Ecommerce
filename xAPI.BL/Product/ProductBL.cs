@@ -45,6 +45,15 @@ namespace xAPI.BL.Product
 
             return dt;
         }
+        
+        public DataTable Products_Search_ByName(ref BaseEntity entity, String name)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = ProductDao.Instance.Products_Search_ByName(ref entity, name);
+
+            return dt;
+        }
         public DataTable Product_GetList(ref BaseEntity entity)
         {
             entity = new BaseEntity();

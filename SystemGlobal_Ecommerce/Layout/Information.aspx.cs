@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,18 +23,19 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {
+                LoadDocument();
                 SetQuery();
                 SetData();
-                LoadDocument();
+               
             }
         }
         #region SetQuery
         private void SetQuery()
         {
-            if (!String.IsNullOrEmpty(Request.QueryString["q"]))
+            if (!String.IsNullOrEmpty(Request.QueryString["c"]))
             {
                 ltTitle.InnerText = "Editar Información";
-                String id = Encryption.Decrypt(Request.QueryString["q"]);
+                String id = Encryption.Decrypt(Request.QueryString["c"]);
                 if (!String.IsNullOrEmpty(id))
                 {
                     vsId = Convert.ToInt32(id);
@@ -93,6 +95,7 @@ namespace SystemGlobal_Ecommerce.Layout
             txtCorreo.Value = String.Empty;
             txtAddress1.Value = String.Empty;
             txtPassword.Value = String.Empty;
+            ddlTipoDocumento.SelectedValue = "-1";
         }
         private void SetControls(Customer objCustomer)
         {
@@ -107,6 +110,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 txtCorreo.Value = objCustomer.Email;
                 txtAddress1.Value = objCustomer.address.Address1;
                 txtPassword.Value = objCustomer.Password;
+                ddlTipoDocumento.SelectedValue = objCustomer.DocumentType.ToString();
 
             }
             catch (Exception ex)
@@ -148,14 +152,15 @@ namespace SystemGlobal_Ecommerce.Layout
             try
             {
                 BaseEntity objEntity = new BaseEntity();
-
-                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email);
+                String idCustomer = obj.Id != "" ? Encryption.Decrypt(HttpUtility.UrlDecode(obj.Id)) : "0";
+                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email, Convert.ToInt32(idCustomer));
 
                 if (!ExistEmail)
                 {
+
                     Customer objCustomer = new Customer
                     {
-                        ID = String.IsNullOrEmpty(obj.Id) ? 0 : Convert.ToInt32(obj.Id),
+                        ID = String.IsNullOrEmpty(idCustomer) ? 0 : Convert.ToInt32(idCustomer),
                         FirstName = obj.FirstName.ToString(),
                         LastNamePaternal = obj.LastNamePaternal.ToString(),
                         LastNameMaternal = obj.LastNameMaternal.ToString(),
@@ -173,11 +178,19 @@ namespace SystemGlobal_Ecommerce.Layout
                     {
                         if (success)
                         {
-                            return new { Result = "Ok", Msg = "Se registró correctamente!" };
+                            if (objCustomer.ID == 0)
+                            {
+                                return new { Result = "Ok", Msg = "Se guardo correctamente!" };
+                            }
+                            else
+                            {
+                                return new { Result = "OkUpdate", Msg = "Se actualizó correctamente!" };
+                            }
+                           
                         }
                         else
                         {
-                            return new { Result = "NoOk", Msg = "Hubo Un error al registrar." };
+                            return new { Result = "NoOk", Msg = "Hubo Un error al guardar." };
                         }
                     }
                     else

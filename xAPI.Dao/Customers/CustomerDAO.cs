@@ -59,6 +59,7 @@ namespace xAPI.Dao.Customers
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlParameter parmIdPedidoOut = cmd.Parameters.Add("@AddressId", SqlDbType.Int);
                 parmIdPedidoOut.Direction = ParameterDirection.Output;
+                cmd.Parameters.AddWithValue("@idCustomer", obj.ID);
                 cmd.Parameters.AddWithValue("@Name", obj.FirstName);
                 cmd.Parameters.AddWithValue("@LastNamePaternal", obj.LastNamePaternal);
                 cmd.Parameters.AddWithValue("@LastNameMaternal", obj.LastNameMaternal);
@@ -85,7 +86,7 @@ namespace xAPI.Dao.Customers
             }
             return success;
         }
-        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email)
+        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email, Int32 idCustomer)
         {
             SqlCommand cmd = null;
             Boolean success = false;
@@ -97,6 +98,7 @@ namespace xAPI.Dao.Customers
                 SqlParameter outputParam = cmd.Parameters.Add("@exist", SqlDbType.Bit);
                 outputParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@idCustomer", idCustomer);
                 cmd.ExecuteNonQuery();
                 success = Convert.ToBoolean(cmd.Parameters["@exist"].Value);
 
@@ -131,8 +133,8 @@ namespace xAPI.Dao.Customers
                     objCustomer = new Customer();
                     objCustomer.ID = dr.GetColumnValue<Int32>("CustomerId");
                     objCustomer.FirstName = dr.GetColumnValue<String>("FirstName");
-                    objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNameMaternal");
-                    objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNamePaternal");
+                    objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNamePaternal");
+                    objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNameMaternal");
                     objCustomer.DocumentType = dr.GetColumnValue<Int32>("DocumentType");
                     objCustomer.NumberDocument = dr.GetColumnValue<String>("NumberDocument");
                     objCustomer.CellPhone = dr.GetColumnValue<String>("CellPhone");
@@ -170,8 +172,8 @@ namespace xAPI.Dao.Customers
                     objCustomer = new Customer();
                     objCustomer.ID = dr.GetColumnValue<Int32>("CustomerId");
                     objCustomer.FirstName = dr.GetColumnValue<String>("FirstName");
-                    objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNameMaternal");
-                    objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNamePaternal");
+                    objCustomer.LastNamePaternal = dr.GetColumnValue<String>("LastNamePaternal");
+                    objCustomer.LastNameMaternal = dr.GetColumnValue<String>("LastNameMaternal");
                     objCustomer.DocumentType = dr.GetColumnValue<Int32>("DocumentType");
                     objCustomer.NumberDocument = dr.GetColumnValue<String>("NumberDocument");
                     objCustomer.CellPhone = dr.GetColumnValue<String>("CellPhone");

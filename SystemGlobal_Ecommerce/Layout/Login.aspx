@@ -48,29 +48,25 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="tt-breadcrumb">
+    <div class="tt-breadcrumb" style="margin-top:0.5%">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Login</a></li>
-			<li>Registro</li>
+			<li>Inicio de Sesión</li>
 		</ul>
 	</div>
    </div>
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder" id="divMessageTop">Bienvenido a "EL CANASTÓN"</h1>
+			<h1 class="tt-title-subpages noborder" id="divMessageTop" style="font-weight: bold;">Bienvenido a "EL CANASTÓN"</h1>
 			<div class="tt-login-form">
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
-					    <img src="http://elcanastonxcorporate.tk/Files/enterprise/images\1SKCORBCOVIWNFBYLMJUSVFFCJLYUPQNXSTOTAYCJVVLCDUHXPT8.jpg" data-src="http://elcanastonxcorporate.tk/Files/enterprise/images\1SKCORBCOVIWNFBYLMJUSVFFCJLYUPQNXSTOTAYCJVVLCDUHXPT8.jpg" alt="" class="col-xs-12 col-md-6">
-						<div class="tt-item">
+                             <div class="tt-item">
 							<h2 class="tt-title">ERES NUEVO?</h2>
 							<label class="tt-title">Registrandote podras crear tu lista y hacer tu pedido.</label>
-						  
-							<div class="form-group">
-								<a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-top btn-border">Registrate Aquí</a>
-							</div>
+						  <asp:Image ID="imgLogin" runat="server" class="col-xs-12 col-md-6"  style="border-radius: 50%;margin-left: 25%;" />
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-6">
@@ -89,11 +85,15 @@
 										<input runat="server" type="password" name="passowrd" class="form-control" id="txtPassowrd" placeholder="Ingrese su Password">
 									</div>
 									<div class="row">
-										<div class="col-auto mr-auto">
-											<div class="form-group">
-												<button class="btn btn-border" type="button" runat="server"  onclick="Fn_LoginCustomer()">Ingresar</button>
-											</div>
-										</div>
+                                                 <div class="col-xs-12 col-md-12">
+                                                     <div class="col-xs-12 col-md-4">
+                                                         <button class="btn btn-border" type="button" onclick="Fn_LoginCustomer()">Ingresar</button>
+                                                     </div>
+                                                     <div class="col-xs-12 col-md-4">
+                                                         <a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-border">Registrate Aquí</a>
+                                                     </div>
+                                                 </div>
+
 										<div class="col-auto align-self-end" style="display:none">
 											<div class="form-group">
 												<ul class="additional-links">

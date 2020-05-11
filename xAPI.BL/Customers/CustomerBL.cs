@@ -42,12 +42,12 @@ namespace xAPI.BL.Customers
         }
 
         #endregion
-        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email) 
+        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email, Int32 idCustomer) 
         {
             Boolean success = false;
             try
             {
-                success = CustomerDAO.Instance.Customer_Validate_ExistEmail(ref objEntity, email);
+                success = CustomerDAO.Instance.Customer_Validate_ExistEmail(ref objEntity, email, idCustomer);
             }
             catch (Exception ex)
             {
@@ -82,11 +82,8 @@ namespace xAPI.BL.Customers
             Customer objCustomer = null;
             try
             {
-                if (objCustomer != null)
-                {
                     objCustomer = CustomerDAO.Instance.Customer_GetInformation_ById(ref objBase, CustomerId);
 
-                }
             }
             catch (Exception ex)
             {

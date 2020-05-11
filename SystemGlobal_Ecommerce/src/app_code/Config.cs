@@ -16,6 +16,8 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public static string DistributorVirtualPath { get { return WebConfigurationManager.AppSettings["dvPath"]; } }
         public static string EnterpriseVirtualPath { get { return WebConfigurationManager.AppSettings["evPath"]; } }
         public static string Impremtawendomain { get { return WebConfigurationManager.AppSettings["impremtawendomain"]; } }
+        public static string impremtawendomainLogin { get { return WebConfigurationManager.AppSettings["impremtawendomainLogin"]; } }
+
         
     }
 }

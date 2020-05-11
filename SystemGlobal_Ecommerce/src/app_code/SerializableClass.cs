@@ -423,19 +423,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public string Index { get; set; }
     }
 
-    [Serializable]
-    public class srMerchant
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public string Merchantid { get; set; }
-        public string Password { get; set; }
-        public string Url { get; set; }
-        public string Custom1 { get; set; }
-        public string Custom2 { get; set; }
-        public string Custom3 { get; set; }
-    }
+    
 
     [Serializable]
     public class srPegRates
@@ -2313,9 +2301,30 @@ namespace SystemGlobal_Ecommerce.src.app_code
     [Serializable]
     public class srCategory
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public String Id { get; set; }
+        public String Name { get; set; }
  
+    }
+    [Serializable]
+    public class srPayCulqi
+    {
+        public String token_created { get; set; }
+        public String email { get; set; }
+
+
+    }
+
+    [Serializable]
+    public class srMerchant
+    {
+        public String MerchantId { get; set; }
+        public String MerchantName { get; set; }
+        public String MerchantWebService { get; set; }
+        public String MerchantStatus { get; set; }
+        public String isChecked { get; set; }
+        public String ContentPayment { get; set; }
+
+
     }
 
     [Serializable]

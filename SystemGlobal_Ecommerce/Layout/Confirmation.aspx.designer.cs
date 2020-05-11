@@ -24,6 +24,24 @@ namespace SystemGlobal_Ecommerce.Layout
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMessageConfirm;
 
         /// <summary>
+        /// Control lblFullName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFullName;
+
+        /// <summary>
+        /// Control lblLegacyNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblLegacyNumber;
+
+        /// <summary>
         /// Control lblAddressConfirm.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,33 @@ namespace SystemGlobal_Ecommerce.Layout
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAddressConfirm;
+
+        /// <summary>
+        /// Control lblFullNameCustomer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFullNameCustomer;
+
+        /// <summary>
+        /// Control lblDNI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDNI;
+
+        /// <summary>
+        /// Control lblPhoneNumber.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPhoneNumber;
 
         /// <summary>
         /// Control hfData.
