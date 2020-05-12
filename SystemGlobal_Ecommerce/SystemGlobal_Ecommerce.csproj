@@ -145,8 +145,9 @@
     <Content Include="Chat\src\img\imgUserCliente.png" />
     <Content Include="Chat\src\img\user1.jpg" />
     <Content Include="Chat\src\js\treeTableJS.js" />
+    <Content Include="Comercio\Ordenes\Historial.aspx" />
     <Content Include="HomePage.Master" />
-    <Content Include="Pages\Inicio.aspx" />
+    <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll.mdb" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Release\culqi.net.dll" />
@@ -2006,6 +2007,13 @@
     <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.designer.cs">
       <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comercio\Ordenes\Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Ordenes\Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2016,11 +2024,11 @@
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Inicio.aspx.cs">
+    <Compile Include="Comercio\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Inicio.aspx.designer.cs">
+    <Compile Include="Comercio\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagos\Culqi\culqi.net\Card.cs" />

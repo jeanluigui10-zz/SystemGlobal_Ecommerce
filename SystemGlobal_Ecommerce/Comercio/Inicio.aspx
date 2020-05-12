@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SystemGlobal_Ecommerce.Pages.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SystemGlobal_Ecommerce.Comercio.Inicio" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 
@@ -16,13 +16,13 @@
             <div class="module sohomepage-slider ">
                 <div class="yt-content-slider"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                     <div class="yt-content-slide">
-                        <a href="#"><img src="/Template/image/catalog//slideshow/home2/slide-1.jpg" alt="slider1" class="img-responsive"></a>
+                        <a href="#"><img src="/Template/image/catalog/slideshow/home2/slide-1.jpg" alt="slider1" class="img-responsive"></a>
                     </div>
                     <div class="yt-content-slide">
-                        <a href="#"><img src="/Template/image/catalog//slideshow/home2/slide-2.jpg" alt="slider2" class="img-responsive"></a>
+                        <a href="#"><img src="/Template/image/catalog/slideshow/home2/slide-2.jpg" alt="slider2" class="img-responsive"></a>
                     </div>
                     <div class="yt-content-slide">
-                        <a href="#"><img src="/Template/image/catalog//slideshow/home2/slide-3.jpg" alt="slider3" class="img-responsive"></a>
+                        <a href="#"><img src="/Template/image/catalog/slideshow/home2/slide-3.jpg" alt="slider3" class="img-responsive"></a>
                     </div>
                 </div>
             
@@ -83,7 +83,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Towels Cloud" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate1.jpg" title="Towels Cloud" alt="Towels Cloud" />
+                                            <img src="/Template/image/catalog/demo/category/cate1.jpg" title="Towels Cloud" alt="Towels Cloud" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -93,7 +93,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Smartphone" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate2.jpg" title="Smartphone" alt="Smartphone" />
+                                            <img src="/Template/image/catalog/demo/category/cate2.jpg" title="Smartphone" alt="Smartphone" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -103,7 +103,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Watches" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate3.jpg" title="Watches" alt="Watches" />
+                                            <img src="/Template/image/catalog/demo/category/cate3.jpg" title="Watches" alt="Watches" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -113,7 +113,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Electronics" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate1.jpg" title="Electronics" alt="Electronics" />
+                                            <img src="/Template/image/catalog/demo/category/cate1.jpg" title="Electronics" alt="Electronics" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -123,7 +123,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Furnitures" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate4.jpg" title="Furnitures" alt="Furnitures" />
+                                            <img src="/Template/image/catalog/demo/category/cate4.jpg" title="Furnitures" alt="Furnitures" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -133,7 +133,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Collections" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate5.jpg" title="Collections" alt="Collections" />
+                                            <img src="/Template/image/catalog/demo/category/cate5.jpg" title="Collections" alt="Collections" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -143,7 +143,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Fashion" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate6.jpg" title="Fashion" alt="Fashion" />
+                                            <img src="/Template/image/catalog/demo/category/cate6.jpg" title="Fashion" alt="Fashion" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -153,7 +153,7 @@
                                 <div class="content-box">
                                     <div class="image-cat">
                                         <a href="#" title="Accessories" target="_self">
-                                            <img src="/Template/image/catalog//demo/category/cate7.jpg" title="Accessories" alt="Accessories" />
+                                            <img src="/Template/image/catalog/demo/category/cate7.jpg" title="Accessories" alt="Accessories" />
                                         </a>
                                     </div>
                                     <div class="cat-title"> 
@@ -168,7 +168,7 @@
                 <div class="banners banners1">
                     <div class="banner">
                         <a href="#">
-                            <img src="/Template/image/catalog//banners/id2-banner1.jpg" alt="image">
+                            <img src="/Template/image/catalog/banners/id2-banner1.jpg" alt="image">
                         </a>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                                                                     -22%
                                                                 </span>
                                                                 <a href="#" target="_self" title="product">
-                                                                    <img src="/Template/image/catalog//demo/product/index2/8.jpg" alt="Yutculpa ullamco" class="img-responsive">
+                                                                    <img src="/Template/image/catalog/demo/product/index2/8.jpg" alt="Yutculpa ullamco" class="img-responsive">
                                                                 </a>
                                                                 <div class="button-group so-quickview">
                                                                     <button class="btn-button addToCart" title="Add to Cart" type="button" onclick="cart.add('69');"><i class="fa fa-shopping-basket"></i>  <span>Add to Cart</span>
@@ -249,7 +249,7 @@
                                                                     -10%
                                                                 </span>
                                                                 <a href="#" target="_self" title="Xancetta bresao">
-                                                                    <img src="/Template/image/catalog//demo/product/index2/2.jpg" alt="Xancetta bresao" class="img-responsive">
+                                                                    <img src="/Template/image/catalog/demo/product/index2/2.jpg" alt="Xancetta bresao" class="img-responsive">
                                                                 </a>
                                                                 <div class="button-group so-quickview">
                                                                     <button class="btn-button addToCart" title="Add to Cart" type="button" onclick="cart.add('75');"><i class="fa fa-shopping-basket"></i>  <span>Add to Cart</span>
@@ -306,7 +306,7 @@
                                                             <div class="image">
                                                                 <span class="label-product label-product-sale">-17%</span>
                                                                 <a href="#" target="_self" title="Wamboudin ribeye">
-                                                                    <img src="/Template/image/catalog//demo/product/index2/16.jpg" alt="Wamboudin ribeye" class="img-responsive">
+                                                                    <img src="/Template/image/catalog/demo/product/index2/16.jpg" alt="Wamboudin ribeye" class="img-responsive">
                                                                 </a>
                                                                 <div class="button-group so-quickview">
                                                                     <button class="btn-button addToCart" title="Add to Cart" type="button" onclick="cart.add('79');"><i class="fa fa-shopping-basket"></i>  <span>Add to Cart</span>
@@ -394,8 +394,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Pastrami bacon">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/1.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/10.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/1.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/10.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                                     </a>
                                                                 </div>
                                                             
@@ -432,8 +432,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Chicken swinesha">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/2.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/9.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/2.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/9.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label"> <span class="label-product label-sale"> -16% </span></div>
@@ -474,8 +474,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/8.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/8.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label"> <span class="label-product label-new"> New </span></div>
@@ -512,8 +512,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Sausage cowbee">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/4.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/7.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/4.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/7.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                             
@@ -552,8 +552,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/5.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/6.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/5.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/6.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                                     </a>
                                                                 </div>
                                                             
@@ -590,8 +590,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Balltip nullaelit">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/6.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/5.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/6.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/5.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label"> <span class="label-product label-new"> New </span></div>
@@ -630,8 +630,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Ribeye hamhock">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/7.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/4.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/7.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/4.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label"> <span class="label-product label-sale"> -7% </span></div>
@@ -669,8 +669,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Wamboudin ribeye">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/8.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/3.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/8.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/3.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                             
@@ -709,8 +709,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Lamboudin ribeye">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/9.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/2.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/9.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/2.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                             
@@ -746,8 +746,8 @@
                                                             <div class="left-block">
                                                                 <div class="product-image-container second_img">
                                                                     <a href="product.html" target="_self" title="Ribeye hamhock">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/10.jpg" class="img-1 img-responsive" alt="image">
-                                                                        <img src="/Template/image/catalog//demo/product/index2/270/1.jpg" class="img-2 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/10.jpg" class="img-1 img-responsive" alt="image">
+                                                                        <img src="/Template/image/catalog/demo/product/index2/270/1.jpg" class="img-2 img-responsive" alt="image">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label"> <span class="label-product label-sale"> -7% </span></div>
@@ -808,17 +808,17 @@
                             <div class="yt-content-slider" data-rtl="yes" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
                                 <div class="item">
                                     <a href="#">
-                                        <img src="/Template/image/catalog//banners/sl1.jpg" alt="image">
+                                        <img src="/Template/image/catalog/banners/sl1.jpg" alt="image">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href="#">
-                                        <img src="/Template/image/catalog//banners/sl3.jpg" alt="image">
+                                        <img src="/Template/image/catalog/banners/sl3.jpg" alt="image">
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href="#">
-                                        <img src="/Template/image/catalog//banners/sl2.jpg" alt="image">
+                                        <img src="/Template/image/catalog/banners/sl2.jpg" alt="image">
                                     </a>
                                 </div>
                             </div>
@@ -857,8 +857,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Pastrami bacon">
-                                                                <img src="/Template/image/catalog//demo/product/320/1.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                <img src="/Template/image/catalog//demo/product/320/6.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/1.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/6.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                             </a>
                                                         </div>
                                                     
@@ -897,8 +897,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Chicken swinesha">
-                                                                <img src="/Template/image/catalog//demo/product/320/2.jpg" class="img-1 img-responsive" alt="image">
-                                                                <img src="/Template/image/catalog//demo/product/320/5.jpg" class="img-2 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/2.jpg" class="img-1 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/5.jpg" class="img-2 img-responsive" alt="image">
                                                             </a>
                                                         </div>
                                                         <div class="box-label"> <span class="label-product label-sale"> -16% </span></div>
@@ -939,8 +939,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                                <img src="/Template/image/catalog//demo/product/320/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                <img src="/Template/image/catalog//demo/product/320/4.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/4.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                             </a>
                                                         </div>
                                                         <div class="box-label"> <span class="label-product label-new"> New </span></div>
@@ -979,8 +979,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Sausage cowbee">
-                                                                <img src="/Template/image/catalog//demo/product/320/4.jpg" class="img-1 img-responsive" alt="image">
-                                                                <img src="/Template/image/catalog//demo/product/320/3.jpg" class="img-2 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/4.jpg" class="img-1 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/3.jpg" class="img-2 img-responsive" alt="image">
                                                             </a>
                                                         </div>
                                                     
@@ -1019,8 +1019,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                                <img src="/Template/image/catalog//demo/product/320/5.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                <img src="/Template/image/catalog//demo/product/320/2.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/5.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
+                                                                <img src="/Template/image/catalog/demo/product/320/2.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
                                                             </a>
                                                         </div>
                                                     
@@ -1059,8 +1059,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Balltip nullaelit">
-                                                                <img src="/Template/image/catalog//demo/product/320/6.jpg" class="img-1 img-responsive" alt="image">
-                                                                <img src="/Template/image/catalog//demo/product/320/1.jpg" class="img-2 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/6.jpg" class="img-1 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/1.jpg" class="img-2 img-responsive" alt="image">
                                                             </a>
                                                         </div>
                                                         <div class="box-label"> <span class="label-product label-new"> New </span></div>
@@ -1099,8 +1099,8 @@
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Lamboudin ribeye">
-                                                                <img src="/Template/image/catalog//demo/product/320/7.jpg" class="img-1 img-responsive" alt="image">
-                                                                <img src="/Template/image/catalog//demo/product/320/10.jpg" class="img-2 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/7.jpg" class="img-1 img-responsive" alt="image">
+                                                                <img src="/Template/image/catalog/demo/product/320/10.jpg" class="img-2 img-responsive" alt="image">
                                                             </a>
                                                         </div>
                                                     
@@ -1161,47 +1161,47 @@
                     <div class="yt-content-slider contentslider" data-rtl="no" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="8" data-items_column1="6" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b1.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b1.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b2.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b2.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b3.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b3.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b4.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b4.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b5.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b5.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b6.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b6.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b4.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b4.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b5.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b5.png" alt="brand">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#">
-                                <img src="/Template/image/catalog//brands/b6.png" alt="brand">
+                                <img src="/Template/image/catalog/brands/b6.png" alt="brand">
                             </a>
                         </div>
                     </div>
@@ -1217,7 +1217,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/2.jpg" alt="Lorem ipsum dolor sit amet" />
+                                                <img src="/Template/image/catalog/blog/2.jpg" alt="Lorem ipsum dolor sit amet" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1238,7 +1238,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/3.jpg" alt="Kire tuma feugiat" />
+                                                <img src="/Template/image/catalog/blog/3.jpg" alt="Kire tuma feugiat" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1258,7 +1258,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/4.jpg" alt="Kire tuma demons vel eum iriure" />
+                                                <img src="/Template/image/catalog/blog/4.jpg" alt="Kire tuma demons vel eum iriure" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1278,7 +1278,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/5.jpg" alt="minim veniam  justo duo dolores" />
+                                                <img src="/Template/image/catalog/blog/5.jpg" alt="minim veniam  justo duo dolores" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1299,7 +1299,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/6.jpg" alt="Duis autem vel eum tempor inviduntt" />
+                                                <img src="/Template/image/catalog/blog/6.jpg" alt="Duis autem vel eum tempor inviduntt" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1320,7 +1320,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/7.jpg" alt="Tuma demons vel eum iriure dolor" />
+                                                <img src="/Template/image/catalog/blog/7.jpg" alt="Tuma demons vel eum iriure dolor" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1341,7 +1341,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/8.jpg" alt="Kire tuma demons vel eum iriure" />
+                                                <img src="/Template/image/catalog/blog/8.jpg" alt="Kire tuma demons vel eum iriure" />
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -1362,7 +1362,7 @@
                                     <div class="item">
                                         <div class="media-left">
                                             <a href="#" target="_self">
-                                                <img src="/Template/image/catalog//blog/9.jpg" alt="minim veniam  justo duo dolores" />
+                                                <img src="/Template/image/catalog/blog/9.jpg" alt="minim veniam  justo duo dolores" />
                                             </a>
                                         </div>
                                         <div class="media-body">

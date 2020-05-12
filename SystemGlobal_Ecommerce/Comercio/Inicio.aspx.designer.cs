@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SystemGlobal_Ecommerce.Pages
+namespace SystemGlobal_Ecommerce.Comercio
 {
 
 
-    public partial class Home
+    public partial class Inicio
     {
     }
 }

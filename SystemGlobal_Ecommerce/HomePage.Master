@@ -64,7 +64,10 @@
     <script type="text/javascript" src="/Template/js/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/Template/js/modernizr/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
-    
+    <script type="text/javascript" src="/src/js/Base.js"></script>
+
+
+
      <!-- DataTables -->
         <%--<script src="plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>--%>
@@ -110,11 +113,11 @@
                 var objCategory = $.parseJSON(objCategoria);
                 var object = {};
                 object.request = objCategory;
-                var item = fn_LoadTemplates("datatable-CategoriaMaster", object);
+                var item = Fn_CargarTemplate("datatable-CategoriaMaster", object);
                 $("#divCategoriaMaster").html(item);
             }
             catch (e) {
-                //fn_message('e', 'Ocurrio un error al cargar la data...', 'message_row');
+                //Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
             }
         }
 
@@ -144,22 +147,22 @@
                     <ul class="top-link list-inline lang-curr">
                         <li class="currency">
                             <div class="btn-group currencies-block">
-                                <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
+                                <div <%--action="index.html" method="post" enctype="multipart/form-data"--%> id="currency">
                                     <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                        <span class="icon icon-credit "></span> S/ PEN  <span class="fa fa-angle-down"></span>
+                                        <span class="icon icon-credit "></span> S/ Soles  <span class="fa fa-angle-down"></span>
                                     </a>
-                                </form>
+                                </div>
                             </div>
-                        </li>   
+                        </li>    
                         <li class="language">
                             <div class="btn-group languages-block ">
-                                <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
+                                <div <%--action="index.html" method="post" enctype="multipart/form-data"--%> id="bt-language">
                                     <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                                         <img src="/Template/image/catalog/flags/pe.png" alt="English" title="Español">
                                         <span class="">Español</span>
                                         <span class="fa fa-angle-down"></span>
                                     </a>
-                                </form>
+                                </div>
                             </div>
                             
                         </li>
@@ -187,7 +190,7 @@
                     <div class="search-header-w">
                         <div class="icon-search hidden-lg hidden-md hidden-sm"><i class="fa fa-search"></i></div> 
                         <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                            <form method="GET" action="index.html">
+                            <div <%--method="GET" action="index.html"--%>>
                                 <div id="search0" class="search input-group form-group">
                                     <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
                                         <select class="no-border" name="category_id" id="DivCategoriaMaster">
@@ -201,7 +204,7 @@
                                     </span>
                                 </div>
                                 <input type="hidden" name="route" value="product/search" />
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -651,7 +654,7 @@
                         </div>
 
                         <div class="block_content">
-                            <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
+                            <div <%--method="post"--%> id="signup" <%--name="signup" --%>class="form-group form-inline signup send-mail">
                                 <div class="form-group">
                                     <div class="input-box">
                                         <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
@@ -662,7 +665,7 @@
                                 </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
 
 
                         </div>
