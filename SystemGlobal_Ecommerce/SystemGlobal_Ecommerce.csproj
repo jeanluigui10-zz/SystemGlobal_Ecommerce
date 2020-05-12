@@ -594,6 +594,7 @@
     <Content Include="Template\image\catalog\demo\product\index2\9.jpg" />
     <Content Include="Template\image\catalog\flags\ar.png" />
     <Content Include="Template\image\catalog\flags\gb.png" />
+    <Content Include="Template\image\catalog\flags\pe.png" />
     <Content Include="Template\image\catalog\logo-footer.png" />
     <Content Include="Template\image\catalog\logo-footer2.png" />
     <Content Include="Template\image\catalog\logo.png" />

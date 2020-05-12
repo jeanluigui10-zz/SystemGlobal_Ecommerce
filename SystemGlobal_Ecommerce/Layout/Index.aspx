@@ -12,7 +12,7 @@
              fn_content();
          }
          function fn_content() {
-             Fn_ListProducts($("#<%=hfData.ClientID%>").val());
+<%--             Fn_ListProducts($("#<%=hfData.ClientID%>").val());--%>
          }
 
          function Fn_ListProducts(data) {
@@ -353,7 +353,7 @@
 </div>
     
  
- <asp:HiddenField runat="server" ID="hfData" />
+<%-- <asp:HiddenField runat="server" ID="hfData" />--%>
     <script type="text/x-handlebars-template" id="datatable-resources">
         {{# each request}}
             <div class="col-6 col-md-4 col-lg-3">

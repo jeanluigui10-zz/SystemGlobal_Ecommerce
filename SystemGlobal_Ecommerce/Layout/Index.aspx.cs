@@ -76,7 +76,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     String sJSON = serializer.Serialize(lst);
-                    hfData.Value = sJSON.ToString();
+                    //hfData.Value = sJSON.ToString();
                 }
             }
         }
