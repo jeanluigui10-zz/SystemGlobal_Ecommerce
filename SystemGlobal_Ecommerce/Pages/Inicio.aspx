@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="SystemGlobal_Ecommerce.Pages.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="SystemGlobal_Ecommerce.Pages.Home" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 
@@ -11,7 +11,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
     <div class="main-container">
         <div id="content">
             <div class="module sohomepage-slider ">
