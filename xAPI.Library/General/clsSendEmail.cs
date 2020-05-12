@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using xAPI.Library.Base;
 using System.ComponentModel;
 using System.Net.Mail;
-using System.Diagnostics;
-using System.Web.Script.Serialization;
 using System.Data.SqlClient;
 using xAPI.Library.Connection;
 using System.Data;

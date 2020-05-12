@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Categoria.cs" />
+    <Compile Include="Entidades\MetodoPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\CategoriaResultado.cs" />
   </ItemGroup>

@@ -95,6 +95,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AdminCliente\" />
+    <Folder Include="AdminOrden\" />
+    <Folder Include="AdminProducto\" />
+    <Folder Include="AdminTienda\" />
+    <Folder Include="AdminUsuario\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

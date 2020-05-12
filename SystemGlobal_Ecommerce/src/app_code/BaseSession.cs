@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Libreria.General;
+using System;
 using System.Collections;
 using System.Data;
 using System.Globalization;
 using System.Web;
-using xAPI.Entity.Order;
-using xAPI.Entity.Security;
-using xAPI.Library.General;
 
 namespace SystemGlobal_Ecommerce.src.app_code
 {
@@ -31,22 +29,22 @@ namespace SystemGlobal_Ecommerce.src.app_code
             set { HttpContext.Current.Session["dtCommission"] = value; }
         }
 
-        public static Usuarios SsUser
-        {
-            get { return clsExtension.GetSession<Usuarios>("User_xCorporate") ?? RedirectUser<Usuarios>(); }
-            set { HttpContext.Current.Session["User_xCorporate"] = value; }
-        }
+        //public static Usuarios SsUser
+        //{
+        //    get { return clsExtension.GetSession<Usuarios>("User_xCorporate") ?? RedirectUser<Usuarios>(); }
+        //    set { HttpContext.Current.Session["User_xCorporate"] = value; }
+        //}
 
         public static String SsCaptchaText
         {
             get { return clsExtension.GetSession<String>("CaptchaImageText_xCorporate"); }
             set { HttpContext.Current.Session["CaptchaImageText_xCorporate"] = value; }
         }
-        public static OrderHeader SsOrderxCore
-        {
-            get { return clsExtension.GetSession<OrderHeader>("Order") ?? new OrderHeader(); }
-            set { HttpContext.Current.Session["Order"] = value; }
-        }
+        //public static OrderHeader SsOrderxCore
+        //{
+        //    get { return clsExtension.GetSession<OrderHeader>("Order") ?? new OrderHeader(); }
+        //    set { HttpContext.Current.Session["Order"] = value; }
+        //}
         private static T RedirectUser<T>()
         {
             Logout();

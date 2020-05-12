@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using xAPI.Dao.Tool;
 using xAPI.Entity.Category;
 using xAPI.Library.Base;
@@ -35,7 +34,7 @@ namespace xAPI.BL.Category
             }
             catch (Exception ex)
             {
-                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+                objBase.Errors.Add(new BaseEntity.ListError(ex, "Ocurrió un error al cargar la data"));
             }
 
             return lstCategoria;
