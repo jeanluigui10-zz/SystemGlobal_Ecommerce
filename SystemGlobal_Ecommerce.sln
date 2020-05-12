@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xAPI.Dao", "xAPI.Dao\xAPI.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xAPI.BL", "xAPI.BL\xAPI.BL.csproj", "{47E274FB-F9DF-4D03-834E-64C2A580C3CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{B411F676-DFA9-4666-BFB7-8E24A69AC15C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{47E274FB-F9DF-4D03-834E-64C2A580C3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47E274FB-F9DF-4D03-834E-64C2A580C3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47E274FB-F9DF-4D03-834E-64C2A580C3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B411F676-DFA9-4666-BFB7-8E24A69AC15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B411F676-DFA9-4666-BFB7-8E24A69AC15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B411F676-DFA9-4666-BFB7-8E24A69AC15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B411F676-DFA9-4666-BFB7-8E24A69AC15C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

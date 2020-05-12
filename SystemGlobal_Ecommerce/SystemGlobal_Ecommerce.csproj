@@ -154,7 +154,7 @@
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="Layout\Support\Contact.aspx" />
-    <Content Include="Pages\Home.aspx" />
+    <Content Include="Pages\Inicio.aspx" />
     <Content Include="Payment\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
     <Content Include="Payment\Culqi\culqi.net\bin\Debug\culqi.net.dll.mdb" />
     <Content Include="Payment\Culqi\culqi.net\bin\Release\culqi.net.dll" />
@@ -330,7 +330,6 @@
     <Content Include="Template\css\themecss\so-newletter-popup.css" />
     <Content Include="Template\css\themecss\so_megamenu.css" />
     <Content Include="Template\css\themecss\so_searchpro.css" />
-    <Content Include="ExampleTemplate.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Template\ico\apple-touch-icon-114-precomposed.png" />
@@ -1178,13 +1177,6 @@
     <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.designer.cs">
       <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ExampleTemplate.aspx.cs">
-      <DependentUpon>ExampleTemplate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ExampleTemplate.aspx.designer.cs">
-      <DependentUpon>ExampleTemplate.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1265,12 +1257,12 @@
     <Compile Include="Layout\Support\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Pages\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Pages\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Payment\Culqi\culqi.net\Card.cs" />
     <Compile Include="Payment\Culqi\culqi.net\Charge.cs" />
@@ -1316,6 +1308,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controles\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>
