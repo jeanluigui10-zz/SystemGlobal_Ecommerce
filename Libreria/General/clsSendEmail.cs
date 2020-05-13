@@ -67,7 +67,6 @@ namespace Libreria.General
                     //                , "hola mundo", "noreply@aseamail.com");
                     SendEmailSupport(token.mailTo[i],  token.subject, token.message);
                     
-                    LogEmail_Insert(ref ent, token.mailTo[i], token.subject, token.message, token.mailFrom, e.Error.ToString(),isCancelled ? Convert.ToInt16(EnumEmailStatus.Cancelled) : Convert.ToInt16(EnumEmailStatus.Error) );
                   //  clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 1", "ERROR - 1");
                 }
             }
@@ -77,7 +76,6 @@ namespace Libreria.General
                 for (int i = 0; i < token.mailTo.Count; i++)
                 {
                   
-                    LogEmail_Insert(ref ent, token.mailTo[i], token.subject, token.message, token.mailFrom, "", Convert.ToInt16(EnumEmailStatus.Success));
                     //clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", "ERROR - 1");
                 }
             }
@@ -1421,44 +1419,6 @@ namespace Libreria.General
                 return false;
             }
         }
-
-        public static bool LogEmail_Insert(ref MetodoRespuesta Base, string mailTo, string subject, string message, string mailFrom, string error, Int16 status)
-        {
-            Boolean isCorrect = false;
-            SqlCommand cmd = null;
-            //SqlConnection objConnection = clsConnection.GetConnection();
-            try
-            {
-                //objConnection = clsConnection.GetConnection();
-                 //cmd = new SqlCommand("SAVE_LOGEMAIL"clsConnection.GetConnection());
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@MAIL", message);
-                cmd.Parameters.AddWithValue("@EMAILFROM", mailFrom);
-                cmd.Parameters.AddWithValue("@EMAILTO", mailTo);
-                cmd.Parameters.AddWithValue("@ERRORCODE", error);
-                cmd.Parameters.AddWithValue("@SUBJECT", subject);
-                cmd.Parameters.AddWithValue("@STATUS", status);
-                cmd.Parameters.AddWithValue("@APPID",  Convert.ToInt16(System.Web.Configuration.WebConfigurationManager.AppSettings["Appid"]??"1"));
-                
-                cmd.ExecuteNonQuery();
-                isCorrect = true;
-
-            }
-            catch (Exception ex)
-            {
-                //clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", "Message" + ex.Message.ToString());
-                Base.Errors.Add(new MetodoRespuesta.ListError(ex, "Error in database"));
-            }
-            finally
-            {
-                //objConnection.Close();
-                Conexion.DisposeCommand(cmd);
-            }
-         //   clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", String.Format("message {0}", isCorrect.ToString()));
-           // clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", String.Format("data:{0},{1},{2},{3},{4},{5}", message, mailFrom, mailTo, error, subject, status));
-            return isCorrect;
-        }
-
         
         #region Email Server 
 

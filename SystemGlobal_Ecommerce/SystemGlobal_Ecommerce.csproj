@@ -159,7 +159,6 @@
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net20\Newtonsoft.Json.dll" />
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net20\Newtonsoft.Json.xml" />
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll" />
-    <Content Include="Pages\DetalleProducto.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll" />
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.xml" />
     <Content Include="Pagos\Culqi\culqi.net\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll" />
@@ -2050,14 +2049,6 @@
     <Compile Include="Pagos\Culqi\culqi.net\Transfer.cs" />
     <Compile Include="Pagos\Culqi\culqi.net\util\Util.cs" />
     <Compile Include="Pagos\PayPal\Utilities\BaseSamplePage.cs">
-    </Compile>
-    <Compile Include="Pages\DetalleProducto.aspx.cs">
-      <DependentUpon>DetalleProducto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\DetalleProducto.aspx.designer.cs">
-      <DependentUpon>DetalleProducto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pagos\PayPal\Utilities\Common.cs" />
     <Compile Include="Pagos\PayPal\Utilities\Configuration.cs" />
