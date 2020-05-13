@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using xAPI.Library.General;
 namespace SystemGlobal_Ecommerce.src.app_code
 {
     [Serializable]
@@ -2299,10 +2298,10 @@ namespace SystemGlobal_Ecommerce.src.app_code
     }
 
     [Serializable]
-    public class srCategory
+    public class srCategoria
     {
-        public String Id { get; set; }
-        public String Name { get; set; }
+        public String IdCategoria { get; set; }
+        public String CategoriaNombre { get; set; }
  
     }
     [Serializable]

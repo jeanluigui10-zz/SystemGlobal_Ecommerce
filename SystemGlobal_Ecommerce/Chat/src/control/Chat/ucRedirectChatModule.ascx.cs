@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Libreria.General;
+using System;
 using System.Web;
-using xAPI.Library.General;
 using SystemGlobal_Ecommerce.Chat.src.app_code;
 namespace SystemGlobal_Ecommerce.Chat.src.control.Chat
 {

@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Dominio.Entidades;
+using Libreria.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using xAPI.BL.Merchant;
-using xAPI.Entity.Merchant;
-using xAPI.Library.Base;
 
 namespace xOrders.src.app_code
 {
@@ -19,8 +18,7 @@ namespace xOrders.src.app_code
         public short identifier { get; set; }
         public Int32 MerchantDetailId { get; set; }
         private readonly CultureInfo culture;
-        //public Merchants objPaymentMerchant { get; set; } = new Merchants();
-        public List<Merchants> lstPaymentMerchant { get; set; } = new List<Merchants>();
+        public List<MetodoPago> lstPaymentMerchant { get; set; } = new List<MetodoPago>();
 
  
         public ViewMaker(Page page, Control wrapper, List<string> containers)
@@ -62,7 +60,7 @@ namespace xOrders.src.app_code
                 RadioButton radio = null;
                 CheckBox check = null;
 
-                lstPaymentMerchant = new List<Merchants>();
+                lstPaymentMerchant = new List<MetodoPago>();
 
                 foreach (Control c in this.control.Controls)
                 {
@@ -78,12 +76,12 @@ namespace xOrders.src.app_code
                                     {
                                         radio = (RadioButton)option;
 
-                                        lstPaymentMerchant.Add(new Merchants
+                                        lstPaymentMerchant.Add(new MetodoPago
                                         {
-                                            MerchantId = Convert.ToInt32(radio.Attributes["data-id"], CultureInfo.InvariantCulture),
-                                            MerchantName = Convert.ToString(radio.Attributes["data-name"]),
-                                            MerchantStatus = Convert.ToInt32(radio.Attributes["data-status"], CultureInfo.InvariantCulture),
-                                            Name = radio.Text
+                                            IdMetodoPago = Convert.ToInt32(radio.Attributes["data-id"], CultureInfo.InvariantCulture),
+                                            Nombre = Convert.ToString(radio.Attributes["data-name"]),
+                                            Estado = Convert.ToBoolean(radio.Attributes["data-status"], CultureInfo.InvariantCulture),
+                                            //Nombre = radio.Text
                                         });
                                         break;
                                     }
@@ -99,12 +97,12 @@ namespace xOrders.src.app_code
                                             Decimal.TryParse(txt.Text, out amount);
                                         }
 
-                                        lstPaymentMerchant.Add(new Merchants
+                                        lstPaymentMerchant.Add(new MetodoPago
                                         {
-                                            MerchantId = Convert.ToInt32(radio.Attributes["data-id"], CultureInfo.InvariantCulture),
-                                            MerchantName = Convert.ToString(radio.Attributes["data-name"]),
-                                            MerchantStatus = Convert.ToInt32(radio.Attributes["data-status"], CultureInfo.InvariantCulture),
-                                            Name = radio.Text
+                                            IdMetodoPago = Convert.ToInt32(radio.Attributes["data-id"], CultureInfo.InvariantCulture),
+                                            Nombre = Convert.ToString(radio.Attributes["data-name"]),
+                                            Estado = Convert.ToBoolean(radio.Attributes["data-status"], CultureInfo.InvariantCulture),
+                                            //Name = radio.Text
                                         });
 
                                         break;
@@ -132,24 +130,23 @@ namespace xOrders.src.app_code
 
             try
             {
-                //ServiceResponse<PaymentListMerchant> lstMerchants = MerchantBl.Instance.GetByMarketAndModule(
-                //    (Int16)BaseSession.SsOrderxCore.Ordersource, BaseSession.SsOrderxCore.Marketid, BaseSession.SsOrderxCore.Orderdate);
-                BaseEntity entity = new BaseEntity();
-                List<Merchants> lstMerchants = new List<Merchants>();
-                DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
+                MetodoRespuesta entity = new MetodoRespuesta();
+                List<MetodoPago> lstMerchants = new List<MetodoPago>();
+                //DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
+                DataTable dt = null;
                 if (entity.Errors.Count == 0)
                 {
                     if (dt != null)
                     {
                         foreach (DataRow item in dt.Rows)
                         {
-                            lstMerchants.Add(new Merchants()
+                            lstMerchants.Add(new MetodoPago()
                             {
-                                MerchantId = Convert.ToInt32(item["MerchantId"]),
-                                MerchantName = item["MerchantName"].ToString(),
-                                isChecked = Convert.ToInt32(item["isChecked"]),
-                                GroupId = Convert.ToByte(item["GroupId"]),
-                                InputType = Convert.ToByte(item["InputType"])
+                                IdMetodoPago = Convert.ToInt32(item["MerchantId"]),
+                                Nombre = item["MerchantName"].ToString(),
+                                EsSeleccionado = Convert.ToInt32(item["isChecked"]),
+                                GrupoId = Convert.ToByte(item["GroupId"]),
+                                TipoEntrada = Convert.ToByte(item["InputType"])
                             });
                         }
                     }
@@ -163,25 +160,25 @@ namespace xOrders.src.app_code
                     Panel groupPanel = new Panel();
                     List<Byte> lstGroupId = new List<Byte>();
 
-                    foreach (Merchants item in lstMerchants)
+                    foreach (MetodoPago item in lstMerchants)
                     {
-                        Boolean isSelected = Convert.ToBoolean(item.isChecked);
+                        Boolean isSelected = Convert.ToBoolean(item.Estado);
 
                         dynamic inputType;
-                        qtyGroupId = lstMerchants.Count(x => x.GroupId == item.GroupId);
+                        qtyGroupId = lstMerchants.Count(x => x.GrupoId == item.GrupoId);
 
-                        if (!lstGroupId.Any(x => x == item.GroupId))
+                        if (!lstGroupId.Any(x => x == item.GrupoId))
                         {
                             groupPanel = new Panel();
                             groupPanel.Attributes.Add("style", "padding: 10px 0;");
-                            lstGroupId.Add(item.GroupId);
+                            lstGroupId.Add(item.GrupoId);
                             countGroupId = 1;
                             isFirst = true;
                         }
 
                         String strType;
 
-                        if (item.InputType == 1)
+                        if (item.TipoEntrada == 1)
                         {
                             RadioButton rb = new RadioButton();
                             inputType = (dynamic)rb;
@@ -197,14 +194,14 @@ namespace xOrders.src.app_code
                             inputType.Checked = isSelected;
                         }
 
-                        inputType.ID = $"{strType}{item.MerchantId}";
+                        inputType.ID = $"{strType}{item.IdMetodoPago}";
                         inputType.ClientIDMode = ClientIDMode.Static;
                         inputType.Attributes.Add("class", $"{strType}Payment");
                         inputType.Attributes.Add("style", "vertical-align: sub");
-                        inputType.Attributes.Add("title", item.MerchantName);
-                        inputType.Attributes.Add("data-id", item.MerchantId.ToString(CultureInfo.InvariantCulture));
-                        inputType.Attributes.Add("data-name", item.MerchantName.ToString(CultureInfo.InvariantCulture));
-                        inputType.Text = item.MerchantName;
+                        inputType.Attributes.Add("title", item.Nombre);
+                        inputType.Attributes.Add("data-id", item.IdMetodoPago.ToString(CultureInfo.InvariantCulture));
+                        inputType.Attributes.Add("data-name", item.Nombre.ToString(CultureInfo.InvariantCulture));
+                        inputType.Text = item.Nombre;
                         inputType.EnableViewState = true;
 
                         Panel pnl = new Panel();
@@ -240,21 +237,22 @@ namespace xOrders.src.app_code
                 return;
             }
 
-            BaseEntity entity = new BaseEntity();
-            List<Merchants> lstMerchants = new List<Merchants>();
-            DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
+            MetodoRespuesta entity = new MetodoRespuesta();
+            List<MetodoPago> lstMerchants = new List<MetodoPago>();
+            //DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
+            DataTable dt = null;
             if (entity.Errors.Count == 0)
             {
                 if (dt != null)
                 {
                     foreach (DataRow item in dt.Rows)
                     {
-                        lstMerchants.Add(new Merchants()
+                        lstMerchants.Add(new MetodoPago()
                         {
-                            MerchantId = Convert.ToInt32(item["MerchantId"]),
-                            MerchantName = item["MerchantName"].ToString(),
-                            isChecked = Convert.ToInt32(item["isChecked"]),
-                            GroupId = Convert.ToByte(item["GroupId"]),
+                            IdMetodoPago = Convert.ToInt32(item["MerchantId"]),
+                            Nombre = item["MerchantName"].ToString(),
+                            EsSeleccionado = Convert.ToInt32(item["isChecked"]),
+                            GrupoId = Convert.ToByte(item["GroupId"]),
                         });
                     }
                 }
@@ -263,20 +261,20 @@ namespace xOrders.src.app_code
             bool isFirst = true;
             if (entity.Errors.Count <= 0 && lstMerchants != null && lstMerchants.Count > 0)
             {
-                foreach (Merchants item in lstMerchants)
+                foreach (MetodoPago item in lstMerchants)
                 {
                     RadioButton rb = new RadioButton
                     {
-                        ID = "M" + item.MerchantId,
+                        ID = "M" + item.IdMetodoPago,
 
                         GroupName = "Payment",
                         ClientIDMode = ClientIDMode.Static
                     };
                     rb.Attributes.Add("class", "rdbPayment");
                     rb.Attributes.Add("style", "vertical-align: sub");
-                    rb.Attributes.Add("title", item.MerchantName);
+                    rb.Attributes.Add("title", item.Nombre);
                     rb.Checked = isFirst;
-                    rb.Text = item.MerchantName;
+                    rb.Text = item.Nombre;
                     rb.EnableViewState = true;
 
                     Panel pnl = new Panel();
