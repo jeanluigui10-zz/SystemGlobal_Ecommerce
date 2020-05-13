@@ -1452,7 +1452,7 @@ namespace Libreria.General
             finally
             {
                 //objConnection.Close();
-                Conexion.DisposeCommand(cmd);
+                //Conexion.DisposeCommand(cmd);
             }
          //   clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", String.Format("message {0}", isCorrect.ToString()));
            // clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", String.Format("data:{0},{1},{2},{3},{4},{5}", message, mailFrom, mailTo, error, subject, status));
