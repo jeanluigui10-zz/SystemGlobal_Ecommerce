@@ -154,6 +154,7 @@
     <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="Layout\Support\Contact.aspx" />
+    <Content Include="Pages\DetalleProducto.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Payment\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
     <Content Include="Payment\Culqi\culqi.net\bin\Debug\culqi.net.dll.mdb" />
@@ -1264,6 +1265,13 @@
     </Compile>
     <Compile Include="Layout\Support\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DetalleProducto.aspx.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DetalleProducto.aspx.designer.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
