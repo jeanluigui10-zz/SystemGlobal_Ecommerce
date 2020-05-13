@@ -28,7 +28,7 @@ namespace AccesoDatos.AdminProducto
             SqlCommand cmd = null;
             try
             {
-                cmd = new SqlCommand("Categoria_Lista_Sp", Conexion.GetConnection())
+                cmd = new SqlCommand("Categoria_Lista_Sp", Conexion.ObtenerConexion())
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -41,7 +41,7 @@ namespace AccesoDatos.AdminProducto
             }
             finally
             {
-                Conexion.DisposeCommand(cmd);
+                //Conexion.DisposeCommand(cmd);
             }
             return dt;
         }

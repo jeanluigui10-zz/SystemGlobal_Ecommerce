@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminOrden\ClienteOrdenBl.cs" />
     <Compile Include="AdminProducto\CategoriaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminCliente\" />
-    <Folder Include="AdminOrden\" />
     <Folder Include="AdminTienda\" />
     <Folder Include="AdminUsuario\" />
   </ItemGroup>

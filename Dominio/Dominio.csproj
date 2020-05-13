@@ -45,6 +45,7 @@
     <Compile Include="Entidades\MetodoPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\CategoriaResultado.cs" />
+    <Compile Include="Result\OrdenHistoricoResultado.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

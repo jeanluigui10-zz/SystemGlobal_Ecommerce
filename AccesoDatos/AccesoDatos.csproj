@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminOrden\ClienteOrdenDao.cs" />
     <Compile Include="AdminProducto\CategoriaDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminCliente\" />
-    <Folder Include="AdminOrden\" />
     <Folder Include="AdminTienda\" />
     <Folder Include="AdminUsuario\" />
   </ItemGroup>
