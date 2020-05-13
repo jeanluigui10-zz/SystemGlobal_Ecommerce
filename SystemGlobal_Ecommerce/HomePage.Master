@@ -64,6 +64,7 @@
     <script type="text/javascript" src="/Template/js/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/Template/js/modernizr/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
+    <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
 
 
