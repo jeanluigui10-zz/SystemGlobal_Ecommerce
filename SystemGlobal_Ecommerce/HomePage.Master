@@ -101,12 +101,12 @@
 
            
 
+            if ($("#<%=hfDataCategoria.ClientID%>").val() != "") {
+                Fn_ListarCategoriaMaster($("#<%=hfDataCategoria.ClientID%>").val());
+        }
 
         });
 
-        if ($("#<%=hfDataCategoria.ClientID%>").val() != "") {
-            Fn_ListarCategoriaMaster($("#<%=hfDataCategoria.ClientID%>").val());
-        }
 
         function Fn_ListarCategoriaMaster(dataCategoria) {
             var objCategoria = dataCategoria;
@@ -717,7 +717,7 @@
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/addtocart.js"></script>  
 
-   
+  </form> 
     <!-- Listado de categoria master
 ============================================ -->
      
@@ -727,7 +727,7 @@
 	       {{/each}}
     </script>
 
-   </form>
+   
 </body>
      
 </html>
