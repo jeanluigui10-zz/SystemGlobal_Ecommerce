@@ -7,11 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace SystemGlobal_Ecommerce.Comercio.Ordenes
 {
-    public partial class Historial : System.Web.UI.Page
+    public partial class Historico : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
     }
 }

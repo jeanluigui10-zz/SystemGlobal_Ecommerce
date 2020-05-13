@@ -1,6 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Historial.aspx.cs" Inherits="SystemGlobal_Ecommerce.Comercio.Ordenes.Historial" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Historico.aspx.cs" Inherits="SystemGlobal_Ecommerce.Comercio.Ordenes.Historial" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="js/historico.js"></script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<div class="main-container container">
 		<ul class="breadcrumb">
@@ -30,4 +34,14 @@
 			</div>
 		</div>
 	</div>
+
+    <script type="text/x-handlebars-template" id="datatable-products">
+        {{# each items}}
+           <tr>
+			<td></td>
+
+           </tr>
+        {{/each}}
+    </script>
+
 </asp:Content>
