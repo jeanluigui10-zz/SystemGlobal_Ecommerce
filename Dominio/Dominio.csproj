@@ -133,6 +133,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\CategoriaResultado.cs" />
     <Compile Include="Result\Orden\HistoricoResultado.cs" />
+    <Compile Include="Result\ProductoResultado.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libreria\Libreria.csproj">
