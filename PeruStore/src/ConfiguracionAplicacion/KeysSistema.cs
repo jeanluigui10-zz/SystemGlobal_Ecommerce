@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 
-namespace PeruStore.src.app_code
+namespace PeruStore.src.ConfiguracionAplicacion
 {
-    public class Config
+    public class KeysSistema
     {
-        public static String LogoutRedirect = "~/private/security/login.aspx";
+        //public static String LogoutRedirect = "~/private/security/login.aspx";
         public static String UrlPageDefault { get { return WebConfigurationManager.AppSettings["UrlPageDefault"]; } }
 
         public static string DistributorPhysicalPath { get { return WebConfigurationManager.AppSettings["dpPath"]; } }

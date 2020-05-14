@@ -23,9 +23,9 @@ namespace InteligenciaNegocio.AdminOrden
 
         #region Metodos
 
-        public OrdenHistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
+        public HistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
         {
-            OrdenHistoricoResultado ordenHistoricoResultado = null;
+            HistoricoResultado ordenHistoricoResultado = null;
             try
             {
                 if(idComercio > 0 && idCliente > 0)

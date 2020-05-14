@@ -1,5 +1,5 @@
 ﻿using Libreria.General;
-using PeruStore.src.app_code;
+using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using Dominio.Result.Orden;
 using InteligenciaNegocio.AdminOrden;
@@ -17,7 +17,6 @@ namespace PeruStore.Comercio.Ordenes
             }
         }
 
-
         private void Cargar()
         {
             try
@@ -25,7 +24,7 @@ namespace PeruStore.Comercio.Ordenes
                 Int16 idComercio = 1;
                 Int32 idCliente = 1;
 
-                OrdenHistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.ObtenerHistorico(idComercio, idCliente);
+                HistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.ObtenerHistorico(idComercio, idCliente);
                 hfOrdenHistorico.Value = JsonConvert.SerializeObject(ordenHistoricoResultado);
 
             }

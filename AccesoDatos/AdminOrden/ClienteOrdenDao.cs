@@ -27,9 +27,9 @@ namespace AccesoDatos.AdminOrden
 
         #region Metodos
 
-        public OrdenHistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
+        public HistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
         {
-            OrdenHistoricoResultado ordenHistoricoResultado = null;
+            HistoricoResultado historicoResultado = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
                 try
@@ -40,10 +40,10 @@ namespace AccesoDatos.AdminOrden
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        ordenHistoricoResultado = new OrdenHistoricoResultado();
+                        historicoResultado = new HistoricoResultado();
                         while (sqlDataReader.Read())
                         {
-                            ordenHistoricoResultado.Datos.Add(new OrdenHistoricoDTO()
+                            historicoResultado.Datos.Add(new HistoricoDTO()
                             {
                                 IdOrden = Convert.ToInt32(sqlDataReader["IdOrden"]),
                                 Cantidad = Convert.ToInt32(sqlDataReader["TotalArticulos"]),
@@ -59,7 +59,7 @@ namespace AccesoDatos.AdminOrden
                     throw exception;
                 }
             }
-            return ordenHistoricoResultado;
+            return historicoResultado;
         }
 
 

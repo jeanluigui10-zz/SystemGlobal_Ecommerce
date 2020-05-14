@@ -9,7 +9,7 @@
 	<div class="main-container container contenedor-historico">
 		<ul class="breadcrumb">
 			<li><a href="/Comercio/Inicio.aspx"><i class="fa fa-home"></i></a></li>
-			<li><a href="/Comercio/Ordenes/Historial.aspx">Historial de Ordenes</a></li>
+			<li><a href="/Comercio/Ordenes/Historico.aspx">Historial de Ordenes</a></li>
 		</ul>
 		<div class="row">
 		     <div id="contenedor_mensaje"></div>
@@ -45,7 +45,7 @@
 			<td class="text-center">{{Estado}}</td>
 			<td class="text-center">{{FechaOrden}}</td>
 			<td class="text-right">{{TotalOrden}}</td>
-		    <td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="#" data-original-title="Ver Detalle"><i class="fa fa-eye"></i></a>
+		    <td class="text-center"><a class="btn btn-info" title="" data-toggle="tooltip" href="/Comercio/Ordenes/Informacion.aspx?o={{IdOrdenCifrado}}" data-original-title="Ver Detalle"><i class="fa fa-eye"></i></a>
            </tr>
         {{/each}}
     </script>
