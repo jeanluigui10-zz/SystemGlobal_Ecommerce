@@ -78,6 +78,7 @@
     <Compile Include="General\clsSendEmail.cs" />
     <Compile Include="General\clsUtilities.cs" />
     <Compile Include="General\Encryption.cs" />
+    <Compile Include="General\GeneralEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

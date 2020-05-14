@@ -48,7 +48,6 @@
     <link id="color_scheme" href="/Template/css/home2.css" rel="stylesheet"> 
     <link href="/Template/css/responsive.css" rel="stylesheet">
 
-    <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>
     <!-- Include Libs & Plugins
     ============================================ -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -64,7 +63,7 @@
     <script type="text/javascript" src="/Template/js/jquery-ui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/Template/js/modernizr/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
-    
+    <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/src/js/Base.js"></script>
    
 
@@ -379,12 +378,23 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="">
+                                                <li class="with-sub-menu hover">
                                                     <p class="close-menu"></p>
-                                                    <a href="#" class="clearfix">
+                                                    <a href="/Comercio/Inicio.aspx" class="clearfix">
                                                         <strong>Home</strong>
-                                                        <span class="label"></span>
+                                                        <span class="caret"></span>
                                                     </a>
+                                                    <div class="sub-menu" style="width: 40%; ">
+                                                        <div class="content" >
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <ul class="row-list">
+                                                                        <li><a class="subcategory_item" href="/Comercio/Ordenes/Historico.aspx">Historial de Ordenes</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -654,7 +664,7 @@
                         </div>
 
                         <div class="block_content">
-                            <div <%--method="post"--%> id="signup" <%--name="signup" --%>class="form-group form-inline signup send-mail">
+                            <div <%--method="post"--%> id="signup" <%--name="signup"--%> class="form-group form-inline signup send-mail">
                                 <div class="form-group">
                                     <div class="input-box">
                                         <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">

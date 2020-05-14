@@ -1,12 +1,9 @@
-﻿using Dominio.Result;
+﻿using Dominio.Result.Orden;
 using Libreria.AdminConexion;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace AccesoDatos.AdminOrden
 {
@@ -37,7 +34,7 @@ namespace AccesoDatos.AdminOrden
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand("Cliente_Orden_Historico_Sp", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    SqlCommand sqlCommand = new SqlCommand("Cliente_Orden_Historico_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
                     sqlCommand.Parameters.AddWithValue("@idComercio", idComercio);
                     sqlCommand.Parameters.AddWithValue("@idCliente", idCliente);
 
@@ -51,10 +48,16 @@ namespace AccesoDatos.AdminOrden
                                 IdOrden = Convert.ToInt32(sqlDataReader["IdOrden"]),
                                 Cantidad = Convert.ToInt32(sqlDataReader["TotalArticulos"]),
                                 Estado = Convert.ToString(sqlDataReader["OrdenEstado"]),
+<<<<<<< HEAD
                                 FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"]),
                                 TotalOrden = Convert.ToString(sqlDataReader["Total"]),
 
                             }); 
+=======
+                                FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"], CultureInfo.InvariantCulture),
+                                TotalOrden = Convert.ToString(sqlDataReader["Total"], CultureInfo.InvariantCulture),
+                            }); ;
+>>>>>>> ce9f7a175a46df4b30c3aaa44242a83fab8343ab
                         }
                     }
                 }

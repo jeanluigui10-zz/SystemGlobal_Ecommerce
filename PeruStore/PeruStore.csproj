@@ -145,7 +145,13 @@
     <Content Include="Chat\src\img\imgUserCliente.png" />
     <Content Include="Chat\src\img\user1.jpg" />
     <Content Include="Chat\src\js\treeTableJS.js" />
+<<<<<<< HEAD
     <Content Include="Comercio\DetalleProducto.aspx" />
+=======
+    <Content Include="Comercio\Ordenes\css\historico.css" />
+    <Content Include="Comercio\Ordenes\Historico.aspx" />
+    <Content Include="Comercio\Ordenes\js\historico.js" />
+>>>>>>> ce9f7a175a46df4b30c3aaa44242a83fab8343ab
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
@@ -2007,12 +2013,21 @@
     <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.designer.cs">
       <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Comercio\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Comercio\DetalleProducto.aspx.designer.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
+=======
+    <Compile Include="Comercio\Ordenes\Historico.aspx.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Ordenes\Historico.aspx.designer.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+>>>>>>> ce9f7a175a46df4b30c3aaa44242a83fab8343ab
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2063,6 +2078,9 @@
     <Compile Include="src\app_code\BaseSession.cs" />
     <Compile Include="src\app_code\Config.cs" />
     <Compile Include="src\app_code\HtmlSanitizer.cs" />
+    <Compile Include="src\app_code\PaginaBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="src\app_code\SerializableClass.cs" />
     <Compile Include="src\app_code\ViewMaker.cs" />
     <Compile Include="Startup.cs" />

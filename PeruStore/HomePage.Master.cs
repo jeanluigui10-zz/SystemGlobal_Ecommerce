@@ -23,7 +23,7 @@ namespace PeruStore
             List<srCategoria> lst = new List<srCategoria>();
 
             DataTable dt = CategoriaBL.Instance.Categoria_Lista(ref objRespuesta);
-            if (objRespuesta.Errors.Count == 0)
+            if (objRespuesta.TipoMensaje == EnumTipoMensaje.Exito)
             {
                 if (dt != null)
                 {
@@ -38,7 +38,7 @@ namespace PeruStore
                 }
 
             }
-            if (objRespuesta.Errors.Count <= 0)
+            if (objRespuesta.TipoMensaje == EnumTipoMensaje.Exito)
             {
                 if (lst != null)
                 {
