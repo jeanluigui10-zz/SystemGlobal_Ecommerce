@@ -1,4 +1,5 @@
-﻿using Libreria.AdminConexion;
+﻿using Dominio.Result;
+using Libreria.AdminConexion;
 using Libreria.Base;
 using System;
 using System.Collections.Generic;
@@ -10,40 +11,51 @@ namespace AccesoDatos.AdminProducto
     public class CategoriaDao
     {
         #region Singleton
-        private static CategoriaDao instance = null;
-        public static CategoriaDao Instance
+        private static CategoriaDao _instancia = null;
+        public static CategoriaDao instancia
         {
             get
             {
-                if (instance == null)
-                    instance = new CategoriaDao();
-                return instance;
+                if (_instancia == null)
+                    _instancia = new CategoriaDao();
+                return _instancia;
             }
         }
         #endregion
 
-        public DataTable Categoria_Lista(ref MetodoRespuesta objRespuesta)
+        #region Metodos
+        public CategoriaResultado Categoria_ObtenerLista(ref MetodoRespuesta metodoRespuesta, Int32 IdComercio)
         {
-            DataTable dt = new DataTable();
-            SqlCommand cmd = null;
-            try
+            CategoriaResultado categoriaResultado = null;
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
-                cmd = new SqlCommand("Categoria_Lista_Sp", Conexion.ObtenerConexion())
+                try
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                dt.Load(cmd.ExecuteReader());
+                    SqlCommand sqlCommand = new SqlCommand("Categoria_Lista_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    sqlCommand.Parameters.AddWithValue("@IdComercio", IdComercio);
+
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        categoriaResultado = new CategoriaResultado();
+                        while (sqlDataReader.Read())
+                        {
+                            categoriaResultado.Datos.Add(new CategoriaDTO()
+                            {
+                                IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
+                                CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"])
+
+                            }); 
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    metodoRespuesta.Errors.Add(new MetodoRespuesta.ListError(exception, "Ocurrio un error al cargar la data."));
+                    throw exception;
+                }
             }
-            catch (Exception ex)
-            {
-                dt = null;
-                objRespuesta.Errors.Add(new MetodoRespuesta.ListError(ex, "An error occurred  while loading data"));
-            }
-            finally
-            {
-                //Conexion.DisposeCommand(cmd);
-            }
-            return dt;
+            return categoriaResultado;
         }
+        #endregion
     }
 }

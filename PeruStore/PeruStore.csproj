@@ -2055,7 +2055,7 @@
     <Compile Include="src\app_code\BaseSession.cs" />
     <Compile Include="src\app_code\Config.cs" />
     <Compile Include="src\app_code\HtmlSanitizer.cs" />
-    <Compile Include="src\app_code\SerializableClass.cs" />
+    <Compile Include="src\app_code\ClaseSerializable.cs" />
     <Compile Include="src\app_code\ViewMaker.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
