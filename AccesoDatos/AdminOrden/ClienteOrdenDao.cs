@@ -48,16 +48,10 @@ namespace AccesoDatos.AdminOrden
                                 IdOrden = Convert.ToInt32(sqlDataReader["IdOrden"]),
                                 Cantidad = Convert.ToInt32(sqlDataReader["TotalArticulos"]),
                                 Estado = Convert.ToString(sqlDataReader["OrdenEstado"]),
-<<<<<<< HEAD
                                 FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"]),
                                 TotalOrden = Convert.ToString(sqlDataReader["Total"]),
 
                             }); 
-=======
-                                FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"], CultureInfo.InvariantCulture),
-                                TotalOrden = Convert.ToString(sqlDataReader["Total"], CultureInfo.InvariantCulture),
-                            }); ;
->>>>>>> ce9f7a175a46df4b30c3aaa44242a83fab8343ab
                         }
                     }
                 }

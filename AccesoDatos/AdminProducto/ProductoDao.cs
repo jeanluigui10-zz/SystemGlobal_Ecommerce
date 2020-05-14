@@ -26,7 +26,7 @@ namespace AccesoDatos.AdminProducto
 
         #region Metodos
 
-        public ProductoResultado ObtenerPrducto_PorId(Int32 productId)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId)
         {
             ProductoResultado productoResultado = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())

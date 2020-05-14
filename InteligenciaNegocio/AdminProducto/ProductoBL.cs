@@ -23,14 +23,14 @@ namespace InteligenciaNegocio.AdminProducto
 
         #region Metodos
 
-        public ProductoResultado ObtenerPrducto_PorId(Int32 productId)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId)
         {
             ProductoResultado productoResultado = null;
             try
             {
                 if(productId > 0)
                 {
-                    productoResultado = ProductoDao.Instancia.ObtenerPrducto_PorId(productId);
+                    productoResultado = ProductoDao.Instancia.ObtenerPrductoPorId(productId);
                 }
             }
             catch (Exception exception)
