@@ -54,7 +54,7 @@ namespace AccesoDatos.AdminOrden
                                 FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"]),
                                 TotalOrden = Convert.ToString(sqlDataReader["Total"]),
 
-                            }); ;
+                            }); 
                         }
                     }
                 }

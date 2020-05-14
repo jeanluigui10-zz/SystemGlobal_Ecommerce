@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdminOrden\ClienteOrdenDao.cs" />
     <Compile Include="AdminProducto\CategoriaDao.cs" />
+    <Compile Include="AdminProducto\ProductoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
