@@ -1416,7 +1416,7 @@ namespace Libreria.General
             }
             catch (Exception ex)
             {
-                Base.Errors.Add(new MetodoRespuesta.ListError {Error=ex,MessageClient="No email found."});
+                //Base.Errors.Add(new MetodoRespuesta.ListError {Error=ex,MessageClient="No email found."});
                 
                 return false;
             }
@@ -1447,7 +1447,7 @@ namespace Libreria.General
             catch (Exception ex)
             {
                 //clsUtilities.RegisterFailDomain("", "", "LogEMAIL - 2", "Message" + ex.Message.ToString());
-                Base.Errors.Add(new MetodoRespuesta.ListError(ex, "Error in database"));
+                //Base.Errors.Add(new MetodoRespuesta.ListError(ex, "Error in database"));
             }
             finally
             {
@@ -1515,7 +1515,7 @@ namespace Libreria.General
             catch (Exception ex)
             {
                 obj = null;
-                Base.Errors.Add(new MetodoRespuesta.ListError(ex, ex.Message));
+                //Base.Errors.Add(new MetodoRespuesta.ListError(ex, ex.Message));
             }
             finally
             {
@@ -1553,7 +1553,7 @@ namespace Libreria.General
             catch (Exception ex)
             {
                 obj = null;
-                Base.Errors.Add(new MetodoRespuesta.ListError(ex, ex.Message));
+                //Base.Errors.Add(new MetodoRespuesta.ListError(ex, ex.Message));
             }
             finally
             {

@@ -18,16 +18,16 @@ namespace PeruStore.src.app_code
         }
          
         */
-        public static String SsTheme
-        {
-            get { return clsExtension.GetSession<String>("User_Theme"); }
-            set { HttpContext.Current.Session["User_Theme"] = value; }
-        }
-        public static DataTable SsCommission
-        {
-            get { return clsExtension.GetSession<DataTable>("dtCommission"); }
-            set { HttpContext.Current.Session["dtCommission"] = value; }
-        }
+        //public static String SsTheme
+        //{
+        //    get { return clsExtension.GetSession<String>("User_Theme"); }
+        //    set { HttpContext.Current.Session["User_Theme"] = value; }
+        //}
+        //public static DataTable SsCommission
+        //{
+        //    get { return clsExtension.GetSession<DataTable>("dtCommission"); }
+        //    set { HttpContext.Current.Session["dtCommission"] = value; }
+        //}
 
         //public static Usuarios SsUser
         //{
@@ -35,23 +35,24 @@ namespace PeruStore.src.app_code
         //    set { HttpContext.Current.Session["User_xCorporate"] = value; }
         //}
 
-        public static String SsCaptchaText
-        {
-            get { return clsExtension.GetSession<String>("CaptchaImageText_xCorporate"); }
-            set { HttpContext.Current.Session["CaptchaImageText_xCorporate"] = value; }
-        }
+
+        //public static String SsCaptchaText
+        //{
+        //    get { return clsExtension.GetSession<String>("CaptchaImageText_xCorporate"); }
+        //    set { HttpContext.Current.Session["CaptchaImageText_xCorporate"] = value; }
+        //}
         //public static OrderHeader SsOrderxCore
         //{
         //    get { return clsExtension.GetSession<OrderHeader>("Order") ?? new OrderHeader(); }
         //    set { HttpContext.Current.Session["Order"] = value; }
         //}
-        private static T RedirectUser<T>()
-        {
-            Logout();
-            HttpContext.Current.Response.Redirect(Config.LogoutRedirect + "?back_url=" + HttpContext.Current.Server.UrlEncode(HttpContext.Current.Request.Url.AbsoluteUri));
-            return default(T);
-        }
-      
+        //private static T RedirectUser<T>()
+        //{
+        //    Logout();
+        //    HttpContext.Current.Response.Redirect(Config.LogoutRedirect + "?back_url=" + HttpContext.Current.Server.UrlEncode(HttpContext.Current.Request.Url.AbsoluteUri));
+        //    return default(T);
+        //}
+
         //public static clsOrdersHeader SsOrderPlacexCorporate
         //{
         //    get { return clsExtension.GetSession<clsOrdersHeader>("Order_xCorporate") ?? RedirectOrderPlace<clsOrdersHeader>(); }
@@ -96,32 +97,32 @@ namespace PeruStore.src.app_code
         //    get { return clsExtension.GetSession<clsOrdersHeader>("Market") ?? new clsOrdersHeader(); }
         //    set { HttpContext.Current.Session["Market"] = value; }
         //}
-        public static void Logout()
-        {
-            HttpContext.Current.Session.Clear();
-            HttpContext.Current.Session.RemoveAll();
-            HttpContext.Current.Session.Abandon();
-        }
-        public static String SsCulture
-        {
-            get { return  GetCulture() ; }
-            //get { return clsExtension.GetSession<String>("Culture_xCorp") ?? GetCulture() ; }
-            set { HttpContext.Current.Session["Culture_xCorp"] = value; }
-        }
-        private static String GetCulture()
-        {
-            String cult = "en-US";
-            try
-            {
-              cult= CultureInfo.CreateSpecificCulture(HttpContext.Current.Request.UserLanguages[0].ToString()).ToString();
-            }
-            catch (Exception)
-            {
-                cult = "en-US";
-                
-            }
-            return cult;
-        }
+        //public static void Logout()
+        //{
+        //    HttpContext.Current.Session.Clear();
+        //    HttpContext.Current.Session.RemoveAll();
+        //    HttpContext.Current.Session.Abandon();
+        //}
+        //public static String SsCulture
+        //{
+        //    get { return  GetCulture() ; }
+        //    //get { return clsExtension.GetSession<String>("Culture_xCorp") ?? GetCulture() ; }
+        //    set { HttpContext.Current.Session["Culture_xCorp"] = value; }
+        //}
+        //private static String GetCulture()
+        //{
+        //    String cult = "en-US";
+        //    try
+        //    {
+        //      cult= CultureInfo.CreateSpecificCulture(HttpContext.Current.Request.UserLanguages[0].ToString()).ToString();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        cult = "en-US";
+
+        //    }
+        //    return cult;
+        //}
         //public static List<srEmailTemplate> SsListTemplate
         //{
         //    get { return clsExtension.GetSession<List<srEmailTemplate>>("TemplateList") ?? new List<srEmailTemplate>(); }
@@ -147,35 +148,35 @@ namespace PeruStore.src.app_code
         //}
 
 
-        public static Hashtable SsCsutomTranslation
-        {
-            get
-            {
-                if (clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporate") == null)
-                    HttpContext.Current.Session["CustomTranslationTerms_xCorporate"] = new Hashtable();
+        //public static Hashtable SsCsutomTranslation
+        //{
+        //    get
+        //    {
+        //        if (clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporate") == null)
+        //            HttpContext.Current.Session["CustomTranslationTerms_xCorporate"] = new Hashtable();
 
-                return clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporate");
-            }
-            set { HttpContext.Current.Session["CustomTranslationTerms_xCorporate"] = value; }
-        }
+        //        return clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporate");
+        //    }
+        //    set { HttpContext.Current.Session["CustomTranslationTerms_xCorporate"] = value; }
+        //}
 
-        public static Hashtable SsCsutomTranslationMessages
-        {
-            get
-            {
-                if (clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporateMessages") == null)
-                    HttpContext.Current.Session["CustomTranslationTerms_xCorporateMessages"] = new Hashtable();
+        //public static Hashtable SsCsutomTranslationMessages
+        //{
+        //    get
+        //    {
+        //        if (clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporateMessages") == null)
+        //            HttpContext.Current.Session["CustomTranslationTerms_xCorporateMessages"] = new Hashtable();
 
-                return clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporateMessages");
-            }
-            set { HttpContext.Current.Session["CustomTranslationTerms_xCorporateMessages"] = value; }
-        }
+        //        return clsExtension.GetSession<Hashtable>("CustomTranslationTerms_xCorporateMessages");
+        //    }
+        //    set { HttpContext.Current.Session["CustomTranslationTerms_xCorporateMessages"] = value; }
+        //}
 
-        public static String SsCultureId
-        {
-            get { return clsExtension.GetSession<String>("CultureId"); }
-            set { HttpContext.Current.Session["CultureId"] = value; }
-        }
-      
+        //public static String SsCultureId
+        //{
+        //    get { return clsExtension.GetSession<String>("CultureId"); }
+        //    set { HttpContext.Current.Session["CultureId"] = value; }
+        //}
+
     }
 }

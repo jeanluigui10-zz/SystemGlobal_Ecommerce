@@ -134,7 +134,7 @@ namespace xOrders.src.app_code
                 List<MetodoPago> lstMerchants = new List<MetodoPago>();
                 //DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
                 DataTable dt = null;
-                if (entity.Errors.Count == 0)
+                if (entity.TipoMensaje == Libreria.General.EnumTipoMensaje.Exito)
                 {
                     if (dt != null)
                     {
@@ -241,7 +241,7 @@ namespace xOrders.src.app_code
             List<MetodoPago> lstMerchants = new List<MetodoPago>();
             //DataTable dt = MerchantBL.Instance.MethodPayment_GetList(ref entity);
             DataTable dt = null;
-            if (entity.Errors.Count == 0)
+            if (entity.TipoMensaje == Libreria.General.EnumTipoMensaje.Exito)
             {
                 if (dt != null)
                 {
@@ -259,7 +259,7 @@ namespace xOrders.src.app_code
 
             }
             bool isFirst = true;
-            if (entity.Errors.Count <= 0 && lstMerchants != null && lstMerchants.Count > 0)
+            if (entity.TipoMensaje == Libreria.General.EnumTipoMensaje.Exito && lstMerchants != null && lstMerchants.Count > 0)
             {
                 foreach (MetodoPago item in lstMerchants)
                 {

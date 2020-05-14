@@ -37,7 +37,7 @@ namespace AccesoDatos.AdminProducto
             catch (Exception ex)
             {
                 dt = null;
-                objRespuesta.Errors.Add(new MetodoRespuesta.ListError(ex, "An error occurred  while loading data"));
+                //objRespuesta.Errors.Add(new MetodoRespuesta.ListError(ex, "An error occurred  while loading data"));
             }
             finally
             {
