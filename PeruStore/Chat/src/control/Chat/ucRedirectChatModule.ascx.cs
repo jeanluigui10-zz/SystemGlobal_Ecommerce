@@ -8,9 +8,9 @@ namespace PeruStore.Chat.src.control.Chat
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            String paramId = HttpUtility.UrlEncode(Encryption.Encrypt(hfUserId.Value.ToString()));
-            String paramAppId = HttpUtility.UrlEncode(Encryption.Encrypt(xConfig.ChatModuleId));
-            String paramRolId = HttpUtility.UrlEncode(Encryption.Encrypt("0"));
+            String paramId = HttpUtility.UrlEncode(Encriptador.Encriptar(hfUserId.Value.ToString()));
+            String paramAppId = HttpUtility.UrlEncode(Encriptador.Encriptar(xConfig.ChatModuleId));
+            String paramRolId = HttpUtility.UrlEncode(Encriptador.Encriptar("0"));
 
             panelChat.Attributes.Add("src", String.Format(xConfig.RedirectChatModule, paramId, paramAppId, paramRolId));
         }

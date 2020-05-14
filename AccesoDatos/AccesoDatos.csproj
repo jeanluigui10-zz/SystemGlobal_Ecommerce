@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdminOrden\ClienteOrdenDao.cs" />
     <Compile Include="AdminProducto\CategoriaDao.cs" />
+    <Compile Include="AdminProducto\ProductoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +60,9 @@
     <Folder Include="AdminCliente\" />
     <Folder Include="AdminTienda\" />
     <Folder Include="AdminUsuario\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

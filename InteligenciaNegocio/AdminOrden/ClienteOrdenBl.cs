@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dominio.Result;
-using AccesoDatos.AdminOrden;
+﻿using AccesoDatos.AdminOrden;
+using Dominio.Result.Orden;
+using System;
 
 namespace InteligenciaNegocio.AdminOrden
 {
@@ -27,9 +23,9 @@ namespace InteligenciaNegocio.AdminOrden
 
         #region Metodos
 
-        public OrdenHistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
+        public HistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
         {
-            OrdenHistoricoResultado ordenHistoricoResultado = null;
+            HistoricoResultado ordenHistoricoResultado = null;
             try
             {
                 if(idComercio > 0 && idCliente > 0)

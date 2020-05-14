@@ -2079,7 +2079,14 @@
     <Compile Include="src\ConfiguracionAplicacion\PaginaBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="src\app_code\BaseSession.cs" />
+    <Compile Include="src\app_code\Config.cs" />
+    <Compile Include="src\app_code\HtmlSanitizer.cs" />
     <Compile Include="src\app_code\ClaseSerializable.cs" />
+    <Compile Include="src\app_code\ViewMaker.cs" />
+=======
+>>>>>>> 004eea454aac8ddc1f5ef89261250eb235384fa5
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

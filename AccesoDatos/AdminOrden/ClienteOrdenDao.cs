@@ -1,12 +1,9 @@
-﻿using Dominio.Result;
+﻿using Dominio.Result.Orden;
 using Libreria.AdminConexion;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace AccesoDatos.AdminOrden
 {
@@ -30,23 +27,23 @@ namespace AccesoDatos.AdminOrden
 
         #region Metodos
 
-        public OrdenHistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
+        public HistoricoResultado ObtenerHistorico(Int16 idComercio, Int32 idCliente)
         {
-            OrdenHistoricoResultado ordenHistoricoResultado = null;
+            HistoricoResultado historicoResultado = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand("Cliente_Orden_Historico_Sp", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    SqlCommand sqlCommand = new SqlCommand("Cliente_Orden_Historico_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
                     sqlCommand.Parameters.AddWithValue("@idComercio", idComercio);
                     sqlCommand.Parameters.AddWithValue("@idCliente", idCliente);
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        ordenHistoricoResultado = new OrdenHistoricoResultado();
+                        historicoResultado = new HistoricoResultado();
                         while (sqlDataReader.Read())
                         {
-                            ordenHistoricoResultado.Datos.Add(new OrdenHistoricoDTO()
+                            historicoResultado.Datos.Add(new HistoricoDTO()
                             {
                                 IdOrden = Convert.ToInt32(sqlDataReader["IdOrden"]),
                                 Cantidad = Convert.ToInt32(sqlDataReader["TotalArticulos"]),
@@ -54,7 +51,7 @@ namespace AccesoDatos.AdminOrden
                                 FechaOrden = Convert.ToString(sqlDataReader["FechaOrden"]),
                                 TotalOrden = Convert.ToString(sqlDataReader["Total"]),
 
-                            }); ;
+                            }); 
                         }
                     }
                 }
@@ -63,7 +60,7 @@ namespace AccesoDatos.AdminOrden
                     throw exception;
                 }
             }
-            return ordenHistoricoResultado;
+            return historicoResultado;
         }
 
 
