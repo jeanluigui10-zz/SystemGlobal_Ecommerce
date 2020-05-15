@@ -146,6 +146,7 @@
     <Content Include="Chat\src\img\user1.jpg" />
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="Comercio\DetalleProducto.aspx" />
+    <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\Historico.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
@@ -2016,7 +2017,7 @@
     </Compile>
     <Compile Include="Comercio\DetalleProducto.aspx.designer.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Comercio\Ordenes\Historico.aspx.cs">
       <DependentUpon>Historico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2088,6 +2089,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Comercio\css\" />
     <Folder Include="Controles\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>

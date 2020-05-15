@@ -9,14 +9,14 @@ namespace Libreria.Base
     {
         public MetodoRespuesta()
         {
-            TipoMensaje = EnumTipoMensaje.Exito;
+            CodigoRespuesta = EnumTipoMensaje.Exito;
         }
         public MetodoRespuesta(EnumTipoMensaje enumTipoMensaje, String mensaje = "")
         {
-            TipoMensaje = EnumTipoMensaje.Exito;
+            CodigoRespuesta = enumTipoMensaje;
             Mensaje = mensaje;
         }
-        public EnumTipoMensaje TipoMensaje { get; set; }
+        public EnumTipoMensaje CodigoRespuesta { get; set; }
         public String Mensaje { get; set; }
         public Object Datos { get; set; }
     }

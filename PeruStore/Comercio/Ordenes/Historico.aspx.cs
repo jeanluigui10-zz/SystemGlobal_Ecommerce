@@ -17,7 +17,6 @@ namespace PeruStore.Comercio.Ordenes
             }
         }
 
-
         private void Cargar()
         {
             try
