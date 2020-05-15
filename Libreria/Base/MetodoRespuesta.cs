@@ -13,7 +13,7 @@ namespace Libreria.Base
         }
         public MetodoRespuesta(EnumTipoMensaje enumTipoMensaje, String mensaje = "")
         {
-            TipoMensaje = EnumTipoMensaje.Exito;
+            TipoMensaje = enumTipoMensaje;
             Mensaje = mensaje;
         }
         public EnumTipoMensaje TipoMensaje { get; set; }
