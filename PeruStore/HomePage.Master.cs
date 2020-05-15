@@ -15,6 +15,8 @@ namespace PeruStore
         }
                 //    hfDataCategoria.Value = sJSON.ToString();
                 //}
+            if (objRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
+            if (objRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
      
     }
 }

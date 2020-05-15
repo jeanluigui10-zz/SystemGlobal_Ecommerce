@@ -13,7 +13,11 @@ namespace Libreria.Base
         }
         public MetodoRespuesta(EnumTipoMensaje enumTipoMensaje, String mensaje = "")
         {
+<<<<<<< HEAD
+            TipoMensaje = enumTipoMensaje;
+=======
             CodigoRespuesta = enumTipoMensaje;
+>>>>>>> 2033441f36413381f64fae56558a18c91f182bcf
             Mensaje = mensaje;
         }
         public EnumTipoMensaje CodigoRespuesta { get; set; }

@@ -1,17 +1,18 @@
 ﻿using Dominio.Result;
 using InteligenciaNegocio.AdminProducto;
+using Libreria.Base;
+using Libreria.General;
+using Newtonsoft.Json;
+using PeruStore.src.app_code;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace PeruStore.Comercio
 {
-    public partial class DetalleProducto : System.Web.UI.Page
+    public partial class DetalleProducto : PaginaBase
     {
-        public Int32 ViewId {
+        public Int32 ViewId
+        {
             get { return ViewState["ID"] != null ? (int)ViewState["ID"] : default; }
             set { ViewState["ID"] = value; }
         }
@@ -23,12 +24,40 @@ namespace PeruStore.Comercio
             }
         }
 
-        private void MostrarProductoPorId() {
-
-            Int32 _prodid = Convert.ToInt32(Request.QueryString["prodid"]);
-            //ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId();
-
-
+        private void MostrarProductoPorId()
+        {
+            try
+            {
+                MetodoRespuesta _respusta = new MetodoRespuesta();
+                String _prodid = Convert.ToString(Request.QueryString["prodid"]);
+                if (Int32.TryParse(_prodid, out Int32 id) && id > 0)
+                {
+                    ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId(id, ref _respusta);
+                    if (_respusta.CodigoRespuesta == EnumTipoMensaje.Exito) 
+                    {
+                        if (_product != null)
+                        {
+                            _hfProduct.Value = JsonConvert.SerializeObject(_product);
+                        }
+                        else
+                        {
+                            Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un problema al cargar el Detalle de Producto.");
+                        }
+                    }
+                    else
+                    {
+                        Mensaje(EnumTipoMensaje.Informacion, _respusta.Mensaje);
+                    }
+                }           
+                else
+                {
+                    Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
+            }
         }
     }
 }

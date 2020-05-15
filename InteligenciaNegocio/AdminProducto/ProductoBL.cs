@@ -1,5 +1,7 @@
 ﻿using AccesoDatos.AdminProducto;
 using Dominio.Result;
+using Libreria.Base;
+using Libreria.General;
 using System;
 
 namespace InteligenciaNegocio.AdminProducto
@@ -23,19 +25,23 @@ namespace InteligenciaNegocio.AdminProducto
 
         #region Metodos
 
-        public ProductoResultado ObtenerPrductoPorId(Int32 productId)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
             try
             {
                 if(productId > 0)
                 {
-                    productoResultado = ProductoDao.Instancia.ObtenerPrductoPorId(productId);
+                    productoResultado = ProductoDao.Instancia.ObtenerPrductoPorId(productId, ref respuesta);
+                }
+                else
+                {
+                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, "El id del producto no puede ser 0");
                 }
             }
             catch (Exception exception)
             {
-                throw exception;
+                respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
             }
             return productoResultado;
         }

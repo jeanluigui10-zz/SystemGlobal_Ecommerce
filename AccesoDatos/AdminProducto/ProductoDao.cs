@@ -1,5 +1,7 @@
 ﻿using Dominio.Result;
 using Libreria.AdminConexion;
+using Libreria.Base;
+using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,7 +28,7 @@ namespace AccesoDatos.AdminProducto
 
         #region Metodos
 
-        public ProductoResultado ObtenerPrductoPorId(Int32 productId)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
@@ -62,7 +64,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    throw exception;
+                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
                 }
             }
             return productoResultado;
