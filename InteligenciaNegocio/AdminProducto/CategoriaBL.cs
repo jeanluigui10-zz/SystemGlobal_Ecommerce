@@ -1,5 +1,7 @@
 ﻿using AccesoDatos.AdminProducto;
+using Dominio.Result;
 using Libreria.Base;
+using Libreria.General;
 using System;
 using System.Data;
 
@@ -8,33 +10,36 @@ namespace InteligenciaNegocio.AdminProducto
     public class CategoriaBL
     {
         #region Singleton
-        private static CategoriaBL instance = null;
-        public static CategoriaBL Instance
+        private static CategoriaBL _instancia = null;
+        public static CategoriaBL instancia
         {
             get
             {
-                if (instance == null)
-                    instance = new CategoriaBL();
-                return instance;
+                if (_instancia == null)
+                    _instancia = new CategoriaBL();
+                return _instancia;
             }
         }
         #endregion
 
-        public DataTable Categoria_Lista(ref MetodoRespuesta objRespuesta)
+        #region Metodos
+        public CategoriaResultado Categoria_ObtenerLista(ref MetodoRespuesta metodoRespuesta, Int32 IdComercio)
         {
+            CategoriaResultado categoriaResultado = null;
             try
             {
-                objRespuesta = new MetodoRespuesta();
-                DataTable dt = null;
-                dt = CategoriaDao.Instance.Categoria_Lista(ref objRespuesta);
-                return dt;
+                if (IdComercio > 0)
+                {
+                    categoriaResultado = CategoriaDao.instancia.Categoria_ObtenerLista(ref metodoRespuesta, IdComercio);
+                }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-
-                throw ex;
+                metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                throw exception;
             }
-            
+            return categoriaResultado;
         }
+        #endregion
     }
 }

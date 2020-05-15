@@ -66,25 +66,6 @@
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/src/js/Base.js"></script>
    
-
-     <!-- DataTables -->
-        <%--<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>--%>
-        <!-- bootstrap datepicker -->
-      
-        <!-- FastClick -->
-        <%--<script src="plugins/fastclick/fastclick.js"></script>
-        <script src="src/handlebars/handlebars-v2.0.0.min.js"></script>
-        <script src="plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-        <script src="plugins/magnific-popup/magnific-popup.js"></script>
-        <script src="plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
-        <script src="src/js/bootbox.js"></script>
-            
-        <script src="plugins/ValidationEngine/jquery.validationEngine.js"></script>
-        <script src="plugins/ValidationEngine/languages/jquery.validationEngine-en.js"></script>
-        <link href="src/css/validationEngine.jquery.css" rel="stylesheet" />
-        
-        <script src="src/js/Base.js"></script>--%>
      <!-- Google web fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' rel='stylesheet' type='text/css'>
@@ -94,40 +75,13 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <script type="text/javascript">
-        $(function () {
-
-           
-
-            if ($("#<%=hfDataCategoria.ClientID%>").val() != "") {
-                Fn_ListarCategoriaMaster($("#<%=hfDataCategoria.ClientID%>").val());
-        }
-
-        });
-
-
-        function Fn_ListarCategoriaMaster(dataCategoria) {
-            var objCategoria = dataCategoria;
-            try {
-                var objCategory = $.parseJSON(objCategoria);
-                var object = {};
-                object.request = objCategory;
-                var item = Fn_CargarTemplate("datatable-cboCategoria", object);
-                $("#cboCategoria").html(item);
-            }
-            catch (e) {
-                Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-            }
-        }
-
-    </script>
-
+   
 
 </head>
 
 <body class="common-home res layout-2">
     <form id="frmHmeMaster" runat="server">
-        <asp:HiddenField runat="server" ID="hfDataCategoria" />
+        
     
 
     <div id="wrapper" class="wrapper-fluid banners-effect-7">
@@ -193,7 +147,6 @@
                                 <div id="search0" class="search input-group form-group">
                                     <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
                                         <select class="no-border" name="category_id" id="cboCategoria">
-                                            <option value="0">All Categories</option>
                                         </select>
                                     </div>
 
@@ -727,15 +680,6 @@
     <script type="text/javascript" src="/Template/js/themejs/addtocart.js"></script>  
 
   </form> 
-    <!-- Listado de categoria master
-============================================ -->
-     
-     <script type="text/x-handlebars-template" id="datatable-cboCategoria">
-	       {{# each request}}
-                <option value="{{IdCategoria}}">{{CategoriaNombre}}</option>
-	       {{/each}}
-    </script>
-
    
 </body>
      
