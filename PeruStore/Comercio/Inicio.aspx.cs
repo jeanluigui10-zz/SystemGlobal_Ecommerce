@@ -1,12 +1,14 @@
 ﻿using Dominio.Result;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
+using Libreria.General;
+using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Web.Script.Serialization;
 
 namespace PeruStore.Comercio
 {
-    public partial class Inicio : System.Web.UI.Page
+    public partial class Inicio : PaginaBase
     {
         public int vsId
         {
@@ -40,13 +42,15 @@ namespace PeruStore.Comercio
         }
         public void Cargar_Categoria()
         {
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
             if (vsId > 0) {
-                MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
-                CategoriaResultado categoriaResultado = new CategoriaResultado();
                 try
                 {
+                   
+                    CategoriaResultado categoriaResultado = new CategoriaResultado();
+
                     categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, vsId);
-                    if (metodoRespuesta.Errors.Count == 0)
+                    if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
                     {
                         if (categoriaResultado != null)
                         {
@@ -58,7 +62,7 @@ namespace PeruStore.Comercio
                 }
                 catch (Exception exception)
                 {
-                    metodoRespuesta.Errors.Add(new MetodoRespuesta.ListError(exception, "Ocurrio un error al cargar la data."));
+                    Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un problema al cargar la información.");
                     throw exception;
                 }
             }

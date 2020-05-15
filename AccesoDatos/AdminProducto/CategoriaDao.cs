@@ -1,6 +1,7 @@
 ﻿using Dominio.Result;
 using Libreria.AdminConexion;
 using Libreria.Base;
+using Libreria.General;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,7 +51,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    metodoRespuesta.Errors.Add(new MetodoRespuesta.ListError(exception, "Ocurrio un error al cargar la data."));
+                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
                     throw exception;
                 }
             }
