@@ -31,5 +31,7 @@ namespace Dominio.Result.Orden
         public String FechaOrden { get; set; }
         public String TotalOrden { get; set; }
 
+
+
     }
 }
