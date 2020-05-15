@@ -1,6 +1,7 @@
 ﻿using AccesoDatos.AdminProducto;
 using Dominio.Result;
 using Libreria.Base;
+using Libreria.General;
 using System;
 using System.Data;
 
@@ -27,13 +28,14 @@ namespace InteligenciaNegocio.AdminProducto
             CategoriaResultado categoriaResultado = null;
             try
             {
-                if (IdComercio > 0) {
+                if (IdComercio > 0)
+                {
                     categoriaResultado = CategoriaDao.instancia.Categoria_ObtenerLista(ref metodoRespuesta, IdComercio);
                 }
             }
             catch (Exception exception)
             {
-                metodoRespuesta.Errors.Add(new MetodoRespuesta.ListError(exception, "Ocurrio un error al cargar la data."));
+                metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
                 throw exception;
             }
             return categoriaResultado;
