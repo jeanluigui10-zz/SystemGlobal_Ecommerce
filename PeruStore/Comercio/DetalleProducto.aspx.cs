@@ -3,7 +3,7 @@ using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
 using Newtonsoft.Json;
-using PeruStore.src.app_code;
+using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Web.UI;
 
