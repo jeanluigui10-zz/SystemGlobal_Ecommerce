@@ -1,9 +1,4 @@
-﻿using InteligenciaNegocio.AdminProducto;
-using Libreria.Base;
-using Libreria.General;
-using System;
-using System.Data;
-using System.Web.Script.Serialization;
+﻿using System;
 
 namespace PeruStore
 {
@@ -13,10 +8,5 @@ namespace PeruStore
         {
           
         }
-                //    hfDataCategoria.Value = sJSON.ToString();
-                //}
-            if (objRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
-            if (objRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
-     
     }
 }
