@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Dominio.Result.Orden
+namespace Dominio.Result
 {
 
     public class OrdenHistoricoResultado
@@ -22,8 +18,7 @@ namespace Dominio.Result.Orden
         public Int32 IdOrden { get; set; }
         public String Estado { get; set; }
         public Int32 Cantidad { get; set; }
-        public String FechaOrden { get; set; }
         public String TotalOrden { get; set; }
-
+        public String FechaOrden { get; set; }
     }
 }

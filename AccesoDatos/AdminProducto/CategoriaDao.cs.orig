@@ -31,6 +31,7 @@ namespace AccesoDatos.AdminProducto
             {
                 try
                 {
+<<<<<<< HEAD
                     SqlCommand sqlCommand = new SqlCommand("Categoria_Lista_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
                     sqlCommand.Parameters.AddWithValue("@IdComercio", IdComercio);
 
@@ -53,6 +54,20 @@ namespace AccesoDatos.AdminProducto
                     metodoRespuesta.Errors.Add(new MetodoRespuesta.ListError(exception, "Ocurrio un error al cargar la data."));
                     throw exception;
                 }
+=======
+                    CommandType = CommandType.StoredProcedure
+                };
+                dt.Load(cmd.ExecuteReader());
+            }
+            catch (Exception exception)
+            {
+                dt = null;
+                //objRespuesta.Errors.Add(new MetodoRespuesta.ListError(ex, "An error occurred  while loading data"));
+            }
+            finally
+            {
+                //Conexion.DisposeCommand(cmd);
+>>>>>>> 004eea454aac8ddc1f5ef89261250eb235384fa5
             }
             return categoriaResultado;
         }

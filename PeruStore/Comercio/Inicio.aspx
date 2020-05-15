@@ -3,13 +3,33 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
+        $(function () {
+            if ($("#<%=hfDataCategoria.ClientID%>").val() != "") {
+                Fn_ListarCategoriaMaster($("#<%=hfDataCategoria.ClientID%>").val());
+            }
+        });
 
-    </Script>
+        function Fn_ListarCategoriaMaster(dataCategoria) {
+            var objCategoria = dataCategoria;
+            try {
+                var objCategory = $.parseJSON(objCategoria);
+                var object = {};
+                object.request = objCategory;
+                var item = Fn_CargarTemplate("datatable-cboCategoria", object);
+                $("#cboCategoria").html(item);
+            }
+            catch (e) {
+                Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
+            }
+        }
+
+    </script>
 
 
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField runat="server" ID="hfDataCategoria" />
 
     <div class="main-container">
         <div id="content">
@@ -1388,7 +1408,12 @@
         </div>
     </div>
     
-
+     <!-- Listado de categoria master -->
+     <script type="text/x-handlebars-template" id="datatable-cboCategoria">
+	       {{# each request}}
+                <option value="{{IdCategoria}}">{{CategoriaNombre}}</option>
+	       {{/each}}
+    </script>
 
 
 </asp:Content>

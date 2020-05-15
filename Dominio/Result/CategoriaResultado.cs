@@ -5,14 +5,16 @@ namespace Dominio.Result
 {
     public class CategoriaResultado
     {
-        public List<CategoriaDTO> lstCategoria { get; set; }
+        public CategoriaResultado() 
+        {
+            Datos = new List<CategoriaDTO>();
+        }
+        public List<CategoriaDTO> Datos { get; set; }
     }
 
     public class CategoriaDTO {
-        public String Nombre { get; set; }
-        public String Apellido { get; set; }
-        public String Perras { get; set; }
-
+        public Int16 IdCategoria { get; set; }
+        public String CategoriaNombre { get; set; }
     }
 
 }
