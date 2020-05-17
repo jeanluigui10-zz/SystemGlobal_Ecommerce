@@ -45,8 +45,9 @@
 
     <link href="/Template/css/footer/footer2.css" rel="stylesheet">
     <link href="/Template/css/header/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="/Template/css/home2.css" rel="stylesheet"> 
+    <link id="color_scheme" href="/Template/css/home2.css?t=1" rel="stylesheet"> 
     <link href="/Template/css/responsive.css" rel="stylesheet">
+
 
     <!-- Include Libs & Plugins
     ============================================ -->
@@ -65,7 +66,7 @@
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/src/js/Base.js"></script>
-   
+    
      <!-- Google web fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' rel='stylesheet' type='text/css'>
@@ -672,7 +673,7 @@
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/addtocart.js"></script>  
-
+    <script type="text/javascript" src="/src/js/Utilitario.js"></script>
   </form> 
    
 </body>

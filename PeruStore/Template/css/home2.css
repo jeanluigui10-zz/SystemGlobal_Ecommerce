@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*******************************************
  *	Theme Name: eMarket
  *	Author: Magentech
@@ -7223,7 +7223,7 @@ footer .copyright a {
   padding-right: 15px; }
 /*====================== mod title ========================*/
 .layout-2.common-home #content {
-  margin-bottom: 0; }
+  margin-bottom: 30px; }
   .layout-2.common-home #content .module {
     margin-bottom: 0; }
   .layout-2.common-home #content .owl2-carousel {
