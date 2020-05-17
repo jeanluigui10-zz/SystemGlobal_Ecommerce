@@ -97,17 +97,17 @@ function Fn_Mensaje(tipo, mensaje, idContenedor) {
 //    });
 //}
 
-//function fn_callmethod(url, data, success, error) {
-//    $.ajax({
-//        type: "POST",
-//        url: url,
-//        data: data,
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//        success: success,
-//        error: error
-//    });
-//}
+function fn_Ajax(url, data, success, error) {
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: success,
+        error: error
+    });
+}
 
 //function fn_callmethodasync(url, data, success, error, async) {
 //    $.ajax({
@@ -679,3 +679,11 @@ function Fn_CargarTemplate(idTemplate, objetoJson) {
 
 //    });
 //}
+
+
+const EnumTipoMensaje = {
+    Exito: 1,
+    Error: 2,
+    Informacion: 3,
+    Advertencia: 4
+}

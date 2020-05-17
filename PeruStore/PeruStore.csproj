@@ -145,6 +145,8 @@
     <Content Include="Chat\src\img\imgUserCliente.png" />
     <Content Include="Chat\src\img\user1.jpg" />
     <Content Include="Chat\src\js\treeTableJS.js" />
+    <Content Include="Cliente\ClienteRegistro.aspx" />
+    <Content Include="Cliente\js\ClienteRegistro.js" />
     <Content Include="Comercio\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
@@ -1077,6 +1079,7 @@
     <Content Include="src\js\Base.js" />
     <Content Include="src\js\bootbox.js" />
     <Content Include="src\js\jquery.MultiFile.js" />
+    <Content Include="src\js\Utilitario.js" />
     <Content Include="Template\ajax\listingtab_18.html" />
     <Content Include="Template\ajax\listingtab_20.html" />
     <Content Include="Template\ajax\listingtab_25.html" />
@@ -2012,6 +2015,13 @@
     <Compile Include="Chat\src\control\Chat\ucWebMethodChat.aspx.designer.cs">
       <DependentUpon>ucWebMethodChat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cliente\ClienteRegistro.aspx.cs">
+      <DependentUpon>ClienteRegistro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\ClienteRegistro.aspx.designer.cs">
+      <DependentUpon>ClienteRegistro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Comercio\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2091,6 +2101,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cliente\css\" />
     <Folder Include="Comercio\css\" />
     <Folder Include="Controles\" />
     <Folder Include="Template\image\theme\home5\" />
