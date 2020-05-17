@@ -3,7 +3,6 @@ using Libreria.AdminConexion;
 using Libreria.Base;
 using Libreria.General;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -25,6 +24,69 @@ namespace AccesoDatos.AdminProducto
         #endregion
 
         #region Metodos
+        //public CategoriaResultado Categoria_ObtenerSubCategoriaDetalle(ref MetodoRespuesta metodoRespuesta, Int32 IdSubCategoria)
+        //{
+        //    CategoriaResultado categoriaResultado = null;
+        //    using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+        //    {
+        //        try
+        //        {
+        //            SqlCommand sqlCommand = new SqlCommand("SubCategoria_Lista_ByIdSubCategoria_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+        //            sqlCommand.Parameters.AddWithValue("@IdSubCategoria", IdSubCategoria);
+
+        //            using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+        //            {
+        //                categoriaResultado = new CategoriaResultado();
+        //                while (sqlDataReader.Read())
+        //                {
+        //                    categoriaResultado.DatosSubCategoriaDetalle.Add(new CategoriaDTO()
+        //                    {
+        //                        IdSubCategoriaDetalle = Convert.ToInt16(sqlDataReader["IdSubCategoriaDetalle"]),
+        //                        SubCategoriaDetalleNombre = Convert.ToString(sqlDataReader["SubCategoriaDetalleNombre"])
+        //                    });
+        //                }
+        //            }
+        //        }
+        //        catch (Exception exception)
+        //        {
+        //            metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+        //            throw exception;
+        //        }
+        //    }
+        //    return categoriaResultado;
+        //}
+        public CategoriaResultado SubCategoria_ObtenerLista_PorIdCategoria(ref MetodoRespuesta metodoRespuesta, Int16 IdCategoria)
+        {
+            CategoriaResultado categoriaResultado = null;
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand("SubCategoria_Lista_ByIdCategoria_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    sqlCommand.Parameters.AddWithValue("@IdCategoria", IdCategoria);
+
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        categoriaResultado = new CategoriaResultado();
+                        while (sqlDataReader.Read())
+                        {
+                            categoriaResultado.DatosSubCategoria.Add(new CategoriaDTO()
+                            {
+                                IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
+                                IdSubCategoria = Convert.ToInt16(sqlDataReader["IdSubCategoria"]),
+                                SubCategoriaNombre = Convert.ToString(sqlDataReader["SubCategoriaNombre"])
+                            });
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    throw exception;
+                }
+            }
+            return categoriaResultado;
+        }
         public CategoriaResultado Categoria_ObtenerLista(ref MetodoRespuesta metodoRespuesta, Int32 IdComercio)
         {
             CategoriaResultado categoriaResultado = null;
@@ -43,8 +105,9 @@ namespace AccesoDatos.AdminProducto
                             categoriaResultado.Datos.Add(new CategoriaDTO()
                             {
                                 IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
-                                CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"])
-
+                                CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
+                                RutaIcono = Convert.ToString(sqlDataReader["RutaIcono"]),
+                                RutaBanner = Convert.ToString(sqlDataReader["RutaBanner"]),
                             }); 
                         }
                     }

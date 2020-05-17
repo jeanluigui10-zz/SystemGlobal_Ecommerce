@@ -3,7 +3,6 @@ using Dominio.Result;
 using Libreria.Base;
 using Libreria.General;
 using System;
-using System.Data;
 
 namespace InteligenciaNegocio.AdminProducto
 {
@@ -23,6 +22,42 @@ namespace InteligenciaNegocio.AdminProducto
         #endregion
 
         #region Metodos
+        
+     public CategoriaResultado SubCategoria_ObtenerLista_PorIdCategoria(ref MetodoRespuesta metodoRespuesta, Int16 IdSubCategoria)
+        {
+            CategoriaResultado categoriaResultado = null;
+            try
+            {
+                if (IdSubCategoria > 0)
+                {
+                    categoriaResultado = CategoriaDao.instancia.SubCategoria_ObtenerLista_PorIdCategoria(ref metodoRespuesta, IdSubCategoria);
+                }
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                throw exception;
+            }
+            return categoriaResultado;
+        }
+
+        //public CategoriaResultado Categoria_ObtenerListaMenuSubMenu(ref MetodoRespuesta metodoRespuesta, Int32 IdCategoria)
+        //{
+        //    CategoriaResultado categoriaResultado = null;
+        //    try
+        //    {
+        //        if (IdCategoria > 0)
+        //        {
+        //            categoriaResultado = CategoriaDao.instancia.Categoria_ObtenerListaMenuSubMenu(ref metodoRespuesta, IdCategoria);
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+        //        throw exception;
+        //    }
+        //    return categoriaResultado;
+        //}
         public CategoriaResultado Categoria_ObtenerLista(ref MetodoRespuesta metodoRespuesta, Int32 IdComercio)
         {
             CategoriaResultado categoriaResultado = null;

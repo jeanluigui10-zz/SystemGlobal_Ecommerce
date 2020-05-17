@@ -4,15 +4,51 @@
 
     <script type="text/javascript">
         $(function () {
-            if ($("#<%=hfDataCategoria.ClientID%>").val() != "") {
-                Fn_ListarCategoriaMaster($("#<%=hfDataCategoria.ClientID%>").val());
+            if ($("#<%=hfDataCategoriaMenu.ClientID%>").val() != "" && $("#<%=hfDataCategoriaMenuSubMenu.ClientID%>").val() != "") {
+                Fn_ListarCategoriaMenuSubMenu($("#<%=hfDataCategoriaMenuSubMenu.ClientID%>").val());
+                Fn_ListarCategoriaMenu($("#<%=hfDataCategoriaMenu.ClientID%>").val());
             }
+
+            $(".item-vertical").hover(function () {
+                var IdCategoria = $(this).data("id");
+                var success = function (asw) {
+                    try {
+                        if (asw.d != null) {
+
+                            var objsubCategoria = $.parseJSON(asw.d.sJSONSubcategoria);
+                            var objectP = {};
+                            objectP.request = objsubCategoria;
+                            var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoria", objectP);
+                            $("#ListaCategoria").html(item);
+                        }
+                    } catch (e) {
+                        $("#tt-pageContent").find(".loader_page").remove();
+                    }
+                };
+                var error = function (jqXHR, textStatus, errorThrown) {
+                };
+                fn_Ajax("Inicio.aspx/SubCategoria_Lista_PorCategoriaId", '{IdCategoria: "' + IdCategoria + '"}', success, error);
+            });
         });
 
-        function Fn_ListarCategoriaMaster(dataCategoria) {
-            var objCategoria = dataCategoria;
+        function Fn_ListarCategoriaMenuSubMenu(dataCategoriaMenuSubMenu) {
+            var objCategoriaMenuSubMenu = dataCategoriaMenuSubMenu;
             try {
-                var objCategory = $.parseJSON(objCategoria);
+                var objCategoryP = $.parseJSON(objCategoriaMenuSubMenu);
+                var objectP = {};
+                objectP.request = objCategoryP;
+                var itemp = Fn_CargarTemplate("datatable-MenuCategoria", objectP);
+                $("#MenuSubMenuCategoria").html(itemp);
+            }
+            catch (e) {
+                Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
+            }
+        }
+
+        function Fn_ListarCategoriaMenu(dataCategoriaMenu) {
+            var objCategoriaMenu = dataCategoriaMenu;
+            try {
+                var objCategory = $.parseJSON(objCategoriaMenu);
                 var object = {};
                 object.request = objCategory;
                 var item = Fn_CargarTemplate("datatable-cboCategoria", object);
@@ -22,6 +58,7 @@
                 Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
             }
         }
+        
 
     </script>
 
@@ -29,7 +66,8 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField runat="server" ID="hfDataCategoria" />
+    <asp:HiddenField runat="server" ID="hfDataCategoriaMenuSubMenu" />
+    <asp:HiddenField runat="server" ID="hfDataCategoriaMenu" />
 
     <div class="main-container">
         <div id="content">
@@ -1408,12 +1446,58 @@
         </div>
     </div>
     
-     <!-- Listado de categoria master -->
+     <!-- Listado de categoria en master -->
      <script type="text/x-handlebars-template" id="datatable-cboCategoria">
 	       {{# each request}}
                 <option value="{{IdCategoria}}">{{CategoriaNombre}}</option>
 	       {{/each}}
     </script>
 
+     <!-- Listado de categoria con icono, subcategorias, productos, banner de categoria en master -->
+    <script type="text/x-handlebars-template" id="datatable-MenuCategoria">
+        {{# each request}}
+        <li class="item-vertical  with-sub-menu hover" data-id="{{IdCategoria}}" id="ListaCategoria">
+            <p class="close-menu"></p>
+            <a href="#" class="clearfix">
+                <img src="{{RutaIcono}}" alt="icon">
+                <span>{{CategoriaNombre}}</span>
+                <b class="caret"></b>
+            </a>
+        </li>
+        {{/each}}
+    </script>
 
+     <script type="text/x-handlebars-template" id="datatable-MenuSubMenuCategoria">
+         {{# each request}}
+        <div class="sub-menu" data-subwidth="60">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-4 static-menu">
+                                    <div class="menu">
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="main-menu">{{SubCategoriaNombre}}</a>
+                                                <ul>
+                                                    <li><a href="#">{{MarcaNombre}}</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 static-menu">
+                                    <div class="row banner">
+                                        <a href="#">
+                                            <img src="{{RutaBanner}}" alt="banner1">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+    </script>
 </asp:Content>
