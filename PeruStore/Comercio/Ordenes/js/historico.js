@@ -2,7 +2,7 @@
 let historicoJs = null;
 
 $(function () {
-    historicoJs = new HistoricoJs("");
+    historicoJs = new HistoricoJs();
     historicoJs.Fn_Iniciar();
 });
 
@@ -32,7 +32,7 @@ class HistoricoJs {
             if (ordenHistorico === undefined || ordenHistorico === null) {
                 Fn_Mensaje('e', "Ocurrio un error al cargar sus ordenes.");
             } else {
-                let htmlBody = Fn_CargarTemplate("historico-template", ordenHistorico);
+                let htmlBody = Fn_CargarTemplate("historico", ordenHistorico);
                 $("#tbHistorico tbody").html(htmlBody);
             }
 

@@ -150,9 +150,11 @@
     <Content Include="Comercio\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
+    <Content Include="Comercio\Ordenes\css\informacion.css" />
     <Content Include="Comercio\Ordenes\Historico.aspx" />
     <Content Include="Comercio\Ordenes\Informacion.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
+    <Content Include="Comercio\Ordenes\js\informacion.js" />
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />

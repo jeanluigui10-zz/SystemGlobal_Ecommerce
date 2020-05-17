@@ -24,7 +24,7 @@ namespace PeruStore.Comercio.Ordenes
                 Int16 idComercio = 1;
                 Int32 idCliente = 1;
 
-                HistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.ObtenerHistorico(idComercio, idCliente);
+                HistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.Historico(idComercio, idCliente);
                 hfOrdenHistorico.Value = JsonConvert.SerializeObject(ordenHistoricoResultado);
 
             }
