@@ -45,8 +45,9 @@
 
     <link href="/Template/css/footer/footer2.css" rel="stylesheet">
     <link href="/Template/css/header/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="/Template/css/home2.css" rel="stylesheet"> 
+    <link id="color_scheme" href="/Template/css/home2.css?t=1" rel="stylesheet"> 
     <link href="/Template/css/responsive.css" rel="stylesheet">
+
 
     <!-- Include Libs & Plugins
     ============================================ -->

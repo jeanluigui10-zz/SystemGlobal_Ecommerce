@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Historico.aspx.cs" Inherits="PeruStore.Comercio.Ordenes.Historico" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" src="js/historico.js?a=1"></script>
-    <link rel="stylesheet" href="css/historico.css?a=1"/>
+    <script type="text/javascript" src="js/historico.js?b=1"></script>
+    <link rel="stylesheet" href="css/historico.css?v=1"/>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -37,10 +37,10 @@
 
     <asp:HiddenField ID="hfOrdenHistorico" runat="server" />
 
-    <script type="text/x-handlebars-template" id="historico-template">
+    <script type="text/x-handlebars-template" id="historico">
         {{# each Datos}}
            <tr>
-			<td class="text-center">{{IdOrden}}</td>
+			<td class="text-center">#{{IdOrden}}</td>
 			<td class="text-center">{{Cantidad}}</td>
 			<td class="text-center">{{Estado}}</td>
 			<td class="text-center">{{FechaOrden}}</td>
