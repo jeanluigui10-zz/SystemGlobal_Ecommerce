@@ -4,6 +4,7 @@ using System;
 using Dominio.Result.Orden;
 using InteligenciaNegocio.AdminOrden;
 using Newtonsoft.Json;
+using PeruStore.src.BaseAplicacion;
 
 namespace PeruStore.Comercio.Ordenes
 {
@@ -21,7 +22,7 @@ namespace PeruStore.Comercio.Ordenes
         {
             try
             {
-                Int16 idComercio = 1;
+                Int16 idComercio = SesionAplicacion.SesionTienda.IdComercio;
                 Int32 idCliente = 1;
 
                 HistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.Historico(idComercio, idCliente);

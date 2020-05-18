@@ -45,6 +45,7 @@
     <Compile Include="AdminOrden\ClienteOrdenBl.cs" />
     <Compile Include="AdminProducto\CategoriaBL.cs" />
     <Compile Include="AdminProducto\ProductoBL.cs" />
+    <Compile Include="AdminTienda\TiendaBl.cs" />
     <Compile Include="AdminUbigeo\UbigeoBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,7 +64,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AdminTienda\" />
     <Folder Include="AdminUsuario\" />
   </ItemGroup>
   <ItemGroup>

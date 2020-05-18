@@ -281,7 +281,7 @@
                                                         <span></span>
                                                         <span></span>
                                                     </div>
-                                                    All Categories                          
+                                                    Todas las Categorías                          
                                                 </div>
                                             </div>
                                         </div>
@@ -289,23 +289,17 @@
                                     <div class="navbar-header">
                                         <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle">      
                                             <i class="fa fa-bars"></i>
-                                            <span>  All Categories     </span>
+                                            <span>  Todas las Categorías     </span>
                                         </button>
                                     </div>
                                     <div class="vertical-wrapper" >
                                         <span id="remove-verticalmenu" class="fa fa-times"></span>
                                         <div class="megamenu-pattern">
                                             <div class="container-mega">
-                                                <ul class="megamenu">
-                                                    <li class="item-vertical">
-                                                        <p class="close-menu"></p>
-                                                        <a href="#" class="clearfix">                                                            
-                                                            <img src="/Template/image/catalog/menu/icons/ico1.png" alt="icon">
-                                                            <span>Fashion & Accessories</span>
-                                                        </a>
-                                                    </li>
+                                                 <ul class="megamenu" id="MenuSubMenuCategoria">
+                                                    
                                                     </ul>
-                                                </div>
+                                                  </div>
                                             </div>
                                         </div>
                                     </div>

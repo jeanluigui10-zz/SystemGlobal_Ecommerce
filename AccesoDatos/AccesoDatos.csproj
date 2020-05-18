@@ -45,6 +45,7 @@
     <Compile Include="AdminOrden\ClienteOrdenDao.cs" />
     <Compile Include="AdminProducto\CategoriaDao.cs" />
     <Compile Include="AdminProducto\ProductoDao.cs" />
+    <Compile Include="AdminTienda\TiendaDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdminUbigeo\UbigeoDao.cs" />
   </ItemGroup>
@@ -59,7 +60,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AdminTienda\" />
     <Folder Include="AdminUsuario\" />
   </ItemGroup>
   <ItemGroup>

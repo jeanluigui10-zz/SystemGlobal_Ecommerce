@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Reflection;
 
-
 namespace Libreria.General
 {
     public static class GeneralEnum
     {
-
         public static String ObtenerString(this Enum value)
         {
             string output = null;
@@ -41,5 +39,14 @@ namespace Libreria.General
         Informacion = 3,
         [StringValue("Advertencia")]
         Advertencia = 4,
+    }
+
+
+    public enum EnumGlobalEstado
+    {
+        [StringValue("Activo")]
+        Activo = 1,
+        [StringValue("Inactivo/Eliminado")]
+        Inactivo = 0,
     }
 }
