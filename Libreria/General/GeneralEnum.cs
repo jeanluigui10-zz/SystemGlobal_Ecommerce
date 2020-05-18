@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Reflection;
 
-
 namespace Libreria.General
 {
     public static class GeneralEnum
     {
-
         public static String ObtenerString(this Enum value)
         {
             string output = null;
