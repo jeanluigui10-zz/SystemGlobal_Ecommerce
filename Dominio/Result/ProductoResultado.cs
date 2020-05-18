@@ -17,6 +17,7 @@ namespace Dominio.Result
         public String Sku { get; set; }
         public String Productonombre { get; set; }
         public String Productodescripcion { get; set; }
+        public String ProductodescripcionLarga { get; set; }
         public Int32 Unidadminima { get; set; }
         public Int32 Unidadmaxima { get; set; }
         public Decimal Precio { get; set; }

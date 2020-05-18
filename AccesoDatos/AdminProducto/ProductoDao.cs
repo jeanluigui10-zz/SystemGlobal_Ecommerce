@@ -49,6 +49,7 @@ namespace AccesoDatos.AdminProducto
                                 Sku = Convert.ToString(sqlDataReader["Sku"]),
                                 Productonombre = Convert.ToString(sqlDataReader["Productonombre"]),
                                 Productodescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
+                                ProductodescripcionLarga = Convert.ToString(sqlDataReader["ProductodescripcionLarga"]),
                                 Unidadminima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
                                 Unidadmaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
                                 Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
