@@ -1,14 +1,10 @@
 ﻿using Dominio.Result.Ubigeo;
 using Libreria.AdminConexion;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AccesoDatos.AdmUbigeo
+namespace AccesoDatos.AdminUbigeo
 {
     public class UbigeoDao
     {
@@ -66,7 +62,7 @@ namespace AccesoDatos.AdmUbigeo
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand("Ubigeo_Region_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    SqlCommand sqlCommand = new SqlCommand("Ubigeo_Provincia_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
                     sqlCommand.Parameters.AddWithValue("@idRegion", idRegion );
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())

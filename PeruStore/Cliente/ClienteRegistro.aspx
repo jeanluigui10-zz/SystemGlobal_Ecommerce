@@ -12,6 +12,7 @@
 			<li><a href="#">Registro</a></li>
 		</ul>
 		
+	     <div id="divMensaje"></div>
 		<div class="row">
 			<div id="content" class="col-sm-12">
 				<h2 class="title">Registrar Cuenta</h2>
@@ -56,13 +57,13 @@
 						<div class="form-group required">
 							<label class="col-sm-2 control-label" for="txtCelular">Celular</label>
 							<div class="col-sm-10">
-								<input type="text" name="Celular" value="" placeholder="Celular" id="txtCelular" class="form-control  input-number">
+								<input type="text" name="Celular" value="" placeholder="Celular" id="txtCelular" class="form-control input-number" maxlength="9">
 							</div>
 						</div>
 					    <div class="form-group">
 							<label class="col-sm-2 control-label" for="txtTelefono">Teléfono</label>
 							<div class="col-sm-10">
-								<input type="text" name="Teléfono" value="" placeholder="Teléfono" id="txtTelefono" class="form-control  input-number">
+								<input type="text" name="Teléfono" value="" placeholder="Teléfono" id="txtTelefono" class="form-control input-number" maxlength="9">
 							</div>
 						</div>
 					</fieldset>
@@ -82,33 +83,33 @@
 							</div>
 						</div>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="idRegion">Region</label>
+							<label class="col-sm-2 control-label" for="ddlRegion">Region</label>
 							<div class="col-sm-10">
-								<select name="region" id="idRegion" class="form-control">
+								<select name="region" id="ddlRegion" class="form-control">
 									
 								</select>
 							</div>
 						</div>
 					    <div class="form-group required">
-							<label class="col-sm-2 control-label" for="idProvincia">Provincia</label>
+							<label class="col-sm-2 control-label" for="ddlProvincia">Provincia</label>
 							<div class="col-sm-10">
-								<select name="provincia" id="idProvincia" class="form-control">
+								<select name="provincia" id="ddlProvincia" class="form-control">
 									
 								</select>
 							</div>
 						</div>
 					    <div class="form-group required">
-							<label class="col-sm-2 control-label" for="idDistrito">Distrito</label>
+							<label class="col-sm-2 control-label" for="ddlDistrito">Distrito</label>
 							<div class="col-sm-10">
-								<select name="distrito" id="idDistrito" class="form-control">
+								<select name="distrito" id="ddlDistrito" class="form-control">
 									
 								</select>
 							</div>
 						</div>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="idCodigoPostal">Código Postal</label>
+							<label class="col-sm-2 control-label" for="txtCodigoPostal">Código Postal</label>
 							<div class="col-sm-10">
-								<input type="text" name="Codigo Postal" value="" placeholder="Código Postal" id="idCodigoPostal" class="form-control">
+								<input type="text" name="Codigo Postal" value="" placeholder="Ejemplo: 06000" id="txtCodigoPostal" class="form-control input-number" maxlength="5" >
 							</div>
 						</div>
 						
@@ -117,15 +118,15 @@
 					<fieldset>
 						<legend>Password</legend>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="txtContraseña">Password</label>
+							<label class="col-sm-2 control-label" for="txtContrasenha">Password</label>
 							<div class="col-sm-10">
-								<input type="password" name="Contrasenha" value="" placeholder="Password" id="txtContraseña" class="form-control">
+								<input type="password" name="Contrasenha" value="" placeholder="Password" id="txtContrasenha" class="form-control">
 							</div>
 						</div>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="txtContraseñaConfirm">Confirmación de Password</label>
+							<label class="col-sm-2 control-label" for="txtContrasenhaConfirm">Confirmación de Password</label>
 							<div class="col-sm-10">
-								<input type="password" name="Contrasenhaconfirm" value="" placeholder="Confirmación de Password" id="txtContraseñaConfirm" class="form-control">
+								<input type="password" name="Contrasenhaconfirm" value="" placeholder="Confirmación de Password" id="txtContrasenhaConfirm" class="form-control">
 							</div>
 						</div>
 					</fieldset>
@@ -137,5 +138,6 @@
 		</div>
 	</div>
 	<!-- //Main Container -->
+       
     <script src="js/ClienteRegistro.js"></script>
 </asp:Content>

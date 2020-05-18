@@ -1,12 +1,8 @@
-﻿using AccesoDatos.AdmUbigeo;
+﻿using AccesoDatos.AdminUbigeo;
 using Dominio.Result.Ubigeo;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace InteligenciaNegocio.AdmUbigeo
+namespace InteligenciaNegocio.AdminUbigeo
 {
     public class UbigeoBl
     {
@@ -53,7 +49,7 @@ namespace InteligenciaNegocio.AdmUbigeo
             }
             return provincias;
         }
-        public UbigeoResultado ObtenerDistrito_PorIdprovincia(Int16 idProvincia)
+        public UbigeoResultado ObtenerDistrito_PorIdProvincia(Int16 idProvincia)
         {
             UbigeoResultado distritos = null;
             try

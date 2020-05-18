@@ -72,6 +72,7 @@
     <Compile Include="AdminConexion\Conexion.cs" />
     <Compile Include="General\Encriptador.cs" />
     <Compile Include="General\GeneralEnum.cs" />
+    <Compile Include="General\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
