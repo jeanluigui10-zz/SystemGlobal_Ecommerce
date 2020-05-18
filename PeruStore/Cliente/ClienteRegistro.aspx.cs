@@ -5,6 +5,7 @@ using InteligenciaNegocio.AdminUbigeo;
 using Libreria.Base;
 using Libreria.General;
 using Newtonsoft.Json;
+using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Collections.Generic;
@@ -135,6 +136,7 @@ namespace PeruStore.Cliente
         public static Object RegistrarCliente(Dictionary<String,String> cliente) {
             MetodoRespuesta respuesta = new MetodoRespuesta();
             Boolean esClienteValido = true;
+            Int16 idComercio = SesionAplicacion.SesionTienda.IdComercio;
             try
             {
                 if (cliente != null)
@@ -210,7 +212,7 @@ namespace PeruStore.Cliente
                     }
 
                     else {
-                        ClienteResultado objCliente = new ClienteBl().ObtenerCliente_EmailContrasenha(correo, contrasenha,1);
+                        ClienteResultado objCliente = new ClienteBl().ObtenerCliente_EmailContrasenha(correo, contrasenha, idComercio);
                         if (objCliente != null && objCliente.Datos != null && objCliente.Datos.Count > 0)
                         {
                             respuesta.CodigoRespuesta = EnumTipoMensaje.Informacion;
