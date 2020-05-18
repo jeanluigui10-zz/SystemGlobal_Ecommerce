@@ -4,7 +4,6 @@ using Libreria.Base;
 using Libreria.General;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
-using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 
@@ -44,6 +43,7 @@ namespace PeruStore.Comercio
             //}
             vsId = 1; //estatico para q se muestren las categorias por mientras
         }
+
         public void Cargar_Categoria_SubCategoriaMenu()
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
@@ -73,7 +73,7 @@ namespace PeruStore.Comercio
         }
 
         [WebMethod]
-        public static String SubCategoria_Lista_PorCategoriaId(Int16 IdCategoria)
+        public static String SubCategoria_Lista_PorIdCategoria(Int16 IdCategoria)
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
             String sJSONSubcategoria = "";
@@ -91,11 +91,39 @@ namespace PeruStore.Comercio
                         }
                     }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
+                throw exception;
             }
             return sJSONSubcategoria;
         }
+
+        [WebMethod]
+        public static String SubCategoria_Lista_PorIdSubCategoria(Int16 IdSubCategoria)
+        {
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+            String sJSONSubcategoriaDetalle = "";
+            try
+            {
+                CategoriaResultado categoriaResultado = new CategoriaResultado();
+
+                categoriaResultado = CategoriaBL.instancia.SubCategoria_ObtenerLista_PorIdSubCategoria(ref metodoRespuesta, IdSubCategoria);
+                if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                {
+                    if (categoriaResultado != null)
+                    {
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+                        sJSONSubcategoriaDetalle = serializer.Serialize(categoriaResultado.DatosSubCategoriaDetalle);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            return sJSONSubcategoriaDetalle;
+        }
+
         public void Cargar_Categoria_Menu()
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta();

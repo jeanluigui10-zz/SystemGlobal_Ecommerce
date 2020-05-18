@@ -24,37 +24,38 @@ namespace AccesoDatos.AdminProducto
         #endregion
 
         #region Metodos
-        //public CategoriaResultado Categoria_ObtenerSubCategoriaDetalle(ref MetodoRespuesta metodoRespuesta, Int32 IdSubCategoria)
-        //{
-        //    CategoriaResultado categoriaResultado = null;
-        //    using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
-        //    {
-        //        try
-        //        {
-        //            SqlCommand sqlCommand = new SqlCommand("SubCategoria_Lista_ByIdSubCategoria_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
-        //            sqlCommand.Parameters.AddWithValue("@IdSubCategoria", IdSubCategoria);
+        public CategoriaResultado SubCategoria_ObtenerLista_PorIdSubCategoria(ref MetodoRespuesta metodoRespuesta, Int32 IdSubCategoria)
+        {
+            CategoriaResultado categoriaResultado = null;
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand("SubCategoria_Lista_ByIdSubCategoria_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    sqlCommand.Parameters.AddWithValue("@IdSubCategoria", IdSubCategoria);
 
-        //            using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
-        //            {
-        //                categoriaResultado = new CategoriaResultado();
-        //                while (sqlDataReader.Read())
-        //                {
-        //                    categoriaResultado.DatosSubCategoriaDetalle.Add(new CategoriaDTO()
-        //                    {
-        //                        IdSubCategoriaDetalle = Convert.ToInt16(sqlDataReader["IdSubCategoriaDetalle"]),
-        //                        SubCategoriaDetalleNombre = Convert.ToString(sqlDataReader["SubCategoriaDetalleNombre"])
-        //                    });
-        //                }
-        //            }
-        //        }
-        //        catch (Exception exception)
-        //        {
-        //            metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
-        //            throw exception;
-        //        }
-        //    }
-        //    return categoriaResultado;
-        //}
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        categoriaResultado = new CategoriaResultado();
+                        while (sqlDataReader.Read())
+                        {
+                            categoriaResultado.DatosSubCategoriaDetalle.Add(new CategoriaDTO()
+                            {
+                                IdSubCategoria = Convert.ToInt16(sqlDataReader["IdSubCategoria"]),
+                                IdSubCategoriaDetalle = Convert.ToInt16(sqlDataReader["IdSubCategoriaDetalle"]),
+                                SubCategoriaDetalleNombre = Convert.ToString(sqlDataReader["SubCategoriaDetalleNombre"])
+                            });
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    throw exception;
+                }
+            }
+            return categoriaResultado;
+        }
         public CategoriaResultado SubCategoria_ObtenerLista_PorIdCategoria(ref MetodoRespuesta metodoRespuesta, Int16 IdCategoria)
         {
             CategoriaResultado categoriaResultado = null;
