@@ -1,5 +1,5 @@
 ﻿using AccesoDatos.AdminProducto;
-using Dominio.Result;
+using Dominio.Result.Producto;
 using Libreria.Base;
 using Libreria.General;
 using System;

@@ -1,4 +1,5 @@
 ﻿using Dominio.Result;
+using Dominio.Result.Producto;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;

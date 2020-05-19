@@ -1,4 +1,5 @@
 ﻿using Dominio.Result;
+using Dominio.Result.Producto;
 using Libreria.AdminConexion;
 using Libreria.Base;
 using Libreria.General;

@@ -23,7 +23,7 @@
                     </div>
                 </div>
             
-                <div class="loadeding"></div>
+                <div class="loadeding"></div>   
             </div>
 
             <div class="container">

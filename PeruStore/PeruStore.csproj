@@ -149,6 +149,7 @@
     <Content Include="Cliente\js\ClienteRegistro.js" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Controles\js\listaproducto.js" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -2124,7 +2125,6 @@
   <ItemGroup>
     <Folder Include="Cliente\css\" />
     <Folder Include="Comercio\css\" />
-    <Folder Include="Controles\js\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>
