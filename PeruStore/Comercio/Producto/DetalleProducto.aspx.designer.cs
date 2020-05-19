@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace PeruStore.Comercio
+namespace PeruStore.Comercio.Producto
 {
 
 

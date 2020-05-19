@@ -139,7 +139,7 @@
     <Compile Include="Result\Orden\EstadoResultado.cs" />
     <Compile Include="Result\Orden\HistoricoDetalleResultado.cs" />
     <Compile Include="Result\Orden\HistoricoResultado.cs" />
-    <Compile Include="Result\ProductoResultado.cs" />
+    <Compile Include="Result\Producto\ProductoResultado.cs" />
     <Compile Include="Result\Ubigeo\UbigeoResultado.cs" />
   </ItemGroup>
   <ItemGroup>

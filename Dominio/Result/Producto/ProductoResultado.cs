@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Dominio.Result
+namespace Dominio.Result.Producto
 {
     public class ProductoResultado
     {
