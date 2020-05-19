@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="PeruStore.Comercio.Inicio" %>
 
-<%@ Register Src="~/Controles/ucProductoLista.ascx" TagPrefix="uc1" TagName="ucProductoLista" %>
+<%@ Register Src="~/Controles/Inicio/ucProductoLista.ascx" TagPrefix="uc1" TagName="ucProductoLista" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
    
