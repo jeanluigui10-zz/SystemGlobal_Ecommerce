@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="PeruStore.Comercio.Inicio" %>
 
-<%@ Register Src="~/Controles/ucProductList.ascx" TagPrefix="uc1" TagName="ucProductList" %>
+<%@ Register Src="~/Controles/ucProductoLista.ascx" TagPrefix="uc1" TagName="ucProductoLista" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
    
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="row">
-                  <uc1:ucProductList runat="server" ID="ucProductList" />
+                  <uc1:ucProductoLista runat="server" ID="ucProductoLista" />
                 </div>
 
                 <div class="row sliderimages ">

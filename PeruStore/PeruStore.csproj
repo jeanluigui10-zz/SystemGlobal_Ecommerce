@@ -157,7 +157,7 @@
     <Content Include="Comercio\Ordenes\Informacion.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
     <Content Include="Comercio\Ordenes\js\informacion.js" />
-    <Content Include="Controles\ucProductList.ascx" />
+    <Content Include="Controles\Inicio\ucProductoLista.ascx" />
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
@@ -2049,12 +2049,12 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\ucProductList.ascx.cs">
-      <DependentUpon>ucProductList.ascx</DependentUpon>
+    <Compile Include="Controles\Inicio\ucProductoLista.ascx.cs">
+      <DependentUpon>ucProductoLista.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controles\ucProductList.ascx.designer.cs">
-      <DependentUpon>ucProductList.ascx</DependentUpon>
+    <Compile Include="Controles\Inicio\ucProductoLista.ascx.designer.cs">
+      <DependentUpon>ucProductoLista.ascx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2106,6 +2106,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\BaseAplicacion\ClaseSerializable.cs" />
+    <Compile Include="src\ConfiguracionAplicacion\PaginaBaseControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
