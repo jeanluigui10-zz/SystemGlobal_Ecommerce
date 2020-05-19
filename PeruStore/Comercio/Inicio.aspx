@@ -76,87 +76,8 @@
                     <h3 class="modtitle"><span>Comprar por categorías</span></h3>
                     <div class="modcontent">
                         <div class="cat-wrap theme3 font-title">
-                            <div class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="7" data-items_column1="4" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Towels Cloud" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate1.jpg" title="Towels Cloud" alt="Towels Cloud" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Towels Cloud " target="_self">Towels Cloud</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Smartphone" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate2.jpg" title="Smartphone" alt="Smartphone" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Smartphone" target="_self">Smartphone</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Watches" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate3.jpg" title="Watches" alt="Watches" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Watches" target="_self">Watches</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Electronics" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate1.jpg" title="Electronics" alt="Electronics" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Electronics" target="_self">Electronics</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Furnitures" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate4.jpg" title="Furnitures" alt="Furnitures" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Furnitures" target="_self">Furnitures</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Collections" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate5.jpg" title="Collections" alt="Collections" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Collections" target="_self">Collections</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Fashion" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate6.jpg" title="Fashion" alt="Fashion" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Fashion" target="_self">Fashion</a>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="image-cat">
-                                        <a href="#" title="Accessories" target="_self">
-                                            <img src="/Template/image/catalog/demo/category/cate7.jpg" title="Accessories" alt="Accessories" />
-                                        </a>
-                                    </div>
-                                    <div class="cat-title"> 
-                                      <a href="#" title="Accessories" target="_self">Accessories</a>
-                                    </div>
-                                </div>
+                            <div id="CategoriasDeslizante" class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="7" data-items_column1="4" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                               
                             </div>
                         </div>
                     </div>
@@ -751,7 +672,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
