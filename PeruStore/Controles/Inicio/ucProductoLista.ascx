@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductList.ascx.cs" Inherits="PeruStore.Controles.ucProductList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductoLista.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucProductoLista" %>
   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="module so-deals-ltr deals-layout2">
                             <h3 class="modtitle"><span>Deals of the week</span></h3>                    
@@ -624,3 +624,4 @@
                         </div>
                         <!-- end Listing tabs -->
                     </div>
+	<asp:HiddenField ID="_hfListaProducto" runat="server" />

@@ -21,6 +21,7 @@ namespace Dominio.Result.Producto
         public Int32 Unidadminima { get; set; }
         public Int32 Unidadmaxima { get; set; }
         public Decimal Precio { get; set; }
+        public Decimal PrecioOferta { get; set; }
         public Boolean Esoferta { get; set; }
         public Int32 Idcategoria { get; set; }
         public String Categorianombre { get; set; }

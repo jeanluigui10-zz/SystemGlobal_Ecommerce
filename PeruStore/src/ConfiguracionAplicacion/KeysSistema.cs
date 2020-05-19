@@ -14,7 +14,9 @@ namespace PeruStore.src.ConfiguracionAplicacion
         public static string EnterpriseVirtualPath { get { return WebConfigurationManager.AppSettings["evPath"]; } }
         public static string Impremtawendomain { get { return WebConfigurationManager.AppSettings["impremtawendomain"]; } }
         public static string impremtawendomainLogin { get { return WebConfigurationManager.AppSettings["impremtawendomainLogin"]; } }
-
+        public static string RedirectOnSessionNotFounded { get { return WebConfigurationManager.AppSettings["RedirectOnSessionNotFounded"]; } }
         
+
+
     }
 }
