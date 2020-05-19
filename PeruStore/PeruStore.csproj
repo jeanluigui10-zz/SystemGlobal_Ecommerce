@@ -149,7 +149,7 @@
     <Content Include="Cliente\js\ClienteRegistro.js" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
-    <Content Include="Controles\js\listaproducto.js" />
+    <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
