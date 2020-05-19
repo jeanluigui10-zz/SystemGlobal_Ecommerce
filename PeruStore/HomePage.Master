@@ -66,7 +66,7 @@
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/src/js/Base.js"></script>
-    
+    <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
      <!-- Google web fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' rel='stylesheet' type='text/css'>
@@ -74,6 +74,7 @@
          body{font-family:'Roboto', sans-serif}
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
+        
     </asp:ContentPlaceHolder>
 
    
@@ -82,7 +83,8 @@
 
 <body class="common-home res layout-2">
     <form id="frmHmeMaster" runat="server">
-        
+    <asp:HiddenField runat="server" ID="hfDataCategoriaMenuSubMenu" />
+    <asp:HiddenField runat="server" ID="hfDataCategoriaMenu" />     
     
 
     <div id="wrapper" class="wrapper-fluid banners-effect-7">
@@ -676,6 +678,70 @@
     <script type="text/javascript" src="/src/js/Utilitario.js"></script>
   </form> 
    
+    
+     <!-- Listado de categoria en master -->
+     <script type="text/x-handlebars-template" id="datatable-cboCategoria">
+	       {{# each request}}
+                <option value="{{IdCategoria}}">{{CategoriaNombre}}</option>
+	       {{/each}}
+    </script>
+
+     <!-- Listado de categoria con icono, subcategorias, productos, banner de categoria en master -->
+    <script type="text/x-handlebars-template" id="datatable-MenuCategoria">
+        {{# each request}}
+        <li class="item-vertical  with-sub-menu hover" data-id="{{IdCategoria}}">
+            <p class="close-menu"></p>
+            <a href="#">
+                <img src="{{RutaIcono}}" alt="icon">
+                <span data-id="{{IdCategoria}}">{{CategoriaNombre}}</span>
+                <b class="caret"></b>
+            </a>
+            <div class="sub-menu" data-subwidth="60">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-4 static-menu">
+                                    <div class="menu" id="SubCategoriaLista_{{IdCategoria}}">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-4 static-menu">
+                                    <div class="row banner">
+                                        <a href="#">
+                                            <img src="{{RutaBanner}}" alt="banner1">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+
+     <script type="text/x-handlebars-template" id="datatable-MenuSubMenuCategoria">
+         {{# each request}}
+         <ul>
+             <li>
+                 <a href="#" class="main-menu">{{SubCategoriaNombre}}</a>
+                 <ul id="SubCategoriaDetalleLista_{{IdSubCategoria}}">
+                 </ul>
+
+             </li>
+         </ul>
+            {{/each}}
+    </script>
+
+    <script type="text/x-handlebars-template" id="datatable-MenuSubMenuCategoriaDetalle">
+         {{# each request}}
+            <li><a href="#"></a>{{SubCategoriaDetalleNombre}}</li>
+         {{/each}}
+    </script>
+
+
 </body>
      
 </html>

@@ -149,6 +149,7 @@
     <Content Include="Cliente\js\ClienteRegistro.js" />
     <Content Include="Comercio\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
     <Content Include="Comercio\Ordenes\Historico.aspx" />
@@ -1834,6 +1835,7 @@
     <Content Include="Template\css\font-awesome\scss\_stacked.scss" />
     <Content Include="Template\css\font-awesome\scss\_variables.scss" />
     <Content Include="Template\css\header\header2.css.map" />
+    <Content Include="WebMethodPaginaMaestra\PaginaMaestra.aspx" />
     <None Include="Pagos\Culqi\culqi.net\packages.config" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
     <Content Include="plugins\ckeditor\LICENSE.md" />
@@ -2100,6 +2102,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebMethodPaginaMaestra\PaginaMaestra.aspx.cs">
+      <DependentUpon>PaginaMaestra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMethodPaginaMaestra\PaginaMaestra.aspx.designer.cs">
+      <DependentUpon>PaginaMaestra.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
