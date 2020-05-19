@@ -2090,11 +2090,13 @@
     <Compile Include="Pagos\PayPal\Utilities\SampleCategory.cs" />
     <Compile Include="Pagos\PayPal\Utilities\SampleItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\BaseAplicacion\ReglasSesion.cs" />
+    <Compile Include="src\BaseAplicacion\SesionAplicacion.cs" />
     <Compile Include="src\ConfiguracionAplicacion\KeysSistema.cs" />
     <Compile Include="src\ConfiguracionAplicacion\PaginaBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="src\app_code\ClaseSerializable.cs" />
+    <Compile Include="src\BaseAplicacion\ClaseSerializable.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -40,4 +40,13 @@ namespace Libreria.General
         [StringValue("Advertencia")]
         Advertencia = 4,
     }
+
+
+    public enum EnumGlobalEstado
+    {
+        [StringValue("Activo")]
+        Activo = 1,
+        [StringValue("Inactivo/Eliminado")]
+        Inactivo = 0,
+    }
 }

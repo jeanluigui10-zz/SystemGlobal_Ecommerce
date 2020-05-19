@@ -1,5 +1,5 @@
 ﻿using System;
-namespace PeruStore.src.app_code
+namespace PeruStore.src.BaseAplicacion
 {
   
     [Serializable]
