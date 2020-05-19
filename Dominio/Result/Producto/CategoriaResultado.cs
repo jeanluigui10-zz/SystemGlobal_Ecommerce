@@ -22,10 +22,12 @@ namespace Dominio.Result.Producto
         public String CategoriaNombre { get; set; }
         public String RutaIcono { get; set; }
         public String RutaBanner { get; set; }
+        public String RutaImagenDeslizante { get; set; }
         public Int16 IdSubCategoria { get; set; }
         public String SubCategoriaNombre { get; set; }
         public Int16 IdSubCategoriaDetalle { get; set; }
         public String SubCategoriaDetalleNombre { get; set; }
+        
     }
-  
+
 }

@@ -25,7 +25,7 @@ namespace PeruStore
         {
             Categoria_ObtenerId();
             Cargar_Categoria_SubCategoriaMenu();
-            Cargar_Categoria_Menu();
+            //Cargar_Categoria_Menu();
         }
 
         private void Categoria_ObtenerId()
@@ -58,6 +58,7 @@ namespace PeruStore
                             JavaScriptSerializer serializer = new JavaScriptSerializer();
                             String sJSON = serializer.Serialize(categoriaResultado.Datos);
                             hfDataCategoriaMenuSubMenu.Value = sJSON.ToString();
+                            hfDataCategoriaMenu.Value = sJSON.ToString();
                         }
                     }
                 }

@@ -22,6 +22,7 @@ class InicioJs {
         try {
             inicioJs.Fn_ListarCategoriaMenu_Left($("input[id$=hfDataCategoriaMenuSubMenu]").val());
             inicioJs.Fn_ListarCategoriaMenu($("input[id$=hfDataCategoriaMenu]").val());
+            inicioJs.Fn_ListarCategoriaImagenDeslizante($("input[id$=hfDataCategoriaMenu]").val());
         } catch (e) {
             Fn_Mensaje('e', "Ocurrio un problema, intentalo otra vez.");
         }
@@ -39,7 +40,22 @@ class InicioJs {
     catch (e) {
         Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
     }
-}
+  }
+    Fn_ListarCategoriaImagenDeslizante(dataCategoriaDeslizante) {
+        var objCategoriaDeslizante = dataCategoriaDeslizante;
+        try {
+            var objCategoryDeslizante = $.parseJSON(objCategoriaDeslizante);
+            var objectD = {};
+            objectD.request = objCategoryDeslizante;
+            var item = Fn_CargarTemplate("datatable-CategoriaImagenDeslizante", objectD);
+            $("#CategoriasDeslizante").html(item);
+        }
+        catch (e) {
+            Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
+        }
+    }
+
+
 
   Fn_ListarCategoriaMenu_Left(dataCategoriaMenuSubMenu) {
     var objCategoriaMenuSubMenu = dataCategoriaMenuSubMenu;

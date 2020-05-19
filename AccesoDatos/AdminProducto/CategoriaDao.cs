@@ -109,6 +109,8 @@ namespace AccesoDatos.AdminProducto
                                 CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
                                 RutaIcono = Convert.ToString(sqlDataReader["RutaIcono"]),
                                 RutaBanner = Convert.ToString(sqlDataReader["RutaBanner"]),
+                                RutaImagenDeslizante = Convert.ToString(sqlDataReader["RutaImagenDeslizante"]),
+
                             }); 
                         }
                     }
