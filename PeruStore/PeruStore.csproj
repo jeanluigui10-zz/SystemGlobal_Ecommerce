@@ -147,7 +147,7 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="Cliente\ClienteRegistro.aspx" />
     <Content Include="Cliente\js\ClienteRegistro.js" />
-    <Content Include="Comercio\DetalleProducto.aspx" />
+    <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
@@ -156,6 +156,7 @@
     <Content Include="Comercio\Ordenes\Informacion.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
     <Content Include="Comercio\Ordenes\js\informacion.js" />
+    <Content Include="Controles\ucProductList.ascx" />
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
@@ -2026,11 +2027,11 @@
     <Compile Include="Cliente\ClienteRegistro.aspx.designer.cs">
       <DependentUpon>ClienteRegistro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Comercio\DetalleProducto.aspx.cs">
+    <Compile Include="Comercio\Producto\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Comercio\DetalleProducto.aspx.designer.cs">
+    <Compile Include="Comercio\Producto\DetalleProducto.aspx.designer.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comercio\Ordenes\Historico.aspx.cs">
@@ -2046,6 +2047,13 @@
     </Compile>
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ucProductList.ascx.cs">
+      <DependentUpon>ucProductList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\ucProductList.ascx.designer.cs">
+      <DependentUpon>ucProductList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2116,7 +2124,7 @@
   <ItemGroup>
     <Folder Include="Cliente\css\" />
     <Folder Include="Comercio\css\" />
-    <Folder Include="Controles\" />
+    <Folder Include="Controles\js\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>
