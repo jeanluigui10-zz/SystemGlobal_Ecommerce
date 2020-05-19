@@ -155,6 +155,7 @@
     <Content Include="Comercio\Ordenes\Informacion.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
     <Content Include="Comercio\Ordenes\js\informacion.js" />
+    <Content Include="Controles\ucProductList.ascx" />
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
@@ -2045,6 +2046,13 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\ucProductList.ascx.cs">
+      <DependentUpon>ucProductList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\ucProductList.ascx.designer.cs">
+      <DependentUpon>ucProductList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2107,7 +2115,6 @@
   <ItemGroup>
     <Folder Include="Cliente\css\" />
     <Folder Include="Comercio\css\" />
-    <Folder Include="Controles\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>
