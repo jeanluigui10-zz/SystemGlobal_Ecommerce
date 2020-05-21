@@ -33,7 +33,7 @@
     <link href="/Template/css/themecss/lib.css" rel="stylesheet">
     <link href="/Template/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/Template/js/minicolors/miniColors.css" rel="stylesheet">
-
+    <link href="/plugins/validator/style.validate.css?a=1" rel="stylesheet" />
     
     <!-- Theme CSS
     ============================================ -->
@@ -65,6 +65,7 @@
     <script type="text/javascript" src="/Template/js/modernizr/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
+    <script type="text/javascript" src="/plugins/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
     <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
      <!-- Google web fonts
@@ -77,12 +78,29 @@
         
     </asp:ContentPlaceHolder>
 
+    <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
    
 
 </head>
 
 <body class="common-home res layout-2">
-    <form id="frmHmeMaster" runat="server">
+    <form id="frmHmeMaster" class="needs-validation" novalidate runat="server">
     <asp:HiddenField runat="server" ID="hfDataCategoriaMenuSubMenu" />
     <asp:HiddenField runat="server" ID="hfDataCategoriaMenu" />     
     
@@ -328,23 +346,39 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="with-sub-menu hover">
+                                                <li class="">
                                                     <p class="close-menu"></p>
                                                     <a href="/Comercio/Inicio.aspx" class="clearfix">
-                                                        <strong>Home</strong>
-                                                        <span class="caret"></span>
+                                                        <strong>Inicio</strong>
                                                     </a>
-                                                    <div class="sub-menu" style="width: 40%; ">
-                                                        <div class="content" >
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <ul class="row-list">
-                                                                        <li><a class="subcategory_item" href="/Comercio/Ordenes/Historico.aspx">Historial de Ordenes</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                </li>
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a href="#" class="clearfix">
+                                                        <strong>Ofertas</strong>
+                                                        <div class="tooltip fade top in" style="top: -19.6px; left: 1.5px; display: block;">
+                                                            <div class="tooltip-arrow" style="border-top-color: #53d542;"></div>
+                                                            <div class="tooltip-inner" style="background-color: #53d542;">Nuevas</div>
                                                         </div>
-                                                    </div>
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a href="#" class="clearfix">
+                                                        <strong>Nosotros</strong>
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a href="/Comercio/Nosotros/Contactanos.aspx" class="clearfix">
+                                                        <strong>Contáctanos</strong>
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a href="/Comercio/Ordenes/Historico.aspx" class="clearfix">
+                                                        <strong>Mis Órdenes</strong>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -742,7 +776,6 @@
 
      <script type="text/x-handlebars-template" id="datatable-CategoriaImagenDeslizante">
          {{# each request}}
-<%--         <div class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="7" data-items_column1="4" data-items_column2="4" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">--%>
              <div class="content-box">
                  <div class="image-cat">
                      <a href="#" title="Towels Cloud" target="_self">
@@ -753,7 +786,6 @@
                      <a href="#" title="{{CategoriaNombre}}" target="_self">{{CategoriaNombre}}</a>
                  </div>
              </div>
-        <%-- </div>--%>
          {{/each}}
     </script>
 

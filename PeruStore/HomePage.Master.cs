@@ -25,7 +25,6 @@ namespace PeruStore
         {
             Categoria_ObtenerId();
             Cargar_Categoria_SubCategoriaMenu();
-            //Cargar_Categoria_Menu();
         }
 
         private void Categoria_ObtenerId()
@@ -68,32 +67,5 @@ namespace PeruStore
                 }
             }
         }
-        public void Cargar_Categoria_Menu()
-        {
-            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
-            if (vsId > 0)
-            {
-                try
-                {
-                    CategoriaResultado categoriaResultado = new CategoriaResultado();
-
-                    categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, vsId);
-                    if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
-                    {
-                        if (categoriaResultado != null)
-                        {
-                            JavaScriptSerializer serializer = new JavaScriptSerializer();
-                            String sJSON = serializer.Serialize(categoriaResultado.Datos);
-                            hfDataCategoriaMenu.Value = sJSON.ToString();
-                        }
-                    }
-                }
-                catch (Exception exception)
-                {
-                    throw exception;
-                }
-            }
-        }
-
     }
 }

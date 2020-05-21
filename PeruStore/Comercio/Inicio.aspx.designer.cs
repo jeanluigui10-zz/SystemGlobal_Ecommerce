@@ -23,6 +23,24 @@ namespace PeruStore.Comercio
         /// </remarks>
         protected global::PeruStore.Controles.Inicio.ucOfertaSemanal ucOfertaSemanal;
 
+                /// <summary>
+        /// Control ucBeneficios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucBeneficios ucBeneficios;
+
+        /// <summary>
+        /// Control ucComprarPorCategoria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucComprarPorCategoria ucComprarPorCategoria;
+
         /// <summary>
         /// Control ucProductoLista.
         /// </summary>
@@ -31,5 +49,41 @@ namespace PeruStore.Comercio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::PeruStore.Controles.Inicio.ucProductoLista ucProductoLista;
+
+        /// <summary>
+        /// Control ucBannerCentral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucBannerCentral ucBannerCentral;
+
+        /// <summary>
+        /// Control ucProductosPorSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucProductosPorSeccion ucProductosPorSeccion;
+
+        /// <summary>
+        /// Control ucMarcas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucMarcas ucMarcas;
+
+        /// <summary>
+        /// Control ucUltimosBlogs.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucUltimosBlogs ucUltimosBlogs;
     }
 }
