@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="PeruStore.Comercio.Inicio" %>
 
 <%@ Register Src="~/Controles/Inicio/ucProductoLista.ascx" TagPrefix="uc1" TagName="ucProductoLista" %>
+<%@ Register Src="~/Controles/Inicio/ucOfertaSemanal.ascx" TagPrefix="uc1" TagName="ucOfertaSemanal" %>
 <%@ Register Src="~/Controles/Inicio/ucComprarPorCategoria.ascx" TagPrefix="uc1" TagName="ucComprarPorCategoria" %>
 <%@ Register Src="~/Controles/Inicio/ucUltimosBlogs.ascx" TagPrefix="uc1" TagName="ucUltimosBlogs" %>
 <%@ Register Src="~/Controles/Inicio/ucMarcas.ascx" TagPrefix="uc1" TagName="ucMarcas" %>
@@ -14,8 +15,9 @@
 
 
 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-   
+   <script src="../Controles/Inicio/js/listaproducto.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,6 +57,7 @@
                 </div>
 
                 <div class="row">
+                    <uc1:ucOfertaSemanal runat="server" id="ucOfertaSemanal" />
                   <uc1:ucProductoLista runat="server" ID="ucProductoLista" />
                 </div>
 
@@ -74,3 +77,27 @@
     </div>
     
 </asp:Content>
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/Template/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/Template/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/Template/js/owl-carousel/owl.carousel.js"></script>
+<script type="text/javascript" src="/Template/js/themejs/libs.js"></script>
+<script type="text/javascript" src="/Template/js/unveil/jquery.unveil.js"></script>
+<script type="text/javascript" src="/Template/js/countdown/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="/Template/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+<script type="text/javascript" src="/Template/js/datetimepicker/moment.js"></script>
+<script type="text/javascript" src="/Template/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Template/js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/Template/js/modernizr/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript" src="/Template/js/minicolors/jquery.miniColors.min.js"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" src="/Template/js/themejs/application.js"></script>
+
+<script type="text/javascript" src="/Template/js/themejs/homepage.js"></script>
+
+<script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
+<script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
+<script type="text/javascript" src="/Template/js/themejs/addtocart.js"></script>  
