@@ -10,12 +10,6 @@
 <%@ Register Src="~/Controles/Inicio/ucBeneficios.ascx" TagPrefix="uc1" TagName="ucBeneficios" %>
 
 
-
-
-
-
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
    <script src="../Controles/Inicio/js/listaproducto.js"></script>
 </asp:Content>
