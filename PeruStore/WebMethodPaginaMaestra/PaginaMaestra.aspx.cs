@@ -36,7 +36,7 @@ namespace PeruStore.WebMethodPaginaMaestra
             }
             catch (Exception exception)
             {
-                throw exception;
+                sJSONSubcategoria = "";
             }
             return sJSONSubcategoria;
         }
@@ -62,7 +62,7 @@ namespace PeruStore.WebMethodPaginaMaestra
             }
             catch (Exception exception)
             {
-                throw exception;
+                sJSONSubcategoriaDetalle = "";
             }
             return sJSONSubcategoriaDetalle;
         }
