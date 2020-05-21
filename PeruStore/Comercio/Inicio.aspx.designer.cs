@@ -15,6 +15,15 @@ namespace PeruStore.Comercio
     {
 
         /// <summary>
+        /// Control ucOfertaSemanal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucOfertaSemanal ucOfertaSemanal;
+
+                /// <summary>
         /// Control ucBeneficios.
         /// </summary>
         /// <remarks>

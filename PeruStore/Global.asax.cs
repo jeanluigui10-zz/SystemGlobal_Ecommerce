@@ -37,15 +37,16 @@ namespace PeruStore
         {
 
         }
-     
+
         protected void Application_Error(object sender, EventArgs e)
         {
             try
             {
-                var app = (HttpApplication)sender;
-                Exception lastError = app.Server.GetLastError();
-                var httpEx = lastError as HttpException;
-
+                Exception ex = Server.GetLastError();
+                if (((HttpException)ex).GetHttpCode() == 404)
+                    Response.Redirect("/Error/Error404.aspx");
+                else
+                    Response.Redirect("/Error/Error500.aspx");
             }
             catch (Exception exception)
             {
