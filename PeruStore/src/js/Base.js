@@ -7,16 +7,16 @@ function Fn_Mensaje(tipo, mensaje, idContenedor) {
     var resultado = '';
     switch (tipo) {
         case "s":
-            resultado = '<div class="alert alert-success"><span>' + (mensaje === undefined ? "Acción Exitosa." : mensaje) + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            resultado = '<div class="alert alert-success"><i class="fa fa-check-circle"></i>Éxito - ' +  mensaje + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             break;
         case "e":
-            resultado = '<div class="alert alert-danger"><span>' + (mensaje === undefined ? "Error" : mensaje) + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            resultado = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Error - ' + mensaje +'</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             break;
         case "w":
-            resultado = '<div class="alert alert-warning"><span>' + (mensaje === undefined ? "¡Advertencia!" : mensaje) + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            resultado = '<div class="alert alert-warning"><i class="fa fa-warning"></i>Advertencia - ' + mensaje + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             break;
         case "i":
-            resultado = '<div class="alert alert-info"><span>' + (mensaje === undefined ? "Información" : mensaje) + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            resultado = '<div class="alert alert-info"><i class="fa fa-info-circle"></i>Información - ' + mensaje + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             break;
         default:
             resultado = '<div class="alert alert-seconday"><span>' + (mensaje === undefined ? "Mensaje Indefinido." : mensaje) + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';

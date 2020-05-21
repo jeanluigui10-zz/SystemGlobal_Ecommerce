@@ -147,9 +147,15 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="Cliente\ClienteRegistro.aspx" />
     <Content Include="Cliente\js\ClienteRegistro.js" />
+    <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
+    <Content Include="Error\css\style.css" />
+    <Content Include="Error\Error404.aspx" />
+    <Content Include="Error\Error500.aspx" />
+    <Content Include="plugins\validator\jquery.validate.min.js" />
+    <Content Include="plugins\validator\style.validate.css" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -2028,6 +2034,13 @@
     <Compile Include="Cliente\ClienteRegistro.aspx.designer.cs">
       <DependentUpon>ClienteRegistro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comercio\Nosotros\Contactanos.aspx.cs">
+      <DependentUpon>Contactanos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Nosotros\Contactanos.aspx.designer.cs">
+      <DependentUpon>Contactanos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Comercio\Producto\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2055,6 +2068,20 @@
     </Compile>
     <Compile Include="Controles\Inicio\ucProductoLista.ascx.designer.cs">
       <DependentUpon>ucProductoLista.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\Error500.aspx.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\Error500.aspx.designer.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
