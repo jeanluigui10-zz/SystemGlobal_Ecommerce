@@ -25,9 +25,9 @@
                 <div class="ltabs-items-container products-list grid">
                     <!--Begin Items-->
                     <div class="ltabs-items ltabs-items-selected items-category-20" data-total="16">
-                        <div class="ltabs-items-inner ltabs-slider"<%-- id="dvProductos"--%>>
+                        <div class="ltabs-items-inner ltabs-slider" id="dvProductos">
 
-                                  <div class="ltabs-item">
+                                  <%--<div class="ltabs-item">
                                                 <div class="item-inner product-layout transition product-grid">
                                                     <div class="product-item-container">
                                                         <div class="left-block">
@@ -105,7 +105,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>--%>
 
                         </div>
 
@@ -130,7 +130,7 @@
 <asp:HiddenField ID="_hfListaProducto" runat="server" />
 <script type="text/x-handlebars-template" id="handlebarProducto">
     {{# each Datos}}
-       <%--    <div class="ltabs-item">
+           <div class="ltabs-item">
                                 <div class="item-inner product-layout transition product-grid">
                                     <div class="product-item-container">
                                         <div class="left-block">
@@ -172,7 +172,8 @@
                                         </div>
                                     </div>
                                 </div>
-             </div>--%>
+             </div>
      {{/each}}
      
 </script>
+
