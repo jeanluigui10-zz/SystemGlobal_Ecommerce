@@ -150,6 +150,11 @@
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+<<<<<<< HEAD
+    <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
+=======
+    <Content Include="Comercio\Producto\ListaProducto.aspx" />
+>>>>>>> 147470a5676c05df0d598538329f14909f270fd2
     <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
     <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
@@ -2069,6 +2074,13 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.designer.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2113,10 +2125,7 @@
     </Compile>
     <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.cs">
       <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> 66d44596b2c049e73b8e7830e642759f2ec18ef5
     </Compile>
     <Compile Include="Error\Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
@@ -2130,10 +2139,7 @@
     </Compile>
     <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.cs">
       <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> 66d44596b2c049e73b8e7830e642759f2ec18ef5
     </Compile>
     <Compile Include="Error\Error500.aspx.cs">
       <DependentUpon>Error500.aspx</DependentUpon>

@@ -10,7 +10,6 @@
 <%@ Register Src="~/Controles/Inicio/ucBeneficios.ascx" TagPrefix="uc1" TagName="ucBeneficios" %>
 
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -56,6 +55,7 @@
                 </div>
 
                <%-- Banner Central--%>
+
                 <uc1:ucBannerCentral runat="server" ID="ucBannerCentral" />
                
                <%--Productos Por Sección--%>
