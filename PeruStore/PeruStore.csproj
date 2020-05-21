@@ -151,6 +151,7 @@
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
+    <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
     <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
     <Content Include="Controles\Inicio\ucBeneficios.ascx" />
     <Content Include="Controles\Inicio\ucComprarPorCategoria.ascx" />
@@ -2068,19 +2069,19 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
-      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.designer.cs">
-      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.designer.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.designer.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucBeneficios.ascx.cs">
       <DependentUpon>ucBeneficios.ascx</DependentUpon>
@@ -2112,23 +2113,29 @@
     </Compile>
     <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.cs">
       <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Error\Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.designer.cs">
       <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Error\Error404.aspx.designer.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.cs">
       <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Error\Error500.aspx.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.designer.cs">
       <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Error\Error500.aspx.designer.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
     </Compile>
