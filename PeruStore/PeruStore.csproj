@@ -150,6 +150,7 @@
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
+    <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -2048,6 +2049,13 @@
     </Compile>
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.designer.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucProductoLista.ascx.cs">
       <DependentUpon>ucProductoLista.ascx</DependentUpon>

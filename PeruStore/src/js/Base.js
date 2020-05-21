@@ -401,6 +401,13 @@ function fn_Ajax(url, data, success, error) {
 //}
 
 function Fn_CargarTemplate(idTemplate, objetoJson) {
+    Handlebars.registerHelper('EsDivisible', function (index, options) {
+        if (index%2 == 0) {
+            return options.fn(this);
+        }
+        return options.inverse(this);
+    });
+
     Handlebars.registerHelper('ifCond', function (v1, v2, options) {
         if (v1 > v2) {
             return options.fn(this);

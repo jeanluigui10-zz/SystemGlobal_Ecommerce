@@ -6,7 +6,6 @@ using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-
 namespace AccesoDatos.AdminProducto
 {
     public class ProductoDao
@@ -53,6 +52,7 @@ namespace AccesoDatos.AdminProducto
                                 Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
                                 PrecioOferta = Convert.ToDecimal(sqlDataReader["PrecioOferta"]),
                                 Categorianombre = Convert.ToString(sqlDataReader["Categorianombre"]),
+                                NombreRecurso = "http://elcanastonxcorporate.tk" + Convert.ToString(sqlDataReader["NombreRecurso"]),
                                 Marcanombre = Convert.ToString(sqlDataReader["Marcanombre"]),
                                 Unidadminima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
                                 Unidadmaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
