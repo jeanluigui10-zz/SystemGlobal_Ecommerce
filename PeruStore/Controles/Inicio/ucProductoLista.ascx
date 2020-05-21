@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductoLista.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucProductoLista" %>
+   <script src="../Controles/Inicio/js/listaproducto.js"></script>
+   <script src="../Controles/Inicio/js/listado_producto_render_tab_1.js"></script>
 
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <!-- Listing tabs -->

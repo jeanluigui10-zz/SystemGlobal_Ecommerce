@@ -11,13 +11,7 @@
 
 
 
-
-
-
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-   <script src="../Controles/Inicio/js/listaproducto.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -3,6 +3,7 @@
 $(function () {
     listaProductoJS = new ListaProducto("");
     listaProductoJS.Fn_Iniciar();
+    Fn_Render_Lista_Producto_Tab_1();
 });
 class ListaProducto {
 

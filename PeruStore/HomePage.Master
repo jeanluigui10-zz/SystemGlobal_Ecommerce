@@ -704,7 +704,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/application.js"></script>
 
-    <script type="text/javascript" src="/Template/js/themejs/homepage.js"></script>
+    <script type="text/javascript" src="/Template/js/themejs/homepage.js?a=1"></script>
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
