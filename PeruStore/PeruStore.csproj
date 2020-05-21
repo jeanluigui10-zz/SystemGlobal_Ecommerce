@@ -151,11 +151,17 @@
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
+    <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
+    <Content Include="Controles\Inicio\ucBeneficios.ascx" />
+    <Content Include="Controles\Inicio\ucComprarPorCategoria.ascx" />
+    <Content Include="Controles\Inicio\ucMarcas.ascx" />
+    <Content Include="Controles\Inicio\ucProductosPorSeccion.ascx" />
     <Content Include="Error\css\style.css" />
     <Content Include="Error\Error404.aspx" />
     <Content Include="Error\Error500.aspx" />
     <Content Include="plugins\validator\jquery.validate.min.js" />
     <Content Include="plugins\validator\style.validate.css" />
+    <Content Include="Controles\Inicio\ucUltimosBlogs.ascx" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -2062,6 +2068,34 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
+      <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBannerCentral.ascx.designer.cs">
+      <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBeneficios.ascx.cs">
+      <DependentUpon>ucBeneficios.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBeneficios.ascx.designer.cs">
+      <DependentUpon>ucBeneficios.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucComprarPorCategoria.ascx.cs">
+      <DependentUpon>ucComprarPorCategoria.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucComprarPorCategoria.ascx.designer.cs">
+      <DependentUpon>ucComprarPorCategoria.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucMarcas.ascx.cs">
+      <DependentUpon>ucMarcas.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucMarcas.ascx.designer.cs">
+      <DependentUpon>ucMarcas.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Inicio\ucProductoLista.ascx.cs">
       <DependentUpon>ucProductoLista.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2069,17 +2103,25 @@
     <Compile Include="Controles\Inicio\ucProductoLista.ascx.designer.cs">
       <DependentUpon>ucProductoLista.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.cs">
+      <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
     <Compile Include="Error\Error404.aspx.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.designer.cs">
+      <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
     <Compile Include="Error\Error404.aspx.designer.cs">
       <DependentUpon>Error404.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.cs">
+      <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
     <Compile Include="Error\Error500.aspx.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.designer.cs">
+      <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
     <Compile Include="Error\Error500.aspx.designer.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
     </Compile>
