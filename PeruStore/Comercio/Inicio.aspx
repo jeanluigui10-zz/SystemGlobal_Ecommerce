@@ -59,6 +59,7 @@
                 </div>
 
                <%-- Banner Central--%>
+
                 <uc1:ucBannerCentral runat="server" ID="ucBannerCentral" />
                
                <%--Productos Por Sección--%>

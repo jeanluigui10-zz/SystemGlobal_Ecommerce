@@ -149,6 +149,7 @@
     <Content Include="Cliente\js\ClienteRegistro.js" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Comercio\Producto\ListaProducto.aspx" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
     <Content Include="Controles\Inicio\ucBeneficios.ascx" />
@@ -2054,6 +2055,13 @@
     </Compile>
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.designer.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
