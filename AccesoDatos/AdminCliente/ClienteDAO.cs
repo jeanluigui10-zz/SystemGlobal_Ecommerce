@@ -1,8 +1,11 @@
 ﻿using Dominio.Result.Cliente;
+using Dominio.TablasTipo;
 using Libreria.AdminConexion;
+using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Messaging;
 
 namespace AccesoDatos.AdminCliente
 {
@@ -33,12 +36,12 @@ namespace AccesoDatos.AdminCliente
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand("Cliente_Por_EmailContrasenha_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
-                    sqlCommand.Parameters.AddWithValue("@email", email);
-                    sqlCommand.Parameters.AddWithValue("@contrasenha", contrasenha);
-                    sqlCommand.Parameters.AddWithValue("@idComercio", idComercio);
+                    SqlCommand command = new SqlCommand("Cliente_Por_EmailContrasenha_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@contrasenha", contrasenha);
+                    command.Parameters.AddWithValue("@idComercio", idComercio);
 
-                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    using (SqlDataReader sqlDataReader = command.ExecuteReader())
                     {
                         objCliente = new ClienteResultado();
                         while (sqlDataReader.Read())
@@ -66,6 +69,64 @@ namespace AccesoDatos.AdminCliente
             }
             return objCliente;
         }
+
+        public Boolean RegistrarCliente(ClienteTablaTipo cliente, DireccionTablaTipo direccion)
+        {
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("Cliente_Registro_Pa", sqlConnection) 
+                    { 
+                        CommandType = CommandType.StoredProcedure 
+                    };
+                    SqlParameter parameterCliente = command.Parameters.AddWithValue("@cliente", cliente);
+                    parameterCliente.SqlDbType = SqlDbType.Structured;
+                    parameterCliente.TypeName = "dbo.Tipo_Cliente";
+
+                    SqlParameter parameterDireccion = command.Parameters.AddWithValue("@direccion", direccion);
+                    parameterDireccion.SqlDbType = SqlDbType.Structured;
+                    parameterDireccion.TypeName = "dbo.Tipo_Direccion";
+
+                    Int32 countInserciones = command.ExecuteNonQuery();
+                    return  countInserciones > 0? true: false;
+                }
+                catch (Exception e)
+                {
+                    Log.Save("Error", "ClienteDao: "+ e.Message, e.StackTrace);
+                    return false;
+                }
+            }
+        }
+
+        public Boolean Cliente_Existe_PorEmail(String email, Int16 idComercio)
+        {
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("Cliente_Validar_Por_Email_Pa", sqlConnection)
+                    { 
+                        CommandType = CommandType.StoredProcedure 
+                    };
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@idComercio", idComercio);
+                    
+                    Byte contEmailxUsuario = Convert.ToByte(command.ExecuteScalar());
+                    if (contEmailxUsuario > 0)
+                        return true;
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    Log.Save("Error", "ClienteDao: " + ex.Message, ex.StackTrace);
+                    throw ex;
+                }
+            }
+        }
+
+
 
 
         #endregion Metodos

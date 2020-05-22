@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ClienteRegistro.aspx.cs" Inherits="PeruStore.Cliente.ClienteRegistro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ClienteRegistro.aspx.cs" Inherits="PeruStore.AdminCliente.ClienteRegistro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -130,14 +130,20 @@
 							</div>
 						</div>
 					</fieldset>
-					<div class="buttons">
-							<input type="submit" value="Registrar" class="btn btn-primary" id="btnRegistrarCliente">
-					</div>
+				     <div class="center">
+							<input type="button" value="Registrar" class="btn btn-primary" id="btnRegistrarCliente">
+					</div>				    
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- //Main Container -->
-       
+
+    <style type="text/css"> 
+	   div.center {
+		  text-align: center;
+	   }
+    </style>
     <script src="js/ClienteRegistro.js"></script>
+
 </asp:Content>

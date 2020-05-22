@@ -20,7 +20,7 @@ namespace Dominio.Entidades
 
         public Int32 IdRegion { get; set; }
 
-        public String DireccionPrimaria { get; set; }
+        public String DireccionPrincipal { get; set; }
 
         public String DireccionSecundaria { get; set; }
 
