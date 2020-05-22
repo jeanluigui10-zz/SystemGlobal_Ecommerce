@@ -1,4 +1,4 @@
-﻿using Dominio.Result;
+﻿using Dominio.Result.Producto;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
@@ -7,7 +7,7 @@ using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Web.UI;
 
-namespace PeruStore.Comercio
+namespace PeruStore.Comercio.Producto
 {
     public partial class DetalleProducto : PaginaBase
     {
@@ -29,7 +29,7 @@ namespace PeruStore.Comercio
             try
             {
                 MetodoRespuesta _respusta = new MetodoRespuesta();
-                String _prodid = Convert.ToString(Request.QueryString["prodid"]);
+                String _prodid = Convert.ToString(Request.QueryString["p"]);
                 if (Int32.TryParse(_prodid, out Int32 id) && id > 0)
                 {
                     ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId(id, ref _respusta);

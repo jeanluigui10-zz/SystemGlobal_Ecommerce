@@ -147,14 +147,32 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="AdminCliente\ClienteRegistro.aspx" />
     <Content Include="AdminCliente\js\ClienteRegistro.js" />
-    <Content Include="Comercio\DetalleProducto.aspx" />
+    <Content Include="Comercio\Nosotros\Contactanos.aspx" />
+    <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
+    <Content Include="Comercio\Producto\ListaProducto.aspx" />
+    <Content Include="Controles\Inicio\js\listaproducto.js" />
+    <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
+    <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
+    <Content Include="Controles\Inicio\ucBeneficios.ascx" />
+    <Content Include="Controles\Inicio\ucComprarPorCategoria.ascx" />
+    <Content Include="Controles\Inicio\ucMarcas.ascx" />
+    <Content Include="Controles\Inicio\ucProductosPorSeccion.ascx" />
+    <Content Include="Error\css\style.css" />
+    <Content Include="Error\Error404.aspx" />
+    <Content Include="Error\Error500.aspx" />
+    <Content Include="plugins\validator\jquery.validate.min.js" />
+    <Content Include="plugins\validator\style.validate.css" />
+    <Content Include="Controles\Inicio\ucUltimosBlogs.ascx" />
+    <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
     <Content Include="Comercio\Ordenes\Historico.aspx" />
     <Content Include="Comercio\Ordenes\Informacion.aspx" />
     <Content Include="Comercio\Ordenes\js\historico.js" />
     <Content Include="Comercio\Ordenes\js\informacion.js" />
+    <Content Include="Controles\Inicio\ucProductoLista.ascx" />
     <Content Include="HomePage.Master" />
     <Content Include="Comercio\Inicio.aspx" />
     <Content Include="Pagos\Culqi\culqi.net\bin\Debug\culqi.net.dll" />
@@ -1834,6 +1852,7 @@
     <Content Include="Template\css\font-awesome\scss\_stacked.scss" />
     <Content Include="Template\css\font-awesome\scss\_variables.scss" />
     <Content Include="Template\css\header\header2.css.map" />
+    <Content Include="WebMethodPaginaMaestra\PaginaMaestra.aspx" />
     <None Include="Pagos\Culqi\culqi.net\packages.config" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
     <Content Include="plugins\ckeditor\LICENSE.md" />
@@ -2024,11 +2043,18 @@
     <Compile Include="AdminCliente\ClienteRegistro.aspx.designer.cs">
       <DependentUpon>ClienteRegistro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Comercio\DetalleProducto.aspx.cs">
+    <Compile Include="Comercio\Nosotros\Contactanos.aspx.cs">
+      <DependentUpon>Contactanos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Nosotros\Contactanos.aspx.designer.cs">
+      <DependentUpon>Contactanos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comercio\Producto\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Comercio\DetalleProducto.aspx.designer.cs">
+    <Compile Include="Comercio\Producto\DetalleProducto.aspx.designer.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comercio\Ordenes\Historico.aspx.cs">
@@ -2044,6 +2070,83 @@
     </Compile>
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Producto\ListaProducto.aspx.designer.cs">
+      <DependentUpon>ListaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
+      <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBannerCentral.ascx.designer.cs">
+      <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.designer.cs">
+      <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBeneficios.ascx.cs">
+      <DependentUpon>ucBeneficios.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucBeneficios.ascx.designer.cs">
+      <DependentUpon>ucBeneficios.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucComprarPorCategoria.ascx.cs">
+      <DependentUpon>ucComprarPorCategoria.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucComprarPorCategoria.ascx.designer.cs">
+      <DependentUpon>ucComprarPorCategoria.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucMarcas.ascx.cs">
+      <DependentUpon>ucMarcas.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucMarcas.ascx.designer.cs">
+      <DependentUpon>ucMarcas.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucProductoLista.ascx.cs">
+      <DependentUpon>ucProductoLista.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucProductoLista.ascx.designer.cs">
+      <DependentUpon>ucProductoLista.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.cs">
+      <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\Error404.aspx.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucProductosPorSeccion.ascx.designer.cs">
+      <DependentUpon>ucProductosPorSeccion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\Error404.aspx.designer.cs">
+      <DependentUpon>Error404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.cs">
+      <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\Error500.aspx.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucUltimosBlogs.ascx.designer.cs">
+      <DependentUpon>ucUltimosBlogs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\Error500.aspx.designer.cs">
+      <DependentUpon>Error500.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2095,6 +2198,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\BaseAplicacion\ClaseSerializable.cs" />
+    <Compile Include="src\ConfiguracionAplicacion\PaginaBaseControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -2103,11 +2209,17 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WebMethodPaginaMaestra\PaginaMaestra.aspx.cs">
+      <DependentUpon>PaginaMaestra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMethodPaginaMaestra\PaginaMaestra.aspx.designer.cs">
+      <DependentUpon>PaginaMaestra.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminCliente\css\" />
     <Folder Include="Comercio\css\" />
-    <Folder Include="Controles\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>

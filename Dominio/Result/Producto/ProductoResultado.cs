@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Dominio.Result
+namespace Dominio.Result.Producto
 {
     public class ProductoResultado
     {
@@ -17,9 +17,12 @@ namespace Dominio.Result
         public String Sku { get; set; }
         public String Productonombre { get; set; }
         public String Productodescripcion { get; set; }
+        public String ProductodescripcionLarga { get; set; }
+        public String NombreRecurso { get; set; }
         public Int32 Unidadminima { get; set; }
         public Int32 Unidadmaxima { get; set; }
         public Decimal Precio { get; set; }
+        public Decimal PrecioOferta { get; set; }
         public Boolean Esoferta { get; set; }
         public Int32 Idcategoria { get; set; }
         public String Categorianombre { get; set; }
