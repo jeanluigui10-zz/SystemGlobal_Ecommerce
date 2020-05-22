@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using Dominio.Entidades;
+using Dominio.Entidades.Comercio;
 using Libreria.General;
 
 namespace PeruStore.src.BaseAplicacion

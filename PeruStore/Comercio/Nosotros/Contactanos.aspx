@@ -1,6 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Contactanos.aspx.cs" Inherits="PeruStore.Comercio.Nosotros.Contactanos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#btnEnviar").on("click", function (event) {
+                var btnGuardar = document.getElementById("btnEnviarHiden");
+                btnGuardar.click();
+                event.preventDefault();
+            });
+
+        });
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="main-container container">
@@ -48,32 +61,31 @@
                             <fieldset>
                                 <legend>Contactáctanos</legend>
                                 <div class="form-group required">
-                                    <label class="col-sm-2 control-label" for="input-name">Nombre</label>
+                                    <label class="col-sm-2 control-label" for="input-nombre">Nombre</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" required/>
+                                        <input type="text" name="nombre" class="form-control" runat="server" id="txtNombre" required/>
                                         <div class="invalid-feedback">Por favor inserte un Nombre válido</div>
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label class="col-sm-2 control-label" for="input-email">Correo Electronico</label>
+                                    <label class="col-sm-2 control-label" for="input-correo">Correo Electronico</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="email" value="" id="input-email" class="form-control" required>
+                                        <input type="text" name="correo" runat="server" id="txtEmail" class="form-control" required>
                                         <div class="invalid-feedback">Por favor inserte un Correo Electronico válido</div>
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label class="col-sm-2 control-label" for="input-enquiry">Consulta</label>
+                                    <label class="col-sm-2 control-label" for="input-consulta">Consulta</label>
                                     <div class="col-sm-10">
-                                        <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control" required></textarea>
+                                        <textarea name="consulta" rows="10" id="txtConsulta" runat="server" class="form-control" required></textarea>
                                         <div class="invalid-feedback">Por favor inserte una Consulta válida.</div>
                                     </div>
                                 </div>
                             </fieldset>
                             <div class="buttons">
                                 <div class="pull-right">
-                                    <input  class="btn btn-default buttonGray" type="submit" title="Enviar"/>
-                                       <%-- <span>Enviar</span>
-                                    </input>--%>
+                                    <input  class="btn btn-warning" type="submit" id="btnEnviar" value="Enviar"/>
+                                    <asp:Button CssClass="hidden" runat="server" ID="btnEnviarHiden" ClientIDMode="Static" OnClick="btnEnviar_Click" />
                                 </div>
                             </div>
                         </div>

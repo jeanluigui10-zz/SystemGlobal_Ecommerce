@@ -50,7 +50,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
                     throw exception;
                 }
             }
@@ -82,7 +82,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
                     throw exception;
                 }
             }
@@ -117,7 +117,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
                     throw exception;
                 }
             }

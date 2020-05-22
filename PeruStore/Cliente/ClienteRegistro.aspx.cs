@@ -29,18 +29,18 @@ namespace PeruStore.Cliente
 
                 if ( ubigeo!= null && ubigeo.Regiones.Count > 0)
                 {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                     respuesta.Datos = ubigeo.Regiones;
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar las Regiones.";
                 }
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar las Regiones.";
                 //Log error
@@ -62,18 +62,18 @@ namespace PeruStore.Cliente
 
                     if (ubigeo != null && ubigeo.Provincias.Count > 0)
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                         respuesta.Datos = ubigeo.Provincias;
                     }
                     else
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                     }
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                     //Log error seleccionar una Region valida
@@ -81,7 +81,7 @@ namespace PeruStore.Cliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                 // Log error
@@ -104,19 +104,19 @@ namespace PeruStore.Cliente
 
                     if (ubigeo != null && ubigeo.Distritos.Count > 0)
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                         respuesta.Datos = ubigeo.Distritos;
                     }
                     else
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                     }
                 }
                 else
                 {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                     //Log error seleccionar una Region valida
@@ -124,7 +124,7 @@ namespace PeruStore.Cliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                 // Log error
@@ -206,7 +206,7 @@ namespace PeruStore.Cliente
                     }
 
                     if (!esClienteValido) {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                     }
@@ -215,7 +215,7 @@ namespace PeruStore.Cliente
                         ClienteResultado objCliente = new ClienteBl().ObtenerCliente_EmailContrasenha(correo, contrasenha, idComercio);
                         if (objCliente != null && objCliente.Datos != null && objCliente.Datos.Count > 0)
                         {
-                            respuesta.CodigoRespuesta = EnumTipoMensaje.Informacion;
+                            respuesta.CodigoRespuesta = EnumCodigoRespuesta.Informacion;
                             respuesta.Datos = null;
                             respuesta.Mensaje = "El correo electrónico ingresado ya pertenece a otra cuenta";
                         }
@@ -226,14 +226,14 @@ namespace PeruStore.Cliente
 
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                 }
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
             }

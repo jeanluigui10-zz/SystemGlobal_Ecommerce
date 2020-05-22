@@ -1,12 +1,9 @@
 ﻿using AccesoDatos.AdminTienda;
-using Dominio.Entidades;
+using Dominio.Entidades.Comercio;
 using Libreria.Base;
 using Libreria.General;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Libreria.Base;
 
 namespace InteligenciaNegocio.AdminTienda
 {
@@ -33,10 +30,10 @@ namespace InteligenciaNegocio.AdminTienda
             try
             {
                 tienda = TiendaDao.Instancia.Obtener(urlDominio);
-                if(tienda.Estado == Convert.ToBoolean(EnumGlobalEstado.Inactivo))
+                if (tienda.Estado == Convert.ToBoolean(EnumGlobalEstado.Inactivo))
                 {
                     String mensaje = String.Format("{0} {1} {2}", "La Tienda", tienda.ComercioNombre, "Se encuentra fuera de servicio.");
-                    metodoRespuesta = new MetodoRespuesta(EnumTipoMensaje.Informacion, mensaje);
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Informacion, mensaje);
                 }
             }
             catch (Exception exception)
@@ -44,6 +41,27 @@ namespace InteligenciaNegocio.AdminTienda
                 throw exception;
             }
             return tienda;
+        }
+
+        public MetodoRespuesta Contactanos_Guardar_Mensaje(TiendaContacto tiendaContacto)
+        {
+            MetodoRespuesta metodoRespuesta = null;
+            try
+            {
+                if (Validar.EsValido(tiendaContacto) && Validar.EsValido(tiendaContacto.Tienda))
+                {
+                    metodoRespuesta = TiendaDao.Instancia.Contactanos_Guardar_Mensaje(tiendaContacto);
+                    if(metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Error)
+                    {
+                        metodoRespuesta.Mensaje = String.Format("{0}", "No se pudo enviar su consulta, intentalo otra vez.");
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            return metodoRespuesta;
         }
 
         #endregion Metodos

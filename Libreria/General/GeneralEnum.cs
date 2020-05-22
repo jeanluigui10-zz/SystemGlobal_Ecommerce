@@ -29,7 +29,7 @@ namespace Libreria.General
         }
     }
 
-    public enum EnumTipoMensaje
+    public enum EnumCodigoRespuesta
     {
         [StringValue("Éxito")]
         Exito = 1,
