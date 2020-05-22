@@ -74,6 +74,7 @@
     <Compile Include="General\Extension.cs" />
     <Compile Include="General\GeneralEnum.cs" />
     <Compile Include="General\Log.cs" />
+    <Compile Include="General\Utilitario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

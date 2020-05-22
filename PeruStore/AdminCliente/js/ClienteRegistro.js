@@ -5,13 +5,18 @@ $(function () {
     Fn_Iniciar()
     Fn_Bind();
     Fn_Ubigeo_ObtenerRegiones();
-   
 });
 
 
 function Fn_Iniciar() {
-    $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option >");   
-    $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");  
+    $("input").keypress(function (e) {
+        if (e.which === 13) {
+            return false;
+        }
+    });
+
+    $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option >");
+    $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");
 
     $('#txtNombreCliente').keyup(function () {
         this.value = (this.value + '').replace(/[^A-Za-zñÑáéíóúÁÉÍÓÚ\s]/g, '');
@@ -30,7 +35,7 @@ function Fn_Bind() {
     $("#ddlRegion").change(function (e) {
         var idRegion = $("#ddlRegion").val();
         if (idRegion === "0") {
-            $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option>");        
+            $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option>");
         }
         else {
             Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion);
@@ -44,7 +49,7 @@ function Fn_Bind() {
             $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");
         }
         else
-        Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia);
+            Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia);
     })
 
     $("#btnRegistrarCliente").click(function (e) {
@@ -91,9 +96,9 @@ function Fn_Ubigeo_ObtenerRegiones() {
     } catch (e) {
         Fn_Mensaje('e', 'A ocurrido un error', 'divMensaje');
     }
-}   
+}
 
-function Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion) {   
+function Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion) {
     try {
         var success = function (asw) {
             var data = JSON.parse(asw.d);
@@ -211,6 +216,16 @@ function Fn_ValidarFormulario() {
         Fn_Mensaje('e', 'Celular es un campo Obligatorio', 'divMensaje');
         return false;
     }
+    if (celular.trim().length !== 9) {
+        Fn_Mensaje('e', 'El número de Celular debe ser de 9 dígitos', 'divMensaje');
+        return false;
+    }
+
+    if (telefono.trim().length > 0 && telefono.trim().length !== 9) {
+        Fn_Mensaje('e', 'El número de Telefono debe ser de 9 dígitos', 'divMensaje');
+        return false;
+    }
+
 
     if (direccionPrincipal.trim().length === 0) {
         Fn_Mensaje('e', 'Dirección Principal es un campo Obligatorio', 'divMensaje');
@@ -235,20 +250,24 @@ function Fn_ValidarFormulario() {
     if (codigoPostal.trim().length === 0) {
         Fn_Mensaje('e', 'Código Postal es un campo Obligatorio', 'divMensaje');
         return false;
-    } 
+    }
+    if (codigoPostal.trim().length !== 5) {
+        Fn_Mensaje('e', 'El Código Postal debe ser un número de 5 dígitos', 'divMensaje');
+        return false;
+    }
 
     /****************************Validacion de Password****************************/
     if (contrasenha.length === 0) {
         Fn_Mensaje('e', 'Password es un campo Obligatorio', 'divMensaje');
         return false;
     }
-    
+
     if (contrasenhaConfirm.length === 0) {
         Fn_Mensaje('e', 'Confirme el password ingresado', 'divMensaje');
         return false;
     }
 
-    if (contrasenha !== contrasenhaConfirm ) {
+    if (contrasenha !== contrasenhaConfirm) {
         Fn_Mensaje('e', 'El password de confirmación no coincide', 'divMensaje');
         return false;
     }
@@ -295,12 +314,14 @@ function Fn_RegistrarCliente() {
 
 
             if (data !== undefined && data !== null) {
-                if (data.CodigoRespuesta === EnumTipoMensaje.Exito);
-                {
-
+                if (data.CodigoRespuesta === EnumTipoMensaje.Exito){
+                    Fn_Mensaje('s', data.Mensaje, 'divMensaje');
                 }
                 if (data.CodigoRespuesta === EnumTipoMensaje.Error) {
-
+                    Fn_Mensaje('e', data.Mensaje, 'divMensaje');
+                }
+                if (data.CodigoRespuesta === EnumTipoMensaje.Informacion){
+                    Fn_Mensaje('i', data.Mensaje, 'divMensaje');
                 }
             }
         }
