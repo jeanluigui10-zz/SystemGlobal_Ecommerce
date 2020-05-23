@@ -150,6 +150,7 @@
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Controles\Inicio\css\listaproductos.css" />
     <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
     <Content Include="Comercio\Producto\ListaProducto.aspx" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />

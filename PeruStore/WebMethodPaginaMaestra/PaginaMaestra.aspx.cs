@@ -25,7 +25,7 @@ namespace PeruStore.WebMethodPaginaMaestra
                 CategoriaResultado categoriaResultado = new CategoriaResultado();
 
                 categoriaResultado = CategoriaBL.instancia.SubCategoria_ObtenerLista_PorIdCategoria(ref metodoRespuesta, IdCategoria);
-                if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                 {
                     if (categoriaResultado != null)
                     {
@@ -51,7 +51,7 @@ namespace PeruStore.WebMethodPaginaMaestra
                 CategoriaResultado categoriaResultado = new CategoriaResultado();
 
                 categoriaResultado = CategoriaBL.instancia.SubCategoria_ObtenerLista_PorIdSubCategoria(ref metodoRespuesta, IdSubCategoria);
-                if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                 {
                     if (categoriaResultado != null)
                     {

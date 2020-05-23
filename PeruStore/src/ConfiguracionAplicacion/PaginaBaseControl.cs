@@ -1,14 +1,16 @@
-﻿using Libreria.General;
+﻿using Libreria.Base;
+using Libreria.General;
 using System;
 using System.Web.UI;
 
 namespace PeruStore.src.ConfiguracionAplicacion
 {
-    public class PaginaBaseControl: System.Web.UI.UserControl
+    public class PaginaBaseControl: UserControl
     {
-        public void Mensaje(EnumTipoMensaje tipo, String mensaje)
+        public void Mensaje(EnumCodigoRespuesta tipo, String mensaje)
         {
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "message", @"<script type='text/javascript'>Fn_Mensaje('" + tipo.ObtenerString() + "', '" + mensaje + "');</script>", false);
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta(tipo);
+            Page.ClientScript.RegisterStartupScript(typeof(Page), "message", @"<script type='text/javascript'>Fn_Mensaje('" + metodoRespuesta.CodigoMensajeJs() + "', '" + mensaje + "');</script>", false);
         }
     }
 }

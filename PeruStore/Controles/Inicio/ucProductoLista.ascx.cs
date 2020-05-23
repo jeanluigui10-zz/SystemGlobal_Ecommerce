@@ -24,8 +24,6 @@ namespace PeruStore.Controles.Inicio
 
         private void MostrarProductosPorComercio()
         {
-
-
             try
             {
                 if (SesionAplicacion.SesionTienda != null)
@@ -36,66 +34,90 @@ namespace PeruStore.Controles.Inicio
                     if (Int32.TryParse(_comerid, out Int32 id) && id > 0)
                     {                     
                         ProductoResultado _producto = ProductoBL.Instancia.ListaProdctosPorComercio(id, ref _respusta);
-                        if (_respusta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                        if (_respusta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                         {
                             if (_producto != null)
                             {
-                                Object Productos = new Object();
-                                List<Object> ListaProductos = new List<Object>();
-                                List<Object> Detalle = new List<Object>();
-                                Int16 count = 0;
-                                Int32 total = _producto.Datos.Count;
-                                for (int i = 0; i < _producto.Datos.Count; i++)
+                                if (_producto.Datos.Count > 0) 
                                 {
-                                    count++;
-                                    if (count < 3)
+                                    Object Productos = new Object();
+                                    List<Object> ListaProductos = new List<Object>();
+                                    List<Object> Detalle = new List<Object>();
+                                    Int16 count = 0;
+                                    Int32 total = _producto.Datos.Count;
+                                    for (int i = 0; i < _producto.Datos.Count; i++)
                                     {
-                                        Detalle.Add(_producto.Datos[i]);
-                                        Object DetalleProductos = new { Detalle, };
+                                        count++;
+                                        if (count < 3)
+                                        {
 
-                                        if (count == 2)
-                                        {
-                                            Detalle = new List<Object>();
-                                            ListaProductos.Add(DetalleProductos);
-                                            count = 0;
-                                        }
-                                        else
-                                        {
-                                            if (i == total - 1 && total % 2 != 0 && count == 1)
+                                            Detalle.Add(new
+                                            { _producto.Datos[i].Idproducto,
+                                                _producto.Datos[i].Productonombre, 
+                                                _producto.Datos[i].Productodescripcion, 
+                                                _producto.Datos[i].ProductodescripcionLarga, 
+                                                _producto.Datos[i].Precio,
+                                                _producto.Datos[i].PrecioOferta,
+                                                _producto.Datos[i].Simbolo,
+                                                _producto.Datos[i].Sku,
+                                                _producto.Datos[i].Unidadmaxima,
+                                                _producto.Datos[i].Unidadminima,
+                                                _producto.Datos[i].Marcanombre,
+                                                _producto.Datos[i].Categorianombre,
+                                                _producto.Datos[i].NombreRecurso,
+                                                _producto.Datos[i].Esoferta,
+                                            });
+                                            Object DetalleProductos = new { Detalle, };
+
+                                            if (count == 2)
                                             {
                                                 Detalle = new List<Object>();
                                                 ListaProductos.Add(DetalleProductos);
                                                 count = 0;
                                             }
+                                            else
+                                            {
+                                                if (i == total - 1 && total % 2 != 0 && count == 1)
+                                                {
+                                                    Detalle = new List<Object>();
+                                                    ListaProductos.Add(DetalleProductos);
+                                                    count = 0;
+                                                }
+                                            }
                                         }
                                     }
+                                    Productos = new { ListaProductos };
+                                    _hfListaProducto.Value = JsonConvert.SerializeObject(Productos);
                                 }
-                                Productos = new { ListaProductos };
-                                _hfListaProducto.Value = JsonConvert.SerializeObject(Productos);
+                                else
+                                {
+                                    _hfListaProducto.Value = "{}";
+                                    Mensaje(EnumCodigoRespuesta.Informacion, "Esta tienda no tiene Productos.");
+                                }
                             }
                             else
                             {
                                 _hfListaProducto.Value = "{}";
-                                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un problema al cargar los productos de Comercio.");
+                                Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un problema al cargar los productos de Comercio.");
                             }
                         }
                         else
                         {
                             _hfListaProducto.Value = "{}";
-                            Mensaje(EnumTipoMensaje.Informacion, _respusta.Mensaje);
+                            Mensaje(EnumCodigoRespuesta.Informacion, _respusta.Mensaje);
                         }
                     }
                     else
                     {
                         _hfListaProducto.Value = "{}";
-                        Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
+                        Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
                     }
                 }
             }
             catch (Exception ex)
             {
                 _hfListaProducto.Value = "{}";
-                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
+                Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
             }
         }
     }

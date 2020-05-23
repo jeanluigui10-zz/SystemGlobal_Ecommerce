@@ -50,7 +50,7 @@ namespace PeruStore
                     CategoriaResultado categoriaResultado = new CategoriaResultado();
                     categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, vsId);
 
-                    if (metodoRespuesta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                    if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                     {
                         if (categoriaResultado != null)
                         {

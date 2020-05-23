@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
-using Dominio.Entidades;
+using Dominio.Entidades.Comercio;
 using InteligenciaNegocio.AdminTienda;
 using Libreria.Base;
 using Libreria.General;
@@ -12,9 +12,10 @@ namespace PeruStore.src.ConfiguracionAplicacion
     public class PaginaBase: Page
     {
 
-        public void Mensaje(EnumTipoMensaje tipo, String mensaje)
+        public void Mensaje(EnumCodigoRespuesta tipo, String mensaje)
         {
-            ClientScript.RegisterStartupScript(typeof(Page), "message", @"<script type='text/javascript'>Fn_Mensaje('" + tipo.ObtenerString() + "', '" + mensaje + "');</script>", false);
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta(tipo);
+            ClientScript.RegisterStartupScript(typeof(Page), "message", @"<script type='text/javascript'>Fn_Mensaje('" + metodoRespuesta.CodigoMensajeJs() + "', '" + mensaje + "');</script>", false);
         }
 
         protected override void OnPreLoad(EventArgs e)

@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductoLista.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucProductoLista" %>
 <script src="../Controles/Inicio/js/listaproducto.js"></script>
 <script src="../Controles/Inicio/js/listado_producto_render_tab_1.js"></script>
-
+<link href="../Controles/Inicio/css/listaproductos.css" rel="stylesheet" />
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <!-- Listing tabs -->
     <div class="module listingtab-layout2">
@@ -52,6 +52,7 @@
 <asp:HiddenField ID="_hfListaProducto" runat="server" />
 <script type="text/x-handlebars-template" id="handlebarProducto">
     {{# each ListaProductos}}
+
       <div class="ltabs-item">
           {{# each Detalle}}
           <div class="item-inner product-layout transition product-grid">
@@ -59,7 +60,8 @@
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Chicken swinesha">
-                                                            <img src="{{NombreRecurso}}" alt="image">
+                                                             <img src="{{NombreRecurso}}" class="img-1 img-responsive" alt="image">
+                                                             <img src="{{NombreRecurso}}" class="img-2 img-responsive" alt="image">
                                                         </a>
                                                     </div>
                                                     <div class="box-label"> <span class="label-product label-sale"> 0% </span></div>
@@ -84,9 +86,15 @@
                                                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                         </div>
-                                                        <div class="price"> <span class="price-new">S/.{{Precio}}</span>
-                                                            <span class="price-old">S/.{{PrecioOferta}}</span>
+                                                         {{#ifEquals Esoferta true}}
+                                                        <div class="price"> <span class="price-new">{{Simbolo}}{{PrecioOferta}}</span>
+                                                            <span class="price-old">{{Simbolo}}{{Precio}}</span>
                                                         </div>
+                                                        {{else}}
+                                                        <div class="price"> <span class="price-new">{{Simbolo}}{{Precio}}</span>
+                                                            <span class="price-old" style="display:none">{{Simbolo}}{{PrecioOferta}}</span>
+                                                        </div>
+                                                      {{/ifEquals}}
                                                         <h4><a href="product.html" title="Chicken swinesha" target="_self">{{Productonombre}}</a></h4>
                                                         
                                                     </div>

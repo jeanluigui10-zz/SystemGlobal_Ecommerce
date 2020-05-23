@@ -130,7 +130,8 @@
   <ItemGroup>
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\Cliente.cs" />
-    <Compile Include="Entidades\Tienda.cs" />
+    <Compile Include="Entidades\Comercio\TiendaContacto.cs" />
+    <Compile Include="Entidades\Comercio\Tienda.cs" />
     <Compile Include="Entidades\Direccion.cs" />
     <Compile Include="Entidades\MetodoPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

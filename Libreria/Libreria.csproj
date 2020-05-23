@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Base\MetodoRespuesta.cs" />
     <Compile Include="AdminConexion\Conexion.cs" />
+    <Compile Include="Base\Validar.cs" />
     <Compile Include="General\Encriptador.cs" />
     <Compile Include="General\Extension.cs" />
     <Compile Include="General\GeneralEnum.cs" />

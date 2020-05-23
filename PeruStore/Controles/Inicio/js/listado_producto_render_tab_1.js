@@ -68,7 +68,7 @@ function Fn_Render_Lista_Producto_Tab_1() {
 				case 'none' : $(this).css({'opacity':'1','filter':'alpha(opacity = 100)'}); break;
 				default: animatesItems($(this),nub*delay,i,el);
 			}
-			if (i == $_items.length - 1) {
+			if (i === $_items.length - 1) {
 				$('.ltabs-loadmore-btn', el).fadeIn(3000);
 			}
 			$(this).removeClass('new-ltabs-item');
@@ -90,7 +90,7 @@ function Fn_Render_Lista_Producto_Tab_1() {
 			}, {
 				delay: 1000
 			});
-		if (i == ($_items.length - 1)) {
+		if (i === ($_items.length - 1)) {
 			$(".ltabs-items-inner").addClass("play");
 		}
 	}
@@ -138,20 +138,20 @@ function Fn_Render_Lista_Producto_Tab_1() {
 			responsive: {
 				0: {
 					items: nb_column3,
-					nav: total_product <= nb_column3 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column3 ? false : true
 				},
 				767: {
 					items: nb_column2,
-					nav: total_product <= nb_column2 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column2 ? false : true
 				},
 				991: {
 					items: nb_column1,
-					nav: total_product <= nb_column1 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column1 ? false : true
 				},
 				1199: {
 					items: nb_column0,
 
-					nav: total_product <= nb_column0 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column0 ? false : true
 				},
 			}
 		});
@@ -219,18 +219,18 @@ function Fn_Render_Lista_Producto_Tab_1() {
 				},
 				success: function (data) {
 
-					if (data != '') {
+					if (data !== '') {
 
 						$('.ltabs-loading', _items_active).replaceWith(data);
 						_items_active.addClass('ltabs-items-loaded').removeClass('ltabs-process');
 						$loading.remove();
-						if (type_show != 'slider') {
+						if (type_show !== 'slider') {
 							showAnimateItems(_items_active);
 						}
 						updateStatus(_items_active);
 						listing_tab_ajax(_items_active);
 					}
-					if(typeof(_SoQuickView) != 'undefined'){
+					if(typeof(_SoQuickView) !== 'undefined'){
 						_SoQuickView();
 					}
 
@@ -242,7 +242,7 @@ function Fn_Render_Lista_Producto_Tab_1() {
 			});
 
 		} else {
-			if (type_show == 'loadmore') {
+			if (type_show === 'loadmore') {
 				$('.ltabs-item', $items_content).removeAttr('style').addClass('new-ltabs-item');
 				showAnimateItems(_items_active);
 			}else{

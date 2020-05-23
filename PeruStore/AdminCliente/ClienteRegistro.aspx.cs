@@ -31,11 +31,11 @@ namespace PeruStore.AdminCliente
 
                 if ( ubigeo!= null && ubigeo.Regiones.Count > 0)
                 {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                     respuesta.Datos = ubigeo.Regiones;
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar las Regiones.";
                     Log.Save("Error", "ClienteRegistro.aspx", "Ubigeo null || regiones = 0");
@@ -43,7 +43,7 @@ namespace PeruStore.AdminCliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar las Regiones.";
                 Log.Save("Error", "ClienteRegistro.aspx:" + ex.Message, ex.StackTrace);
@@ -65,19 +65,19 @@ namespace PeruStore.AdminCliente
 
                     if (ubigeo != null && ubigeo.Provincias.Count > 0)
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                         respuesta.Datos = ubigeo.Provincias;
                     }
                     else
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                         Log.Save("Error", "ClienteRegistro.aspx", "Ubigeo null || Provincias = 0 " + idRegion);
                     }
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                     Log.Save("Error", "ClienteRegistro.aspx", "Parametro strIdRegion incorrecto:"+ strIdRegion);
@@ -85,7 +85,7 @@ namespace PeruStore.AdminCliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar las Provincias.";
                 Log.Save("Error", "ClienteRegistro.aspx:" + ex.Message, ex.StackTrace);
@@ -108,12 +108,12 @@ namespace PeruStore.AdminCliente
 
                     if (ubigeo != null && ubigeo.Distritos.Count > 0)
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                         respuesta.Datos = ubigeo.Distritos;                        
                     }
                     else
                     {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                         Log.Save("Error", "ClienteRegistro.aspx", "Ubigeo null || Distritos = 0 " + idProvincia);
@@ -121,7 +121,7 @@ namespace PeruStore.AdminCliente
                 }
                 else
                 {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                     Log.Save("Error", "ClienteRegistro.aspx", "Parametro strIdProvincia incorrecto:" + strIdProvincia);
@@ -129,7 +129,7 @@ namespace PeruStore.AdminCliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al cargar los Distritos.";
                 Log.Save("Error", "ClienteRegistro.aspx:" + ex.Message, ex.StackTrace);
@@ -259,7 +259,7 @@ namespace PeruStore.AdminCliente
                     #endregion
 
                     if (!datosValidos) {
-                        respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                        respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                         respuesta.Datos = null;
                         respuesta.Mensaje = "Ocurrió un problema al Registrar Cliente.";
                     }
@@ -270,7 +270,7 @@ namespace PeruStore.AdminCliente
                         Boolean existeCliente = objClienteBl.Cliente_Existe_PorEmail(correo, idComercio);
                         if (existeCliente)
                         {
-                            respuesta.CodigoRespuesta = EnumTipoMensaje.Informacion;
+                            respuesta.CodigoRespuesta = EnumCodigoRespuesta.Informacion;
                             respuesta.Datos = null;
                             respuesta.Mensaje = "El correo electrónico ingresado ya pertenece a otra cuenta, ingrese otra dirección de Correo Eléctronico";
                             Log.Save("Info", "ClienteRegistro.aspx", "Correo ya existe:" + correo);
@@ -314,12 +314,12 @@ namespace PeruStore.AdminCliente
                             registroExitoso = objClienteBl.RegistrarCliente(cliente_Tipo,direccion_Tipo);
 
                             if (registroExitoso){
-                                respuesta.CodigoRespuesta = EnumTipoMensaje.Exito;
+                                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
                                 respuesta.Datos = null;
                                 respuesta.Mensaje = String.Format("¡Gracias {0} {1}! ya eres parte de nuestros Clientes.", nombre, apellPaterno);
                             }
                             else {
-                                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                                 respuesta.Datos = null;
                                 respuesta.Mensaje = "Ocurrió un problema al Registrar.";
                             }
@@ -328,7 +328,7 @@ namespace PeruStore.AdminCliente
 
                 }
                 else {
-                    respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                     respuesta.Datos = null;
                     respuesta.Mensaje = "Ocurrió un problema al Registrar.";
                     Log.Save("Error", "ClienteRegistro", "Parametro Cliente es null" );
@@ -336,7 +336,7 @@ namespace PeruStore.AdminCliente
             }
             catch (Exception ex)
             {
-                respuesta.CodigoRespuesta = EnumTipoMensaje.Error;
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                 respuesta.Datos = null;
                 respuesta.Mensaje = "Ocurrió un problema al Registrar Cliente.";
                 Log.Save("Error", "ClienteRegistro:" + ex.Message, ex.StackTrace);
