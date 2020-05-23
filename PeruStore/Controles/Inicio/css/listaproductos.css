@@ -1,0 +1,7 @@
+﻿.products-list.grid .product-layout .product-item-container .left-block .button-group {
+    padding: 0;
+    position: absolute;
+    z-index: 99;
+    left: 10px;
+    bottom: 0px;
+}
