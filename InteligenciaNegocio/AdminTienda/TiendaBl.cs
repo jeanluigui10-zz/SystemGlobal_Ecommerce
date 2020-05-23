@@ -3,7 +3,6 @@ using Dominio.Entidades.Comercio;
 using Libreria.Base;
 using Libreria.General;
 using System;
-using Libreria.Base;
 
 namespace InteligenciaNegocio.AdminTienda
 {
@@ -43,18 +42,18 @@ namespace InteligenciaNegocio.AdminTienda
             return tienda;
         }
 
-        public MetodoRespuesta Contactanos_Guardar_Mensaje(TiendaContacto tiendaContacto)
+        public MetodoRespuesta Contactanos_Guardar_Consulta(TiendaContacto tiendaContacto)
         {
             MetodoRespuesta metodoRespuesta = null;
             try
             {
                 if (Validar.EsValido(tiendaContacto) && Validar.EsValido(tiendaContacto.Tienda))
                 {
-                    metodoRespuesta = TiendaDao.Instancia.Contactanos_Guardar_Mensaje(tiendaContacto);
-                    if(metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Error)
-                    {
+                    metodoRespuesta = TiendaDao.Instancia.Contactanos_Guardar_Consulta(tiendaContacto);
+                    if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Error)
                         metodoRespuesta.Mensaje = String.Format("{0}", "No se pudo enviar su consulta, intentalo otra vez.");
-                    }
+                    else
+                        metodoRespuesta.Mensaje = String.Format("{0}", "Su consulta ha sido enviada.");
                 }
             }
             catch (Exception exception)

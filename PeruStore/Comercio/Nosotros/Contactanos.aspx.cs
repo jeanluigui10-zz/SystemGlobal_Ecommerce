@@ -34,12 +34,28 @@ namespace PeruStore.Comercio.Nosotros
                     Mensaje = txtConsulta.Value,
                 };
 
-                MetodoRespuesta metodoRespuesta = TiendaBl.Instancia.Contactanos_Guardar_Mensaje(tiendaContacto);
+                MetodoRespuesta metodoRespuesta = TiendaBl.Instancia.Contactanos_Guardar_Consulta(tiendaContacto);
+                Mensaje(metodoRespuesta.CodigoRespuesta, metodoRespuesta.Mensaje);
+                LimpiarInput(metodoRespuesta);
             }
             catch (Exception exception)
             {
                 Mensaje(Libreria.General.EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo mas tarde.");
             }
+        }
+
+        private void LimpiarInput(MetodoRespuesta metodoRespuesta)
+        {
+            try
+            {
+                if (metodoRespuesta.CodigoRespuesta == Libreria.General.EnumCodigoRespuesta.Exito)
+                {
+                    txtNombre.Value = String.Empty;
+                    txtEmail.Value = String.Empty;
+                    txtConsulta.Value = String.Empty;
+                }
+            }
+            catch (Exception) { }
         }
     }
 }

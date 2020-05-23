@@ -1,5 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ListaProducto.aspx.cs" Inherits="PeruStore.Comercio.Producto.ListaProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<style type="text/css">
+
+  .products-list.grid .product-layout .product-item-container .left-block .button-group {
+    padding: 0;
+    position: absolute;
+    z-index: 99;
+    left: 10px;
+    bottom: 35px; 
+    background-color:green !important;
+  }
+
+    .products-list.grid .product-layout .product-item-container .left-block .button-group .btn-button.addToCart {
+        transition-delay: 0.1s;
+    }
+
+    .products-list.grid .product-layout .product-item-container .left-block .button-group .btn-button {
+        border: none;
+        display: block;
+        margin-top: 5px;
+        padding: 0;
+        background-color: #666;
+        border-radius: 3px;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        transform: all 0.3s ease 0s;
+        position: relative;
+        transition: all 0.3s ease-in-out 0s;
+        -moz-transition: all 0.3s ease-in-out 0s;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        -webkit-opacity: 0;
+        -moz-opacity: 0;
+        -ms-opacity: 0;
+        -o-opacity: 0;
+        opacity: 0;
+        -webkit-transform: translate(-50px, 0px);
+        -moz-transform: translate(-50px, 0px);
+        -ms-transform: translate(-50px, 0px);
+        -o-transform: translate(-50px, 0px);
+        transform: translate(-50px, 0px);
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

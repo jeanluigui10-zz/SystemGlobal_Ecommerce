@@ -19,7 +19,6 @@ namespace AccesoDatos.AdminTienda
                 return _instancia == null ? new TiendaDao() : _instancia;
             }
         }
-
         #endregion Singleton
 
 
@@ -57,10 +56,9 @@ namespace AccesoDatos.AdminTienda
             return tienda;
         }
 
-
-        public MetodoRespuesta Contactanos_Guardar_Mensaje(TiendaContacto tiendaContacto)
+        public MetodoRespuesta Contactanos_Guardar_Consulta(TiendaContacto tiendaContacto)
         {
-            MetodoRespuesta metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito);
+            MetodoRespuesta metodoRespuesta = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
                 try
@@ -73,10 +71,10 @@ namespace AccesoDatos.AdminTienda
                     sqlCommand.Parameters.AddWithValue("@mensaje", tiendaContacto.Mensaje);
 
                     Int32 filasAfectadas = sqlCommand.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                    {
+                    if (filasAfectadas <= 0)
+                        metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error);
+                    else
                         metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito);
-                    }
                 }
                 catch (Exception exception)
                 {
@@ -85,8 +83,6 @@ namespace AccesoDatos.AdminTienda
             }
             return metodoRespuesta;
         }
-
-
 
         #endregion Metodos
 

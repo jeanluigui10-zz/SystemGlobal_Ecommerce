@@ -138,20 +138,20 @@ function Fn_Render_Lista_Producto_Tab_1() {
 			responsive: {
 				0: {
 					items: nb_column3,
-					nav: total_product <= nb_column3 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column3 ? false : true
 				},
 				767: {
 					items: nb_column2,
-					nav: total_product <= nb_column2 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column2 ? false : true
 				},
 				991: {
 					items: nb_column1,
-					nav: total_product <= nb_column1 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column1 ? false : true
 				},
 				1199: {
 					items: nb_column0,
 
-					nav: total_product <= nb_column0 ? false : ((true) ? true : false),
+					nav: total_product <= nb_column0 ? false : true
 				},
 			}
 		});
@@ -219,18 +219,18 @@ function Fn_Render_Lista_Producto_Tab_1() {
 				},
 				success: function (data) {
 
-					if (data != '') {
+					if (data !== '') {
 
 						$('.ltabs-loading', _items_active).replaceWith(data);
 						_items_active.addClass('ltabs-items-loaded').removeClass('ltabs-process');
 						$loading.remove();
-						if (type_show != 'slider') {
+						if (type_show !== 'slider') {
 							showAnimateItems(_items_active);
 						}
 						updateStatus(_items_active);
 						listing_tab_ajax(_items_active);
 					}
-					if(typeof(_SoQuickView) != 'undefined'){
+					if(typeof(_SoQuickView) !== 'undefined'){
 						_SoQuickView();
 					}
 
@@ -253,7 +253,7 @@ function Fn_Render_Lista_Producto_Tab_1() {
 
 				owl = owl.data('owlCarousel2');
 
-				if (typeof owl !=== 'undefined') {
+				if (typeof owl !== 'undefined') {
 					owl.onResize();
 				}
 			}
