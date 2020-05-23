@@ -45,6 +45,26 @@ namespace InteligenciaNegocio.AdminProducto
             }
             return productoResultado;
         }
+        public ProductoResultado ListaProdctosPor_Comercio_Categoria(Int32 IdComercio, Int32 IdCategoria, ref MetodoRespuesta metodoRespuesta)
+        {
+            ProductoResultado productoResultado = null;
+            try
+            {
+                if (IdComercio > 0 && IdCategoria > 0)
+                {
+                    productoResultado = ProductoDao.Instancia.ListaProdctosPor_Comercio_Categoria(IdComercio, IdCategoria, ref metodoRespuesta);
+                }
+                else
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "El id del comercio o categoria no puede ser 0");
+                }
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
+            }
+            return productoResultado;
+        }
         public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;

@@ -13,7 +13,7 @@ class InicioJs {
 
     Fn_Iniciar() { 
 
-        if ($("input[id$=hfDataCategoriaMenu]").val() != undefined && $("input[id$=hfDataCategoriaMenuSubMenu]").val() != undefined) {
+        if ($("input[id$=hfDataCategoriaMenu]").val() !== undefined && $("input[id$=hfDataCategoriaMenuSubMenu]").val() !== undefined) {
             inicioJs.Fn_Cargar();
         }
     }
@@ -78,7 +78,7 @@ class InicioJs {
    CargarSubCategorias_Left(IdCategoria) {
     var success = function (asw) {
         try {
-            if (asw.d != null) {
+            if (asw.d !== null) {
                 var objsubCategoria = $.parseJSON(asw.d);
                 var objectS = {};
                 objectS.request = objsubCategoria;
@@ -101,7 +101,7 @@ class InicioJs {
    CargarSubCategoriasDetalle_Left(IdSubCategoria) {
     var success = function (asw) {
         try {
-            if (asw.d != null) {
+            if (asw.d !== null) {
                 var objsubCategoriaDetalle = $.parseJSON(asw.d);
                 var objectD = {};
                 objectD.request = objsubCategoriaDetalle;

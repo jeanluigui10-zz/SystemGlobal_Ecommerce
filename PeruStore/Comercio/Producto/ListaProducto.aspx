@@ -1,48 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ListaProducto.aspx.cs" Inherits="PeruStore.Comercio.Producto.ListaProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<style type="text/css">
-
-  .products-list.grid .product-layout .product-item-container .left-block .button-group {
-    padding: 0;
-    position: absolute;
-    z-index: 99;
-    left: 10px;
-    bottom: 35px; 
-    background-color:green !important;
-  }
-
-    .products-list.grid .product-layout .product-item-container .left-block .button-group .btn-button.addToCart {
-        transition-delay: 0.1s;
-    }
-
-    .products-list.grid .product-layout .product-item-container .left-block .button-group .btn-button {
-        border: none;
-        display: block;
-        margin-top: 5px;
-        padding: 0;
-        background-color: #666;
-        border-radius: 3px;
-        color: #fff;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        transform: all 0.3s ease 0s;
-        position: relative;
-        transition: all 0.3s ease-in-out 0s;
-        -moz-transition: all 0.3s ease-in-out 0s;
-        -webkit-transition: all 0.3s ease-in-out 0s;
-        -webkit-opacity: 0;
-        -moz-opacity: 0;
-        -ms-opacity: 0;
-        -o-opacity: 0;
-        opacity: 0;
-        -webkit-transform: translate(-50px, 0px);
-        -moz-transform: translate(-50px, 0px);
-        -ms-transform: translate(-50px, 0px);
-        -o-transform: translate(-50px, 0px);
-        transform: translate(-50px, 0px);
-    }
-</style>
+    <script type="text/javascript" src="../js/listaProductosPorCategoria.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -122,7 +80,7 @@
             <!--Middle Part Start-->
             <div id="content" class="col-md-9 col-sm-8">
                 <div class="products-category">
-                    <h3 class="title-category ">Accessories</h3>
+                    <h3 class="title-category">Accessories</h3>
                     <div class="category-derc">
                         <div class="row">
                             <div class="col-sm-12">
@@ -187,10 +145,10 @@
 
                     <!-- //end Filters -->
                     <!--changed listings-->
-                    <div class="products-list row nopadding-xs so-filter-gird grid" id="divListaProducto">
-                       
+                    <div class="products-list row nopadding-xs so-filter-gird grid" id="divListaProductosPorCategoria">
+
                     </div>
-                
+
                     <!--// End Changed listings-->
                     <!-- Filters -->
                     <div class="product-filter product-filter-bottom filters-panel">
@@ -210,58 +168,80 @@
         </div>
     </div>
     <!-- //Main Container -->
+    <asp:HiddenField ID="hfDatosProductosPorCategoria" runat="server" />
+    <script type="text/x-handlebars-template" id="handlebards-listaProductoxCategoria">
+        {{# each request}}
+        <div class="product-layout col-lg-15 col-md-4 col-sm-6 col-xs-12">
+            <div class="product-item-container">
+                <div class="left-block">
+                    <div class="product-image-container second_img">
+                        <a href="product.html" target="_self" title="{{ProductoNombre}}">
+                            <img src="{{NombreRecurso}}" class="img-1 img-responsive" alt="image">
+                            <img src="{{NombreRecurso}}" class="img-2 img-responsive" alt="image">
+                        </a>
+                    </div>
+                    <div class="box-label"><span class="label-product label-sale">-16% </span></div>
+                    <div class="button-group so-quickview cartinfo--left">
+                        <button type="button" class="addToCart btn-button" title="Agregar al carrito" onclick="cart.add('60 ');">
+                            <i class="fa fa-shopping-basket"></i>
+                            <span>Agregar al carrito </span>
+                        </button>
+                        <button type="button" class="wishlist btn-button" title="Agregar a lista de deseos" onclick="wishlist.add('60');">
+                            <i class="fa fa-heart"></i><span>Agregar a lista de deseos</span>
+                        </button>
+                        <button type="button" class="compare btn-button" title="Compara este producto" onclick="compare.add('60');">
+                            <i class="fa fa-refresh"></i><span>Compara este producto</span>
+                        </button>
+                        <!--quickview-->
+                        <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>
+                        <!--end quickview-->
+                    </div>
+                </div>
+                <div class="right-block">
+                    <div class="caption">
+                        <div class="rating">
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                        </div>
+                        <h4><a href="product.html" title="{{ProductoNombre}}" target="_self">{{ProductoNombre}}</a></h4>
+                        {{#ifEquals Esoferta true}}
+                        <div class="price">
+                            <span class="price-new">{{Simbolo}}{{PrecioOferta}}</span>
+                            <span class="price-old">{{Simbolo}}{{Precio}}</span>
+                        </div>
+                        {{else}}
+                        <div class="price">
+                            <span class="price-new">{{Simbolo}}{{Precio}}</span>
+                        </div>
+                        {{/ifEquals}}
+                        <div class="description item-desc">
+                            <p>
+                                {{ProductoDescripcionLarga}}
+                            </p>
+                        </div>
+                        <div class="list-block hidden">
+                            <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');">
+                                <i class="fa fa-shopping-basket"></i>
+                            </button>
+                            <button class="wishlist btn-button" type="button" title="Add to Wish List" onclick="wishlist.add('101');">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <button class="compare btn-button" type="button" title="Compare this Product" onclick="compare.add('101');">
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                            <!--quickview-->
+                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i></a>
+                            <!--end quickview-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-     <script type="text/x-handlebars-template" id="ListaProducto">
-         {{# each request}}
-         <div class="product-layout col-lg-15 col-md-4 col-sm-6 col-xs-12">
-             <div class="product-item-container">
-                 <div class="left-block">
-                     <div class="product-image-container second_img">
-                         <a href="product.html" target="_self" title="Chicken swinesha">
-                             <img src="/Template/image/catalog/demo/product/funiture/1.jpg" class="img-1 img-responsive" alt="image">
-                             <img src="/Template/image/catalog/demo/product/funiture/2.jpg" class="img-2 img-responsive" alt="image">
-                         </a>
-                     </div>
-                     <div class="box-label"><span class="label-product label-sale">-16% </span></div>
-                     <div class="button-group so-quickview cartinfo--left">
-                         <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">
-                             <i class="fa fa-shopping-basket"></i>
-                             <span>Add to cart </span>
-                         </button>
-                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');">
-                             <i class="fa fa-heart"></i><span>Add to Wish List</span>
-                         </button>
-                         <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');">
-                             <i class="fa fa-refresh"></i><span>Compare this Product</span>
-                         </button>
-                         <!--quickview-->
-                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                         <!--end quickview-->
-                     </div>
-                 </div>
-                 <div class="right-block">
-                     <div class="caption">
-                         <div class="rating">
-                             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                         </div>
-                         <h4><a href="product.html" title="Chicken swinesha" target="_self">Chicken swinesha</a></h4>
-                         <div class="price">
-                             <span class="price-new">$46.00</span>
-                             <span class="price-old">$55.00</span>
-                         </div>
-                         <div class="description item-desc">
-                             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-                    
-         {{/each}}
+        {{/each}}
     </script>
-	
+
 </asp:Content>

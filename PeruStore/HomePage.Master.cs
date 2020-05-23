@@ -36,6 +36,9 @@ namespace PeruStore
             //    {
             //        vsId = Convert.ToInt32(IdCategoria);
             //    }
+            //    else {
+            //        vsId = 0;
+            //    }
             //}
             vsId = 1; //estatico para q se muestren las categorias por mientras
         }

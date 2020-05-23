@@ -147,6 +147,7 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="AdminCliente\ClienteRegistro.aspx" />
     <Content Include="AdminCliente\js\ClienteRegistro.js" />
+    <Content Include="Comercio\js\listaProductosPorCategoria.js" />
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Producto\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />

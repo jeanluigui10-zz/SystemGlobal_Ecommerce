@@ -13,22 +13,22 @@ namespace Dominio.Result.Producto
     }
     public class ProductoResultadoDTO
     {
-        public Int32 Idproducto { get; set; }
+        public Int32 IdProducto { get; set; }
         public String Sku { get; set; }
-        public String Productonombre { get; set; }
-        public String Productodescripcion { get; set; }
-        public String ProductodescripcionLarga { get; set; }
+        public String ProductoNombre { get; set; }
+        public String ProductoDescripcion { get; set; }
+        public String ProductoDescripcionLarga { get; set; }
         public String NombreRecurso { get; set; }
-        public Int32 Unidadminima { get; set; }
-        public Int32 Unidadmaxima { get; set; }
+        public Int32 UnidadMinima { get; set; }
+        public Int32 UnidadMaxima { get; set; }
         public Decimal Precio { get; set; }
         public Decimal PrecioOferta { get; set; }
         public String Simbolo { get; set; }
         public Boolean Esoferta { get; set; }
-        public Int32 Idcategoria { get; set; }
-        public String Categorianombre { get; set; }
-        public Int32 Idmarca { get; set; }
-        public String Marcanombre { get; set; }
+        public Int32 IdCategoria { get; set; }
+        public String CategoriaNombre { get; set; }
+        public Int32 IdMarca { get; set; }
+        public String MarcaNombre { get; set; }
         public Boolean Estado { get; set; }
     }
 

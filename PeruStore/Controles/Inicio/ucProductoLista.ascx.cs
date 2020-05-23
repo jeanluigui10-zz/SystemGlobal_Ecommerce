@@ -52,18 +52,18 @@ namespace PeruStore.Controles.Inicio
                                         {
 
                                             Detalle.Add(new
-                                            { _producto.Datos[i].Idproducto,
-                                                _producto.Datos[i].Productonombre, 
-                                                _producto.Datos[i].Productodescripcion, 
-                                                _producto.Datos[i].ProductodescripcionLarga, 
+                                            { _producto.Datos[i].IdProducto,
+                                                _producto.Datos[i].ProductoNombre, 
+                                                _producto.Datos[i].ProductoDescripcion, 
+                                                _producto.Datos[i].ProductoDescripcionLarga, 
                                                 _producto.Datos[i].Precio,
                                                 _producto.Datos[i].PrecioOferta,
                                                 _producto.Datos[i].Simbolo,
                                                 _producto.Datos[i].Sku,
-                                                _producto.Datos[i].Unidadmaxima,
-                                                _producto.Datos[i].Unidadminima,
-                                                _producto.Datos[i].Marcanombre,
-                                                _producto.Datos[i].Categorianombre,
+                                                _producto.Datos[i].UnidadMaxima,
+                                                _producto.Datos[i].UnidadMinima,
+                                                _producto.Datos[i].MarcaNombre,
+                                                _producto.Datos[i].CategoriaNombre,
                                                 _producto.Datos[i].NombreRecurso,
                                                 _producto.Datos[i].Esoferta,
                                             });
