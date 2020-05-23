@@ -147,13 +147,17 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="AdminCliente\ClienteRegistro.aspx" />
     <Content Include="AdminCliente\js\ClienteRegistro.js" />
+    <Content Include="Comercio\Compras\js\agregar_carrito.js" />
+    <Content Include="Comercio\Compras\js\agregar_comparar.js" />
+    <Content Include="Comercio\Compras\js\agregar_lista_deseos.js" />
+    <Content Include="Comercio\Compras\MiCarrito.aspx" />
     <Content Include="Comercio\js\listaProductosPorCategoria.js" />
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
-    <Content Include="Comercio\Producto\DetalleProducto.aspx" />
+    <Content Include="Comercio\Productos\DetalleProducto.aspx" />
     <Content Include="Comercio\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\css\listaproductos.css" />
     <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
-    <Content Include="Comercio\Producto\ListaProducto.aspx" />
+    <Content Include="Comercio\Productos\ListaProducto.aspx" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
     <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
@@ -1427,6 +1431,7 @@
     <Content Include="Template\image\catalog\flags\ar.png" />
     <Content Include="Template\image\catalog\flags\gb.png" />
     <Content Include="Template\image\catalog\flags\pe.png" />
+    <Content Include="Template\image\catalog\icon-notice-success.png" />
     <Content Include="Template\image\catalog\logo-footer.png" />
     <Content Include="Template\image\catalog\logo-footer2.png" />
     <Content Include="Template\image\catalog\logo.png" />
@@ -2045,6 +2050,13 @@
     <Compile Include="AdminCliente\ClienteRegistro.aspx.designer.cs">
       <DependentUpon>ClienteRegistro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comercio\Compras\MiCarrito.aspx.cs">
+      <DependentUpon>MiCarrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Compras\MiCarrito.aspx.designer.cs">
+      <DependentUpon>MiCarrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Comercio\Nosotros\Contactanos.aspx.cs">
       <DependentUpon>Contactanos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2052,11 +2064,11 @@
     <Compile Include="Comercio\Nosotros\Contactanos.aspx.designer.cs">
       <DependentUpon>Contactanos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Comercio\Producto\DetalleProducto.aspx.cs">
+    <Compile Include="Comercio\Productos\DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Comercio\Producto\DetalleProducto.aspx.designer.cs">
+    <Compile Include="Comercio\Productos\DetalleProducto.aspx.designer.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comercio\Ordenes\Historico.aspx.cs">
@@ -2073,11 +2085,11 @@
     <Compile Include="Comercio\Ordenes\Informacion.aspx.designer.cs">
       <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Comercio\Producto\ListaProducto.aspx.cs">
+    <Compile Include="Comercio\Productos\ListaProducto.aspx.cs">
       <DependentUpon>ListaProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Comercio\Producto\ListaProducto.aspx.designer.cs">
+    <Compile Include="Comercio\Productos\ListaProducto.aspx.designer.cs">
       <DependentUpon>ListaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">

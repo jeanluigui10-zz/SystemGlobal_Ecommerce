@@ -130,10 +130,16 @@
   <ItemGroup>
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Comercio\Sucursal.cs" />
     <Compile Include="Entidades\Comercio\TiendaContacto.cs" />
     <Compile Include="Entidades\Comercio\Tienda.cs" />
+    <Compile Include="Entidades\Orden\EntregaTipo.cs" />
+    <Compile Include="Entidades\Orden\OrdenCabecera.cs" />
     <Compile Include="Entidades\Direccion.cs" />
-    <Compile Include="Entidades\MetodoPago.cs" />
+    <Compile Include="Entidades\Orden\MetodoPago.cs" />
+    <Compile Include="Entidades\Orden\OrdenDetalle.cs" />
+    <Compile Include="Entidades\Orden\OrdenEstado.cs" />
+    <Compile Include="Entidades\SucursalProducto\Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\Producto\CategoriaResultado.cs" />
     <Compile Include="Result\Cliente\ClienteResultado.cs" />

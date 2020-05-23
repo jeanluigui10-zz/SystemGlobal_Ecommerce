@@ -7,7 +7,7 @@ using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Web.UI;
 
-namespace PeruStore.Comercio.Producto
+namespace PeruStore.Comercio.Productos
 {
     public partial class DetalleProducto : PaginaBase
     {

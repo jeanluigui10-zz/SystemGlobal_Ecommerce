@@ -68,6 +68,8 @@
     <script type="text/javascript" src="/plugins/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
     <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js"></script>
+
      <!-- Google web fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' rel='stylesheet' type='text/css'>
@@ -195,7 +197,7 @@
                                   </span>
                                     <div class="shopcart-inner">
                                         <p class="text-shopping-cart">
-                                            Carrito
+                                            Mis Compras
                                         </p>
 
                                         <span class="total-shopping-cart cart-total-full">
@@ -708,7 +710,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Template/js/themejs/addtocart.js"></script>  
+    <script type="text/javascript" src="/Template/js/themejs/addtocart.js?a=1"></script>  
     <script type="text/javascript" src="/src/js/Utilitario.js"></script>
   </form> 
    

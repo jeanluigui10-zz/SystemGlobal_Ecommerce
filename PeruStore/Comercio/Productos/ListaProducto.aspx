@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ListaProducto.aspx.cs" Inherits="PeruStore.Comercio.Producto.ListaProducto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ListaProducto.aspx.cs" Inherits="PeruStore.Comercio.Productos.ListaProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="../js/listaProductosPorCategoria.js"></script>
 </asp:Content>

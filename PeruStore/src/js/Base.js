@@ -688,9 +688,29 @@ function Fn_CargarTemplate(idTemplate, objetoJson) {
 //}
 
 
-const EnumTipoMensaje = {
+const EnumCodigoRespuesta = {
     Exito: 1,
     Error: 2,
     Informacion: 3,
     Advertencia: 4
+};
+
+
+/* ---------------------------------------------------
+     jGrowl – jQuery alerts and message box
+-------------------------------------------------- */
+function Fn_Success_Notice(title, text) {
+    $.jGrowl.defaults.closer = false;
+    //Stop jGrowl
+    //$.jGrowl.defaults.sticky = true;
+    var tpl = '<img src="/Template/image/catalog/icon-notice-success.png" alt="">' + '<h3>' + text + '</h3>';
+    $.jGrowl(tpl, {
+        life: 4000,
+        header: title,
+        speed: 'slow',
+        theme: 'success',
+        beforeOpen: function (e, m, o) {
+            $(e).width("400px");
+        }
+    });
 }

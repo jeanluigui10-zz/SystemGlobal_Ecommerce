@@ -7,20 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace PeruStore.Comercio.Producto
+namespace PeruStore.Comercio.Productos
 {
 
 
-    public partial class DetalleProducto
+    public partial class ListaProducto
     {
 
         /// <summary>
-        /// Control _hfProduct.
+        /// Control hfDatosProductosPorCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField _hfProduct;
+        protected global::System.Web.UI.WebControls.HiddenField hfDatosProductosPorCategoria;
     }
 }

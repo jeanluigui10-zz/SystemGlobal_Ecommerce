@@ -71,7 +71,7 @@
                                                         </button>
                                                         <button type="button" class="wishlist btn-button" title="Agregar a lista de deseos" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Agregar a lista de deseos</span>
                                                         </button>
-                                                        <button type="button" class="compare btn-button" title="Compara este producto" onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compara este producto</span>
+                                                        <button type="button" class="compare btn-button" title="Comparar este producto" onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compara este producto</span>
                                                         </button>
                                                         <!--quickview-->                                                      
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>                                                        

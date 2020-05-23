@@ -70,9 +70,9 @@ function Fn_Ubigeo_ObtenerRegiones() {
             var lengthRegiones = 0;
 
             if (data !== undefined && data !== null) {
-                if (data.CodigoRespuesta === EnumTipoMensaje.Exito);
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito);
                 {
-                    regiones = data.Datos
+                    regiones = data.Datos;
                     lengthRegiones = regiones.length;
                     for (var i = 0; i < lengthRegiones; i++) {
                         contentSelect += "<option value =";
@@ -84,7 +84,7 @@ function Fn_Ubigeo_ObtenerRegiones() {
 
                     $("#ddlRegion").html(contentSelect);
                 }
-                if (data.CodigoRespuesta === EnumTipoMensaje.Error) {
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
                     Fn_Mensaje('e', 'A ocurrido un error cargando las regiones', 'divMensaje');
                 }
             }
@@ -107,7 +107,7 @@ function Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion) {
             var lengthProvincia = 0;
 
             if (data !== undefined && data !== null) {
-                if (data.CodigoRespuesta === EnumTipoMensaje.Exito);
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito);
                 {
                     provincia = data.Datos
                     lengthProvincia = provincia.length;
@@ -121,7 +121,7 @@ function Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion) {
 
                     $("#ddlProvincia").html(contentSelect);
                 }
-                if (data.CodigoRespuesta === EnumTipoMensaje.Error) {
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
                     Fn_Mensaje('e', 'A ocurrido un error cargando las Provincias', 'divMensaje');
                 }
             }
@@ -144,7 +144,7 @@ function Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia) {
             var lengthDistrito = 0;
 
             if (data !== undefined && data !== null) {
-                if (data.CodigoRespuesta === EnumTipoMensaje.Exito);
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito);
                 {
                     distritos = data.Datos
                     lengthDistrito = distritos.length;
@@ -153,12 +153,12 @@ function Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia) {
                         contentSelect += distritos[i].IdDistrito;
                         contentSelect += ">";
                         contentSelect += distritos[i].DistritoNombre;
-                        contentSelect += "</option>"
+                        contentSelect += "</option>";
                     }
 
                     $("#ddlDistrito").html(contentSelect);
                 }
-                if (data.CodigoRespuesta === EnumTipoMensaje.Error) {
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
                     Fn_Mensaje('e', 'A ocurrido un error cargando los Distritos', 'divMensaje');
                 }
             }
@@ -314,17 +314,17 @@ function Fn_RegistrarCliente() {
 
 
             if (data !== undefined && data !== null) {
-                if (data.CodigoRespuesta === EnumTipoMensaje.Exito){
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito) {
                     Fn_Mensaje('s', data.Mensaje, 'divMensaje');
                 }
-                if (data.CodigoRespuesta === EnumTipoMensaje.Error) {
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
                     Fn_Mensaje('e', data.Mensaje, 'divMensaje');
                 }
-                if (data.CodigoRespuesta === EnumTipoMensaje.Informacion){
+                if (data.CodigoRespuesta === EnumCodigoRespuesta.Informacion) {
                     Fn_Mensaje('i', data.Mensaje, 'divMensaje');
                 }
             }
-        }
+        };
         var error = function (xhr, ajaxOptions, thrownError) {
             Fn_Mensaje('e', 'A ocurrido un error al registrar', 'divMensaje');
         };

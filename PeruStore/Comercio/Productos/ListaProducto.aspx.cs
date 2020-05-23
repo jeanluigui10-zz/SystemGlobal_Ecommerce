@@ -6,9 +6,8 @@ using Newtonsoft.Json;
 using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
-using System.Collections.Generic;
 
-namespace PeruStore.Comercio.Producto
+namespace PeruStore.Comercio.Productos
 {
     public partial class ListaProducto : PaginaBase
     {
