@@ -402,7 +402,7 @@ function fn_Ajax(url, data, success, error) {
 
 function Fn_CargarTemplate(idTemplate, objetoJson) {
     Handlebars.registerHelper('EsDivisible', function (index, options) {
-        if (index%2 == 0) {
+        if (index%2 === 0) {
             return options.fn(this);
         }
         return options.inverse(this);

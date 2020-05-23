@@ -43,7 +43,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumTipoMensaje.Error, "Ocurrio un problema, intentalo otra vez.");
+                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
             }
         }
 
@@ -56,7 +56,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumTipoMensaje.Error, "Ocurrio un problema, intentalo otra vez.");
+                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
             }
         }
 
@@ -69,7 +69,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumTipoMensaje.Error, "Ocurrio un problema, intentalo otra vez.");
+                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
             }
         }
 

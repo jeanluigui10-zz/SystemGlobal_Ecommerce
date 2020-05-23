@@ -34,7 +34,7 @@ namespace PeruStore.Controles.Inicio
                     if (Int32.TryParse(_comerid, out Int32 id) && id > 0)
                     {                     
                         ProductoResultado _producto = ProductoBL.Instancia.ListaProdctosPorComercio(id, ref _respusta);
-                        if (_respusta.CodigoRespuesta == EnumTipoMensaje.Exito)
+                        if (_respusta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                         {
                             if (_producto != null)
                             {
@@ -98,26 +98,26 @@ namespace PeruStore.Controles.Inicio
                             else
                             {
                                 _hfListaProducto.Value = "{}";
-                                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un problema al cargar los productos de Comercio.");
+                                Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un problema al cargar los productos de Comercio.");
                             }
                         }
                         else
                         {
                             _hfListaProducto.Value = "{}";
-                            Mensaje(EnumTipoMensaje.Informacion, _respusta.Mensaje);
+                            Mensaje(EnumCodigoRespuesta.Informacion, _respusta.Mensaje);
                         }
                     }
                     else
                     {
                         _hfListaProducto.Value = "{}";
-                        Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
+                        Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
                     }
                 }
             }
             catch (Exception ex)
             {
                 _hfListaProducto.Value = "{}";
-                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
+                Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
             }
         }
     }

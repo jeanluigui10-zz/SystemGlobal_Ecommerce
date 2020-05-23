@@ -36,12 +36,12 @@ namespace InteligenciaNegocio.AdminProducto
                 }
                 else
                 {
-                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, "El id del comercio no puede ser 0");
+                    respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "El id del comercio no puede ser 0");
                 }
             }
             catch (Exception exception)
             {
-                respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
             }
             return productoResultado;
         }
@@ -56,12 +56,12 @@ namespace InteligenciaNegocio.AdminProducto
                 }
                 else
                 {
-                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, "El id del producto no puede ser 0");
+                    respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "El id del producto no puede ser 0");
                 }
             }
             catch (Exception exception)
             {
-                respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
             }
             return productoResultado;
         }

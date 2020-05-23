@@ -33,7 +33,7 @@ namespace PeruStore.Comercio.Producto
                 if (Int32.TryParse(_prodid, out Int32 id) && id > 0)
                 {
                     ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId(id, ref _respusta);
-                    if (_respusta.CodigoRespuesta == EnumTipoMensaje.Exito) 
+                    if (_respusta.CodigoRespuesta == EnumCodigoRespuesta.Exito) 
                     {
                         if (_product != null)
                         {
@@ -41,22 +41,22 @@ namespace PeruStore.Comercio.Producto
                         }
                         else
                         {
-                            Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un problema al cargar el Detalle de Producto.");
+                            Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un problema al cargar el Detalle de Producto.");
                         }
                     }
                     else
                     {
-                        Mensaje(EnumTipoMensaje.Informacion, _respusta.Mensaje);
+                        Mensaje(EnumCodigoRespuesta.Informacion, _respusta.Mensaje);
                     }
                 }           
                 else
                 {
-                    Mensaje(EnumTipoMensaje.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
+                    Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio un error al cargar el Detalle de Producto.");
                 }
             }
             catch (Exception ex)
             {
-                Mensaje(EnumTipoMensaje.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
+                Mensaje(EnumCodigoRespuesta.Informacion, "Ocurrio una exception al cargar el Detalle de Producto.");
             }
         }
     }

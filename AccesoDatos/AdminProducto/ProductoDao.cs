@@ -66,7 +66,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
                 }
             }
             return productoResultado;
@@ -109,7 +109,7 @@ namespace AccesoDatos.AdminProducto
                 }
                 catch (Exception exception)
                 {
-                    respuesta = new MetodoRespuesta(EnumTipoMensaje.Error, exception.Message);
+                    respuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, exception.Message);
                 }
             }
             return productoResultado;
