@@ -92,7 +92,7 @@ namespace PeruStore.Controles.Inicio
                                 else
                                 {
                                     _hfListaProducto.Value = "{}";
-                                    Mensaje(EnumTipoMensaje.Informacion, "Esta tienda no tiene Productos.");
+                                    Mensaje(EnumCodigoRespuesta.Informacion, "Esta tienda no tiene Productos.");
                                 }
                             }
                             else
