@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductoLista.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucProductoLista" %>
-   <script src="../Controles/Inicio/js/listaproducto.js"></script>
-   <script src="../Controles/Inicio/js/listado_producto_render_tab_1.js"></script>
+<script src="../Controles/Inicio/js/listaproducto.js"></script>
+<script src="../Controles/Inicio/js/listado_producto_render_tab_1.js"></script>
 
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <!-- Listing tabs -->
@@ -28,88 +28,6 @@
                     <!--Begin Items-->
                     <div class="ltabs-items ltabs-items-selected items-category-20" data-total="16">
                         <div class="ltabs-items-inner ltabs-slider" id="dvProductos">
-
-<%--                                  <div class="ltabs-item">
-                                                <div class="item-inner product-layout transition product-grid">
-                                                    <div class="product-item-container">
-                                                        <div class="left-block">
-                                                            <div class="product-image-container second_img">
-                                                                <a href="product.html" target="_self" title="Pastrami bacon">
-                                                                    <img src="/Template/image/catalog/demo/product/index2/270/1.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                                    <img src="/Template/image/catalog/demo/product/index2/270/10.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
-                                                                </a>
-                                                            </div>
-                                                            
-                                                            <div class="button-group so-quickview cartinfo--left">
-                                                                <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">  <i class="fa fa-shopping-basket"></i>
-                                                                    <span>Add to cart </span>   
-                                                                </button>
-                                                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Add to Wish List</span>
-                                                                </button>
-                                                                <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compare this Product</span>
-                                                                </button>
-                                                                <!--quickview-->                                                      
-                                                                <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>                                                        
-                                                                <!--end quickview-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="right-block">
-                                                            <div class="caption">
-                                                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                </div>
-                                                                <h4><a href="product.html" title="Pastrami bacon" target="_self">Pastrami bacon</a></h4>
-                                                                <div class="price">$42.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="item-inner product-layout transition product-grid">
-                                                    <div class="product-item-container">
-                                                        <div class="left-block">
-                                                            <div class="product-image-container second_img">
-                                                                <a href="product.html" target="_self" title="Chicken swinesha">
-                                                                    <img src="/Template/image/catalog/demo/product/index2/270/2.jpg" class="img-1 img-responsive" alt="image">
-                                                                    <img src="/Template/image/catalog/demo/product/index2/270/9.jpg" class="img-2 img-responsive" alt="image">
-                                                                </a>
-                                                            </div>
-                                                            <div class="box-label"> <span class="label-product label-sale"> -16% </span></div>
-                                                            <div class="button-group so-quickview cartinfo--left">
-                                                                <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">  <i class="fa fa-shopping-basket"></i>
-                                                                    <span>Add to cart </span>   
-                                                                </button>
-                                                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Add to Wish List</span>
-                                                                </button>
-                                                                <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compare this Product</span>
-                                                                </button>
-                                                                <!--quickview-->                                                      
-                                                                <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>                                                        
-                                                                <!--end quickview-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="right-block">
-                                                            <div class="caption">
-                                                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                                </div>
-                                                                <h4><a href="product.html" title="Chicken swinesha" target="_self">Chicken swinesha</a></h4>
-                                                                <div class="price"> <span class="price-new">$46.00</span>
-                                                                    <span class="price-old">$55.00</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                  </div>--%>
-                             
-
                         </div>
 
                     </div>
@@ -133,94 +51,53 @@
 
 <asp:HiddenField ID="_hfListaProducto" runat="server" />
 <script type="text/x-handlebars-template" id="handlebarProducto">
-    {{# each Datos}}
-           <div class="ltabs-item">
-                                <div class="item-inner product-layout transition product-grid">
-                                    <div class="product-item-container">
-                                        <div class="left-block">
-                                            <div class="product-image-container second_img">
-                                                <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                    <img src="/Template/image/catalog/demo/product/index2/270/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                    <img src="/Template/image/catalog/demo/product/index2/270/8.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
-                                                </a>
-                                            </div>
-                                            <div class="box-label"><span class="label-product label-new">New </span></div>
-                                            <div class="button-group so-quickview cartinfo--left">
-                                                <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">
-                                                    <i class="fa fa-shopping-basket"></i>
-                                                    <span>Add to cart </span>
-                                                </button>
-                                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');">
-                                                    <i class="fa fa-heart"></i><span>Add to Wish List</span>
-                                                </button>
-                                                <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');">
-                                                    <i class="fa fa-refresh"></i><span>Compare this Product</span>
-                                                </button>
-                                                <!--quickview-->
-                                                <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                                <!--end quickview-->
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+    {{# each ListaProductos}}
+      <div class="ltabs-item">
+          {{# each Detalle}}
+          <div class="item-inner product-layout transition product-grid">
+                                            <div class="product-item-container">
+                                                <div class="left-block">
+                                                    <div class="product-image-container second_img">
+                                                        <a href="product.html" target="_self" title="Chicken swinesha">
+                                                            <img src="{{NombreRecurso}}" alt="image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="box-label"> <span class="label-product label-sale"> 0% </span></div>
+                                                    <div class="button-group so-quickview cartinfo--left">
+                                                        <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">  <i class="fa fa-shopping-basket"></i>
+                                                            <span>Añadir al carrito </span>   
+                                                        </button>
+                                                        <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Añadir a la lista de deseos</span>
+                                                        </button>
+                                                        <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compara este producto</span>
+                                                        </button>
+                                                        <!--quickview-->                                                      
+                                                        <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>                                                        
+                                                        <!--end quickview-->
+                                                    </div>
                                                 </div>
-                                                <h4><a href="product.html" title="Kielbasa hamburg" target="_self">Kielbasa hamburg</a></h4>
-                                                <div class="price">$55.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                 <div class="item-inner product-layout transition product-grid">
-                                    <div class="product-item-container">
-                                        <div class="left-block">
-                                            <div class="product-image-container second_img">
-                                                <a href="product.html" target="_self" title="Kielbasa hamburg">
-                                                    <img src="/Template/image/catalog/demo/product/index2/270/3.jpg" class="img-1 img-responsive" alt="Pastrami bacon">
-                                                    <img src="/Template/image/catalog/demo/product/index2/270/8.jpg" class="img-2 img-responsive" alt="Pastrami bacon">
-                                                </a>
-                                            </div>
-                                            <div class="box-label"><span class="label-product label-new">New </span></div>
-                                            <div class="button-group so-quickview cartinfo--left">
-                                                <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add('60 ');">
-                                                    <i class="fa fa-shopping-basket"></i>
-                                                    <span>Add to cart </span>
-                                                </button>
-                                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');">
-                                                    <i class="fa fa-heart"></i><span>Add to Wish List</span>
-                                                </button>
-                                                <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');">
-                                                    <i class="fa fa-refresh"></i><span>Compare this Product</span>
-                                                </button>
-                                                <!--quickview-->
-                                                <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                                <!--end quickview-->
-                                            </div>
-                                        </div>
-                                        <div class="right-block">
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <div class="right-block">
+                                                    <div class="caption">
+                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                        </div>
+                                                        <div class="price"> <span class="price-new">S/.{{Precio}}</span>
+                                                            <span class="price-old">S/.{{PrecioOferta}}</span>
+                                                        </div>
+                                                        <h4><a href="product.html" title="Chicken swinesha" target="_self">{{Productonombre}}</a></h4>
+                                                        
+                                                    </div>
                                                 </div>
-                                                <h4><a href="product.html" title="Kielbasa hamburg" target="_self">Kielbasa hamburg</a></h4>
-                                                <div class="price">$55.00</div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-             </div>
-     {{/each}}
+
+          {{/each}}
+      </div>
+    {{/each}}
 
 
 </script>
 
-  
