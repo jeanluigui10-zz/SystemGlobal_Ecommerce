@@ -200,7 +200,7 @@
 
      <script type="text/x-handlebars-template" id="handlebards-listaCategorias">
         {{# each request}}
-         <li class="hadchild"><a onclick="Fn_ListarProductosPorCategoria('{{IdCategoriaEncriptado}}', '{{CategoriaNombre}}')" class="cutom-parent">{{CategoriaNombre}}</a>   <span class="button-view  fa fa-plus-square-o"></span>
+         <li class="hadchild"><a onclick="Fn_ListarProductosPorCategoria('{{IdCategoriaCifrado}}', '{{CategoriaNombre}}')" class="cutom-parent">{{CategoriaNombre}}</a>   <span class="button-view  fa fa-plus-square-o"></span>
              <ul style="display: block;" id="Categoria_{{IdCategoria}}">
              </ul>
          </li>

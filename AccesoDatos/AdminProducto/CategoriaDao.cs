@@ -107,7 +107,7 @@ namespace AccesoDatos.AdminProducto
                             categoriaResultado.Datos.Add(new CategoriaDTO()
                             {
                                 IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
-                                IdCategoriaEncriptado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdCategoria"])),
+                                IdCategoriaCifrado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdCategoria"])),
                                 CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
                                 RutaIcono = Convert.ToString(sqlDataReader["RutaIcono"]),
                                 RutaBanner = Convert.ToString(sqlDataReader["RutaBanner"]),

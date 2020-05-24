@@ -19,7 +19,7 @@ namespace Dominio.Result.Producto
 
     public class CategoriaDTO {
         public Int16 IdCategoria { get; set; }
-        public String IdCategoriaEncriptado { get; set; }
+        public String IdCategoriaCifrado { get; set; }
         public String CategoriaNombre { get; set; }
         public String RutaIcono { get; set; }
         public String RutaBanner { get; set; }
