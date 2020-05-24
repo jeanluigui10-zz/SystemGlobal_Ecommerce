@@ -38,18 +38,19 @@ namespace PeruStore.Comercio.Productos
 
         private void Categoria_ObtenerId()
         {
-            //if (!String.IsNullOrEmpty(Request.QueryString["c"]))
-            //{
-            //    String IdCategoria = Encriptador.Desencriptar(Request.QueryString["c"]);
-            //    if (!String.IsNullOrEmpty(IdCategoria))
-            //    {
-            //        IdCategoriaParam = Convert.ToInt32(IdCategoria);
-            //    }
-            //    else {
-            //        IdCategoriaParam = 0;
-            //    }
-            //}
-            IdCategoriaParam = 2; //estatico mientras se termina de implementar el flujo
+            if (!String.IsNullOrEmpty(Request.QueryString["c"]))
+            {
+                String IdCategoria = Encriptador.Desencriptar(Request.QueryString["c"]);
+                if (!String.IsNullOrEmpty(IdCategoria))
+                {
+                    IdCategoriaParam = Convert.ToInt32(IdCategoria);
+                }
+                else
+                {
+                    IdCategoriaParam = 0;
+                }
+            }
+            // IdCategoriaParam = 2; //estatico mientras se termina de implementar el flujo
         }
         public void Categorias_CargarPorComercio()
         {
