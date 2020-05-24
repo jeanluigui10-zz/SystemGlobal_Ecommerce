@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucProductoLista.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucProductoLista" %>
+<link href="../Controles/Inicio/css/listaproductos.css" rel="stylesheet" />
 <script src="../Controles/Inicio/js/listaproducto.js"></script>
 <script src="../Controles/Inicio/js/listado_producto_render_tab_1.js"></script>
-<link href="../Controles/Inicio/css/listaproductos.css" rel="stylesheet" />
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <!-- Listing tabs -->
     <div class="module listingtab-layout2">
@@ -71,7 +71,7 @@
                                                         </button>
                                                         <button type="button" class="wishlist btn-button" title="Agregar a lista de deseos" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Agregar a lista de deseos</span>
                                                         </button>
-                                                        <button type="button" class="compare btn-button" title="Comparar este producto" onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compara este producto</span>
+                                                        <button type="button" class="compare btn-button" title="Comprar este producto" onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Comprar este producto</span>
                                                         </button>
                                                         <!--quickview-->                                                      
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>                                                        

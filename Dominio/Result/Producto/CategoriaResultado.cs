@@ -19,13 +19,16 @@ namespace Dominio.Result.Producto
 
     public class CategoriaDTO {
         public Int16 IdCategoria { get; set; }
+        public String IdCategoriaEncriptado { get; set; }
         public String CategoriaNombre { get; set; }
         public String RutaIcono { get; set; }
         public String RutaBanner { get; set; }
         public String RutaImagenDeslizante { get; set; }
         public Int16 IdSubCategoria { get; set; }
+        public String IdSubCategoriaEncriptado { get; set; }
         public String SubCategoriaNombre { get; set; }
         public Int16 IdSubCategoriaDetalle { get; set; }
+        public String IdSubCategoriaDetalleEncriptado { get; set; }
         public String SubCategoriaDetalleNombre { get; set; }
         
     }

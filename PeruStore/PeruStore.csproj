@@ -151,10 +151,11 @@
     <Content Include="Comercio\Compras\js\agregar_comparar.js" />
     <Content Include="Comercio\Compras\js\agregar_lista_deseos.js" />
     <Content Include="Comercio\Compras\MiCarrito.aspx" />
-    <Content Include="Comercio\js\listaProductosPorCategoria.js" />
+    <Content Include="Comercio\Productos\css\listaProductosPorCategoria.css" />
+    <Content Include="Comercio\Productos\js\listaProductosPorCategoria.js" />
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Productos\DetalleProducto.aspx" />
-    <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Comercio\Productos\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\css\listaproductos.css" />
     <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
     <Content Include="Comercio\Productos\ListaProducto.aspx" />
@@ -2233,7 +2234,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminCliente\css\" />
-    <Folder Include="Comercio\css\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>

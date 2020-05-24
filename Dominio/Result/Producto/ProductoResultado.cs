@@ -14,6 +14,7 @@ namespace Dominio.Result.Producto
     public class ProductoResultadoDTO
     {
         public Int32 IdProducto { get; set; }
+        public String IdProductoEncriptado { get; set; }
         public String Sku { get; set; }
         public String ProductoNombre { get; set; }
         public String ProductoDescripcion { get; set; }
