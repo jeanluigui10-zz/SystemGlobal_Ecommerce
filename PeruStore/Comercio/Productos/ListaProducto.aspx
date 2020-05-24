@@ -210,7 +210,7 @@
 
      <script type="text/x-handlebars-template" id="handlebards-listaSubCategorias">
         {{# each request}}
-             <li id="{{IdSubCategoriaEncriptado}}"><a href="category.html">{{SubCategoriaNombre}}</a></li>        
+             <li id="{{IdSubCategoriaCifrado}}"><a href="category.html">{{SubCategoriaNombre}}</a></li>        
          {{/each}}
     </script>
 
