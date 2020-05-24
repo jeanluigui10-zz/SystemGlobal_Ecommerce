@@ -5,6 +5,7 @@ using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace AccesoDatos.AdminProducto
 {
@@ -75,7 +76,7 @@ namespace AccesoDatos.AdminProducto
                             {
                                 IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
                                 IdSubCategoria = Convert.ToInt16(sqlDataReader["IdSubCategoria"]),
-                                IdSubCategoriaCifrado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSubCategoria"])),
+                                IdSubCategoriaCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSubCategoria"]))),
                                 SubCategoriaNombre = Convert.ToString(sqlDataReader["SubCategoriaNombre"])
                             });
                         }
@@ -107,7 +108,7 @@ namespace AccesoDatos.AdminProducto
                             categoriaResultado.Datos.Add(new CategoriaDTO()
                             {
                                 IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
-                                IdCategoriaCifrado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdCategoria"])),
+                                IdCategoriaCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdCategoria"]))),
                                 CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
                                 RutaIcono = Convert.ToString(sqlDataReader["RutaIcono"]),
                                 RutaBanner = Convert.ToString(sqlDataReader["RutaBanner"]),

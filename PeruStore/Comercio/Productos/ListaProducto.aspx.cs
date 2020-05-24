@@ -50,30 +50,29 @@ namespace PeruStore.Comercio.Productos
                     IdCategoriaParam = 0;
                 }
             }
-            // IdCategoriaParam = 2; //estatico mientras se termina de implementar el flujo
         }
         public void Categorias_CargarPorComercio()
         {
             try
             {
-            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
-            CategoriaResultado categoriaResultado = new CategoriaResultado();
+                MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+                CategoriaResultado categoriaResultado = new CategoriaResultado();
 
-            String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
-            if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
-            {
-                categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, idcome);
-
-                if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
+                String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
+                if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
                 {
-                    if (categoriaResultado != null)
+                    categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, idcome);
+
+                    if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                     {
-                        JavaScriptSerializer serializer = new JavaScriptSerializer();
-                        String sJSON = serializer.Serialize(categoriaResultado.Datos);
-                        hfDatosCategoriasLista.Value = sJSON.ToString();
+                        if (categoriaResultado != null)
+                        {
+                            JavaScriptSerializer serializer = new JavaScriptSerializer();
+                            String sJSON = serializer.Serialize(categoriaResultado.Datos);
+                            hfDatosCategoriasLista.Value = sJSON.ToString();
+                        }
                     }
                 }
-            }
             
             }
             catch (Exception exception)
@@ -138,8 +137,9 @@ namespace PeruStore.Comercio.Productos
             String sJsonProductos = "";
             try
             {
-                Int32 Categoria = Convert.ToInt32(Encriptador.Desencriptar(IdCategoria));
-
+                //String id =HttpUtility.UrlDecode(Request.QueryString["c"]);
+                //Int32 Categoria = (Encriptador.Desencriptar(HttpUtility.UrlDecode(Convert.ToInt32(Encriptador.Desencriptar(IdCategoria));
+                Int32 Categoria = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(IdCategoria)));
                 if (SesionAplicacion.SesionTienda != null)
                 {
                     String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();

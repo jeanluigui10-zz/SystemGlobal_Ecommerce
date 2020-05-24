@@ -93,6 +93,7 @@ class ListaProductosPorCategoriaJs {
             object.request = objProductos;
             var item = Fn_CargarTemplate("handlebards-listaProductoxCategoria", object);
             $("#divListaProductosPorCategoria").html(item);
+            $("#lblTitleCategoria").text(object.request[0].CategoriaNombre);
         }
         catch (e) {
             Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');

@@ -72,7 +72,7 @@
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/plugins/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
-    <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
+    <script type="text/javascript" src="/src/js/PaginaMaestra.js?m=1"></script>
 
 
      <!-- Google web fonts
