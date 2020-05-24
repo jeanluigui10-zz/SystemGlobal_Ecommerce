@@ -25,7 +25,7 @@ namespace Dominio.Result.Producto
         public String RutaBanner { get; set; }
         public String RutaImagenDeslizante { get; set; }
         public Int16 IdSubCategoria { get; set; }
-        public String IdSubCategoriaEncriptado { get; set; }
+        public String IdSubCategoriaCifrado { get; set; }
         public String SubCategoriaNombre { get; set; }
         public Int16 IdSubCategoriaDetalle { get; set; }
         public String IdSubCategoriaDetalleEncriptado { get; set; }

@@ -75,7 +75,7 @@ namespace AccesoDatos.AdminProducto
                             {
                                 IdCategoria = Convert.ToInt16(sqlDataReader["IdCategoria"]),
                                 IdSubCategoria = Convert.ToInt16(sqlDataReader["IdSubCategoria"]),
-                                IdSubCategoriaEncriptado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSubCategoria"])),
+                                IdSubCategoriaCifrado = Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSubCategoria"])),
                                 SubCategoriaNombre = Convert.ToString(sqlDataReader["SubCategoriaNombre"])
                             });
                         }
