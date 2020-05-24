@@ -56,52 +56,50 @@
       <div class="ltabs-item">
           {{# each Detalle}}
           <div class="item-inner product-layout transition product-grid">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container second_img">
-                                                        <a href="product.html" target="_self" title="{{ProductoNombre}}">
-                                                             <img src="{{NombreRecurso}}" class="img-1 img-responsive" alt="image">
-                                                             <img src="{{NombreRecurso}}" class="img-2 img-responsive" alt="image">
-                                                        </a>
-                                                    </div>
-                                                    <div class="box-label"> <span class="label-product label-sale"> 0% </span></div>
-                                                    <div class="button-group so-quickview cartinfo--left">
-                                                        <button type="button" class="addToCart btn-button" title="Agregar al carrito" onclick="cart.add('60 ');">  <i class="fa fa-shopping-basket"></i>
-                                                            <span>Agregar al carrito </span>   
-                                                        </button>
-                                                        <button type="button" class="wishlist btn-button" title="Agregar a lista de deseos" onclick="wishlist.add('60');"><i class="fa fa-heart"></i><span>Agregar a lista de deseos</span>
-                                                        </button>
-                                                        <button type="button" class="compare btn-button" title="Comparar este producto" onclick="compare.add('60');"><i class="fa fa-refresh"></i><span>Compara este producto</span>
-                                                        </button>
-                                                        <!--quickview-->                                                      
-                                                        <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>                                                        
-                                                        <!--end quickview-->
-                                                    </div>
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        </div>
-                                                         {{#ifEquals Esoferta true}}
-                                                        <div class="price"> 
-                                                            <span class="price-new">{{Simbolo}}{{PrecioOferta}}</span>
-                                                            <span class="price-old">{{Simbolo}}{{Precio}}</span>
-                                                        </div>
-                                                        {{else}}
-                                                        <div class="price">
-                                                            <span class="price-new">{{Simbolo}}{{Precio}}</span>
-                                                        </div>
-                                                      {{/ifEquals}}
-                                                        <h4><a href="product.html" title="{{ProductoNombre}}" target="_self">{{ProductoNombre}}</a></h4>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+            <div class="product-item-container">
+                <div class="left-block">
+                    <div class="product-image-container second_img">
+                        <a href="product.html" target="_self" title="{{ProductoNombre}}">
+                                <img src="{{NombreRecurso}}" class="img-1 img-responsive" alt="image">
+                                <img src="{{NombreRecurso}}" class="img-2 img-responsive" alt="image">
+                        </a>
+                    </div>
+                    <div class="box-label"> <span class="label-product label-sale"> 0% </span></div>
+                    <div class="button-group so-quickview cartinfo--left">
+                        <button type="button" class="addToCart btn-button" data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">  <i class="fa fa-shopping-basket"></i><span>Agregar al carrito </span>   
+                        </button>
+                        <button type="button" class="wishlist btn-button"><i class="fa fa-heart"></i><span>Agregar a mi lista de deseos</span>
+                        </button>
+                        <button type="button" class="compare btn-button"><i class="fa fa-refresh"></i><span>Comparar este producto</span>
+                        </button>
+                        <!--quickview-->                                                      
+                        <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>                                                        
+                        <!--end quickview-->
+                    </div>
+                </div>
+                <div class="right-block">
+                    <div class="caption">
+                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                        </div>
+                        <h4><a href="product.html" title="{{ProductoNombre}}" target="_self">{{ProductoNombre}}</a></h4>
+                        {{#ifEquals Esoferta true}}
+                        <div class="price"> 
+                            <span class="price-new">{{Simbolo}}{{PrecioOferta}}</span>
+                            <span class="price-old">{{Simbolo}}{{Precio}}</span>
+                        </div>
+                        {{else}}
+                        <div class="price">
+                            <span class="price-new">{{Simbolo}}{{Precio}}</span>
+                        </div>
+                        {{/ifEquals}}                                
+                    </div>
+                </div>
+            </div>
+        </div>
 
           {{/each}}
       </div>

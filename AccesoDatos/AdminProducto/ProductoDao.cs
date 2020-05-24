@@ -6,6 +6,9 @@ using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
+using Dominio.Entidades.SucursalProducto;
+
 namespace AccesoDatos.AdminProducto
 {
     public class ProductoDao
@@ -26,8 +29,7 @@ namespace AccesoDatos.AdminProducto
         #endregion Singleton
 
 
-        #region Metodos
-
+        #region Metodos Mostrar Data
         public ProductoResultado ListaProdctosPorComercio(Int32 comercioId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
@@ -45,7 +47,7 @@ namespace AccesoDatos.AdminProducto
                         {
                             productoResultado.Datos.Add(new ProductoResultadoDTO()
                             {
-                                IdProducto = Convert.ToInt32(sqlDataReader["Idproducto"]),
+                                IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["Idproducto"]))),
                                 Sku = Convert.ToString(sqlDataReader["Sku"]),
                                 ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
                                 ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
@@ -58,9 +60,9 @@ namespace AccesoDatos.AdminProducto
                                 MarcaNombre = Convert.ToString(sqlDataReader["Marcanombre"]),
                                 UnidadMinima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
                                 UnidadMaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
-                                Estado= Convert.ToBoolean(sqlDataReader["Estado"]),
+                                Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
 
-                            }); 
+                            });
                         }
                     }
                 }
@@ -116,7 +118,6 @@ namespace AccesoDatos.AdminProducto
             }
             return productoResultado;
         }
-
         public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
@@ -159,8 +160,67 @@ namespace AccesoDatos.AdminProducto
             }
             return productoResultado;
         }
+        #endregion Metodos Mostrar Data
 
 
-        #endregion Metodos
+        #region Metodos para carrito
+        public Producto Obtener_Para_Carrito(ref MetodoRespuesta metodoRespuesta, Int32 idProducto)
+        {
+            Producto producto = null;
+
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    Int16 indiceTabla = 0;
+                    SqlCommand sqlCommand = new SqlCommand("Producto_Para_Carrito_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    sqlCommand.Parameters.AddWithValue("@idProducto", idProducto);
+
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        do
+                        {
+                            if (indiceTabla == 0)
+                            {
+                                if (sqlDataReader.Read())
+                                {
+                                    producto = new Producto();
+                                    producto.IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdProducto"])));
+                                    producto.SKU = Convert.ToString(sqlDataReader["Codigo"]);
+                                    producto.ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]);
+                                    producto.EsVentaPorMayor = Convert.ToBoolean(sqlDataReader["EsVentaPorMayor"]);
+                                }
+                            }
+                            else
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    producto.ProductoPrecio.PrecioRango.Add(new ProductoPrecioRango()
+                                    {
+                                        UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
+                                        UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
+                                        Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                        PrecioFormateado = Convert.ToString(sqlDataReader["PrecioFormateado"]),
+                                    });
+                                }
+                            }
+                            indiceTabla++;
+                        } while (sqlDataReader.NextResult());
+                    }
+                }
+                catch (Exception exception)
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error);
+                    throw exception;
+                }
+            }
+
+            return producto;
+        }
+
+        #endregion Producto para carrito
+
+
+
     }
 }

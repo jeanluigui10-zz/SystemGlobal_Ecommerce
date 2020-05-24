@@ -140,6 +140,8 @@
     <Compile Include="Entidades\Orden\OrdenDetalle.cs" />
     <Compile Include="Entidades\Orden\OrdenEstado.cs" />
     <Compile Include="Entidades\SucursalProducto\Producto.cs" />
+    <Compile Include="Entidades\SucursalProducto\ProductoPrecio.cs" />
+    <Compile Include="Entidades\SucursalProducto\ProductoPrecioRango.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\Producto\CategoriaResultado.cs" />
     <Compile Include="Result\Cliente\ClienteResultado.cs" />
