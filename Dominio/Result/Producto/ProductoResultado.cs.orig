@@ -14,7 +14,11 @@ namespace Dominio.Result.Producto
     public class ProductoResultadoDTO
     {
         public Int32 IdProducto { get; set; }
+<<<<<<< HEAD
+        public String IdProductoEncriptado { get; set; }
+=======
         public String IdProductoCifrado { get; set; }
+>>>>>>> 5e77805fab81248d77396800afadf6ecd5cdf55a
         public String Sku { get; set; }
         public String ProductoNombre { get; set; }
         public String ProductoDescripcion { get; set; }

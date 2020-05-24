@@ -22,7 +22,10 @@
     <!-- Favicon
     ============================================ -->
     <link rel="shortcut icon" type="image/png" href="/Template/ico/favicon-16x16.png"/>
-  
+
+    <!-- Controles
+    ============================================ -->
+    <%@ Register Src="~/Controles/Inicio/ucCarritoFlotante.ascx" TagPrefix="uc1" TagName="ucCarritoFlotante" %>
    
     <!-- Libs CSS
     ============================================ -->
@@ -34,6 +37,8 @@
     <link href="/Template/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/Template/js/minicolors/miniColors.css" rel="stylesheet">
     <link href="/plugins/validator/style.validate.css?a=1" rel="stylesheet" />
+    <link href="/src/css/base.css?f=2" rel="stylesheet">
+
     
     <!-- Theme CSS
     ============================================ -->
@@ -68,7 +73,7 @@
     <script type="text/javascript" src="/plugins/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
     <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
-    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js"></script>
+
 
      <!-- Google web fonts
     ============================================ -->
@@ -185,96 +190,11 @@
                 </div>
                 <!-- //end Search -->
                 
-                <div class="middle3 col-lg-3 col-md-3">                    
-                    <!--cart-->
-                    <div class="shopping_cart">
-                        <div id="cart" class="btn-shopping-cart">
+               
+                <!--cart-->
+                    <uc1:ucCarritoFlotante runat="server" id="ucCarritoFlotante" />
+                <!--//cart-->
 
-                            <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <div class="shopcart">
-                                    <span class="icon-c">
-                                    <i class="fa fa-shopping-bag"></i>
-                                  </span>
-                                    <div class="shopcart-inner">
-                                        <p class="text-shopping-cart">
-                                            Mis Compras
-                                        </p>
-
-                                        <span class="total-shopping-cart cart-total-full">
-                                            <span class="items_cart">01</span><span class="items_cart2"> item(s)</span><span class="items_carts"> S/ 120.50 </span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <ul class="dropdown-menu pull-right shoppingcart-box" role="menu">
-                                <li>
-                                    <table class="table table-striped">
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center" style="width:70px">
-                                                    <a href="product.html">
-                                                        <img src="/Template/image/catalog/demo/product/80/1.jpg" style="width:70px" alt="Yutculpa ullamcon" title="Yutculpa ullamco" class="preview">
-                                                    </a>
-                                                </td>
-                                                <td class="text-left"> <a class="cart_product_name" href="product.html">Yutculpa ullamco</a> 
-                                                </td>
-                                                <td class="text-center">x1</td>
-                                                <td class="text-center">$80.00</td>
-                                                <td class="text-right">
-                                                    <a href="product.html" class="fa fa-edit"></a>
-                                                </td>
-                                                <td class="text-right">
-                                                    <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </li>
-                                <li>
-                                    <div>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-left"><strong>Sub-Total</strong>
-                                                    </td>
-                                                    <td class="text-right">$140.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left"><strong>Eco Tax (-2.00)</strong>
-                                                    </td>
-                                                    <td class="text-right">$2.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left"><strong>VAT (20%)</strong>
-                                                    </td>
-                                                    <td class="text-right">$20.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left"><strong>Total</strong>
-                                                    </td>
-                                                    <td class="text-right">$162.00</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a> 
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <!--//cart-->
-
-                    <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
-                        <li class="compare hidden-xs"><a href="#" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
-                        </li>
-                        <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (0) "><i class="fa fa-heart"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                
                 
             </div>
 
@@ -358,9 +278,9 @@
                                                     <p class="close-menu"></p>
                                                     <a href="#" class="clearfix">
                                                         <strong>Ofertas</strong>
-                                                        <div class="tooltip fade top in" style="top: -19.6px; left: 1.5px; display: block;">
-                                                            <div class="tooltip-arrow" style="border-top-color: #53d542;"></div>
-                                                            <div class="tooltip-inner" style="background-color: #53d542;">Nuevas</div>
+                                                        <div class="tooltip fade top in oferta-alert">
+                                                            <div class="tooltip-arrow oferta-arrow"></div>
+                                                            <div class="tooltip-inner oferta-inner">Nuevas</div>
                                                         </div>
                                                     </a>
                                                 </li>
@@ -710,7 +630,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Template/js/themejs/addtocart.js?a=1"></script>  
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?z=1"></script>
     <script type="text/javascript" src="/src/js/Utilitario.js"></script>
   </form> 
    

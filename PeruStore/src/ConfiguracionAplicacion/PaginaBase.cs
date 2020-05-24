@@ -30,10 +30,11 @@ namespace PeruStore.src.ConfiguracionAplicacion
                 String urlDominio = HttpContext.Current.Request.Url.Host;
                 if (ReglasSesion.EsOtraTienda(urlDominio))
                 {
+                    SesionAplicacion.LimpiarSesion(); // limpia todas las sesiones(ordenes, cliente, tienda)
                     MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
                     Tienda tienda = TiendaBl.Instancia.Obtener(ref metodoRespuesta, urlDominio);
 
-                    metodoRespuesta.Datos = tienda; // agregar logica mostrar pagina de tienda fuera de servicio
+                    metodoRespuesta.Datos = tienda; // falta agregar logica mostrar pagina de tienda fuera de servicio
                     SesionAplicacion.SesionTienda = tienda;
                 }
             }

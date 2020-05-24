@@ -161,6 +161,7 @@
     <Content Include="Comercio\Productos\ListaProducto.aspx" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
+    <Content Include="Controles\Inicio\ucCarritoFlotante.ascx" />
     <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
     <Content Include="Controles\Inicio\ucBeneficios.ascx" />
     <Content Include="Controles\Inicio\ucComprarPorCategoria.ascx" />
@@ -172,6 +173,7 @@
     <Content Include="plugins\validator\jquery.validate.min.js" />
     <Content Include="plugins\validator\style.validate.css" />
     <Content Include="Controles\Inicio\ucUltimosBlogs.ascx" />
+    <Content Include="src\css\base.css" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -2099,6 +2101,13 @@
     </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.designer.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucCarritoFlotante.ascx.cs">
+      <DependentUpon>ucCarritoFlotante.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucCarritoFlotante.ascx.designer.cs">
+      <DependentUpon>ucCarritoFlotante.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
       <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>

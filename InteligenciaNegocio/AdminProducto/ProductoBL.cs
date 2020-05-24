@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.AdminProducto;
+using Dominio.Entidades.SucursalProducto;
 using Dominio.Result.Producto;
 using Libreria.Base;
 using Libreria.General;
@@ -30,7 +31,7 @@ namespace InteligenciaNegocio.AdminProducto
             ProductoResultado productoResultado = null;
             try
             {
-                if(comercioId > 0)
+                if (comercioId > 0)
                 {
                     productoResultado = ProductoDao.Instancia.ListaProdctosPorComercio(comercioId, ref respuesta);
                 }
@@ -89,5 +90,33 @@ namespace InteligenciaNegocio.AdminProducto
 
         #endregion Metodos
 
+        #region Metodos para carrito
+        public Producto Obtener_Para_Carrito(ref MetodoRespuesta metodoRespuesta, Int32 idProducto)
+        {
+            Producto producto = null;
+            try
+            {
+                if (Validar.EsValido(idProducto))
+                {
+                    producto = ProductoDao.Instancia.Obtener_Para_Carrito(ref metodoRespuesta, idProducto);
+                    if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Error || !Validar.EsValido(producto))
+                    {
+                        metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible agregar este producto al carrito.");
+                    }
+                }
+                else
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible agregar este producto al carrito.");
+                }
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error);
+                throw exception;
+            }
+            return producto;
+        }
+
+        #endregion Metodos para carrito
     }
 }
