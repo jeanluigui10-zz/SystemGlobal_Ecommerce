@@ -6,7 +6,8 @@ $(function () {
     listaProductosPorCategoriaJs.Fn_Iniciar();
 });
 
-function Fn_ListarProductosPorCategoria(IdCategoria, CategoriaNombre) {
+function Fn_ListarProductosPorCategoria(IdCategoriaCifrado, CategoriaNombre, IdCategoria) {
+    $(".cutom-parent.active").removeClass();
     var success = function (asw) {
         try {
             var objProductos = $.parseJSON(asw.d);
@@ -15,6 +16,7 @@ function Fn_ListarProductosPorCategoria(IdCategoria, CategoriaNombre) {
             var item = Fn_CargarTemplate("handlebards-listaProductoxCategoria", object);
             $("#divListaProductosPorCategoria").html(item);
             $("#lblTitleCategoria").text(CategoriaNombre);
+            $("#Cate_" + IdCategoria).addClass("custom-parent active");
         }
         catch (e) {
             Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
@@ -23,7 +25,7 @@ function Fn_ListarProductosPorCategoria(IdCategoria, CategoriaNombre) {
     var error = function (jqXHR, textStatus, errorThrown) {
         Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
     };
-    fn_Ajax("ListaProducto.aspx/ProductosPor_Categoria", '{IdCategoria: "' + IdCategoria + '"}', success, error);
+    fn_Ajax("ListaProducto.aspx/ProductosPor_Categoria", '{IdCategoriaCifrado: "' + IdCategoriaCifrado + '"}', success, error);
 }
 
 class ListaProductosPorCategoriaJs {
@@ -42,6 +44,7 @@ class ListaProductosPorCategoriaJs {
         try {
             listaProductosPorCategoriaJs.Fn_ListarCategorias_Carga($("input[id$=hfDatosCategoriasLista]").val());
             listaProductosPorCategoriaJs.Fn_ListarProductosPorCategoria_Carga($("input[id$=hfDatosProductosPorCategoria]").val());
+
         } catch (e) {
             Fn_Mensaje('e', "Ocurrio un problema, intentalo otra vez.");
         }
@@ -55,10 +58,11 @@ class ListaProductosPorCategoriaJs {
             object.request = objCategory;
             var itemp = Fn_CargarTemplate("handlebards-listaCategorias", object);
             $("#cat_accordion").html(itemp);
-
+           
             for (var i = 0; i < objCategory.length; i++) {
                 listaProductosPorCategoriaJs.Fn_CargarSubCategorias(objCategory[i].IdCategoria);
             }
+            
         }
         catch (e) {
             Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
@@ -66,6 +70,7 @@ class ListaProductosPorCategoriaJs {
     }
 
     Fn_CargarSubCategorias(IdCategoria) {
+       
         var success = function (asw) {
             try {
                 if (asw.d !== null) {
@@ -94,6 +99,8 @@ class ListaProductosPorCategoriaJs {
             var item = Fn_CargarTemplate("handlebards-listaProductoxCategoria", object);
             $("#divListaProductosPorCategoria").html(item);
             $("#lblTitleCategoria").text(object.request[0].CategoriaNombre);
+            $(".cutom-parent.active").removeClass();
+            $("#Cate_" + object.request[0].IdCategoria).addClass("custom-parent active");
         }
         catch (e) {
             Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');

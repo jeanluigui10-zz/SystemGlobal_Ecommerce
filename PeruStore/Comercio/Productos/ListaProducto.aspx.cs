@@ -131,15 +131,13 @@ namespace PeruStore.Comercio.Productos
         }
 
         [WebMethod]
-        public static String ProductosPor_Categoria(String IdCategoria)
+        public static String ProductosPor_Categoria(String IdCategoriaCifrado)
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
             String sJsonProductos = "";
             try
             {
-                //String id =HttpUtility.UrlDecode(Request.QueryString["c"]);
-                //Int32 Categoria = (Encriptador.Desencriptar(HttpUtility.UrlDecode(Convert.ToInt32(Encriptador.Desencriptar(IdCategoria));
-                Int32 Categoria = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(IdCategoria)));
+                Int32 Categoria = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(IdCategoriaCifrado)));
                 if (SesionAplicacion.SesionTienda != null)
                 {
                     String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();

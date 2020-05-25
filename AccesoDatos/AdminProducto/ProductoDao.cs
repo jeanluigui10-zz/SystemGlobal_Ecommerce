@@ -92,6 +92,7 @@ namespace AccesoDatos.AdminProducto
                             productoResultado.Datos.Add(new ProductoResultadoDTO()
                             {
                                 IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
+                                IdCategoria = Convert.ToInt32(sqlDataReader["IdCategoria"]),
                                 Sku = Convert.ToString(sqlDataReader["Sku"]),
                                 ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]),
                                 ProductoDescripcion = Convert.ToString(sqlDataReader["ProductoDescripcion"]),
