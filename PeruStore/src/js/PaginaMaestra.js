@@ -67,7 +67,7 @@ class InicioJs {
         $("#MenuSubMenuCategoria").html(itemp);
 
         for (var i = 0; i < objCategoryP.length; i++) {
-            inicioJs.CargarSubCategorias_Left(objCategoryP[i].IdCategoria);
+            inicioJs.Fn_CargarSubCategorias_Left(objCategoryP[i].IdCategoria);
         }
     }
     catch (e) {
@@ -75,7 +75,7 @@ class InicioJs {
     }
 }
 
-   CargarSubCategorias_Left(IdCategoria) {
+   Fn_CargarSubCategorias_Left(IdCategoria) {
     var success = function (asw) {
         try {
             if (asw.d !== null) {
@@ -85,7 +85,7 @@ class InicioJs {
                 var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoria", objectS);
                 $("#SubCategoriaLista_" + objsubCategoria[0].IdCategoria).html(item);
                 for (var i = 0; i < objsubCategoria.length; i++) {
-                    inicioJs.CargarSubCategoriasDetalle_Left(objsubCategoria[i].IdSubCategoria);
+                    inicioJs.Fn_CargarSubCategoriasDetalle_Left(objsubCategoria[i].IdSubCategoria);
                 }
             }
         } catch (e) {
@@ -98,7 +98,7 @@ class InicioJs {
        fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/SubCategoria_Lista_PorIdCategoria", '{IdCategoria: "' + IdCategoria + '"}', success, error);
 }
 
-   CargarSubCategoriasDetalle_Left(IdSubCategoria) {
+   Fn_CargarSubCategoriasDetalle_Left(IdSubCategoria) {
     var success = function (asw) {
         try {
             if (asw.d !== null) {

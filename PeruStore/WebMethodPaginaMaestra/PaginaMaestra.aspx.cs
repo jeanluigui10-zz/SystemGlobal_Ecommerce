@@ -1,5 +1,4 @@
-﻿using Dominio.Result;
-using Dominio.Result.Producto;
+﻿using Dominio.Result.Producto;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
@@ -15,6 +14,7 @@ namespace PeruStore.WebMethodPaginaMaestra
         {
 
         }
+
         [WebMethod]
         public static String SubCategoria_Lista_PorIdCategoria(Int16 IdCategoria)
         {

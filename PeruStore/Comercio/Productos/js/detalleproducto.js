@@ -25,7 +25,7 @@ class DetalleProductoJS {
         try {
 
             let detalleProducto = JSON.parse($("input[id$=_hfProduct]").val());
-            if (detalleProducto === undefined || detalleProducto === null || detalleProducto.Datos.length == 0) {
+            if (detalleProducto === undefined || detalleProducto === null || detalleProducto.Datos.length === 0) {
                 Fn_Mensaje('e', "Ocurrio un error al cargar detalle de producto.");
             } else {
                 if (detalleProducto.Datos.length > 0) {

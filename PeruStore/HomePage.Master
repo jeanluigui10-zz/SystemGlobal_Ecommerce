@@ -72,7 +72,7 @@
     <script type="text/javascript" src="/src/handlebars/handlebars-v2.0.0.min.js"></script>   
     <script type="text/javascript" src="/plugins/validator/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/src/js/Base.js"></script>
-    <script type="text/javascript" src="/src/js/PaginaMaestra.js"></script>
+    <script type="text/javascript" src="/src/js/PaginaMaestra.js?m=1"></script>
 
 
      <!-- Google web fonts
@@ -645,11 +645,11 @@
      <!-- Listado de categoria con icono, subcategorias, productos, banner de categoria en master -->
     <script type="text/x-handlebars-template" id="datatable-MenuCategoria">
         {{# each request}}
-        <li class="item-vertical  with-sub-menu hover" data-id="{{IdCategoria}}">
+        <li class="item-vertical  with-sub-menu hover">
             <p class="close-menu"></p>
-            <a href="#">
+            <a href="Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}">
                 <img src="{{RutaIcono}}" alt="icon">
-                <span data-id="{{IdCategoria}}">{{CategoriaNombre}}</span>
+                <span>{{CategoriaNombre}}</span>
                 <b class="caret"></b>
             </a>
             <div class="sub-menu" data-subwidth="60">

@@ -2,6 +2,7 @@
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
+using PeruStore.src.BaseAplicacion;
 using System;
 using System.Web.Script.Serialization;
 
@@ -9,11 +10,7 @@ namespace PeruStore
 {
     public partial class HomePage : System.Web.UI.MasterPage
     {
-        public int vsId
-        {
-            get { return ViewState["ID"] != null ? (int)ViewState["ID"] : default(int); }
-            set { ViewState["ID"] = value; }
-        }
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,35 +20,20 @@ namespace PeruStore
         }
         public void Cargar_Datos()
         {
-            Categoria_ObtenerId();
-            Cargar_Categoria_SubCategoriaMenu();
+            Categorias_SubCategorias_PorComercio();
         }
 
-        private void Categoria_ObtenerId()
+        public void Categorias_SubCategorias_PorComercio()
         {
-            //if (!String.IsNullOrEmpty(Request.QueryString["c"]))
-            //{
-            //    String IdCategoria = Encriptador.Desencriptar(Request.QueryString["c"]);
-            //    if (!String.IsNullOrEmpty(IdCategoria))
-            //    {
-            //        vsId = Convert.ToInt32(IdCategoria);
-            //    }
-            //    else {
-            //        vsId = 0;
-            //    }
-            //}
-            vsId = 1; //estatico para q se muestren las categorias por mientras
-        }
-       
-        public void Cargar_Categoria_SubCategoriaMenu()
-        {
-            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
-            if (vsId > 0)
+            try
             {
-                try
+                MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+                CategoriaResultado categoriaResultado = new CategoriaResultado();
+
+                String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
+                if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
                 {
-                    CategoriaResultado categoriaResultado = new CategoriaResultado();
-                    categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, vsId);
+                    categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, idcome);
 
                     if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
                     {
@@ -64,10 +46,10 @@ namespace PeruStore
                         }
                     }
                 }
-                catch (Exception exception)
-                {
-                    throw exception;
-                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
             }
         }
     }
