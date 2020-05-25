@@ -47,6 +47,7 @@ namespace PeruStore.Controles.Inicio
                                     Int32 total = _producto.Datos.Count;
                                     for (int i = 0; i < _producto.Datos.Count; i++)
                                     {
+                                        String NombreRecurso = KeysSistema.Impremtawendomain + _producto.Datos[i].NombreRecurso;
                                         count++;
                                         if (count < 3)
                                         {
@@ -64,7 +65,7 @@ namespace PeruStore.Controles.Inicio
                                                 _producto.Datos[i].UnidadMinima,
                                                 _producto.Datos[i].MarcaNombre,
                                                 _producto.Datos[i].CategoriaNombre,
-                                                _producto.Datos[i].NombreRecurso,
+                                                NombreRecurso,
                                                 _producto.Datos[i].Esoferta,
                                             });
                                             Object DetalleProductos = new { Detalle, };

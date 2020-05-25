@@ -30,13 +30,18 @@ namespace PeruStore.Comercio.Productos
             {
                 MetodoRespuesta _respusta = new MetodoRespuesta();
                 String _prodid = Convert.ToString(Request.QueryString["p"]);
-                if (Int32.TryParse(_prodid, out Int32 id) && id > 0)
+                String _sucursalid = Convert.ToString(Request.QueryString["s"]);
+                if ((Int32.TryParse(Encriptador.Desencriptar(_prodid), out Int32 idp) && idp > 0) && (Int32.TryParse(Encriptador.Desencriptar(_sucursalid), out Int32 ids) && ids > 0))
                 {
-                    ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId(id, ref _respusta);
+                    ProductoResultado _product = ProductoBL.Instancia.ObtenerPrductoPorId(idp, ids, ref _respusta);
                     if (_respusta.CodigoRespuesta == EnumCodigoRespuesta.Exito) 
                     {
                         if (_product != null)
                         {
+                            for (int i = 0; i < _product.Datos.Count; i++)
+                                _product.Datos[i].NombreRecurso = KeysSistema.Impremtawendomain + _product.Datos[i].NombreRecurso;
+                            for (int i = 0; i < _product.DetalleImagen.Count; i++)
+                                _product.DetalleImagen[i].NombreRecurso = KeysSistema.Impremtawendomain + _product.DetalleImagen[i].NombreRecurso;
                             _hfProduct.Value = JsonConvert.SerializeObject(_product);
                         }
                         else

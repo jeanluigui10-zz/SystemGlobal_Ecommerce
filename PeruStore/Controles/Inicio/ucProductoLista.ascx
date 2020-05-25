@@ -104,7 +104,5 @@
           {{/each}}
       </div>
     {{/each}}
-
-
 </script>
 
