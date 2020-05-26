@@ -16,3 +16,35 @@
 .oferta-inner {
     background-color: #21bf73 !important;
 }
+
+.typeheader-2 .wishlist-comp li {
+    width: 30px !important;
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.products-list .product-grid .product-item-container .left-block .button-group .loading:before {
+    content: "\f021";
+    display: block;
+    font-family: 'FontAwesome';
+    position: absolute !important;
+    font-size: 16px !important;
+    -webkit-animation: rotate 2s linear infinite;
+}
+
+.products-list .product-grid .product-item-container .left-block .button-group .loading span, .products-list .product-grid .product-item-container .left-block .button-group .loading .fa {
+    visibility: hidden;
+}
+
+.products-list .product-grid .product-item-container .left-block .button-group .btn-button:hover span {
+    visibility: visible;
+    transform: translateX(0);
+}

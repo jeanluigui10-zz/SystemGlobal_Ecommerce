@@ -32,9 +32,11 @@ class AgregarCarritoJs {
 
     Fn_AgregarCarrito($btnAgregar) {
         try {
+            $(".addToCart").addClass("loading");
+
             var _idProductoCifrado = $btnAgregar.attr("data-code");
             var _nombreProducto = $btnAgregar.attr("data-nombre");
-
+            
             var success = function (objRespuesta) {
 
                 let metodoRespuesta = objRespuesta.d;
@@ -43,18 +45,24 @@ class AgregarCarritoJs {
                     Fn_Success_Notice('Producto agregado al carrito', mensajeHtml);
                     agregarCarritoJs.Fn_DibujarCarrito_Flotante(metodoRespuesta.Datos);
                 }
+                $(".addToCart").removeClass("loading");
             };
 
             var error = function (xhr, ajaxOptions, throwError) {
                 // agregar alert box aqui
+                $(".addToCart").removeClass("loading");
             };
 
             fn_Ajax(agregarCarritoJs.urlAgregarCarrito, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
         } catch (e) {
             // agregar alert box aqui
+            $(".addToCart").removeClass("loading");
             console.log(exception);
         }
     }
+
+
+
 
     Fn_DibujarCarrito_Flotante(ordenCabecera) {
         try {
@@ -67,6 +75,10 @@ class AgregarCarritoJs {
 
                 $("#tdTotal").html(ordenCabecera.Total);
                 $(".items_cart").html(ordenCabecera.OrdenDetalleLista.length);
+                $("#lblmonto").html(ordenCabecera.Total);
+
+                $(".cart-options2").removeClass("hidden");
+                $(".cart-options1").addClass("hidden");
             }
 
         } catch (exception) {
