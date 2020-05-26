@@ -66,14 +66,14 @@ namespace InteligenciaNegocio.AdminProducto
             }
             return productoResultado;
         }
-        public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId, Int32 sucursalId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
             try
             {
                 if (productId > 0)
                 {
-                    productoResultado = ProductoDao.Instancia.ObtenerPrductoPorId(productId, ref respuesta);
+                    productoResultado = ProductoDao.Instancia.ObtenerPrductoPorId(productId, sucursalId, ref respuesta);
                 }
                 else
                 {
