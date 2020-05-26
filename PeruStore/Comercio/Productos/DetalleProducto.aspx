@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%--<link href="../../Template/js/minicolors/miniColors.css" rel="stylesheet" />--%>
-    <script type="text/javascript" src="../js/detalleproducto.js?a=1"></script>
+    <script type="text/javascript" src="js/detalleproducto.js"></script>
     <%--<script src="../../Template/js/minicolors/jquery.miniColors.min.js"></script>--%>
     <%--<script type="text/javascript" src="/Template/js/themejs/libs.js"></script>--%>
 
