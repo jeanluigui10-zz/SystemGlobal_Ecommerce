@@ -11,11 +11,6 @@ namespace PeruStore.Comercio.Productos
 {
     public partial class DetalleProducto : PaginaBase
     {
-        public Int32 ViewId
-        {
-            get { return ViewState["ID"] != null ? (int)ViewState["ID"] : default; }
-            set { ViewState["ID"] = value; }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
