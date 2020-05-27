@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Web;
 using Dominio.Entidades.SucursalProducto;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace AccesoDatos.AdminProducto
 {
@@ -254,22 +255,23 @@ namespace AccesoDatos.AdminProducto
                                 if (sqlDataReader.Read())
                                 {
                                     producto = new Producto();
-                                    producto.IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdProducto"])));
+                                    producto.IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]);
                                     producto.SKU = Convert.ToString(sqlDataReader["Codigo"]);
                                     producto.ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]);
                                     producto.EsVentaPorMayor = Convert.ToBoolean(sqlDataReader["EsVentaPorMayor"]);
+                                    producto.NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]);
+                                    producto.SimboloMoneda = Convert.ToString(sqlDataReader["SimboloMoneda"]);
                                 }
                             }
                             else
                             {
-                                while (sqlDataReader.Read())
+                                while (sqlDataReader.Read() && Validar.EsValido(producto))
                                 {
                                     producto.ProductoPrecio.PrecioRango.Add(new ProductoPrecioRango()
                                     {
                                         UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
                                         UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
                                         Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
-                                        PrecioFormateado = Convert.ToString(sqlDataReader["PrecioFormateado"]),
                                     });
                                 }
                             }
