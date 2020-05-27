@@ -37,7 +37,7 @@
     <link href="/Template/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/Template/js/minicolors/miniColors.css" rel="stylesheet">
     <link href="/plugins/validator/style.validate.css?a=1" rel="stylesheet" />
-    <link href="/src/css/base.css?w=2" rel="stylesheet">
+    <link href="/src/css/base.css?b=2" rel="stylesheet">
 
     
     <!-- Theme CSS
@@ -50,7 +50,7 @@
 
     <link href="/Template/css/footer/footer2.css" rel="stylesheet">
     <link href="/Template/css/header/header2.css" rel="stylesheet">
-    <link id="color_scheme" href="/Template/css/home2.css?t=1" rel="stylesheet"> 
+    <link id="color_scheme" href="/Template/css/home2.css?x=1" rel="stylesheet"> 
     <link href="/Template/css/responsive.css" rel="stylesheet">
 
 
@@ -268,10 +268,10 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="">
+                                                <li class="hogar-menu header-menu-active">
                                                     <p class="close-menu"></p>
                                                     <a href="/Comercio/Inicio.aspx" class="clearfix">
-                                                        <strong>Inicio</strong>
+                                                        <strong>Hogar</strong>
                                                     </a>
                                                 </li>
                                                 <li class="">
@@ -630,7 +630,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?e=1"></script>
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?w=1"></script>
     <script type="text/javascript" src="/src/js/Utilitario.js"></script>
   </form> 
    

@@ -2,7 +2,7 @@
 let agregarCarritoJs = null;
 
 $(function () {
-    agregarCarritoJs = new AgregarCarritoJs("./Compras/MiCarrito.aspx/");
+    agregarCarritoJs = new AgregarCarritoJs("/Comercio/Compras/MiCarrito.aspx/");
     agregarCarritoJs.Fn_Iniciar();
 });
 
@@ -33,7 +33,7 @@ class AgregarCarritoJs {
 
     Fn_AgregarCarrito($btnAgregar) {
         try {
-            $(".addToCart").addClass("loading");
+            $btnAgregar.addClass("loading");
 
             var _idProductoCifrado = $btnAgregar.attr("data-code");
             var _nombreProducto = $btnAgregar.attr("data-nombre");
@@ -46,18 +46,18 @@ class AgregarCarritoJs {
                     Fn_Success_Notice('Producto agregado al carrito', mensajeHtml);
                     agregarCarritoJs.Fn_ObtenerCarrito();
                 }
-                $(".addToCart").removeClass("loading");
+                $btnAgregar.removeClass("loading");
             };
 
             var error = function (xhr, ajaxOptions, throwError) {
                 // agregar alert box aqui
-                $(".addToCart").removeClass("loading");
+                $btnAgregar.removeClass("loading");
             };
 
             fn_Ajax(agregarCarritoJs.urlAgregarCarrito, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
         } catch (e) {
             // agregar alert box aqui
-            $(".addToCart").removeClass("loading");
+            $btnAgregar.removeClass("loading");
         }
     }
 

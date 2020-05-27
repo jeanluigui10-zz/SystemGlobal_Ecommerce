@@ -12,7 +12,7 @@
                     </span>
                     <div class="shopcart-inner">
                         <p class="text-shopping-cart">
-                            Mis Compras
+                            Mis Compras - 
                         </p>
 
                         <span class="total-shopping-cart cart-total-full">

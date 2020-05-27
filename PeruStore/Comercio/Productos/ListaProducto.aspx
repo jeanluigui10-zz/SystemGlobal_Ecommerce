@@ -136,15 +136,15 @@
                     </div>
                     <div class="box-label"><span class="label-product label-sale">-16% </span></div>
                     <div class="button-group so-quickview cartinfo--left">
-                        <button type="button" class="addToCart btn-button" title="Agregar al carrito" onclick="cart.add('60 ');">
+                        <button type="button" class="addToCart btn-button" data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">
                             <i class="fa fa-shopping-basket"></i>
                             <span>Agregar al carrito </span>
                         </button>
-                        <button type="button" class="wishlist btn-button" title="Agregar a lista de deseos" onclick="wishlist.add('60');">
+                        <button type="button" class="wishlist btn-button">
                             <i class="fa fa-heart"></i><span>Agregar a lista de deseos</span>
                         </button>
-                        <button type="button" class="compare btn-button" title="Comprar este producto" onclick="compare.add('60');">
-                            <i class="fa fa-refresh"></i><span>Comprar este producto</span>
+                        <button type="button" class="compare btn-button">
+                            <i class="fa fa-refresh"></i><span>Comparar este producto</span>
                         </button>
                         <!--quickview-->
                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Vista rápida</span></a>
@@ -177,17 +177,17 @@
                             </p>
                         </div>
                         <div class="list-block hidden">
-                            <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');">
+                            <button class="addToCart btn-button" type="button" title="Agregar al carrito" data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">
                                 <i class="fa fa-shopping-basket"></i>
                             </button>
-                            <button class="wishlist btn-button" type="button" title="Add to Wish List" onclick="wishlist.add('101');">
+                            <button class="wishlist btn-button" type="button" title="Agregar a mi lista de deseos">
                                 <i class="fa fa-heart"></i>
                             </button>
-                            <button class="compare btn-button" type="button" title="Compare this Product" onclick="compare.add('101');">
+                            <button class="compare btn-button" type="button" title="Comparar este producto">
                                 <i class="fa fa-refresh"></i>
                             </button>
                             <!--quickview-->
-                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i></a>
+                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Vista rápida" data-fancybox-type="iframe"><i class="fa fa-eye"></i></a>
                             <!--end quickview-->
                         </div>
                     </div>
