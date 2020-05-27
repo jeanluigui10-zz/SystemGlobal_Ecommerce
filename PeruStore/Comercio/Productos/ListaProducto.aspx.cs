@@ -67,7 +67,7 @@ namespace PeruStore.Comercio.Productos
 
                     String IdCategoriaParam = Convert.ToString(Request.QueryString["c"]);
                     String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
-                    if ((Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0) && (Int32.TryParse(IdCategoriaParam, out Int32 IdCategoria) && IdCategoria > 0))
+                    if ((Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0) && (Int32.TryParse(Encriptador.Desencriptar(IdCategoriaParam), out Int32 IdCategoria) && IdCategoria > 0))
                     {
                         ProductoResultado productoResultado = ProductoBL.Instancia.ListaProdctosPor_Comercio_Categoria(idcome, IdCategoria, ref metodoRespuesta);
                         if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
@@ -76,7 +76,7 @@ namespace PeruStore.Comercio.Productos
                             {
                                 if (productoResultado.Datos.Count > 0)
                                 {
-                                    for (int i = 0; productoResultado.Datos.Count < i; i++) {
+                                    for (int i = 0; i < productoResultado.Datos.Count; i++) {
                                         productoResultado.Datos[i].NombreRecurso = KeysSistema.Impremtawendomain + productoResultado.Datos[i].NombreRecurso;
                                     }
                                     hfDatosProductosPorCategoria.Value = JsonConvert.SerializeObject(productoResultado.Datos);
