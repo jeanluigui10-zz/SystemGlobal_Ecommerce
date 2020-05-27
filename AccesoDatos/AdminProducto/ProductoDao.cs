@@ -98,7 +98,9 @@ namespace AccesoDatos.AdminProducto
                                 productoResultado.Datos.Add(new ProductoResultadoDTO()
                                 {
                                     IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
-                                IdCategoria = Convert.ToInt32(sqlDataReader["IdCategoria"]),
+                                    IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdProducto"]))),
+                                    IdCategoria = Convert.ToInt32(sqlDataReader["IdCategoria"]),
+                                    IdSucursalCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSucursal"]))),
                                     Sku = Convert.ToString(sqlDataReader["Sku"]),
                                     ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]),
                                     ProductoDescripcion = Convert.ToString(sqlDataReader["ProductoDescripcion"]),
