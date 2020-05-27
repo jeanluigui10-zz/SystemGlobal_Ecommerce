@@ -2,10 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%--<link href="../../Template/js/minicolors/miniColors.css" rel="stylesheet" />--%>
-    <script type="text/javascript" src="../js/detalleproducto.js?a=1"></script>
+    <script type="text/javascript" src="js/detalleproducto.js"></script>
     <%--<script src="../../Template/js/minicolors/jquery.miniColors.min.js"></script>--%>
     <%--<script type="text/javascript" src="/Template/js/themejs/libs.js"></script>--%>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Main Container  -->
@@ -91,48 +90,19 @@
                                 <div class="image_option_type form-group required">
                                     <label class="control-label">Colores</label>
                                     <ul class="product-options clearfix" id="input-option231">
-                                        <li class="radio">
-                                            <label>
-                                                <input class="image_radio" type="radio" name="option[231]" value="33">
-                                                <img src="/Template/image/demo/colors/blue.jpg" data-original-title="blue +$12.00" class="img-thumbnail icon icon-color">
-                                                <i class="fa fa-check"></i>
-                                                <label></label>
-                                            </label>
-                                        </li>
-                                        <li class="radio">
-                                            <label>
-                                                <input class="image_radio" type="radio" name="option[231]" value="34">
-                                                <img src="/Template/image/demo/colors/brown.jpg" data-original-title="brown -$12.00" class="img-thumbnail icon icon-color">
-                                                <i class="fa fa-check"></i>
-                                                <label></label>
-                                            </label>
-                                        </li>
-                                        <li class="radio">
-                                            <label>
-                                                <input class="image_radio" type="radio" name="option[231]" value="35">
-                                                <img src="/Template/image/demo/colors/green.jpg"
-                                                    data-original-title="green +$12.00" class="img-thumbnail icon icon-color"><i class="fa fa-check"></i>
-                                                <label></label>
-                                            </label>
-                                        </li>
-                                        <li class="selected-option"></li>
                                     </ul>
                                 </div>
 
                                 <div class="box-checkbox form-group required">
-                                    <%--<label class="control-label">Tallas</label>--%>
+                                    <label class="control-label">Tallas</label>
                                     <!-- Example split danger button -->
 
                                     <div id="input-option232">
                                         <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                                Tallas
+                                            <button id="btnTallas" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background: #f4a137; border: 0">
                                             <span class="caret"></span>
                                             </button>
-                                            <ul class="dropdown-menu" style="padding-left: 10px">
-                                                <li><a href="#">M</a></li>
-                                                <li><a href="#">S</a></li>
-                                                <li><a href="#">XS</a></li>
+                                            <ul class="dropdown-menu" style="padding-left: 10px" id="ddlTallas">
                                             </ul>
                                         </div>
                                     </div>
@@ -641,5 +611,23 @@
         </a>
         {{/each}}
     </script>
-    <script type="text/javascript" src="../../Template/js/themejs/application.js"></script>
+    <script type="text/x-handlebars-template" id="handlebarListaTalla">
+        {{# each ObjetoWithListTalla}}
+             <li><a href="#">{{DescripcionTalla}}</a></li>
+        {{/each}}
+    </script>
+    <script type="text/x-handlebars-template" id="handlebarListaColor">
+        {{# each ObjetoWithListColor}}
+                  <li class="radio">
+                      <label>
+                          <input class="image_radio" type="radio" name="{{IdColor}}" value="{{IdColor}}">
+                          <label style="height: 30px; background:{{DescripcionColor}}" class="img-thumbnail icon icon-color"></label>
+                          <i class="fa fa-check"></i>
+                          <label></label>
+                      </label>
+                  </li>
+
+        {{/each}}
+             <li class="selected-option"></li>
+    </script>
 </asp:Content>

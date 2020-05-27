@@ -1,13 +1,18 @@
 ﻿'use strict';
 let detalleproductoJS = null;
 
-
 $(function () {
 
     detalleproductoJS = new DetalleProductoJS("");
     detalleproductoJS.Fn_Iniciar();
 
-   
+    $(".dropdown-menu li a").click(function () {
+
+        $("#btnTallas").text($(this).text());
+        $("#btnTallas").val($(this).text());
+
+    });
+  
 });
 
 class DetalleProductoJS {
@@ -58,7 +63,19 @@ class DetalleProductoJS {
                     $("#thumb-slider").html(htmlDetalleImagen);
                 }
 
-               
+                if (detalleProducto.DetalleTalla.length > 0)
+                {
+                    var ObjectoLista = {};
+                    ObjectoLista.ObjetoWithListTalla = detalleProducto.DetalleTalla;
+                    let htmlDetalleTalla = Fn_CargarTemplate("handlebarListaTalla", ObjectoLista);
+                    $("#ddlTallas").html(htmlDetalleTalla);
+                }
+                if (detalleProducto.DetalleColor.length > 0) {
+                    var ObjectoLista = {};
+                    ObjectoLista.ObjetoWithListColor = detalleProducto.DetalleColor;
+                    let htmlDetalleColor = Fn_CargarTemplate("handlebarListaColor", ObjectoLista);
+                    $("#input-option231").html(htmlDetalleColor);
+                }
             }
         } catch (e) {
             Fn_Mensaje('e', "Ocurrio un problema, intentalo otra vez.");
