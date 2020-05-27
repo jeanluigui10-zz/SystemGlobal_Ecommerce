@@ -48,3 +48,7 @@
     visibility: visible;
     transform: translateX(0);
 }
+
+.shoppingcart-box{
+    width:350px;
+}

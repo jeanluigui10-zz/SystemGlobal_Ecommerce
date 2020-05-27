@@ -1,13 +1,13 @@
-﻿using Libreria.Base;
+﻿using Dominio.Entidades.Orden;
+using InteligenciaNegocio.AdminOrden;
+using Libreria.Base;
 using Libreria.General;
+using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
-using System.Web.Services;
-using PeruStore.src.BaseAplicacion;
-using Dominio.Entidades.Orden;
-using Dominio.Entidades.SucursalProducto;
-using InteligenciaNegocio.AdminProducto;
+using System.Collections.Generic;
 using System.Web;
+using System.Web.Services;
 
 namespace PeruStore.Comercio.Compras
 {
@@ -25,26 +25,11 @@ namespace PeruStore.Comercio.Compras
             try
             {
                 Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera ?? new Ordencabecera();
-                ordencabecera.Tienda = SesionAplicacion.SesionTienda;
-                ordencabecera.Cliente = SesionAplicacion.SesionCliente;
 
                 Boolean _ = Int32.TryParse(Encriptador.Desencriptar(HttpUtility.UrlDecode(idProductoCifrado)), out Int32 idProducto);
-                Producto producto = ProductoBL.Instancia.Obtener_Para_Carrito(ref metodoRespuesta, idProducto);
-
-                OrdenDetalle ordenDetalle = new OrdenDetalle()
-                {
-                    Producto = producto,
-                    Cantidad = 1
-                };
-                ordenDetalle.CalcularPrecio();
-
-                ordencabecera.OrdenDetalleLista.Add(ordenDetalle);
-                ordencabecera.RecalcularMontos();
+                OrdenCabeceraBl.Instancia.AgregarDetalle(ref metodoRespuesta, ref ordencabecera, idProducto);
 
                 SesionAplicacion.SesionOrdenCabecera = ordencabecera;
-                metodoRespuesta.Datos = ordencabecera;
-
-
             }
             catch (Exception exception)
             {
@@ -54,18 +39,43 @@ namespace PeruStore.Comercio.Compras
             return metodoRespuesta;
         }
 
-        //public static MetodoRespuesta ObtenerCarrito()
-        //{
-        //    MetodoRespuesta metodoRespuesta = null;
-        //    try
-        //    {
-        //        metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito, SesionAplicacion.SesionOrdenCabecera);
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "Encontramos problemas para mostrar tus compras.");
-        //    }
-        //    return metodoRespuesta;
-        //}
+        [WebMethod]
+        public static MetodoRespuesta ObtenerCarrito()
+        {
+            MetodoRespuesta metodoRespuesta = null;
+            try
+            {
+                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera;
+                if (Validar.EsValido(ordencabecera))
+                {
+                    List<Object> OrdenDetalleLista = new List<Object>();
+                    Int32 totalArticulos = 0;
+                    foreach (OrdenDetalle detalle in ordencabecera.OrdenDetalleLista)
+                    {
+                        OrdenDetalleLista.Add(new
+                        {
+                            detalle.Producto.ProductoNombre,
+                            detalle.Cantidad,
+                            Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, detalle.Total.ToStringMoney()),
+                            NombreRecurso = String.Format("{0}{1}", KeysSistema.PathImagenProducto, detalle.Producto.NombreRecurso)
+                        });
+                        totalArticulos++;
+                    }
+
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito, new
+                    {
+                        Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, ordencabecera.Total.ToStringMoney()),
+                        OrdenDetalle = OrdenDetalleLista,
+                        Articulos = totalArticulos
+                    });
+
+                }
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible mostrar tus compras.");
+            }
+            return metodoRespuesta;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Web;
 
 namespace Libreria.General
@@ -21,6 +22,11 @@ namespace Libreria.General
             catch { return default(T); }
         }
 
+
+        public static String ToStringMoney(this Decimal valor) 
+        {
+            return valor.ToString("#,0.00", CultureInfo.InvariantCulture);
+        }
 
     }
 }

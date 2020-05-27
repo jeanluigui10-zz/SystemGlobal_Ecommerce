@@ -1,4 +1,5 @@
 ﻿using AccesoDatos.AdminProducto;
+using Dominio.Entidades.Orden;
 using Dominio.Entidades.SucursalProducto;
 using Dominio.Result.Producto;
 using Libreria.Base;
@@ -91,6 +92,8 @@ namespace InteligenciaNegocio.AdminProducto
         #endregion Metodos
 
         #region Metodos para carrito
+
+
         public Producto Obtener_Para_Carrito(ref MetodoRespuesta metodoRespuesta, Int32 idProducto)
         {
             Producto producto = null;
@@ -117,6 +120,12 @@ namespace InteligenciaNegocio.AdminProducto
             return producto;
         }
 
+
+
+
         #endregion Metodos para carrito
+
+
+
     }
 }

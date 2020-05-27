@@ -629,7 +629,7 @@ $(document).ready(function() {
 		});
 		
 		$(this).siblings("li").removeClass("active");
-		$(this).parent().find('.selected-option').html('<span class="label label-success">'+ $(this).find('img').data('original-title') +'</span>');
+		$(this).parent().find('.selected-option').html('<span class="label label-success">'+ "Seleccionado" +'</span>');
 	});
 	
 	var _isMobile = {
