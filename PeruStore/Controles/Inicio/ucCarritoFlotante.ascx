@@ -12,7 +12,7 @@
                     </span>
                     <div class="shopcart-inner">
                         <p class="text-shopping-cart">
-                            Mis Compras
+                            Mis Compras - 
                         </p>
 
                         <span class="total-shopping-cart cart-total-full">
@@ -66,10 +66,10 @@
         <tr>
             <td class="text-center" style="width:70px">
                 <a href="product.html">
-                    <img src="http://elcanastonxcorporate.tk/Files/enterprise/images\1PLYJVPPKFJGYNSLAQRJQRTDOPUYGGPKNWDDCCPDTHWENETHXYW10.jpg" style="width:70px" class="preview">
+                    <img src="{{NombreRecurso}}" style="width:70px" class="preview">
                 </a>
             </td>
-            <td class="text-left"> <a class="cart_product_name" href="#">{{Producto.ProductoNombre}}</a> 
+            <td class="text-left"> <a class="cart_product_name" href="#">{{ProductoNombre}}</a> 
             </td>
             <td class="text-center">x{{Cantidad}}</td>
             <td class="text-center">{{Total}}</td>

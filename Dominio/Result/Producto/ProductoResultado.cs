@@ -42,7 +42,9 @@ namespace Dominio.Result.Producto
         public Int32 IdMarca { get; set; }
         public String MarcaNombre { get; set; }
         public Boolean Estado { get; set; }
-       
+        public Int32 IdSucursal { get; set; }
+        public String IdSucursalCifrado { get; set; }
+
     }
 
     public class DetalleImagenDTO

@@ -17,6 +17,7 @@ namespace Dominio.Entidades.Orden
             EntregaTipo = new EntregaTipo();
             OrdenDetalleLista = new List<OrdenDetalle>();
         }
+
         public Int32 IdOrden { get; set; }
         public Tienda Tienda { get; set; }
         public Cliente Cliente { get; set; }
@@ -25,6 +26,10 @@ namespace Dominio.Entidades.Orden
         public OrdenEstado OrdenEstado { get; set; }
         public EntregaTipo EntregaTipo { get; set; }
         public List<OrdenDetalle> OrdenDetalleLista { get; set; }
+        public String SimboloMoneda
+        {
+            get { return OrdenDetalleLista.Count > 0 ? OrdenDetalleLista[0].Producto.SimboloMoneda : String.Empty; }
+        }
         public DateTime FechaOrden { get; set; }
         public Decimal Total { get; set; }
         public Decimal SubTotal { get; set; }
@@ -40,7 +45,7 @@ namespace Dominio.Entidades.Orden
                 if (Validar.EsValido(OrdenDetalleLista))
                 {
                     SubTotal = 0;
-                    foreach(OrdenDetalle detalle in OrdenDetalleLista)
+                    foreach (OrdenDetalle detalle in OrdenDetalleLista)
                     {
                         SubTotal += detalle.Total;
                     }
@@ -52,7 +57,20 @@ namespace Dominio.Entidades.Orden
                 throw exception;
             }
         }
-
+        public void AgregarDetalle(OrdenDetalle ordenDetalle)
+        {
+            try
+            {
+                if (Validar.EsValido(ordenDetalle))
+                {
+                    OrdenDetalleLista.Add(ordenDetalle);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 
 }
