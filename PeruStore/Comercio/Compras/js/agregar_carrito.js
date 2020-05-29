@@ -9,8 +9,9 @@ $(function () {
 class AgregarCarritoJs {
 
     constructor(metodosPagina) {
-        this.urlAgregarCarrito = metodosPagina + "AgregarCarrito";
-        this.urlObtenerCarrito = metodosPagina + "ObtenerCarrito";
+        this.urlAgregarDetalle = metodosPagina + "AgregarDetalle";
+        this.urlObtenerOrden = metodosPagina + "ObtenerOrden";
+        this.urlRemoverDetalle = metodosPagina + "RemoverDetalle";
     }
 
 
@@ -26,6 +27,10 @@ class AgregarCarritoJs {
                 agregarCarritoJs.Fn_AgregarCarrito($(this));
             });
 
+            $("#tbDetalle").on('click', '.removeItemFlotante', function (event) {
+                agregarCarritoJs.Fn_RemoverDetalle($(this).closest("tr"));
+            });
+
         } catch (exception) {
             // agregar alert aqui
         }
@@ -37,7 +42,7 @@ class AgregarCarritoJs {
 
             var _idProductoCifrado = $btnAgregar.attr("data-code");
             var _nombreProducto = $btnAgregar.attr("data-nombre");
-            
+
             var success = function (objRespuesta) {
 
                 let metodoRespuesta = objRespuesta.d;
@@ -54,7 +59,7 @@ class AgregarCarritoJs {
                 $btnAgregar.removeClass("loading");
             };
 
-            fn_Ajax(agregarCarritoJs.urlAgregarCarrito, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
+            fn_Ajax(agregarCarritoJs.urlAgregarDetalle, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
         } catch (e) {
             // agregar alert box aqui
             $btnAgregar.removeClass("loading");
@@ -67,7 +72,7 @@ class AgregarCarritoJs {
             var success = function (objRespuesta) {
                 let ordenCabecera = objRespuesta.d;
                 if (ordenCabecera !== null && ordenCabecera !== undefined) {
-                    agregarCarritoJs.Fn_DibujarCarrito_Flotante(ordenCabecera.Datos);
+                    agregarCarritoJs.Fn_Dibujar_CarritoFlotante(ordenCabecera.Datos);
                 }
             };
 
@@ -75,32 +80,63 @@ class AgregarCarritoJs {
                 // agregar alert box aqui
             };
 
-            fn_Ajax(agregarCarritoJs.urlObtenerCarrito, '{}', success, error);
+            fn_Ajax(agregarCarritoJs.urlObtenerOrden, '{}', success, error);
         } catch (e) {
             // agregar alert box aqui
         }
     }
 
-
-    Fn_DibujarCarrito_Flotante(ordenCabecera) {
+    Fn_Dibujar_CarritoFlotante(ordenCabecera) {
         try {
             // organizar data aqui
             if (ordenCabecera !== undefined && ordenCabecera !== null) {
-                let detalleLista = { Datos: ordenCabecera.OrdenDetalle };
-                var detalleHtml = Fn_CargarTemplate('orden-detalle', detalleLista);
 
-                $("#tbDetalle tbody").html(detalleHtml);
+                if (ordenCabecera.OrdenDetalle.length > 0) {
+                    let detalleLista = { Datos: ordenCabecera.OrdenDetalle };
+                    var detalleHtml = Fn_CargarTemplate('orden-detalle', detalleLista);
+
+                    $("#tbDetalle tbody").html(detalleHtml);
+                    $(".cart-options2").removeClass("hidden");
+                    $(".cart-options1").addClass("hidden");
+                } else {
+                    $(".cart-options2").addClass("hidden");
+                    $(".cart-options1").removeClass("hidden");
+                }
 
                 $("#tdTotal").html(ordenCabecera.Total);
                 $(".items_cart").html(ordenCabecera.Articulos);
                 $("#lblmonto").html(ordenCabecera.Total);
-
-                $(".cart-options2").removeClass("hidden");
-                $(".cart-options1").addClass("hidden");
             }
 
         } catch (exception) {
             console.log(exception);
+        }
+    }
+
+    Fn_RemoverDetalle($detalle) {
+        try {
+
+            var _idProductoCifrado = $detalle.attr('data-code');
+            var _nombreProducto = $detalle.attr('data-nombre');
+
+            var succes = function (objRespuesta) {
+
+                let metodoRespuesta = objRespuesta.d;
+                if (metodoRespuesta.CodigoRespuesta === EnumCodigoRespuesta.Exito) {
+                    var mensajeHtml = '<h3>¡<strong>' + _nombreProducto + '</strong> removido del <a href="#" style="text-decoration: underline;">carrito de compras</a>!</h3>';
+                    Fn_Success_Notice('Producto removido del carrito', mensajeHtml);
+                    agregarCarritoJs.Fn_ObtenerCarrito();
+                }
+            };
+
+            var error = function (xhr, ajaxOptions, throwError) {
+                // agregar alert box aqui
+            };
+
+            fn_Ajax(agregarCarritoJs.urlRemoverDetalle, '{ idProductoCifrado:"' + _idProductoCifrado + '" }', succes, error);
+
+        } catch (e) {
+            // agregar alert aqui
         }
     }
 

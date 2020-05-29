@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucCarritoFlotante.ascx.cs" Inherits="PeruStore.Controles.Inicio.ucCarritoFlotante" %>
+<link href="../../Comercio/Compras/css/carrito.css?b=1" rel="stylesheet" />
 
 <div class="middle3 col-lg-3 col-md-3">                    
     <!--cart-->
@@ -63,8 +64,8 @@
 
 <script type="text/x-handlebars-template" id="orden-detalle">
     {{# each Datos}}
-        <tr>
-            <td class="text-center" style="width:70px">
+        <tr data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">
+            <td class="text-center">
                 <a href="product.html">
                     <img src="{{NombreRecurso}}" style="width:70px" class="preview">
                 </a>
@@ -72,12 +73,12 @@
             <td class="text-left"> <a class="cart_product_name" href="#">{{ProductoNombre}}</a> 
             </td>
             <td class="text-center">x{{Cantidad}}</td>
-            <td class="text-center">{{Total}}</td>
+            <td class="text-center price-float">{{Total}}</td>
             <td class="text-right">
                 <a href="product.html" class="fa fa-edit"></a>
             </td>
             <td class="text-right">
-                <a class="fa fa-times fa-delete"></a>
+                <a class="fa fa-times fa-delete removeItemFlotante"></a>
             </td>
         </tr>
     {{/each}}

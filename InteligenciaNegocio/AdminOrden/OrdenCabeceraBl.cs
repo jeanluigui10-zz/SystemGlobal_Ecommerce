@@ -2,6 +2,7 @@
 using Dominio.Entidades.SucursalProducto;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
+using Libreria.General;
 using System;
 
 namespace InteligenciaNegocio.AdminOrden
@@ -41,7 +42,7 @@ namespace InteligenciaNegocio.AdminOrden
                     OrdenDetalle ordenDetalle = new OrdenDetalle(producto);
                     ordenDetalle.CalcularPrecio();
 
-                    ordencabecera.AgregarDetalle(ordenDetalle);
+                    metodoRespuesta.CodigoRespuesta =  ordencabecera.AgregarDetalle(ordenDetalle)? EnumCodigoRespuesta.Exito : EnumCodigoRespuesta.Error;
                 }
 
                 ordencabecera.RecalcularMontos();

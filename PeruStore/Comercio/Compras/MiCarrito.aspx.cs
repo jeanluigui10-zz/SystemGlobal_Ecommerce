@@ -19,7 +19,7 @@ namespace PeruStore.Comercio.Compras
         }
 
         [WebMethod]
-        public static MetodoRespuesta AgregarCarrito(String idProductoCifrado)
+        public static MetodoRespuesta AgregarDetalle(String idProductoCifrado)
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito);
             try
@@ -40,7 +40,7 @@ namespace PeruStore.Comercio.Compras
         }
 
         [WebMethod]
-        public static MetodoRespuesta ObtenerCarrito()
+        public static MetodoRespuesta ObtenerOrden()
         {
             MetodoRespuesta metodoRespuesta = null;
             try
@@ -54,6 +54,7 @@ namespace PeruStore.Comercio.Compras
                     {
                         OrdenDetalleLista.Add(new
                         {
+                            IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(detalle.Producto.IdProducto.ToString())),
                             detalle.Producto.ProductoNombre,
                             detalle.Cantidad,
                             Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, detalle.Total.ToStringMoney()),
@@ -77,5 +78,28 @@ namespace PeruStore.Comercio.Compras
             }
             return metodoRespuesta;
         }
+
+
+        [WebMethod]
+        public static MetodoRespuesta RemoverDetalle(String idProductoCifrado)
+        {
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+            try
+            {
+                Int32 idProducto = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(idProductoCifrado)));
+                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera;
+                metodoRespuesta.CodigoRespuesta = ordencabecera.RemoverDetalle(idProducto)? EnumCodigoRespuesta.Exito : EnumCodigoRespuesta.Error;
+                ordencabecera.RecalcularMontos();
+
+                SesionAplicacion.SesionOrdenCabecera = ordencabecera;
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible remover este producto.");
+            }
+            return metodoRespuesta;
+        }
+
+
     }
 }

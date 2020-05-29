@@ -57,19 +57,40 @@ namespace Dominio.Entidades.Orden
                 throw exception;
             }
         }
-        public void AgregarDetalle(OrdenDetalle ordenDetalle)
+        public Boolean AgregarDetalle(OrdenDetalle ordenDetalle)
         {
+            Boolean exito = false;
             try
             {
                 if (Validar.EsValido(ordenDetalle))
                 {
                     OrdenDetalleLista.Add(ordenDetalle);
+                    exito = true;
                 }
             }
             catch (Exception exception)
             {
                 throw exception;
             }
+            return exito;
+        }
+        public Boolean RemoverDetalle(Int32 idProducto)
+        {
+            Boolean exito = false;
+            try
+            {
+                if (Validar.EsValido(idProducto))
+                {
+                    Int32 indice = OrdenDetalleLista.FindIndex(d => d.Producto.IdProducto == idProducto);
+                    OrdenDetalleLista.RemoveAt(indice);
+                    exito = true;
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            return exito;
         }
     }
 
