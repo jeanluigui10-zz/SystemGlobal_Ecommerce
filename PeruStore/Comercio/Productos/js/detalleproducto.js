@@ -76,6 +76,12 @@ class DetalleProductoJS {
                     let htmlDetalleColor = Fn_CargarTemplate("handlebarListaColor", ObjectoLista);
                     $("#input-option231").html(htmlDetalleColor);
                 }
+                if (detalleProducto.DetalleSucursal.length > 0) {
+                    var ObjectoLista = {};
+                    ObjectoLista.ObjetoWithListSucursal = detalleProducto.DetalleSucursal;
+                    let htmlDetalleSucursal = Fn_CargarTemplate("handlebarListaSucursal", ObjectoLista);
+                    $("#dvContenedorSucursales").html(htmlDetalleSucursal);
+                }
             }
         } catch (e) {
             Fn_Mensaje('e', "Ocurrio un problema, intentalo otra vez.");

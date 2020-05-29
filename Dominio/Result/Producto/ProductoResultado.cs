@@ -12,13 +12,16 @@ namespace Dominio.Result.Producto
             DetalleOferta = new List<DetalleOfertaDTO>();
             DetalleColor = new List<DetalleColorDTO>();
             DetalleTalla = new List<DetalleTallaDTO>();
+            DetalleSucursal = new List<DetalleSucursalDTO>();
         }
         public List<ProductoResultadoDTO> Datos { get; set; }
         public List<DetalleImagenDTO> DetalleImagen { get; set; }
         public List<DetalleOfertaDTO> DetalleOferta { get; set; }
         public List<DetalleColorDTO> DetalleColor { get; set; }
         public List<DetalleTallaDTO> DetalleTalla { get; set; }
-    }
+        public List<DetalleSucursalDTO> DetalleSucursal { get; set; }
+            
+        }
     public class ProductoResultadoDTO
     {
         public Int32 IdProducto { get; set; }
@@ -74,6 +77,14 @@ namespace Dominio.Result.Producto
     {
         public Int32 IdTalla { get; set; }
         public String DescripcionTalla { get; set; }
+        public Int32 Stock { get; set; }
+    }
+    public class DetalleSucursalDTO
+    {
+        public Int16 IdSucursal { get; set; }
+        public String SucursalNombre { get; set; }
+        public String Direccionprimaria { get; set; }
+        public String Localidad { get; set; }
         public Int32 Stock { get; set; }
     }
 }

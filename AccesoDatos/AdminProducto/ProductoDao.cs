@@ -219,6 +219,19 @@ namespace AccesoDatos.AdminProducto
                                     });
                                 }
                             }
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleSucursal.Add(new DetalleSucursalDTO() {
+                                        IdSucursal = Convert.ToInt16(sqlDataReader["IdSucursal"]),
+                                        SucursalNombre = Convert.ToString(sqlDataReader["SucursalNombre"]),
+                                        Direccionprimaria = Convert.ToString(sqlDataReader["Direccionprimaria"]),
+                                        Localidad = Convert.ToString(sqlDataReader["Localidad"]),
+                                        Stock = Convert.ToInt32(sqlDataReader["Stock"])
+                                    });
+                                }
+                            }
                         }
                     }
                 }

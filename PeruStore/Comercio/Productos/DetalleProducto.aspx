@@ -1,10 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="DetalleProducto.aspx.cs" Inherits="PeruStore.Comercio.Productos.DetalleProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%--<link href="../../Template/js/minicolors/miniColors.css" rel="stylesheet" />--%>
     <script type="text/javascript" src="js/detalleproducto.js"></script>
-    <%--<script src="../../Template/js/minicolors/jquery.miniColors.min.js"></script>--%>
-    <%--<script type="text/javascript" src="/Template/js/themejs/libs.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Main Container  -->
@@ -81,12 +78,14 @@
                                     <div class="reward"><span>Precio: </span><a href="#" id="prodPrecioDesc">-</a>		</div>
                                     <div class="brand"><span>Marca: </span><a href="#" id="prodMarca">-</a>		</div>
                                     <div class="model"><span>Código de Producto: </span><a href="#" id="prodSku">-</a>		</div>
+                                    <div class="model"><span>Almacen: </span><a href="#" id="prodAlmacen">-</a>		</div>
                                 </div>
                             </div>
 
 
                             <div id="product">
-                                <h4>Opciones Disponibles</h4>
+                                <h4>Opciones Disponibles </h4>
+                                <button id="btnSeleccionarSucursal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Ver más ubicaciones</button>
                                 <div class="image_option_type form-group required">
                                     <label class="control-label">Colores</label>
                                     <ul class="product-options clearfix" id="input-option231">
@@ -100,7 +99,7 @@
                                     <div id="input-option232">
                                         <div class="dropdown">
                                             <button id="btnTallas" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background: #f4a137; border: 0">
-                                            <span class="caret"></span>
+                                                <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" style="padding-left: 10px" id="ddlTallas">
                                             </ul>
@@ -586,17 +585,44 @@
 
                 <!-- end Related  Products-->
             </div>
-
-
-
-
-
-
         </div>
-
-
     </div>
-    <!--Middle Part End-->
+    <!--Middle Part<!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sucursales</h5>
+                    <%-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>--%>
+                </div>
+                <div class="modal-body" id="dvContenedorSucursales">
+                   <%-- <div class="form-check">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+                            Opcion 1
+                        </label>
+                    </div>--%>
+                    <%--           <div class="form-check">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2"> Opcion 2
+                        </label>
+                    </div>
+                    --%>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <asp:HiddenField ID="_hfProduct" runat="server" />
     <script type="text/x-handlebars-template" id="handlebarImagenPrincipal">
@@ -621,7 +647,7 @@
                   <li class="radio">
                       <label>
                           <input class="image_radio" type="radio" name="{{IdColor}}" value="{{IdColor}}">
-                          <label style="height: 30px; background:{{DescripcionColor}}" class="img-thumbnail icon icon-color"></label>
+                          <label style="height: 30px; background: {{DescripcionColor}}" class="img-thumbnail icon icon-color"></label>
                           <i class="fa fa-check"></i>
                           <label></label>
                       </label>
@@ -629,5 +655,16 @@
 
         {{/each}}
              <li class="selected-option"></li>
+    </script>
+
+    <script type="text/x-handlebars-template" id="handlebarListaSucursal">
+        {{# each ObjetoWithListSucursal}}
+               <div class="form-check">
+                        <label class="form-check-label" for="radio{{@index}}">
+                            <input type="radio" class="form-check-input" id="radio{{@index}}" name="optradio" value="option{{@index}}" checked>
+                            {{SucursalNombre}} ({{Direccionprimaria}} {{Localidad}}) 
+                        </label>
+                    </div>
+        {{/each}}
     </script>
 </asp:Content>
