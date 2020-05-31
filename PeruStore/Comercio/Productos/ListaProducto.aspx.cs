@@ -46,8 +46,7 @@ namespace PeruStore.Comercio.Productos
                     {
                         if (categoriaResultado != null)
                         {
-                            JavaScriptSerializer serializer = new JavaScriptSerializer();
-                            String sJSON = serializer.Serialize(categoriaResultado.Datos);
+                            String sJSON = JsonConvert.SerializeObject(categoriaResultado.Datos);
                             hfDatosCategoriasLista.Value = sJSON.ToString();
                         }
                     }
@@ -130,8 +129,7 @@ namespace PeruStore.Comercio.Productos
                         {
                             if (productoResultado != null)
                             {
-                                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                                sJsonProductos = serializer.Serialize(productoResultado.Datos);
+                                sJsonProductos = JsonConvert.SerializeObject(productoResultado.Datos);
                             }
                         }
                     }
