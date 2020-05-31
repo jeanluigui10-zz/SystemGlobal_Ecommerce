@@ -706,12 +706,12 @@
          {{# each request}}
              <div class="content-box">
                  <div class="image-cat">
-                     <a href="#" title="Towels Cloud" target="_self">
+                     <a  href="<%=Page.ResolveUrl("Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}") %>" title="Towels Cloud" target="_self">
                          <img src="{{RutaImagenDeslizante}}" title="{{CategoriaNombre}}" alt="{{CategoriaNombre}}" />
                      </a>
                  </div>
                  <div class="cat-title">
-                     <a href="#" title="{{CategoriaNombre}}" target="_self">{{CategoriaNombre}}</a>
+                     <a  href="<%=Page.ResolveUrl("Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}") %>" title="{{CategoriaNombre}}" target="_self">{{CategoriaNombre}}</a>
                  </div>
              </div>
          {{/each}}
