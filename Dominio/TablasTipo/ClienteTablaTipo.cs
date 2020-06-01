@@ -27,7 +27,7 @@ namespace Dominio.TablasTipo
                 );
             foreach (Cliente data in this)
             {
-                ret.SetByte(0, data.IdDocumentoTipo.HasValue ? data.IdDocumentoTipo.Value : Convert.ToByte(0));
+                ret.SetByte(0, data.IdDocumentoTipo ?? Convert.ToByte(0));
                 ret.SetInt16(1, data.IdComercio);
                 ret.SetString(2, data.Nombre);
                 ret.SetString(3, data.ApellidoPaterno);
@@ -39,7 +39,7 @@ namespace Dominio.TablasTipo
                 ret.SetString(9, data.Contrasenha);
                 ret.SetBoolean(10, data.Estado);
                 ret.SetInt32(11, data.CreadoPor);
-                ret.SetInt32(12, data.ActualizadoPor.HasValue ? data.ActualizadoPor.Value : 0);
+                ret.SetInt32(12, data.ActualizadoPor ?? 0);
                 yield return ret;
             }
         }

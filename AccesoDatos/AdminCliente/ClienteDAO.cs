@@ -5,7 +5,6 @@ using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Messaging;
 
 namespace AccesoDatos.AdminCliente
 {
@@ -26,12 +25,11 @@ namespace AccesoDatos.AdminCliente
         }
         #endregion Singleton
 
-
         #region Metodos
 
-        public ClienteResultado ObtenerCliente_EmailContrasenha(String email, String contrasenha, Int16 idComercio)
+        public ClienteResultadoDTO ObtenerCliente_EmailContrasenha(String email, String contrasenha, Int16 idComercio)
         {
-            ClienteResultado objCliente = null;
+            ClienteResultadoDTO objCliente = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
                 try
@@ -41,24 +39,25 @@ namespace AccesoDatos.AdminCliente
                     command.Parameters.AddWithValue("@contrasenha", contrasenha);
                     command.Parameters.AddWithValue("@idComercio", idComercio);
 
-                    using (SqlDataReader sqlDataReader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        objCliente = new ClienteResultado();
-                        while (sqlDataReader.Read())
+                        if (reader.HasRows)
                         {
-                            objCliente.Datos.Add(new ClienteResultadoDTO()
+                            objCliente = new ClienteResultadoDTO();
+                            while (reader.Read())
                             {
-                                IdDocumentoTipo = Convert.ToInt16(sqlDataReader["IdDocumentoTipo"]),
-                                IdComercio = Convert.ToInt32(sqlDataReader["IdComercio"]),
-                                Nombre = Convert.ToString(sqlDataReader["Nombre"]),
-                                ApellidoPaterno = Convert.ToString(sqlDataReader["ApellidoPaterno"]),
-                                ApellidoMaterno = Convert.ToString(sqlDataReader["ApellidoMaterno"]),
-                                NumeroDocumento = Convert.ToString(sqlDataReader["NumeroDocumento"]),
-                                Celular = Convert.ToString(sqlDataReader["Celular"]),
-                                Telefono = Convert.ToString(sqlDataReader["Telefono"]),
-                                Email = Convert.ToString(sqlDataReader["Email"]),
-                                Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
-                            });
+                                objCliente.IdCliente = Convert.ToInt32(reader["IdCliente"]);
+                                objCliente.IdDocumentoTipo = Convert.ToByte(reader["IdDocumentoTipo"]);
+                                objCliente.IdComercio = Convert.ToInt16(reader["IdComercio"]);
+                                objCliente.Nombre = Convert.ToString(reader["Nombre"]);
+                                objCliente.ApellidoPaterno = Convert.ToString(reader["ApellidoPaterno"]);
+                                objCliente.ApellidoMaterno = Convert.ToString(reader["ApellidoMaterno"]);
+                                objCliente.NumeroDocumento = Convert.ToString(reader["NumeroDocumento"]);
+                                objCliente.Celular = Convert.ToString(reader["Celular"]);
+                                objCliente.Telefono = Convert.ToString(reader["Telefono"]);
+                                objCliente.Email = Convert.ToString(reader["Email"]);
+                                objCliente.Estado = Convert.ToBoolean(reader["Estado"]);
+                            } 
                         }
                     }
                 }
@@ -70,7 +69,7 @@ namespace AccesoDatos.AdminCliente
             return objCliente;
         }
 
-        public Boolean RegistrarCliente(ClienteTablaTipo cliente, DireccionTablaTipo direccion)
+        public Boolean Cliente_Registrar(ClienteTablaTipo cliente, DireccionTablaTipo direccion)
         {
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
@@ -99,24 +98,40 @@ namespace AccesoDatos.AdminCliente
             }
         }
 
-        public Boolean Cliente_Existe_PorEmail(String email, Int16 idComercio)
+        public ClienteResultadoDTO Cliente_RecuperarContrasenha(String email, Int16 idComercio)
         {
+
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
             {
+                ClienteResultadoDTO objCliente = null;
                 try
                 {
-                    SqlCommand command = new SqlCommand("Cliente_Validar_Por_Email_Pa", sqlConnection)
+                    SqlCommand command = new SqlCommand("Cliente_Por_Email_Pa", sqlConnection)
                     { 
                         CommandType = CommandType.StoredProcedure 
                     };
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@idComercio", idComercio);
-                    
-                    Byte contEmailxUsuario = Convert.ToByte(command.ExecuteScalar());
-                    if (contEmailxUsuario > 0)
-                        return true;
-                    else
-                        return false;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            objCliente = new ClienteResultadoDTO();
+                            while (reader.Read())
+                            {
+                                objCliente.Nombre = Convert.ToString(reader["Nombre"]);
+                                objCliente.ApellidoPaterno = Convert.ToString(reader["ApellidoPaterno"]);
+                                objCliente.ApellidoMaterno = Convert.ToString(reader["ApellidoMaterno"]);
+                                objCliente.Email = Convert.ToString(reader["Email"]);
+                                objCliente.Contrasenha = Convert.ToString(reader["Contrasenha"]);
+                            }
+                            return objCliente;
+                        }
+                        else {
+                            return null;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -125,9 +140,6 @@ namespace AccesoDatos.AdminCliente
                 }
             }
         }
-
-
-
 
         #endregion Metodos
 

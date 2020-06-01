@@ -13,8 +13,9 @@ namespace Dominio.Result.Cliente
     }
 
     public class ClienteResultadoDTO {
-        public Int16? IdDocumentoTipo { get; set; }
-        public Int32 IdComercio { get; set; }
+        public Int32 IdCliente { get; set; }
+        public Byte? IdDocumentoTipo { get; set; }
+        public Int16 IdComercio { get; set; }
         public String Nombre { get; set; }
         public String ApellidoPaterno { get; set; }
         public String ApellidoMaterno { get; set; }
@@ -22,6 +23,7 @@ namespace Dominio.Result.Cliente
         public String Celular { get; set; }
         public String Telefono { get; set; }
         public String Email { get; set; }
+        public String Contrasenha { get; set; }
         public Boolean Estado { get; set; }
 
     }

@@ -137,6 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminCliente\ClienteLogin.aspx" />
+    <Content Include="AdminCliente\js\ClienteLogin.js" />
     <Content Include="Chat\src\control\Chat\ucChat.ascx" />
     <Content Include="Chat\src\control\Chat\ucRedirectChatModule.ascx" />
     <Content Include="Chat\src\control\Chat\ucWebMethodChat.aspx" />
@@ -2019,6 +2021,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminCliente\ClienteLogin.aspx.cs">
+      <DependentUpon>ClienteLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCliente\ClienteLogin.aspx.designer.cs">
+      <DependentUpon>ClienteLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Chat\src\app_code\xConfig.cs" />
