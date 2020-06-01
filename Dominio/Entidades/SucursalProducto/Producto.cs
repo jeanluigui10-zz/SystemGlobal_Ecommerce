@@ -4,7 +4,12 @@ namespace Dominio.Entidades.SucursalProducto
 {
     public class Producto
     {
+        public Producto()
+        {
+            ProductoPrecio = new ProductoPrecio();
+        }
         public Int32 IdProducto { get; set; }
+        public ProductoPrecio ProductoPrecio { get; set; }
         public Int16 IdCategoria { get; set; }
         public Int32 IdMarca { get; set; }
         public String SKU { get; set; }
@@ -21,6 +26,7 @@ namespace Dominio.Entidades.SucursalProducto
         public Boolean Estado { get; set; }
         public String TipoDocumento { get; set; }
         public Int16? EsCarga { get; set; }
+        public String SimboloMoneda { get; set; }
     }
 
 }

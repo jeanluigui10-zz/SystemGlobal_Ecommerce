@@ -149,19 +149,22 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="AdminCliente\ClienteRegistro.aspx" />
     <Content Include="AdminCliente\js\ClienteRegistro.js" />
+    <Content Include="Comercio\Compras\css\carrito.css" />
     <Content Include="Comercio\Compras\js\agregar_carrito.js" />
     <Content Include="Comercio\Compras\js\agregar_comparar.js" />
     <Content Include="Comercio\Compras\js\agregar_lista_deseos.js" />
     <Content Include="Comercio\Compras\MiCarrito.aspx" />
-    <Content Include="Comercio\js\listaProductosPorCategoria.js" />
+    <Content Include="Comercio\Productos\css\listaProductosPorCategoria.css" />
+    <Content Include="Comercio\Productos\js\listaProductosPorCategoria.js" />
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Productos\DetalleProducto.aspx" />
-    <Content Include="Comercio\js\detalleproducto.js" />
+    <Content Include="Comercio\Productos\js\detalleproducto.js" />
     <Content Include="Controles\Inicio\css\listaproductos.css" />
     <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
     <Content Include="Comercio\Productos\ListaProducto.aspx" />
     <Content Include="Controles\Inicio\js\listaproducto.js" />
     <Content Include="Controles\Inicio\ucBannerCentral.ascx" />
+    <Content Include="Controles\Inicio\ucCarritoFlotante.ascx" />
     <Content Include="Controles\Inicio\ucOfertaSemanal.ascx" />
     <Content Include="Controles\Inicio\ucBeneficios.ascx" />
     <Content Include="Controles\Inicio\ucComprarPorCategoria.ascx" />
@@ -173,6 +176,7 @@
     <Content Include="plugins\validator\jquery.validate.min.js" />
     <Content Include="plugins\validator\style.validate.css" />
     <Content Include="Controles\Inicio\ucUltimosBlogs.ascx" />
+    <Content Include="src\css\base.css" />
     <Content Include="src\js\PaginaMaestra.js" />
     <Content Include="Comercio\Ordenes\css\historico.css" />
     <Content Include="Comercio\Ordenes\css\informacion.css" />
@@ -1504,6 +1508,7 @@
     <Content Include="Template\image\catalog\slideshow\home4\slide1.jpg" />
     <Content Include="Template\image\catalog\slideshow\home4\slide2.jpg" />
     <Content Include="Template\image\catalog\slideshow\home4\slide3.jpg" />
+    <Content Include="Template\image\catalog\user_green.png" />
     <Content Include="Template\image\demo-mobile\banner\banner-mobile-2.png" />
     <Content Include="Template\image\demo-mobile\banner\banner-mobile-3.png" />
     <Content Include="Template\image\demo-mobile\banner\banner-mobile-4.png" />
@@ -2108,6 +2113,13 @@
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.designer.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Inicio\ucCarritoFlotante.ascx.cs">
+      <DependentUpon>ucCarritoFlotante.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Inicio\ucCarritoFlotante.ascx.designer.cs">
+      <DependentUpon>ucCarritoFlotante.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\Inicio\ucOfertaSemanal.ascx.cs">
       <DependentUpon>ucOfertaSemanal.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2242,7 +2254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdminCliente\css\" />
-    <Folder Include="Comercio\css\" />
     <Folder Include="Template\image\theme\home5\" />
   </ItemGroup>
   <ItemGroup>

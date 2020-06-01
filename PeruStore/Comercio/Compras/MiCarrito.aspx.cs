@@ -1,11 +1,13 @@
-﻿using Libreria.Base;
+﻿using Dominio.Entidades.Orden;
+using InteligenciaNegocio.AdminOrden;
+using Libreria.Base;
 using Libreria.General;
+using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
-using PeruStore.src.BaseAplicacion;
-using Dominio.Entidades.Orden;
-using Dominio.Entidades.SucursalProducto;
 
 namespace PeruStore.Comercio.Compras
 {
@@ -17,29 +19,87 @@ namespace PeruStore.Comercio.Compras
         }
 
         [WebMethod]
-        public static MetodoRespuesta AgregarCarrito(Producto objProducto)
+        public static MetodoRespuesta AgregarDetalle(String idProductoCifrado)
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito);
             try
             {
-                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera?? new Ordencabecera();
-                ordencabecera.Tienda = SesionAplicacion.SesionTienda;
-                ordencabecera.Cliente = SesionAplicacion.SesionCliente;
+                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera ?? new Ordencabecera();
 
-                OrdenDetalle ordenDetalle = new OrdenDetalle();
-                ordenDetalle.Producto = objProducto;
+                Boolean _ = Int32.TryParse(Encriptador.Desencriptar(HttpUtility.UrlDecode(idProductoCifrado)), out Int32 idProducto);
+                OrdenCabeceraBl.Instancia.AgregarDetalle(ref metodoRespuesta, ref ordencabecera, idProducto);
 
-                ordencabecera.OrdenDetalle.Add(ordenDetalle);
-
-
-
+                SesionAplicacion.SesionOrdenCabecera = ordencabecera;
             }
             catch (Exception exception)
             {
-                throw exception;
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible agregar este producto al carrito.");
+                //throw exception;
             }
             return metodoRespuesta;
         }
+
+        [WebMethod]
+        public static MetodoRespuesta ObtenerOrden()
+        {
+            MetodoRespuesta metodoRespuesta = null;
+            try
+            {
+                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera;
+                if (Validar.EsValido(ordencabecera))
+                {
+                    List<Object> OrdenDetalleLista = new List<Object>();
+                    Int32 totalArticulos = 0;
+                    foreach (OrdenDetalle detalle in ordencabecera.OrdenDetalleLista)
+                    {
+                        OrdenDetalleLista.Add(new
+                        {
+                            IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(detalle.Producto.IdProducto.ToString())),
+                            detalle.Producto.ProductoNombre,
+                            detalle.Cantidad,
+                            Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, detalle.Total.ToStringMoney()),
+                            NombreRecurso = String.Format("{0}{1}", KeysSistema.PathImagenProducto, detalle.Producto.NombreRecurso)
+                        });
+                        totalArticulos++;
+                    }
+
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito, new
+                    {
+                        Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, ordencabecera.Total.ToStringMoney()),
+                        OrdenDetalle = OrdenDetalleLista,
+                        Articulos = totalArticulos
+                    });
+
+                }
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible mostrar tus compras.");
+            }
+            return metodoRespuesta;
+        }
+
+
+        [WebMethod]
+        public static MetodoRespuesta RemoverDetalle(String idProductoCifrado)
+        {
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+            try
+            {
+                Int32 idProducto = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(idProductoCifrado)));
+                Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera;
+                metodoRespuesta.CodigoRespuesta = ordencabecera.RemoverDetalle(idProducto)? EnumCodigoRespuesta.Exito : EnumCodigoRespuesta.Error;
+                ordencabecera.RecalcularMontos();
+
+                SesionAplicacion.SesionOrdenCabecera = ordencabecera;
+            }
+            catch (Exception exception)
+            {
+                metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error, "No es posible remover este producto.");
+            }
+            return metodoRespuesta;
+        }
+
 
     }
 }

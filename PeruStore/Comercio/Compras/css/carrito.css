@@ -1,0 +1,15 @@
+﻿/*#tbDetalle{
+    font-size: 12px;
+}*/
+
+.shoppingcart-box{
+    width: 400px;
+}
+
+.price-float {
+    min-width: 90px;
+}
+
+#cart .dropdown-menu.shoppingcart-box {
+    padding: 5px 10px;
+}

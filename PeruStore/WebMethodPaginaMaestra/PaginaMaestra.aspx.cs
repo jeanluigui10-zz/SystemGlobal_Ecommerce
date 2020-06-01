@@ -1,8 +1,8 @@
-﻿using Dominio.Result;
-using Dominio.Result.Producto;
+﻿using Dominio.Result.Producto;
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
+using Newtonsoft.Json;
 using System;
 using System.Web.Script.Serialization;
 using System.Web.Services;
@@ -15,6 +15,7 @@ namespace PeruStore.WebMethodPaginaMaestra
         {
 
         }
+
         [WebMethod]
         public static String SubCategoria_Lista_PorIdCategoria(Int16 IdCategoria)
         {
@@ -29,8 +30,7 @@ namespace PeruStore.WebMethodPaginaMaestra
                 {
                     if (categoriaResultado != null)
                     {
-                        JavaScriptSerializer serializer = new JavaScriptSerializer();
-                        sJSONSubcategoria = serializer.Serialize(categoriaResultado.DatosSubCategoria);
+                        sJSONSubcategoria = JsonConvert.SerializeObject(categoriaResultado.DatosSubCategoria);
                     }
                 }
             }
@@ -55,8 +55,7 @@ namespace PeruStore.WebMethodPaginaMaestra
                 {
                     if (categoriaResultado != null)
                     {
-                        JavaScriptSerializer serializer = new JavaScriptSerializer();
-                        sJSONSubcategoriaDetalle = serializer.Serialize(categoriaResultado.DatosSubCategoriaDetalle);
+                        sJSONSubcategoriaDetalle = JsonConvert.SerializeObject(categoriaResultado.DatosSubCategoriaDetalle);
                     }
                 }
             }

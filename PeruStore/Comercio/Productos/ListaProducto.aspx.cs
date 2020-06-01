@@ -6,16 +6,16 @@ using Newtonsoft.Json;
 using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace PeruStore.Comercio.Productos
 {
     public partial class ListaProducto : PaginaBase
     {
-        public int vsId
-        {
-            get { return ViewState["ID"] != null ? (int)ViewState["ID"] : default(int); }
-            set { ViewState["ID"] = value; }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -26,35 +26,47 @@ namespace PeruStore.Comercio.Productos
 
         public void Cargar_Datos()
         {
-            Categoria_ObtenerId();
-            MostrarProductosPorCategoria();
+            Categorias_CargarPorComercio();
+            ProductosPor_IdCategoria_Carga();
         }
 
-        private void Categoria_ObtenerId()
+        public void Categorias_CargarPorComercio()
         {
-            //if (!String.IsNullOrEmpty(Request.QueryString["c"]))
-            //{
-            //    String IdCategoria = Encriptador.Desencriptar(Request.QueryString["c"]);
-            //    if (!String.IsNullOrEmpty(IdCategoria))
-            //    {
-            //        vsId = Convert.ToInt32(IdCategoria);
-            //    }
-            //    else {
-            //        vsId = 0;
-            //    }
-            //}
-            vsId = 4; //estatico mientras se termina de implementar el flujo
-        }
+            try
+            {
+                MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+                CategoriaResultado categoriaResultado = new CategoriaResultado();
 
-        public void MostrarProductosPorCategoria() {
+                String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
+                if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
+                {
+                    categoriaResultado = CategoriaBL.instancia.Categoria_ObtenerLista(ref metodoRespuesta, idcome);
+
+                    if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
+                    {
+                        if (categoriaResultado != null)
+                        {
+                            String sJSON = JsonConvert.SerializeObject(categoriaResultado.Datos);
+                            hfDatosCategoriasLista.Value = sJSON.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+        public void ProductosPor_IdCategoria_Carga() {
             try
             {
                 if (SesionAplicacion.SesionTienda != null)
                 {
                     MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+
+                    String IdCategoriaParam = Convert.ToString(Request.QueryString["c"]);
                     String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
-                    Int32 IdCategoria = vsId;
-                    if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
+                    if ((Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0) && (Int32.TryParse(Encriptador.Desencriptar(IdCategoriaParam), out Int32 IdCategoria) && IdCategoria > 0))
                     {
                         ProductoResultado productoResultado = ProductoBL.Instancia.ListaProdctosPor_Comercio_Categoria(idcome, IdCategoria, ref metodoRespuesta);
                         if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
@@ -63,6 +75,9 @@ namespace PeruStore.Comercio.Productos
                             {
                                 if (productoResultado.Datos.Count > 0)
                                 {
+                                    for (int i = 0; i < productoResultado.Datos.Count; i++) {
+                                        productoResultado.Datos[i].NombreRecurso = KeysSistema.Impremtawendomain + productoResultado.Datos[i].NombreRecurso;
+                                    }
                                     hfDatosProductosPorCategoria.Value = JsonConvert.SerializeObject(productoResultado.Datos);
                                 }
                                 else
@@ -94,6 +109,37 @@ namespace PeruStore.Comercio.Productos
             {
                 throw exception;
             }
+        }
+
+        [WebMethod]
+        public static String ProductosPor_Categoria(String IdCategoriaCifrado)
+        {
+            MetodoRespuesta metodoRespuesta = new MetodoRespuesta();
+            String sJsonProductos = "";
+            try
+            {
+                Int32 Categoria = Convert.ToInt32(Encriptador.Desencriptar(HttpUtility.UrlDecode(IdCategoriaCifrado)));
+                if (SesionAplicacion.SesionTienda != null)
+                {
+                    String IdComercio = SesionAplicacion.SesionTienda.IdComercio.ToString();
+                    if (Int32.TryParse(IdComercio, out Int32 idcome) && idcome > 0)
+                    {
+                        ProductoResultado productoResultado = ProductoBL.Instancia.ListaProdctosPor_Comercio_Categoria(idcome, Categoria, ref metodoRespuesta);
+                        if (metodoRespuesta.CodigoRespuesta == EnumCodigoRespuesta.Exito)
+                        {
+                            if (productoResultado != null)
+                            {
+                                sJsonProductos = JsonConvert.SerializeObject(productoResultado.Datos);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+           return sJsonProductos;
         }
     }
 }

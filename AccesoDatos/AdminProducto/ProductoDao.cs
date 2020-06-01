@@ -1,11 +1,13 @@
-﻿using Dominio.Result;
-using Dominio.Result.Producto;
+﻿using Dominio.Result.Producto;
 using Libreria.AdminConexion;
 using Libreria.Base;
 using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
+using Dominio.Entidades.SucursalProducto;
+
 namespace AccesoDatos.AdminProducto
 {
     public class ProductoDao
@@ -26,8 +28,7 @@ namespace AccesoDatos.AdminProducto
         #endregion Singleton
 
 
-        #region Metodos
-
+        #region Metodos Mostrar Data
         public ProductoResultado ListaProdctosPorComercio(Int32 comercioId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
@@ -40,27 +41,31 @@ namespace AccesoDatos.AdminProducto
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        productoResultado = new ProductoResultado();
-                        while (sqlDataReader.Read())
+                        if (sqlDataReader.HasRows) 
                         {
-                            productoResultado.Datos.Add(new ProductoResultadoDTO()
+                            productoResultado = new ProductoResultado();
+                            while (sqlDataReader.Read())
                             {
-                                IdProducto = Convert.ToInt32(sqlDataReader["Idproducto"]),
-                                Sku = Convert.ToString(sqlDataReader["Sku"]),
-                                ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
-                                ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
-                                Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
-                                Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
-                                PrecioOferta = Convert.ToDecimal(sqlDataReader["PrecioOferta"]),
-                                Esoferta = Convert.ToBoolean(sqlDataReader["EsOferta"]),
-                                CategoriaNombre = Convert.ToString(sqlDataReader["Categorianombre"]),
-                                NombreRecurso = "http://elcanastonxcorporate.tk" + Convert.ToString(sqlDataReader["NombreRecurso"]),
-                                MarcaNombre = Convert.ToString(sqlDataReader["Marcanombre"]),
-                                UnidadMinima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
-                                UnidadMaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
-                                Estado= Convert.ToBoolean(sqlDataReader["Estado"]),
+                                productoResultado.Datos.Add(new ProductoResultadoDTO()
+                                {
+                                    IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["Idproducto"]))),
+                                    IdSucursalCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSucursal"]))),
+                                    Sku = Convert.ToString(sqlDataReader["Sku"]),
+                                    ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
+                                    ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
+                                    Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
+                                    Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                    PrecioOferta = Convert.ToDecimal(sqlDataReader["PrecioOferta"]),
+                                    Esoferta = Convert.ToBoolean(sqlDataReader["EsOferta"]),
+                                    CategoriaNombre = Convert.ToString(sqlDataReader["Categorianombre"]),
+                                    NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]),
+                                    MarcaNombre = Convert.ToString(sqlDataReader["Marcanombre"]),
+                                    UnidadMinima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
+                                    UnidadMaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
+                                    Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
 
-                            }); 
+                                });
+                            }
                         }
                     }
                 }
@@ -84,28 +89,34 @@ namespace AccesoDatos.AdminProducto
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        productoResultado = new ProductoResultado();
-                        while (sqlDataReader.Read())
+                        if (sqlDataReader.HasRows) 
                         {
-                            productoResultado.Datos.Add(new ProductoResultadoDTO()
+                            productoResultado = new ProductoResultado();
+                            while (sqlDataReader.Read())
                             {
-                                IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
-                                Sku = Convert.ToString(sqlDataReader["Sku"]),
-                                ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]),
-                                ProductoDescripcion = Convert.ToString(sqlDataReader["ProductoDescripcion"]),
-                                ProductoDescripcionLarga = Convert.ToString(sqlDataReader["ProductoDescripcionLarga"]),
-                                Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
-                                Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
-                                PrecioOferta = Convert.ToDecimal(sqlDataReader["PrecioOferta"]),
-                                Esoferta = Convert.ToBoolean(sqlDataReader["EsOferta"]),
-                                CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
-                                NombreRecurso = "http://elcanastonxcorporate.tk" + Convert.ToString(sqlDataReader["NombreRecurso"]),
-                                MarcaNombre = Convert.ToString(sqlDataReader["MarcaNombre"]),
-                                UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
-                                UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
-                                Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
+                                productoResultado.Datos.Add(new ProductoResultadoDTO()
+                                {
+                                    IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
+                                    IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdProducto"]))),
+                                    IdCategoria = Convert.ToInt32(sqlDataReader["IdCategoria"]),
+                                    IdSucursalCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSucursal"]))),
+                                    Sku = Convert.ToString(sqlDataReader["Sku"]),
+                                    ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]),
+                                    ProductoDescripcion = Convert.ToString(sqlDataReader["ProductoDescripcion"]),
+                                    ProductoDescripcionLarga = Convert.ToString(sqlDataReader["ProductoDescripcionLarga"]),
+                                    Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
+                                    Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                    PrecioOferta = Convert.ToDecimal(sqlDataReader["PrecioOferta"]),
+                                    Esoferta = Convert.ToBoolean(sqlDataReader["EsOferta"]),
+                                    CategoriaNombre = Convert.ToString(sqlDataReader["CategoriaNombre"]),
+                                    NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]),
+                                    MarcaNombre = Convert.ToString(sqlDataReader["MarcaNombre"]),
+                                    UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
+                                    UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
+                                    Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
 
-                            });
+                                });
+                            }
                         }
                     }
                 }
@@ -116,8 +127,7 @@ namespace AccesoDatos.AdminProducto
             }
             return productoResultado;
         }
-
-        public ProductoResultado ObtenerPrductoPorId(Int32 productId, ref MetodoRespuesta respuesta)
+        public ProductoResultado ObtenerPrductoPorId(Int32 productId, Int32 sucursalId, ref MetodoRespuesta respuesta)
         {
             ProductoResultado productoResultado = null;
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
@@ -126,29 +136,103 @@ namespace AccesoDatos.AdminProducto
                 {
                     SqlCommand sqlCommand = new SqlCommand("Producto_PorId_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
                     sqlCommand.Parameters.AddWithValue("@Productid", productId);
+                    sqlCommand.Parameters.AddWithValue("@Sucursalid", sucursalId);
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        productoResultado = new ProductoResultado();
-                        while (sqlDataReader.Read())
+                        if (sqlDataReader.HasRows)
                         {
-                            productoResultado.Datos.Add(new ProductoResultadoDTO()
+                            productoResultado = new ProductoResultado();
+                            while (sqlDataReader.Read())
                             {
-                                IdProducto = Convert.ToInt32(sqlDataReader["Idproducto"]),
-                                Sku = Convert.ToString(sqlDataReader["Sku"]),
-                                ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
-                                ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
-                                ProductoDescripcionLarga = Convert.ToString(sqlDataReader["ProductodescripcionLarga"]),
-                                UnidadMinima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
-                                UnidadMaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
-                                Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
-                                Esoferta = Convert.ToBoolean(sqlDataReader["Esoferta"]),
-                                IdCategoria = Convert.ToInt32(sqlDataReader["Idcategoria"]),
-                                CategoriaNombre = Convert.ToString(sqlDataReader["Categorianombre"]),
-                                IdMarca = Convert.ToInt32(sqlDataReader["Idmarca"]),
-                                MarcaNombre = Convert.ToString(sqlDataReader["Marcanombre"]),
+                                productoResultado.Datos.Add(new ProductoResultadoDTO()
+                                {
+                                    IdProducto = Convert.ToInt32(sqlDataReader["Idproducto"]),
+                                    Sku = Convert.ToString(sqlDataReader["Sku"]),
+                                    ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
+                                    ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
+                                    ProductoDescripcionLarga = Convert.ToString(sqlDataReader["ProductodescripcionLarga"]),
+                                    Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
+                                    Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                    CategoriaNombre = Convert.ToString(sqlDataReader["Categorianombre"]),
+                                    NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]),
+                                    MarcaNombre = Convert.ToString(sqlDataReader["Marcanombre"]),
+                                    UnidadMinima = Convert.ToInt32(sqlDataReader["Unidadminima"]),
+                                    UnidadMaxima = Convert.ToInt32(sqlDataReader["Unidadmaxima"]),
+                                    Esoferta = Convert.ToBoolean(sqlDataReader["Esoferta"]),
+                                    Estado = Convert.ToBoolean(sqlDataReader["Estado"]),
+                                });
 
-                            });
+                            }
+
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleImagen.Add(new DetalleImagenDTO()
+                                    {
+                                        IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
+                                        ArchivoNombre = Convert.ToString(sqlDataReader["ArchivoNombre"]),
+                                        NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]),
+                                        ArchivoExtension = Convert.ToString(sqlDataReader["ArchivoExtension"]),
+                                    });
+                                }
+                            }
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleOferta.Add(new DetalleOfertaDTO()
+                                    {
+                                        IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]),
+                                        SucursalNombre = Convert.ToString(sqlDataReader["SucursalNombre"]),
+                                        Simbolo = Convert.ToString(sqlDataReader["Simbolo"]),
+                                        Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                        UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
+                                        UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
+                                        VigenteDesde = Convert.ToDateTime(sqlDataReader["VigenteDesde"]),
+                                        VigenteHasta = Convert.ToDateTime(sqlDataReader["VigenciaHasta"]),
+                                        OfertaNombre = Convert.ToString(sqlDataReader["OfertaNombre"]),
+                                    });
+                                }
+                            }
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleColor.Add(new DetalleColorDTO()
+                                    {
+                                        IdColor = Convert.ToInt32(sqlDataReader["IdColor"]),
+                                        DescripcionColor = Convert.ToString(sqlDataReader["DescripcionColor"]),
+                                        Stock = Convert.ToInt32(sqlDataReader["Stock"]),
+                                    });
+                                }
+                            }
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleTalla.Add(new DetalleTallaDTO()
+                                    {
+                                        IdTalla = Convert.ToInt32(sqlDataReader["IdTalla"]),
+                                        DescripcionTalla = Convert.ToString(sqlDataReader["DescripcionTalla"]),
+                                        Stock = Convert.ToInt32(sqlDataReader["Stock"]),
+                                    });
+                                }
+                            }
+                            if (sqlDataReader.NextResult())
+                            {
+                                while (sqlDataReader.Read())
+                                {
+                                    productoResultado.DetalleSucursal.Add(new DetalleSucursalDTO() {
+                                        IdSucursal = Convert.ToInt16(sqlDataReader["IdSucursal"]),
+                                        SucursalNombre = Convert.ToString(sqlDataReader["SucursalNombre"]),
+                                        Direccionprimaria = Convert.ToString(sqlDataReader["Direccionprimaria"]),
+                                        Localidad = Convert.ToString(sqlDataReader["Localidad"]),
+                                        Stock = Convert.ToInt32(sqlDataReader["Stock"])
+                                    });
+                                }
+                            }
                         }
                     }
                 }
@@ -159,8 +243,68 @@ namespace AccesoDatos.AdminProducto
             }
             return productoResultado;
         }
+        #endregion Metodos Mostrar Data
 
 
-        #endregion Metodos
+        #region Metodos para carrito
+        public Producto Obtener_Para_Carrito(ref MetodoRespuesta metodoRespuesta, Int32 idProducto)
+        {
+            Producto producto = null;
+
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    Int16 indiceTabla = 0;
+                    SqlCommand sqlCommand = new SqlCommand("Producto_Para_Carrito_Pa", sqlConnection) { CommandType = CommandType.StoredProcedure };
+                    sqlCommand.Parameters.AddWithValue("@idProducto", idProducto);
+
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        do
+                        {
+                            if (indiceTabla == 0)
+                            {
+                                if (sqlDataReader.Read())
+                                {
+                                    producto = new Producto();
+                                    producto.IdProducto = Convert.ToInt32(sqlDataReader["IdProducto"]);
+                                    producto.SKU = Convert.ToString(sqlDataReader["Codigo"]);
+                                    producto.ProductoNombre = Convert.ToString(sqlDataReader["ProductoNombre"]);
+                                    producto.EsVentaPorMayor = Convert.ToBoolean(sqlDataReader["EsVentaPorMayor"]);
+                                    producto.NombreRecurso = Convert.ToString(sqlDataReader["NombreRecurso"]);
+                                    producto.SimboloMoneda = Convert.ToString(sqlDataReader["SimboloMoneda"]);
+                                }
+                            }
+                            else
+                            {
+                                while (sqlDataReader.Read() && Validar.EsValido(producto))
+                                {
+                                    producto.ProductoPrecio.PrecioRango.Add(new ProductoPrecioRango()
+                                    {
+                                        UnidadMinima = Convert.ToInt32(sqlDataReader["UnidadMinima"]),
+                                        UnidadMaxima = Convert.ToInt32(sqlDataReader["UnidadMaxima"]),
+                                        Precio = Convert.ToDecimal(sqlDataReader["Precio"]),
+                                    });
+                                }
+                            }
+                            indiceTabla++;
+                        } while (sqlDataReader.NextResult());
+                    }
+                }
+                catch (Exception exception)
+                {
+                    metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Error);
+                    throw exception;
+                }
+            }
+
+            return producto;
+        }
+
+        #endregion Producto para carrito
+
+
+
     }
 }

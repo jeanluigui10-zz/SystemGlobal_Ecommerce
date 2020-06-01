@@ -60,6 +60,15 @@ namespace PeruStore
         protected global::System.Web.UI.WebControls.HiddenField hfDataCategoriaMenu;
 
         /// <summary>
+        /// Control ucCarritoFlotante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Inicio.ucCarritoFlotante ucCarritoFlotante;
+
+        /// <summary>
         /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>

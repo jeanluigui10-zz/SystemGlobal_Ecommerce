@@ -27,11 +27,13 @@ namespace PeruStore.src.BaseAplicacion
             set { HttpContext.Current.Session["Cliente"] = value; }
         }
 
+        public static void LimpiarSesion()
+        {
+            HttpContext.Current.Session.Clear();
+        }
         public static void AbandonarSesion()
         {
             HttpContext.Current.Session.Abandon();
-            HttpContext.Current.Session.Clear();
         }
-
     }
 }
