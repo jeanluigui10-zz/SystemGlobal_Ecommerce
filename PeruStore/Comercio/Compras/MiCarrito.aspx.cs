@@ -1,5 +1,7 @@
 ﻿using Dominio.Entidades.Orden;
+using Dominio.Result.Ubigeo;
 using InteligenciaNegocio.AdminOrden;
+using InteligenciaNegocio.AdminUbigeo;
 using Libreria.Base;
 using Libreria.General;
 using PeruStore.src.BaseAplicacion;
@@ -15,7 +17,10 @@ namespace PeruStore.Comercio.Compras
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                CargarRegiones();
+            }
         }
 
         [WebMethod]
@@ -56,7 +61,9 @@ namespace PeruStore.Comercio.Compras
                         {
                             IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(detalle.Producto.IdProducto.ToString())),
                             detalle.Producto.ProductoNombre,
+                            ProductoCodigo = detalle.Producto.SKU,
                             detalle.Cantidad,
+                            Precio = String.Format("{0} {1}", ordencabecera.SimboloMoneda, detalle.Precio.ToStringMoney()),
                             Total = String.Format("{0} {1}", ordencabecera.SimboloMoneda, detalle.Total.ToStringMoney()),
                             NombreRecurso = String.Format("{0}{1}", KeysSistema.PathImagenProducto, detalle.Producto.NombreRecurso)
                         });
@@ -79,7 +86,6 @@ namespace PeruStore.Comercio.Compras
             return metodoRespuesta;
         }
 
-
         [WebMethod]
         public static MetodoRespuesta RemoverDetalle(String idProductoCifrado)
         {
@@ -100,6 +106,20 @@ namespace PeruStore.Comercio.Compras
             return metodoRespuesta;
         }
 
-
+        private void CargarRegiones()
+        {
+            try
+            {
+                UbigeoResultado ubigeoResultado = UbigeoBl.Instancia.ObtenerRegion();
+                cboRegion.DataSource = ubigeoResultado.Regiones;
+                cboRegion.DataTextField = "RegionNombre";
+                cboRegion.DataValueField = "IdRegion";
+                cboRegion.DataBind();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

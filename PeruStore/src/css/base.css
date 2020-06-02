@@ -92,3 +92,7 @@
 .header-menu-active > a {
    color: #ff3c20 !important;
 }
+
+button.btn-button.disabled, fieldset[disabled] button.btn-button{
+    pointer-events: none;
+}

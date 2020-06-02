@@ -19,7 +19,9 @@ namespace Dominio.Result.Orden
     public class HistoricoDetalleDTO
     {
         public Int32 IdOrden { get; set; }
+        public String IdProductoCifrado { get; set; }
         public String NombreProducto { get; set; }
+        public String CodigoProducto { get; set; }
         public Int32 Cantidad { get; set; }
         public String Precio { get; set; }
         public String Total { get; set; }

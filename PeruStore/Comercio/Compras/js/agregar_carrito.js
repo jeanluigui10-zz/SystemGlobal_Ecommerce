@@ -27,7 +27,7 @@ class AgregarCarritoJs {
                 agregarCarritoJs.Fn_AgregarCarrito($(this));
             });
 
-            $("#tbDetalle").on('click', '.removeItemFlotante', function (event) {
+            $("#tbDetalleFlotante").on('click', '.removeItemFlotante', function (event) {
                 agregarCarritoJs.Fn_RemoverDetalle($(this).closest("tr"));
             });
 
@@ -38,7 +38,7 @@ class AgregarCarritoJs {
 
     Fn_AgregarCarrito($btnAgregar) {
         try {
-            $btnAgregar.addClass("loading");
+            $btnAgregar.addClass("loading").addClass("disabled");
 
             var _idProductoCifrado = $btnAgregar.attr("data-code");
             var _nombreProducto = $btnAgregar.attr("data-nombre");
@@ -51,18 +51,18 @@ class AgregarCarritoJs {
                     Fn_Success_Notice('Producto agregado al carrito', mensajeHtml);
                     agregarCarritoJs.Fn_ObtenerCarrito();
                 }
-                $btnAgregar.removeClass("loading");
+                $btnAgregar.removeClass("loading").removeClass("disabled");
             };
 
             var error = function (xhr, ajaxOptions, throwError) {
                 // agregar alert box aqui
-                $btnAgregar.removeClass("loading");
+                $btnAgregar.removeClass("loading").removeClass("disabled");
             };
 
             fn_Ajax(agregarCarritoJs.urlAgregarDetalle, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
         } catch (e) {
             // agregar alert box aqui
-            $btnAgregar.removeClass("loading");
+            $btnAgregar.removeClass("loading").removeClass("disabled");
         }
     }
 
@@ -73,6 +73,7 @@ class AgregarCarritoJs {
                 let ordenCabecera = objRespuesta.d;
                 if (ordenCabecera !== null && ordenCabecera !== undefined) {
                     agregarCarritoJs.Fn_Dibujar_CarritoFlotante(ordenCabecera.Datos);
+                    agregarCarritoJs.Fn_Dibujar_CarritoPrincipal(ordenCabecera.Datos);
                 }
             };
 
@@ -95,7 +96,7 @@ class AgregarCarritoJs {
                     let detalleLista = { Datos: ordenCabecera.OrdenDetalle };
                     var detalleHtml = Fn_CargarTemplate('orden-detalle', detalleLista);
 
-                    $("#tbDetalle tbody").html(detalleHtml);
+                    $("#tbDetalleFlotante tbody").html(detalleHtml);
                     $(".cart-options2").removeClass("hidden");
                     $(".cart-options1").addClass("hidden");
                 } else {
@@ -106,6 +107,33 @@ class AgregarCarritoJs {
                 $("#tdTotal").html(ordenCabecera.Total);
                 $(".items_cart").html(ordenCabecera.Articulos);
                 $("#lblmonto").html(ordenCabecera.Total);
+            }
+
+        } catch (exception) {
+            console.log(exception);
+        }
+    }
+
+    Fn_Dibujar_CarritoPrincipal(ordenCabecera) {
+        try {
+            // organizar data aqui
+            if (ordenCabecera !== undefined && ordenCabecera !== null) {
+
+                if (ordenCabecera.OrdenDetalle.length > 0) {
+                    let detalleLista = { Datos: ordenCabecera.OrdenDetalle };
+                    var detalleHtml = Fn_CargarTemplate('orden-detalleprincipal', detalleLista);
+
+                    $("#tbDetallePrincipal tbody").html(detalleHtml);
+                    //$(".cart-options2").removeClass("hidden");
+                    //$(".cart-options1").addClass("hidden");
+                } // else {
+                //    $(".cart-options2").addClass("hidden");
+                //    $(".cart-options1").removeClass("hidden");
+                //}
+
+                //$("#tdTotal").html(ordenCabecera.Total);
+                //$(".items_cart").html(ordenCabecera.Articulos);
+                //$("#lblmonto").html(ordenCabecera.Total);
             }
 
         } catch (exception) {

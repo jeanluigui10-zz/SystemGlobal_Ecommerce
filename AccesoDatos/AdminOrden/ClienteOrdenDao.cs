@@ -1,9 +1,11 @@
 ﻿using Dominio.Result.Orden;
 using Libreria.AdminConexion;
+using Libreria.General;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Web;
 
 namespace AccesoDatos.AdminOrden
 {
@@ -123,7 +125,9 @@ namespace AccesoDatos.AdminOrden
                             historicoDetalleResultado.Datos.Add(new HistoricoDetalleDTO()
                             {
                                 IdOrden = Convert.ToInt32(sqlDataReader["IdOrden"]),
+                                IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdProducto"]))),
                                 NombreProducto = Convert.ToString(sqlDataReader["ProductoNombre"]),
+                                CodigoProducto = Convert.ToString(sqlDataReader["CodigoProducto"]),
                                 Cantidad = Convert.ToInt32(sqlDataReader["Cantidad"]),
                                 Precio = Convert.ToString(sqlDataReader["Precio"]),
                                 Total = Convert.ToString(sqlDataReader["Total"]),

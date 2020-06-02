@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Informacion.aspx.cs" Inherits="PeruStore.Comercio.Ordenes.Informacion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="js/informacion.js?a=2"></script>
+    <script src="js/informacion.js?x=2"></script>
     <link href="css/informacion.css" rel="stylesheet" />
 </asp:Content>
 
@@ -35,10 +35,11 @@
 					</tbody>
 				</table>
 				<div class="table-responsive">
-					<table class="table table-bordered table-hover" id="tbDetalle">
+					<table class="table table-bordered table-hover" id="tbDetalleHistorico">
 						<thead>
 							<tr>
 								<td class="text-left">Producto</td>
+								<td class="text-left">Código</td>
 								<td class="text-right">Cantidad</td>
 								<td class="text-right">Precio</td>
 								<td class="text-right">Total</td>
@@ -133,11 +134,12 @@
         {{# each Datos}}
 		  <tr>
 			 <td class="text-left">{{NombreProducto}}</td>
+			 <td class="text-left">{{CodigoProducto}}</td>
 			 <td class="text-right">{{Cantidad}}</td>
 			 <td class="text-right">{{Precio}}</td>
 			 <td class="text-right">{{Total}}</td>
 			 <td style="white-space: nowrap;" class="text-right"> 
-				<a class="btn btn-primary" title="" data-toggle="tooltip" data-placement="right" href="#" data-original-title="Volver a Comprar"><i class="fa fa-shopping-cart"></i></a>
+				<a class="addToCart btn btn-primary" title="Volver a comprar" data-toggle="tooltip" data-placement="right" data-code="{{IdProductoCifrado}}" data-nombre="{{NombreProducto}}" ><i class="fa fa-shopping-cart"></i></a>
 			 </td>
 		  </tr>
         {{/each}}
