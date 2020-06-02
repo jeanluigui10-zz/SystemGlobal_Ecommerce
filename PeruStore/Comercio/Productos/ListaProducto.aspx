@@ -129,7 +129,7 @@
             <div class="product-item-container">
                 <div class="left-block">
                     <div class="product-image-container second_img">
-                        <a href="product.html" target="_self" title="{{ProductoNombre}}">
+                        <a href="<%=Page.ResolveUrl("DetalleProducto.aspx?p={{IdProductoCifrado}}&s={{IdSucursalCifrado}}") %>" target="_self" title="{{ProductoNombre}}">
                             <img src="{{NombreRecurso}}" class="img-1 img-responsive" alt="image">
                             <img src="{{NombreRecurso}}" class="img-2 img-responsive" alt="image">
                         </a>

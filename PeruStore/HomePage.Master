@@ -653,7 +653,7 @@
         {{# each request}}
         <li class="item-vertical  with-sub-menu hover">
             <p class="close-menu"></p>
-            <a href="Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}">
+            <a href="<%=Page.ResolveUrl("Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}") %>">
                 <img src="{{RutaIcono}}" alt="icon">
                 <span>{{CategoriaNombre}}</span>
                 <b class="caret"></b>
@@ -706,12 +706,12 @@
          {{# each request}}
              <div class="content-box">
                  <div class="image-cat">
-                     <a href="#" title="Towels Cloud" target="_self">
+                     <a  href="<%=Page.ResolveUrl("Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}") %>" title="Towels Cloud" target="_self">
                          <img src="{{RutaImagenDeslizante}}" title="{{CategoriaNombre}}" alt="{{CategoriaNombre}}" />
                      </a>
                  </div>
                  <div class="cat-title">
-                     <a href="#" title="{{CategoriaNombre}}" target="_self">{{CategoriaNombre}}</a>
+                     <a  href="<%=Page.ResolveUrl("Productos/ListaProducto.aspx?c={{IdCategoriaCifrado}}") %>" title="{{CategoriaNombre}}" target="_self">{{CategoriaNombre}}</a>
                  </div>
              </div>
          {{/each}}

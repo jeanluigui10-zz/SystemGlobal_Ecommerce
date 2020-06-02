@@ -54,6 +54,7 @@ namespace PeruStore.Controles.Inicio
 
                                             Detalle.Add(new
                                             {   _producto.Datos[i].IdProductoCifrado,
+                                                _producto.Datos[i].IdSucursalCifrado,
                                                 _producto.Datos[i].ProductoNombre, 
                                                 _producto.Datos[i].ProductoDescripcion, 
                                                 _producto.Datos[i].ProductoDescripcionLarga, 

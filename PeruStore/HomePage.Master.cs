@@ -2,6 +2,7 @@
 using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
+using Newtonsoft.Json;
 using PeruStore.src.BaseAplicacion;
 using System;
 using System.Web.Script.Serialization;
@@ -39,8 +40,7 @@ namespace PeruStore
                     {
                         if (categoriaResultado != null)
                         {
-                            JavaScriptSerializer serializer = new JavaScriptSerializer();
-                            String sJSON = serializer.Serialize(categoriaResultado.Datos);
+                            String sJSON = JsonConvert.SerializeObject(categoriaResultado.Datos);
                             hfDataCategoriaMenuSubMenu.Value = sJSON.ToString();
                             hfDataCategoriaMenu.Value = sJSON.ToString();
                         }

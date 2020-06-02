@@ -1,5 +1,4 @@
-﻿using Dominio.Result;
-using Dominio.Result.Producto;
+﻿using Dominio.Result.Producto;
 using Libreria.AdminConexion;
 using Libreria.Base;
 using Libreria.General;
@@ -8,8 +7,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web;
 using Dominio.Entidades.SucursalProducto;
-using System.Collections.Generic;
-using System.Globalization;
 
 namespace AccesoDatos.AdminProducto
 {
@@ -52,6 +49,7 @@ namespace AccesoDatos.AdminProducto
                                 productoResultado.Datos.Add(new ProductoResultadoDTO()
                                 {
                                     IdProductoCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["Idproducto"]))),
+                                    IdSucursalCifrado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(sqlDataReader["IdSucursal"]))),
                                     Sku = Convert.ToString(sqlDataReader["Sku"]),
                                     ProductoNombre = Convert.ToString(sqlDataReader["Productonombre"]),
                                     ProductoDescripcion = Convert.ToString(sqlDataReader["Productodescripcion"]),
