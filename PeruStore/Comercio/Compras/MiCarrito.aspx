@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="MiCarrito.aspx.cs" Inherits="PeruStore.Comercio.Compras.MiCarrito" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="js/calcular_envio.js"></script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<div class="main-container container">
 		<ul class="breadcrumb">
@@ -54,7 +58,7 @@
 								<label class="col-sm-2 control-label" for="input-provincia">Provincia</label>
 								<div class="col-sm-10">
 									<select id="cboProvincia" class="form-control">
-									    <option>--- Seleccione ---</option>
+									    <option value="0">--- Seleccione ---</option>
 									</select>
 								</div>
 							</div>
@@ -63,7 +67,7 @@
 								<label class="col-sm-2 control-label" for="input-distrito">Distrito</label>
 								<div class="col-sm-10">
 									<select id="cboDistrito" class="form-control">
-									    <option>--- Seleccione ---</option>
+									    <option value="0">--- Seleccione ---</option>
 									</select>
 								</div>
 							</div>
@@ -138,10 +142,10 @@
         </div>
 		</div>
 	</div>
-    <asp:HiddenField ID="hfEsCargaCarritoGeneral" runat="server" />
+    <asp:HiddenField ID="hfEsCarritoPrincipal" runat="server" Value="1" />
     <script type="text/x-handlebars-template" id="orden-detalleprincipal">
 	   {{# each Datos}}  
-		  <tr>
+		  <tr data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">
 		  <td class="text-center"><a href="#"><img style="width:70px;" src="{{NombreRecurso}}" title="{{ProductoNombre}}" class="img-thumbnail" /></a></td>
 		  <td class="text-left" style="max-width:250px;">
 			 <a href="#">{{ProductoNombre}}</a>
@@ -150,8 +154,8 @@
 		  <td class="text-left" style="width:200px;"><div class="input-group btn-block quantity">
 			 <input type="text" value="{{Cantidad}}" class="form-control input-number" maxlength="4" />
 			 <span class="input-group-btn">
-			 <button type="submit" data-toggle="tooltip" title="Actualizar" class="btn btn-primary"><i class="fa fa-clone"></i></button>
-			 <button type="button" data-toggle="tooltip" title="Remover" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>
+			 <button type="submit" data-toggle="tooltip" title="Actualizar" class="btn btn-primary updateCart"><i class="fa fa-clone"></i></button>
+			 <button type="button" data-toggle="tooltip" title="Remover" class="btn btn-danger removeDetail" onClick=""><i class="fa fa-times-circle"></i></button>
 			 </span></div></td>
 		  <td class="text-right">{{Precio}}</td>
 		  <td class="text-right">{{Total}}</td>

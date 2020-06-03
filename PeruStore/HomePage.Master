@@ -636,7 +636,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?t=1"></script>
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?a=1"></script>
     <script type="text/javascript" src="/src/js/Utilitario.js?d=1"></script>
   </form> 
    

@@ -27,7 +27,11 @@ class AgregarCarritoJs {
                 agregarCarritoJs.Fn_AgregarCarrito($(this));
             });
 
-            $("#tbDetalleFlotante").on('click', '.removeItemFlotante', function (event) {
+            $("#tbDetalleFlotante").on('click', '.removeDetail', function (event) {
+                agregarCarritoJs.Fn_RemoverDetalle($(this).closest("tr"));
+            });
+
+            $("#tbDetallePrincipal").on('click', '.removeDetail', function (event) {
                 agregarCarritoJs.Fn_RemoverDetalle($(this).closest("tr"));
             });
 
@@ -73,7 +77,10 @@ class AgregarCarritoJs {
                 let ordenCabecera = objRespuesta.d;
                 if (ordenCabecera !== null && ordenCabecera !== undefined) {
                     agregarCarritoJs.Fn_Dibujar_CarritoFlotante(ordenCabecera.Datos);
-                    agregarCarritoJs.Fn_Dibujar_CarritoPrincipal(ordenCabecera.Datos);
+
+                    if ($("input[id$=hfEsCarritoPrincipal]").val() !== undefined) {
+                        agregarCarritoJs.Fn_Dibujar_CarritoPrincipal(ordenCabecera.Datos);
+                    }
                 }
             };
 
@@ -100,6 +107,7 @@ class AgregarCarritoJs {
                     $(".cart-options2").removeClass("hidden");
                     $(".cart-options1").addClass("hidden");
                 } else {
+                    $("#tbDetalleFlotante tbody").html("");
                     $(".cart-options2").addClass("hidden");
                     $(".cart-options1").removeClass("hidden");
                 }
@@ -123,17 +131,11 @@ class AgregarCarritoJs {
                     let detalleLista = { Datos: ordenCabecera.OrdenDetalle };
                     var detalleHtml = Fn_CargarTemplate('orden-detalleprincipal', detalleLista);
 
-                    $("#tbDetallePrincipal tbody").html(detalleHtml);
-                    //$(".cart-options2").removeClass("hidden");
-                    //$(".cart-options1").addClass("hidden");
-                } // else {
-                //    $(".cart-options2").addClass("hidden");
-                //    $(".cart-options1").removeClass("hidden");
-                //}
+                    $("#tbDetallePrincipal tbody").html(detalleHtml); 
 
-                //$("#tdTotal").html(ordenCabecera.Total);
-                //$(".items_cart").html(ordenCabecera.Articulos);
-                //$("#lblmonto").html(ordenCabecera.Total);
+                }  else {
+                    $("#tbDetallePrincipal tbody").html("");
+                }
             }
 
         } catch (exception) {

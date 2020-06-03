@@ -23,6 +23,54 @@ namespace PeruStore.Comercio.Compras
             }
         }
 
+        private void CargarRegiones()
+        {
+            try
+            {
+                UbigeoResultado ubigeoResultado = UbigeoBl.Instancia.ObtenerRegion();
+                cboRegion.DataSource = ubigeoResultado.Regiones;
+                cboRegion.DataTextField = "RegionNombre";
+                cboRegion.DataValueField = "IdRegion";
+                cboRegion.DataBind();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        [WebMethod]
+        public static MetodoRespuesta CargarProvincias(Int16 idRegion)
+        {
+            MetodoRespuesta metodoRespuesta = null;
+            try
+            {
+                UbigeoResultado ubigeoResultado = UbigeoBl.Instancia.ObtenerProvincias_PorIdRegion(idRegion);
+                metodoRespuesta.Datos = ubigeoResultado;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            return metodoRespuesta;
+        }
+
+        [WebMethod]
+        public static MetodoRespuesta CargarDistritos(Int16 idProvincia)
+        {
+            MetodoRespuesta metodoRespuesta = null;
+            try
+            {
+                UbigeoResultado ubigeoResultado = UbigeoBl.Instancia.ObtenerDistrito_PorIdProvincia(idProvincia);
+                metodoRespuesta.Datos = ubigeoResultado;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+            return metodoRespuesta;
+        }
+
         [WebMethod]
         public static MetodoRespuesta AgregarDetalle(String idProductoCifrado)
         {
@@ -106,20 +154,6 @@ namespace PeruStore.Comercio.Compras
             return metodoRespuesta;
         }
 
-        private void CargarRegiones()
-        {
-            try
-            {
-                UbigeoResultado ubigeoResultado = UbigeoBl.Instancia.ObtenerRegion();
-                cboRegion.DataSource = ubigeoResultado.Regiones;
-                cboRegion.DataTextField = "RegionNombre";
-                cboRegion.DataValueField = "IdRegion";
-                cboRegion.DataBind();
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
-        }
+
     }
 }

@@ -78,7 +78,7 @@
                 <a href="product.html" class="fa fa-edit"></a>
             </td>
             <td class="text-right">
-                <a class="fa fa-times fa-delete removeItemFlotante"></a>
+                <a class="fa fa-times fa-delete removeDetail"></a>
             </td>
         </tr>
     {{/each}}
