@@ -16,7 +16,7 @@
 		<div class="row">
 			<div id="content" class="col-sm-12">
 				<h2 class="title">Registrar Cuenta</h2>
-				<p>Si ya tiene una cuenta con nosotros, inicie sesión en la página de <a href="#">Inicio de sesión</a>.</p>
+				<p>Si ya tiene una cuenta con nosotros, inicie sesión en la página de <a href="ClienteLogin.aspx">Inicio de sesión</a>.</p>
 				<div class="form-horizontal account-register clearfix">
 					<fieldset id="account">
 						<legend>Datos Personales</legend>

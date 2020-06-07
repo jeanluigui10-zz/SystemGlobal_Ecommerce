@@ -25,9 +25,9 @@ namespace InteligenciaNegocio.AdminCliente
 
         #region Metodos
 
-        public ClienteResultado ObtenerCliente_EmailContrasenha(String email, String contrasenha, Int16 idComercio)
+        public ClienteResultadoDTO ObtenerCliente_EmailContrasenha(String email, String contrasenha, Int16 idComercio)
         {
-            ClienteResultado objCliente = null;
+            ClienteResultadoDTO objCliente = null;
             try
             {
                 if (!String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(contrasenha) && idComercio > 0)
@@ -43,14 +43,14 @@ namespace InteligenciaNegocio.AdminCliente
             return objCliente;
         }
 
-        public Boolean RegistrarCliente(ClienteTablaTipo cliente, DireccionTablaTipo direccion) 
+        public Boolean Cliente_Registrar(ClienteTablaTipo cliente, DireccionTablaTipo direccion)
         {
             Boolean registroExitoso = false;
             try
             {
-                if (cliente!= null && direccion!= null)
+                if (cliente != null && direccion != null)
                 {
-                    registroExitoso = ClienteDao.Instancia.RegistrarCliente(cliente, direccion);
+                    registroExitoso = ClienteDao.Instancia.Cliente_Registrar(cliente, direccion);
                 }
             }
             catch (Exception e)
@@ -61,12 +61,12 @@ namespace InteligenciaNegocio.AdminCliente
             return registroExitoso;
         }
 
-        public Boolean Cliente_Existe_PorEmail(String email, Int16 idComercio) {
-            Boolean existeCliente = false;
+        public ClienteResultadoDTO Cliente_Por_Email(String email, Int16 idComercio)
+        {
             try
             {
-                existeCliente = ClienteDao.Instancia.Cliente_Existe_PorEmail(email, idComercio);
-                return existeCliente;
+                ClienteResultadoDTO objCliente = ClienteDao.Instancia.Cliente_Por_Email(email, idComercio);
+                return objCliente;
             }
             catch (Exception e)
             {
@@ -75,7 +75,25 @@ namespace InteligenciaNegocio.AdminCliente
             }
         }
 
-        #endregion Metodos
+        public Boolean ActualizarClave_PorIdCliente_IdComercio(Int32 idCliente, Int16 idComercio, String password)
+        {
+            Boolean actualizarExitoso = false;
+            try
+            {
+                if (idCliente > 0 && idComercio > 0 && !String.IsNullOrEmpty(password))
+                {
+                    actualizarExitoso = ClienteDao.Instancia.ActualizarClave_PorIdCliente_IdComercio(idCliente, idComercio, password);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Save("Error", "ClienteBl: " + e.Message, e.Message);
+                actualizarExitoso = false;
+            }
+            return actualizarExitoso;
+        }
 
-    }
+            #endregion Metodos
+
+        }
 }

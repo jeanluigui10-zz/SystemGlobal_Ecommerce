@@ -15,8 +15,8 @@ function Fn_Iniciar() {
         }
     });
 
-    $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option >");
-    $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");
+    $("#ddlProvincia").html("<option value= 0 > Seleccione una Provincia</option >");
+    $("#ddlDistrito").html("<option value= 0 > Seleccione un Distrito</option >");
 
     $('#txtNombreCliente').keyup(function () {
         this.value = (this.value + '').replace(/[^A-Za-zñÑáéíóúÁÉÍÓÚ\s]/g, '');
@@ -35,28 +35,27 @@ function Fn_Bind() {
     $("#ddlRegion").change(function (e) {
         var idRegion = $("#ddlRegion").val();
         if (idRegion === "0") {
-            $("#ddlProvincia").html("<option value= 0 > -- Seleccione una Provincia -- </option>");
+            $("#ddlProvincia").html("<option value= 0 > Seleccione una Provincia</option>");
         }
         else {
             Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion);
         }
-        $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");
+        $("#ddlDistrito").html("<option value= 0 > Seleccione un Distrito</option >");
     })
 
     $("#ddlProvincia").change(function (e) {
         var idProvincia = $("#ddlProvincia").val();
         if (idProvincia === "0") {
-            $("#ddlDistrito").html("<option value= 0 > -- Seleccione un Distrito -- </option >");
+            $("#ddlDistrito").html("<option value= 0 > Seleccione un Distrito</option >");
         }
         else
             Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia);
     })
 
     $("#btnRegistrarCliente").click(function (e) {
-        e.preventDefault();
-
+        e.preventDefault();       
         if (Fn_ValidarFormulario()) {
-            Fn_RegistrarCliente();
+         Fn_RegistrarCliente();
         }
     });
 }
@@ -65,7 +64,7 @@ function Fn_Ubigeo_ObtenerRegiones() {
     try {
         var success = function (asw) {
             var data = JSON.parse(asw.d);
-            var contentSelect = "<option value = 0 > -- Seleccione una Región -- </option>";
+            var contentSelect = "<option value = 0 > Seleccione una Región</option>";
             var regiones = null;
             var lengthRegiones = 0;
 
@@ -102,7 +101,7 @@ function Fn_Ubigeo_ObtenerProvincias_PorIdRegion(idRegion) {
     try {
         var success = function (asw) {
             var data = JSON.parse(asw.d);
-            var contentSelect = "<option value = 0 > -- Seleccione una Provincia -- </option>";
+            var contentSelect = "<option value = 0 > Seleccione una Provincia</option>";
             var provincia = null;
             var lengthProvincia = 0;
 
@@ -139,7 +138,7 @@ function Fn_Ubigeo_ObtenerDistritos_PorIdProvincia(idProvincia) {
     try {
         var success = function (asw) {
             var data = JSON.parse(asw.d);
-            var contentSelect = "<option value = 0 > -- Seleccione un Distrito -- </option>";
+            var contentSelect = "<option value = 0 > Seleccione un Distrito </option>";
             var distritos = null;
             var lengthDistrito = 0;
 
@@ -226,7 +225,6 @@ function Fn_ValidarFormulario() {
         return false;
     }
 
-
     if (direccionPrincipal.trim().length === 0) {
         Fn_Mensaje('e', 'Dirección Principal es un campo Obligatorio', 'divMensaje');
         return false;
@@ -273,7 +271,6 @@ function Fn_ValidarFormulario() {
     }
 
     return true;
-    /******************************************************************************/
 }
 
 function Fn_RegistrarCliente() {
@@ -316,6 +313,8 @@ function Fn_RegistrarCliente() {
             if (data !== undefined && data !== null) {
                 if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito) {
                     Fn_Mensaje('s', data.Mensaje, 'divMensaje');
+                    Fn_ResetearFormulario();
+                    window.location = data.Datos;
                 }
                 if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
                     Fn_Mensaje('e', data.Mensaje, 'divMensaje');
@@ -336,3 +335,19 @@ function Fn_RegistrarCliente() {
 
 }
 
+function Fn_ResetearFormulario() {
+    $("#txtNombreCliente").val("");
+    $("#txtApellPaterno").val("");
+    $("#txtApellMaterno").val("");
+    $("#txtCorreo").val("");
+    $("#txtCelular").val("");
+    $("#txtTelefono").val("");
+    $("#txtDireccionPrincipal").val("");
+    $("#txtDireccionSecundaria").val("");
+
+    $("#ddlRegion").val("0");
+    $("#ddlRegion").trigger("change");
+    $("#txtCodigoPostal").val("");
+    $("#txtContrasenha").val("");
+    $("#txtContrasenhaConfirm").val("");
+}

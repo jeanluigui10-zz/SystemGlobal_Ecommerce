@@ -11,6 +11,7 @@ using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
 
 namespace PeruStore.AdminCliente
@@ -19,7 +20,21 @@ namespace PeruStore.AdminCliente
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsPostBack)
+                {
+                    if (SesionAplicacion.SesionCliente != null)
+                    {
+                        Response.Redirect(@"/Comercio/Inicio.aspx");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Save("Error", "ClienteRegistro.aspx:" + ex.Message, ex.Message);
+                throw;
+            }
         }
 
         [WebMethod]
@@ -27,7 +42,7 @@ namespace PeruStore.AdminCliente
             MetodoRespuesta respuesta = new MetodoRespuesta();
             try
             {               
-                UbigeoResultado ubigeo = new UbigeoBl().ObtenerRegion();
+                UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerRegion();
 
                 if ( ubigeo!= null && ubigeo.Regiones.Count > 0)
                 {
@@ -61,7 +76,7 @@ namespace PeruStore.AdminCliente
 
                 if (!String.IsNullOrEmpty(strIdRegion) && idRegion > 0)
                 {
-                    UbigeoResultado ubigeo = new UbigeoBl().ObtenerProvincias_PorIdRegion(idRegion);
+                    UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerProvincias_PorIdRegion(idRegion);
 
                     if (ubigeo != null && ubigeo.Provincias.Count > 0)
                     {
@@ -93,7 +108,6 @@ namespace PeruStore.AdminCliente
             return JsonConvert.SerializeObject(respuesta);
         }
 
-
         [WebMethod]
         public static Object Ubigeo_ObtenerDistritos_PorIdProvincia(String strIdProvincia)
         {
@@ -104,7 +118,7 @@ namespace PeruStore.AdminCliente
 
                 if (!String.IsNullOrEmpty(strIdProvincia) && idProvincia > 0)
                 {
-                    UbigeoResultado ubigeo = new UbigeoBl().ObtenerDistrito_PorIdProvincia(idProvincia);
+                    UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerDistrito_PorIdProvincia(idProvincia);
 
                     if (ubigeo != null && ubigeo.Distritos.Count > 0)
                     {
@@ -144,6 +158,7 @@ namespace PeruStore.AdminCliente
             ClienteTablaTipo cliente_Tipo = null;
             DireccionTablaTipo direccion_Tipo = null;
             Boolean registroExitoso = false;
+
             try
             {
                 Int16 idComercio = SesionAplicacion.SesionTienda.IdComercio;
@@ -255,7 +270,7 @@ namespace PeruStore.AdminCliente
                     {
                         Log.Save("Error", "ClienteRegistro.aspx", "Contraseña esta vacio");
                         datosValidos = false;
-                    } 
+                    }
                     #endregion
 
                     if (!datosValidos) {
@@ -265,10 +280,10 @@ namespace PeruStore.AdminCliente
                     }
 
                     else {
-                        ClienteBl objClienteBl = new ClienteBl();
+                        
                         contrasenha = Encriptador.Encriptar(contrasenha);
-                        Boolean existeCliente = objClienteBl.Cliente_Existe_PorEmail(correo, idComercio);
-                        if (existeCliente)
+                        ClienteResultadoDTO objClienteDTO = ClienteBl.Instancia.Cliente_Por_Email(correo, idComercio);
+                        if (objClienteDTO!= null)
                         {
                             respuesta.CodigoRespuesta = EnumCodigoRespuesta.Informacion;
                             respuesta.Datos = null;
@@ -306,26 +321,28 @@ namespace PeruStore.AdminCliente
                             objDireccion.Estado = true;
                             objDireccion.CreadoPor = 0;
                             objDireccion.ActualizadoPor = 0;
-                            direccion_Tipo = new DireccionTablaTipo();
-                            direccion_Tipo.Add(objDireccion);
+                            direccion_Tipo = new DireccionTablaTipo
+                            {
+                                objDireccion
+                            };
 
 
-                            objClienteBl = new ClienteBl();
-                            registroExitoso = objClienteBl.RegistrarCliente(cliente_Tipo,direccion_Tipo);
+                            registroExitoso = ClienteBl.Instancia.Cliente_Registrar(cliente_Tipo, direccion_Tipo);
 
-                            if (registroExitoso){
+                            if (registroExitoso)
+                            {
                                 respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
-                                respuesta.Datos = null;
                                 respuesta.Mensaje = String.Format("¡Gracias {0} {1}! ya eres parte de nuestros Clientes.", nombre, apellPaterno);
+                                respuesta.Datos = String.Format(@"/ClienteLogin.aspx?e={0}&p={1}&c={2}", HttpUtility.UrlEncode(Encriptador.Encriptar(correo)), HttpUtility.UrlEncode(contrasenha), HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(idComercio))));
                             }
-                            else {
+                            else
+                            {
                                 respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                                 respuesta.Datos = null;
                                 respuesta.Mensaje = "Ocurrió un problema al Registrar.";
                             }
                         }
                     }
-
                 }
                 else {
                     respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
