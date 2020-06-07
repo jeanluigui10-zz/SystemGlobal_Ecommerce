@@ -240,3 +240,8 @@
     position: relative;
     z-index: 1;
 }
+
+
+.owl2-carousel {
+    touch-action: none;
+}

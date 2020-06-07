@@ -24,7 +24,7 @@ class AgregarCarritoJs {
         try {
 
             $(".addToCart").on('click', function (event) {
-                agregarCarritoJs.Fn_AgregarCarrito($(this));
+                agregarCarritoJs.Fn_AgregarCarrito($(this), 1);
             });
 
             $("#tbDetalleFlotante").on('click', '.removeDetail', function (event) {
@@ -35,12 +35,19 @@ class AgregarCarritoJs {
                 agregarCarritoJs.Fn_RemoverDetalle($(this).closest("tr"));
             });
 
+            $("#tbDetallePrincipal").on('click', '.updateCart', function (event) {
+                const cantidad = $(this).closest("tr").find('.inputQuantity').val();
+                agregarCarritoJs.Fn_AgregarCarrito($(this).closest("tr"), cantidad);
+            });
+
+            
+
         } catch (exception) {
             // agregar alert aqui
         }
     }
 
-    Fn_AgregarCarrito($btnAgregar) {
+    Fn_AgregarCarrito($btnAgregar, cantidad) {
         try {
             $btnAgregar.addClass("loading").addClass("disabled");
 
@@ -63,7 +70,7 @@ class AgregarCarritoJs {
                 $btnAgregar.removeClass("loading").removeClass("disabled");
             };
 
-            fn_Ajax(agregarCarritoJs.urlAgregarDetalle, '{ idProductoCifrado: "' + _idProductoCifrado + '"}', success, error);
+            fn_Ajax(agregarCarritoJs.urlAgregarDetalle, '{ idProductoCifrado: "' + _idProductoCifrado + '", cantidad: ' + cantidad + '}', success, error);
         } catch (e) {
             // agregar alert box aqui
             $btnAgregar.removeClass("loading").removeClass("disabled");

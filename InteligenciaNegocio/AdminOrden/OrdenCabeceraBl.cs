@@ -26,20 +26,20 @@ namespace InteligenciaNegocio.AdminOrden
 
         #region Metodos
 
-        public void AgregarDetalle(ref MetodoRespuesta metodoRespuesta, ref Ordencabecera ordencabecera, Int32 idProducto)
+        public void AgregarDetalle(ref MetodoRespuesta metodoRespuesta, ref Ordencabecera ordencabecera, Int32 idProducto, Int32 cantidad)
         {
             try
             {
                 Int32 posicionProducto = ordencabecera.OrdenDetalleLista.FindIndex(d =>  d.Producto.IdProducto == idProducto);
                 if (posicionProducto >= 0)
                 {
-                    ordencabecera.OrdenDetalleLista[posicionProducto].Cantidad++;
+                    ordencabecera.OrdenDetalleLista[posicionProducto].Cantidad = cantidad;
                     ordencabecera.OrdenDetalleLista[posicionProducto].CalcularPrecio();
                 }
                 else
                 {
                     Producto producto = ProductoBL.Instancia.Obtener_Para_Carrito(ref metodoRespuesta, idProducto);
-                    OrdenDetalle ordenDetalle = new OrdenDetalle(producto);
+                    OrdenDetalle ordenDetalle = new OrdenDetalle(producto, cantidad);
                     ordenDetalle.CalcularPrecio();
 
                     metodoRespuesta.CodigoRespuesta =  ordencabecera.AgregarDetalle(ordenDetalle)? EnumCodigoRespuesta.Exito : EnumCodigoRespuesta.Error;

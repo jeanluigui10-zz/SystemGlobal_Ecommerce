@@ -15,6 +15,15 @@ namespace PeruStore.Comercio.Compras
     {
 
         /// <summary>
+        /// Control ucCarritoPrincipal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::PeruStore.Controles.Compras.ucCarritoPrincipal ucCarritoPrincipal;
+
+        /// <summary>
         /// Control cboRegion.
         /// </summary>
         /// <remarks>
@@ -22,14 +31,5 @@ namespace PeruStore.Comercio.Compras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect cboRegion;
-
-        /// <summary>
-        /// Control hfEsCarritoPrincipal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfEsCarritoPrincipal;
     }
 }

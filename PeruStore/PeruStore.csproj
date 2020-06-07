@@ -150,6 +150,7 @@
     <Content Include="Comercio\Compras\CalculoEnvio.aspx" />
     <Content Include="Comercio\Compras\Confirmacion.aspx" />
     <Content Include="Comercio\Compras\css\carrito.css" />
+    <Content Include="Comercio\Compras\css\confirmacion.css" />
     <Content Include="Comercio\Compras\js\agregar_carrito.js" />
     <Content Include="Comercio\Compras\js\agregar_comparar.js" />
     <Content Include="Comercio\Compras\js\agregar_lista_deseos.js" />
@@ -160,6 +161,7 @@
     <Content Include="Comercio\Nosotros\Contactanos.aspx" />
     <Content Include="Comercio\Productos\DetalleProducto.aspx" />
     <Content Include="Comercio\Productos\js\detalleproducto.js" />
+    <Content Include="Controles\Compras\ucCarritoPrincipal.ascx" />
     <Content Include="Controles\Inicio\css\listaproductos.css" />
     <Content Include="Controles\Inicio\js\listado_producto_render_tab_1.js" />
     <Content Include="Comercio\Productos\ListaProducto.aspx" />
@@ -2113,6 +2115,13 @@
     </Compile>
     <Compile Include="Comercio\Productos\ListaProducto.aspx.designer.cs">
       <DependentUpon>ListaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Compras\ucCarritoPrincipal.ascx.cs">
+      <DependentUpon>ucCarritoPrincipal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\Compras\ucCarritoPrincipal.ascx.designer.cs">
+      <DependentUpon>ucCarritoPrincipal.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Inicio\ucBannerCentral.ascx.cs">
       <DependentUpon>ucBannerCentral.ascx</DependentUpon>
