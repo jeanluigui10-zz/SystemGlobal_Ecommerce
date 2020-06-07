@@ -28,7 +28,7 @@
                     <p class="text-center empty">¡Tu carrito de compras está vacío!</p>
                 </li>
                 <li class="cart-options2 hidden">
-                    <table class="table table-striped" id="tbDetalle">
+                    <table class="table table-striped" id="tbDetalleFlotante">
                         <tbody>
                         </tbody>
                     </table>
@@ -38,13 +38,13 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <td class="text-left"><strong>Total</strong>
+                                    <td class="text-left"><strong>SUBTOTAL</strong>
                                     </td>
                                     <td class="text-right" id="tdTotal">0</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="text-right"> <a class="btn view-cart" href="#"><i class="fa fa-shopping-cart"></i>Ver Carrito</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="#"><i class="fa fa-share"></i>Pagar</a> 
+                        <p class="text-right"> <a class="btn view-cart" href="/Comercio/Compras/MiCarrito.aspx"><i class="fa fa-shopping-cart"></i>Ver Carrito</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="/Comercio/Compras/Confirmacion.aspx"><i class="fa fa-share"></i>Pagar</a> 
                         </p>
                     </div>
                 </li>
@@ -64,10 +64,10 @@
 
 <script type="text/x-handlebars-template" id="orden-detalle">
     {{# each Datos}}
-        <tr data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}">
+        <tr data-code="{{IdProductoCifrado}}" data-nombre="{{ProductoNombre}}" style="font-size:12px; font-weight:normal;">
             <td class="text-center">
                 <a href="product.html">
-                    <img src="{{NombreRecurso}}" style="width:70px" class="preview">
+                    <img src="{{NombreRecurso}}" style="min-width:50px; max-width:50px;" class="preview">
                 </a>
             </td>
             <td class="text-left"> <a class="cart_product_name" href="#">{{ProductoNombre}}</a> 
@@ -78,7 +78,7 @@
                 <a href="product.html" class="fa fa-edit"></a>
             </td>
             <td class="text-right">
-                <a class="fa fa-times fa-delete removeItemFlotante"></a>
+                <a class="fa fa-times fa-delete removeDetail"></a>
             </td>
         </tr>
     {{/each}}

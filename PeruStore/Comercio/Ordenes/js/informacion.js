@@ -52,7 +52,7 @@ class InformacionJs {
         try {
             let objDetalle = JSON.parse($("input[id$=hfDetalleJson]").val());
             let detalleHtml = Fn_CargarTemplate("detalle", objDetalle);
-            $("#tbDetalle tbody").html(detalleHtml);
+            $("#tbDetalleHistorico tbody").html(detalleHtml);
         } catch (e) {
             throw e;
         }

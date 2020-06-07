@@ -23,7 +23,7 @@ namespace PeruStore.Comercio.Ordenes
             try
             {
                 Int16 idComercio = SesionAplicacion.SesionTienda.IdComercio;
-                Int32 idCliente = 1;
+                Int32 idCliente = 1; // SesionAplicacion.SesionCliente.IdCliente;
 
                 HistoricoResultado ordenHistoricoResultado = ClienteOrdenBl.Instancia.Historico(idComercio, idCliente);
                 hfOrdenHistorico.Value = JsonConvert.SerializeObject(ordenHistoricoResultado);

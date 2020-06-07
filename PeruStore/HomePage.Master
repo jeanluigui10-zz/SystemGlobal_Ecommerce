@@ -37,7 +37,7 @@
     <link href="/Template/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/Template/js/minicolors/miniColors.css" rel="stylesheet">
     <link href="/plugins/validator/style.validate.css?a=1" rel="stylesheet" />
-    <link href="/src/css/base.css?b=2" rel="stylesheet">
+    <link href="/src/css/base.css?t=2" rel="stylesheet">
 
     
     <!-- Theme CSS
@@ -181,7 +181,7 @@
                                         </select>
                                     </div>
 
-                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="search">
+                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Palabra clave aquí..." name="search">
                                     <span class="input-group-btn">
                                     <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
                                     </span>
@@ -617,8 +617,8 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?p=1"></script>
-    <script type="text/javascript" src="/src/js/Utilitario.js"></script>
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?a=1"></script>
+    <script type="text/javascript" src="/src/js/Utilitario.js?d=1"></script>
   </form> 
    
     

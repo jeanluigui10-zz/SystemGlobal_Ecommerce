@@ -151,10 +151,13 @@
     <Content Include="Chat\src\js\treeTableJS.js" />
     <Content Include="AdminCliente\ClienteRegistro.aspx" />
     <Content Include="AdminCliente\js\ClienteRegistro.js" />
+    <Content Include="Comercio\Compras\CalculoEnvio.aspx" />
+    <Content Include="Comercio\Compras\Confirmacion.aspx" />
     <Content Include="Comercio\Compras\css\carrito.css" />
     <Content Include="Comercio\Compras\js\agregar_carrito.js" />
     <Content Include="Comercio\Compras\js\agregar_comparar.js" />
     <Content Include="Comercio\Compras\js\agregar_lista_deseos.js" />
+    <Content Include="Comercio\Compras\js\calcular_envio.js" />
     <Content Include="Comercio\Compras\MiCarrito.aspx" />
     <Content Include="Comercio\Productos\css\listaProductosPorCategoria.css" />
     <Content Include="Comercio\Productos\js\listaProductosPorCategoria.js" />
@@ -2072,6 +2075,20 @@
     </Compile>
     <Compile Include="AdminCliente\ClienteRegistro.aspx.designer.cs">
       <DependentUpon>ClienteRegistro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comercio\Compras\CalculoEnvio.aspx.cs">
+      <DependentUpon>CalculoEnvio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Compras\CalculoEnvio.aspx.designer.cs">
+      <DependentUpon>CalculoEnvio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Comercio\Compras\Confirmacion.aspx.cs">
+      <DependentUpon>Confirmacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comercio\Compras\Confirmacion.aspx.designer.cs">
+      <DependentUpon>Confirmacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Comercio\Compras\MiCarrito.aspx.cs">
       <DependentUpon>MiCarrito.aspx</DependentUpon>

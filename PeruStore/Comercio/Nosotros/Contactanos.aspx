@@ -84,7 +84,7 @@
                             </fieldset>
                             <div class="buttons">
                                 <div class="pull-right">
-                                    <input  class="btn btn-warning" type="submit" id="btnEnviar" value="Enviar"/>
+                                    <input  class="btn btn-primary" type="submit" id="btnEnviar" value="Enviar"/>
                                     <asp:Button CssClass="hidden" runat="server" ID="btnEnviarHiden" ClientIDMode="Static" OnClick="btnEnviar_Click" />
                                 </div>
                             </div>

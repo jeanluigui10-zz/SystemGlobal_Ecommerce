@@ -20,18 +20,32 @@ namespace PeruStore.Comercio.Ordenes
 
         private void Cargar()
         {
-            Int32 idOrden = ObtenerIdOrden();
+            try
+            {
+                Int32 idOrden = ObtenerIdOrden();
 
-            Cabecera(idOrden);
-            Detalle(idOrden);
-            Estados(idOrden);
+                Cabecera(idOrden);
+                Detalle(idOrden);
+                Estados(idOrden);
+            }
+            catch (Exception exception)
+            {
+                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
+            }
         }
 
         private Int32 ObtenerIdOrden()
         {
-            String idOrdenCifrado = HttpUtility.UrlDecode(Request.QueryString["o"]);
-            Boolean _ = Int32.TryParse(Encriptador.Desencriptar(idOrdenCifrado), out Int32 idOrden);
-            return idOrden;
+            try
+            {
+                String idOrdenCifrado = Request.QueryString["o"];
+                Boolean _ = Int32.TryParse(Encriptador.Desencriptar(idOrdenCifrado), out Int32 idOrden);
+                return idOrden;
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
         private void Cabecera(Int32 idOrden)
@@ -43,7 +57,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
+                throw exception;
             }
         }
 
@@ -56,7 +70,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
+                throw exception;
             }
         }
 
@@ -69,7 +83,7 @@ namespace PeruStore.Comercio.Ordenes
             }
             catch (Exception exception)
             {
-                Mensaje(EnumCodigoRespuesta.Error, "Ocurrio un problema, intentalo otra vez.");
+                throw exception;
             }
         }
 
