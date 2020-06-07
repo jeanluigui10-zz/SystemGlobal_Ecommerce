@@ -49,6 +49,7 @@
     <Compile Include="AdminProducto\ProductoBL.cs" />
     <Compile Include="AdminTienda\TiendaBl.cs" />
     <Compile Include="AdminUbigeo\UbigeoBl.cs" />
+    <Compile Include="Configuraciones\EmailConfiguracionBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

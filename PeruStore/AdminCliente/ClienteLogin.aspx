@@ -40,8 +40,8 @@
                                     </div>
                                 </div>
                                 <div class="bottom-form">
-                                    <a href="#" class="forgot">Recuperar Password</a>
-                                    <input type="button" id="btnLogin" value="Login" class="btn btn-default pull-right" />
+                                    <input type="button" id="idResetearPassword" value="Recuperar Password" class="forgot" />
+                                    <input type="button" id="btnLogin" value="Iniciar Sesión" class="btn btn-default pull-right" />
                                 </div>
                             </div>
                         </div>

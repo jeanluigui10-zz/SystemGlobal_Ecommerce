@@ -139,6 +139,8 @@
   <ItemGroup>
     <Content Include="AdminCliente\ClienteLogin.aspx" />
     <Content Include="AdminCliente\js\ClienteLogin.js" />
+    <Content Include="AdminCliente\js\ClienteResetearClave.js" />
+    <Content Include="AdminCliente\ClienteResetearClave.aspx" />
     <Content Include="Chat\src\control\Chat\ucChat.ascx" />
     <Content Include="Chat\src\control\Chat\ucRedirectChatModule.ascx" />
     <Content Include="Chat\src\control\Chat\ucWebMethodChat.aspx" />
@@ -2032,6 +2034,13 @@
     </Compile>
     <Compile Include="AdminCliente\ClienteLogin.aspx.designer.cs">
       <DependentUpon>ClienteLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCliente\ClienteResetearClave.aspx.cs">
+      <DependentUpon>ClienteResetearClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCliente\ClienteResetearClave.aspx.designer.cs">
+      <DependentUpon>ClienteResetearClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

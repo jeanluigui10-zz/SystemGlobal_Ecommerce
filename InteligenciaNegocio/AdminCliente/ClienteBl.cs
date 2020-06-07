@@ -61,11 +61,11 @@ namespace InteligenciaNegocio.AdminCliente
             return registroExitoso;
         }
 
-        public ClienteResultadoDTO Cliente_RecuperarContrasenha(String email, Int16 idComercio)
+        public ClienteResultadoDTO Cliente_Por_Email(String email, Int16 idComercio)
         {
             try
             {
-                ClienteResultadoDTO objCliente = ClienteDao.Instancia.Cliente_RecuperarContrasenha(email, idComercio);
+                ClienteResultadoDTO objCliente = ClienteDao.Instancia.Cliente_Por_Email(email, idComercio);
                 return objCliente;
             }
             catch (Exception e)
@@ -74,7 +74,26 @@ namespace InteligenciaNegocio.AdminCliente
                 throw e;
             }
         }
-        #endregion Metodos
 
-    }
+        public Boolean ActualizarClave_PorIdCliente_IdComercio(Int32 idCliente, Int16 idComercio, String password)
+        {
+            Boolean actualizarExitoso = false;
+            try
+            {
+                if (idCliente > 0 && idComercio > 0 && !String.IsNullOrEmpty(password))
+                {
+                    actualizarExitoso = ClienteDao.Instancia.ActualizarClave_PorIdCliente_IdComercio(idCliente, idComercio, password);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Save("Error", "ClienteBl: " + e.Message, e.Message);
+                actualizarExitoso = false;
+            }
+            return actualizarExitoso;
+        }
+
+            #endregion Metodos
+
+        }
 }

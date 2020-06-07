@@ -42,7 +42,7 @@ namespace PeruStore.AdminCliente
             MetodoRespuesta respuesta = new MetodoRespuesta();
             try
             {               
-                UbigeoResultado ubigeo = new UbigeoBl().ObtenerRegion();
+                UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerRegion();
 
                 if ( ubigeo!= null && ubigeo.Regiones.Count > 0)
                 {
@@ -76,7 +76,7 @@ namespace PeruStore.AdminCliente
 
                 if (!String.IsNullOrEmpty(strIdRegion) && idRegion > 0)
                 {
-                    UbigeoResultado ubigeo = new UbigeoBl().ObtenerProvincias_PorIdRegion(idRegion);
+                    UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerProvincias_PorIdRegion(idRegion);
 
                     if (ubigeo != null && ubigeo.Provincias.Count > 0)
                     {
@@ -118,7 +118,7 @@ namespace PeruStore.AdminCliente
 
                 if (!String.IsNullOrEmpty(strIdProvincia) && idProvincia > 0)
                 {
-                    UbigeoResultado ubigeo = new UbigeoBl().ObtenerDistrito_PorIdProvincia(idProvincia);
+                    UbigeoResultado ubigeo = UbigeoBl.Instancia.ObtenerDistrito_PorIdProvincia(idProvincia);
 
                     if (ubigeo != null && ubigeo.Distritos.Count > 0)
                     {
@@ -158,7 +158,6 @@ namespace PeruStore.AdminCliente
             ClienteTablaTipo cliente_Tipo = null;
             DireccionTablaTipo direccion_Tipo = null;
             Boolean registroExitoso = false;
-            ClienteBl objClienteBl = new ClienteBl();
 
             try
             {
@@ -283,7 +282,7 @@ namespace PeruStore.AdminCliente
                     else {
                         
                         contrasenha = Encriptador.Encriptar(contrasenha);
-                        ClienteResultadoDTO objClienteDTO = objClienteBl.Cliente_RecuperarContrasenha(correo, idComercio);
+                        ClienteResultadoDTO objClienteDTO = ClienteBl.Instancia.Cliente_Por_Email(correo, idComercio);
                         if (objClienteDTO!= null)
                         {
                             respuesta.CodigoRespuesta = EnumCodigoRespuesta.Informacion;
@@ -328,8 +327,7 @@ namespace PeruStore.AdminCliente
                             };
 
 
-                            objClienteBl = new ClienteBl();
-                            registroExitoso = objClienteBl.Cliente_Registrar(cliente_Tipo, direccion_Tipo);
+                            registroExitoso = ClienteBl.Instancia.Cliente_Registrar(cliente_Tipo, direccion_Tipo);
 
                             if (registroExitoso)
                             {
@@ -345,7 +343,6 @@ namespace PeruStore.AdminCliente
                             }
                         }
                     }
-
                 }
                 else {
                     respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;

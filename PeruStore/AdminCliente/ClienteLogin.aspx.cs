@@ -1,6 +1,8 @@
 ﻿using Dominio.Entidades;
+using Dominio.Result;
 using Dominio.Result.Cliente;
 using InteligenciaNegocio.AdminCliente;
+using InteligenciaNegocio.Configuraciones;
 using Libreria.Base;
 using Libreria.General;
 using Newtonsoft.Json;
@@ -8,6 +10,7 @@ using PeruStore.src.BaseAplicacion;
 using PeruStore.src.ConfiguracionAplicacion;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
 
 namespace PeruStore.AdminCliente
@@ -18,30 +21,29 @@ namespace PeruStore.AdminCliente
         {
             try
             {
-                //if (!IsPostBack)
-                //{
-                //    String emailEncriptado = Request.QueryString["e"];
-                //    String passwordEncriptado = Request.QueryString["p"];
-                //    String idComercioCifrado = Request.QueryString["c"];
+                if (!IsPostBack)
+                {
+                    String emailEncriptado = Request.QueryString["e"];
+                    String passwordEncriptado = Request.QueryString["p"];
+                    String idComercioCifrado = Request.QueryString["c"];
 
-                //    if (!String.IsNullOrEmpty(emailEncriptado) && !String.IsNullOrEmpty(passwordEncriptado) && !String.IsNullOrEmpty(idComercioCifrado))
-                //    {
-                //        string email = Encriptador.Desencriptar(emailEncriptado);
-                //        string password = Encriptador.Desencriptar(passwordEncriptado);
-                //        _ = Int16.TryParse(Encriptador.Desencriptar(idComercioCifrado), out Int16 idComercio);
-                //        Login(email, password, idComercio);
-                //    }
+                    if (!String.IsNullOrEmpty(emailEncriptado) && !String.IsNullOrEmpty(passwordEncriptado) && !String.IsNullOrEmpty(idComercioCifrado))
+                    {
+                        string email = Encriptador.Desencriptar(emailEncriptado);
+                        string password = Encriptador.Desencriptar(passwordEncriptado);
+                        _ = Int16.TryParse(Encriptador.Desencriptar(idComercioCifrado), out Int16 idComercio);
+                        Login(email, password, idComercio);
+                    }
 
-                //    if (SesionAplicacion.SesionCliente != null)
-                //    {
-                //        Response.Redirect(@"/Comercio/Inicio.aspx");
-                //    }
-                //}
-                Email.Enviar(null,"","","");
+                    if (SesionAplicacion.SesionCliente != null)
+                    {
+                        Response.Redirect(@"/Comercio/Inicio.aspx");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Log.Save("Error", "Inicio.aspx:" + ex.Message, ex.Message);
+                Log.Save("Error", "ClienteLogin.aspx:" + ex.Message, ex.Message);
                 throw;
             }
         }
@@ -52,10 +54,9 @@ namespace PeruStore.AdminCliente
             MetodoRespuesta respuesta = new MetodoRespuesta();
             try
             {
-                ClienteBl clienteBl = new ClienteBl();
                 if (!String.IsNullOrEmpty(email.Trim()) && !String.IsNullOrEmpty(password) && idComercio > 0)
                 {
-                    ClienteResultadoDTO objClienteDTO = clienteBl.ObtenerCliente_EmailContrasenha(email, Encriptador.Encriptar(password), idComercio);
+                    ClienteResultadoDTO objClienteDTO = ClienteBl.Instancia.ObtenerCliente_EmailContrasenha(email, Encriptador.Encriptar(password), idComercio);
                     Cliente objCliente = new Cliente();
 
                     if (objClienteDTO != null)
@@ -148,9 +149,9 @@ namespace PeruStore.AdminCliente
         public static Object RecuperarContrasenha(String correo)
         {
             MetodoRespuesta respuesta = new MetodoRespuesta();
-            ClienteBl objClienteBl = new ClienteBl();
             Int16 idComercio = 0;
             Boolean envioCorrectoEmail = false;
+            Dictionary<String, String> credenciales = new Dictionary<String, String>();
 
             try
             {
@@ -173,7 +174,8 @@ namespace PeruStore.AdminCliente
                     else
                     {
                         idComercio = SesionAplicacion.SesionTienda.IdComercio;
-                        ClienteResultadoDTO objClienteDTO = objClienteBl.Cliente_RecuperarContrasenha(correo, idComercio);
+
+                        ClienteResultadoDTO objClienteDTO = ClienteBl.Instancia.Cliente_Por_Email(correo, idComercio);
                         if (objClienteDTO == null) 
                         {
                             respuesta.CodigoRespuesta = EnumCodigoRespuesta.Informacion;
@@ -183,18 +185,51 @@ namespace PeruStore.AdminCliente
                         }
                         else 
                         {
-                            envioCorrectoEmail = EnviarEmail_Contraseña(correo, idComercio);
-                            if (envioCorrectoEmail) {
-                                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
-                                respuesta.Mensaje = String.Format("Hemos enviado un mensaje a tu correo eléctronico {0}. Si no lo recibes en unos minutos, revisa tu carpeta de correo no deseado", correo);
-                                respuesta.Datos = null;
-                            }
-                           else
+                            String idCliente = Convert.ToString(objClienteDTO.IdCliente);
+                            String emailDestino = objClienteDTO.Email;
+                            String password = objClienteDTO.Contrasenha;
+                            String asunto = SesionAplicacion.SesionTienda.ComercioNombre + "- Recuperación de Clave.";
+                            String urlComercio = SesionAplicacion.SesionTienda.URL;
+
+                            String idComercioEncriptado = HttpUtility.UrlEncode(Encriptador.Encriptar(Convert.ToString(idComercio)));
+                            String idClienteEncriptado = HttpUtility.UrlEncode(Encriptador.Encriptar(idCliente));
+                            String passwordEncriptado = HttpUtility.UrlEncode(Encriptador.Encriptar(password));
+                            String linkRecuperacion = String.Format(@"{0}/AdminCliente/ClienteResetearClave.aspx?c={1}&icl={2}&p={3}", urlComercio, idComercioEncriptado, idClienteEncriptado, passwordEncriptado);
+                            String emailMensaje = String.Format(@"Ingrese al siguiente link {0} y cambie su contraseña", linkRecuperacion);
+
+                            Email_ConfiguracionDTO objEmailConfiguracion = EmailConfiguracionBl.Instancia.EmailConfiguration_Por_Comercio(idComercio);
+
+
+                            if (objEmailConfiguracion != null)
                             {
+                                credenciales.Add("EmailFrom", objEmailConfiguracion.EmailFrom);
+                                credenciales.Add("SMTP", objEmailConfiguracion.SMTP);
+                                credenciales.Add("Puerto", Convert.ToString(objEmailConfiguracion.Puerto));
+                                credenciales.Add("Password", objEmailConfiguracion.Password);
+                                credenciales.Add("UserName", objEmailConfiguracion.UserName);
+                                credenciales.Add("ComercioNombre", objEmailConfiguracion.ComercioNombre);
+
+                                envioCorrectoEmail = EnviarEmail_Contraseña(credenciales, emailDestino, asunto, emailMensaje);
+                                if (envioCorrectoEmail)
+                                {
+                                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
+                                    respuesta.Mensaje = String.Format("Hemos enviado un mensaje a tu correo eléctronico {0}. Si no lo recibes en unos minutos, revisa tu carpeta de correo no deseado", correo);
+                                    respuesta.Datos = null;
+                                }
+                                else
+                                {
+                                    respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
+                                    respuesta.Mensaje = String.Format("A ocurrido un error al enviar un mensaje al correo electrónico {0}", correo);
+                                    respuesta.Datos = null;
+                                    Log.Save("Info", "ClienteLogin.aspx", String.Format("No existe cuenta asociada al correo electrónico {0} ingresado, idComercio", correo, idComercio));
+                                }
+                            }
+                            else {
                                 respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
                                 respuesta.Mensaje = String.Format("A ocurrido un error al enviar un mensaje al correo electrónico {0}", correo);
                                 respuesta.Datos = null;
-                                Log.Save("Info", "ClienteLogin.aspx", String.Format("No existe cuenta asociada al correo electrónico {0} ingresado", correo));
+                                Log.Save("Info", "ClienteLogin.aspx", String.Format("No existe cuenta asociada al correo electrónico {0} ingresado, idComercio", correo, idComercio));
+
                             }
                         }
                     }
@@ -204,17 +239,17 @@ namespace PeruStore.AdminCliente
             {
                 Log.Save("Error", "Inicio.aspx:" + ex.Message, ex.Message);
                 respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
-                respuesta.Mensaje = "A ocurrido un error durante el inicio de Sesion, por favor comuniquese con soporte";
+                respuesta.Mensaje = "A ocurrido un error al intentar recuperar password, por favor comuniquese con soporte";
                 respuesta.Datos = null;
             }
             return JsonConvert.SerializeObject(respuesta);
         }
 
 
-        private static Boolean EnviarEmail_Contraseña(String correo, Int16 idComercio)
+        private static Boolean EnviarEmail_Contraseña(Dictionary<String,String> Credenciales, String destinatario, String asunto, String mensaje)
         {
-
-            return true;
+            Boolean envio = Email.Enviar(Credenciales, "danielbrdls@gmail.com", asunto,mensaje);
+            return envio;
         }
     }
 }

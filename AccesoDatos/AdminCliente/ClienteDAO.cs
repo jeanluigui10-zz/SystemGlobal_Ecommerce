@@ -61,9 +61,10 @@ namespace AccesoDatos.AdminCliente
                         }
                     }
                 }
-                catch (Exception exception)
+                catch (Exception e)
                 {
-                    throw exception;
+                    Log.Save("Error", "ClienteDao: " + e.Message, e.StackTrace);
+                    throw e;
                 }
             }
             return objCliente;
@@ -98,7 +99,7 @@ namespace AccesoDatos.AdminCliente
             }
         }
 
-        public ClienteResultadoDTO Cliente_RecuperarContrasenha(String email, Int16 idComercio)
+        public ClienteResultadoDTO Cliente_Por_Email(String email, Int16 idComercio)
         {
 
             using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
@@ -120,6 +121,7 @@ namespace AccesoDatos.AdminCliente
                             objCliente = new ClienteResultadoDTO();
                             while (reader.Read())
                             {
+                                objCliente.IdCliente = Convert.ToInt32(reader["IdCliente"]);
                                 objCliente.Nombre = Convert.ToString(reader["Nombre"]);
                                 objCliente.ApellidoPaterno = Convert.ToString(reader["ApellidoPaterno"]);
                                 objCliente.ApellidoMaterno = Convert.ToString(reader["ApellidoMaterno"]);
@@ -141,6 +143,31 @@ namespace AccesoDatos.AdminCliente
             }
         }
 
+
+        public Boolean ActualizarClave_PorIdCliente_IdComercio(Int32 idCliente, Int16 idComercio, String password)
+        {
+            using (SqlConnection sqlConnection = Conexion.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("Actualizar_Clave_Por_ClienteComercio_Pa", sqlConnection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    command.Parameters.AddWithValue("@idCliente", idCliente);
+                    command.Parameters.AddWithValue("@idComercio", idComercio);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    Int32 countInserciones = command.ExecuteNonQuery();
+                    return countInserciones > 0 ? true : false;
+                }
+                catch (Exception e)
+                {
+                    Log.Save("Error", "ClienteDao: " + e.Message, e.StackTrace);
+                    return false;
+                }
+            }
+        }
         #endregion Metodos
 
     }

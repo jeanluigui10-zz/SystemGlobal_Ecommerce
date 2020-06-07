@@ -144,8 +144,8 @@
                                         <span class="fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu btn-xs">
-                                        <li> <a href="#">Entrar</a></li>
-                                        <li> <a href="#">Registrarse</a></li>
+                                        <li> <a href="/AdminCliente/ClienteLogin.aspx">Entrar</a></li>
+                                        <li> <a href="/AdminCliente/ClienteRegistro.aspx">Registrarse</a></li>
                                         <li> <a href="#">Perfil</a></li>
                                         <li> <a href="#">Cerrar Sesión</a></li>
                                     </ul>
@@ -154,9 +154,6 @@
                             
                         </li>
                     </ul>
-                    
-
-                    
                 </div>
             </div>
         </div>
@@ -317,22 +314,6 @@
                     </div>
                 </div>
                 <!-- //end Main menu -->
-                
-                
-                <div class="bottom2 col-lg-4 hidden-md col-sm-6 col-xs-8">                  
-                    <div class="signin-w font-title hidden-sm hidden-xs">
-                        <ul class="signin-link blank">                            
-                            <li class="log login"><i class="fa fa-lock"></i> <a class="link-lg" href="/AdminCliente/ClienteLogin.aspx">Iniciar Sesión </a> or <a href="/AdminCliente/ClienteRegistro.aspx">Registrar</a></li>                                
-                        </ul>                       
-                    </div>
-                    <div class="telephone hidden-xs hidden-sm hidden-md">
-                        <ul class="blank"> <li><a href="#"><i class="fa fa-truck"></i>track your order</a></li> <li><a href="#"><i class="fa fa-phone-square"></i>Llamanos 94776354</a></li> </ul>
-                    </div>
-                                        
-                    
-                </div>
-                
-                
             </div>
         </div>
 
