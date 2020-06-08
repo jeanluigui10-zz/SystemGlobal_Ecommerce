@@ -129,7 +129,14 @@ namespace PeruStore.Comercio.Productos
                         {
                             if (productoResultado != null)
                             {
-                                sJsonProductos = JsonConvert.SerializeObject(productoResultado.Datos);
+                                if (productoResultado.Datos.Count > 0)
+                                {
+                                    for (int i = 0; i < productoResultado.Datos.Count; i++)
+                                    {
+                                        productoResultado.Datos[i].NombreRecurso = KeysSistema.Impremtawendomain + productoResultado.Datos[i].NombreRecurso;
+                                    }
+                                    sJsonProductos = JsonConvert.SerializeObject(productoResultado.Datos);
+                                }
                             }
                         }
                     }
