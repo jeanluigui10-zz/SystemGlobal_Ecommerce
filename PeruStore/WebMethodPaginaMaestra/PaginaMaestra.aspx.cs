@@ -3,6 +3,7 @@ using InteligenciaNegocio.AdminProducto;
 using Libreria.Base;
 using Libreria.General;
 using Newtonsoft.Json;
+using PeruStore.src.BaseAplicacion;
 using System;
 using System.Web.Script.Serialization;
 using System.Web.Services;
@@ -64,6 +65,25 @@ namespace PeruStore.WebMethodPaginaMaestra
                 sJSONSubcategoriaDetalle = "";
             }
             return sJSONSubcategoriaDetalle;
+        }
+
+        [WebMethod]
+        public static Object CerrarSession()
+        {
+            MetodoRespuesta respuesta = new MetodoRespuesta();
+            try
+            {
+                SesionAplicacion.LimpiarSesion();
+                SesionAplicacion.AbandonarSesion();
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Exito;
+                respuesta.Datos = "/Comercio/Inicio.aspx";
+            }
+            catch (Exception ex)
+            {
+                respuesta.CodigoRespuesta = EnumCodigoRespuesta.Error;
+                respuesta.Mensaje = "Ha ocurrido un error inesperado";
+            }
+            return JsonConvert.SerializeObject(respuesta);
         }
     }
 }

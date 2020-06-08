@@ -248,7 +248,7 @@ namespace PeruStore.AdminCliente
 
         private static Boolean EnviarEmail_Contraseña(Dictionary<String,String> Credenciales, String destinatario, String asunto, String mensaje)
         {
-            Boolean envio = Email.Enviar(Credenciales, "danielbrdls@gmail.com", asunto,mensaje);
+            Boolean envio = Email.Enviar(Credenciales, destinatario, asunto,mensaje);
             return envio;
         }
     }
