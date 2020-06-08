@@ -7,10 +7,10 @@ namespace Dominio.Entidades.Orden
 {
     public class OrdenDetalle
     {
-        public OrdenDetalle(Producto producto)
+        public OrdenDetalle(Producto producto, Int32 cantidad)
         {
             Producto = producto;
-            Cantidad = 1;
+            Cantidad = cantidad;
         }
 
         public Int32 IdOrdenDetalle { get; set; }

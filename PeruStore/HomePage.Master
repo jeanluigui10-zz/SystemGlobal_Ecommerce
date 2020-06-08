@@ -32,12 +32,12 @@
     <link rel="stylesheet" href="/Template/css/bootstrap/css/bootstrap.min.css">
     <link href="/Template/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/Template/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="/Template/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="/Template/js/owl-carousel/owl.carousel.css?k=1" rel="stylesheet">
     <link href="/Template/css/themecss/lib.css" rel="stylesheet">
     <link href="/Template/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/Template/js/minicolors/miniColors.css" rel="stylesheet">
     <link href="/plugins/validator/style.validate.css?a=1" rel="stylesheet" />
-    <link href="/src/css/base.css?t=2" rel="stylesheet">
+    <link href="/src/css/base.css?j=2" rel="stylesheet">
 
     
     <!-- Theme CSS
@@ -639,7 +639,7 @@
 
     <script type="text/javascript" src="/Template/js/themejs/toppanel.js"></script>
     <script type="text/javascript" src="/Template/js/themejs/so_megamenu.js"></script>
-    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?a=1"></script>
+    <script type="text/javascript" src="/Comercio/Compras/js/agregar_carrito.js?s=1"></script>
     <script type="text/javascript" src="/src/js/Utilitario.js?d=1"></script>
   </form> 
    

@@ -72,7 +72,7 @@ namespace PeruStore.Comercio.Compras
         }
 
         [WebMethod]
-        public static MetodoRespuesta AgregarDetalle(String idProductoCifrado)
+        public static MetodoRespuesta AgregarDetalle(String idProductoCifrado, Int32 cantidad)
         {
             MetodoRespuesta metodoRespuesta = new MetodoRespuesta(EnumCodigoRespuesta.Exito);
             try
@@ -80,7 +80,7 @@ namespace PeruStore.Comercio.Compras
                 Ordencabecera ordencabecera = SesionAplicacion.SesionOrdenCabecera ?? new Ordencabecera();
 
                 Boolean _ = Int32.TryParse(Encriptador.Desencriptar(HttpUtility.UrlDecode(idProductoCifrado)), out Int32 idProducto);
-                OrdenCabeceraBl.Instancia.AgregarDetalle(ref metodoRespuesta, ref ordencabecera, idProducto);
+                OrdenCabeceraBl.Instancia.AgregarDetalle(ref metodoRespuesta, ref ordencabecera, idProducto, cantidad);
 
                 SesionAplicacion.SesionOrdenCabecera = ordencabecera;
             }
