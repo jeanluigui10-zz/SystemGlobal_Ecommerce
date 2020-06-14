@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomePage.master.cs" Inherits="PeruStore.HomePage" %>
-
+<%@ Import Namespace="PeruStore.src.BaseAplicacion"%>
 
 <!DOCTYPE html>
 <html>
@@ -140,14 +140,36 @@
                                 <div id="bt-language">
                                     <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
                                         <img src="/Template/image/catalog/user_green.png" title="Usuario">
-                                        <span class="">Usuario</span>
+                                        <% 
+                                            String usuario = String.Empty;
+                                            if (SesionAplicacion.SesionCliente != null)
+                                            {
+                                                usuario = "<span class=''>"+ SesionAplicacion.SesionCliente.Nombre +"</span>";
+                                            }
+                                            else
+                                            {
+                                                usuario = "Usuario";
+                                            }
+                                            Response.Write(usuario);
+                                         %> 
                                         <span class="fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu btn-xs">
-                                        <li> <a href="/AdminCliente/ClienteLogin.aspx">Entrar</a></li>
-                                        <li> <a href="/AdminCliente/ClienteRegistro.aspx">Registrarse</a></li>
-                                        <li> <a href="#">Perfil</a></li>
-                                        <li> <a href="#">Cerrar Sesión</a></li>
+                                        <% 
+                                            String opcionesMenu = String.Empty;
+                                            if (SesionAplicacion.SesionCliente != null)
+                                            {
+                                                opcionesMenu = "<li><a href='#'>Perfil</a></li>";
+                                                opcionesMenu += "<li><a class='logoOut'>Cerrar Sesión</a></li>";
+                                                Response.Write(@opcionesMenu);
+                                            }
+                                            else
+                                            {
+                                                opcionesMenu = @"<li><a href='/AdminCliente/ClienteLogin.aspx'>Entrar</a></li>";
+                                                opcionesMenu += @"<li><a href='/AdminCliente/ClienteRegistro.aspx'>Registrarse</a></li>";
+                                                Response.Write(opcionesMenu);
+                                            }
+                                         %> 
                                     </ul>
                                 </div>
                             </div>

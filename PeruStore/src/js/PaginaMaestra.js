@@ -4,6 +4,7 @@ let inicioJs = null;
 $(function () {
     inicioJs = new InicioJs();
     inicioJs.Fn_Iniciar();
+    inicioJs.Fn_Bind();
 });
 
 class InicioJs {
@@ -11,7 +12,7 @@ class InicioJs {
     constructor() {
     }
 
-    Fn_Iniciar() { 
+    Fn_Iniciar() {
 
         if ($("input[id$=hfDataCategoriaMenu]").val() !== undefined && $("input[id$=hfDataCategoriaMenuSubMenu]").val() !== undefined) {
             inicioJs.Fn_Cargar();
@@ -24,23 +25,23 @@ class InicioJs {
             inicioJs.Fn_ListarCategoriaMenu($("input[id$=hfDataCategoriaMenu]").val());
             inicioJs.Fn_ListarCategoriaImagenDeslizante($("input[id$=hfDataCategoriaMenu]").val());
         } catch (e) {
-            Fn_Mensaje('e', "Ocurrio un problema, intentalo otra vez.");
+            Fn_Mensaje('e', "Ocurrió un problema, intentalo otra vez.");
         }
     }
 
- Fn_ListarCategoriaMenu(dataCategoriaMenu) {
-    var objCategoriaMenu = dataCategoriaMenu;
-    try {
-        var objCategory = $.parseJSON(objCategoriaMenu);
-        var object = {};
-        object.request = objCategory;
-        var item = Fn_CargarTemplate("datatable-cboCategoria", object);
-        $("#cboCategoria").html(item);
+    Fn_ListarCategoriaMenu(dataCategoriaMenu) {
+        var objCategoriaMenu = dataCategoriaMenu;
+        try {
+            var objCategory = $.parseJSON(objCategoriaMenu);
+            var object = {};
+            object.request = objCategory;
+            var item = Fn_CargarTemplate("datatable-cboCategoria", object);
+            $("#cboCategoria").html(item);
+        }
+        catch (e) {
+            Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
+        }
     }
-    catch (e) {
-        Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-    }
-  }
     Fn_ListarCategoriaImagenDeslizante(dataCategoriaDeslizante) {
         var objCategoriaDeslizante = dataCategoriaDeslizante;
         try {
@@ -51,71 +52,100 @@ class InicioJs {
             $("#CategoriasDeslizante").html(item);
         }
         catch (e) {
-            Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
+            Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
         }
     }
 
 
 
-  Fn_ListarCategoriaMenu_Left(dataCategoriaMenuSubMenu) {
-    var objCategoriaMenuSubMenu = dataCategoriaMenuSubMenu;
-    try {
-        var objCategoryP = $.parseJSON(objCategoriaMenuSubMenu);
-        var objectP = {};
-        objectP.request = objCategoryP;
-        var itemp = Fn_CargarTemplate("datatable-MenuCategoria", objectP);
-        $("#MenuSubMenuCategoria").html(itemp);
-
-        for (var i = 0; i < objCategoryP.length; i++) {
-            inicioJs.Fn_CargarSubCategorias_Left(objCategoryP[i].IdCategoria);
-        }
-    }
-    catch (e) {
-        Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-    }
-}
-
-   Fn_CargarSubCategorias_Left(IdCategoria) {
-    var success = function (asw) {
+    Fn_ListarCategoriaMenu_Left(dataCategoriaMenuSubMenu) {
+        var objCategoriaMenuSubMenu = dataCategoriaMenuSubMenu;
         try {
-            if (asw.d !== null) {
-                var objsubCategoria = $.parseJSON(asw.d);
-                var objectS = {};
-                objectS.request = objsubCategoria;
-                var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoria", objectS);
-                $("#SubCategoriaLista_" + objsubCategoria[0].IdCategoria).html(item);
-                for (var i = 0; i < objsubCategoria.length; i++) {
-                    inicioJs.Fn_CargarSubCategoriasDetalle_Left(objsubCategoria[i].IdSubCategoria);
+            var objCategoryP = $.parseJSON(objCategoriaMenuSubMenu);
+            var objectP = {};
+            objectP.request = objCategoryP;
+            var itemp = Fn_CargarTemplate("datatable-MenuCategoria", objectP);
+            $("#MenuSubMenuCategoria").html(itemp);
+
+            for (var i = 0; i < objCategoryP.length; i++) {
+                inicioJs.Fn_CargarSubCategorias_Left(objCategoryP[i].IdCategoria);
+            }
+        }
+        catch (e) {
+            Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
+        }
+    }
+
+    Fn_CargarSubCategorias_Left(IdCategoria) {
+        var success = function (asw) {
+            try {
+                if (asw.d !== null) {
+                    var objsubCategoria = $.parseJSON(asw.d);
+                    var objectS = {};
+                    objectS.request = objsubCategoria;
+                    var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoria", objectS);
+                    $("#SubCategoriaLista_" + objsubCategoria[0].IdCategoria).html(item);
+                    for (var i = 0; i < objsubCategoria.length; i++) {
+                        inicioJs.Fn_CargarSubCategoriasDetalle_Left(objsubCategoria[i].IdSubCategoria);
+                    }
                 }
+            } catch (e) {
+                Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
             }
-        } catch (e) {
-            Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-        }
-    };
-    var error = function (jqXHR, textStatus, errorThrown) {
-        Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-    };
-       fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/SubCategoria_Lista_PorIdCategoria", '{IdCategoria: "' + IdCategoria + '"}', success, error);
-}
+        };
+        var error = function (jqXHR, textStatus, errorThrown) {
+            Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
+        };
+        fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/SubCategoria_Lista_PorIdCategoria", '{IdCategoria: "' + IdCategoria + '"}', success, error);
+    }
 
-   Fn_CargarSubCategoriasDetalle_Left(IdSubCategoria) {
-    var success = function (asw) {
-        try {
-            if (asw.d !== null) {
-                var objsubCategoriaDetalle = $.parseJSON(asw.d);
-                var objectD = {};
-                objectD.request = objsubCategoriaDetalle;
-                var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoriaDetalle", objectD);
-                $("#SubCategoriaDetalleLista_" + objsubCategoriaDetalle[0].IdSubCategoria).html(item);
+    Fn_CargarSubCategoriasDetalle_Left(IdSubCategoria) {
+        var success = function (asw) {
+            try {
+                if (asw.d !== null) {
+                    var objsubCategoriaDetalle = $.parseJSON(asw.d);
+                    var objectD = {};
+                    objectD.request = objsubCategoriaDetalle;
+                    var item = Fn_CargarTemplate("datatable-MenuSubMenuCategoriaDetalle", objectD);
+                    $("#SubCategoriaDetalleLista_" + objsubCategoriaDetalle[0].IdSubCategoria).html(item);
+                }
+            } catch (e) {
+                Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
             }
+        };
+        var error = function (jqXHR, textStatus, errorThrown) {
+            Fn_Mensaje('e', 'Ocurrió un error.', 'message_row');
+        };
+        fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/SubCategoria_Lista_PorIdSubCategoria", '{IdSubCategoria: "' + IdSubCategoria + '"}', success, error);
+    }
+
+    Fn_Bind() {
+        $(".logoOut").click(function (e) {
+            inicioJs.Fn_CerrarSesion();
+        })
+    }
+
+    Fn_CerrarSesion() {
+        try {
+            var success = function (asw) {
+                var data = JSON.parse(asw.d);
+
+                if (data !== undefined && data !== null) {
+                    if (data.CodigoRespuesta === EnumCodigoRespuesta.Exito) {
+                        window.location = data.Datos;
+                    }
+                    if (data.CodigoRespuesta === EnumCodigoRespuesta.Error) {
+                        Fn_Mensaje('e', data.Mensaje, 'divMensaje');
+                    }
+                }
+            };
+            var error = function (xhr, ajaxOptions, thrownError) {
+                Fn_Mensaje('e', 'Ha ocurrido un error inesperado', 'divMensaje');
+            };
+            fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/CerrarSession", '{}', success, error);
         } catch (e) {
-            Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
+            Fn_Mensaje('e', 'Ha ocurrido un error inesperado', 'divMensaje');
         }
-    };
-    var error = function (jqXHR, textStatus, errorThrown) {
-        Fn_Mensaje('e', 'Ocurrio un error.', 'message_row');
-    };
-       fn_Ajax("/WebMethodPaginaMaestra/PaginaMaestra.aspx/SubCategoria_Lista_PorIdSubCategoria", '{IdSubCategoria: "' + IdSubCategoria + '"}', success, error);
-}
+    }
 
 }
