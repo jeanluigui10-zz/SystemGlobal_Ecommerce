@@ -14578,7 +14578,7 @@ header ul.tt-listing-01 li a:hover:before {
 
 header .tt-color-scheme-01 {
     background: #303030;
-    color: #888888;
+    color: #f8f9fa;
 }
 
     header .tt-color-scheme-01 .tt-box-info ul li a {
@@ -14606,7 +14606,7 @@ header .tt-color-scheme-01 {
     }
 
     header .tt-color-scheme-01 .tt-social-icon li a {
-        color: #777777;
+        color: #f8f9fa;
     }
 
         header .tt-color-scheme-01 .tt-social-icon li a:hover {

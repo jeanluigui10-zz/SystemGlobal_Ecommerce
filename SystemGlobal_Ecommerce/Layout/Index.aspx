@@ -286,7 +286,57 @@
 			</div>
 		</div>
 	</div>--%>
-	<div class="container-indent" style="margin-top:-4% !important">
+     <div class="container-indent" style="margin-top: -4% !important" <%-- style="margin-top: 54px;"--%>>
+            <div class="container">
+                <div class="row tt-services-listing">
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a href="#" class="tt-services-block">
+                            <div class="tt-col-icon">
+                                <i class="icon-f-48"></i>
+                            </div>
+                            <div class="tt-col-description">
+                                <h4 class="tt-title">ENVIO</h4>
+                                <p>Lo enviamos a la puerta de tu casa</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a href="#" class="tt-services-block">
+                            <div class="tt-col-icon">
+                                <i class="icon-f-35"></i>
+                            </div>
+                            <div class="tt-col-description">
+                                <h4 class="tt-title">SOPORTE</h4>
+                                <p>Contáctenos las 24 horas del día, los 7 días de la semana.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a href="#" class="tt-services-block">
+                            <div class="tt-col-icon">
+                                <i class="icon-e-09"></i>
+                            </div>
+                            <div class="tt-col-description">
+                                <h4 class="tt-title">PROMOCIONES</h4>
+                                <p>Las mejores ofertas en productos de primera necesidad.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a href="faq.html" class="tt-services-block">
+                            <div class="tt-col-icon">
+                                <i class="icon-f-77"></i>
+                            </div>
+                            <div class="tt-col-description">
+                                <h4 class="tt-title">100% PAGO SEGURO</h4>
+                                <p>Aseguramos el pago seguro con Culqui</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="container-indent" <%--style="margin-top:-4% !important"--%>>
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
 				<h2 class="tt-title">PRODUCTOS DE PRIMERA NECESIDAD</h2>
@@ -300,8 +350,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
+	</div>	
 	<div class="container-indent">
 		<div class="container-fluid" style="margin-top: 5%;">
 			<div class="tt-block-title">
@@ -311,45 +360,7 @@
 			
 		</div>
 	</div>
-	<div class="container-indent" style="margin-top: 54px;">
-		<div class="container">
-			<div class="row tt-services-listing">
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-f-48"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">ENVIO</h4>
-							<p>Lo enviamos a la puerta de tu casa</p>
-						</div>
-					</a>
-				</div>
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-f-35"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">SOPORTE</h4>
-							<p>Contáctenos las 24 horas del día, los 7 días de la semana.</p>
-						</div>
-					</a>
-				</div>
-				<div class="col-xs-12 col-md-6 col-lg-4">
-					<a href="#" class="tt-services-block">
-						<div class="tt-col-icon">
-							<i class="icon-e-09"></i>
-						</div>
-						<div class="tt-col-description">
-							<h4 class="tt-title">PROMOCIONES</h4>
-							<p>Las mejores ofertas en productos de primera necesidad.</p>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </div>
     
  

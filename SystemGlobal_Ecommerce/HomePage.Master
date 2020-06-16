@@ -23,7 +23,7 @@
         }
         .menuIconsFont {
             align-self: flex-start;
-            font-size: 38px;
+            font-size: 24px;
             color: #f8353e;
         }
     </style>
@@ -728,7 +728,29 @@
             </div>
         </div>
 
-        <header style="margin-top: 10px;">
+        <header <%--style="margin-top: 10px;"--%>>
+            <div class="tt-color-scheme-01">
+                <div class="container">
+                    <div class="tt-header-row tt-top-row">
+                        <div class="tt-col-left">
+                            <div class="tt-box-info">
+                                <ul>
+                                    <li><i class="icon-f-44"></i>FREE 2-DAYS STANDARD SHIPPING ON ORDERS $255+ <a href="#" class="tt-link-underline">MORE DETAILS</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tt-col-right ml-auto">
+                            <ul class="tt-social-icon">
+                                <li><a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a></li>
+                                <li><a class="icon-h-58" target="_blank" href="http://www.twitter.com/"></a></li>
+                                <li><a class="icon-g-66" target="_blank" href="http://www.google.com/"></a></li>
+                                <li><a class="icon-g-67" target="_blank" href="http://www.instagram.com/"></a></li>
+                                <li><a class="icon-g-70" target="_blank" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- tt-mobile menu -->
 	<nav class="panel-menu mobile-main-menu">
 		<ul>
@@ -1877,39 +1899,7 @@
         </asp:ContentPlaceHolder>
 
         <footer>
-            <div class="tt-footer-default tt-color-scheme-02" id="divFooter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-md-9">
-                            <div class="tt-newsletter-layout-01">
-                                <div class="tt-newsletter">
-                                    <div class="tt-mobile-collapse">
-                                        <h4 class="tt-collapse-title">ESTÁ EN CONTACTO CON NOSOTROS:
-                                        </h4>
-                                        <div class="tt-collapse-content">
-                                        
-                                                <div class="form-group">
-                                                    <input type="text" name="email" class="form-control" placeholder="Ingrese su E-mail">
-                                                    <button type="button" class="btn">Unete a nosotros</button>
-                                                </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-auto">
-                            <ul class="tt-social-icon">
-                                <li><a class="icon-g-64" target="_blank" href="https://www.facebook.com/El-Canast%C3%B3n-Delivery-107303184291430/"></a></li>
-                                <li><a class="icon-h-58" target="_blank" href="http://www.facebook.com/"></a></li>
-                                <li><a class="icon-g-66" target="_blank" href="http://www.twitter.com/"></a></li>
-                                <li><a class="icon-g-67" target="_blank" href="http://www.google.com/"></a></li>
-                                <li><a class="icon-g-70" target="_blank" href="https://instagram.com/"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <div class="tt-footer-col tt-color-scheme-01" id="divFooter2">
                 <div class="container">
                     <div class="row">
