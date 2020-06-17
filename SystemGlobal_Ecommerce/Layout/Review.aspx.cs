@@ -17,6 +17,7 @@ using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Merchant;
 using xAPI.BL.Order;
 using xAPI.Entity;
+using xAPI.Entity.Merchant;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
@@ -567,13 +568,20 @@ namespace SystemGlobal_Ecommerce.Layout
 
                         objOrder.Status = Convert.ToByte(EnumOrderStatus.Submit);
                         success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
-                        if (success && objBase.Errors.Count == 0)
+                        if (objBase.Errors.Count == 0)
                         {
-                            Response.Redirect("Confirmation.aspx", false);
+                            if (success)
+                            {
+                                Response.Redirect("Confirmation.aspx", false);
+                            }
+                            else {
+                                this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                                return;
+                            }
                         }
                         else
                         {
-                            this.Message(EnumAlertType.Info, "No se pudo guardar la Orden");
+                            this.Message(EnumAlertType.Info, objBase.Errors[0].Error.Message);
                             return;
                         }
                     }

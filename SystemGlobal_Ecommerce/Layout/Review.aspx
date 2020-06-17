@@ -22,11 +22,11 @@
 
              //fn_init();
 
-             //PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
+             PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
 
-             //$(".rdbPayment input[type=radio][name$=Payment]").change(function () {
-             //    PaymentOptions_Select($(this));
-             //});
+             $(".rdbPayment input[type=radio][name$=Payment]").change(function () {
+                 PaymentOptions_Select($(this));
+             });
              
              //$('#btn_pagar').on('click', function (e) {
              //    // Crea el objeto Token con Culqi JS
@@ -44,11 +44,11 @@
              e.preventDefault();
          }
 
-         //function fn_init() {
-         //    fn_content();
-         //}
-       <%--  function fn_content() {
-           //  PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
+     <%--    function fn_init() {
+             fn_content();
+         }
+       function fn_content() {
+             PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
         if ($("#<%=hfDataMethodPayment.ClientID%>").val() != "") {
                  Fn_ListMethodPayment($("#<%=hfDataMethodPayment.ClientID%>").val());
              }
@@ -194,7 +194,7 @@
 				    <%--MethodPayment--%>
 
 				      <%--Culqi--%>
-                        <div id="divPay" class="tt-shopcart-table">
+                     <%--   <div id="divPay" class="tt-shopcart-table">
                              <div id="message_row"></div>
                             <div>
                                 <div class="form-group">
@@ -230,7 +230,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
 
                  <%--culqi--%>
 
