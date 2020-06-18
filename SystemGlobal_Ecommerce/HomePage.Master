@@ -132,6 +132,7 @@
     </script>
 
         <link href="Files/css/theme.css?t=1" rel="stylesheet" />
+        <%--<link href="Files/css/theme-02.css?r=1" rel="stylesheet" />--%>
         <script src="/Files/external/jquery/jquery.min.js"></script>
         <script src="/Files/external/bootstrap/js/bootstrap.min.js"></script>
         <script src="/Files/external/slick/slick.min.js"></script>
@@ -735,7 +736,7 @@
                         <div class="tt-col-left">
                             <div class="tt-box-info">
                                 <ul>
-                                    <li><i class="icon-f-44"></i>ENVÍO ESTÁNDAR GRATUITO DE 2 DÍAS EN PEDIDOS MAYORES A S/.150 <a href="#" class="tt-link-underline">MAS DETALLES</a></li>
+                                    <li><i class="icon-f-44"></i>ENVÍO ESTÁNDAR GRATUITO DE 2 DÍAS EN PEDIDOS MAYORES A S/.150 <a href="#" class="tt-link-underline">Comprar ahora!</a></li>
                                 </ul>
                             </div>
                         </div>
