@@ -16913,7 +16913,7 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
 }
 
     .header-tel-info [class^="icon"] {
-        color: #2879fe;
+        color: #fd2020;
         font-size: 18px;
         line-height: 1;
     }
@@ -16963,7 +16963,7 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
         color: #777777;
         background: #f7f8fa;
         outline: none;
-        width: 360px;
+        /*width: 360px;*/
         -webkit-border-bottom-left-radius: 6px;
         -webkit-border-top-left-radius: 6px;
         -moz-border-radius-bottomleft: 6px;
@@ -16978,7 +16978,7 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
         border: none;
         outline: none;
         color: #ffffff;
-        background: #2879fe;
+        background: #fd2020;
         font-size: 14px;
         font-weight: 500;
         letter-spacing: 0.05em;
@@ -16992,10 +16992,10 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
         border-top-right-radius: 6px;
     }
 
-        .tt-search-type2 .tt-btn-search:hover {
-            color: #ffffff;
-            background: #2267d8;
-        }
+    .tt-search-type2 .tt-btn-search:hover {
+        color: #ffffff;
+        background: #dc2c2c;
+    }
 
     .tt-search-type2 .tt-search-input:focus::-webkit-input-placeholder {
         color: transparent;
@@ -34106,7 +34106,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
         font-weight: 500;
         letter-spacing: 0.05em;
         color: #ffffff;
-        background: #2879fe;
+        background: #fd2020;
         padding: 11px 40px 7px 20px;
         min-width: 200px;
         border: none;
