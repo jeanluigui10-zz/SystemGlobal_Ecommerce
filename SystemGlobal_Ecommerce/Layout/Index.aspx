@@ -37,10 +37,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="tt-pageContent">
-     <div class="container-indent nomargin">
+
 	<div class="container-indent nomargin">
 		<div class="container-fluid">
-			<div class="row" style="margin-top: -8%;margin-left: -3px !important;margin-right: -3px !important;">
+			<div class="row" style="margin-top: -6.5%;margin-left: -3px !important;margin-right: -3px !important;">
 				<div class="slider-revolution revolution-default">
 					<div class="tp-banner-container">
 						<div class="tp-banner revolution">
@@ -190,7 +190,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+
 	<%--<div class="container-indent nomargin">
 		<div class="container-fluid">
 			<div class="row">
@@ -286,7 +286,8 @@
 			</div>
 		</div>
 	</div>--%>
-     <div class="container-indent" style="margin-top: -4% !important" <%-- style="margin-top: 54px;"--%>>
+
+     <div class="container-indent" style="margin-top: -4% !important">
             <div class="container">
                 <div class="row tt-services-listing">
                     <div class="col-xs-12 col-md-6 col-lg-3">
@@ -335,9 +336,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+     </div>
 	   
-	<div class="container-indent" <%--style="margin-top:-4% !important"--%>>
+	<div class="container-indent">
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
 				<h2 class="tt-title">TE RECOMENDAMOS ESTOS PRODUCTOS</h2>
@@ -359,62 +360,7 @@
 				<h1 class="tt-title">NUESTRAS CATEGORÍAS</h1>
 				<div class="tt-description">No esperes más elige una!</div>
 			</div>
-			<div class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
-				<div class="col-2 col-md-4 col-lg-3">
-					<a href="#" class="tt-collection-item">
-						<div class="tt-image-box"><img src="/Files/images/product/product-20.jpg" alt=""></div>
-						<div class="tt-description">
-							<h2 class="tt-title">Shirts &amp; Tops</h2>
-							<ul class="tt-add-info">
-								<li>45 PRODUCTS</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="col-2 col-md-4 col-lg-3">
-					<a href="#" class="tt-collection-item">
-						<div class="tt-image-box"><img src="/Files/images/product/product-03.jpg" alt=""></div>
-						<div class="tt-description">
-							<h2 class="tt-title">Jackets &amp; Outerwear</h2>
-							<ul class="tt-add-info">
-								<li>35 PRODUCTS</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="col-2 col-md-4 col-lg-3">
-					<a href="#" class="tt-collection-item">
-						<div class="tt-image-box"><img src="/Files/images/product/product-11.jpg" alt=""></div>
-						<div class="tt-description">
-							<h2 class="tt-title">Sweaters</h2>
-							<ul class="tt-add-info">
-								<li>28 PRODUCTS</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="col-2 col-md-4 col-lg-3">
-					<a href="#" class="tt-collection-item">
-						<div class="tt-image-box"><img src="/Files/images/product/product-23.jpg" alt=""></div>
-						<div class="tt-description">
-							<h2 class="tt-title">Pants</h2>
-							<ul class="tt-add-info">
-								<li>22 PRODUCTS</li>
-							</ul>
-						</div>
-					</a>
-				</div>
-				<div class="col-2 col-md-4 col-lg-3">
-					<a href="#" class="tt-collection-item">
-						<div class="tt-image-box"><img src="/Files/images/product/product-14.jpg" alt=""></div>
-						<div class="tt-description">
-							<h2 class="tt-title">Sweaters</h2>
-							<ul class="tt-add-info">
-								<li>26 PRODUCTS</li>
-							</ul>
-						</div>
-					</a>
-				</div>
+			<div id="divSliderCategory" class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
 			</div>
 		</div>
 	</div>
