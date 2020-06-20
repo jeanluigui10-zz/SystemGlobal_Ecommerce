@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Index" %>
 <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="/Files/external/slick/slick.js"></script>
-        <script src="/Files/external/slick/slick.min.js"></script>
+   
      <script type="text/javascript">
 
          $(function () {
