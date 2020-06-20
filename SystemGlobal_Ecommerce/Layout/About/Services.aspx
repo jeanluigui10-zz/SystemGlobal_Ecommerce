@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div class="tt-breadcrumb" style="margin-top:0.5%">
+<div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Canastón</a></li>

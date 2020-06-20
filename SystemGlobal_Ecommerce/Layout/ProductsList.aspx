@@ -76,18 +76,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
 <div id="loader-wrapper">
-	<div id="loader">
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-	</div>
+	<div class="loading-content">
+				<div class="loading-dots">
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
 </div>
 
-<div class="tt-breadcrumb" style="margin-top:0.5%">
+<div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
 			<li><a href="/Index.aspx">Canastón</a></li>

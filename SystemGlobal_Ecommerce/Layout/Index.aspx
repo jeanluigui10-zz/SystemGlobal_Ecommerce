@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Index" %>
 <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="/Files/external/slick/slick.js"></script>
+        <script src="/Files/external/slick/slick.min.js"></script>
      <script type="text/javascript">
 
          $(function () {
@@ -38,256 +40,61 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="tt-pageContent">
 
-	<div class="container-indent nomargin">
-		<div class="container-fluid">
-			<div class="row" style="margin-top: -6.5%;margin-left: -3px !important;margin-right: -3px !important;">
-				<div class="slider-revolution revolution-default">
-					<div class="tp-banner-container">
-						<div class="tp-banner revolution">
-							<ul>
-								<%--<li data-thumb="/Files/images/slides/01/slide-01.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/slide-01.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
-									<div class="tp-caption tp-caption1 lft stb"
-										data-x="center"
-										data-y="center"
-										data-hoffset="0"
-										data-voffset="0"
-										data-speed="500"
-										data-start="100"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">Multipurpose</div>
-										<div class="tp-caption1-wd-2">Premium<br>Html Template</div>
-										<div class="tp-caption1-wd-3">30 skins, powerful features, great support, exclusive offer</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
-									</div>
-								</li>--%>
-								<%--<li data-thumb="/Files/images/slides/01/slide-02.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/slide-02.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
-									<div class="tp-caption tp-caption1 lft stb"
-										data-x="center"
-										data-y="center"
-										data-hoffset="0"
-										data-voffset="0"
-										data-speed="1400"
-										data-start="200"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-white-color">Ready To</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Use Unique<br>Demos</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Optimized for speed, website that sells</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
-									</div>
-								</li>--%>
-								<li data-thumb="video/video_img.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/video/blank.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="750"
-										data-start="100"
-										data-easing="Power4.easeOut"
-										data-endspeed="2000"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="true"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9">
-										<video class="video-js vjs-default-skin" preload="none"
-											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" <%--autoplay loop--%> style="background: border-box !important;"> 
-											<source src='../Files/images/slides/01/CanastonVideo.mp4' type='video/mp4'>
-										</video>
-									</div>
-									<%--<div class="tp-caption  tp-fade"
-										data-x="right"
-										data-y="bottom"
-										data-voffset="-60"
-										data-hoffset="-90"
-										data-speed="600"
-										data-start="900"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="video-play">
-											<a class="icon-f-29 btn-play" href="#"></a>
-											<a class="icon-f-28 btn-pause" href="#"></a>
-										</div>
-									</div>--%>
-									<!-- TEXT -->
-									<div class="tp-caption lfb lft text-center"
-										data-x="center"
-										data-y="center"
-										data-hoffset="0"
-										data-voffset="0"
-										data-speed="1400"
-										data-start="100"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
-									</div>
-								</li>
-							    <li data-thumb="video/video_img.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/video/blank.png"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="1000"
-										data-start="0"
-										data-easing="Power4.easeOut"
-										data-endspeed="500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="true"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9">
-										<video class="video-js vjs-default-skin" preload="none"
-											poster='/Files/video/video_img.jpg' data-setup="{}" muted="muted" <%--autoplay loop --%>style="background: border-box !important;"> 
-											<source src='../Files/images/slides/01/video_Qw52dwUM_IF95.mp4' type='video/mp4'>
-										</video>
-									</div>
-									<%--<div class="tp-caption  tp-fade"
-										data-x="right"
-										data-y="bottom"
-										data-voffset="-60"
-										data-hoffset="-90"
-										data-speed="600"
-										data-start="900"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="video-play">
-											<a class="icon-f-29 btn-play" href="#"></a>
-											<a class="icon-f-28 btn-pause" href="#"></a>
-										</div>
-									</div>--%>
-									<!-- TEXT -->
-									<div class="tp-caption lfb lft text-center"
-										data-x="center"
-										data-y="center"
-										data-hoffset="0"
-										data-voffset="0"
-										data-speed="1400"
-										data-start="200"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<%--<div class="tp-caption1-wd-1 tt-base-color">Oberlo</div>
-										<div class="tp-caption1-wd-2 tt-white-color">Find Products for<br>Shop Store</div>
-										<div class="tp-caption1-wd-3 tt-white-color">Oberlo allows you to easily import dropshipped products directly into your ecommerce store</div>--%>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"  style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
-									</div>
-								</li>
-							</ul>
+     <div class="container">
+		<div class="mainSlider-layout">
+			<div class="loading-content">
+				<div class="loading-dots">
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
+			<div class="mainSliderSlick arrow-slick-main" style="height: fit-content !important">
+				<div class="tt-slick-main-item">
+					<img src="/Files/images/slides/slick-slider/slide-01.jpg" alt="">
+					<div class="tt-description tt-point-h-c">
+						<div class="tt-description-wrapper">
+							<div class="tt-title-small"><span class="tt-base-color">Multipurpose</span></div>
+							<div class="tt-title-large"><span class="tt-white-color">Premium<br>Html Template</span></div>
+							<p>
+								<span class="tt-white-color">30 skins, powerful features, great support, exclusive offer</span>
+							</p>
+							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="tt-slick-main-item">
+					<img src="/Files/images/slides/slick-slider/slide-02.jpg" alt="">
+					<div class="tt-description tt-point-h-r">
+						<div class="tt-description-wrapper">
+							<div class="tt-title-small"><span class="tt-base-color">Ready To</span></div>
+							<div class="tt-title-large"><span class="tt-white-color">Use Unique<br>Demos</span></div>
+							<p>
+								<span class="tt-white-color">Optimized for speed, website that sells</span>
+							</p>
+							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="tt-slick-main-item">
+					<img src="/Files/images/slides/slick-slider/slide-03.jpg" alt="">
+					<div class="tt-description tt-point-h-r">
+						<div class="tt-description-wrapper">
+							<div class="tt-title-small"><span class="tt-base-color">Oberlo</span></div>
+							<div class="tt-title-large">Find Products for<br>Shop Store</div>
+							<p>
+								Oberlo<br> allows you to easily import dropshipped products directly into your ecommerce store
+							</p>
+							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<%--<div class="container-indent nomargin">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="slider-revolution revolution-default">
-					<div class="tp-banner-container">
-						<div class="tp-banner revolution">
-							<ul>
-								<li data-thumb="/Files/images/slides/01/abarrote1.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/abarrote1.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
- 									<div class="tp-caption tp-caption1 lft stb"
- 										data-x="center"
- 										data-y="center"
- 										data-hoffset="0"
- 										data-voffset="0"
- 										data-speed="600"
- 										data-start="900"
- 										data-easing="Power4.easeOut"
- 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-base-color">De multiples diseÃ±os</div>
-										<div class="tp-caption1-wd-2">Exclusivos<br></div>
-										<div class="tp-caption1-wd-3">Los mejores DiseÃ±os</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÃ“N!">ARMAR LISTA!</a></div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMAR LISTA!">ARMAR LISTA!</a></div>
- 									</div>
- 								</li>
-								<li data-thumb="/Files/images/slides/01/abarrote2.jpg" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<img src="/Files/images/slides/01/abarrote2.jpg"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" >
- 									<div class="tp-caption tp-caption1 lft stb"
- 										data-x="center"
- 										data-y="center"
- 										data-hoffset="0"
- 										data-voffset="0"
- 										data-speed="600"
- 										data-start="900"
- 										data-easing="Power4.easeOut"
- 										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-1 tt-white-color" style="color:black">Todo listo</div>
-										<div class="tp-caption1-wd-2 tt-white-color" style="color:black">Usa nuestra<br>Tienda</div>
-										<div class="tp-caption1-wd-3 tt-white-color" style="color:black">Compras faciles y rapidas</div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/Quotation.aspx") %>" target="_blank" class="btn btn-xl" style="background-color:orange!important" data-text="SOLICITAR COTIZACIÃ“N!">SOLICITAR COTIZACIÃ“N!</a></div>
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMAR LISTA!">ARMAR LISTA!</a></div>
- 									</div>
-								</li>
-								<li data-thumb="../Files/images/slides/01/VideoTienda.mp4" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-									<video src="../Files/images/slides/01/VideoTienda.mp4"    data-bgposition="center center" data-bgfit="cover" data-bgrepeat="repeat" >									
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="600"
-										data-start="0"
-										data-easing="Power4.easeOut"
-										data-endspeed="1500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="false"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9">
-						
-									</div>
-									<div class="tp-caption  tp-fade"
-										data-x="right"
-										data-y="bottom"
-										data-voffset="-60"
-										data-hoffset="-90"
-										data-speed="600"
-										data-start="900"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="video-play">
-											<a class="icon-f-29 btn-play" href="#"></a>
-											<a class="icon-f-28 btn-pause" href="#"></a>
-										</div>
-									</div>
-									<!-- TEXT -->
-									<div class="tp-caption lfb lft text-center"
-										data-x="center"
-										data-y="center"
-										data-voffset="-20"
-										data-hoffset="0"
-										data-speed="600"
-										data-start="900"
-										data-easing="Power4.easeOut"
-										data-endeasing="Power4.easeIn">
-										<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" target="_blank" class="btn btn-xl" data-text="ARMAR LISTA!">ARMAR LISTA!</a></div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>--%>
-
-     <div class="container-indent" style="margin-top: -4% !important">
+	
+     <div class="container-indent">
             <div class="container">
                 <div class="row tt-services-listing">
                     <div class="col-xs-12 col-md-6 col-lg-3">
@@ -354,7 +161,7 @@
 		</div>
 	</div>	
     
-	<div class="container-indent">
+	<div class="container-indent" >
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
 				<h1 class="tt-title">NUESTRAS CATEGORÍAS</h1>
@@ -364,7 +171,7 @@
 			</div>
 		</div>
 	</div>
-	
+
      <div class="container-indent1">
 		<div class="container-fluid-custom container-fluid-custom-mobile-padding">
 			<div class="tt-block-title text-left">
@@ -1597,4 +1404,23 @@
 				</div>
         {{/each}}
     </script>
+
+        <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
+	       {{# each request}}
+         <div class="col-2 col-md-4 col-lg-3">
+             <a href="/Layout/ProductsList.aspx?category={{Id}}" class="tt-collection-item">
+                 <div class="tt-image-box">
+                     <img src="/Files/images/product/product-20.jpg" alt="">
+                 </div>
+                 <div class="tt-description">
+                     <h2 class="tt-title">{{Name}}</h2>
+                     <ul class="tt-add-info">
+                         <li>45 PRODUCTS</li>
+                     </ul>
+                 </div>
+             </a>
+         </div>
+	       {{/each}}
+    </script>
+
 </asp:Content>

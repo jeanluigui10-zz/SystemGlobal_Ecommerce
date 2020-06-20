@@ -13,6 +13,9 @@
 	<meta name="author" content="wokiee">
 	<link rel="shortcut icon" href="/Files/images/slides/01/elcanaston.jpeg" style="border-radius: 50% !important">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link href="Files/css/theme.css?t=1" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Files/external/slick/slick.css?p=1"/>
+    <link href="/Files/external/slick/slick.min.css" rel="stylesheet" />
 
     <style>
           .aline {
@@ -132,10 +135,11 @@
             
     </script>
 
-        <link href="Files/css/theme.css?t=1" rel="stylesheet" />
+  
         <%--<link href="Files/css/theme-02.css?r=1" rel="stylesheet" />--%>
         <script src="/Files/external/jquery/jquery.min.js"></script>
         <script src="/Files/external/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/Files/external/slick/slick.js"></script>
         <script src="/Files/external/slick/slick.min.js"></script>
         <script src="/Files/external/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="/Files/external/panelmenu/panelmenu.js"></script>
@@ -201,6 +205,7 @@
         <link href="<%=ResolveUrl("~/Chat/src/css/chatStyle.css") %>" type="text/css" rel="stylesheet" />
         <script src="/Files/external/elevatezoom/jquery.elevatezoom.js"></script>
         <script src="/Files/external/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="/Files/external/isotope/imagesloaded.js"></script>
 
      <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>
      <script type="text/javascript">
@@ -256,7 +261,7 @@
                  $("#modalProductErrorView").modal('hide');
              })
 
-             
+
 
              $("body").on("click", ".add-to-cart-mp", function (e) {
                  try {
@@ -538,10 +543,7 @@
                  $("#lstCartView").append(NotProductCart);
              }
 
-             if ($("#<%=hfDataListCategory.ClientID%>").val() != "") {
-                 Fn_ListCategoryMaster($("#<%=hfDataListCategory.ClientID%>").val());
-             }
-
+             
              // header, search, at focus input - result of search
              if ($ttSearchObjPopupInput.length && $ttSearchObjPopupResults.length) {
                  $ttSearchObj.on("input", function (ev) {
@@ -574,6 +576,12 @@
                      $ttSearchObjPopupResults.fadeOut("200");
                  });
              };
+
+             if ($("#<%=hfDataListCategory.ClientID%>").val() != "") {
+                 Fn_ListCategoryMaster($("#<%=hfDataListCategory.ClientID%>").val());
+             }
+
+
          });
 
          function Fn_ListProductsSearch(data) {
@@ -720,18 +728,17 @@
 
 
         <div id="loader-wrapper">
-            <div id="loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
+            <div class="loading-content">
+				<div class="loading-dots">
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
         </div>
 
-        <header <%--style="margin-top: 10px;"--%>>
+        <header>
             <div class="tt-color-scheme-01">
                 <div class="container">
                     <div class="tt-header-row tt-top-row">
@@ -785,14 +792,23 @@
                 </div>
             </nav>
 	
-            <!-- tt-mobile-header -->
-        <%--    <div class="tt-mobile-header">
+            <div class="tt-mobile-header">
                 <div class="container-fluid">
+                    <div class="header-tel-info">
+                        <i class="icon-f-93"></i>777 2345 7885; +777 2345 7886
+                    </div>
+                </div>
+                <div class="container-fluid tt-top-line">
                     <div class="tt-header-row">
                         <div class="tt-mobile-parent-menu">
-                            <div class="tt-menu-toggle">
+                            <div class="tt-menu-toggle stylization-02">
                                 <i class="icon-03"></i>
                             </div>
+                        </div>
+                        <div class="tt-mobile-parent-menu-categories tt-parent-box">
+                            <button class="tt-categories-toggle">
+                                <i class="icon-categories"></i>
+                            </button>
                         </div>
                         <!-- search -->
                         <div class="tt-mobile-parent-search tt-parent-box"></div>
@@ -812,633 +828,425 @@
                     <div class="row">
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
-
-                            <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                <img src="/Files/images/slides/01/elcanaston.jpeg" style="border-radius: 50%" /></a>
+                            <a class="tt-logo tt-logo-alignment" href="index.html">
+                                <img src="/Files/documentation/files/images/logo.png" alt=""></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
                 </div>
             </div>
-           --%>
-
-            <div class="tt-mobile-header">
-		<div class="container-fluid">
-			<div class="header-tel-info">
-				<i class="icon-f-93"></i> 777 2345 7885; +777 2345 7886
-			</div>
-		</div>
-		<div class="container-fluid tt-top-line">
-			<div class="tt-header-row">
-				<div class="tt-mobile-parent-menu">
-					<div class="tt-menu-toggle stylization-02">
-						<i class="icon-03"></i>
-					</div>
-				</div>
-				<div class="tt-mobile-parent-menu-categories tt-parent-box">
-					<button class="tt-categories-toggle">
-						<i class="icon-categories"></i>
-					</button>
-				</div>
-				<!-- search -->
-				<div class="tt-mobile-parent-search tt-parent-box"></div>
-				<!-- /search -->
-				<!-- cart -->
-				<div class="tt-mobile-parent-cart tt-parent-box"></div>
-				<!-- /cart -->
-				<!-- account -->
-				<div class="tt-mobile-parent-account tt-parent-box"></div>
-				<!-- /account -->
-				<!-- currency -->
-				<div class="tt-mobile-parent-multi tt-parent-box"></div>
-				<!-- /currency -->
-			</div>
-		</div>
-		<div class="container-fluid tt-top-line">
-			<div class="row">
-				<div class="tt-logo-container">
-					<!-- mobile logo -->
-					<a class="tt-logo tt-logo-alignment" href="index.html"><img src="/Files/documentation/files/images/logo.png" alt=""></a>
-					<!-- /mobile logo -->
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- tt-desktop-header -->
 
-	<%--<div class="tt-desktop-header">
-		<div class="container">
-			<div class="tt-header-holder">
-              
-				<div class="tt-obj-logo obj-aligment-center">
-					<!-- logo -->
-					<a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>"><img src="images/custom/logo.png" alt=""></a>
-					<!-- /logo -->
-				</div>
-				<div class="tt-obj-options obj-move-right tt-position-absolute">
-					<!-- tt-search -->
-					<div class="tt-desctop-parent-search tt-parent-box">
-						<div class="tt-search tt-dropdown-obj">
-							<button id="SearchIdMaster" class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
-								<i class="icon-h-04"></i>
-							</button>
-							<div class="tt-dropdown-menu">
-								<div class="container">
-									<div>
-										<div class="tt-col">
-											<input type="text" class="tt-search-input" placeholder="Buscar Productos...">
-											<button class="tt-btn-search" type="submit"></button>
-										</div>
-										<div class="tt-col">
-											<button class="tt-btn-close icon-g-80"></button>
-										</div>
-										<div class="tt-info-text">
-											¿Qué estás buscando?
-										</div>
-										<div class="search-results">
-											<ul id="divSearchProductsMaster">
-											</ul>
-											
-										</div>
-                                                 <button type="button" class="tt-view-all"> <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"></a> Ver todo los productos</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /tt-search -->
-					<!-- tt-cart -->
-					<div class="tt-desctop-parent-cart tt-parent-box">
-						<div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
-							<button class="tt-dropdown-toggle" type="button">
-								<i class="icon-g-48"></i>
-								<span class="tt-badge-cart" id="idCantidadProductos">0</span>
-							</button>
-							<div class="tt-dropdown-menu" style="overflow-y: scroll;height: 615px;margin-top: 12px">
-								<div class="tt-mobile-add">
-									<h6 class="tt-title">CARRITO DE COMPRAS</h6>
-									<button class="tt-close" type="button">Cerrar</button>
-								</div>
-								<div class="tt-dropdown-inner">
-									<div class="tt-cart-layout">
-										<!-- layout emty cart -->
-										<div class="tt-cart-content">
-									
-											<div class="tt-cart-list" id="lstCartView">
-											
-											</div>
-											<div class="tt-cart-total-row" id="lblMasterSubtotal" runat="server">
-												<div class="tt-cart-total-title">SUBTOTAL:</div>
-												<div class="tt-cart-total-price">S/.0.00</div>
-											</div>
-											<div class="tt-cart-btn" id="btnMasterGoPay" runat="server" hidden>
-												<div class="tt-item">
-													<a href="/Layout/Review.aspx" class="btn" style="color:black !important">Ir a Carrito</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /tt-cart -->
-					<!-- tt-account -->
-					<div class="tt-desctop-parent-account tt-parent-box">
-						<div class="tt-account tt-dropdown-obj">
-							<button class="tt-dropdown-toggle"  data-tooltip="Mi Cuenta" data-tposition="bottom" type="button"><i class="icon-g-25"></i></button>
-							<div class="tt-dropdown-menu" style="margin-top:inherit">
-								<div class="tt-mobile-add">
-									<button class="tt-close">Cerrar</button>
-								</div>
-								<div class="tt-dropdown-inner">
-									<ul>
-									    <li id="lblCuenta" runat="server"><a id="lblCustomerHref" href="/Layout/Information.aspx"><i class="icon-g-25"></i>Mi Cuenta</a></li>
-									    <li id="lblInicioSession" runat="server"><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Iniciar Sesión</a></li>
-									    <li id="lblRegistrar" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-23"></i>Registrarse</a></li>
-									    <li id="lblCerrarSession" runat="server"><asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click"><i class="icon-g-93"></i><span class="logout">Cerrar Sesión</span></asp:LinkButton></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				</div>
+            <div class="tt-desktop-header headerunderline">
+                <div class="container">
+                    <div class="tt-header-holder">
+                        <div class="tt-col-obj tt-obj-logo">
+                            <!-- logo -->
+                            <a class="tt-logo tt-logo-alignment" href="index.html">
+                                <img src="/Files/images/custom/logo.png" alt=""></a>
+                            <!-- /logo -->
+                        </div>
 
-			</div>
-		</div>
-		<div class="container">
-			<div class="tt-header-holder">
-				<div class="tt-obj-menu obj-aligment-center">
-					<!-- tt-menu -->
-					<div class="tt-desctop-parent-menu tt-parent-box">
-						<div class="tt-desctop-menu tt-menu-small">
-					<nav>
-								<ul>
-                                            <div class="menuIconsFont" ><i class="icon-f-54"></i></div>
-									<li class="dropdown tt-megamenu-col-02 selected">
-										<a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Inicio</a>
-							
-									</li>
-                                            <div class="menuIconsFont" ><i class="icon-f-46"></i></div>
-									<li class="dropdown megamenu">
-										<a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
-										<div class="dropdown-menu">
-											<div class="row tt-col-list">
-												<div class="col">
-													<h6 class="tt-title-submenu"><a href="#">Categorías</a></h6>
-													<ul class="tt-megamenu-submenu" id="divCategoryMaster">
-													</ul>
-												</div>
-											
-											</div>
-										</div>
-									</li>
-                                            <div class="menuIconsFont" ><i class="icon-e-46"></i></div>
-									<li class="dropdown tt-megamenu-col-01">
-										<a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
-								
-									</li>
-                                            <div class="menuIconsFont" ><i class="icon-f-35"></i></div>
-									<li class="dropdown tt-megamenu-col-01">
-										<a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
-							
-									</li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-					<!-- /tt-menu -->
-				</div>
-			</div>
-		</div>
-	</div>--%>
-            	<div class="tt-desktop-header headerunderline">
-		<div class="container">
-			<div class="tt-header-holder">
-				<div class="tt-col-obj tt-obj-logo">
-					<!-- logo -->
-					<a class="tt-logo tt-logo-alignment" href="index.html"><img src="/Files/images/custom/logo.png" alt=""></a>
-					<!-- /logo -->
-				</div>
-                
-				<div class="tt-col-obj obj-move-right">
-					<div class="header-tel-info">
-						<i class="icon-f-93"></i> 777 2345 7885; +777 2345 7886
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container small-header">
-			<div class="tt-header-holder">
-				<div class="tt-col-obj tt-obj-menu-categories tt-desctop-parent-menu-categories">
-					<div class="tt-menu-categories">
-						<button class="tt-dropdown-toggle">
-							Menú de Categorías
-						</button>
-						<div class="tt-dropdown-menu">
-							<nav>
-								<ul>
-									<li>
-										<a href="#">
-											<i class="icon-women"></i>
-											<span>WOMEN</span>
-										</a>
-										<div class="dropdown-menu size-md">
-									       <div class="dropdown-menu-wrapper">
-									       		<div class="row">
-													<div class="col-12">
-														<div class="row tt-col-list">
-															<div class="col-sm-4">
-																<a class="tt-title-submenu" href="listing-left-column.html">
-																	TOPS
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-left-column.html">Blouses &amp; Shirts</a></li>
-																	<li><a href="listing-left-column.html">Dresses <span class="tt-badge tt-new">New</span></a></li>
-																	<li>
-																		<a href="listing-left-column.html">Tops &amp; T-shirts</a>
-																		<ul>
-																			<li><a href="listing-left-column.html">Link Level 1</a></li>
-																			<li>
-																				<a href="listing-left-column.html">Link Level 1</a>
-																				<ul>
-																					<li><a href="listing-left-column.html">Link Level 2</a></li>
-																					<li>
-																						<a href="listing-left-column.html">Link Level 2</a>
-																						<ul>
-																							<li><a href="listing-left-column.html">Link Level 3</a></li>
-																							<li><a href="listing-left-column.html">Link Level 3</a></li>
-																							<li><a href="listing-left-column.html">Link Level 3</a></li>
-																							<li>
-																								<a href="listing-left-column.html">Link Level 3</a>
-																								<ul>
-																									<li>
-																										<a href="listing-left-column.html">Link Level 4</a>
-																										<ul>
-																											<li><a href="listing-left-column.html">Link Level 5</a></li>
-																											<li><a href="listing-left-column.html">Link Level 5</a></li>
-																											<li><a href="listing-left-column.html">Link Level 5</a></li>
-																											<li><a href="listing-left-column.html">Link Level 5</a></li>
-																											<li><a href="listing-left-column.html">Link Level 5</a></li>
-																										</ul>
-																									</li>
-																									<li><a href="listing-left-column.html">Link Level 4</a></li>
-																								</ul>
-																							</li>
-																							<li><a href="listing-left-column.html">Link Level 3</a></li>
-																						</ul>
-																					</li>
-																					<li><a href="listing-left-column.html">Link Level 2</a></li>
-																					<li><a href="listing-left-column.html">Link Level 2</a></li>
-																				</ul>
-																			</li>
-																			<li><a href="listing-left-column.html">Link Level 1</a></li>
-																			<li><a href="listing-left-column.html">Link Level 1</a></li>
-																			<li><a href="listing-left-column.html">Link Level 1</a></li>
-																		</ul>
-																	</li>
-																	<li><a href="listing-left-column.html">Sleeveless Tops</a></li>
-																	<li><a href="listing-left-column.html">Sweaters</a></li>
-																	<li><a href="listing-left-column.html">Jackets</a></li>
-																	<li><a href="listing-left-column.html">Outerwear</a></li>
-																</ul>
-															</div>
-															<div class="col-sm-4">
-																<a class="tt-title-submenu" href="listing-left-column.html">
-																	BOTTOMS
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-left-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
-																	<li>
-																		<a href="listing-left-column.html">Jeans</a>
-																	</li>
-																	<li><a href="listing-left-column.html">Leggings</a></li>
-																	<li><a href="listing-left-column.html">Jumpsuit &amp; Shorts</a></li>
-																	<li><a href="listing-left-column.html">Skirts</a></li>
-																	<li><a href="listing-left-column.html">Tights</a></li>
-																</ul>
-															</div>
-															<div class="col-sm-4">
-																<a class="tt-title-submenu" href="listing-left-column.html">
-																	ACCESSORIES
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-left-column.html">Jewellery</a></li>
-																	<li><a href="listing-left-column.html">Hats</a></li>
-																	<li><a href="listing-left-column.html">Scarves &amp; Snoods</a></li>
-																	<li><a href="listing-left-column.html">Belts</a></li>
-																	<li><a href="listing-left-column.html">Bags</a></li>
-																	<li><a href="listing-left-column.html">Shoes <span class="tt-badge tt-sale">Sale 15%</span></a></li>
-																	<li><a href="listing-left-column.html">Sunglasses</a></li>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-12">
-														<a href="listing-left-column.html" class="tt-promo-02">
-															<img src="/Files/images/custom/header-promo-01.jpg" alt="">
-															<div class="tt-description tt-point-h-l">
-																<div class="tt-description-wrapper">
-																	<div class="tt-title-small">SUMMER <span class="tt-base-color">2018</span></div>
-																	<div class="tt-title-large">NEW ARRIVALS</div>
-																</div>
-															</div>
-														</a>
-													</div>
-												</div>
-									       </div>
-									    </div>
-									</li>
-									<li>
-										<a href="#">
-											<i class="icon-men"></i>
-											<span>MEN</span>
-										</a>
-										<div class="dropdown-menu size-lg">
-									       <div class="dropdown-menu-wrapper">
-									       		<div class="row">
-													<div class="col-sm-12">
-														<div class="row tt-col-list">
-															<div class="col-sm-4">
-																<a href="listing-right-column.html" class="tt-title-submenu">
-																	TOPS
-																	<img  src="images/loader.svg" data-src="images/custom/header-category-01.jpg" alt="">
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-right-column.html">Shirts</a></li>
-																	<li><a href="listing-right-column.html">Sweaters  <span class="tt-badge tt-new">New</span></a></li>
-																	<li>
-																		<a href="listing-right-column.html">Tops &amp; T-shirts</a>
-																		<ul>
-																			<li><a href="listing-right-column.html">Link Level 1</a></li>
-																			<li>
-																				<a href="listing-right-column.html">Link Level 1</a>
-																				<ul>
-																					<li><a href="listing-right-column.html">Link Level 2</a></li>
-																					<li>
-																						<a href="listing-right-column.html">Link Level 2</a>
-																						<ul>
-																							<li><a href="listing-right-column.html">Link Level 3</a></li>
-																							<li><a href="listing-right-column.html">Link Level 3</a></li>
-																							<li><a href="listing-right-column.html">Link Level 3</a></li>
-																							<li>
-																								<a href="listing-right-column.html">Link Level 3</a>
-																								<ul>
-																									<li>
-																										<a href="listing-right-column.html">Link Level 4</a>
-																										<ul>
-																											<li><a href="listing-right-column.html">Link Level 5</a></li>
-																											<li><a href="listing-right-column.html">Link Level 5</a></li>
-																											<li><a href="listing-right-column.html">Link Level 5</a></li>
-																											<li><a href="listing-right-column.html">Link Level 5</a></li>
-																											<li><a href="listing-right-column.html">Link Level 5</a></li>
-																										</ul>
-																									</li>
-																									<li><a href="listing-right-column.html">Link Level 4</a></li>
-																									<li><a href="listing-right-column.html">Link Level 4</a></li>
-																									<li><a href="listing-right-column.html">Link Level 4</a></li>
-																									<li><a href="listing-right-column.html">Link Level 4</a></li>
-																								</ul>
-																							</li>
-																							<li><a href="listing-right-column.html">Link Level 3</a></li>
-																						</ul>
-																					</li>
-																					<li><a href="listing-right-column.html">Link Level 2</a></li>
-																					<li><a href="listing-right-column.html">Link Level 2</a></li>
-																					<li><a href="listing-right-column.html">Link Level 2</a></li>
-																				</ul>
-																			</li>
-																			<li><a href="listing-right-column.html">Link Level 1</a></li>
-																			<li><a href="listing-right-column.html">Link Level 1</a></li>
-																			<li><a href="listing-right-column.html">Link Level 1</a></li>
-																		</ul>
-																	</li>
-																	<li><a href="listing-right-column.html">Sleeveless Tops</a></li>
-																	<li><a href="listing-right-column.html">Jackets</a></li>
-																	<li><a href="listing-right-column.html">Outerwear</a></li>
-																</ul>
-															</div>
-															<div class="col-sm-4">
-																<a class="tt-title-submenu" href="listing-right-column.html">
-																	BOTTOMS
-																	<img  src="images/loader.svg" data-src="images/custom/header-category-02.jpg" alt="">
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-right-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
-																	<li><a href="listing-right-column.html">Jeans</a></li>
-																	<li><a href="listing-right-column.html">Jumpsuit &amp; Shorts</a></li>
-																	<li><a href="listing-right-column.html">Skirts</a></li>
-																	<li><a href="listing-right-column.html">Tights</a></li>
-																</ul>
-															</div>
-															<div class="col-sm-4">
-																<a class="tt-title-submenu" href="listing-right-column.html">
-																	ACCESSORIES
-																	<img  src="images/loader.svg" data-src="images/custom/header-category-03.jpg" alt="">
-																</a>
-																<ul class="tt-megamenu-submenu">
-																	<li><a href="listing-right-column.html">Hats</a></li>
-																	<li><a href="listing-right-column.html">Scarves &amp; Snoods</a></li>
-																	<li><a href="listing-right-column.html">Belts</a></li>
-																	<li><a href="listing-right-column.html">Bags</a></li>
-																	<li><a href="listing-right-column.html">Shoes</a></li>
-																	<li><a href="listing-right-column.html">Sunglasses <span class="tt-badge tt-sale">Sale 15%</span></a></li>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-									       </div>
-									    </div>
-									</li>
-									<li>
-										<a href="#">
-											<i class="icon-new"></i>
-											<span>NEW ARRIVALS</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="icon-sale"></i>
-											<span>CLEARENCE</span>
-										</a>
-									</li>
-									<li><a href="#">
-										<i class="icon-theme"></i>
-										<span>BUY THEME!</span>
-									</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-                   <div class="tt-col-obj tt-obj-menu">
-                       <!-- tt-menu -->
-                       <div class="tt-desctop-parent-menu tt-parent-box">
-                           <div class="tt-desctop-menu">
-                               <nav>
-                                   <ul>
-                                       <div class="menuIconsFont"><i class="icon-f-54"></i></div>
-                                       <li class="dropdown tt-megamenu-col-02 selected">
-                                           <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Inicio</a>
+                        <div class="tt-col-obj obj-move-right">
+                            <div class="header-tel-info">
+                                <i class="icon-f-93"></i>777 2345 7885; +777 2345 7886
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container small-header">
+                    <div class="tt-header-holder">
+                        <div class="tt-col-obj tt-obj-menu-categories tt-desctop-parent-menu-categories">
+                            <div class="tt-menu-categories">
+                                <button class="tt-dropdown-toggle">
+                                    Menú de Categorías
+                                </button>
+                                <div class="tt-dropdown-menu">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-women"></i>
+                                                    <span>WOMEN</span>
+                                                </a>
+                                                <div class="dropdown-menu size-md">
+                                                    <div class="dropdown-menu-wrapper">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="row tt-col-list">
+                                                                    <div class="col-sm-4">
+                                                                        <a class="tt-title-submenu" href="listing-left-column.html">TOPS
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-left-column.html">Blouses &amp; Shirts</a></li>
+                                                                            <li><a href="listing-left-column.html">Dresses <span class="tt-badge tt-new">New</span></a></li>
+                                                                            <li>
+                                                                                <a href="listing-left-column.html">Tops &amp; T-shirts</a>
+                                                                                <ul>
+                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
+                                                                                    <li>
+                                                                                        <a href="listing-left-column.html">Link Level 1</a>
+                                                                                        <ul>
+                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
+                                                                                            <li>
+                                                                                                <a href="listing-left-column.html">Link Level 2</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
+                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
+                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
+                                                                                                    <li>
+                                                                                                        <a href="listing-left-column.html">Link Level 3</a>
+                                                                                                        <ul>
+                                                                                                            <li>
+                                                                                                                <a href="listing-left-column.html">Link Level 4</a>
+                                                                                                                <ul>
+                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
+                                                                                                                </ul>
+                                                                                                            </li>
+                                                                                                            <li><a href="listing-left-column.html">Link Level 4</a></li>
+                                                                                                        </ul>
+                                                                                                    </li>
+                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
+                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
+                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
+                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li><a href="listing-left-column.html">Sleeveless Tops</a></li>
+                                                                            <li><a href="listing-left-column.html">Sweaters</a></li>
+                                                                            <li><a href="listing-left-column.html">Jackets</a></li>
+                                                                            <li><a href="listing-left-column.html">Outerwear</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <a class="tt-title-submenu" href="listing-left-column.html">BOTTOMS
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-left-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
+                                                                            <li>
+                                                                                <a href="listing-left-column.html">Jeans</a>
+                                                                            </li>
+                                                                            <li><a href="listing-left-column.html">Leggings</a></li>
+                                                                            <li><a href="listing-left-column.html">Jumpsuit &amp; Shorts</a></li>
+                                                                            <li><a href="listing-left-column.html">Skirts</a></li>
+                                                                            <li><a href="listing-left-column.html">Tights</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <a class="tt-title-submenu" href="listing-left-column.html">ACCESSORIES
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-left-column.html">Jewellery</a></li>
+                                                                            <li><a href="listing-left-column.html">Hats</a></li>
+                                                                            <li><a href="listing-left-column.html">Scarves &amp; Snoods</a></li>
+                                                                            <li><a href="listing-left-column.html">Belts</a></li>
+                                                                            <li><a href="listing-left-column.html">Bags</a></li>
+                                                                            <li><a href="listing-left-column.html">Shoes <span class="tt-badge tt-sale">Sale 15%</span></a></li>
+                                                                            <li><a href="listing-left-column.html">Sunglasses</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <a href="listing-left-column.html" class="tt-promo-02">
+                                                                    <img src="/Files/images/custom/header-promo-01.jpg" alt="">
+                                                                    <div class="tt-description tt-point-h-l">
+                                                                        <div class="tt-description-wrapper">
+                                                                            <div class="tt-title-small">SUMMER <span class="tt-base-color">2018</span></div>
+                                                                            <div class="tt-title-large">NEW ARRIVALS</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-men"></i>
+                                                    <span>MEN</span>
+                                                </a>
+                                                <div class="dropdown-menu size-lg">
+                                                    <div class="dropdown-menu-wrapper">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="row tt-col-list">
+                                                                    <div class="col-sm-4">
+                                                                        <a href="listing-right-column.html" class="tt-title-submenu">TOPS
+    <img src="/Files/images/loader.svg" data-src="/Files/images/custom/header-category-01.jpg" alt="">
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-right-column.html">Shirts</a></li>
+                                                                            <li><a href="listing-right-column.html">Sweaters  <span class="tt-badge tt-new">New</span></a></li>
+                                                                            <li>
+                                                                                <a href="listing-right-column.html">Tops &amp; T-shirts</a>
+                                                                                <ul>
+                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
+                                                                                    <li>
+                                                                                        <a href="listing-right-column.html">Link Level 1</a>
+                                                                                        <ul>
+                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
+                                                                                            <li>
+                                                                                                <a href="listing-right-column.html">Link Level 2</a>
+                                                                                                <ul>
+                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
+                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
+                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
+                                                                                                    <li>
+                                                                                                        <a href="listing-right-column.html">Link Level 3</a>
+                                                                                                        <ul>
+                                                                                                            <li>
+                                                                                                                <a href="listing-right-column.html">Link Level 4</a>
+                                                                                                                <ul>
+                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
+                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
+                                                                                                                </ul>
+                                                                                                            </li>
+                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
+                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
+                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
+                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
+                                                                                                        </ul>
+                                                                                                    </li>
+                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
+                                                                                                </ul>
+                                                                                            </li>
+                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
+                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
+                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
+                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
+                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li><a href="listing-right-column.html">Sleeveless Tops</a></li>
+                                                                            <li><a href="listing-right-column.html">Jackets</a></li>
+                                                                            <li><a href="listing-right-column.html">Outerwear</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <a class="tt-title-submenu" href="listing-right-column.html">BOTTOMS
+    <img src="images/loader.svg" data-src="images/custom/header-category-02.jpg" alt="">
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-right-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
+                                                                            <li><a href="listing-right-column.html">Jeans</a></li>
+                                                                            <li><a href="listing-right-column.html">Jumpsuit &amp; Shorts</a></li>
+                                                                            <li><a href="listing-right-column.html">Skirts</a></li>
+                                                                            <li><a href="listing-right-column.html">Tights</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <a class="tt-title-submenu" href="listing-right-column.html">ACCESSORIES
+    <img src="/Files/images/loader.svg" data-src="/Files/images/custom/header-category-03.jpg" alt="">
+                                                                        </a>
+                                                                        <ul class="tt-megamenu-submenu">
+                                                                            <li><a href="listing-right-column.html">Hats</a></li>
+                                                                            <li><a href="listing-right-column.html">Scarves &amp; Snoods</a></li>
+                                                                            <li><a href="listing-right-column.html">Belts</a></li>
+                                                                            <li><a href="listing-right-column.html">Bags</a></li>
+                                                                            <li><a href="listing-right-column.html">Shoes</a></li>
+                                                                            <li><a href="listing-right-column.html">Sunglasses <span class="tt-badge tt-sale">Sale 15%</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-new"></i>
+                                                    <span>NEW ARRIVALS</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="icon-sale"></i>
+                                                    <span>CLEARENCE</span>
+                                                </a>
+                                            </li>
+                                            <li><a href="#">
+                                                <i class="icon-theme"></i>
+                                                <span>BUY THEME!</span>
+                                            </a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tt-col-obj tt-obj-menu">
+                            <!-- tt-menu -->
+                            <div class="tt-desctop-parent-menu tt-parent-box">
+                                <div class="tt-desctop-menu">
+                                    <nav>
+                                        <ul>
+                                            <div class="menuIconsFont"><i class="icon-f-54"></i></div>
+                                            <li class="dropdown tt-megamenu-col-02 selected">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Inicio</a>
 
-                                       </li>
-                                       <div class="menuIconsFont"><i class="icon-f-46"></i></div>
-                                       <li class="dropdown megamenu">
-                                           <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
-                                           <div class="dropdown-menu">
-                                               <div class="row tt-col-list">
-                                                   <div class="col">
-                                                       <h6 class="tt-title-submenu"><a href="#">Categorías</a></h6>
-                                                       <ul class="tt-megamenu-submenu" id="divCategoryMaster">
-                                                       </ul>
-                                                   </div>
+                                            </li>
+                                            <div class="menuIconsFont"><i class="icon-f-46"></i></div>
+                                            <li class="dropdown megamenu">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
+                                                <div class="dropdown-menu">
+                                                    <div class="row tt-col-list">
+                                                        <div class="col">
+                                                            <h6 class="tt-title-submenu"><a href="#">Categorías</a></h6>
+                                                            <ul class="tt-megamenu-submenu" id="divCategoryMaster">
+                                                            </ul>
+                                                        </div>
 
-                                               </div>
-                                           </div>
-                                       </li>
-                                       <div class="menuIconsFont"><i class="icon-e-46"></i></div>
-                                       <li class="dropdown tt-megamenu-col-01">
-                                           <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <div class="menuIconsFont"><i class="icon-e-46"></i></div>
+                                            <li class="dropdown tt-megamenu-col-01">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
 
-                                       </li>
-                                       <div class="menuIconsFont"><i class="icon-f-35"></i></div>
-                                       <li class="dropdown tt-megamenu-col-01">
-                                           <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
+                                            </li>
+                                            <div class="menuIconsFont"><i class="icon-f-35"></i></div>
+                                            <li class="dropdown tt-megamenu-col-01">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
 
-                                       </li>
-                                   </ul>
-                               </nav>
-                           </div>
-                       </div>
-                       <!-- /tt-menu -->
-                   </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- /tt-menu -->
+                        </div>
 
-                  <div class="tt-col-obj tt-obj-menu">
-                       <div class="tt-search-type2">
-                           <!-- tt-search -->
-                           <div role="search">
-                               <i class="icon-f-85"></i>
-                               <input class="tt-search-input" type="search" placeholder="SEARCH PRODUCTS..." aria-label="SEARCH PRODUCTS..." autocomplete="off">
-                               <button type="submit" class="tt-btn-search">SEARCH</button>
-                               <div class="search-results" style="display: none;"></div>
-                           </div>
-                           <!-- /tt-search -->
-                       </div>
-                   </div>
+                        <div class="tt-col-obj tt-obj-menu">
+                            <div class="tt-search-type2">
+                                <!-- tt-search -->
+                                <div role="search">
+                                    <i class="icon-f-85"></i>
+                                    <input class="tt-search-input" type="search" placeholder="SEARCH PRODUCTS..." aria-label="SEARCH PRODUCTS..." autocomplete="off">
+                                    <button type="submit" class="tt-btn-search">SEARCH</button>
+                                    <div class="search-results" style="display: none;"></div>
+                                </div>
+                                <!-- /tt-search -->
+                            </div>
+                        </div>
 
-				<div class="tt-col-obj tt-obj-options obj-move-right">
-					<!-- tt-search -->
-					<div class="tt-desctop-parent-search tt-parent-box">
-						<div class="tt-search tt-dropdown-obj">
-							<button id="SearchIdMaster" class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
-								<i class="icon-h-04"></i>
-							</button>
-							<div class="tt-dropdown-menu">
-								<div class="container">
-									<div>
-										<div class="tt-col">
-											<input type="text" class="tt-search-input" placeholder="Buscar Productos...">
-											<button class="tt-btn-search" type="submit"></button>
-										</div>
-										<div class="tt-col">
-											<button class="tt-btn-close icon-g-80"></button>
-										</div>
-										<div class="tt-info-text">
-											¿Qué estás buscando?
-										</div>
-										<div class="search-results">
-											<ul id="divSearchProductsMaster">
-											</ul>
-											
-										</div>
-                                                 <button type="button" class="tt-view-all"> <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"></a> Ver todo los productos</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /tt-search -->
-					<!-- tt-cart -->
-					<div class="tt-desctop-parent-cart tt-parent-box">
-						<div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
-							<button class="tt-dropdown-toggle" type="button">
-								<i class="icon-g-48"></i>
-								<span class="tt-badge-cart" id="idCantidadProductos">0</span>
-							</button>
-							<div class="tt-dropdown-menu" style="overflow-y: scroll;height: 615px;margin-top: 12px">
-								<div class="tt-mobile-add">
-									<h6 class="tt-title">CARRITO DE COMPRAS</h6>
-									<button class="tt-close" type="button">Cerrar</button>
-								</div>
-								<div class="tt-dropdown-inner">
-									<div class="tt-cart-layout">
-										<!-- layout emty cart -->
-										<div class="tt-cart-content">
-									
-											<div class="tt-cart-list" id="lstCartView">
-											
-											</div>
-											<div class="tt-cart-total-row" id="lblMasterSubtotal" runat="server">
-												<div class="tt-cart-total-title">SUBTOTAL:</div>
-												<div class="tt-cart-total-price">S/.0.00</div>
-											</div>
-											<div class="tt-cart-btn" id="btnMasterGoPay" runat="server" hidden>
-												<div class="tt-item">
-													<a href="/Layout/Review.aspx" class="btn" style="color:black !important">Ir a Carrito</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /tt-cart -->
-					<!-- tt-account -->
-					<div class="tt-desctop-parent-account tt-parent-box">
-						<div class="tt-account tt-dropdown-obj">
-							<button class="tt-dropdown-toggle"  data-tooltip="Mi Cuenta" data-tposition="bottom" type="button"><i class="icon-g-25"></i></button>
-							<div class="tt-dropdown-menu" style="margin-top:inherit">
-								<div class="tt-mobile-add">
-									<button class="tt-close">Cerrar</button>
-								</div>
-								<div class="tt-dropdown-inner">
-									<ul>
-									    <li id="lblCuenta" runat="server"><a id="lblCustomerHref" href="/Layout/Information.aspx"><i class="icon-g-25"></i>Mi Cuenta</a></li>
-									    <li id="lblInicioSession" runat="server"><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Iniciar Sesión</a></li>
-									    <li id="lblRegistrar" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-23"></i>Registrarse</a></li>
-									    <li id="lblCerrarSession" runat="server"><asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click"><i class="icon-g-93"></i><span class="logout">Cerrar Sesión</span></asp:LinkButton></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				</div>
+                        <div class="tt-col-obj tt-obj-options obj-move-right">
+                            <!-- tt-search -->
+                            <div class="tt-desctop-parent-search tt-parent-box">
+                                <div class="tt-search tt-dropdown-obj">
+                                    <button id="SearchIdMaster" class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
+                                        <i class="icon-h-04"></i>
+                                    </button>
+                                    <div class="tt-dropdown-menu">
+                                        <div class="container">
+                                            <div>
+                                                <div class="tt-col">
+                                                    <input type="text" class="tt-search-input" placeholder="Buscar Productos...">
+                                                    <button class="tt-btn-search" type="submit"></button>
+                                                </div>
+                                                <div class="tt-col">
+                                                    <button class="tt-btn-close icon-g-80"></button>
+                                                </div>
+                                                <div class="tt-info-text">
+                                                    ¿Qué estás buscando?
+                                                </div>
+                                                <div class="search-results">
+                                                    <ul id="divSearchProductsMaster">
+                                                    </ul>
 
-			</div>
-		</div>
-	</div>
+                                                </div>
+                                                <button type="button" class="tt-view-all"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>"></a>Ver todo los productos</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tt-search -->
+                            <!-- tt-cart -->
+                            <div class="tt-desctop-parent-cart tt-parent-box">
+                                <div class="tt-cart tt-dropdown-obj" data-tooltip="Carrito" data-tposition="bottom">
+                                    <button class="tt-dropdown-toggle" type="button">
+                                        <i class="icon-g-48"></i>
+                                        <span class="tt-badge-cart" id="idCantidadProductos">0</span>
+                                    </button>
+                                    <div class="tt-dropdown-menu" style="overflow-y: scroll; height: 615px; margin-top: 12px">
+                                        <div class="tt-mobile-add">
+                                            <h6 class="tt-title">CARRITO DE COMPRAS</h6>
+                                            <button class="tt-close" type="button">Cerrar</button>
+                                        </div>
+                                        <div class="tt-dropdown-inner">
+                                            <div class="tt-cart-layout">
+                                                <!-- layout emty cart -->
+                                                <div class="tt-cart-content">
+
+                                                    <div class="tt-cart-list" id="lstCartView">
+                                                    </div>
+                                                    <div class="tt-cart-total-row" id="lblMasterSubtotal" runat="server">
+                                                        <div class="tt-cart-total-title">SUBTOTAL:</div>
+                                                        <div class="tt-cart-total-price">S/.0.00</div>
+                                                    </div>
+                                                    <div class="tt-cart-btn" id="btnMasterGoPay" runat="server" hidden>
+                                                        <div class="tt-item">
+                                                            <a href="/Layout/Review.aspx" class="btn" style="color: black !important">Ir a Carrito</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tt-cart -->
+                            <!-- tt-account -->
+                            <div class="tt-desctop-parent-account tt-parent-box">
+                                <div class="tt-account tt-dropdown-obj">
+                                    <button class="tt-dropdown-toggle" data-tooltip="Mi Cuenta" data-tposition="bottom" type="button"><i class="icon-g-25"></i></button>
+                                    <div class="tt-dropdown-menu" style="margin-top: inherit">
+                                        <div class="tt-mobile-add">
+                                            <button class="tt-close">Cerrar</button>
+                                        </div>
+                                        <div class="tt-dropdown-inner">
+                                            <ul>
+                                                <li id="lblCuenta" runat="server"><a id="lblCustomerHref" href="/Layout/Information.aspx"><i class="icon-g-25"></i>Mi Cuenta</a></li>
+                                                <li id="lblInicioSession" runat="server"><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Iniciar Sesión</a></li>
+                                                <li id="lblRegistrar" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-23"></i>Registrarse</a></li>
+                                                <li id="lblCerrarSession" runat="server">
+                                                    <asp:LinkButton ID="btnCerrarSesion" runat="server" OnClick="btnCerrarSesion_Click"><i class="icon-g-93"></i><span class="logout">Cerrar Sesión</span></asp:LinkButton></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 	<!-- /tt-desktop-header -->
 
            <!-- stuck nav -->
-	<%--<div class="tt-stuck-nav">
-		<div class="container">
-			<div class="tt-header-row ">
-				<div class="tt-stuck-parent-menu"></div>
-				<div class="tt-stuck-parent-search tt-parent-box"></div>
-				<div class="tt-stuck-parent-cart tt-parent-box"></div>
-				<div class="tt-stuck-parent-account tt-parent-box"></div>
-				<div class="tt-stuck-parent-multi tt-parent-box"></div>
-			</div>
-		</div>
-	</div>--%>
+
             <div class="tt-stuck-nav">
                 <div class="container">
                     <div class="tt-header-row ">
@@ -1461,110 +1269,128 @@
 
         <footer>
            
-            <div class="tt-footer-col tt-color-scheme-01" id="divFooter2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-2 col-xl-3">
-                            <div class="tt-mobile-collapse">
-                                <h4 class="tt-collapse-title">Misión y Visión
-                                </h4>
-                                <div class="tt-collapse-content">
-                                    <ul class="tt-list">
-                                        <li><a href="#">Misión y Visión</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-2 col-xl-3">
-                            <div class="tt-mobile-collapse">
-                                <h4 class="tt-collapse-title">MI CUENTA
-                                </h4>
-                                <div class="tt-collapse-content">
-                                    <ul class="tt-list">
-                                        <li><a href="<%=Page.ResolveUrl("~/Layout/Login.aspx") %>">Iniciar sesion</a></li>
-                                        <li><a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>">Registrarme</a></li>
-                                                                                
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="tt-mobile-collapse">
-                                <h4 class="tt-collapse-title">ACERCA DE
-                                </h4>
-                                <div class="tt-collapse-content">
-                                    <p>
-                                        Somos una tienda creada para abastecer con alimentos de primera necesidad.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="tt-newsletter">
-                                <div class="tt-mobile-collapse">
-                                    <h4 class="tt-collapse-title">CONTACTOS
-                                    </h4>
-                                    <div class="tt-collapse-content">
-                                        <address>
-                                            <p><span>Dirección:</span> Servicio Online - Trujillo</p>
-                                            <p><span>Teléfono:</span> +51 - 924511653</p>
-                                            <p><span>Hora:</span> 8am - 9pm </p>
-                                            <%--<p><span>Correo Electrónico:</span> <a href="noego901@gmail.com">igargossac@hotmail.com - noego901@gmail.com</a></p>--%>
-                                        </address>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tt-footer-custom">
-                <div class="container">
-                    <div class="tt-row">
-                        <div class="tt-col-left">
-                            <div class="tt-col-item tt-logo-col">
-                                <!-- logo -->
-                                <a class="tt-logo tt-logo-alignment" href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">
-                                    <img src="/Files/images/slides/01/elcanaston.jpeg" style="border-radius: 50%"/>
-                                </a>
-                                <!-- /logo -->
-                            </div>
-                            <div class="tt-col-item">
-                                <!-- copyright -->
-                                <div class="tt-box-copyright">
-                                    &copy; El Canaston 2020. Todos los derechos reservados
-                                </div>
-                                <!-- /copyright -->
-                            </div>
-                        </div>
-                        <div class="tt-col-right">
-                            <div class="tt-col-item">
-                                <!-- payment-list -->
-                                <ul class="tt-payment-list">
-                                    <li><a href="#"><span class="icon-Stripe"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
-                                    </span></a></li>
-                                    <li><a href="#"><span class="icon-paypal-2">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
-                                    </span></a></li>
-                                    <li><a href="#"><span class="icon-visa">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
-                                    </span></a></li>
-                                    <li><a href="#"><span class="icon-mastercard">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span>
-                                    </span></a></li>
-                                    <li><a href="#"><span class="icon-discover">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span>
-                                    </span></a></li>
-                                    <li><a href="#"><span class="icon-american-express">
-                                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
-                                    </span></a></li>
-                                </ul>
-                                <!-- /payment-list -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="tt-footer-col tt-color-scheme-01">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-2 col-xl-3">
+					<div class="tt-mobile-collapse">
+						<h4 class="tt-collapse-title">
+							CATEGORIES
+						</h4>
+						<div class="tt-collapse-content">
+							<ul class="tt-list">
+								<li><a href="listing-collection.html">Women</a></li>
+								<li><a href="listing-collection.html">Men</a></li>
+								<li><a href="listing-collection.html">Accessories</a></li>
+								<li><a href="listing-collection.html">Shoes</a></li>
+								<li><a href="listing-collection.html">New Arrivals</a></li>
+								<li><a href="listing-collection.html">Clearence</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2 col-xl-3">
+					<div class="tt-mobile-collapse">
+						<h4 class="tt-collapse-title">
+							MY ACCOUNT
+						</h4>
+						<div class="tt-collapse-content">
+							<ul class="tt-list">
+								<li><a href="account_order.html">Orders</a></li>
+								<li><a href="page404.html">Compare</a></li>
+								<li><a href="page404.html">Wishlist</a></li>
+								<li><a href="login.html">Log In</a></li>
+								<li><a href="create-account.html">Register</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 col-xl-3">
+					<div class="tt-mobile-collapse">
+						<h4 class="tt-collapse-title">
+							CONTACTS
+						</h4>
+						<div class="tt-collapse-content">
+							<address>
+								<p><span>Address:</span> 2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America</p>
+								<p><span>Phone:</span> +777 2345 7885;  +777 2345 7886</p>
+								<p><span>Hours:</span> 7 Days a week from 10 am to 6 pm</p>
+								<p><span>E-mail:</span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></p>
+							</address>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 col-xl-3">
+					<div class="tt-newsletter">
+						<div class="tt-mobile-collapse">
+							<h4 class="tt-collapse-title">
+								NEWSLETTER SIGNUP
+							</h4>
+							<div class="tt-collapse-content">
+								<p>
+									Sign up for our e-mail and be the first who know our special offers! Furthermore, we will give a 15% discount on the next order after you sign up.
+								</p>
+								<form id="newsletterform" class="form-inline form-default" method="post" novalidate="novalidate" action="#">
+									<div class="form-group">
+										<input type="text" name="email" class="form-control" placeholder="Enter your e-mail">
+										<button type="submit" class="btn">JOIN US</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<ul class="tt-social-icon">
+						<li><a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a></li>
+						<li><a class="icon-h-58" target="_blank" href="http://www.facebook.com/"></a></li>
+						<li><a class="icon-g-66" target="_blank" href="http://www.twitter.com/"></a></li>
+						<li><a class="icon-g-67" target="_blank" href="http://www.google.com/"></a></li>
+						<li><a class="icon-g-70" target="_blank" href="https://instagram.com/"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tt-footer-custom tt-color-scheme-04">
+		<div class="container">
+			<div class="tt-row">
+				<div class="tt-col-left">
+					<div class="tt-col-item tt-logo-col">
+						<a class="tt-logo tt-logo-alignment" href="index.html">
+							<img src="/Files/images/custom/logo-white.png" alt="">
+						</a>
+					</div>
+					<div class="tt-col-item">
+						<div class="tt-box-copyright">
+							&copy; Wokiee 2018. All Rights Reserved
+						</div>
+					</div>
+				</div>
+				<div class="tt-col-right">
+					<div class="tt-col-item">
+						<ul class="tt-payment-list">
+							<li><a href="page404.html"><span class="icon-Stripe2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
+			                </span></a></li>
+							<li><a href="page404.html"> <span class="icon-paypal-22">
+			                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
+			                </span></a></li>
+							<li><a href="page404.html"><span class="icon-visa2">
+			                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
+			                </span></a></li>
+							<li><a href="page404.html"><span class="icon-mastercard2">
+			                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span>
+			                </span></a></li>
+							<li><a href="page404.html"><span class="icon-discover2">
+			                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span><span class="path15"></span><span class="path16"></span>
+			                </span></a></li>
+							<li><a href="page404.html"><span class="icon-american-express2">
+			                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
+			                </span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
         </footer>
         <a href="#" class="tt-back-to-top">VOLVER ARRIBA</a>
         <!-- modal (AddToCartProduct) -->
@@ -1940,23 +1766,7 @@
         {{/each}}
     </script>
 
-     <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
-	       {{# each request}}
-         <div class="col-2 col-md-4 col-lg-3">
-             <a href="/Layout/ProductsList.aspx?category={{Id}}" class="tt-collection-item">
-                 <div class="tt-image-box">
-                     <img src="/Files/images/product/product-20.jpg" alt="">
-                 </div>
-                 <div class="tt-description">
-                     <h2 class="tt-title">{{Name}}</h2>
-                     <ul class="tt-add-info">
-                         <li>45 PRODUCTS</li>
-                     </ul>
-                 </div>
-             </a>
-         </div>
-	       {{/each}}
-    </script>
+ 
 
 </body>
 </html>
