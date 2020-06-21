@@ -1,10 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="../Content/bootstrap.css" rel="stylesheet" />
        <script type="text/javascript">
-        $(function () {
-        });
-
+       
         function Fn_LoginCustomer()
         {
             try {
@@ -84,15 +81,9 @@
 										<label for="loginInputEmail">Contraseña *</label>
 										<input runat="server" type="password" name="passowrd" class="form-control" id="txtPassowrd" placeholder="Ingrese su Password">
 									</div>
-									<div class="row">
-                                                 <div class="col-xs-12 col-md-12">
-                                                     <div class="col-xs-12 col-md-4">
-                                                         <button class="btn btn-border" type="button" onclick="Fn_LoginCustomer()">Ingresar</button>
-                                                     </div>
-                                                     <div class="col-xs-12 col-md-4">
-                                                         <a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-border">Registrate Aquí</a>
-                                                     </div>
-                                                 </div>
+									<div class="form-group">
+                                                  <button class="btn btn-border" type="button" onclick="Fn_LoginCustomer()">Ingresar</button>
+                                                  <a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-border">Registrate Aquí</a>
 
 										<div class="col-auto align-self-end" style="display:none">
 											<div class="form-group">

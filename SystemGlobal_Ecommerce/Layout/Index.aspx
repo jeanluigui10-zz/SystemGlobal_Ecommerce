@@ -1404,22 +1404,5 @@
         {{/each}}
     </script>
 
-        <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
-	       {{# each request}}
-         <div class="col-2 col-md-4 col-lg-3">
-             <a href="/Layout/ProductsList.aspx?category={{Id}}" class="tt-collection-item">
-                 <div class="tt-image-box">
-                     <img src="/Files/images/product/product-20.jpg" alt="">
-                 </div>
-                 <div class="tt-description">
-                     <h2 class="tt-title">{{Name}}</h2>
-                     <ul class="tt-add-info">
-                         <li>45 PRODUCTS</li>
-                     </ul>
-                 </div>
-             </a>
-         </div>
-	       {{/each}}
-    </script>
-
+     
 </asp:Content>

@@ -25259,7 +25259,7 @@ html.ie .tt-btn-col-close {
     display: inline-block;
     position: relative;
     letter-spacing: 0.04em;
-    color: #2879fe;
+    color: #fd2020;
     font-size: 14px;
     margin-top: 2px;
     -moz-transition: color 0.2s linear;
@@ -25277,7 +25277,7 @@ html.ie .tt-btn-col-close {
         margin-right: 6px;
         font-weight: normal;
         position: relative;
-        color: #2879fe;
+        color: #fd2020;
         -moz-transition: color 0.2s linear;
         -o-transition: color 0.2s linear;
         -webkit-transition: color 0.2s linear;

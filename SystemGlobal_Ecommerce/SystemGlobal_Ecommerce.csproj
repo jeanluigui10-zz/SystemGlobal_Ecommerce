@@ -965,6 +965,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="HomePage.Master" />
     <Content Include="Layout\About\Services.aspx" />
+    <Content Include="Layout\ajax_product.php" />
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\Login.aspx" />

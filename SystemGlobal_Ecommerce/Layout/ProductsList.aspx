@@ -5,6 +5,7 @@
 
      $(function () {
          fn_init();
+         $('.slick-slider').slick('refresh');
      });
 
      function fn_init() {
