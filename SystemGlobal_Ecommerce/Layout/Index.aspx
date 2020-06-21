@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Index" %>
 <%@ Import Namespace="SystemGlobal_Ecommerce.src.app_code" %>  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   
+
      <script type="text/javascript">
 
          $(function () {
              fn_init();
-
+             $('.slick-slider').slick('refresh');
          });
 
          function fn_init() {
