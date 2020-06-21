@@ -200,7 +200,7 @@
                 <a class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Vista rápida" data-tposition="left"></a>
                 <%--<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>--%>
                 <%--<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>--%>
-                <a href="#"<%--href="ProductSelected.aspx?p={{Id}}"--%>>
+                <a <%--href="ProductSelected.aspx?p={{Id}}"--%>>
                     <span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 				<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
                 </a>

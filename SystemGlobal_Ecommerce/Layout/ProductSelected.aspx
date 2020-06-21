@@ -5,6 +5,7 @@
 
         $(function () {
             Fn_init();
+            $('.slick-slider').slick('refresh');
         });
 
         function Fn_init() {
@@ -83,10 +84,10 @@
 		<!-- mobile product slider  -->
 		<div class="tt-mobile-product-layout visible-xs">
 			<div class="tt-mobile-product-slider arrow-location-center slick-animated-show-js">
-				<div><img src="../Files/images/product/product-01.jpg" alt=""></div>
-				<div><img src="../Files/images/product/product-01-02.jpg" alt=""></div>
-				<div><img src="../Files/images/product/product-01-03.jpg" alt=""></div>
-				<div><img src="../Files/images/product/product-01-04.jpg" alt=""></div>
+				<div><img src="/Files/images/product/product-01.jpg" alt=""></div>
+				<div><img src="/Files/images/product/product-01-02.jpg" alt=""></div>
+				<div><img src="/Files/images/product/product-01-03.jpg" alt=""></div>
+				<div><img src="/Files/images/product/product-01-04.jpg" alt=""></div>
 				<div>
 					<div class="embed-responsive embed-responsive-16by9">
 						<iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
@@ -143,10 +144,10 @@
 					<div class="row">
 						<div class="col-12 col-md-5 col-lg-6">
 							<div class="tt-mobile-product-slider arrow-location-center">
-								<div><img src="images/loader.svg" data-src="../Files/images/product/product-01.jpg" alt=""></div>
-								<div><img src="images/loader.svg" data-src="../Files/images/product/product-01-02.jpg" alt=""></div>
-								<div><img src="images/loader.svg" data-src="../Files/images/product/product-01-03.jpg" alt=""></div>
-								<div><img src="images/loader.svg" data-src="../Files/images/product/product-01-04.jpg" alt=""></div>
+								<div><img src="images/loader.svg" data-src="/Files/images/product/product-01.jpg" alt=""></div>
+								<div><img src="images/loader.svg" data-src="/Files/images/product/product-01-02.jpg" alt=""></div>
+								<div><img src="images/loader.svg" data-src="/Files/images/product/product-01-03.jpg" alt=""></div>
+								<div><img src="images/loader.svg" data-src="/Files/images/product/product-01-04.jpg" alt=""></div>
 								<div>
 									<div class="tt-video-block">
 										<a href="#" class="link-video"></a>
@@ -305,22 +306,22 @@
                          <div class="tt-product-single-img">
                              <div>
                                  <button class="tt-btn-zomm tt-top-right"><i class="icon-f-86"></i></button>
-                                 <img class="zoom-product" src='../Files/images/product/product-01.jpg' data-zoom-image="../Files/images/product/product-01.jpg" alt="">
+                                 <img class="zoom-product" src='/Files/images/product/product-01.jpg' data-zoom-image="/Files/images/product/product-01.jpg" alt="">
                              </div>
                          </div>
                          <div class="tt-product-single-carousel-vertical">
                              <ul id="smallGallery" class="tt-slick-button-vertical  slick-animated-show-js">
-                                 <li><a class="zoomGalleryActive" href="#" data-image="../Files/images/product/product-01.jpg" data-zoom-image="../Files/images/product/product-01.jpg">
-                                     <img src="../Files/images/product/product-01.jpg" alt=""></a></li>
-                                 <li><a href="#" data-image="../Files/images/product/product-01.jpg" data-zoom-image="../Files/images/product/product-01.jpg">
-                                     <img src="../Files/images/product/product-01.jpg" alt=""></a></li>
-                                 <li><a href="#" data-image="../Files/images/product/product-01.jpg" data-zoom-image="../Files/images/product/product-01.jpg">
-                                     <img src="../Files/images/product/product-01.jpg" alt=""></a></li>
-                                 <li><a href="#" data-image="../Files/images/product/product-01.jpg" data-zoom-image="../Files/images/product/product-01.jpg">
-                                     <img src="../Files/images/product/product-01.jpg" alt=""></a></li>
+                                 <li><a class="zoomGalleryActive" href="#" data-image="/Files/images/product/product-01.jpg" data-zoom-image="/Files/images/product/product-01.jpg">
+                                     <img src="/Files/images/product/product-01.jpg" alt=""></a></li>
+                                 <li><a href="#" data-image="/Files/images/product/product-01.jpg" data-zoom-image="/Files/images/product/product-01.jpg">
+                                     <img src="/Files/images/product/product-01.jpg" alt=""></a></li>
+                                 <li><a href="#" data-image="/Files/images/product/product-01.jpg" data-zoom-image="/Files/images/product/product-01.jpg">
+                                     <img src="/Files/images/product/product-01.jpg" alt=""></a></li>
+                                 <li><a href="#" data-image="/Files/images/product/product-01.jpg" data-zoom-image="/Files/images/product/product-01.jpg">
+                                     <img src="/Files/images/product/product-01.jpg" alt=""></a></li>
                                  <li>
                                      <div class="video-link-product" data-toggle="modal" data-type="youtube" data-target="#modalVideoProduct" data-value="">
-                                         <img src="../Files/images/product/product-small-empty.png" alt="">
+                                         <img src="/Files/images/product/product-small-empty.png" alt="">
                                          <div>
                                              <i class="icon-f-32"></i>
                                          </div>
@@ -328,7 +329,7 @@
                                  </li>
                                  <li>
                                      <div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="video/video.mp4" data-poster="video/video_img.jpg">
-                                         <img src="../Files/images/product/product-small-empty.png" alt="">
+                                         <img src="/Files/images/product/product-small-empty.png" alt="">
                                          <div>
                                              <i class="icon-f-32"></i>
                                          </div>
@@ -456,7 +457,7 @@
                                              <div class="tt-item">
                                                  <div class="tt-avatar">
                                                      <a href="#">
-                                                         <img src="../Files/images/product/single/review-comments-img-01.jpg" alt=""></a>
+                                                         <img src="/Files/images/product/single/review-comments-img-01.jpg" alt=""></a>
                                                  </div>
                                                  <div class="tt-content">
                                                      <div class="tt-rating">
@@ -479,7 +480,7 @@
                                              <div class="tt-item">
                                                  <div class="tt-avatar">
                                                      <a href="#">
-                                                         <img src="../Files/images/product/single/review-comments-img-02.jpg" alt=""></a>
+                                                         <img src="/Files/images/product/single/review-comments-img-02.jpg" alt=""></a>
                                                  </div>
                                                  <div class="tt-content">
                                                      <div class="tt-rating">

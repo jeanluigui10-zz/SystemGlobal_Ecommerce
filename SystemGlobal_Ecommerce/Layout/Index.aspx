@@ -54,11 +54,11 @@
 					<img src="/Files/images/slides/slick-slider/slide-01.jpg" alt="">
 					<div class="tt-description tt-point-h-c">
 						<div class="tt-description-wrapper">
-							<div class="tt-title-small"><span class="tt-base-color">Multipurpose</span></div>
+							<%--<div class="tt-title-small"><span class="tt-base-color">Multipurpose</span></div>
 							<div class="tt-title-large"><span class="tt-white-color">Premium<br>Html Template</span></div>
 							<p>
 								<span class="tt-white-color">30 skins, powerful features, great support, exclusive offer</span>
-							</p>
+							</p>--%>
 							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 						</div>
 					</div>
@@ -67,11 +67,11 @@
 					<img src="/Files/images/slides/slick-slider/slide-02.jpg" alt="">
 					<div class="tt-description tt-point-h-r">
 						<div class="tt-description-wrapper">
-							<div class="tt-title-small"><span class="tt-base-color">Ready To</span></div>
+							<%--<div class="tt-title-small"><span class="tt-base-color">Ready To</span></div>
 							<div class="tt-title-large"><span class="tt-white-color">Use Unique<br>Demos</span></div>
 							<p>
 								<span class="tt-white-color">Optimized for speed, website that sells</span>
-							</p>
+							</p>--%>
 							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 						</div>
 					</div>
@@ -80,11 +80,11 @@
 					<img src="/Files/images/slides/slick-slider/slide-03.jpg" alt="">
 					<div class="tt-description tt-point-h-r">
 						<div class="tt-description-wrapper">
-							<div class="tt-title-small"><span class="tt-base-color">Oberlo</span></div>
+							<%--<div class="tt-title-small"><span class="tt-base-color">Oberlo</span></div>
 							<div class="tt-title-large">Find Products for<br>Shop Store</div>
 							<p>
 								Oberlo<br> allows you to easily import dropshipped products directly into your ecommerce store
-							</p>
+							</p>--%>
 							<div class="tp-caption1-wd-4"><a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>" style="font-weight:bold !important; color:black !important" class="btn btn-xl" data-text="ARMA TU PEDIDO!">ARMA TU PEDIDO!</a></div>
 						</div>
 					</div>

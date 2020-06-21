@@ -59,7 +59,7 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 if (VsId > 0)
                 {
-                    DataTable dt = ProductBL.Instance.Product_GetList(ref objEntity);
+                    DataTable dt = ProductBL.Instance.Products_GetList_ById(ref objEntity, VsId);
                     if (objEntity.Errors.Count == 0)
                     {
                         if (dt != null)

@@ -948,6 +948,9 @@
     <Content Include="Files\images\slides\16\slide-03.jpg" />
     <Content Include="Files\images\slides\17\slide-01.jpg" />
     <Content Include="Files\images\slides\17\slide-02.jpg" />
+    <Content Include="Files\images\slides\slick-slider\1.jpg" />
+    <Content Include="Files\images\slides\slick-slider\2.jpg" />
+    <Content Include="Files\images\slides\slick-slider\3.jpg" />
     <Content Include="Files\images\slides\slick-slider\slide-01.jpg" />
     <Content Include="Files\images\slides\slick-slider\slide-02.jpg" />
     <Content Include="Files\images\slides\slick-slider\slide-03.jpg" />
