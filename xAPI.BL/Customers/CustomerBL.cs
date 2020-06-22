@@ -40,6 +40,19 @@ namespace xAPI.BL.Customers
             }
             return success;
         }
+        public Boolean Customer_Subject(ref BaseEntity objEntity, Customer obj)
+        {
+            Boolean success = false;
+            try
+            {
+                success = CustomerDAO.Instance.Customer_Subject(ref objEntity, obj);
+            }
+            catch (Exception ex)
+            {
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
 
         #endregion
         public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email, Int32 idCustomer) 

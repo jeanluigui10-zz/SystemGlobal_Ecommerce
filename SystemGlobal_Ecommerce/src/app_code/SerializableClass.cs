@@ -2341,6 +2341,9 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public String Password { get; set; }
         public String CreatedDate { get; set; }
         public String Address1 { get; set; }
+        public String Message { get; set; }
+        public String Subject { get; set; }
+
 
     }
 
