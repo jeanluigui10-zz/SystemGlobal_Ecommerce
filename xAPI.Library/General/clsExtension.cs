@@ -287,5 +287,10 @@ namespace xAPI.Library.General
                 }
             }
         }
+
+        public static String ToStringMoney(this Decimal valor)
+        {
+            return valor.ToString("#,0.00", CultureInfo.InvariantCulture);
+        }
     }    
 }

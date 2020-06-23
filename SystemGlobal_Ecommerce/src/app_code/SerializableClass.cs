@@ -2303,7 +2303,9 @@ namespace SystemGlobal_Ecommerce.src.app_code
     {
         public String Id { get; set; }
         public String Name { get; set; }
- 
+        public String NameResource { get; set; }
+
+
     }
     [Serializable]
     public class srPayCulqi

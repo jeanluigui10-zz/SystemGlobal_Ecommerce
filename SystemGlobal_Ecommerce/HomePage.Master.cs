@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Script.Serialization;
 using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Category;
-using xAPI.BL.Resource;
 using xAPI.Entity.Order;
 using xAPI.Library.Base;
 using xAPI.Library.General;
@@ -64,6 +63,7 @@ namespace SystemGlobal_Ecommerce
                         {
                             Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
                             Name = item["Name"].ToString(),
+                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
                         });
                     }
                 }
