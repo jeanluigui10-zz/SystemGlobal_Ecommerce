@@ -48,7 +48,7 @@ namespace xAPI.Dao.Customers
             }
             return dt;
         }
-
+        
         public Boolean Customer_Save(ref BaseEntity objEntity, Customer obj)
         {
             SqlCommand cmd = null;
@@ -195,5 +195,34 @@ namespace xAPI.Dao.Customers
             }
             return objCustomer;
         }
+
+        public Boolean Customer_Subject(ref BaseEntity objEntity, Customer obj)
+        {
+            SqlCommand cmd = null;
+            Boolean success = false;
+            try
+            {
+                cmd = new SqlCommand("CustomerContact_Save_Sp", clsConnection.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", obj.FirstName);
+                cmd.Parameters.AddWithValue("@email", obj.Email);
+                cmd.Parameters.AddWithValue("@subject", obj.Subject);
+                cmd.Parameters.AddWithValue("@message", obj.Message);
+
+                cmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                success = false;
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "Ocurrio un error al registrar Asunto not found."));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return success;
+        }
+
     }
 }

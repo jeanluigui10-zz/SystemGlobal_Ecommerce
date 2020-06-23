@@ -13,7 +13,9 @@ namespace xAPI.Entity.Customers
         public String NumberDocument { get; set; }
         public String CellPhone { get; set; }
         public String Email { get; set; }
+        public String Message { get; set; }
         public String Password { get; set; }
+        public String Subject { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Int32 CreatedBy { get; set; }
