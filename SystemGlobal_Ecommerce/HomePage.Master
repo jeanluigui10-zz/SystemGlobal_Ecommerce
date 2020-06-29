@@ -791,8 +791,11 @@
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
                     </li>
-                    <li>
+                    <%--<li>
                         <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
+                    </li>--%>
+                    <li>
+                        <a href="<%=Page.ResolveUrl("~/Layout/Order/OrderHistory.aspx") %>">Mis Ordenes</a>
                     </li>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
@@ -939,9 +942,14 @@
                                                     </div>
                                                 </div>--%>
                                             </li>
-                                            <div class="menuIconsFont"><i class="icon-e-46"></i></div>
+                                            <%--<div class="menuIconsFont"><i class="icon-e-46"></i></div>
                                             <li class="dropdown tt-megamenu-col-01">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
+
+                                            </li>--%>
+                                            <div class="menuIconsFont"><i class="icon-e-85"></i></div>
+                                            <li class="dropdown tt-megamenu-col-01">
+                                                <a href="<%=Page.ResolveUrl("~/Layout/Order/OrderHistory.aspx") %>">Mis Ordenes</a>
 
                                             </li>
                                             <div class="menuIconsFont"><i class="icon-f-35"></i></div>

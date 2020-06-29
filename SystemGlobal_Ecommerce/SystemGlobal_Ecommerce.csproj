@@ -972,6 +972,7 @@
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\Login.aspx" />
+    <Content Include="Layout\Order\OrderHistory.aspx" />
     <Content Include="Layout\ProductSelected.aspx" />
     <Content Include="Layout\ProductsList.aspx" />
     <Content Include="Layout\Quotation.aspx" />
@@ -2177,6 +2178,13 @@
     </Compile>
     <Compile Include="Layout\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\Order\OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\Order\OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\ProductSelected.aspx.cs">
       <DependentUpon>ProductSelected.aspx</DependentUpon>
