@@ -581,7 +581,6 @@
                  Fn_ListCategoryMaster($("#<%=hfDataListCategory.ClientID%>").val());
              }
 
-
          });
 
          function Fn_ListProductsSearch(data) {
@@ -659,15 +658,38 @@
                  var item = fn_LoadTemplates("datatable-CategoryMaster", object);
                  $("#divCategoryMaster").html(item);
                  var item2 = fn_LoadTemplates("datatable-CategorySliderMaster", object);
-                 $("#divSliderCategory").html(item2);
+                 $("#divSliderCategoryMaster").html(item2);
+
+                 for (var i = 0; i < objCategory.length; i++) {
+                     Fn_LoadSubCategory(objCategory[i].IdCategory);
+                 }
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
              }
-
          }
 
-        function updateDataTableSelectAllCtrl(table) {
+        function Fn_LoadSubCategory(IdCategory) {
+             var success = function (asw) {
+                 try {
+                     if (asw.d !== null) {
+                         var objsubCategory = $.parseJSON(asw.d);
+                         var object = {};
+                         object.request = objsubCategory;
+                         var item = fn_LoadTemplates("datatable-SubCategoryMaster", object);
+                         $("#SubCategoryMaster_" + objsubCategory[0].IdCategory).html(item);
+                     }
+                 } catch (e) {
+                     fn_message('e', 'Ocurrió un error.', 'message_row');
+                 }
+             };
+             var error = function (jqXHR, textStatus, errorThrown) {
+                 fn_message('e', 'Ocurrió un error.', 'message_row');
+             };
+            fn_callmethod("/src/control/WebMethodMaster.aspx/SubCategory_GetListBy_IdCategory", '{IdCategory: "' + IdCategory + '"}', success, error);
+         }
+
+         function updateDataTableSelectAllCtrl(table) {
             var $table = table.table().node();
             var $chkbox_all = $('tbody input[type="checkbox"]', $table);
             var $chkbox_checked = $('tbody input[type="checkbox"]:checked', $table);
@@ -718,7 +740,7 @@
          }
 
          window.onload = Fn_VisibleChat;--%>
-    </script>
+     </script>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -744,18 +766,17 @@
                     <div class="tt-header-row tt-top-row">
                         <div class="tt-col-left">
                             <div class="tt-box-info">
-                                <ul>
-                                    <li><i class="icon-f-44"></i>ENVÍO ESTÁNDAR GRATUITO DE 2 DÍAS EN PEDIDOS MAYORES A S/.150 <a href="#" class="tt-link-underline">Comprar ahora!</a></li>
+                                <ul><i class="icon-f-44" style="padding-top: 8px;padding-bottom: 8px;letter-spacing: 0.01em;font-size: 14px"></i>
+                                    <li id="lblNoteDeliveryHeader" runat="server"></li> <li><a href="/Layout/ProductsList.aspx" class="tt-link-underline">Comprar ahora!</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="tt-col-right ml-auto">
                             <ul class="tt-social-icon">
-                                <li><a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a></li>
-                                <li><a class="icon-h-58" target="_blank" href="http://www.twitter.com/"></a></li>
-                                <li><a class="icon-g-66" target="_blank" href="http://www.google.com/"></a></li>
-                                <li><a class="icon-g-67" target="_blank" href="http://www.instagram.com/"></a></li>
-                                <li><a class="icon-g-70" target="_blank" href="#"></a></li>
+                                <li><a id="lblFacebookHeader" runat="server" class="icon-g-64" target="_blank" href="#"></a></li>
+                                <li><a id="lblInstagramHeader" runat="server" class="icon-g-67" target="_blank" href="#"></a></li>
+                                <li><a id="lblYoutubeHeader" runat="server" class="icon-g-76" target="_blank" href="#"></a></li>
+                                <li><a id="lblTwitterHeader" runat="server" class="icon-h-58" target="_blank" href="#"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -766,21 +787,12 @@
                 <ul>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/Index.aspx") %>">Inicio</a>
-
                     </li>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
-                        <ul>
-                            <li>
-                                <a href="listing-left-column.html">Categorías</a>
-                                <ul class="tt-megamenu-submenu" id="divCategoryMaster_Min">
-                                </ul>
-                            </li>
-                        </ul>
                     </li>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
-
                     </li>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
@@ -794,8 +806,8 @@
 	
             <div class="tt-mobile-header">
                 <div class="container-fluid">
-                    <div class="header-tel-info">
-                        <i class="icon-f-93"></i>777 2345 7885; +777 2345 7886
+                    <div class="header-tel-info" id="lblPhoneMobile" runat="server">
+                        <i class="icon-f-93"></i>
                     </div>
                 </div>
                 <div class="container-fluid tt-top-line">
@@ -848,8 +860,7 @@
                         </div>
 
                         <div class="tt-col-obj obj-move-right">
-                            <div class="header-tel-info">
-                                <i class="icon-f-93"></i>777 2345 7885; +777 2345 7886
+                            <div class="header-tel-info icon-f-93" id="lblPhoneHeader" runat="server" style="color: #87160a;font-size: 16px;line-height: 1;">
                             </div>
                         </div>
                     </div>
@@ -863,10 +874,10 @@
                                 </button>
                                 <div class="tt-dropdown-menu">
                                     <nav>
-                                        <ul>
-                                            <li>
+                                        <ul id="divCategoryMaster">
+                                           <%-- <li>
                                                 <a href="#">
-                                                    <i class="icon-women"></i>
+                                                    <i class="icon-new"></i>
                                                     <span>WOMEN</span>
                                                 </a>
                                                 <div class="dropdown-menu size-md">
@@ -875,86 +886,10 @@
                                                             <div class="col-12">
                                                                 <div class="row tt-col-list">
                                                                     <div class="col-sm-4">
-                                                                        <a class="tt-title-submenu" href="listing-left-column.html">TOPS
-                                                                        </a>
                                                                         <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-left-column.html">Blouses &amp; Shirts</a></li>
-                                                                            <li><a href="listing-left-column.html">Dresses <span class="tt-badge tt-new">New</span></a></li>
-                                                                            <li>
-                                                                                <a href="listing-left-column.html">Tops &amp; T-shirts</a>
-                                                                                <ul>
-                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
-                                                                                    <li>
-                                                                                        <a href="listing-left-column.html">Link Level 1</a>
-                                                                                        <ul>
-                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
-                                                                                            <li>
-                                                                                                <a href="listing-left-column.html">Link Level 2</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
-                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
-                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
-                                                                                                    <li>
-                                                                                                        <a href="listing-left-column.html">Link Level 3</a>
-                                                                                                        <ul>
-                                                                                                            <li>
-                                                                                                                <a href="listing-left-column.html">Link Level 4</a>
-                                                                                                                <ul>
-                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-left-column.html">Link Level 5</a></li>
-                                                                                                                </ul>
-                                                                                                            </li>
-                                                                                                            <li><a href="listing-left-column.html">Link Level 4</a></li>
-                                                                                                        </ul>
-                                                                                                    </li>
-                                                                                                    <li><a href="listing-left-column.html">Link Level 3</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
-                                                                                            <li><a href="listing-left-column.html">Link Level 2</a></li>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
-                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
-                                                                                    <li><a href="listing-left-column.html">Link Level 1</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="listing-left-column.html">Sleeveless Tops</a></li>
-                                                                            <li><a href="listing-left-column.html">Sweaters</a></li>
-                                                                            <li><a href="listing-left-column.html">Jackets</a></li>
                                                                             <li><a href="listing-left-column.html">Outerwear</a></li>
                                                                         </ul>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <a class="tt-title-submenu" href="listing-left-column.html">BOTTOMS
-                                                                        </a>
-                                                                        <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-left-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
-                                                                            <li>
-                                                                                <a href="listing-left-column.html">Jeans</a>
-                                                                            </li>
-                                                                            <li><a href="listing-left-column.html">Leggings</a></li>
-                                                                            <li><a href="listing-left-column.html">Jumpsuit &amp; Shorts</a></li>
-                                                                            <li><a href="listing-left-column.html">Skirts</a></li>
-                                                                            <li><a href="listing-left-column.html">Tights</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <a class="tt-title-submenu" href="listing-left-column.html">ACCESSORIES
-                                                                        </a>
-                                                                        <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-left-column.html">Jewellery</a></li>
-                                                                            <li><a href="listing-left-column.html">Hats</a></li>
-                                                                            <li><a href="listing-left-column.html">Scarves &amp; Snoods</a></li>
-                                                                            <li><a href="listing-left-column.html">Belts</a></li>
-                                                                            <li><a href="listing-left-column.html">Bags</a></li>
-                                                                            <li><a href="listing-left-column.html">Shoes <span class="tt-badge tt-sale">Sale 15%</span></a></li>
-                                                                            <li><a href="listing-left-column.html">Sunglasses</a></li>
-                                                                        </ul>
-                                                                    </div>
+                                                                    </div>                                                                  
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -973,122 +908,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-men"></i>
-                                                    <span>MEN</span>
-                                                </a>
-                                                <div class="dropdown-menu size-lg">
-                                                    <div class="dropdown-menu-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <div class="row tt-col-list">
-                                                                    <div class="col-sm-4">
-                                                                        <a href="listing-right-column.html" class="tt-title-submenu">TOPS
-    <img src="/Files/images/loader.svg" data-src="/Files/images/custom/header-category-01.jpg" alt="">
-                                                                        </a>
-                                                                        <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-right-column.html">Shirts</a></li>
-                                                                            <li><a href="listing-right-column.html">Sweaters  <span class="tt-badge tt-new">New</span></a></li>
-                                                                            <li>
-                                                                                <a href="listing-right-column.html">Tops &amp; T-shirts</a>
-                                                                                <ul>
-                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
-                                                                                    <li>
-                                                                                        <a href="listing-right-column.html">Link Level 1</a>
-                                                                                        <ul>
-                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
-                                                                                            <li>
-                                                                                                <a href="listing-right-column.html">Link Level 2</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
-                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
-                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
-                                                                                                    <li>
-                                                                                                        <a href="listing-right-column.html">Link Level 3</a>
-                                                                                                        <ul>
-                                                                                                            <li>
-                                                                                                                <a href="listing-right-column.html">Link Level 4</a>
-                                                                                                                <ul>
-                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
-                                                                                                                    <li><a href="listing-right-column.html">Link Level 5</a></li>
-                                                                                                                </ul>
-                                                                                                            </li>
-                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
-                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
-                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
-                                                                                                            <li><a href="listing-right-column.html">Link Level 4</a></li>
-                                                                                                        </ul>
-                                                                                                    </li>
-                                                                                                    <li><a href="listing-right-column.html">Link Level 3</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
-                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
-                                                                                            <li><a href="listing-right-column.html">Link Level 2</a></li>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
-                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
-                                                                                    <li><a href="listing-right-column.html">Link Level 1</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="listing-right-column.html">Sleeveless Tops</a></li>
-                                                                            <li><a href="listing-right-column.html">Jackets</a></li>
-                                                                            <li><a href="listing-right-column.html">Outerwear</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <a class="tt-title-submenu" href="listing-right-column.html">BOTTOMS
-    <img src="images/loader.svg" data-src="images/custom/header-category-02.jpg" alt="">
-                                                                        </a>
-                                                                        <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-right-column.html">Trousers <span class="tt-badge tt-fatured">Fatured</span></a></li>
-                                                                            <li><a href="listing-right-column.html">Jeans</a></li>
-                                                                            <li><a href="listing-right-column.html">Jumpsuit &amp; Shorts</a></li>
-                                                                            <li><a href="listing-right-column.html">Skirts</a></li>
-                                                                            <li><a href="listing-right-column.html">Tights</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-sm-4">
-                                                                        <a class="tt-title-submenu" href="listing-right-column.html">ACCESSORIES
-    <img src="/Files/images/loader.svg" data-src="/Files/images/custom/header-category-03.jpg" alt="">
-                                                                        </a>
-                                                                        <ul class="tt-megamenu-submenu">
-                                                                            <li><a href="listing-right-column.html">Hats</a></li>
-                                                                            <li><a href="listing-right-column.html">Scarves &amp; Snoods</a></li>
-                                                                            <li><a href="listing-right-column.html">Belts</a></li>
-                                                                            <li><a href="listing-right-column.html">Bags</a></li>
-                                                                            <li><a href="listing-right-column.html">Shoes</a></li>
-                                                                            <li><a href="listing-right-column.html">Sunglasses <span class="tt-badge tt-sale">Sale 15%</span></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-new"></i>
-                                                    <span>NEW ARRIVALS</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-sale"></i>
-                                                    <span>CLEARENCE</span>
-                                                </a>
-                                            </li>
-                                            <li><a href="#">
-                                                <i class="icon-theme"></i>
-                                                <span>BUY THEME!</span>
-                                            </a></li>
+                                            </li>--%>
                                         </ul>
                                     </nav>
                                 </div>
@@ -1108,7 +928,7 @@
                                             <div class="menuIconsFont"><i class="icon-f-46"></i></div>
                                             <li class="dropdown megamenu">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
-                                                <div class="dropdown-menu">
+                                              <%--  <div class="dropdown-menu">
                                                     <div class="row tt-col-list">
                                                         <div class="col">
                                                             <h6 class="tt-title-submenu"><a href="#">Categorías</a></h6>
@@ -1117,7 +937,7 @@
                                                         </div>
 
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </li>
                                             <div class="menuIconsFont"><i class="icon-e-46"></i></div>
                                             <li class="dropdown tt-megamenu-col-01">
@@ -1140,9 +960,9 @@
                             <div class="tt-search-type2">
                                 <!-- tt-search -->
                                 <div role="search">
-                                    <i class="icon-f-85"></i>
-                                    <input class="tt-search-input" type="search" placeholder="SEARCH PRODUCTS..." aria-label="SEARCH PRODUCTS..." autocomplete="off">
-                                    <button type="submit" class="tt-btn-search">SEARCH</button>
+                                    <i class="icon-h-04" style="color: #999999;"></i>
+                                    <input class="tt-search-input" type="search" placeholder="Buscar productos..." aria-label="Buscar Productos..." autocomplete="off">
+                                    <button type="submit" class="tt-btn-search">Buscar producto</button>
                                     <div class="search-results" style="display: none;"></div>
                                 </div>
                                 <!-- /tt-search -->
@@ -1153,8 +973,8 @@
                             <!-- tt-search -->
                             <div class="tt-desctop-parent-search tt-parent-box">
                                 <div class="tt-search tt-dropdown-obj">
-                                    <button id="SearchIdMaster" class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom" type="button">
-                                        <i class="icon-h-04"></i>
+                                    <button id="SearchIdMaster" class="tt-dropdown-toggle" data-tooltip="Buscar" data-tposition="bottom" type="button">
+                                        <i class="icon-h-04" ></i>
                                     </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="container">
@@ -1275,7 +1095,7 @@
 				<div class="col-md-6 col-lg-2 col-xl-3">
 					<div class="tt-mobile-collapse">
 						<h4 class="tt-collapse-title">
-							CATEGORIES
+							CATEGORIAS
 						</h4>
 						<div class="tt-collapse-content">
 							<ul class="tt-list">
@@ -1292,7 +1112,7 @@
 				<div class="col-md-6 col-lg-2 col-xl-3">
 					<div class="tt-mobile-collapse">
 						<h4 class="tt-collapse-title">
-							MY ACCOUNT
+							MI CUENTA
 						</h4>
 						<div class="tt-collapse-content">
 							<ul class="tt-list">
@@ -1308,14 +1128,14 @@
 				<div class="col-md-6 col-lg-4 col-xl-3">
 					<div class="tt-mobile-collapse">
 						<h4 class="tt-collapse-title">
-							CONTACTS
+							CONTÁCTANOS
 						</h4>
 						<div class="tt-collapse-content">
 							<address>
-								<p><span>Address:</span> 2548 Broaddus Maple Court Avenue, Madisonville KY 4783, United States of America</p>
-								<p><span>Phone:</span> +777 2345 7885;  +777 2345 7886</p>
-								<p><span>Hours:</span> 7 Days a week from 10 am to 6 pm</p>
-								<p><span>E-mail:</span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></p>
+								<p id="lblAddressFooter" runat="server">Dirección<span>Dirección:</span> </p>
+								<p id="lblPhoneFooter" runat="server"><span>Teléfonos:</span> </p>
+								<p id="lblAttentionHoursFooter" runat="server"><span>Horario de atención:</span> </p>
+								<p id="lblEmailFooter" runat="server"><span>E-mail:</span> <a id="EmailFooter" href="#"></a></p>
 							</address>
 						</div>
 					</div>
@@ -1332,19 +1152,18 @@
 								</p>
 								<form id="newsletterform" class="form-inline form-default" method="post" novalidate="novalidate" action="#">
 									<div class="form-group">
-										<input type="text" name="email" class="form-control" placeholder="Enter your e-mail">
-										<button type="submit" class="btn">JOIN US</button>
+										<input type="text" name="email" class="form-control" placeholder="Ingresa tu correo">
+										<button type="submit" class="btn">Únete a nosotr@s</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 					<ul class="tt-social-icon">
-						<li><a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a></li>
-						<li><a class="icon-h-58" target="_blank" href="http://www.facebook.com/"></a></li>
-						<li><a class="icon-g-66" target="_blank" href="http://www.twitter.com/"></a></li>
-						<li><a class="icon-g-67" target="_blank" href="http://www.google.com/"></a></li>
-						<li><a class="icon-g-70" target="_blank" href="https://instagram.com/"></a></li>
+                             <li><a id="lblFacebookFooter" runat="server" class="icon-g-64" target="_blank" href="#"></a></li>
+                             <li><a id="lblInstagramFooter" runat="server" class="icon-g-67" target="_blank" href="#"></a></li>
+                             <li><a id="lblYoutubeFooter" runat="server" class="icon-g-76" target="_blank" href="#"></a></li>
+                             <li><a id="lblTwitterFooter" runat="server" class="icon-h-58" target="_blank" href="#"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -1360,8 +1179,7 @@
 						</a>
 					</div>
 					<div class="tt-col-item">
-						<div class="tt-box-copyright">
-							&copy; Wokiee 2018. All Rights Reserved
+						<div class="tt-box-copyright" id="lblRightsReservedFooter" runat="server">
 						</div>
 					</div>
 				</div>
@@ -1389,8 +1207,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+	       </div>
+         </div>
         </footer>
         <a href="#" class="tt-back-to-top">VOLVER ARRIBA</a>
         <!-- modal (AddToCartProduct) -->
@@ -1670,19 +1488,12 @@
               </a>
               <div class="tt-item-close">
                   <span class="tt-btn-close" style="cursor: pointer"><input style="display: none" data-page="master" data-productid="{{Product.ProductId}}"></span>
-                  <%--<a href="#" class="tt-btn-close"></a>--%>
               </div>
           </div>
 		  
         {{/each}}
     </script>
-
-     <script type="text/x-handlebars-template" id="datatable-CategoryMaster">
-	       {{# each request}}
-            <li style="cursor:pointer"><a href="/Layout/ProductsList.aspx?category={{Id}}">{{Name}}</a></li>     
-	       {{/each}}
-    </script>
-
+   
      <script type="text/x-handlebars-template" id="datatable-searchProducts">
         {{# each request}}
          <li>
@@ -1766,7 +1577,7 @@
         {{/each}}
     </script>
 
-       <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
+     <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
 	       {{# each request}}
          <div class="col-2 col-md-4 col-lg-3">
              <a href="/Layout/ProductsList.aspx?category={{Id}}" class="tt-collection-item">
@@ -1784,7 +1595,52 @@
 	       {{/each}}
     </script>
 
- 
+     <script type="text/x-handlebars-template" id="datatable-CategoryMaster">
+	       {{# each request}}
+                                            <li class="tt-submenu">
+                                                <a href="/Layout/ProductsList.aspx?category={{IdCategoryEncrypt}}">
+                                                    <i class="icon-new"></i>
+                                                    <span>{{Name}}</span>
+                                                </a>
+                                                <div class="dropdown-menu size-md">
+                                                    <div class="dropdown-menu-wrapper">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="row tt-col-list">
+                                                                    <div class="col-sm-4">
+                                                                        <ul class="tt-megamenu-submenu" id="SubCategoryMaster_{{IdCategory}}">
+                                                                            
+                                                                        </ul>
+                                                                    </div>                                                                  
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <a href="listing-left-column.html" class="tt-promo-02">
+                                                                    <img src="/Files/images/custom/header-promo-01.jpg" alt="">
+                                                                    <div class="tt-description tt-point-h-l">
+                                                                        <div class="tt-description-wrapper">
+                                                                            <div class="tt-title-small"> <span class="tt-base-color"></span></div>
+                                                                            <div class="tt-title-large"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+	       {{/each}}
+    </script>
+
+     <script type="text/x-handlebars-template" id="datatable-SubCategoryMaster">
+	       {{# each request}}               
+                 <li><a href="#">{{SubCategoryName}}</a></li>                                          
+	       {{/each}}
+    </script>
+
+
 
 </body>
 </html>

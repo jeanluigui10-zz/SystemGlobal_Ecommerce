@@ -198,8 +198,6 @@
         <div class="tt-product thumbprod-center">
             <div class="tt-image-box">
                 <a class="tt-btn-quickview view-to-cart-mp" data-productid="{{Id}}" data-productname="{{Name}}" data-srcimg="{{NameResource}}" data-unitprice="{{UnitPrice}}" data-fileDescription="{{Description}}"  data-tooltip="Vista rápida" data-tposition="left"></a>
-                <%--<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist" data-tposition="left"></a>--%>
-                <%--<a href="#" class="tt-btn-compare" data-tooltip="Add to Compare" data-tposition="left"></a>--%>
                 <a <%--href="ProductSelected.aspx?p={{Id}}"--%>>
                     <span class="tt-img"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
 				<span class="tt-img-roll-over"><img src="{{NameResource}}" data-src="{{NameResource}}" alt=""></span>
@@ -230,8 +228,6 @@
                     </div>
                     <div class="tt-row-btn">
                         <a href="#" class="tt-btn-quickview view-to-cart-mp" data-toggle="modal" data-productid="{{Id}}" data-target="#ModalquickView"></a>
-                        <a href="#" class="tt-btn-wishlist"></a>
-                        <a href="#" class="tt-btn-compare"></a>
                     </div>
                 </div>
             </div>
@@ -242,7 +238,7 @@
 
     <script type="text/x-handlebars-template" id="datatable-Category">
 	       {{# each request}}
-            <li style="cursor:pointer"><a onclick="Fn_LoadProduct_ByCategory('{{Id}}')">{{Name}}</a></li>
+            <li style="cursor:pointer"><a onclick="Fn_LoadProduct_ByCategory('{{IdCategory}}')">{{Name}}</a></li>
 	       {{/each}}
 </script>
 

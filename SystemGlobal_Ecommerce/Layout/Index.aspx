@@ -233,7 +233,7 @@
 				<h1 class="tt-title">NUESTRAS CATEGORÍAS</h1>
 				<div class="tt-description">No esperes más elige una!</div>
 			</div>
-			<div id="divSliderCategory" class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
+			<div id="divSliderCategoryMaster" class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
 			</div>
 		</div>
 	</div>
@@ -243,6 +243,7 @@
     
  
  <asp:HiddenField runat="server" ID="hfData" />
+
     <script type="text/x-handlebars-template" id="datatable-resources">
         {{# each request}}
             <div class="col-6 col-md-4 col-lg-3">

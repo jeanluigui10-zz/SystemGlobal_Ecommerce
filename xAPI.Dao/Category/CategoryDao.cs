@@ -44,5 +44,30 @@ namespace xAPI.Dao.Category
             }
             return dt;
         }
+        public DataTable SubCategory_GetListBy_IdCategory(ref BaseEntity Base, Int32 IdCategory)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = null;
+            try
+            {
+                cmd = new SqlCommand("SubCategory_GetListBy_IdCategory_Sp", clsConnection.GetConnection())
+                {
+                    CommandType = CommandType.StoredProcedure
+                }; 
+                cmd.Parameters.AddWithValue("@IdCategory", IdCategory);
+                cmd.CommandTimeout = 0;
+                dt.Load(cmd.ExecuteReader());
+            }
+            catch (Exception ex)
+            {
+                dt = null;
+                Base.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  while loading data"));
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return dt;
+        }
     }
 }

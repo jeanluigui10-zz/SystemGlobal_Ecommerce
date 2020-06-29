@@ -2301,12 +2301,21 @@ namespace SystemGlobal_Ecommerce.src.app_code
     [Serializable]
     public class srCategory
     {
-        public String Id { get; set; }
+        public String IdCategory { get; set; }
+        public String IdCategoryEncrypt { get; set; }
+
         public String Name { get; set; }
         public String NameResource { get; set; }
-
-
     }
+
+    [Serializable]
+    public class srSubCategory
+    {
+        public String IdSubCategory { get; set; }
+        public String IdCategory { get; set; }
+        public String SubCategoryName { get; set; }
+    }
+
     [Serializable]
     public class srPayCulqi
     {

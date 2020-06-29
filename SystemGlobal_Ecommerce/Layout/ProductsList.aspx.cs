@@ -56,7 +56,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     {
                         lst.Add(new srCategory()
                         {
-                            Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                            IdCategory = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
                             Name = item["NAME"].ToString(),
                         });
                     }

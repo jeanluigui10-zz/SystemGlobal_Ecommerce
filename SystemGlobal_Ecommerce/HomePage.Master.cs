@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Script.Serialization;
 using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Category;
+using xAPI.BL.Setting;
 using xAPI.Entity.Order;
+using xAPI.Entity.Store;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 
@@ -32,6 +34,7 @@ namespace SystemGlobal_Ecommerce
                 hfCustomerId.Value = "";
             }
             //Load_Settings();
+            Load_StoreInformation();
             Load_Products();
             Load_Category();
             //if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.CustomerId > 0)
@@ -47,6 +50,35 @@ namespace SystemGlobal_Ecommerce
             //}
 
         }
+        public void Load_StoreInformation() 
+        {
+            BaseEntity objEntity = new BaseEntity();
+            Store objStore = SettingBL.Instance.Store_GetInformation(ref objEntity);
+           
+            if (objEntity.Errors.Count == 0 )
+            {
+                lblAddressFooter.InnerText = "Dirección: " + objStore.Address.ToString();
+                lblPhoneFooter.InnerText = objStore.Phone2.ToString() != "" ? "Teléfono: " + objStore.Phone1.ToString() + " - " + objStore.Phone1.ToString() : "Teléfono: " + objStore.Phone1.ToString();
+                lblEmailFooter.InnerText = "Correo: " + objStore.Email.ToString();
+                lblAttentionHoursFooter.InnerText = "Horario de atención: " + objStore.AttentionHours.ToString();
+                lblRightsReservedFooter.InnerText = "© " + objStore.Name.ToString() + " " + objStore.Year + ", " + "Todos los derechos reservados";
+                lblPhoneHeader.InnerText = objStore.Phone2.ToString() != "" ? objStore.Phone1.ToString() + " - " + objStore.Phone1.ToString() : objStore.Phone1.ToString();
+               
+                lblNoteDeliveryHeader.InnerText = objStore.NoteDelivery.ToString();
+
+                lblFacebookHeader.Attributes["href"] = objStore.Facebook.ToString();
+                lblInstagramHeader.Attributes["href"] = objStore.Instragram.ToString();
+                lblYoutubeHeader.Attributes["href"] = objStore.Youtube.ToString();
+                lblTwitterHeader.Attributes["href"] = objStore.Twitter.ToString();
+
+                lblFacebookFooter.Attributes["href"] = objStore.Facebook.ToString();
+                lblInstagramFooter.Attributes["href"] = objStore.Instragram.ToString();
+                lblYoutubeFooter.Attributes["href"] = objStore.Youtube.ToString();
+                lblTwitterFooter.Attributes["href"] = objStore.Twitter.ToString();
+
+                lblPhoneMobile.InnerText = objStore.Phone2.ToString() != "" ? objStore.Phone1.ToString() + ";" + objStore.Phone1.ToString() : objStore.Phone1.ToString();
+            }
+        }
         private void Load_Category()
         {
             BaseEntity entity = new BaseEntity();
@@ -61,7 +93,8 @@ namespace SystemGlobal_Ecommerce
                     {
                         lst.Add(new srCategory()
                         {
-                            Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                            IdCategoryEncrypt = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                            IdCategory = item["ID"].ToString(),
                             Name = item["Name"].ToString(),
                             NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
                         });

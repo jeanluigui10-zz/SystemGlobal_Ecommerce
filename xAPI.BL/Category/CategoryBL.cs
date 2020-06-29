@@ -32,5 +32,14 @@ namespace xAPI.BL.Category
 
             return dt;
         }
+
+        public DataTable SubCategory_GetListBy_IdCategory(ref BaseEntity entity, Int32 IdCategory)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = CategoryDao.Instance.SubCategory_GetListBy_IdCategory(ref entity, IdCategory);
+
+            return dt;
+        }
     }
 }

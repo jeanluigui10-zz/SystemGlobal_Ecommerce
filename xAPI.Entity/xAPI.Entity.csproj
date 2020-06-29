@@ -90,6 +90,7 @@
     <Compile Include="Security\Detalle_UsuarioAmbiente.cs" />
     <Compile Include="Security\TipoUsuario.cs" />
     <Compile Include="Security\Usuarios.cs" />
+    <Compile Include="Store\Store.cs" />
     <Compile Include="TypeList\clsTypeList.cs" />
   </ItemGroup>
   <ItemGroup>
