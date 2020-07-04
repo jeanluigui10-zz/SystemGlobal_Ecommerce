@@ -206,6 +206,7 @@ namespace xAPI.Dao.Customers
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Name", obj.FirstName);
                 cmd.Parameters.AddWithValue("@email", obj.Email);
+                cmd.Parameters.AddWithValue("@cellphone", obj.CellPhone);                
                 cmd.Parameters.AddWithValue("@subject", obj.Subject);
                 cmd.Parameters.AddWithValue("@message", obj.Message);
 

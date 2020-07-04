@@ -29,6 +29,7 @@
           
             obj = {
                     FirstName: $("input[id$=txtNombre]").val().trim(),
+					CellPhone: $("input[id$=txtTelefono]").val().trim(),
 					Email: $("input[id$=txtCorreo]").val().trim(),
 					Subject: $("input[id$=txtAsunto]").val().trim(),
 	                Message: $("textarea[id$=txtMensaje]").val()
@@ -60,6 +61,7 @@
             $("input[id$=txtNombre]").val("");
             $("input[id$=txtCorreo]").val("");
             $("input[id$=txtAsunto]").val("");
+            $("input[id$=txtTelefono]").val("");
             $("textarea[id$=txtMensaje]").val("");
           }
 
@@ -154,6 +156,9 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<input type="text" name="name"   class="form-control validate[required]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
+						</div>
+						<div class="form-group">
+							<input type="number" name="telefono"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==20) return false;" class="form-control validate[required]" id="txtTelefono" runat="server" placeholder="Ingrese su Teléfono">
 						</div>
 						<div class="form-group">
 							<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo">

@@ -30,6 +30,7 @@ namespace SystemGlobal_Ecommerce.Layout.Support
                     {
                         FirstName = obj.FirstName.ToString(),
                         Email = obj.Email.ToString(),
+                        CellPhone = obj.CellPhone.ToString(),
                         Subject = obj.Subject.ToString(),
                         Message = obj.Message.ToString()
                     };
