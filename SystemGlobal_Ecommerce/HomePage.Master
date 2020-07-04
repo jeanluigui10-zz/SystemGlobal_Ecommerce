@@ -1124,9 +1124,9 @@
 						</h4>
 						<div class="tt-collapse-content">
 							<ul class="tt-list">
-								<li><a href="account_order.html">Orders</a></li>
-								<li><a href="page404.html">Compare</a></li>
-								<li><a href="page404.html">Wishlist</a></li>
+								<li><a href="account_order.html">Mis Ordenes</a></li>
+								<li><a href="page404.html">Iniciar Sesión</a></li>
+								<li><a href="page404.html">Registrarme</a></li>
 								<li><a href="login.html">Log In</a></li>
 								<li><a href="create-account.html">Register</a></li>
 							</ul>
@@ -1140,10 +1140,10 @@
 						</h4>
 						<div class="tt-collapse-content">
 							<address>
-								<p id="lblAddressFooter" runat="server">Dirección<span>Dirección:</span> </p>
-								<p id="lblPhoneFooter" runat="server"><span>Teléfonos:</span> </p>
-								<p id="lblAttentionHoursFooter" runat="server"><span>Horario de atención:</span> </p>
-								<p id="lblEmailFooter" runat="server"><span>E-mail:</span> <a id="EmailFooter" href="#"></a></p>
+								<p id="lblAddressFooter" runat="server"><span></span> </p>
+								<p id="lblPhoneFooter" runat="server"><span></span> </p>
+								<p id="lblAttentionHoursFooter" runat="server"><span></span> </p>
+								<p id="lblEmailFooter" runat="server"><span></span> <a id="EmailFooter" href="#"></a></p>
 							</address>
 						</div>
 					</div>

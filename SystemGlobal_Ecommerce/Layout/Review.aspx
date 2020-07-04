@@ -165,26 +165,7 @@
 								    <div class="col-md-12">
 									   <div id="divCardOptions">
 										  <div id="divPayment" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-lato-h4" runat="server" clientidmode="static">
-										 <%-- <div style="padding: 10px 0;" id="DivMethodPayment">
-											 <div style="display: inline-block">
-                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Contra Entrega" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value="" checked="checked"><label for="">Contra Entrega</label></span>
-                                                        </div>
-											 <div style="display: inline-block">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Plin" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Plin</label></span>
-                                                        </div>
-                                                        <div style="display: inline-block">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Yape" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Yape</label></span>
-                                                        </div>
-                                                        <div style="display: inline-block">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="BBVA" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">BBVA</label></span>
-                                                        </div>
-                                                        <div style="display: inline-block">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="BCP" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">BCP</label></span>
-                                                        </div>
-                                                        <div style="display: inline-block">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="Scotiabank" style="vertical-align: sub"><input id="" type="radio" name="Payment" data-id="" value=""><label for="">Scotiabank</label></span>
-                                                        </div>
-										  </div>--%>
+									
 										  </div>
 										  <br />
 										   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
@@ -262,26 +243,10 @@
                                             <select id="address_zip" class="form-control" disabled>
 										<option>Trujillo</option>
 									</select>
-									<%--<input type="text" name="name" class="form-control" id="address_zip" placeholder="Zip/Postal Code">--%>
 								</div>
-								<%--<a href="#" class="btn btn-border">CALCULATE SHIPPING</a>
-								<p>
-									There is one shipping rate available for Alabama, Tanzania, United Republic Of.
-								</p>
-								<ul class="tt-list-dot list-dot-large">
-									<li><a href="#">International Shipping at $20.00</a></li>
-								</ul>--%>
-							
+								
 						</div>
-						<%--<div class="tt-shopcart-box">
-							<h4 class="tt-title">
-								NOTE
-							</h4>
-							<p>Add special instructions for your order...</p>
-							
-								<textarea class="form-control" rows="7"></textarea>
-						
-						</div>--%>
+					
 						<div class="tt-shopcart-box tt-boredr-large">
 							<table class="tt-shopcart-table01">
 								<tbody>
@@ -370,14 +335,5 @@
         {{/each}}
     </script>
 --%>
-    <%-- <script type="text/x-handlebars-template" id="datatable-MethodPayment">
-	       {{# each request}}
-	    <div style="display: inline-block">
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="{{MerchantName}}" style="vertical-align: sub"><input id="{{MerchantId}}" type="radio" name="Payment" data-id="{{MerchantId}}" value=""><label for="">Plin</label></span>
-         </div>
-        <%-- <div style="display: inline-block">
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rdbPayment" title="{{MerchantName}}" style="vertical-align: sub"><input id="{{MerchantId}}" type="radio" name="Payment" data-id="{{MerchantId}}" checked="checked"><label for="">{{MerchantName}}</label></span>
-         </div>
-	       {{/each}}
-    </script>--%>
+
 </asp:Content>

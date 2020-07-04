@@ -37,11 +37,10 @@ namespace xAPI.Dao.Setting
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                //cmd.Parameters.AddWithValue("@id", Id);
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    objStore = Store_GetInformation(dr);
+                    objStore = Store_GetInfo(dr);
                 }
             }
             catch (Exception ex)
@@ -56,7 +55,7 @@ namespace xAPI.Dao.Setting
             return objStore;
         }
 
-        private Store Store_GetInformation(SqlDataReader ObjDr)
+        private Store Store_GetInfo(SqlDataReader ObjDr)
         {
             Store obj = new Store
             {
@@ -75,7 +74,7 @@ namespace xAPI.Dao.Setting
                 Banner = ObjDr.GetColumnValue<String>("Banner"),
                 Logo = ObjDr.GetColumnValue<String>("Logo"),
                 Facebook = ObjDr.GetColumnValue<String>("Facebook"),
-                Instragram = ObjDr.GetColumnValue<String>("Instragram"),
+                Instagram = ObjDr.GetColumnValue<String>("Instagram"),
                 Youtube = ObjDr.GetColumnValue<String>("Youtube"),
                 Twitter = ObjDr.GetColumnValue<String>("Twitter"),
                 Status = ObjDr.GetColumnValue<Byte>("Status")

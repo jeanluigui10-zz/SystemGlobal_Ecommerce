@@ -140,23 +140,17 @@
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options">
-							<h1 class="tt-title" style="display:none">
+							<h1 class="tt-title" id="lblListCategory">
 								MUJER <span class="tt-title-total">(69)</span>
 							</h1>
 							<div class="tt-btn-toggle">
-								<a href="#">FILTER</a>
+								<a href="#">Filtro</a>
 							</div>
 							<div class="tt-sort">
 								<select>
 									<option value="Default Sorting">Ordernar por:</option>
 									<option value="Default Sorting">Menor precio</option>
 									<option value="Default Sorting">Mayor precio</option>
-								</select>
-								<select>
-									<option value="Show">Mostrar</option>
-									<option value="9">9</option>
-									<option value="16">16</option>
-									<option value="32">32</option>
 								</select>
 							</div>
 							<div class="tt-quantity">

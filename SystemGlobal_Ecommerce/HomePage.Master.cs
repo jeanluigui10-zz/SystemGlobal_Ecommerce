@@ -58,7 +58,7 @@ namespace SystemGlobal_Ecommerce
             if (objEntity.Errors.Count == 0 )
             {
                 lblAddressFooter.InnerText = "Dirección: " + objStore.Address.ToString();
-                lblPhoneFooter.InnerText = objStore.Phone2.ToString() != "" ? "Teléfono: " + objStore.Phone1.ToString() + " - " + objStore.Phone1.ToString() : "Teléfono: " + objStore.Phone1.ToString();
+                lblPhoneFooter.InnerText = objStore.Phone2.ToString() != "" ? "Teléfono: " + objStore.Phone1.ToString() + " - " + objStore.Phone2.ToString() : "Teléfono: " + objStore.Phone1.ToString();
                 lblEmailFooter.InnerText = "Correo: " + objStore.Email.ToString();
                 lblAttentionHoursFooter.InnerText = "Horario de atención: " + objStore.AttentionHours.ToString();
                 lblRightsReservedFooter.InnerText = "© " + objStore.Name.ToString() + " " + objStore.Year + ", " + "Todos los derechos reservados";
@@ -67,16 +67,16 @@ namespace SystemGlobal_Ecommerce
                 lblNoteDeliveryHeader.InnerText = objStore.NoteDelivery.ToString();
 
                 lblFacebookHeader.Attributes["href"] = objStore.Facebook.ToString();
-                lblInstagramHeader.Attributes["href"] = objStore.Instragram.ToString();
+                lblInstagramHeader.Attributes["href"] = objStore.Instagram.ToString();
                 lblYoutubeHeader.Attributes["href"] = objStore.Youtube.ToString();
                 lblTwitterHeader.Attributes["href"] = objStore.Twitter.ToString();
 
                 lblFacebookFooter.Attributes["href"] = objStore.Facebook.ToString();
-                lblInstagramFooter.Attributes["href"] = objStore.Instragram.ToString();
+                lblInstagramFooter.Attributes["href"] = objStore.Instagram.ToString();
                 lblYoutubeFooter.Attributes["href"] = objStore.Youtube.ToString();
                 lblTwitterFooter.Attributes["href"] = objStore.Twitter.ToString();
 
-                lblPhoneMobile.InnerText = objStore.Phone2.ToString() != "" ? objStore.Phone1.ToString() + ";" + objStore.Phone1.ToString() : objStore.Phone1.ToString();
+                lblPhoneMobile.InnerText = objStore.Phone2.ToString() != "" ? objStore.Phone1.ToString() + "-" + objStore.Phone2.ToString() : objStore.Phone1.ToString();
             }
         }
         private void Load_Category()

@@ -7,7 +7,6 @@ namespace xAPI.Entity.Store
     {
         public String Address { get; set; }
         public String Email { get; set; }
-        public String MyProperty { get; set; }
         public String Phone1 { get; set; }
         public String Phone2 { get; set; }
         public String AttentionHours { get; set; }
@@ -19,7 +18,7 @@ namespace xAPI.Entity.Store
         public String Banner { get; set; }
         public String Logo { get; set; }
         public String Facebook { get; set; }
-        public String Instragram { get; set; }
+        public String Instagram { get; set; }
         public String Youtube { get; set; }
         public String Twitter { get; set; }
     }
