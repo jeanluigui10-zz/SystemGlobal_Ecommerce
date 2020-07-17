@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Support.Contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../../Content/bootstrap.css" rel="stylesheet" />
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>    
     <script src="../../Files/js/map-init.js"></script>
     <script src="../../Files/external/panelmenu/panelmenu.js"></script>
 
@@ -10,16 +10,9 @@
 	<script type="text/javascript">
        
         $(function () {
-           // fn_init();
+           
         });
-        function fn_init() {
-            fn_bind();
-        }
-
-        function fn_bind() {
-            Fn_content();
-        }
-          
+       
         function Fn_ValidateInformation() {
 
             if (!fn_validateform('divInformation')) {
@@ -119,7 +112,7 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-93"></i>
 							<h6 class="tt-title">TENEMOS UN CHAT!</h6>
-							<address>
+							<address id="IdContactPhone" runat="server">
 								+777 2345 7885:<br>
 								+777 2345 7886
 							</address>
@@ -129,10 +122,8 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-24"></i>
 							<h6 class="tt-title">VISITA NUESTRA UBICACIÓN</h6>
-							<address>
+							<address id="IdContactAddress" runat="server">
 								Actualmente no esta disponible por el covid-19<br>
-							<%--	Madisonville KY 4783,<br>
-								United States of America--%>
 							</address>
 						</div>
 					</div>
@@ -140,7 +131,7 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-92"></i>
 							<h6 class="tt-title">HORARIO DE ATENCIÓN</h6>
-							<address>
+							<address id="idContactAttentionHours" runat="server">
 								7 Dias a la semana<br>
 								de 10 AM a 6 PM
 							</address>
@@ -155,10 +146,10 @@
 				<div class="row" id="divInformation">
 					<div class="col-md-6">
 						<div class="form-group">
-							<input type="text" name="name"   class="form-control validate[required]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
+							<input type="text" name="name"   class="form-control validate[required,custom[onlyLetterSp]]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
 						</div>
 						<div class="form-group">
-							<input type="number" name="telefono"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==20) return false;" class="form-control validate[required]" id="txtTelefono" runat="server" placeholder="Ingrese su Teléfono">
+							<input type="text" name="phone"   class="form-control validate[required,custom[onlyNumberSp]]" id="txtTelefono" runat="server" placeholder="Ingrese su Teléfono">
 						</div>
 						<div class="form-group">
 							<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo">
@@ -189,8 +180,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Se envio correctamente, nos comunicaremos contigo en menos de 24Hrs!
+      <div class="modal-body" style="color:forestgreen">
+        Se envio correctamente, nos comunicaremos contigo en menos de 24 Horas!
       </div>
     </div>
   </div>

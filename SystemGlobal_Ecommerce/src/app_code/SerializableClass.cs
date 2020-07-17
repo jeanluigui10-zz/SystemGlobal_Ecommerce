@@ -463,6 +463,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public String SKU { get; set; }
         public String Name { get; set; }
         public String Category { get; set; }
+        public String SubCategoryName { get; set; }
         public String Brand { get; set; }
         public String FileName { get; set; }
         public String Description { get; set; }
@@ -2303,10 +2304,22 @@ namespace SystemGlobal_Ecommerce.src.app_code
     {
         public String IdCategory { get; set; }
         public String IdCategoryEncrypt { get; set; }
-
         public String Name { get; set; }
         public String NameResource { get; set; }
+        
     }
+
+    [Serializable]
+    public class srOrderHistory
+    {        
+        public String LegacyNumber { get; set; }
+        public String OrderDate { get; set; }
+        public String OrderStatus { get; set; }
+        public String OrderProgress { get; set; }
+        public String Total { get; set; }
+        public String IdOrderEncrypt { get; set; }
+    }
+
 
     [Serializable]
     public class srSubCategory

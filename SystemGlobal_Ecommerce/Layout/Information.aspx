@@ -27,7 +27,6 @@
             }
           
             obj = {
-                    Id: $("#hfCustomerId").val(),
                     FirstName: $("input[id$=txtNombre]").val().trim(),
                     LastNamePaternal: $("input[id$=txtApellidoPaterno]").val().trim(),
                     LastNameMaternal: $("input[id$=txtApellidoMaterno]").val().trim(),
@@ -81,7 +80,6 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField ID="hfCustomerId" runat="server" />
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
@@ -109,20 +107,20 @@
 									<div class="form-group">
 										<label for="loginInputName">Nombre *</label>
 										<div class="tt-required">* Campos Requeridos</div>
-										<input type="text" name="name"   class="form-control validate[required]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
+										<input type="text" name="name"   class="form-control validate[required,custom[onlyLetterSp]]" id="txtNombre" runat="server" placeholder="Ingrese su Nombre">
 									</div>
 									<div class="form-group">
 										<label for="loginAPaterno">Apellido Paterno *</label>
-										<input type="text" name="apellidoPaterno"   class="form-control validate[required]" runat="server" id="txtApellidoPaterno" placeholder="Ingrese su Apellido Paterno">
+										<input type="text" name="apellidoPaterno"   class="form-control validate[required,custom[onlyLetterSp]]" runat="server" id="txtApellidoPaterno" placeholder="Ingrese su Apellido Paterno">
 									</div>
                                             <div class="form-group">
 										        <label for="loginAMaterno">Apellido Materno *</label>
-										        <input type="text" name="apellidoMaterno"   class="form-control validate[required]" runat="server" id="txtApellidoMaterno" placeholder="Ingrese su Apellido Materno">
+										        <input type="text" name="apellidoMaterno"   class="form-control validate[required,custom[onlyLetterSp]]" runat="server" id="txtApellidoMaterno" placeholder="Ingrese su Apellido Materno">
 									        </div>
                                             <div class="form-group">
 										<asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control"></asp:DropDownList>
 										<p></p>
-                                                <input type="text" name="tipodocumento"  class="form-control validate[required]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
+                                                <input type="text" name="tipodocumento"  class="form-control validate[required,custom[onlyNumberSp]]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
 									</div>
                                              <div class="form-group">
 										<label for="loginDescription">Dirección de entrega *</label>
@@ -131,7 +129,7 @@
                                             
                                     <div class="form-group">
 										<label for="loginCelular">Celular/Whatsapp *</label>
-										<input type="text" name="celular"  class="form-control validate[required]" runat="server" id="txtCelular" placeholder="Ingrese su Celular / Whatssap">
+										<input type="text" name="celular"  class="form-control validate[required,custom[onlyNumberSp]]" runat="server" id="txtCelular" placeholder="Ingrese su Celular / Whatssap">
 									</div>
 									<div class="form-group">
 										<label for="loginInputEmail">Correo/Nombre de Usuario *</label>

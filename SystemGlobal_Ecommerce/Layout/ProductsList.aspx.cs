@@ -32,9 +32,9 @@ namespace SystemGlobal_Ecommerce.Layout
         }
         private void SetQueryCategory()
         {
-            if (!String.IsNullOrEmpty(Request.QueryString["category"]))
+            if (!String.IsNullOrEmpty(Request.QueryString["subCategory"]))
             {
-                String CategoryId = Request.QueryString["category"];
+                String CategoryId = Request.QueryString["subCategory"];
                 hfQueryCategory.Value = CategoryId;
             }
             else
@@ -81,7 +81,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 }
             }
         }
-         private void LoadProduct(Boolean ShowMessage = false)
+         private void LoadProduct()
          {
              BaseEntity entity = new BaseEntity();
              List<srProducts> lst = new List<srProducts>();
@@ -136,7 +136,7 @@ namespace SystemGlobal_Ecommerce.Layout
         }
  
          [WebMethod]
-         public static String Products_ByCategory(String CategoryId)
+         public static String Products_BySubCategory(String SubCategoryId)
          {
              BaseEntity entity = new BaseEntity();
              List<srProducts> lst = new List<srProducts>();
@@ -145,8 +145,8 @@ namespace SystemGlobal_Ecommerce.Layout
  
              try
              {
-                 String CategId = Encryption.Decrypt(HttpUtility.UrlDecode(CategoryId));
-                 DataTable dt = ProductBL.Instance.Products_ByCategory(ref entity, Convert.ToInt32(CategId));
+                 String SubCategId = Encryption.Decrypt(HttpUtility.UrlDecode(SubCategoryId));
+                 DataTable dt = ProductBL.Instance.Products_BySubCategory(ref entity, Convert.ToInt32(SubCategId)); //modificar q filtre por subCategoryid
                  if (entity.Errors.Count == 0)
                  {
                      if (dt != null)
@@ -162,6 +162,7 @@ namespace SystemGlobal_Ecommerce.Layout
                                  DocType = item["DocType"].ToString(),
                                  Brand = item["BrandName"].ToString(),
                                  Category = item["Resource_Category_Name"].ToString(),
+                                 SubCategoryName = item["SubCategoryName"].ToString(),
                                  Description = item["Description"].ToString(),
                                  Stock = Convert.ToInt32(item["Stock"]).ToString(),
                                  PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
@@ -176,7 +177,7 @@ namespace SystemGlobal_Ecommerce.Layout
                          objReturn = new
                          {
                              Result = "NoOk",
-                             Msg = "OcurriÃ³ un problema al cargar los productos."
+                             Msg = "Ocurrio un problema al cargar los productos."
                          };
                      }
                  }
@@ -185,17 +186,14 @@ namespace SystemGlobal_Ecommerce.Layout
                      objReturn = new
                      {
                          Result = "NoOk",
-                         Msg = "OcurriÃ³ un problema al cargar los productos."
+                         Msg = "Ocurrio un problema al cargar los productos."
                      };
                  }
  
-                 if (entity.Errors.Count <= 0)
+                 if (entity.Errors.Count <= 0 && lst != null)
                  {
-                     if (lst != null)
-                     {
                          JavaScriptSerializer serializer = new JavaScriptSerializer();
                          productList = serializer.Serialize(lst);
-                     }
                  }
              }
              catch (Exception ex)
@@ -203,7 +201,7 @@ namespace SystemGlobal_Ecommerce.Layout
                  objReturn = new
                  {
                      Result = "NoOk",
-                     Msg = "OcurriÃ³ un problema al cargar los productos."
+                     Msg = "Ocurrio un problema al cargar los productos."
                  };
              }
              return productList;

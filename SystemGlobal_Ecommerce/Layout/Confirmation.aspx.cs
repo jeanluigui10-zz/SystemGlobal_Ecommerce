@@ -100,7 +100,7 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseSession.Logout();
         }
 
-        public void Message(EnumAlertType type, string message)
+        public void Message(EnumAlertType type, String message)
         {
             String script = @"<script type='text/javascript'>fn_message('" + type.GetStringValue() + "', '" + message + "');</script>";
             Page.ClientScript.RegisterStartupScript(typeof(Page), "message", script);

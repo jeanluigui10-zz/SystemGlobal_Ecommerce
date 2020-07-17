@@ -17,6 +17,7 @@ namespace SystemGlobal_Ecommerce.src.control
         {
 
         }
+       
         [WebMethod]
         public static String SubCategory_GetListBy_IdCategory(Int32 IdCategory)
         {

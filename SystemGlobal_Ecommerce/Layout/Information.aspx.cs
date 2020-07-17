@@ -14,54 +14,33 @@ namespace SystemGlobal_Ecommerce.Layout
 {
     public partial class Information : System.Web.UI.Page
     {
-        public int vsId
-        {
-            get { return ViewState["ID"] != null ? (int)ViewState["ID"] : default(int); }
-            set { ViewState["ID"] = value; }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                LoadDocument();
-                SetQuery();
-                SetData();
-               
-            }
-        }
-        #region SetQuery
-        private void SetQuery()
-        {
-            if (!String.IsNullOrEmpty(Request.QueryString["c"]))
-            {
-                ltTitle.InnerText = "Editar Información";
-                String id = Encryption.Decrypt(Request.QueryString["c"]);
-                if (!String.IsNullOrEmpty(id))
+                if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.ID > 0)
                 {
-                    vsId = Convert.ToInt32(id);
-                    hfCustomerId.Value = id;
+                    LoadDocument();
+                    SetData();
                 }
-                else
-                {
-                    //GoBack();
+                else {
+                    LoadDocument();
+                    ltTitle.InnerText = "Registrarme";
+                    SetControls();
                 }
             }
-            else
-            {
-                ltTitle.InnerText = "Registrarme";
-            }
         }
-        #endregion
+
         #region SetData
         private void SetData()
         {
             try
             {
-                if (vsId > 0)
-                {
+                    ltTitle.InnerText = "Editar Información";
                     Customer obj = null;
+                    Int32 customerId = BaseSession.SsOrderxCore.Customer.ID;
                     BaseEntity entity = new BaseEntity();
-                    obj = CustomerBL.Instance.Customer_GetInformation_ById(ref entity, vsId);
+                    obj = CustomerBL.Instance.Customer_GetInformation_ById(ref entity, customerId);
                     
                     if (entity.Errors.Count == 0)
                         if (obj != null)
@@ -76,17 +55,15 @@ namespace SystemGlobal_Ecommerce.Layout
                     {
                         Message(EnumAlertType.Error, "An error occurred while loading data");
                     }
-                }
             }
             catch (Exception)
             {
-                Message(EnumAlertType.Error, "An error occurred while loading data");
+                Message(EnumAlertType.Error, "Ocurrió un error al cargar la data.");
             }
 
         }
         private void SetControls()
         {
-            hfCustomerId.Value = String.Empty;
             txtNombre.Value  = String.Empty;
             txtApellidoPaterno.Value = String.Empty;
             txtApellidoMaterno.Value = String.Empty;
@@ -101,7 +78,6 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             try
             {
-                hfCustomerId.Value = objCustomer.ID.ToString();
                 txtNombre.Value = objCustomer.FirstName;
                 txtApellidoPaterno.Value = objCustomer.LastNamePaternal;
                 txtApellidoMaterno.Value = objCustomer.LastNameMaternal;
@@ -147,20 +123,17 @@ namespace SystemGlobal_Ecommerce.Layout
         public static Object Customer_Save(srCustomer obj)
         {
             Boolean success;
-            String msg = String.Empty;
-            String msgError = String.Empty;
             try
             {
                 BaseEntity objEntity = new BaseEntity();
-                String idCustomer = obj.Id != "" ? Encryption.Decrypt(HttpUtility.UrlDecode(obj.Id)) : "0";
-                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email, Convert.ToInt32(idCustomer));
+                Int32 idCustomer = BaseSession.SsOrderxCore.Customer == null ? 0 : BaseSession.SsOrderxCore.Customer.ID;
+                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email, idCustomer);
 
                 if (!ExistEmail)
                 {
-
                     Customer objCustomer = new Customer
                     {
-                        ID = String.IsNullOrEmpty(idCustomer) ? 0 : Convert.ToInt32(idCustomer),
+                        ID = Convert.ToInt32(idCustomer),
                         FirstName = obj.FirstName.ToString(),
                         LastNamePaternal = obj.LastNamePaternal.ToString(),
                         LastNameMaternal = obj.LastNameMaternal.ToString(),

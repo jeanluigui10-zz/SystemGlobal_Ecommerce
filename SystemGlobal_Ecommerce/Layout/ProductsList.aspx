@@ -1,11 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ProductsList.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.ProductsList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+   
  <script type="text/javascript">
-
      $(function () {
-         fn_init();
-         $('.slick-slider').slick('refresh');
+	    fn_init();
+	    //contraer y expandir subcategorias
+         $('.tt-collapse').click(function () {
+             $(this).children().find('li').toggle("fast");
+             if ($(this).hasClass("tt-collapse open"))
+             {
+                 $(this).removeClass();
+                 $(this).addClass("tt-collapse");
+             } else {
+                 $(this).removeAttr("style");
+                 $(this).removeClass();
+                 $(this).addClass("tt-collapse open");
+
+             }
+             
+         }); 
      });
 
      function fn_init() {
@@ -13,26 +26,10 @@
      }
      function fn_content() {
          Fn_ListProducts($("#<%=hfProducts.ClientID%>").val());
-         Fn_ListCategory($("#<%=hfCategory.ClientID%>").val());
 
          if ($("#<%=hfQueryCategory.ClientID%>").val() != "") {
-             Fn_LoadProduct_ByCategory($("#<%=hfQueryCategory.ClientID%>").val());
-         }
-         
-     }
-
-     function Fn_ListCategory(dataCategory) {
-         var glancedata = dataCategory;
-         try {
-             var objCategory = $.parseJSON(glancedata);
-             var object = {};
-             object.request = objCategory;
-             var item = fn_LoadTemplates("datatable-Category", object);
-             $("#DivListCategory").html(item);
-         }
-         catch (e) {
-             fn_message('e', 'An error occurred while loading data...');
-         }
+             Fn_LoadProduct_BySubCategory($("#<%=hfQueryCategory.ClientID%>").val());
+         }   
      }
 
      function Fn_ListProducts(data) {
@@ -43,13 +40,15 @@
              object.request = obj;
              var item = fn_LoadTemplates("datatable-Products", object);
              $("#DivProduct").html(item);
+             $("#lblListSubCategory").text("");
+             $("#lblListSubCategory").text(obj[0].SubCategoryName);
          }
          catch (e) {
              fn_message('e', 'An error occurred while loading data...');
          }
      }
 
-     function Fn_LoadProduct_ByCategory(CategoryId) {
+     function Fn_LoadProduct_BySubCategory(SubCategoryId) {
          success = function (response) {
              var lstProducts = response.d;
              try {
@@ -68,7 +67,7 @@
          error = function (xhr, ajaxOptions, thrownError) {
              $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
          };
-         fn_callmethod("ProductsList.aspx/Products_ByCategory", '{CategoryId: "' + CategoryId + '"}', success, error);
+         fn_callmethod("ProductsList.aspx/Products_BySubCategory", '{SubCategoryId: "' + SubCategoryId + '"}', success, error);
      }
 
  </script>
@@ -112,14 +111,11 @@
 							</div>
 						</div>
 					</div>
-					
-					<div class="tt-collapse open">
-						<h3 class="tt-collapse-title">Categorías de Productos</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-list-row" id="DivListCategory">
-							</ul>
-						</div>
+
+					<div id="DivListCategoryName">
+						
 					</div>
+
 					<div class="tt-collapse open" style="display:none;">
 						<h3 class="tt-collapse-title">Filtro por precio (S/.)</h3>
 						<div class="tt-collapse-content">
@@ -133,14 +129,14 @@
 				
 					<div class="tt-content-aside">
 						<a href="listing-left-column.html" class="tt-promo-03">
-							<img src="images/custom/listing_promo_img_07.jpg" alt="">
+							<%--<img src="images/custom/listing_promo_img_07.jpg" alt="">--%>
 						</a>
 					</div>
 				</div>
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options">
-							<h1 class="tt-title" id="lblListCategory">
+							<h1 class="tt-title" id="lblListSubCategory">
 								MUJER <span class="tt-title-total">(69)</span>
 							</h1>
 							<div class="tt-btn-toggle">
@@ -230,10 +226,8 @@
     {{/each}}
 </script>
 
-    <script type="text/x-handlebars-template" id="datatable-Category">
-	       {{# each request}}
-            <li style="cursor:pointer"><a onclick="Fn_LoadProduct_ByCategory('{{IdCategory}}')">{{Name}}</a></li>
-	       {{/each}}
-</script>
+
+
+   
 
 </asp:Content>

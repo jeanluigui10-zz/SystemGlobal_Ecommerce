@@ -27,7 +27,7 @@ namespace SystemGlobal_Ecommerce.Layout
             }
         }
 
-        private void LoadData(Boolean ShowMessage = false)
+        private void LoadData()
         {
             BaseEntity entity = new BaseEntity();
             List<srProducts> lst = new List<srProducts>();

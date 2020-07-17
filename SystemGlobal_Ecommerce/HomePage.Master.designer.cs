@@ -78,6 +78,24 @@ namespace SystemGlobal_Ecommerce
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lblTwitterHeader;
 
         /// <summary>
+        /// Control liOrderHistoryMobile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liOrderHistoryMobile;
+
+        /// <summary>
+        /// Control hrefOrderHistoryMobile.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor hrefOrderHistoryMobile;
+
+        /// <summary>
         /// Control lblPhoneMobile.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,33 @@ namespace SystemGlobal_Ecommerce
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPhoneHeader;
+
+        /// <summary>
+        /// Control divOrderHistoryIcon.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOrderHistoryIcon;
+
+        /// <summary>
+        /// Control liOrderHistory.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liOrderHistory;
+
+        /// <summary>
+        /// Control hrefOrderHistory.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor hrefOrderHistory;
 
         /// <summary>
         /// Control lblMasterSubtotal.
@@ -121,6 +166,15 @@ namespace SystemGlobal_Ecommerce
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCuenta;
+
+        /// <summary>
+        /// Control hrefCustomer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor hrefCustomer;
 
         /// <summary>
         /// Control lblInicioSession.
@@ -274,14 +328,5 @@ namespace SystemGlobal_Ecommerce
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfIsVisiableChat;
-
-        /// <summary>
-        /// Control hfCustomerId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfCustomerId;
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using xAPI.Dao.Order;
 using xAPI.Entity;
 using xAPI.Entity.Order;
@@ -25,51 +22,59 @@ namespace xAPI.BL.Order
         }
         #endregion
 
-        public Boolean Insertar_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder, tBaseDetailOrderList objDetail) 
+        public Boolean Insertar_Pedido(ref BaseEntity objEntity, ref OrderHeader objOrder, tBaseDetailOrderList objDetail) 
         {
             Boolean success;
             try
             {
-                objBase = new BaseEntity();
-                success = OrderDAO.Instance.Insertar_Pedido(ref objBase, ref objOrder, objDetail);
+                objEntity = new BaseEntity();
+                success = OrderDao.Instance.Insertar_Pedido(ref objEntity, ref objOrder, objDetail);
             }
             catch (Exception ex)
             {
                 success = false;
-                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
             }
             return success;
         }
-        public Boolean Update_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder)
+        public Boolean Update_Pedido(ref BaseEntity objEntity, ref OrderHeader objOrder)
         {
             Boolean success;
             try
             {
-                objBase = new BaseEntity();
-                success = OrderDAO.Instance.Update_Pedido(ref objBase, ref objOrder);
+                objEntity = new BaseEntity();
+                success = OrderDao.Instance.Update_Pedido(ref objEntity, ref objOrder);
             }
             catch (Exception ex)
             {
                 success = false;
-                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
             }
             return success;
         }
         
-        public OrderHeader Order_GetBy_OrderId(ref BaseEntity objBase, Int32 orderId)
+        public OrderHeader Order_GetBy_OrderId(ref BaseEntity objEntity, Int32 orderId)
         {
             OrderHeader objOrder = null;
             try
             {
-                objBase = new BaseEntity();
-                objOrder = OrderDAO.Instance.Order_GetBy_OrderId(ref objBase, orderId);
+                objEntity = new BaseEntity();
+                objOrder = OrderDao.Instance.Order_GetBy_OrderId(ref objEntity, orderId);
             }
             catch (Exception ex)
             {
                 objOrder = null;
-                objBase.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
             }
             return objOrder;
+        }
+        public DataTable Order_GetHistory_ByCustomer(ref BaseEntity objEntity, Int32 customerId)
+        {
+            objEntity = new BaseEntity();
+            DataTable dt = null;
+            dt = OrderDao.Instance.Order_GetHistory_ByCustomer(ref objEntity, customerId);
+
+            return dt;
         }
     }
 }

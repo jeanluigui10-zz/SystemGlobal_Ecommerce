@@ -13,7 +13,8 @@
 	<meta name="author" content="wokiee">
 	<link rel="shortcut icon" href="/Files/images/slides/01/elcanaston.jpeg" style="border-radius: 50% !important">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link href="Files/css/theme.css?t=1" rel="stylesheet" />
+     <link href="Files/css/theme.css?h=1" rel="stylesheet" />
+<%--    <link rel="stylesheet" href="Files/css/theme-08.css">--%>
     <link rel="stylesheet" type="text/css" href="/Files/external/slick/slick.css?p=1"/>
     <link href="/Files/external/slick/slick.min.css" rel="stylesheet" />
 
@@ -103,13 +104,11 @@
 
              var veInvalidURL = "Invalid URL";
 
-             var veNumbersOnly = "Numbers only";
+             var veNumbersOnly = "Solo números";
 
-             var veLettersOnly = "Letters only";
+             var veLettersOnly = "Solo letras";
 
              var veNoSpecialCharsAllowed = "No special characters allowed";
-
-             var veLettersOnly = "Letters only (accents allowed)";
 
              var veUserTaken = "This user is already taken";
 
@@ -227,8 +226,6 @@
              var $ttStuckParentSearch = $ttHeader.find('.tt-stuck-parent-search')
              var $ttSearchObjPopupInput = $ttSearchObj.find('.tt-search-input')
              var $ttSearchObjPopupResults = $ttSearchObj.find('.search-results')
-
-             Fn_Get_CustomerId($("#hfCustomerId").val());
 
              $(".modal").on("click", ".btn-close", function () {
                  $(this).closest('.modal-content').find('.modal-header .close').trigger('click');
@@ -597,14 +594,6 @@
              }
          }
 
-         function Fn_Get_CustomerId(CustomerId) {
-             if (CustomerId != "" || CustomerId != undefined) {
-                 $("#lblCustomerHref").attr("href", "/Layout/Information.aspx?c=" + CustomerId);
-             } else {
-                 $("#lblCustomerHref").attr("href", "/Layout/Information.aspx")
-             }
-         }
-
          function Fn_ListProductsShopCartHeader(data) {
              var glancedata = data;
              try {
@@ -660,6 +649,10 @@
                  var item2 = fn_LoadTemplates("datatable-CategorySliderMaster", object);
                  $("#divSliderCategoryMaster").html(item2);
 
+                 //Formulario de ProductsList.aspx
+                 var item3 = fn_LoadTemplates("datatable-Category", object);
+                 $("#DivListCategoryName").html(item3);
+
                  for (var i = 0; i < objCategory.length; i++) {
                      Fn_LoadSubCategory(objCategory[i].IdCategory);
                  }
@@ -678,6 +671,10 @@
                          object.request = objsubCategory;
                          var item = fn_LoadTemplates("datatable-SubCategoryMaster", object);
                          $("#SubCategoryMaster_" + objsubCategory[0].IdCategory).html(item);
+
+                         //Formulario de ProductsList.aspx
+                         var item2 = fn_LoadTemplates("datatable-SubCategory", object);
+                         $("#DivListSubCategory_" + objsubCategory[0].IdCategory).html(item2);
                      }
                  } catch (e) {
                      fn_message('e', 'Ocurrió un error.', 'message_row');
@@ -782,6 +779,7 @@
                     </div>
                 </div>
             </div>
+
         <!-- tt-mobile menu -->
             <nav class="panel-menu mobile-main-menu">
                 <ul>
@@ -794,8 +792,8 @@
                     <%--<li>
                         <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
                     </li>--%>
-                    <li>
-                        <a href="<%=Page.ResolveUrl("~/Layout/Order/OrderHistory.aspx") %>">Mis Ordenes</a>
+                    <li id="liOrderHistoryMobile" runat="server">
+                        <a id="hrefOrderHistoryMobile" href="#" runat="server">Mis Ordenes</a>
                     </li>
                     <li>
                         <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
@@ -931,27 +929,13 @@
                                             <div class="menuIconsFont"><i class="icon-f-46"></i></div>
                                             <li class="dropdown megamenu">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/ProductsList.aspx") %>">Productos</a>
-                                              <%--  <div class="dropdown-menu">
-                                                    <div class="row tt-col-list">
-                                                        <div class="col">
-                                                            <h6 class="tt-title-submenu"><a href="#">Categorías</a></h6>
-                                                            <ul class="tt-megamenu-submenu" id="divCategoryMaster">
-                                                            </ul>
-                                                        </div>
-
-                                                    </div>
-                                                </div>--%>
                                             </li>
-                                            <%--<div class="menuIconsFont"><i class="icon-e-46"></i></div>
-                                            <li class="dropdown tt-megamenu-col-01">
-                                                <a href="<%=Page.ResolveUrl("~/Layout/About/Services.aspx") %>">Servicios</a>
-
-                                            </li>--%>
-                                            <div class="menuIconsFont"><i class="icon-e-85"></i></div>
-                                            <li class="dropdown tt-megamenu-col-01">
-                                                <a href="<%=Page.ResolveUrl("~/Layout/Order/OrderHistory.aspx") %>">Mis Ordenes</a>
-
+                                         
+                                            <div id="divOrderHistoryIcon" class="menuIconsFont" runat="server"><i class="icon-e-85"></i></div>
+                                            <li class="dropdown tt-megamenu-col-01" id="liOrderHistory" runat="server">
+                                                <a id="hrefOrderHistory" href="#" runat="server">Mis Ordenes</a>
                                             </li>
+
                                             <div class="menuIconsFont"><i class="icon-f-35"></i></div>
                                             <li class="dropdown tt-megamenu-col-01">
                                                 <a href="<%=Page.ResolveUrl("~/Layout/Support/Contact.aspx") %>">Contáctanos</a>
@@ -1055,7 +1039,7 @@
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
-                                                <li id="lblCuenta" runat="server"><a id="lblCustomerHref" href="/Layout/Information.aspx"><i class="icon-g-25"></i>Mi Cuenta</a></li>
+                                                <li id="lblCuenta" runat="server"><a id="hrefCustomer" href="#" runat="server"><i class="icon-g-25"></i>Mi Cuenta</a></li>
                                                 <li id="lblInicioSession" runat="server"><a href="/Layout/Login.aspx"><i class="icon-g-92"></i>Iniciar Sesión</a></li>
                                                 <li id="lblRegistrar" runat="server"><a href="/Layout/Information.aspx"><i class="icon-g-23"></i>Registrarse</a></li>
                                                 <li id="lblCerrarSession" runat="server">
@@ -1473,7 +1457,6 @@
         <asp:HiddenField runat="server" ID="hfDataListProduct" />
         <asp:HiddenField runat="server" ID="hfDataListCategory" />
         <asp:HiddenField runat="server" ID="hfIsVisiableChat" />
-        <asp:HiddenField runat="server" ID="hfCustomerId" />
 
 <%--        <uc1:ucChat runat="server" ID="ucChat" />--%>
     </form>
@@ -1588,7 +1571,7 @@
      <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
 	       {{# each request}}
          <div class="col-2 col-md-4 col-lg-3">
-             <a href="/Layout/ProductsList.aspx?category={{Id}}" class="tt-collection-item">
+             <a href="#" class="tt-collection-item">
                  <div class="tt-image-box">
                      <img src="{{NameResource}}" alt="">
                  </div>
@@ -1606,7 +1589,7 @@
      <script type="text/x-handlebars-template" id="datatable-CategoryMaster">
 	       {{# each request}}
                                             <li class="tt-submenu">
-                                                <a href="/Layout/ProductsList.aspx?category={{IdCategoryEncrypt}}">
+                                                <a href="#">
                                                     <i class="icon-new"></i>
                                                     <span>{{Name}}</span>
                                                 </a>
@@ -1644,11 +1627,25 @@
 
      <script type="text/x-handlebars-template" id="datatable-SubCategoryMaster">
 	       {{# each request}}               
-                 <li><a href="#">{{SubCategoryName}}</a></li>                                          
+                 <li><a href="/Layout/ProductsList.aspx?subCategory={{IdSubCategory}}">{{SubCategoryName}}</a></li>                                          
 	       {{/each}}
     </script>
 
+        <script type="text/x-handlebars-template" id="datatable-Category">
+	       {{# each request}}
+        <div class="tt-collapse open">
+            <div class="tt-collapse-title">{{Name}}</div>
+            <ul class="tt-list-row" id="DivListSubCategory_{{IdCategory}}">
+            </ul>
+        </div>
+	       {{/each}}
+    </script>
 
+     <script type="text/x-handlebars-template" id="datatable-SubCategory">
+	       {{# each request}}
+            <li style="cursor:pointer"><a onclick="Fn_LoadProduct_BySubCategory('{{IdSubCategory}}')">{{SubCategoryName}}</a></li>           
+	       {{/each}}
+    </script>
 
 </body>
 </html>

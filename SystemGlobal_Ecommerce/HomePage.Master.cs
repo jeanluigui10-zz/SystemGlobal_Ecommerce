@@ -17,13 +17,22 @@ namespace SystemGlobal_Ecommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (BaseSession.SsOrderxCore.Customer != null && BaseSession.SsOrderxCore.Customer.ID > 0)
+            if (BaseSession.SsOrderxCore.Customer != null)
             {
+                
                 lblCuenta.Visible = true;
                 lblCerrarSession.Visible = true;
                 lblInicioSession.Visible = false;
                 lblRegistrar.Visible = false;
-                hfCustomerId.Value = HttpUtility.UrlEncode(Encryption.Encrypt(BaseSession.SsOrderxCore.Customer.ID.ToString()));
+
+                divOrderHistoryIcon.Visible = true;
+
+                liOrderHistory.Visible = true;
+                liOrderHistoryMobile.Visible = true;
+
+                hrefCustomer.Attributes["href"] = "/Layout/Information.aspx";
+                hrefOrderHistoryMobile.Attributes["href"] = "/Layout/Order/OrderHistory.aspx";
+                hrefOrderHistory.Attributes["href"] = "/Layout/Order/OrderHistory.aspx";
             }
             else
             {
@@ -31,7 +40,13 @@ namespace SystemGlobal_Ecommerce
                 lblRegistrar.Visible = true;
                 lblCuenta.Visible = false;
                 lblCerrarSession.Visible = false;
-                hfCustomerId.Value = "";
+
+                divOrderHistoryIcon.Visible = false;
+
+                liOrderHistory.Visible = false;
+                liOrderHistoryMobile.Visible = false;
+
+                hrefCustomer.Attributes["href"] = "/Layout/Information.aspx";
             }
             //Load_Settings();
             Load_StoreInformation();
@@ -96,7 +111,7 @@ namespace SystemGlobal_Ecommerce
                             IdCategoryEncrypt = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
                             IdCategory = item["ID"].ToString(),
                             Name = item["Name"].ToString(),
-                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString()
                         });
                     }
                 }

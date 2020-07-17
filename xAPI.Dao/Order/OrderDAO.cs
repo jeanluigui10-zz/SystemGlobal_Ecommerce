@@ -12,21 +12,20 @@ using xAPI.Library.General;
 
 namespace xAPI.Dao.Order
 {
-    public class OrderDAO
+    public class OrderDao
     {
         #region Singleton
-        private static OrderDAO instance = null;
-        public static OrderDAO Instance
+        private static OrderDao instance = null;
+        public static OrderDao Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new OrderDAO();
+                    instance = new OrderDao();
                 return instance;
             }
         }
         #endregion
-        private static String domainUrl = "http://canastonxcorporate.tk";
         public Boolean Insertar_Pedido(ref BaseEntity objBase, ref OrderHeader objOrder, tBaseDetailOrderList objDetail)
         {
             SqlCommand cmd = null;
@@ -167,6 +166,32 @@ namespace xAPI.Dao.Order
                 clsConnection.DisposeCommand(cmd);
             }
             return obj;
+        }
+
+        public DataTable Order_GetHistory_ByCustomer(ref BaseEntity objEntity, Int32 customerId)
+        {
+            DataTable dt = new DataTable();
+            SqlCommand cmd = null;
+            try
+            {
+                cmd = new SqlCommand("Order_GetHistory_ByCustomer_Sp", clsConnection.GetConnection())
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@customerId", customerId);
+                dt.Load(cmd.ExecuteReader());
+            }
+            catch (Exception ex)
+            {
+                dt = null;
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  while loading data"));
+
+            }
+            finally
+            {
+                clsConnection.DisposeCommand(cmd);
+            }
+            return dt;
         }
     }
 }

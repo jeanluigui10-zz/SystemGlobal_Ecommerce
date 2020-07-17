@@ -15,6 +15,33 @@ namespace SystemGlobal_Ecommerce.Layout.Support
     {
 
         /// <summary>
+        /// Control IdContactPhone.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdContactPhone;
+
+        /// <summary>
+        /// Control IdContactAddress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdContactAddress;
+
+        /// <summary>
+        /// Control idContactAttentionHours.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idContactAttentionHours;
+
+        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
@@ -30,7 +57,7 @@ namespace SystemGlobal_Ecommerce.Layout.Support
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtTelefono;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTelefono;
 
         /// <summary>
         /// Control txtCorreo.

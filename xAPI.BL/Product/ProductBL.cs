@@ -45,7 +45,14 @@ namespace xAPI.BL.Product
 
             return dt;
         }
-        
+        public DataTable Products_BySubCategory(ref BaseEntity entity, Int32 SubCategoryId)
+        {
+            entity = new BaseEntity();
+            DataTable dt = null;
+            dt = ProductDao.Instance.Products_BySubCategory(ref entity, SubCategoryId);
+
+            return dt;
+        }
         public DataTable Products_Search_ByName(ref BaseEntity entity, String name)
         {
             entity = new BaseEntity();
