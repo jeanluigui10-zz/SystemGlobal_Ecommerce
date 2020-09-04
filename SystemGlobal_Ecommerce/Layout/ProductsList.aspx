@@ -164,12 +164,12 @@
                                   </div>
 						</div>
 
-						<div class="text-center tt_product_showmore">
+						<%--<div class="text-center tt_product_showmore">
 							<a href="#" class="btn btn-border">VER MÁS</a>
 							<div class="tt_item_all_js">
 								<a href="#" class="btn btn-border01">NO HAY MÁS ARTÍCULOS PARA MOSTRAR</a>
 							</div>
-						</div>
+						</div>--%>
 					</div>
 				</div>
 			</div>
