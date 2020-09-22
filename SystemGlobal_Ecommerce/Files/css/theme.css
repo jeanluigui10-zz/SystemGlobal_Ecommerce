@@ -14819,7 +14819,7 @@ html.ie .tt-desctop-parent-menu {
 
 .tt-desktop-header .tt-dropdown-obj {
     margin-top: 9px;
-    padding-bottom: 7px;
+    /*padding-bottom: 7px;*/
 }
 
 @media (min-width: 1025px) {
@@ -15820,7 +15820,7 @@ header .container-fluid {
     }
 
     .tt-menu-toggle.stylization-02 {
-        background-color: #2879fe;
+        background-color: #08da97;
         padding: 10px 11px 5px;
         -moz-transition: background-color 0.2s linear;
         -o-transition: background-color 0.2s linear;
@@ -15834,9 +15834,9 @@ header .container-fluid {
             font-size: 18px;
         }
 
-        .tt-menu-toggle.stylization-02:hover {
-            background-color: #2267d8;
-        }
+    .tt-menu-toggle.stylization-02:hover {
+        background-color: #08da97;
+    }
 
             .tt-menu-toggle.stylization-02:hover [class^="icon"] {
                 color: #ffffff;
@@ -16978,7 +16978,7 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
         border: none;
         outline: none;
         color: #ffffff;
-        background: #fd2020;
+        background: #08da97;
         font-size: 14px;
         font-weight: 500;
         letter-spacing: 0.05em;
@@ -16994,7 +16994,7 @@ html.ie .tt-header-holder .tt-desctop-menu.tt-menu-small {
 
     .tt-search-type2 .tt-btn-search:hover {
         color: #ffffff;
-        background: #dc2c2c;
+        background: #08da97;
     }
 
     .tt-search-type2 .tt-search-input:focus::-webkit-input-placeholder {
@@ -24549,18 +24549,19 @@ html.ie .tt-btn-col-close {
         transition: color 0.2s linear;
     }
 
-        .tt-collapse .tt-collapse-title:after {
-            position: absolute;
-            display: block;
-            top: 7px;
-            right: -2px;
-            font-family: "wokiee";
-            font-size: 10px;
-            content: "\e9b1";
-            line-height: 1;
-            font-weight: normal;
-            color: #191919;
-        }
+    .tt-collapse .tt-collapse-title:after {
+        position: absolute;
+        /*            display: block;*/
+        display: none;
+        top: 7px;
+        right: -2px;
+        font-family: "wokiee";
+        font-size: 10px;
+        content: "\e9b1";
+        line-height: 1;
+        font-weight: normal;
+        color: #191919;
+    }
 
     .tt-collapse .tt-collapse-title:hover {
         color: #fd2020;
@@ -25977,7 +25978,7 @@ html.ie .tt-btn-col-close {
         display: inline-block;
         position: relative;
         letter-spacing: 0.04em;
-        color: #2879fe;
+        color: #57c09e;
         font-size: 14px;
         -moz-transition: color 0.2s linear;
         -o-transition: color 0.2s linear;
@@ -26003,7 +26004,7 @@ html.ie .tt-btn-col-close {
             }
 
     .tt-product:not(.tt-view) .tt-description .tt-btn-addtocart.thumbprod-button-bg:hover {
-        background-color: #dc2c2c;
+        background-color: #57c09e !important;
         color: #ffffff;
     }
 
@@ -33289,7 +33290,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
 }
 
 .tt-wishlist-box .tt-wishlist-list .tt-item .tt-col-btn .tt-btn-addtocart:hover {
-    background-color: #2267d8;
+    background-color: #57c09e;
     color: #ffffff;
 }
 
@@ -33645,7 +33646,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
 }
 
 .tt-compare-table .tt-item .tt-btn-addtocart:hover {
-    background-color: #2267d8;
+    background-color: #57c09e;
     color: #ffffff;
 }
 
@@ -34014,7 +34015,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
 }
 
 .tt-compare-table02 .tt-col-item .tt-btn-addtocart:hover {
-    background-color: #2267d8;
+    background-color: #57c09e;
     color: #ffffff;
 }
 
@@ -34106,7 +34107,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
         font-weight: 500;
         letter-spacing: 0.05em;
         color: #ffffff;
-        background: #fd2020;
+        background: #08da97;
         padding: 11px 40px 7px 20px;
         min-width: 200px;
         border: none;
@@ -34261,7 +34262,7 @@ html.ie #tt-boxedbutton .rtlbutton-color:hover .box-description {
             }
 
             .tt-menu-categories .tt-dropdown-menu nav > ul > li.tt-submenu > a:after {
-                content: '\e90e';
+/*                content: '\e90e';*/
                 font-family: "wokiee";
                 speak: none;
                 text-transform: none;
@@ -34818,7 +34819,7 @@ button:focus {
     }
 
 .btn.btn-border {
-    background: #c3c9ce;
+   /* background: #08da97 !important;*/
     color: #141414;
     border: 2px solid #c3c9ce;
     height: 40px;
@@ -34827,7 +34828,7 @@ button:focus {
 }
 
     .btn.btn-border:hover {
-        background: #a9a1a1;
+        background: #2fe0a7;
         color: #ffffff;
         border-color: #a9a1a1;
         font-weight: bold;

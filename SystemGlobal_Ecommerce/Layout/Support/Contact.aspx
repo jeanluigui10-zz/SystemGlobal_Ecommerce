@@ -32,7 +32,6 @@
 
                 if (asw != null) {
                         if (asw.d.Result == "Ok") {
-							//fn_message("s", asw.d.Msg);
                             $("#modalConfirmacion").modal('show');
                             Fn_Limpiar();
                         } 
@@ -90,14 +89,14 @@
 <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="/Index.aspx">Canastón</a></li>
+			<li><a href="/Index.aspx">Mickypepa</a></li>
 			<li>Contáctanos</li>
 		</ul>
 	</div>
 </div>
 <div id="message_row"></div>
 <div id="tt-pageContent">
-	<div class="container-indent">
+	<div class="container-indent" style="display:none">
 		<div class="container">
 			<div class="contact-map">
 				<div id="map"></div>
@@ -112,7 +111,7 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-93"></i>
 							<h6 class="tt-title">TENEMOS UN CHAT!</h6>
-							<address id="IdContactPhone" runat="server">
+							<address id="lblContactPhone" runat="server">
 								+777 2345 7885:<br>
 								+777 2345 7886
 							</address>
@@ -122,7 +121,7 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-24"></i>
 							<h6 class="tt-title">VISITA NUESTRA UBICACIÓN</h6>
-							<address id="IdContactAddress" runat="server">
+							<address id="lblContactAddress" runat="server">
 								Actualmente no esta disponible por el covid-19<br>
 							</address>
 						</div>
@@ -131,7 +130,7 @@
 						<div class="tt-contact-info">
 							<i class="tt-icon icon-f-92"></i>
 							<h6 class="tt-title">HORARIO DE ATENCIÓN</h6>
-							<address id="idContactAttentionHours" runat="server">
+							<address id="lblContactAttentionHours" runat="server">
 								7 Dias a la semana<br>
 								de 10 AM a 6 PM
 							</address>

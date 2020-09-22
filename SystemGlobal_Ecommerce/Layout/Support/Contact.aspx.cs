@@ -3,7 +3,9 @@ using System.Web.Services;
 using System.Web.UI;
 using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Customers;
+using xAPI.BL.Setting;
 using xAPI.Entity.Customers;
+using xAPI.Entity.Store;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 
@@ -13,9 +15,22 @@ namespace SystemGlobal_Ecommerce.Layout.Support
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Load_StoreInformation();
         }
-        
+
+        public void Load_StoreInformation()
+        {
+            BaseEntity objEntity = new BaseEntity();
+            Store objStore = SettingBL.Instance.Store_GetInformation(ref objEntity);
+
+            if (objEntity.Errors.Count == 0)
+            {
+                lblContactPhone.InnerText = objStore.Phone2.ToString() != "" ? objStore.Phone1.ToString() + " - " + objStore.Phone1.ToString() : objStore.Phone1.ToString();
+                lblContactAddress.InnerText = objStore.Address.ToString();
+                lblContactAttentionHours.InnerText = objStore.AttentionHours.ToString();
+            }
+        }
+
         [WebMethod]
         public static Object Customer_Subject(srCustomer obj)
         {

@@ -351,22 +351,24 @@ namespace xAPI.Library.General
         [StringValue("p")]
         purged = 6
     }
+    public enum EnumPaymentStatus
+    {
+        [StringValue("Pagado")]
+        Pagado = 1,
+        [StringValue("Pendiente de Pago")]
+        PendientePago = 2
+    }
     public enum EnumOrderStatus
     {
-        [StringValue("n")]
-        Disabled = 0,//Inactive
-        [StringValue("y")]
-        Submit = 1,//Enviado
-        Deleted = 2,
-        ShowAll = 3,
-        [StringValue("s")]
-        Suspended = 4,//Suspended
-        [StringValue("u")]
-        notSuspended = 5,
-        [StringValue("p")]
-        purged = 6
+        [StringValue("Pendiente de Entrega")]
+        PendienteEntrega = 1,
+        [StringValue("Enviado")]
+        Enviado = 2,
+        [StringValue("Entregado")]
+        Entregado = 3,
+        [StringValue("Cancelado")]
+        Cancelado = 4
     }
-
     public enum EnumPaymentType
     {
         [StringValue("Contra Entrega")]

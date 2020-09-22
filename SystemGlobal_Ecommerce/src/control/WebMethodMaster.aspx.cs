@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using SystemGlobal_Ecommerce.src.app_code;
 using xAPI.BL.Category;
+using xAPI.BL.Product;
 using xAPI.Library.Base;
 using xAPI.Library.General;
 
@@ -18,48 +19,78 @@ namespace SystemGlobal_Ecommerce.src.control
 
         }
        
+   
         [WebMethod]
-        public static String SubCategory_GetListBy_IdCategory(Int32 IdCategory)
+        public static String Products_ByCategory(String CategoryId)
         {
             BaseEntity entity = new BaseEntity();
-            List<srSubCategory> lst = new List<srSubCategory>();
-            String subCategoryList = String.Empty;
+            List<srProducts> lst = new List<srProducts>();
+            String productList = String.Empty;
+            Object objReturn = new Object();
 
             try
             {
-                DataTable dt = CategoryBL.Instance.SubCategory_GetListBy_IdCategory(ref entity, IdCategory);
+                String CategId = Encryption.Decrypt(CategoryId); //Encryption.Decrypt(HttpUtility.UrlDecode(CategoryId));
+                DataTable dt = ProductBL.Instance.Products_ByCategory(ref entity, Convert.ToInt32(CategId));
                 if (entity.Errors.Count == 0)
                 {
                     if (dt != null)
                     {
                         foreach (DataRow item in dt.Rows)
                         {
-                            lst.Add(new srSubCategory()
+                            lst.Add(new srProducts()
                             {
-                                IdSubCategory = HttpUtility.UrlEncode(Encryption.Encrypt(item["IdSubCategory"].ToString())),
-                                IdCategory = item["IdCategory"].ToString(),
-                                SubCategoryName = item["SubCategoryName"].ToString()
+                                Id = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
+                                FileName = item["FileName"].ToString(),
+                                Name = item["Name"].ToString(),
+                                UnitPrice = item["UnitPrice"].ToString(),
+                                DocType = item["DocType"].ToString(),
+                                Brand = item["BrandName"].ToString(),
+                                Category = item["Resource_Category_Name"].ToString(),
+                                //SubCategoryName = item["SubCategoryName"].ToString(),
+                                Description = item["Description"].ToString(),
+                                Stock = Convert.ToInt32(item["Stock"]).ToString(),
+                                PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
+                                UniMed = item["UniMed"].ToString(),
+                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                Status = item["Status"].ToString()
                             });
                         }
                     }
+                    else
+                    {
+                        objReturn = new
+                        {
+                            Result = "NoOk",
+                            Msg = "Ocurrio un problema al cargar los productos."
+                        };
+                    }
+                }
+                else
+                {
+                    objReturn = new
+                    {
+                        Result = "NoOk",
+                        Msg = "Ocurrio un problema al cargar los productos."
+                    };
                 }
 
-                if (entity.Errors.Count <= 0)
+                if (entity.Errors.Count <= 0 && lst != null)
                 {
-                    if (lst != null)
-                    {
-                        JavaScriptSerializer serializer = new JavaScriptSerializer();
-                        subCategoryList = serializer.Serialize(lst);
-                    }
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    productList = serializer.Serialize(lst);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                objReturn = new
+                {
+                    Result = "NoOk",
+                    Msg = "Ocurrio un problema al cargar los productos."
+                };
             }
-            return subCategoryList;
+            return productList;
         }
-
 
     }
 }

@@ -59,7 +59,7 @@
     <div class="tt-breadcrumb">
         <div class="container">
             <ul>
-                <li><a href="index.html">Canastón</a></li>
+                <li><a href="index.html">Mickypepa</a></li>
                 <li>Mi Historial de ordenes</li>
             </ul>
         </div>
@@ -116,7 +116,7 @@
             <td>{{OrderDate}}</td>
             <td>{{OrderStatus}}</td>
             <td>{{OrderProgress}}</td>
-            <td>{{Total}}</td>
+            <td>S/.{{Total}}</td>
             <td><a onclick="fn_viewDetail('{{IdOrderEncrypt}}')">Ver detalle</a></td>
         </tr>
         {{/each}}

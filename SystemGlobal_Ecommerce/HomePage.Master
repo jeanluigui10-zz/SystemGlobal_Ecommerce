@@ -7,14 +7,14 @@
 <html>
 <head runat="server">
     <meta charset="utf-8">
-	<title>El Canastón | Bienvenidos</title>
+	<title>Mickypepa | Bienvenidos</title>
 	<meta name="keywords" content="HTML5 Template">
-	<meta name="description" content="El Canastón">
+	<meta name="description" content="Mickypepa">
 	<meta name="author" content="wokiee">
-	<link rel="shortcut icon" href="/Files/images/slides/01/elcanaston.jpeg" style="border-radius: 50% !important">
+	<link rel="shortcut icon" href="/Files/images/slides/01/mickypepa.png" style="border-radius: 50% !important">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <link href="Files/css/theme.css?h=1" rel="stylesheet" />
-<%--    <link rel="stylesheet" href="Files/css/theme-08.css">--%>
+    <link rel="stylesheet" href="Files/css/theme-02.css?a=1">
     <link rel="stylesheet" type="text/css" href="/Files/external/slick/slick.css?p=1"/>
     <link href="/Files/external/slick/slick.min.css" rel="stylesheet" />
 
@@ -653,9 +653,9 @@
                  var item3 = fn_LoadTemplates("datatable-Category", object);
                  $("#DivListCategoryName").html(item3);
 
-                 for (var i = 0; i < objCategory.length; i++) {
-                     Fn_LoadSubCategory(objCategory[i].IdCategory);
-                 }
+                 //for (var i = 0; i < objCategory.length; i++) {
+                 //    Fn_LoadSubCategory(objCategory[i].IdCategory);
+                 //}
              }
              catch (e) {
                  fn_message('e', 'An error occurred while loading data...');
@@ -860,7 +860,7 @@
                             <!-- /logo -->
                         </div>
 
-                        <div class="tt-col-obj obj-move-right">
+                        <div class="tt-col-obj obj-move-right" style="display:none">
                             <div class="header-tel-info icon-f-93" id="lblPhoneHeader" runat="server" style="color: #87160a;font-size: 16px;line-height: 1;">
                             </div>
                         </div>
@@ -953,7 +953,7 @@
                                 <!-- tt-search -->
                                 <div role="search">
                                     <i class="icon-h-04" style="color: #999999;"></i>
-                                    <input class="tt-search-input" type="search" placeholder="Buscar productos..." aria-label="Buscar Productos..." autocomplete="off">
+                                    <input id="abc" class="tt-search-input" type="search" placeholder="Buscar productos..." aria-label="Buscar Productos..." autocomplete="off">
                                     <button type="submit" class="tt-btn-search">Buscar producto</button>
                                     <div class="search-results" style="display: none;"></div>
                                 </div>
@@ -1132,7 +1132,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-4 col-xl-3">
+				<div class="col-md-6 col-lg-4 col-xl-3" style="display:none">
 					<div class="tt-newsletter">
 						<div class="tt-mobile-collapse">
 							<h4 class="tt-collapse-title">
@@ -1571,7 +1571,7 @@
      <script type="text/x-handlebars-template" id="datatable-CategorySliderMaster">
 	       {{# each request}}
          <div class="col-2 col-md-4 col-lg-3">
-             <a href="#" class="tt-collection-item">
+             <a href="/Layout/ProductsList.aspx?category={{IdCategoryEncrypt}}" class="tt-collection-item">
                  <div class="tt-image-box">
                      <img src="{{NameResource}}" alt="">
                  </div>
@@ -1589,11 +1589,11 @@
      <script type="text/x-handlebars-template" id="datatable-CategoryMaster">
 	       {{# each request}}
                                             <li class="tt-submenu">
-                                                <a href="#">
+                                                <a href="/Layout/ProductsList.aspx?category={{IdCategoryEncrypt}}">
                                                     <i class="icon-new"></i>
                                                     <span>{{Name}}</span>
                                                 </a>
-                                                <div class="dropdown-menu size-md">
+                                              <%--  <div class="dropdown-menu size-md">
                                                     <div class="dropdown-menu-wrapper">
                                                         <div class="row">
                                                             <div class="col-12">
@@ -1620,7 +1620,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>--%>
                                             </li>
 	       {{/each}}
     </script>
@@ -1631,11 +1631,11 @@
 	       {{/each}}
     </script>
 
-        <script type="text/x-handlebars-template" id="datatable-Category">
+   <script type="text/x-handlebars-template" id="datatable-Category">
 	       {{# each request}}
         <div class="tt-collapse open">
-            <div class="tt-collapse-title">{{Name}}</div>
-            <ul class="tt-list-row" id="DivListSubCategory_{{IdCategory}}">
+            <div class="tt-collapse-title" onclick="Fn_LoadProduct_ByCategorySelect('{{IdCategoryEncrypt}}')">{{Name}}</div>
+            <ul class="tt-list-row" <%--id="DivListSubCategory_{{IdCategory}}"--%> >
             </ul>
         </div>
 	       {{/each}}

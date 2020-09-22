@@ -566,7 +566,9 @@ namespace SystemGlobal_Ecommerce.Layout
                             objOrder.PaymentTypeName = EnumPaymentType.Scotiabank.GetStringValue();
                         }
 
-                        objOrder.Status = Convert.ToByte(EnumOrderStatus.Submit);
+                        objOrder.Status = Convert.ToByte(EnumOrderStatus.PendienteEntrega);
+                        objOrder.PaymentStatus = Convert.ToByte(EnumPaymentStatus.PendientePago);
+
                         success = OrderBL.Instance.Insertar_Pedido(ref objBase, ref objOrder, objListDetail);
                         if (objBase.Errors.Count == 0)
                         {

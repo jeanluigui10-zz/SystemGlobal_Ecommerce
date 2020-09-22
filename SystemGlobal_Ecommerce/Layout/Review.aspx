@@ -33,6 +33,7 @@
              //    Culqi.createToken();
              //    e.preventDefault();
              //});
+
          });
          function Fn_ValidateCard(e) {
 
@@ -110,14 +111,14 @@
              }
          };
 
-    </script>
+     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <asp:HiddenField runat="server" ID="hfDataMethodPayment" />
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="/Index.aspx">Canastón</a></li>
+			<li><a href="/Index.aspx">Mickypepa</a></li>
 			<li>Productos Seleccionados</li>
 		</ul>
 	</div>
@@ -128,7 +129,7 @@
 			<h1 class="tt-title-subpages noborder">Mis Productos</h1>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
-					<div class="tt-shopcart-table">
+					<div class="tt-shopcart-table">re
 						<table id="tblCarrito">
 						     <thead class="col-sm-12 col-xl-8">
                                 <tr>
@@ -158,7 +159,7 @@
 				    <br><br>
 				    <%--MethodPayment--%>
 				    <div class="tt-shopcart-table">
-								    <img id="paymentimage" src="http://elcanastonxcorporate.tk/Files/enterprise/methodPay/metodosDePago.jpeg" style="width:25%">
+                            
 								<br>
 								<br>
 								    <label for="s_username" style=" font-family: Hind, sans-serif; font-size: 24px; font-weight: bold;" class="col-md-12 font-lato-h4">Seleccione método de pago *</label>
@@ -169,6 +170,8 @@
 										  </div>
 										  <br />
 										   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
+										  
+								    <img id="paymentimage" src="../Files/images/slides/01/metodosDePago.jpeg" style="width:25%; margin-left:50%">
 									   </div>
 								    </div>
 					</div>
@@ -217,7 +220,7 @@
 
 
 				</div>
-				<div class="col-sm-12 col-xl-4">
+				<div class="col-sm-12 col-xl-4" style="background: #e9eaea;">
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
                                   <a class="icon-f-74" style="font-size: xx-large;">

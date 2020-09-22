@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using xAPI.Entity.Store;
 using xAPI.Library.Base;
 using xAPI.Library.Connection;

@@ -45,6 +45,7 @@ namespace xAPI.Dao.Order
                 cmd.Parameters.AddWithValue("@SubTotal", objOrder.SubTotal);
                 cmd.Parameters.AddWithValue("@PaymentType", objOrder.PaymentType);
                 cmd.Parameters.AddWithValue("@PaymentTypeName", objOrder.PaymentTypeName);
+                cmd.Parameters.AddWithValue("@PaymentStatus", objOrder.PaymentStatus);
                 cmd.Parameters.AddWithValue("@Status", objOrder.Status);
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@TY_OrderDetail", Value = objDetail, SqlDbType = SqlDbType.Structured, TypeName = "TY_OrdersDetail" });
                 cmd.ExecuteReader();

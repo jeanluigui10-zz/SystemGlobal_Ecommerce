@@ -15,31 +15,31 @@ namespace SystemGlobal_Ecommerce.Layout.Support
     {
 
         /// <summary>
-        /// Control IdContactPhone.
+        /// Control lblContactPhone.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdContactPhone;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactPhone;
 
         /// <summary>
-        /// Control IdContactAddress.
+        /// Control lblContactAddress.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdContactAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactAddress;
 
         /// <summary>
-        /// Control idContactAttentionHours.
+        /// Control lblContactAttentionHours.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idContactAttentionHours;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactAttentionHours;
 
         /// <summary>
         /// Control txtNombre.

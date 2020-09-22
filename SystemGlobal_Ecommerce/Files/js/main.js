@@ -1869,7 +1869,9 @@
             ttProductItem = blocks.ttProductListing.find('.tt-col-item:first'),
             ttProductItemValue =  (function(){
                 if(ttQuantity.length && !ttQuantity.hasClass('tt-disabled')){
-                    var ttValue = parseInt(ttProductItem.css("flex").replace("0 0", "").replace("%", ""), 10) || parseInt(ttProductItem.css("max-width"), 10);
+                    //var ttValue = parseInt(ttProductItem.css("flex").replace("0 0", "").replace("%", ""), 10) || parseInt(ttProductItem.css("max-width"), 10);
+                    var ttValue = parseInt(ttProductItem.css("flex"));
+
                     return ttValue;
                 };
             }()),

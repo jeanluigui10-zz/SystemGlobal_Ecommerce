@@ -28,7 +28,9 @@
          Fn_ListProducts($("#<%=hfProducts.ClientID%>").val());
 
          if ($("#<%=hfQueryCategory.ClientID%>").val() != "") {
-             Fn_LoadProduct_BySubCategory($("#<%=hfQueryCategory.ClientID%>").val());
+             Fn_LoadProduct_ByCategory($("#<%=hfQueryCategory.ClientID%>").val());
+         } else {
+             $("#ContentPlaceHolder1_lblListCategory").text("Todos los productos");
          }   
      }
 
@@ -40,15 +42,15 @@
              object.request = obj;
              var item = fn_LoadTemplates("datatable-Products", object);
              $("#DivProduct").html(item);
-             $("#lblListSubCategory").text("");
-             $("#lblListSubCategory").text(obj[0].SubCategoryName);
+             $("#ContentPlaceHolder1_lblListCategory").text("");
+             $("#ContentPlaceHolder1_lblListCategory").text(obj[0].Category);
          }
          catch (e) {
              fn_message('e', 'An error occurred while loading data...');
          }
      }
 
-     function Fn_LoadProduct_BySubCategory(SubCategoryId) {
+     function Fn_LoadProduct_ByCategory(CategoryId) {
          success = function (response) {
              var lstProducts = response.d;
              try {
@@ -67,9 +69,30 @@
          error = function (xhr, ajaxOptions, thrownError) {
              $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
          };
-         fn_callmethod("ProductsList.aspx/Products_BySubCategory", '{SubCategoryId: "' + SubCategoryId + '"}', success, error);
+         fn_callmethod("ProductsList.aspx/Products_ByCategory_Load", '{CategoryId: "' + CategoryId + '"}', success, error);
      }
 
+     function Fn_LoadProduct_ByCategorySelect(CategoryId) {
+         success = function (response) {
+             var lstProducts = response.d;
+             try {
+                 if (lstProducts != null) {
+                     $("#DivProduct").empty();
+                     Fn_ListProducts(lstProducts)
+                 } else {
+                     fn_message('e', 'An error occurred while loading data...');
+                 }
+             } catch (e) {
+                 fn_message('e', 'An error occurred while loading data...');
+             }
+             $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
+         };
+
+         error = function (xhr, ajaxOptions, thrownError) {
+             $("#tbOrderDataTable").find(".loader_fb_16x16").remove();
+         };
+         fn_callmethod("ProductsList.aspx/Products_ByCategorySelect", '{CategoryId: "' + CategoryId + '"}', success, error);
+     }
  </script>
 
 </asp:Content>
@@ -89,7 +112,7 @@
 <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
-			<li><a href="/Index.aspx">Canastón</a></li>
+			<li><a href="/Index.aspx">Mickypepa</a></li>
 			<li>Productos</li>
 		</ul>
 	</div>
@@ -100,7 +123,7 @@
 			<div class="row">
 				<div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside">
 					<div class="tt-btn-col-close">
-						<a href="#">Close</a>
+						<a href="#">Cerrar</a>
 					</div>
 					<div class="tt-collapse open tt-filter-detach-option">
 						<div class="tt-collapse-content">
@@ -136,11 +159,11 @@
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options">
-							<h1 class="tt-title" id="lblListSubCategory">
+							<h1 class="tt-title" id="lblListCategory" runat="server">
 								MUJER <span class="tt-title-total">(69)</span>
 							</h1>
 							<div class="tt-btn-toggle">
-								<a href="#">Filtro</a>
+								<a href="#">Categorías</a>
 							</div>
 							<div class="tt-sort">
 								<select>

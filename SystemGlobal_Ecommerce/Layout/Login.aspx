@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
        <script type="text/javascript">
        
         function Fn_LoginCustomer()
@@ -56,20 +57,20 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
-			<h1 class="tt-title-subpages noborder" id="divMessageTop" style="font-weight: bold;">Bienvenido a "EL CANASTÓN"</h1>
+			<h1 class="tt-title-subpages noborder" id="divMessageTop" style="font-weight: bold;">Bienvenido a Mickypepa</h1>
 			<div class="tt-login-form">
-				<div class="row">
-					<div class="col-xs-12 col-md-6">
+				<div class="row" style="margin:auto">
+				<%--	<div class="col-xs-12 col-md-6">
                              <div class="tt-item">
 							<h2 class="tt-title">ERES NUEVO?</h2>
 							<label class="tt-title">Registrandote podras crear tu lista y hacer tu pedido.</label>
 						  <asp:Image ID="imgLogin" runat="server" class="col-xs-12 col-md-6"  style="border-radius: 50%;margin-left: 25%;" />
 						</div>
-					</div>
-					<div class="col-xs-12 col-md-6">
+					</div>--%>
+					<%--<div  class="col-xs-12 col-md-6">--%>
 						<div class="tt-item">
-							<h2 class="tt-title">LOGIN</h2>                                  
-							Si tiene una cuenta con nosotros, Inicie sesión.
+						    <p style="font-weight: bold;">Registrate si aun no tienes una cuenta con nosotros.</p>
+							<h2 class="tt-title">Iniciar Sesión</h2>                                  
 							<div class="form-default form-top">
                                        <div id="message_row"></div>
 									<div class="form-group">
@@ -95,7 +96,7 @@
 									</div>
 							</div>
 						</div>
-					</div>
+					<%--</div>--%>
 				</div>
 			</div>
 		</div>

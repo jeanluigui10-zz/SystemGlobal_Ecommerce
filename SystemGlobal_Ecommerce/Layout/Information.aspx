@@ -124,15 +124,15 @@
 									</div>
                                              <div class="form-group">
 										<label for="loginDescription">Dirección de entrega *</label>
-										<input type="text" name="Address1"  class="form-control validate[required]" runat="server" id="txtAddress1" placeholder="Ingrese su Dirección...">
+										<input type="text" name="Address1"  class="form-control validate[required]" runat="server" id="txtAddress1" placeholder="Ingrese su Dirección">
 									</div>
                                             
                                     <div class="form-group">
-										<label for="loginCelular">Celular/Whatsapp *</label>
+										<label for="loginCelular">Celular *</label>
 										<input type="text" name="celular"  class="form-control validate[required,custom[onlyNumberSp]]" runat="server" id="txtCelular" placeholder="Ingrese su Celular / Whatssap">
 									</div>
 									<div class="form-group">
-										<label for="loginInputEmail">Correo/Nombre de Usuario *</label>
+										<label for="loginInputEmail">Usuario *</label>
 										<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo / Nombre un usuario">
 									</div>
 									<div class="form-group">

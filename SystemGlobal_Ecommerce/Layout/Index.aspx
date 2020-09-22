@@ -101,8 +101,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
+	</div>	
+
      <div class="container-indent">
             <div class="container">
                 <div class="row tt-services-listing">
@@ -153,21 +153,18 @@
                 </div>
             </div>
      </div>
-	   
-	<div class="container-indent">
+	    
+	<div class="container-indent" >
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
-				<h2 class="tt-title">TE RECOMENDAMOS ESTOS PRODUCTOS</h2>
-				<div class="tt-description">Realiza tu compra!</div>
+				<h1 class="tt-title">NUESTRAS CATEGORÍAS</h1>
+				<div class="tt-description">No esperes más elige una!</div>
 			</div>
-			<div class="row tt-layout-product-item" id="ListProductHome" <%--style="margin-top:-75px"--%>>
-				<div class="tt-product thumbprod-center">
-			
-				</div>
+			<div id="divSliderCategoryMaster" class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
 			</div>
 		</div>
-	</div>	
-    
+	</div> 
+
      <div class="container-indent1">
             <div class="container container-fluid-custom-mobile-padding">
                 <div class="tt-block-title text-left">
@@ -227,18 +224,20 @@
             </div>
         </div>
 
-	<div class="container-indent" >
+	<div class="container-indent" style="display:none">
 		<div class="container container-fluid-custom-mobile-padding">
 			<div class="tt-block-title">
-				<h1 class="tt-title">NUESTRAS CATEGORÍAS</h1>
-				<div class="tt-description">No esperes más elige una!</div>
+				<h2 class="tt-title">TE RECOMENDAMOS ESTOS PRODUCTOS</h2>
+				<div class="tt-description">Realiza tu compra!</div>
 			</div>
-			<div id="divSliderCategoryMaster" class="tt-carousel-products row arrow-location-tab arrow-location-tab01 tt-alignment-img tt-collection-listing slick-animated-show-js">
+			<div class="row tt-layout-product-item" id="ListProductHome" <%--style="margin-top:-75px"--%>>
+				<div class="tt-product thumbprod-center">
+			
+				</div>
 			</div>
 		</div>
-	</div>
-
-
+	</div>	
+    
     </div>
     
  

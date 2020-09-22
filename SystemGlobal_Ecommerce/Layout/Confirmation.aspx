@@ -49,7 +49,7 @@
                  obj = $.parseJSON(glancedata);
                  
                  if (obj != "" || obj != undefined) {
-                     var messagewsp = "https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda 'El Canastón' 🏪 acabo de hacer mi pedido! Mi nombre es " + obj.CustomerName.toString() + " 👦 👩 y Mi Orden es N° " + obj.LegacyNumber.toString() +". Mis productos son ";
+                     var messagewsp = "https://api.whatsapp.com/send?phone=51989659008&text=Hola tienda 'Mickypepa' 🏪 acabo de hacer mi pedido! Mi nombre es " + obj.CustomerName.toString() + " 👦 👩 y Mi Orden es N° " + obj.LegacyNumber.toString() +". Mis productos son ";
                     
                      var messagewsp2 = "";
                      var count = 0;

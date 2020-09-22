@@ -40,9 +40,9 @@ namespace SystemGlobal_Ecommerce.Layout.Order
                         {
                             LegacyNumber = item["LegacyNumber"].ToString(),
                             OrderDate = Convert.ToString(Convert.ToDateTime(item["OrderDate"], CultureInfo.InvariantCulture).ToString("MM/dd/yyyy")),
-                            OrderStatus = item["OrderStatus"].ToString(),
-                            OrderProgress = item["OrderProgress"].ToString(),
-                            Total = item["OrderTotal"].ToString(),
+                            OrderStatus = item["PaymentStatusName"].ToString(),
+                            OrderProgress = item["OrderStatusName"].ToString(),
+                            Total = item["Total"].ToString(),
                             IdOrderEncrypt = HttpUtility.UrlEncode(Encryption.Encrypt(item["OrderId"].ToString())),
                         });
                     }
