@@ -70,7 +70,7 @@ namespace SystemGlobal_Ecommerce.Layout
             lblFileNameL.Text = "* Nombre y ubicacion de archivo:  <br><small class='col-md-10'> Archivo tamaño maximo: 5MB</small>";
             lblEnabled.Text = "Habiliado:";
 
-            btnUpload.Text = "Guardar";
+            //btnUpload.Text = "Guardar";
             btnCancel.Text = "Regresar";
 
         }

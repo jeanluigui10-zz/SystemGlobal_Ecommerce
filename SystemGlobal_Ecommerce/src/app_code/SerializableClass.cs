@@ -1469,7 +1469,6 @@ namespace SystemGlobal_Ecommerce.src.app_code
     /*
        var obj = new Object();
                 obj.Status = "Scheduled";
-                obj.Names = "xirect ss";
                 obj.Phone = "632-569-7458";
                 obj.AssociateID = "85632123";
                 obj.Country = "Country";
@@ -1496,9 +1495,7 @@ namespace SystemGlobal_Ecommerce.src.app_code
                 //Autoship - History
                 obj.History = { items: [] };
                 obj.History.items.push(
-                        { col1: "L1", col2: "2", col3: "http://xirectss.com/" }
-                        , { col1: "L2", col2: "8", col3: "http://xirectss.com/" }
-                        , { col1: "L3", col2: "13", col3: "http://xirectss.com/" }
+                       
                 );
                 //Autoship - Activity
                 obj.Activity = { items: [] };
@@ -2362,7 +2359,9 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public String NumberDocument { get; set; }
         public String CellPhone { get; set; }
         public String Email { get; set; }
+        public String Username { get; set; }
         public String Password { get; set; }
+        public String PasswordNew { get; set; }
         public String CreatedDate { get; set; }
         public String Address1 { get; set; }
         public String Message { get; set; }

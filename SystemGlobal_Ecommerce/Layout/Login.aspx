@@ -7,7 +7,7 @@
         {
             try {
                 var objCustomer = {
-                    Email: $("input[id$=txtUsername]").val(),
+                    Username: $("input[id$=txtUsername]").val(),
                     Password: $("input[id$=txtPassowrd]").val()
                 };
                 var success = function (asw) {

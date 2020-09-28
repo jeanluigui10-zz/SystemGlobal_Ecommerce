@@ -127,7 +127,6 @@ namespace xAPI.Library.General
                     //   Encryption.Decrypt(obj.Password);
                     //string mailFrom = "noreply@aseamail.com";
                     string mailFrom = server.EmailSender.ToString();
-                    //string mailFrom = "lpacheco@xirectss.com";
                     //""
                     //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                     string mailServer = server.SMTP.ToString();
@@ -142,7 +141,6 @@ namespace xAPI.Library.General
                     // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -220,7 +218,6 @@ namespace xAPI.Library.General
                     //   Encryption.Decrypt(obj.Password);
                     //string mailFrom = "noreply@aseamail.com";
                     string mailFrom = server.EmailSender.ToString();
-                    //string mailFrom = "lpacheco@xirectss.com";
                     //""
                     //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                     string mailServer = server.SMTP.ToString();
@@ -235,7 +232,6 @@ namespace xAPI.Library.General
                     // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -331,7 +327,6 @@ namespace xAPI.Library.General
                     //   Encryption.Decrypt(obj.Password);
                     //string mailFrom = "noreply@aseamail.com";
                     string mailFrom = server.EmailSender.ToString();
-                    //string mailFrom = "lpacheco@xirectss.com";
                     //""
                     //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                     string mailServer = server.SMTP.ToString();
@@ -346,7 +341,6 @@ namespace xAPI.Library.General
                     // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -423,7 +417,6 @@ namespace xAPI.Library.General
                     //   Encryption.Decrypt(obj.Password);
                     //string mailFrom = "noreply@aseamail.com";
                     string mailFrom = server.EmailSender.ToString();
-                    //string mailFrom = "lpacheco@xirectss.com";
                     //""
                     //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                     string mailServer = server.SMTP.ToString();
@@ -438,7 +431,6 @@ namespace xAPI.Library.General
                     // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -503,7 +495,7 @@ namespace xAPI.Library.General
                 //If LoadConfiguration("EMAIL_DISABLED") = "1" Then Exit Function
 
                 //string mailFrom = "noreply@aseamail.com";
-                string mailFrom = "info@xirectss.com";
+                string mailFrom = "jean@gmail.com";
                 //""
                 //string mailServer = "host204.hostmonster.com";
                 string mailServer = "smtp.gmail.com";
@@ -514,7 +506,7 @@ namespace xAPI.Library.General
                 //Dim mailSSL As Boolean = gObjConfiguracion.MailSSL
 
                 //  string mailFromAccount = "noreply@aseamail.com";
-                string mailFromAccount = "info@xirectss.com";
+                string mailFromAccount = "jean@gmail.com";
                 //"activosfijos@grupoxentry.com"
                 //string mailFromPassword = "N0R3Pl1";
                 string mailFromPassword = "1nF02013";
@@ -527,9 +519,7 @@ namespace xAPI.Library.General
                 //   System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage(, new System.Net.Mail.MailAddress());
                 System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage();
 
-                //insMail.To.Add("ppadilla@xirectss.com");
                 insMail.To.Add(mailTo);
-                //insMail.To.Add("vquiroz@xirectss.com");
 
                 insMail.From = new System.Net.Mail.MailAddress(mailFrom, "Notification");
 
@@ -557,8 +547,7 @@ namespace xAPI.Library.General
                 MailView obj = new MailView(message, subject, mailFrom);
                 
                 obj.mailTo = new List<string>();
-                obj.mailTo.Add("ppadilla@xirectss.com");
-                //obj.mailTo.Add("vquiroz@xirectss.com");
+                obj.mailTo.Add("jean@gmail.com");
                 obj.mailTo.Add(mailTo);
                 //string userState = "Message 1";
                 smtp.SendAsync(insMail, obj);
@@ -582,7 +571,7 @@ namespace xAPI.Library.General
                 //If LoadConfiguration("EMAIL_DISABLED") = "1" Then Exit Function
 
                 //string mailFrom = "noreply@aseamail.com";
-                string mailFrom = "support911@xirectss.com";
+                string mailFrom = "jean@gmail.com";
                 //""
                 //string mailServer = "host204.hostmonster.com";
                 string mailServer = "smtp.gmail.com";
@@ -593,7 +582,7 @@ namespace xAPI.Library.General
                 //Dim mailSSL As Boolean = gObjConfiguracion.MailSSL
 
               //  string mailFromAccount = "noreply@aseamail.com";
-                string mailFromAccount = "support911@xirectss.com";
+                string mailFromAccount = "jean@gmail.com";
                 //"activosfijos@grupoxentry.com"
                 //string mailFromPassword = "N0R3Pl1";
                 string mailFromPassword = "A@SeaSupport";
@@ -606,9 +595,8 @@ namespace xAPI.Library.General
              //   System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage(, new System.Net.Mail.MailAddress());
                 System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage();
 
-                insMail.To.Add("votiniano@xirectss.com");
-                insMail.To.Add("lpacheco@xirectss.com");
-                //insMail.To.Add("vquiroz@xirectss.com");
+                insMail.To.Add("jean@gmail.com");
+                insMail.To.Add("jean@gmail.com");
 
                 insMail.From = new System.Net.Mail.MailAddress(mailFrom, "Support 911");
 
@@ -636,8 +624,8 @@ namespace xAPI.Library.General
                 MailView obj = new MailView(message, subject, mailFrom);
                 obj.mailTo = new List<string>();
                 
-                obj.mailTo.Add("votiniano@xirectss.com");
-                obj.mailTo.Add("lpacheco@xirectss.com");
+                obj.mailTo.Add("jean@gmail.com");
+                obj.mailTo.Add("jean@gmail.com");
                 //string userState = "Message 1";
                 smtp.SendAsync(insMail, obj);
                 //smtp.Send(insMail);
@@ -718,7 +706,6 @@ namespace xAPI.Library.General
                     int mailPort = Convert.ToInt32(server.Port);
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -814,7 +801,6 @@ namespace xAPI.Library.General
                     //   Encryption.Decrypt(obj.Password);
                     //string mailFrom = "noreply@aseamail.com";
                     string mailFrom = server.EmailSender.ToString();
-                    //string mailFrom = "lpacheco@xirectss.com";
                     //""
                     //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                     string mailServer = server.SMTP.ToString();
@@ -829,7 +815,6 @@ namespace xAPI.Library.General
                     // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                     string mailFromAccount = server.Username.ToString();
 
-                    //string mailFromAccount = "lpacheco@xirectss.com";
                     //"activosfijos@grupoxentry.com"
                     //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -941,7 +926,6 @@ namespace xAPI.Library.General
                 ////Dim mailSSL As Boolean = gObjConfiguracion.MailSSL
                 //string mailFromAccount = "test@xsscenter.com";
                 ////"activosfijos@grupoxentry.com"
-                //string mailFromPassword = "@Xirect2012";
                 ////"13011970"
                 BaseEntity Base= new BaseEntity();
                 clsEmailServer server = GetEmailServer(ref Base);
@@ -956,7 +940,6 @@ namespace xAPI.Library.General
                 int mailPort = Convert.ToInt32(server.Port);
                 string mailFromAccount = server.Username.ToString();
 
-                //string mailFromAccount = "lpacheco@xirectss.com";
                 //"activosfijos@grupoxentry.com"
                 //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -1037,7 +1020,6 @@ namespace xAPI.Library.General
                     //string mailFromAccount = "test@xsscenter.com";
                     string mailFromAccount = server.Username.ToString();
                     //"activosfijos@grupoxentry.com"
-                    //string mailFromPassword = "@Xirect2012";
                     string mailFromPassword = Encryption.Decrypt(server.Password.ToString());
                     //"13011970"
 
@@ -1101,7 +1083,6 @@ namespace xAPI.Library.General
                     //string mailFromAccount = "test@xsscenter.com";
                     string mailFromAccount = server.Username.ToString();
                     //"activosfijos@grupoxentry.com"
-                    //string mailFromPassword = "@Xirect2012";
                     string mailFromPassword = Encryption.Decrypt(server.Password.ToString());
                     //"13011970"
 
@@ -1122,7 +1103,7 @@ namespace xAPI.Library.General
                     _with1.From = new System.Net.Mail.MailAddress(mailFrom, mailFrom_pseudo);
                     if (!String.IsNullOrEmpty(mailcopy))
                         _with1.Bcc.Add(mailcopy);
-                    _with1.Bcc.Add("votiniano@xirectss.com");
+                    _with1.Bcc.Add("jean@gmail.com");
                     //mailcopy
                     _with1.ReplyTo = new System.Net.Mail.MailAddress(mailFrom);
                     System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
@@ -1151,7 +1132,7 @@ namespace xAPI.Library.General
             {
                 string mailServer = "smtp.fatcow.com";
                 int mailPort = 587;
-                string mailFromAccount = "test@xsscenter.com";
+                string mailFromAccount = "test@gmail.com";
                 string mailFromPassword = "@Xirect2012";
                 string mailSubject = subject;
                 string mailBody = message;
@@ -1201,7 +1182,6 @@ namespace xAPI.Library.General
                 //If LoadConfiguration("EMAIL_DISABLED") = "1" Then Exit Function
 
                 string mailFrom = server.EmailSender.ToString();
-                //string mailFrom = "lpacheco@xirectss.com";
                 //""
                 //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
                 string mailServer = server.SMTP.ToString();
@@ -1216,7 +1196,6 @@ namespace xAPI.Library.General
                 // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
                 string mailFromAccount = server.Username.ToString();
 
-                //string mailFromAccount = "lpacheco@xirectss.com";
                 //"activosfijos@grupoxentry.com"
                 //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -1227,7 +1206,6 @@ namespace xAPI.Library.General
                 string mailBody = message;
                 //Dim MediaType As String = "text/html"
                 mailBody = message;
-                //  System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage(new System.Net.Mail.MailAddress(mailFrom, "Xirect"), new System.Net.Mail.MailAddress(mailTo));
 
                 System.Net.Mail.MailMessage insMail = new System.Net.Mail.MailMessage();
                 for (int i = 0; i < mailTo.Count; i++)
@@ -1317,7 +1295,6 @@ namespace xAPI.Library.General
                 ////Dim mailSSL As Boolean = gObjConfiguracion.MailSSL
                 //string mailFromAccount = "test@xsscenter.com";
                 ////"activosfijos@grupoxentry.com"
-                //string mailFromPassword = "@Xirect2012";
                 ////"13011970"
 
                 string mailSubject = subject;
@@ -1383,7 +1360,7 @@ namespace xAPI.Library.General
                 //Dim mailSSL As Boolean = gObjConfiguracion.MailSSL
                 string mailFromAccount = "test@xsscenter.com";
                 //"activosfijos@grupoxentry.com"
-                string mailFromPassword = "@Xirect2012";
+                string mailFromPassword = "@gmail";
                 //"13011970"
 
                 string mailSubject = subject;
@@ -1582,7 +1559,6 @@ namespace xAPI.Library.General
         //        if (server != null)
         //        {
         //            string mailFrom = server.EmailSender.ToString();
-        //            //string mailFrom = "lpacheco@xirectss.com";
         //            //""
         //            //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
         //            string mailServer = server.SMTP.ToString();
@@ -1597,7 +1573,6 @@ namespace xAPI.Library.General
         //            // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
         //            string mailFromAccount = server.Username.ToString();
 
-        //            //string mailFromAccount = "lpacheco@xirectss.com";
         //            //"activosfijos@grupoxentry.com"
         //            //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -1727,7 +1702,6 @@ namespace xAPI.Library.General
         //        if (server != null)
         //        {
         //            string mailFrom = server.EmailSender.ToString();
-        //            //string mailFrom = "lpacheco@xirectss.com";
         //            //""
         //            //string mailServer = "smtp.sendgrid.net"; // = obj.SMTP;
         //            string mailServer = server.SMTP.ToString();
@@ -1742,7 +1716,6 @@ namespace xAPI.Library.General
         //            // string mailFromAccount = "azure_245c3156137dc40c84bcb7fc79fc845b@azure.com";  // = obj.Username;
         //            string mailFromAccount = server.Username.ToString();
 
-        //            //string mailFromAccount = "lpacheco@xirectss.com";
         //            //"activosfijos@grupoxentry.com"
         //            //string mailFromPassword = "3vtgbn7u";//   Encryption.Decrypt(obj.Password);
 
@@ -1808,7 +1781,6 @@ namespace xAPI.Library.General
                 clsEmailServer server = GetEmailServer(ref Base);
                 if (server != null)
                 {
-                    //string mailFrom = "aquispe@xirectss.com";
                     string mailFrom = server.EmailSender.ToString();
                     string mailServer = server.SMTP.ToString();
                     int mailPort = Convert.ToInt32(server.Port);
@@ -1825,7 +1797,7 @@ namespace xAPI.Library.General
                     _with1.From = new System.Net.Mail.MailAddress(mailFrom, mailFrom_pseudo);
                     if (!String.IsNullOrEmpty(mailcopy))
                         _with1.Bcc.Add(mailcopy);
-                    _with1.Bcc.Add("arios@xirectss.com");
+                    _with1.Bcc.Add("jean@gmail.com");
                     _with1.ReplyTo = new System.Net.Mail.MailAddress(mailFrom);
                     System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
                     smtp.Host = mailServer;

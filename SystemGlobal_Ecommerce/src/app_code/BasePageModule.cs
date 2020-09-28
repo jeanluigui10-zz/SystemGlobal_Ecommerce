@@ -62,7 +62,6 @@ namespace SystemGlobal_Ecommerce.src.app_code
         {
             ///Estaba validando por la url que ingresaba debe validar siempre.
             //if (HttpContext.Current.Request.Url.ToString().Contains("localhost")
-            //    || HttpContext.Current.Request.Url.ToString().Contains("xirectstage"))
             //    RequiresAccess = true;
             if (RequiresAuth)
             {

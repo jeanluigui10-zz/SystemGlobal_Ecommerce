@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="ProductsList.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.ProductsList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   
+
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
  <script type="text/javascript">
      $(function () {
 	    fn_init();
@@ -44,6 +45,8 @@
              $("#DivProduct").html(item);
              $("#ContentPlaceHolder1_lblListCategory").text("");
              $("#ContentPlaceHolder1_lblListCategory").text(obj[0].Category);
+             $("#DivProduct").css('display', 'none');
+             $("#DivProduct").slideDown("slow");
          }
          catch (e) {
              fn_message('e', 'An error occurred while loading data...');
@@ -117,6 +120,7 @@
 		</ul>
 	</div>
 </div>
+
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
@@ -199,6 +203,7 @@
 		</div>
 	</div>
 </div>
+
 <a href="#" class="tt-back-to-top">VOLVER ARRIBA</a>
 
 <asp:HiddenField runat="server" ID="hfProducts" />
@@ -218,9 +223,9 @@
             </div>
             <div class="tt-description">
                 <div class="tt-row">
-                    <ul class="tt-add-info">
+                 <%--   <ul class="tt-add-info">
                         <li><a href="#">{{Category}}</a></li>
-                    </ul>
+                    </ul>--%>
                     <div class="tt-rating">
                         <i class="icon-star"></i>
                         <i class="icon-star"></i>

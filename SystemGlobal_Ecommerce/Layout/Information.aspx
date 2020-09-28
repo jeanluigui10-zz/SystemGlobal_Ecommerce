@@ -33,6 +33,7 @@
                     Address1: $("input[id$=txtAddress1]").val().trim(),
                     NumberDocument: $("input[id$=txtNumberoDocumento]").val().trim(),
                     CellPhone: $("input[id$=txtCelular]").val().trim(),
+                    Username: $("input[id$=txtUsername]").val().trim(),
                     Password: $("input[id$=txtPassword]").val().trim(),
                     Email: $("input[id$=txtCorreo]").val().trim(),
                     DocumentType: $("select[id$=ddlTipoDocumento] option:selected").val()
@@ -41,16 +42,9 @@
             var success = function (asw) {
 
                 if (asw != null) {
-                    if (asw.d.Result != "NoOkEmail") {
                         if (asw.d.Result == "Ok") {
                             fn_message("s", asw.d.Msg);
                             Fn_Limpiar();
-                        } else if (asw.d.Result == "OkUpdate") {
-                            fn_message("s", asw.d.Msg);
-                        }
-                        else {
-                            fn_message("e", asw.d.Msg);
-                        }
                     } else {
                         fn_message("i", asw.d.Msg);
                     }
@@ -73,6 +67,7 @@
             $("input[id$=txtCelular]").val("");
             $("input[id$=txtCorreo]").val("");
             $("input[id$=txtAddress1]").val("");
+            $("input[id$=txtUsername]").val("");
             $("input[id$=txtPassword]").val("");
           }
 
@@ -118,6 +113,7 @@
 										        <input type="text" name="apellidoMaterno"   class="form-control validate[required,custom[onlyLetterSp]]" runat="server" id="txtApellidoMaterno" placeholder="Ingrese su Apellido Materno">
 									        </div>
                                             <div class="form-group">
+                                                  <label for="loginAMaterno">Documento *</label>
 										<asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-control"></asp:DropDownList>
 										<p></p>
                                                 <input type="text" name="tipodocumento"  class="form-control validate[required,custom[onlyNumberSp]]" runat="server" id="txtNumberoDocumento" placeholder="Ingrese su Documento">
@@ -127,13 +123,17 @@
 										<input type="text" name="Address1"  class="form-control validate[required]" runat="server" id="txtAddress1" placeholder="Ingrese su Dirección">
 									</div>
                                             
-                                    <div class="form-group">
+                                           <div class="form-group">
 										<label for="loginCelular">Celular *</label>
 										<input type="text" name="celular"  class="form-control validate[required,custom[onlyNumberSp]]" runat="server" id="txtCelular" placeholder="Ingrese su Celular / Whatssap">
 									</div>
 									<div class="form-group">
-										<label for="loginInputEmail">Usuario *</label>
-										<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo / Nombre un usuario">
+										<label for="loginInputEmail">Correo *</label>
+										<input type="text" name="email"  class="form-control validate[required]" runat="server" id="txtCorreo" placeholder="Ingrese su Correo">
+									</div>
+                                            <div class="form-group">
+										<label for="loginInputUsername">Usuario *</label>
+										<input type="text" name="username"  class="form-control validate[required]" runat="server" id="txtUsername" placeholder="Ingrese su Usuario">
 									</div>
 									<div class="form-group">
 										<label for="loginInputPassword">Contraseña *</label>

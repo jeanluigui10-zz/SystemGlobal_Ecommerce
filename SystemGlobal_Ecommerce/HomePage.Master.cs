@@ -30,7 +30,7 @@ namespace SystemGlobal_Ecommerce
                 liOrderHistory.Visible = true;
                 liOrderHistoryMobile.Visible = true;
 
-                hrefCustomer.Attributes["href"] = "/Layout/Information.aspx";
+                hrefCustomer.Attributes["href"] = "/Layout/InformationEdit.aspx";
                 hrefOrderHistoryMobile.Attributes["href"] = "/Layout/Order/OrderHistory.aspx";
                 hrefOrderHistory.Attributes["href"] = "/Layout/Order/OrderHistory.aspx";
             }

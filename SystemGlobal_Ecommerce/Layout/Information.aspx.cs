@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -39,10 +38,10 @@ namespace SystemGlobal_Ecommerce.Layout
                     ltTitle.InnerText = "Editar Información";
                     Customer obj = null;
                     Int32 customerId = BaseSession.SsOrderxCore.Customer.ID;
-                    BaseEntity entity = new BaseEntity();
-                    obj = CustomerBL.Instance.Customer_GetInformation_ById(ref entity, customerId);
+                    BaseEntity objEntity = new BaseEntity();
+                    obj = CustomerBL.Instance.Customer_GetInformation_ById(ref objEntity, customerId);
                     
-                    if (entity.Errors.Count == 0)
+                    if (objEntity.Errors.Count == 0)
                         if (obj != null)
                         {
                             SetControls(obj);
@@ -71,6 +70,7 @@ namespace SystemGlobal_Ecommerce.Layout
             txtCelular.Value = String.Empty;
             txtCorreo.Value = String.Empty;
             txtAddress1.Value = String.Empty;
+            txtUsername.Value = String.Empty;
             txtPassword.Value = String.Empty;
             ddlTipoDocumento.SelectedValue = "-1";
         }
@@ -85,6 +85,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 txtCelular.Value = objCustomer.CellPhone;
                 txtCorreo.Value = objCustomer.Email;
                 txtAddress1.Value = objCustomer.address.Address1;
+                txtUsername.Value = objCustomer.Username;
                 txtPassword.Value = objCustomer.Password;
                 ddlTipoDocumento.SelectedValue = objCustomer.DocumentType.ToString();
 
@@ -127,9 +128,9 @@ namespace SystemGlobal_Ecommerce.Layout
             {
                 BaseEntity objEntity = new BaseEntity();
                 Int32 idCustomer = BaseSession.SsOrderxCore.Customer == null ? 0 : BaseSession.SsOrderxCore.Customer.ID;
-                Boolean ExistEmail = CustomerBL.Instance.Customer_Validate_ExistEmail(ref objEntity, obj.Email, idCustomer);
+                Boolean ExistUsername = CustomerBL.Instance.Customer_Validate_ExistUsername(ref objEntity, obj.Email, idCustomer);
 
-                if (!ExistEmail)
+                if (!ExistUsername)
                 {
                     Customer objCustomer = new Customer
                     {
@@ -141,7 +142,8 @@ namespace SystemGlobal_Ecommerce.Layout
                         NumberDocument = obj.NumberDocument.ToString(),
                         CellPhone = obj.CellPhone.ToString(),
                         Email = obj.Email.ToString(),
-                        Password = obj.Password.ToString()
+                        Username = obj.Username.ToString(),
+                        Password = Encryption.Encrypt(obj.Password.ToString()) 
                     };
                     objCustomer.address.Address1 = obj.Address1.ToString();
 
@@ -153,13 +155,12 @@ namespace SystemGlobal_Ecommerce.Layout
                         {
                             if (objCustomer.ID == 0)
                             {
-                                return new { Result = "Ok", Msg = "Se guardo correctamente!" };
+                                return new { Result = "Ok", Msg = "Se guardo correctamente." };
                             }
                             else
                             {
-                                return new { Result = "OkUpdate", Msg = "Se actualizó correctamente!" };
+                                return new { Result = "NoOk", Msg = "Hubo Un error al guardar." };
                             }
-                           
                         }
                         else
                         {
@@ -168,16 +169,16 @@ namespace SystemGlobal_Ecommerce.Layout
                     }
                     else
                     {
-                        return new { Result = "NoOk", Msg = "A ocurrido un error realizando transaccion" };
+                        return new { Result = "NoOk", Msg = "A ocurrido un error realizando transaccion." };
                     }
                 }
                 else {
-                    return new { Result = "NoOkEmail", Msg = "El Correo/Nombre de Usuario ya existe" };
+                    return new { Result = "NoOkUsername", Msg = "El Usuario ya existe" };
                 }                
             }
             catch (Exception ex)
             {
-                return new { Result = "NoOk", Msg = "A ocurrido un error realizando transaccion" };
+                return new { Result = "NoOkUsername", Msg = "A ocurrido un error realizando transaccion" };
             }
         }
         public void Message(EnumAlertType type, string message)

@@ -40,6 +40,47 @@ namespace xAPI.BL.Customers
             }
             return success;
         }
+        public Boolean Customer_Update_Password(ref BaseEntity objEntity, Customer obj)
+        {
+            Boolean success = false;
+            try
+            {
+                success = CustomerDAO.Instance.Customer_Update_Password(ref objEntity, obj);
+            }
+            catch (Exception ex)
+            {
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
+        public Boolean Customer_Update_Address(ref BaseEntity objEntity, Customer obj)
+        {
+            Boolean success = false;
+            try
+            {
+                success = CustomerDAO.Instance.Customer_Update_Address(ref objEntity, obj);
+            }
+            catch (Exception ex)
+            {
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
+        
+        public Boolean Customer_Perfil_Update(ref BaseEntity objEntity, Customer obj)
+        {
+            Boolean success = false;
+            try
+            {
+                success = CustomerDAO.Instance.Customer_Perfil_Update(ref objEntity, obj);
+            }
+            catch (Exception ex)
+            {
+                objEntity.Errors.Add(new BaseEntity.ListError(ex, "An error occurred  on application level 2"));
+            }
+            return success;
+        }
+        
         public Boolean Customer_Subject(ref BaseEntity objEntity, Customer obj)
         {
             Boolean success = false;
@@ -55,12 +96,12 @@ namespace xAPI.BL.Customers
         }
 
         #endregion
-        public Boolean Customer_Validate_ExistEmail(ref BaseEntity objEntity, String email, Int32 idCustomer) 
+        public Boolean Customer_Validate_ExistUsername(ref BaseEntity objEntity, String username, Int32 idCustomer) 
         {
             Boolean success = false;
             try
             {
-                success = CustomerDAO.Instance.Customer_Validate_ExistEmail(ref objEntity, email, idCustomer);
+                success = CustomerDAO.Instance.Customer_Validate_ExistUsername(ref objEntity, username, idCustomer);
             }
             catch (Exception ex)
             {

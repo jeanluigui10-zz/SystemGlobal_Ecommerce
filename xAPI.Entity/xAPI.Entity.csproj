@@ -81,6 +81,7 @@
     <Compile Include="Merchant\Merchants.cs" />
     <Compile Include="Order\OrderDetail.cs" />
     <Compile Include="Order\OrderHeader.cs" />
+    <Compile Include="Payment\Credential.cs" />
     <Compile Include="Product\Brand.cs" />
     <Compile Include="Product\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

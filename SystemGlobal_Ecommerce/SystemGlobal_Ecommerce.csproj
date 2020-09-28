@@ -328,9 +328,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="HomePage.Master" />
     <Content Include="Layout\About\Services.aspx" />
-    <Content Include="Layout\ajax_product.php" />
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
+    <Content Include="Layout\InformationEdit.aspx" />
     <Content Include="Layout\Login.aspx" />
     <Content Include="Layout\Order\OrderHistory.aspx" />
     <Content Include="Layout\ProductSelected.aspx" />
@@ -1437,6 +1437,13 @@
       <DependentUpon>Information.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Layout\InformationEdit.aspx.cs">
+      <DependentUpon>InformationEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout\InformationEdit.aspx.designer.cs">
+      <DependentUpon>InformationEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1505,15 +1512,6 @@
     <Compile Include="Payment\Culqi\culqi.net\Token.cs" />
     <Compile Include="Payment\Culqi\culqi.net\Transfer.cs" />
     <Compile Include="Payment\Culqi\culqi.net\util\Util.cs" />
-    <Compile Include="Payment\PayPal\Utilities\BaseSamplePage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Payment\PayPal\Utilities\Common.cs" />
-    <Compile Include="Payment\PayPal\Utilities\Configuration.cs" />
-    <Compile Include="Payment\PayPal\Utilities\RequestFlow.cs" />
-    <Compile Include="Payment\PayPal\Utilities\RequestFlowItem.cs" />
-    <Compile Include="Payment\PayPal\Utilities\SampleCategory.cs" />
-    <Compile Include="Payment\PayPal\Utilities\SampleItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\app_code\BasePageModule.cs">
       <SubType>ASPXCodeBehind</SubType>

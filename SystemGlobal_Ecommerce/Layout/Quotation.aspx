@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HomePage.Master" AutoEventWireup="true" CodeBehind="Quotation.aspx.cs" Inherits="SystemGlobal_Ecommerce.Layout.Quotation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../src/js/jquery.MultiFile.js"></script>
+    <script src="https://checkout.culqi.com/js/v3"></script>
     <style type="text/css"> 
          .modal-block{
                  background: transparent;
@@ -15,6 +16,13 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            Culqi.publicKey = 'pk_test_e10ed06809bfa78c';
+            Culqi.settings({
+                title: 'Mickypepa',
+                currency: 'PEN',
+                description: 'Polo Doñas pechugas',
+                amount: 3500
+            });
             fn_init();
             $('form').preventDoubleSubmission();
         });
@@ -43,13 +51,26 @@
             fn_validate();
         }
         function fn_validate() {
-            $("#<%=btnUpload.ClientID%>").on("click", function () {
-                if ($.trim($("#<%=txtName.ClientID%>").val()) == "" || $.trim($("#<%=txtDescription.ClientID%>").val()) == "")
-                    return false;
+            $("#<%=btnUpload.ClientID%>").on("click", function (e) {
+               <%-- if ($.trim($("#<%=txtName.ClientID%>").val()) == "" || $.trim($("#<%=txtDescription.ClientID%>").val()) == "")
+                    return false;--%>
+                Culqi.open();
+                e.preventDefault();
             });
         }
 
-
+        function culqi() {
+            if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+                var token = Culqi.token.id;
+                alert('Se ha creado un token:' + token);
+                //En esta linea de codigo debemos enviar el "Culqi.token.id"
+                //hacia tu servidor con Ajax
+            } else { // ¡Hubo algún problema!
+                // Mostramos JSON de objeto error en consola
+                console.log(Culqi.error);
+                alert(Culqi.error.user_message);
+            }
+        };
         function fn_LoadListDDL() {
 
 
@@ -502,7 +523,7 @@
                                     <asp:TextBox runat="server" ID="txtUrl" class="form-control"></asp:TextBox>
                                 </div>
                                 <div>
-                                    <span>For example: user.<strong>xirectss.com/newsite/products/Xirect.aspx</strong></span>
+                                    <span>For example: user.<strong></strong></span>
                                 </div>
                             </div>
                         </div>
@@ -555,7 +576,7 @@
                 <footer class="panel-footer" id="f_Company">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                            <asp:Button ID="btnUpload" runat="server" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" Text="" OnClick="btnSave_Click" OnClientClick="fn_validate2(event);" />
+                            <asp:Button ID="btnUpload" runat="server" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" Text="Pagar"   />
                             <asp:Button ID="btnCancel" runat="server" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" Text="" OnClick="btnCancel_Click" />
                         </div>
                     </div>

@@ -2,102 +2,77 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Incluyendo .js de Culqi JS -->
-    <script src="https://checkout.culqi.com/v2"></script>
-
-    <style type="text/css">
-        #divPayment .rdbPayment label, #divPayment .chkPayment label, .TypeCC label {
-            display: inline-block;
-            margin-left: 7px;
-            vertical-align: middle;
-		  font-size: 16px;
-        }
-    </style>
-   
+    <script src="https://checkout.culqi.com/js/v3"></script>
+   <%-- <script>Culqi.publicKey = 'pk_test_e10ed06809bfa78c' </script>--%>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
      <script type="text/javascript">
-         var $this = this;
-         $(function () {
+	    $(function () {
+             Fn_ValidatePay(); 
+	    });
 
-             Culqi.publicKey = 'pk_test_e10ed06809bfa78c';
-             Culqi.init();
+         function Fn_ValidatePay() {
+             $("#BtnOpenPay").on("click", function (e) {
 
-             //fn_init();
+                 var success = function (asw) {
+				 if (asw.d.Result == "Ok") {
+					var objPay = JSON.parse(asw.d.objPaymentInfo);
+					Culqi.publicKey = objPay.Public_Key;
 
-             PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
+					Culqi.settings({
+					    title: objPay.StoreName,
+					    currency: objPay.Currency,
+					    description: objPay.CustomerName,
+					    amount: objPay.OrderTotal
+					});
 
-             $(".rdbPayment input[type=radio][name$=Payment]").change(function () {
-                 PaymentOptions_Select($(this));
-             });
-             
-             //$('#btn_pagar').on('click', function (e) {
-             //    // Crea el objeto Token con Culqi JS
-             //    Culqi.createToken();
-             //    e.preventDefault();
-             //});
+					Culqi.options({
+					    style: {
+						   logo: objPay.Logo
+					    }
+					});
 
-         });
-         function Fn_ValidateCard(e) {
+					Culqi.open();
+					e.preventDefault();
+					//alert(objPay.outcome.user_message);
+				 } else {
+					if (asw.d.Result == "NoOk") {
+                             fn_message("i", asw.d.Msg);
+					}
+				 }
+                 };
+                 var error = function (xhr, ajaxOptions, thrownError) {
+                     console.log(Culqi.error);
+                     alert(Culqi.error.user_message);
+                 };
 
-             if (!fn_validateform('divPay')) {
-                 e.preventDefault();
-                 return false;
-             }
-             Culqi.createToken();
-             e.preventDefault();
-         }
-
-     <%--    function fn_init() {
-             fn_content();
-         }
-       function fn_content() {
-             PaymentOptions_Select($('.rdbPayment input[type=radio][name$=Payment]:checked'));
-        if ($("#<%=hfDataMethodPayment.ClientID%>").val() != "") {
-                 Fn_ListMethodPayment($("#<%=hfDataMethodPayment.ClientID%>").val());
-             }
-             Fn_ListProductsShopCartHeader($("#<%=hfData.ClientID%>").val());       
-         }--%>
-         function PaymentOptions_Select($this) {
-             //var deviceDataId = OpenPay.deviceData.setup($("form").attr("id"));
-             PaymentId = $this[0].id;
-             var paymenttype = PaymentId.replace("rdb", "");
-             $("input[type=hidden][id$=hfPaymentType]").val(paymenttype);
-         }
-        
-         function Fn_ListMethodPayment(dataPayment) {
-             var glancedata = dataPayment;
-             try {
-                 var objCategory = $.parseJSON(glancedata);
-                 var object = {};
-                 object.request = objCategory;
-                 var item = fn_LoadTemplates("datatable-MethodPayment", object);
-                 $("#DivMethodPayment").html(item);
-             }
-             catch (e) {
-                 fn_message('e', 'An error occurred while loading data...');
-             }
-         }
+                 fn_callmethod("Review.aspx/OpenPay", "", success, error);
+            });
+          }
 
          function culqi() {
              if (Culqi.token) { // ¡Objeto Token creado exitosamente!
-                 var token = Culqi.token.id;
-                 objpay = {
-                     token_created: token,
-                     email: $("input[name=email]").val(),
-
+			  var token = Culqi.token.id;
+                 var pay_email = Culqi.token.email;
+                 objpayinfo = {
+				 token_created: token,
+                     email: pay_email
                   }
                  var success = function (asw) {
-                     if (asw != null) {
-                         if (asw.d.Result == "Ok") {
-                             fn_message("s", asw.d.Msg);
-                         } else {
-                             fn_message('i', 'Ocurrio un error al guardar');
-                         }
+				 if (asw != null) {
+					var objPay = JSON.parse(asw.d);
+					if (objPay.object == "charge") {
+					    fn_message("s", objPay.outcome.user_message);
+					} else {
+                             fn_message("i", objPay.user_message);
+					}
                      }
                  };
-                 var error = function (xhr, ajaxOptions, thrownError) {
-                     fn_message('e', 'Ocurrio un error al guardar');
+			  var error = function (xhr, ajaxOptions, thrownError) {
+                     console.log(Culqi.error);
+                     alert(Culqi.error.user_message);
                  };
 
-                 var senddata = { q: objpay };
+                 var senddata = { q: objpayinfo };
 
                  fn_callmethod("Review.aspx/Culqui_CreateCharge", JSON.stringify(senddata), success, error);
                  
@@ -109,12 +84,11 @@
                  console.log(Culqi.error);
                  alert(Culqi.error.user_message);
              }
-         };
+         }
 
      </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:HiddenField runat="server" ID="hfDataMethodPayment" />
     <div class="tt-breadcrumb">
 	<div class="container">
 		<ul>
@@ -123,15 +97,17 @@
 		</ul>
 	</div>
 </div>
+
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
 			<h1 class="tt-title-subpages noborder">Mis Productos</h1>
+		     <div id="message_row"></div>
 			<div class="row">
 				<div class="col-sm-12 col-xl-8">
-					<div class="tt-shopcart-table">re
+					<div class="tt-shopcart-table">
 						<table id="tblCarrito">
-						     <thead class="col-sm-12 col-xl-8">
+				      <thead>
                                 <tr>
                                     <th style="text-align:right"></th>
                                     <th style="text-align: right">Producto</th>
@@ -162,62 +138,21 @@
                             
 								<br>
 								<br>
-								    <label for="s_username" style=" font-family: Hind, sans-serif; font-size: 24px; font-weight: bold;" class="col-md-12 font-lato-h4">Seleccione método de pago *</label>
+<%--								    <label for="s_username" style=" font-family: Hind, sans-serif; font-size: 24px; font-weight: bold;" class="col-md-12 font-lato-h4">Seleccione método de pago *</label>--%>
 								    <div class="col-md-12">
 									   <div id="divCardOptions">
 										  <div id="divPayment" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-lato-h4" runat="server" clientidmode="static">
 									
 										  </div>
 										  <br />
-										   <asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>
-										  
-								    <img id="paymentimage" src="../Files/images/slides/01/metodosDePago.jpeg" style="width:25%; margin-left:50%">
+										   <%--<asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>--%>
+										 <button id="BtnOpenPay" type="button" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" hidden >Ir a pagar</button>
+<%--										  <asp:Button ID="BtnOpenPay" runat="server" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" Text="Ir a pagar" hidden />--%>
+								   <%-- <img id="paymentimage" src="../Files/images/slides/01/metodosDePago.jpeg" style="width:25%; margin-left:50%">--%>
 									   </div>
 								    </div>
 					</div>
 				    <%--MethodPayment--%>
-
-				      <%--Culqi--%>
-                     <%--   <div id="divPay" class="tt-shopcart-table">
-                             <div id="message_row"></div>
-                            <div>
-                                <div class="form-group">
-                                    <label for="loginInputName">Correo Electrónico *</label>
-                                    <input class="form-control" type="text" size="50" name="email" data-culqi="card[email]" id="card[email]">
-                                </div>
-                                <div class="form-group">
-                                    <label for="loginAPaterno">Número de tarjeta *</label>
-                                    <input class="form-control" type="text" size="20" data-culqi="card[number]" id="card[number]">
-                                </div>
-                                <div class="form-group">
-                                    <label for="loginAMaterno">CVV *</label>
-                                    <input class="form-control" type="text" size="4" data-culqi="card[cvv]" id="card[cvv]">
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label>Fecha expiración (MM/YYYY) </label>
-                                    <div class="col-md-2" style="display: inline-flex;">
-                                        <input class="form-control" size="2" data-culqi="card[exp_month]" id="card[exp_month]">
-                                    </div>
-                                    <span>/</span>
-                                    <div class="col-md-2" style="display: inline-flex;">
-                                        <input class="form-control" size="4" data-culqi="card[exp_year]" id="card[exp_year]">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <button type="submit" id="btn_pagar"  onclick="Fn_ValidateCard(event);"class="btn" style="font-weight: bold; color:black">Pagar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
-
-                 <%--culqi--%>
-
 
 				</div>
 				<div class="col-sm-12 col-xl-4" style="background: #e9eaea;">
@@ -277,66 +212,5 @@
 		</div>
 	</div>
 </div>
-     <asp:HiddenField runat="server" ID="hfData" />
-     <asp:HiddenField runat="server" ID="hfPaymentType" />
-    
-  <%--  <script type="text/x-handlebars-template" id="datatable-shopcart">
-        {{# each request}}
-            <tr id="item-reviewProduct-{{Product.ProductId}}" class="tt-item tt-item-product-delete-{{Product.ProductId}}">
-									<td>
-									    <span class="tt-btn-close" style="cursor:pointer"><input style="display:none" data-page="review" data-productid="{{Product.ProductId}}"></span>
-									</td>
-									<td>
-										<div class="tt-product-img">
-											<img src="{{Product.NameResource}}" data-src="{{Product.NameResource}}" alt="">
-										</div>
-									</td>
-									<td>
-										<h2 class="tt-title">
-											<a href="#" style="color: #007bff;">{{Product.ProductName}}</a>											
-										</h2>
-                                                 <h2 class="tt-title" style="color: #777777;font-size: 14px;">
-											{{Product.Category}}										
-										</h2>
-                                                 
-										<ul class="tt-list-parameters">
-											<li>
-												<div class="tt-price" id="unitPriceProduct_{{Product.ProductId}}">
-													S/.{{Product.UnitPrice}}
-												</div>
-											</li>
-											<li>
-												<div class="detach-quantity-mobile"></div>
-											</li>
-											<li>
-												<div class="tt-price subtotal">
-													S/.{{TotalPrice}}
-												</div>
-											</li>
-										</ul>
-									</td>
-									<td>
-										<div class="tt-price" id="uniPriceProd_{{Product.ProductId}}">
-											S/.{{Product.UnitPrice}}
-										</div>
-									</td>
-									<td>
-										<div class="detach-quantity-desctope">
-											<div class="tt-input-counter style-01">
-												<span class="minus-btn"></span>
-												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}" readonly="readonly">
-												<span class="plus-btn"></span>
-											</div>
-										</div>
-									</td>
-									<td>
-										<div class="tt-price subtotal" id="idSubTotalProduct_{{Product.ProductId}}">
-											S/.{{TotalPrice}}
-										</div>
-									</td>
-		</tr>
-        {{/each}}
-    </script>
---%>
 
 </asp:Content>

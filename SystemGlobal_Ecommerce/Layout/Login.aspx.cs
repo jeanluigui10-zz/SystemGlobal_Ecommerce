@@ -21,20 +21,19 @@ namespace SystemGlobal_Ecommerce.Layout
         public static Object LoginSecurity(dynamic objCust)
         {
             Object objReturn = new { Result = "NoOk" };
-            BaseEntity objBase = new BaseEntity();
+            BaseEntity objEntity = new BaseEntity();
             try
             {
-                String email = objCust["Email"];
+                String username = objCust["Username"];
                 String password = objCust["Password"];
                 Customer obj = new Customer()
                 {
-                    Email = email,
-                    Password = password
+                    Username = username,
+                    Password = Encryption.Encrypt(password.ToString())
                 }; 
 
-                Customer objCustomer = CustomerBL.Instance.ValidateLogin_Customer(ref objBase, obj);
-                
-                if (objBase.Errors.Count == 0)
+                Customer objCustomer = CustomerBL.Instance.ValidateLogin_Customer(ref objEntity, obj);                
+                if (objEntity.Errors.Count == 0)
                 {
                     if (objCustomer != null)
                     {
