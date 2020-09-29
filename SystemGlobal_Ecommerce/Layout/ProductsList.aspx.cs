@@ -72,7 +72,7 @@ namespace SystemGlobal_Ecommerce.Layout
                                 Stock = Convert.ToInt32(item["Stock"]).ToString(),
                                 PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
                                 UniMed = item["UniMed"].ToString(),
-                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                                 Status = item["Status"].ToString()
                             });
                         }
@@ -144,7 +144,7 @@ namespace SystemGlobal_Ecommerce.Layout
                                 Stock = Convert.ToInt32(item["Stock"]).ToString(),
                                 PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
                                 UniMed = item["UniMed"].ToString(),
-                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                                 Status = item["Status"].ToString()
                             });
                         }
@@ -207,7 +207,7 @@ namespace SystemGlobal_Ecommerce.Layout
                             DocType = item["DocType"].ToString(),
                             Category = item["Resource_Category_Name"].ToString(),
                             Brand = item["BrandName"].ToString(),
-                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                            NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                             UnitPrice = Convert.ToDecimal(item["UnitPrice"]).ToString(),
                             Stock = Convert.ToInt32(item["Stock"]).ToString(),
                             PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),

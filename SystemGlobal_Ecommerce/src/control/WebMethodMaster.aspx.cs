@@ -52,7 +52,7 @@ namespace SystemGlobal_Ecommerce.src.control
                                 Stock = Convert.ToInt32(item["Stock"]).ToString(),
                                 PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
                                 UniMed = item["UniMed"].ToString(),
-                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                                 Status = item["Status"].ToString()
                             });
                         }

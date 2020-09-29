@@ -146,7 +146,6 @@
 										  </div>
 										  <br />
 										   <%--<asp:LinkButton ID="btnGeneratePedido" type="button" CssClass="btn"  runat="server" OnClick="btnPayment_Click" style="font-weight: bold; color:black" hidden>ENVIAR PEDIDO</asp:LinkButton>--%>
-										 <button id="BtnOpenPay" type="button" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" hidden >Ir a pagar</button>
 <%--										  <asp:Button ID="BtnOpenPay" runat="server" class="mb-xs mt-xs mr-xs btn btn-lg btn btn-border" Text="Ir a pagar" hidden />--%>
 								   <%-- <img id="paymentimage" src="../Files/images/slides/01/metodosDePago.jpeg" style="width:25%; margin-left:50%">--%>
 									   </div>
@@ -155,7 +154,7 @@
 				    <%--MethodPayment--%>
 
 				</div>
-				<div class="col-sm-12 col-xl-4" style="background: #e9eaea;">
+				<div class="col-sm-12 col-xl-4" >
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
                                   <a class="icon-f-74" style="font-size: xx-large;">
@@ -204,8 +203,10 @@
 									</tr>
 								</tfoot>
 							</table>
-						  
 						</div>
+
+					    <button id="BtnOpenPay" type="button" class="btn btn-border form-control" style="background: green; font-weight:bold">Ir a pagar</button>
+
 					</div>
 				</div>
 			</div>

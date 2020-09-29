@@ -50,7 +50,7 @@ namespace SystemGlobal_Ecommerce.Layout
                             DocType = item["DocType"].ToString(),
                             Brand = item["BrandName"].ToString(),
                             Category = item["Resource_Category_Name"].ToString(),
-                            NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                            NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                             UnitPrice = Convert.ToDecimal(item["UnitPrice"]).ToString(),
                             Stock = Convert.ToInt32(item["Stock"]).ToString(),
                             PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
@@ -94,17 +94,6 @@ namespace SystemGlobal_Ecommerce.Layout
             BaseEntity objBase = new BaseEntity();
             try
             {
-                //if (BaseSession.SsOrderxCore.Customer == null || BaseSession.SsOrderxCore.Customer.CustomerId == 0)
-                //{
-                //    objReturn = new
-                //    {
-                //        Result = "NoOk",
-                //        Msg = "/Layout/Login.aspx",
-                //        Value = 0
-                //    };
-                //}
-                //else
-                //{
                     Products obj = null;
                     String ProductId = Encryption.Decrypt(HttpUtility.UrlDecode(objProd["ProductId"]));
                     obj = ProductBL.Instance.Products_GetList_ById_Ecommerce(ref objBase, Convert.ToInt32(ProductId));
@@ -113,7 +102,7 @@ namespace SystemGlobal_Ecommerce.Layout
                     {
                         if (obj != null)
                         {
-                            obj.NameResource = Config.Impremtawendomain + obj.NameResource;
+                            obj.NameResource = Config.ProductDomainRuta + obj.NameResource;
                             OrderHeader orderHeader = BaseSession.SsOrderxCore;
                             var ProductExist = orderHeader.ListOrderDetail.Any(p => p.Product.ID == obj.ID);
                             if (ProductExist)
@@ -204,9 +193,6 @@ namespace SystemGlobal_Ecommerce.Layout
                             Msg = "Ocurrio un problema agregando el producto."
                         };
                     }
-              //  }
-
-
             }
             catch (Exception ex)
             {
@@ -234,7 +220,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     if (obj != null)
                     {
-                        obj.NameResource = Config.Impremtawendomain + obj.NameResource;
+                        obj.NameResource = Config.ProductDomainRuta + obj.NameResource;
                         Object objProduct = new
                         {
                             ProductId = HttpUtility.UrlEncode(Encryption.Encrypt(obj.ID.ToString())),
@@ -316,7 +302,7 @@ namespace SystemGlobal_Ecommerce.Layout
                                 Stock = Convert.ToInt32(item["Stock"]).ToString(),
                                 PriceOffer = Convert.ToDecimal(item["PriceOffer"]).ToString(),
                                 UniMed = item["UniMed"].ToString(),
-                                NameResource = Config.Impremtawendomain + item["NameResource"].ToString(),
+                                NameResource = Config.ProductDomainRuta + item["NameResource"].ToString(),
                                 Status = item["Status"].ToString()
                             });
                         }

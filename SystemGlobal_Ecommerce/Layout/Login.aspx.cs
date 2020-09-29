@@ -14,7 +14,7 @@ namespace SystemGlobal_Ecommerce.Layout
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //imgLogin.ImageUrl  = Config.impremtawendomainLogin.ToString();
+            //imgLogin.ImageUrl  = Config.ProductDomainRutaLogin.ToString();
         }
                
         [WebMethod]

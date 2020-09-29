@@ -22976,9 +22976,9 @@ html.ie.gecko body.modal-open {
             padding-right: 52px;
         }
 
-        .tt-modal-addtocart.desctope .row > div:last-child {
-            padding-left: 49px;
-        }
+    .tt-modal-addtocart.desctope .row > div:last-child {
+                    padding-left: 30px;
+    }
 
             .tt-modal-addtocart.desctope .row > div:last-child .btn {
                 width: 100%;
@@ -34820,7 +34820,7 @@ button:focus {
 
 .btn.btn-border {
    /* background: #08da97 !important;*/
-    color: #141414;
+    /*color: #141414;*/
     border: 2px solid #c3c9ce;
     height: 40px;
     padding-left: 29px;

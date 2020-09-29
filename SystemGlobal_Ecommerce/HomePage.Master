@@ -1018,7 +1018,7 @@
                                                     </div>
                                                     <div class="tt-cart-btn" id="btnMasterGoPay" runat="server" hidden>
                                                         <div class="tt-item">
-                                                            <a href="/Layout/Review.aspx" class="btn" >Ir a Carrito</a>
+                                                            <a href="/Layout/Review.aspx" class="btn btn-border">Ir a Carrito</a>
                                                         </div>
 
                                                     </div>
@@ -1372,7 +1372,7 @@
                                 </div>
                                 <div class="col-12 col-lg-6" id="divButtonsExistProduct">                                
                                     <a href="#" class="btn btn-border btn-close-popup" id="btnmodalProductExist">CONTINUAR COMPRANDO</a>
-                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn" >VER CARRITO</a>
+                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border" >VER CARRITO</a>
                                 </div>
                             </div>
                         </div>
@@ -1405,7 +1405,7 @@
                                 </div>
                                 <div class="col-12 col-lg-6">                                
                                     <a href="#" class="btn btn-border btn-close-popup" id="btnmodalProductErrorAdd">CONTINUAR COMPRANDO</a>
-                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn" >VER CARRITO</a>
+                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border" >VER CARRITO</a>
                                 </div>
                             </div>
                         </div>
@@ -1437,7 +1437,7 @@
                                 </div>
                                 <div class="col-12 col-lg-6">                                
                                     <a href="#" class="btn btn-border btn-close-popup" id="btnmodalProductErrorView">CONTINUAR COMPRANDO</a>
-                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn" >VER CARRITO</a>
+                                    <a href="<%=Page.ResolveUrl("~/Layout/Review.aspx") %>" class="btn btn-border" >VER CARRITO</a>
                                 </div>
                             </div>
                         </div>
@@ -1548,9 +1548,9 @@
 									<td>
 										<div class="detach-quantity-desctope">
 											<div class="tt-input-counter style-01">
-												<span class="minus-btn"></span>
+												<span class="minus-btn" style="background: yellowgreen;border-radius: 4px; color: white"></span>
 												<input type="text" value="{{Quantity}}" size="100" data-productid="{{Product.ProductId}}" readonly="readonly">
-												<span class="plus-btn"></span>
+												<span class="plus-btn" style="background: yellowgreen;border-radius: 4px; color: white"></span>
 											</div>
 										</div>
 									</td>

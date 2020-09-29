@@ -110,8 +110,8 @@ namespace SystemGlobal_Ecommerce
                         {
                             IdCategoryEncrypt = HttpUtility.UrlEncode(Encryption.Encrypt(item["ID"].ToString())),
                             IdCategory = item["ID"].ToString(),
-                            Name = item["Name"].ToString()
-                            //NameResource = Config.Impremtawendomain + item["NameResource"].ToString()
+                            Name = item["Name"].ToString(),
+                            NameResource = Config.CategoryDomainRuta + item["NameResource"].ToString()
                         });
                     }
                 }

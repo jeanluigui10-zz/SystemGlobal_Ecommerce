@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 
 namespace SystemGlobal_Ecommerce.src.app_code
@@ -15,8 +12,9 @@ namespace SystemGlobal_Ecommerce.src.app_code
         public static string EnterprisePhysicalPath { get { return WebConfigurationManager.AppSettings["epPath"]; } }
         public static string DistributorVirtualPath { get { return WebConfigurationManager.AppSettings["dvPath"]; } }
         public static string EnterpriseVirtualPath { get { return WebConfigurationManager.AppSettings["evPath"]; } }
-        public static string Impremtawendomain { get { return WebConfigurationManager.AppSettings["impremtawendomain"]; } }
-        public static string impremtawendomainLogin { get { return WebConfigurationManager.AppSettings["impremtawendomainLogin"]; } }
+        public static string ProductDomainRuta { get { return WebConfigurationManager.AppSettings["ProductDomainRuta"]; } }
+        public static string ProductDomainRutaLogin { get { return WebConfigurationManager.AppSettings["ProductDomainRutaLogin"]; } }
+        public static string CategoryDomainRuta { get { return WebConfigurationManager.AppSettings["CategoryDomainRuta"]; } }
 
         
     }
