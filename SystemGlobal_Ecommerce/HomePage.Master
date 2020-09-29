@@ -11,7 +11,7 @@
 	<meta name="keywords" content="HTML5 Template">
 	<meta name="description" content="Mickypepa">
 	<meta name="author" content="wokiee">
-	<link rel="shortcut icon" href="/Files/images/slides/01/mickypepa.png" style="border-radius: 50% !important">
+	<link rel="shortcut icon" href="http://jeanlester-001-site1.htempurl.com/Images/Logo/Mickypepa.png" style="border-radius: 50% !important">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <link href="Files/css/theme.css?h=1" rel="stylesheet" />
     <link rel="stylesheet" href="Files/css/theme-02.css?a=1">
@@ -748,11 +748,11 @@
 
         <div id="loader-wrapper">
             <div class="loading-content">
-				<div class="loading-dots">
+				<div class="loader_fb_16x16">
+				<%--	<i></i>
 					<i></i>
 					<i></i>
-					<i></i>
-					<i></i>
+					<i></i>--%>
 				</div>
 			</div>
         </div>
@@ -1166,8 +1166,8 @@
 			<div class="tt-row">
 				<div class="tt-col-left">
 					<div class="tt-col-item tt-logo-col">
-						<a class="tt-logo tt-logo-alignment" href="index.html">
-							<img src="/Files/images/custom/logo-white.png" alt="">
+						<a class="tt-logo tt-logo-alignment" href="#">
+							<img src="http://jeanlester-001-site1.htempurl.com/Images/Logo/Mickypepa.png" alt="" style="border-radius: 70%;">
 						</a>
 					</div>
 					<div class="tt-col-item">

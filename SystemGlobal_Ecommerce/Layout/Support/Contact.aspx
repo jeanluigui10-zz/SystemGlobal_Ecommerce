@@ -64,11 +64,11 @@
 
 <div id="loader-wrapper">
 	 <div class="loading-content">
-				<div class="loading-dots">
+				<div class="loader_fb_16x16">
+					<%--<i></i>
 					<i></i>
 					<i></i>
-					<i></i>
-					<i></i>
+					<i></i>--%>
 				</div>
 			</div>
 </div>

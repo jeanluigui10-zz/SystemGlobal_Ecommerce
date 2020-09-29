@@ -327,15 +327,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="HomePage.Master" />
-    <Content Include="Layout\About\Services.aspx" />
     <Content Include="Layout\Confirmation.aspx" />
     <Content Include="Layout\Information.aspx" />
     <Content Include="Layout\InformationEdit.aspx" />
     <Content Include="Layout\Login.aspx" />
     <Content Include="Layout\Order\OrderHistory.aspx" />
-    <Content Include="Layout\ProductSelected.aspx" />
     <Content Include="Layout\ProductsList.aspx" />
-    <Content Include="Layout\Quotation.aspx" />
     <Content Include="Layout\Review.aspx" />
     <Content Include="Layout\Support\Contact.aspx" />
     <Content Include="plugins\ckeditor\CHANGES.md" />
@@ -1369,6 +1366,7 @@
     <Content Include="src\handlebars\handlebars-v4.1.2.js" />
     <Content Include="src\images\image_not_found.jpg" />
     <Content Include="src\images\image_not_found_res.jpg" />
+    <Content Include="src\images\loading.gif" />
     <Content Include="src\images\support-icon.png" />
     <Content Include="src\js\Base.js" />
     <Content Include="src\js\bootbox.js" />
@@ -1412,13 +1410,6 @@
     <Compile Include="HomePage.Master.designer.cs">
       <DependentUpon>HomePage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Layout\About\Services.aspx.cs">
-      <DependentUpon>Services.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\About\Services.aspx.designer.cs">
-      <DependentUpon>Services.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Layout\Confirmation.aspx.cs">
       <DependentUpon>Confirmation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1461,26 +1452,12 @@
     <Compile Include="Layout\Order\OrderHistory.aspx.designer.cs">
       <DependentUpon>OrderHistory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Layout\ProductSelected.aspx.cs">
-      <DependentUpon>ProductSelected.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\ProductSelected.aspx.designer.cs">
-      <DependentUpon>ProductSelected.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Layout\ProductsList.aspx.cs">
       <DependentUpon>ProductsList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Layout\ProductsList.aspx.designer.cs">
       <DependentUpon>ProductsList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\Quotation.aspx.cs">
-      <DependentUpon>Quotation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layout\Quotation.aspx.designer.cs">
-      <DependentUpon>Quotation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\Review.aspx.cs">
       <DependentUpon>Review.aspx</DependentUpon>
