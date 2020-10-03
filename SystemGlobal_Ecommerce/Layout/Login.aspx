@@ -59,15 +59,16 @@
 		<div class="container">
 			<h1 class="tt-title-subpages noborder" id="divMessageTop" style="font-weight: bold;">Bienvenido a Mickypepa</h1>
 			<div class="tt-login-form">
-				<div class="row" style="margin:auto">
-				<%--	<div class="col-xs-12 col-md-6">
+				<div class="row">
+				    <asp:Image ID="imgLogin" runat="server" class="col-xs-12 col-md-6" style="margin-top: -5%;" />
+					<%--<div class="col-xs-12 col-md-6">
                              <div class="tt-item">
 							<h2 class="tt-title">ERES NUEVO?</h2>
 							<label class="tt-title">Registrandote podras crear tu lista y hacer tu pedido.</label>
 						  <asp:Image ID="imgLogin" runat="server" class="col-xs-12 col-md-6"  style="border-radius: 50%;margin-left: 25%;" />
 						</div>
 					</div>--%>
-					<%--<div  class="col-xs-12 col-md-6">--%>
+					<div  class="col-xs-12 col-md-6">
 						<div class="tt-item">
 						    <p style="font-weight: bold;">Registrate si aun no tienes una cuenta con nosotros.</p>
 							<h2 class="tt-title">Iniciar Sesión</h2>                                  
@@ -83,7 +84,7 @@
 										<input runat="server" type="password" name="passowrd" class="form-control" id="txtPassowrd" placeholder="Ingrese su Password">
 									</div>
 									<div class="form-group">
-                                                  <button class="btn btn-border" type="button" onclick="Fn_LoginCustomer()">Ingresar</button>
+									     <a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" onclick="Fn_LoginCustomer(); return false;" class="btn btn-border">Ingresar</a>
                                                   <a href="<%=Page.ResolveUrl("~/Layout/Information.aspx") %>" class="btn btn-border">Registrate Aquí</a>
 
 										<div class="col-auto align-self-end" style="display:none">
@@ -96,7 +97,7 @@
 									</div>
 							</div>
 						</div>
-					<%--</div>--%>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -21309,7 +21309,7 @@ html.edge .tt-portfolio-content figure:hover figcaption {
                 .tt-product-single-info .tt-row-custom-01 .btn.btn-lg i {
                     font-size: 20px;
                     position: relative;
-                    top: -3px;
+                    top: 3px;
                 }
 
     .tt-product-single-info .tt-wrapper {

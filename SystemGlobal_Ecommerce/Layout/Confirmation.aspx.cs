@@ -14,25 +14,10 @@ namespace SystemGlobal_Ecommerce.Layout
         {
             if (!Page.IsPostBack)
             {
-                //Load_Settings();
                 LoadData();
             }
         }
-        //private void Load_Settings()
-        //{
-        //    BaseEntity objBase = new BaseEntity();
-        //    DataTable dt = ResourceBL.Instance.Settings_GetAll(ref objBase);
-        //    if (objBase.Errors.Count == 0)
-        //    {
-        //        if (dt != null)
-        //        {
-        //            foreach (DataRow item in dt.Rows)
-        //            {
-        //                hfIsVisiableChatConfir.Value = item["ChatOnlineActive"].ToString();
-        //            }
-        //        }
-        //    }
-        //}
+       
         private void LoadData()
         {
             if (BaseSession.SsOrderxCore != null && BaseSession.SsOrderxCore.ListOrderDetail != null && BaseSession.SsOrderxCore.ListOrderDetail.Count > 0)

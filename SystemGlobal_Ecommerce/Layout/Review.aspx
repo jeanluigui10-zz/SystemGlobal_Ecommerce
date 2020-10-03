@@ -12,7 +12,7 @@
 
          function Fn_ValidatePay() {
              $("#BtnOpenPay").on("click", function (e) {
-
+                 $("#frmHmeMaster").append("<div class='loader_fb_16x16'></div>") 
                  var success = function (asw) {
 				 if (asw.d.Result == "Ok") {
 					var objPay = JSON.parse(asw.d.objPaymentInfo);
@@ -33,6 +33,7 @@
 
 					Culqi.open();
 					e.preventDefault();
+                         $("#frmHmeMaster").find(".loader_fb_16x16").remove();
 					//alert(objPay.outcome.user_message);
 				 } else {
 					if (asw.d.Result == "NoOk") {
@@ -40,9 +41,9 @@
 					}
 				 }
                  };
-                 var error = function (xhr, ajaxOptions, thrownError) {
-                     console.log(Culqi.error);
-                     alert(Culqi.error.user_message);
+			  var error = function (xhr, ajaxOptions, thrownError) {
+                     $("#frmHmeMaster").find(".loader_fb_16x16").remove();
+                     fn_message("i", asw.d.Msg);
                  };
 
                  fn_callmethod("Review.aspx/OpenPay", "", success, error);
@@ -50,7 +51,8 @@
           }
 
          function culqi() {
-             if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+		   if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+                 $("#frmHmeMaster").append("<div class='loader_fb_16x16'></div>") 
 			  var token = Culqi.token.id;
                  var pay_email = Culqi.token.email;
                  objpayinfo = {
@@ -61,15 +63,18 @@
 				 if (asw != null) {
 					var objPay = JSON.parse(asw.d);
 					if (objPay.object == "charge") {
-					    fn_message("s", objPay.outcome.user_message);
+
+                             $("#frmHmeMaster").find(".loader_fb_16x16").remove();
 					} else {
-                             fn_message("i", objPay.user_message);
+                             fn_message("i", objPay.merchant_message);
+                             $("#frmHmeMaster").find(".loader_fb_16x16").remove();
 					}
                      }
                  };
 			  var error = function (xhr, ajaxOptions, thrownError) {
+				 $("#frmHmeMaster").find(".loader_fb_16x16").remove();
+                     fn_message("i", objPay.merchant_message);
                      console.log(Culqi.error);
-                     alert(Culqi.error.user_message);
                  };
 
                  var senddata = { q: objpayinfo };
@@ -81,8 +86,9 @@
                  //hacia tu servidor con Ajax
              } else { // ¡Hubo algún problema!
                  // Mostramos JSON de objeto error en consola
+			  $("#frmHmeMaster").find(".loader_fb_16x16").remove();
+                 fn_merchant_messagePay.merchant_message);
                  console.log(Culqi.error);
-                 alert(Culqi.error.user_message);
              }
          }
 
@@ -157,9 +163,9 @@
 				<div class="col-sm-12 col-xl-4" >
 					<div class="tt-shopcart-wrapper form-default">
 						<div class="tt-shopcart-box">
-                                  <a class="icon-f-74" style="font-size: xx-large;">
-							   <span  runat="server" style="font-family: Hind, sans-serif; font-size: 24px;">DIRECCIÓN DE ENTREGA</span>
-							   <span id="lblAddress1" runat="server" style="font-family: Hind, sans-serif; font-size: 24px; color:#2879fe"></span>
+                                  <a class="icon-f-74">
+							   <span  runat="server" style="font-family: Hind, sans-serif;font-size: 16px;font-weight: bold;">DIRECCIÓN DE ENTREGA:</span>
+							   <span id="lblAddress1" runat="server" style="font-family: Hind, sans-serif"></span>
                                   </a>
 							<br/>
 						    <br/>
@@ -205,7 +211,7 @@
 							</table>
 						</div>
 
-					    <button id="BtnOpenPay" type="button" class="btn btn-border form-control" style="background: green; font-weight:bold">Ir a pagar</button>
+					    <button id="BtnOpenPay" type="button" class="btn btn-border form-control" style="background: yellowgreen; font-weight:bold">Ir a pagar</button>
 
 					</div>
 				</div>

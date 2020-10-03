@@ -278,7 +278,7 @@ namespace SystemGlobal_Ecommerce.Layout
                 {
                     objReturn = new
                     {
-                        Msg = "El monto Total no puede ser cero",
+                        Msg = "El monto total no puede ser cero ó la sesión terminó.",
                         Result = NoOk
                     };
                 }
